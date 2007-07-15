@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Default
+Description=KBlocks Oxygen theme for KDE 4
+VersionFormat=1
+Author=Johann-Ollivier Lapeyre
+AuthorEmail=johann.ollivierlapeyre@gmail.com
+Type=SVG
+FileName=default_theme.svg
+Preview=default_preview.png

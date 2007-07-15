@@ -1,0 +1,19 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="kblocks" version="1">
+
+<MenuBar>
+  <Menu name="game">
+    <Action name="newGame" />
+    <Action name="pauseGame" />
+    <Action name="quit" />
+  </Menu>
+</MenuBar>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="newGame"/>
+  <Seperator/>
+  <Action name="pauseGame"/>
+  <Action name="quit"/>
+</ToolBar>
+<StatusBar/>
+
+</kpartgui>

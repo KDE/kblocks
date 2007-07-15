@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=KBlocks
+Icon=kblocks
+Exec=kblocks -caption "%c"
+Type=Application
+DocPath=kblocks/index.html
+GenericName=Falling blocks game
+X-KDE-StartupNotify=true
+X-DBUS-StartupType=Multi
+Categories=Qt;KDE;Game;ArcadeGame;
