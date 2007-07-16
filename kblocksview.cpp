@@ -15,7 +15,7 @@ KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
 {
   m_scene = new KBlocksScene();
   setScene(m_scene);
-  setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+  //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
   setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   setFrameStyle(QFrame::NoFrame);
