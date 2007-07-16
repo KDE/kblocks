@@ -15,7 +15,7 @@ set(kblocks_SRCS
    block.cpp 
    blockanimator.cpp )
 
-kde4_add_kcfg_files(kasteroids_SRCS settings.kcfgc )
+kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
 kde4_add_executable(kblocks ${kblocks_SRCS})
 

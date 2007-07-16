@@ -24,13 +24,14 @@
 #include <kstandardaction.h>
 #include <kicon.h>
 #include <KScoreDialog>
-
-#include <QPixmapCache>
-
-
+#include <kgamethemeselector.h>
 #include <klocale.h>
 #include <ktoggleaction.h>
 #include <kactioncollection.h>
+
+#include <QPixmapCache>
+
+#include "settings.h"
 
 /**
     Constructor.
@@ -54,12 +55,29 @@ KBlocks::KBlocks()
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     actionCollection()->addAction("quit", action);
     
+    KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
+    
     setupGUI();
 }
 
 KBlocks::~KBlocks()
 {
     delete view;
+}
+
+void KBlocks::configureSettings()
+{
+  if ( KConfigDialog::showDialog("settings") ) return;
+
+  KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
+  dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "game_theme");
+  connect(dialog, SIGNAL(settingsChanged(const QString &)), SLOT(settingsChanged()));
+  dialog->show();
+}
+
+void KBlocks::settingsChanged()
+{
+  //Deal with Theme changes here
 }
 
 #include "kblocks.moc"

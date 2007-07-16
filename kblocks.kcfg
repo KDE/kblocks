@@ -4,16 +4,9 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="kblocksrc"/>
-  <group name="Preferences">
-    <entry name="playAnimation" type="Bool">
-      <label>Play block animations.</label>
-      <default>true</default>
-    </entry>
-  </group>
-  <group name="Sounds">
-    <entry name="PlaySounds" type="Bool">
-      <label>Whether to play sounds.</label>
-      <default>false</default>
+  <group name="General">
+    <entry name="Theme" type="String" key="Theme">
+      <label>The graphical theme to be used.</label>
     </entry>
   </group>
 </kcfg>

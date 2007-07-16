@@ -32,6 +32,9 @@ class KBlocks : public KXmlGuiWindow
     /**
      * Default Destructor */
       ~KBlocks();
+  private slots:
+    void configureSettings();
+    void settingsChanged();
 
     private:
       KBlocksView* view;
