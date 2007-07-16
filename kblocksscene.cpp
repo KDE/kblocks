@@ -9,6 +9,7 @@
  ***************************************************************************/
  
 #include "kblocksscene.h"
+#include "kblocksgraphics.h"
 #include <QtDebug>
 #include <KStandardDirs>
 #include <KGamePopupItem>
@@ -28,10 +29,9 @@ KBlocksScene::KBlocksScene() : m_paused(false)
 {
     initPieceTypes();
     nextPiece = new Piece();
-    renderer = new QSvgRenderer(KStandardDirs::locate("appdata", "themes/default_theme.svg"));
+    QString themeFile(KStandardDirs::locate("appdata", "themes/default.desktop"));
+    grafx = new KBlocksGraphics(themeFile);
     setSceneRect(0, 0, WIDTH, HEIGHT);
-    //fieldOffset.setX((WIDTH-(BLOCK_SIZE*FIELD_WIDTH))/2);
-    //fieldOffset.setY((HEIGHT-(BLOCK_SIZE*FIELD_HEIGHT))/2);
     fieldOffset.setX(FIELD_OFFSET_WIDTH);
     fieldOffset.setY(FIELD_OFFSET_HEIGHT);
 
@@ -39,23 +39,9 @@ KBlocksScene::KBlocksScene() : m_paused(false)
     playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(getElementPixmap(WIDTH, HEIGHT, QString("FIELD_AREA")));
+    playArea->setPixmap(grafx->elementPixmap(WIDTH, HEIGHT, QString("FIELD_AREA")));
     addItem(playArea);
-    //playarea->setPos(fieldOffset);
-/*
-    for (int i = 0; i <= FIELD_HEIGHT; ++i) {
-      QGraphicsPixmapItem * wall = new QGraphicsPixmapItem(bg);
-      wall->setPixmap(wallpix);
-      wall->setPos(coordToPoint(QPoint(FIELD_WIDTH,i)));
-      //addItem(wall);
-    }
-    for (int i = 0; i < FIELD_WIDTH; ++i) {
-      QGraphicsPixmapItem * wall = new QGraphicsPixmapItem(bg);
-      wall->setPixmap(wallpix);
-      wall->setPos(coordToPoint(QPoint(i,FIELD_HEIGHT)));
-      //addItem(wall);
-    }*/
-    
+
     //Our Message Item, hidden by default
     messageItem = new KGamePopupItem();
     messageItem->setMessageOpacity(0.9);
@@ -72,13 +58,14 @@ KBlocksScene::~KBlocksScene()
 {
   cleanAll();
   delete nextPiece;
-  //delete bg;
-  delete renderer;
+  delete grafx;
 }
 
 void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
 {
-  renderer->render(painter, QString("BACKGROUND"), rect);
+  if (grafx->renderer()->isValid()) {
+    grafx->renderer()->render(painter, QString("BACKGROUND"), rect);
+  }
 }
 
 void KBlocksScene::step()
@@ -195,7 +182,7 @@ void KBlocksScene::prepareNewPiece()
     Block *block = new Block(playArea);
     //block->setSharedRenderer(renderer);
     //block->setElementId(QString("BLOCK_%1").arg(chosenset));
-    block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(chosenset)));
+    block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i)+QPoint(14,2);
@@ -229,7 +216,7 @@ void KBlocksScene::releasePiece()
       Block *block = new Block(playArea);
       //block->setSharedRenderer(renderer);
       //block->setElementId(QString("BLOCK_%1").arg(setidx));
-      block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(setidx)));
+      block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(setidx)));
 
       block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
       block->setData(Block_Color, setidx);
@@ -431,7 +418,7 @@ void KBlocksScene::removeLine(int liney)
     if (checkcoord.y()==liney) {
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
-      block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_%1").arg(color)));
+      block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_%1").arg(color)));
       //block->setElementId(QString("BLOCK_OUT_0"));
       fadeOutBlocks << block;
       //block->hide();
@@ -619,30 +606,6 @@ void KBlocksScene::initPieceTypes()
   apiece.clear();
   pieceTypes << aset;
   aset.clear();
-}
-
-QPixmap KBlocksScene::getElementPixmap(short width, short height, const QString & elementid) {
-  QPixmap pm;
-  if (!QPixmapCache::find(pixmapCacheNameFromElementId(width, height, elementid), pm)) {
-    pm = renderElement(width, height, elementid);
-    QPixmapCache::insert(pixmapCacheNameFromElementId(width, height, elementid), pm);
-  }
-  return pm;
-}
-
-QPixmap KBlocksScene::renderElement(short width, short height, const QString & elementid) {
-  QImage qiRend(QSize(width, height),QImage::Format_ARGB32_Premultiplied);
-  qiRend.fill(0);
-
-  if (renderer->isValid()) {
-    QPainter p(&qiRend);
-    renderer->render(&p, elementid);
-  }
-  return QPixmap::fromImage(qiRend);
-}
-
-QString KBlocksScene::pixmapCacheNameFromElementId(short width, short height, const QString & elementid) {
-  return elementid + QString("W%1H%2").arg(width).arg(height);
 }
 
 void KBlocksScene::showMessage( const QString& message, int ms )

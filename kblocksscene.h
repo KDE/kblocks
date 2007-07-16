@@ -17,7 +17,6 @@
 #include <QKeyEvent>
 #include <QtSvg>
 #include <QGraphicsPixmapItem>
-#include <QSvgRenderer>
 #include <QGraphicsItemGroup>
 #include <QTimer>
 
@@ -30,6 +29,7 @@ typedef QList<QPoint> PieceRotation;
 typedef QList<PieceRotation> PieceSet;
 
 class KGamePopupItem;
+class KBlocksGraphics;
 
 class KBlocksScene : public QGraphicsScene
 {
@@ -43,6 +43,7 @@ public:
     void startGame();
 
 private:
+    KBlocksGraphics *grafx;
     QList<QObject *> animators;
     QList<Piece *> activePieces;
     QList<Block *> frozenBlocks;
@@ -50,7 +51,6 @@ private:
     Piece * nextPiece;
     
     QTimer stepTimer;
-    QSvgRenderer *renderer;
     
     QPoint fieldOffset;
     //QGraphicsPixmapItem * bg;
@@ -77,9 +77,6 @@ private:
     int coordToIndex(const QPoint& coord);
     QPoint indexToCoord(int idx);
     QPointF coordToPoint(const QPoint& coord);
-    QPixmap getElementPixmap(short width, short height, const QString & elementid);
-    QPixmap renderElement(short width, short height, const QString & elementid);
-    QString pixmapCacheNameFromElementId(short width, short height, const QString & elementid);
     void showMessage( const QString& message, int ms );
     
 private slots:

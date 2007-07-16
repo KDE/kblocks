@@ -12,6 +12,7 @@ set(kblocks_SRCS
    kblocks.cpp 
    kblocksview.cpp 
    kblocksscene.cpp 
+   kblocksgraphics.cpp 
    block.cpp 
    blockanimator.cpp )
 
