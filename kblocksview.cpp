@@ -26,8 +26,8 @@ KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
   setOptimizationFlags( QGraphicsView::DontClipPainter |
       QGraphicsView::DontSavePainterState |
       QGraphicsView::DontAdjustForAntialiasing );
-  setRenderHints(QPainter::Antialiasing | 
-      QPainter::SmoothPixmapTransform);
+  setCacheMode(QGraphicsView::CacheBackground);
+  setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
   show();
 }
 

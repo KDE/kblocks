@@ -34,20 +34,13 @@ KBlocksScene::KBlocksScene() : m_paused(false)
     //fieldOffset.setY((HEIGHT-(BLOCK_SIZE*FIELD_HEIGHT))/2);
     fieldOffset.setX(FIELD_OFFSET_WIDTH);
     fieldOffset.setY(FIELD_OFFSET_HEIGHT);
-    
-    bg = new QGraphicsPixmapItem();
-    bg->setPixmap(renderElement(WIDTH, HEIGHT, QString("BACKGROUND")));
-    //bg = new QGraphicsSvgItem();
-    //bg->setSharedRenderer(renderer);
-    //bg->setElementId("BACKGROUND");
-    bg->setPos(0,0);
-    //BG is our first item, non parented. We add it explicitally.
-    addItem(bg);
 
-    playArea = new QGraphicsPixmapItem(bg);
+    //playArea is our first item, non parented. We add it explicitally.
+    playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
     playArea->setPixmap(renderElement(WIDTH, HEIGHT, QString("FIELD_AREA")));
+    addItem(playArea);
     //playarea->setPos(fieldOffset);
 /*
     for (int i = 0; i <= FIELD_HEIGHT; ++i) {
@@ -79,8 +72,13 @@ KBlocksScene::~KBlocksScene()
 {
   cleanAll();
   delete nextPiece;
-  delete bg;
+  //delete bg;
   delete renderer;
+}
+
+void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
+{
+  renderer->render(painter, QString("BACKGROUND"), rect);
 }
 
 void KBlocksScene::step()

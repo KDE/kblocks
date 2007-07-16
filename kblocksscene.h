@@ -53,7 +53,7 @@ private:
     QSvgRenderer *renderer;
     
     QPoint fieldOffset;
-    QGraphicsPixmapItem * bg;
+    //QGraphicsPixmapItem * bg;
     QGraphicsPixmapItem * playArea;
     
     KGamePopupItem *messageItem;
@@ -88,6 +88,7 @@ private slots:
     
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *keyEvent);
+    void drawBackground ( QPainter * painter, const QRectF & rect );
     void keyPressEvent(QKeyEvent *event);
 };
 
