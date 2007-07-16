@@ -71,13 +71,9 @@ void KBlocks::configureSettings()
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "game_theme");
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), SLOT(settingsChanged()));
+  connect(dialog, SIGNAL(settingsChanged(const QString &)), view, SLOT(settingsChanged()));
   dialog->show();
 }
 
-void KBlocks::settingsChanged()
-{
-  //Deal with Theme changes here
-}
 
 #include "kblocks.moc"

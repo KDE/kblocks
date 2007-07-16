@@ -18,7 +18,6 @@ class Block : public QObject, public QGraphicsPixmapItem
 {
   Q_OBJECT
   public:
-    //Block(const QRectF &rect) :QGraphicsRectItem(rect) {}
     explicit Block (QGraphicsItem * parent);
     virtual ~Block();
     
@@ -29,13 +28,11 @@ class Block : public QObject, public QGraphicsPixmapItem
     void animatePosEnd ();
   private:
     void paint( QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0 );
-    //QVariant itemChange( GraphicsItemChange change, const QVariant& value );
 
     qreal m_opacity;
     QPointF m_animatePosInitial;
     QPointF m_animatePosFinal;
     bool    m_animatingPos;
-    //QTimeLine *m_timeLine;
 };
 
 class Piece

@@ -25,6 +25,7 @@ class KBlocksView : public QGraphicsView
   public slots:
     void newGame();
     void pauseGame();
+    void settingsChanged();
 
   protected:
     KBlocksScene * m_scene;

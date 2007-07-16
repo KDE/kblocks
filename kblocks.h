@@ -19,7 +19,7 @@
 /**
    @short  Class Description
 
-   @author Mathias
+   @author Mauricio Piacentini
 */
 class KBlocks : public KXmlGuiWindow
 {
@@ -33,8 +33,7 @@ class KBlocks : public KXmlGuiWindow
      * Default Destructor */
       ~KBlocks();
   private slots:
-    void configureSettings();
-    void settingsChanged();
+      void configureSettings();
 
     private:
       KBlocksView* view;

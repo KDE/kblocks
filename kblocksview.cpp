@@ -46,6 +46,11 @@ void KBlocksView::pauseGame()
   m_scene->pauseGame();
 }
 
+void KBlocksView::settingsChanged()
+{
+  //Deal with Theme changes here
+}
+
 void KBlocksView::resizeEvent(QResizeEvent* event) {
   fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
   QGraphicsView::resizeEvent(event);
