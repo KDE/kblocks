@@ -39,7 +39,7 @@ KBlocksScene::KBlocksScene() : m_paused(false)
     playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(renderElement(WIDTH, HEIGHT, QString("FIELD_AREA")));
+    playArea->setPixmap(getElementPixmap(WIDTH, HEIGHT, QString("FIELD_AREA")));
     addItem(playArea);
     //playarea->setPos(fieldOffset);
 /*
@@ -195,7 +195,7 @@ void KBlocksScene::prepareNewPiece()
     Block *block = new Block(playArea);
     //block->setSharedRenderer(renderer);
     //block->setElementId(QString("BLOCK_%1").arg(chosenset));
-    block->setPixmap(renderElement(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(chosenset)));
+    block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i)+QPoint(14,2);
@@ -229,7 +229,7 @@ void KBlocksScene::releasePiece()
       Block *block = new Block(playArea);
       //block->setSharedRenderer(renderer);
       //block->setElementId(QString("BLOCK_%1").arg(setidx));
-      block->setPixmap(renderElement(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(setidx)));
+      block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(setidx)));
 
       block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
       block->setData(Block_Color, setidx);
@@ -426,13 +426,12 @@ void KBlocksScene::removeLine(int liney)
 {
   //First we remove all blocks in the line
   QList<Block *> fadeOutBlocks;
-  //QPixmap outpix = renderElement(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_0"));
   foreach (Block *block, frozenBlocks) {
     QPoint checkcoord = block->data(Block_Coord).toPoint();
     if (checkcoord.y()==liney) {
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
-      block->setPixmap(renderElement(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_%1").arg(color)));
+      block->setPixmap(getElementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_%1").arg(color)));
       //block->setElementId(QString("BLOCK_OUT_0"));
       fadeOutBlocks << block;
       //block->hide();
@@ -622,6 +621,15 @@ void KBlocksScene::initPieceTypes()
   aset.clear();
 }
 
+QPixmap KBlocksScene::getElementPixmap(short width, short height, const QString & elementid) {
+  QPixmap pm;
+  if (!QPixmapCache::find(pixmapCacheNameFromElementId(width, height, elementid), pm)) {
+    pm = renderElement(width, height, elementid);
+    QPixmapCache::insert(pixmapCacheNameFromElementId(width, height, elementid), pm);
+  }
+  return pm;
+}
+
 QPixmap KBlocksScene::renderElement(short width, short height, const QString & elementid) {
   QImage qiRend(QSize(width, height),QImage::Format_ARGB32_Premultiplied);
   qiRend.fill(0);
@@ -631,6 +639,10 @@ QPixmap KBlocksScene::renderElement(short width, short height, const QString & e
     renderer->render(&p, elementid);
   }
   return QPixmap::fromImage(qiRend);
+}
+
+QString KBlocksScene::pixmapCacheNameFromElementId(short width, short height, const QString & elementid) {
+  return elementid + QString("W%1H%2").arg(width).arg(height);
 }
 
 void KBlocksScene::showMessage( const QString& message, int ms )

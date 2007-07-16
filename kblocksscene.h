@@ -77,7 +77,9 @@ private:
     int coordToIndex(const QPoint& coord);
     QPoint indexToCoord(int idx);
     QPointF coordToPoint(const QPoint& coord);
+    QPixmap getElementPixmap(short width, short height, const QString & elementid);
     QPixmap renderElement(short width, short height, const QString & elementid);
+    QString pixmapCacheNameFromElementId(short width, short height, const QString & elementid);
     void showMessage( const QString& message, int ms );
     
 private slots:
