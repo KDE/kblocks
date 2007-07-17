@@ -23,14 +23,15 @@ class KBlocksGraphics
     virtual ~KBlocksGraphics();
     
   public:
-    void setData(int key, const QVariant & value);
-    QVariant data ( int key );
+    void readThemeValues();
+    void setData(int key, qreal value);
+    qreal data ( int key );
     KGameTheme * theme() { return m_theme; }
     QSvgRenderer * renderer() { return m_renderer; }
     QPixmap elementPixmap(short width, short height, const QString & elementid);
     
   private:
-    QHash<int, QVariant> m_data;
+    QHash<int, qreal> m_data;
     KGameTheme * m_theme;
     QSvgRenderer *m_renderer;
     
@@ -38,7 +39,15 @@ class KBlocksGraphics
     QString pixmapCacheNameFromElementId(short width, short height, const QString & elementid);
 };
 
-enum BlockGraphicsData { Block_Size = 0, View_Width, View_Height, FieldOffset_Width, FieldOffset_Height, Field_Width,
-   Field_Height };
+//TODO: Keep this in sync with propList (readThemeValues)
+enum BlockGraphicsData { Block_Size=0, 
+  View_Size_Width,
+  View_Size_Height,
+  PlayArea_OffsetPoint_X,
+  PlayArea_OffsetPoint_Y,
+  PlayArea_NumberOfBlocks_X,
+  PlayArea_NumberOfBlocks_Y,
+  PreviewArea_CenterPoint_X,
+  PreviewArea_CenterPoint_Y };
 
 #endif

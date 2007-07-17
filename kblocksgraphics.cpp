@@ -22,6 +22,7 @@ KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
     kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
   }
   m_renderer = new QSvgRenderer(m_theme->graphics());
+  readThemeValues();
 }
 
 KBlocksGraphics::~KBlocksGraphics()
@@ -30,12 +31,34 @@ KBlocksGraphics::~KBlocksGraphics()
   delete m_renderer;
 }
 
-void KBlocksGraphics::setData(int key, const QVariant & value)
+void KBlocksGraphics::readThemeValues()
+{
+  QStringList proplist;
+  //Follow the BlockGraphicsData enum order
+  proplist << "Block_Size" << "View_Size_Width" << "View_Size_Height" << "PlayArea_OffsetPoint_X" << "PlayArea_OffsetPoint_Y";
+  proplist << "PlayArea_NumberOfBlocks_X" << "PlayArea_NumberOfBlocks_Y" << "PreviewArea_CenterPoint_X" << "PreviewArea_CenterPoint_Y";
+  
+  QString propString;
+  bool ok;
+  qreal propValue;
+  int i=0;
+  
+  foreach (QString propKey, proplist) {
+    propString = m_theme->themeProperty(propKey);
+    propValue = propString.toFloat(&ok);
+    setData(i, propValue);
+    if (!ok) kDebug(11000) << "Bad layout data in KBlocks theme.";
+    i++;
+  }
+  //kDebug(11000) << m_data;
+}
+
+void KBlocksGraphics::setData(int key, qreal value)
 {
   m_data.insert ( key,value);
 }
 
-QVariant  KBlocksGraphics::data ( int key )
+qreal KBlocksGraphics::data ( int key )
 {
   return m_data.value(key);
 }
