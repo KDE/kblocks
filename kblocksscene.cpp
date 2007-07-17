@@ -14,16 +14,7 @@
 #include <KStandardDirs>
 #include <KGamePopupItem>
 
-//Fixed values for now, will be read from Theme SVG soon
-const int BLOCK_SIZE = 30;
 const int UPDATE_INTERVAL = 300;
-const int WIDTH = 585;
-const int HEIGHT = 660;
-const int FIELD_OFFSET_HEIGHT = 14;
-const int FIELD_OFFSET_WIDTH = 49;
-
-const int FIELD_HEIGHT = 20;
-const int FIELD_WIDTH  = 10;
 
 KBlocksScene::KBlocksScene() : m_paused(false)
 {
@@ -31,15 +22,13 @@ KBlocksScene::KBlocksScene() : m_paused(false)
     nextPiece = new Piece();
     QString themeFile(KStandardDirs::locate("appdata", "themes/default.desktop"));
     grafx = new KBlocksGraphics(themeFile);
-    setSceneRect(0, 0, WIDTH, HEIGHT);
-    fieldOffset.setX(FIELD_OFFSET_WIDTH);
-    fieldOffset.setY(FIELD_OFFSET_HEIGHT);
+    setSceneRect(0, 0, (int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height));
 
     //playArea is our first item, non parented. We add it explicitally.
     playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(grafx->elementPixmap(WIDTH, HEIGHT, QString("FIELD_AREA")));
+    playArea->setPixmap(grafx->elementPixmap((int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height), QString("FIELD_AREA")));
     addItem(playArea);
 
     //Our Message Item, hidden by default
@@ -182,7 +171,7 @@ void KBlocksScene::prepareNewPiece()
     Block *block = new Block(playArea);
     //block->setSharedRenderer(renderer);
     //block->setElementId(QString("BLOCK_%1").arg(chosenset));
-    block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(chosenset)));
+    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i)+QPoint(14,2);
@@ -216,11 +205,11 @@ void KBlocksScene::releasePiece()
       Block *block = new Block(playArea);
       //block->setSharedRenderer(renderer);
       //block->setElementId(QString("BLOCK_%1").arg(setidx));
-      block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_%1").arg(setidx)));
+      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(setidx)));
 
       block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
       block->setData(Block_Color, setidx);
-      QPoint point = chosenpiecerotation.at(i)+QPoint(FIELD_WIDTH/2,0);
+      QPoint point = chosenpiecerotation.at(i)+QPoint((int)grafx->data(PlayArea_NumberOfBlocks_X)/2,0);
       block->setData(Block_Coord, point);
       block->setPos(coordToPoint(point));
       //and append them to temporary collection
@@ -255,9 +244,9 @@ bool KBlocksScene::canMove(Piece * piece, const QPoint& delta)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= FIELD_HEIGHT ) return false;
+    if (piececoord.y() >= (int)grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= FIELD_WIDTH)||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= (int)grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -305,9 +294,9 @@ bool KBlocksScene::canRotate(Piece * piece)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= FIELD_HEIGHT ) return false;
+    if (piececoord.y() >= (int)grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= FIELD_WIDTH)||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= (int)grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -391,9 +380,9 @@ void KBlocksScene::searchForCompleteLines()
   
   QList<int> linesToRemove;
   //We are scanning top to bottom, and analyzing the whole field to see which lines are complete
-  for (int y=0; y<FIELD_HEIGHT; y++) {
+  for (int y=0; y<(int)grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
     bool lineComplete = true;
-    for (int x=0; x<FIELD_WIDTH; x++) {
+    for (int x=0; x<(int)grafx->data(PlayArea_NumberOfBlocks_X); x++) {
       if (!frozenBlocksMap.contains(coordToIndex(QPoint(x,y)))) {
         lineComplete = false;
       }
@@ -418,7 +407,7 @@ void KBlocksScene::removeLine(int liney)
     if (checkcoord.y()==liney) {
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
-      block->setPixmap(grafx->elementPixmap(BLOCK_SIZE, BLOCK_SIZE, QString("BLOCK_OUT_%1").arg(color)));
+      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_OUT_%1").arg(color)));
       //block->setElementId(QString("BLOCK_OUT_0"));
       fadeOutBlocks << block;
       //block->hide();
@@ -470,20 +459,20 @@ void KBlocksScene::animationFinished(QObject * animation)
 
 int KBlocksScene::coordToIndex(const QPoint& coord)
 {
-  return coord.x()+(coord.y()*FIELD_WIDTH);
+  return coord.x()+(coord.y()*(int)grafx->data(PlayArea_NumberOfBlocks_X));
 }
 
 QPoint KBlocksScene::indexToCoord(int idx)
 {
-  QPoint point(idx%FIELD_WIDTH, idx/FIELD_WIDTH);
+  QPoint point(idx%(int)grafx->data(PlayArea_NumberOfBlocks_X), idx/(int)grafx->data(PlayArea_NumberOfBlocks_X));
   return point;
 }
 
 QPointF KBlocksScene::coordToPoint(const QPoint& coord)
 {
   QPointF point(coord.x(),coord.y());
-  point = point*BLOCK_SIZE;
-  point = point+fieldOffset;
+  point = point*grafx->data(Block_Size);
+  point = point+QPointF(grafx->data(PlayArea_OffsetPoint_X),grafx->data(PlayArea_OffsetPoint_Y));
   return point;
 }
 

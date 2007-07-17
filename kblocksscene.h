@@ -52,7 +52,6 @@ private:
     
     QTimer stepTimer;
     
-    QPoint fieldOffset;
     //QGraphicsPixmapItem * bg;
     QGraphicsPixmapItem * playArea;
     
