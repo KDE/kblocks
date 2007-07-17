@@ -24,6 +24,7 @@ class KBlocksGraphics
     
   public:
     void readThemeValues();
+    void adjustForSize(const QSize& newsize);
     void setData(int key, qreal value);
     qreal data ( int key );
     KGameTheme * theme() { return m_theme; }

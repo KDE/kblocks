@@ -41,6 +41,7 @@ public:
   public slots:
     void pauseGame();
     void startGame();
+    void viewScaled(const QSize& newsize);
 
 private:
     KBlocksGraphics *grafx;
@@ -60,6 +61,7 @@ private:
     bool m_paused;
     
     void cleanAll();
+    void updateDimensions();
     void initPieceTypes();
     bool canMove(Piece *piece, const QPoint& delta);
     bool canRotate(Piece * piece);

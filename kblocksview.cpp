@@ -19,15 +19,13 @@ KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
   setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
   setFrameStyle(QFrame::NoFrame);
-  
-  //setMinimumSize ( 585, 660 );
-  setMaximumSize ( 585, 660 );
+  setMinimumSize ( 120, 120 );
 
   setOptimizationFlags( QGraphicsView::DontClipPainter |
       QGraphicsView::DontSavePainterState |
       QGraphicsView::DontAdjustForAntialiasing );
   setCacheMode(QGraphicsView::CacheBackground);
-  //setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+  setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
   show();
 }
 
@@ -52,7 +50,10 @@ void KBlocksView::settingsChanged()
 }
 
 void KBlocksView::resizeEvent(QResizeEvent* event) {
-  fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
+  //fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
+  if (event->spontaneous()) return;
+  m_scene->viewScaled(event->size());
+  
   QGraphicsView::resizeEvent(event);
 }
 

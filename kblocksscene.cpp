@@ -57,6 +57,33 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
   }
 }
 
+void KBlocksScene::viewScaled(const QSize& newsize)
+{
+  grafx->adjustForSize(newsize);
+  updateDimensions();
+}
+
+void KBlocksScene::updateDimensions()
+{
+  setSceneRect(0, 0, (int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height));
+  playArea->setPixmap(grafx->elementPixmap((int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height), QString("FIELD_AREA")));
+
+  foreach (Piece* piece, activePieces) {
+    foreach (Block *block, piece->children()) {
+      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+      block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
+    }
+  }
+  foreach (Block *block, nextPiece->children()) {
+    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
+  }
+  foreach (Block* block, frozenBlocks) {
+    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
+  }
+}
+
 void KBlocksScene::step()
 {
     foreach (Piece* piece, activePieces) {

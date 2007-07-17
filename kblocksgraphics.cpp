@@ -31,6 +31,34 @@ KBlocksGraphics::~KBlocksGraphics()
   delete m_renderer;
 }
 
+void KBlocksGraphics::adjustForSize(const QSize& newsize)
+{
+  //Reset our values
+  readThemeValues();
+
+  qreal aspectratio;
+  qreal nw = newsize.width();
+  qreal nh = newsize.height();
+
+  qreal origw = data(View_Size_Width);
+  qreal origh = data(View_Size_Height);
+
+  if ((origw/origh)>(nw/nh)) {
+    //space will be left on height, use width as limit
+    aspectratio = nw/origw;
+  } else {
+    aspectratio = nh/origh;
+  }
+  //kDebug(11000) << aspectratio;
+  setData(Block_Size, aspectratio*data(Block_Size));
+  setData(View_Size_Width, aspectratio*data(View_Size_Width));
+  setData(View_Size_Height, aspectratio*data(View_Size_Height));
+  setData(PlayArea_OffsetPoint_X, aspectratio*data(PlayArea_OffsetPoint_X));
+  setData(PlayArea_OffsetPoint_Y, aspectratio*data(PlayArea_OffsetPoint_Y));
+  setData(PreviewArea_CenterPoint_X, aspectratio*data(PreviewArea_CenterPoint_X));
+  setData(PreviewArea_CenterPoint_Y, aspectratio*data(PreviewArea_CenterPoint_Y));
+}
+
 void KBlocksGraphics::readThemeValues()
 {
   QStringList proplist;
