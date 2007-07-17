@@ -1,6 +1,8 @@
 [KGameTheme]
 Name=Default
+Name[sv]=Förval
 Description=KBlocks Oxygen theme for KDE 4
+Description[sv]=Kblocks Oxygen-tema för KDE 4
 VersionFormat=1
 Author=Johann-Ollivier Lapeyre
 AuthorEmail=johann.ollivierlapeyre@gmail.com
