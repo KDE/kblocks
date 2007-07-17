@@ -59,8 +59,11 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
 
 void KBlocksScene::viewScaled(const QSize& newsize)
 {
+  //Pause game while resizing elements
+  stepTimer.stop();
   grafx->adjustForSize(newsize);
   updateDimensions();
+  stepTimer.start();
 }
 
 void KBlocksScene::updateDimensions()
