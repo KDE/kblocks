@@ -73,11 +73,12 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
 
 void KBlocksScene::viewScaled(const QSize& newsize)
 {
-  //Pause game while resizing elements
+  //Temporarily halt game timer while resizing elements
   stepTimer.stop();
   grafx->adjustForSize(newsize);
   updateDimensions();
-  stepTimer.start();
+  //Do not restart if game was paused
+  if (!m_paused) stepTimer.start();
 }
 
 void KBlocksScene::updateDimensions()
@@ -528,9 +529,9 @@ void KBlocksScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void KBlocksScene::keyPressEvent(QKeyEvent *event)
 {
-  /*if (we do not want to handle it) {
-    return;
-  }*/
+    if (m_paused) {
+      return;
+    }
     switch (event->key()) {
       case Qt::Key_Left:
         attemptMove(QPoint(-1,0));
