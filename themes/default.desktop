@@ -1,7 +1,11 @@
 [KGameTheme]
 Name=Default
+Name[pt]=Por Omissão
+Name[pt_BR]=Por Omissão
 Name[sv]=Förval
 Description=KBlocks Oxygen theme for KDE 4
+Description[pt]=Tema Oxygen do KBlocks para o KDE 4
+Description[pt_BR]=Tema Oxygen do KBlocks para o KDE 4
 Description[sv]=Kblocks Oxygen-tema för KDE 4
 VersionFormat=1
 Author=Johann-Ollivier Lapeyre
