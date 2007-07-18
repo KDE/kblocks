@@ -42,6 +42,8 @@ bool KBlocksGraphics::loadTheme ( const QString& themeFile )
     kDebug(11000) << "Error loading SVG theme" << m_theme->graphics() << endl;
     return false;
   }
+  //clear the cache or pixmaps from the old theme will be returned
+  QPixmapCache::clear();
   readThemeValues();
   return true;
 }
