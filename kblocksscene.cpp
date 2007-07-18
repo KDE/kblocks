@@ -14,13 +14,15 @@
 #include <KStandardDirs>
 #include <KGamePopupItem>
 
+#include "settings.h"
+
 const int UPDATE_INTERVAL = 300;
 
 KBlocksScene::KBlocksScene() : m_paused(false)
 {
     initPieceTypes();
     nextPiece = new Piece();
-    QString themeFile(KStandardDirs::locate("appdata", "themes/default.desktop"));
+    QString themeFile(Settings::theme());
     grafx = new KBlocksGraphics(themeFile);
     setSceneRect(0, 0, (int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height));
 
@@ -48,6 +50,18 @@ KBlocksScene::~KBlocksScene()
   cleanAll();
   delete nextPiece;
   delete grafx;
+}
+
+void KBlocksScene::readSettings(const QSize & viewSize)
+{
+  stepTimer.stop();
+  if (grafx->theme()->fileName()!=Settings::theme())
+  {
+    grafx->loadTheme(Settings::theme());
+    grafx->adjustForSize(viewSize);
+    updateDimensions();
+  }
+  stepTimer.start();
 }
 
 void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )

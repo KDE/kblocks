@@ -41,6 +41,7 @@ public:
   public slots:
     void pauseGame();
     void startGame();
+    void readSettings(const QSize & viewSize);
     void viewScaled(const QSize& newsize);
 
 private:

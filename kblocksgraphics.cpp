@@ -20,6 +20,7 @@ KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
   m_theme = new KGameTheme();
   if (!m_theme->load(themeFile)) {
     kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+    m_theme->loadDefault();
   }
   m_renderer = new QSvgRenderer(m_theme->graphics());
   readThemeValues();
@@ -29,6 +30,20 @@ KBlocksGraphics::~KBlocksGraphics()
 {
   delete m_theme;
   delete m_renderer;
+}
+
+bool KBlocksGraphics::loadTheme ( const QString& themeFile )
+{
+  if (!m_theme->load(themeFile)) {
+    kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+    return false;
+  }
+  if (!m_renderer->load(m_theme->graphics())) {
+    kDebug(11000) << "Error loading SVG theme" << m_theme->graphics() << endl;
+    return false;
+  }
+  readThemeValues();
+  return true;
 }
 
 void KBlocksGraphics::adjustForSize(const QSize& newsize)

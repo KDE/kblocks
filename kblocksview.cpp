@@ -46,7 +46,7 @@ void KBlocksView::pauseGame()
 
 void KBlocksView::settingsChanged()
 {
-  //Deal with Theme changes here
+  m_scene->readSettings(size());
 }
 
 void KBlocksView::resizeEvent(QResizeEvent* event) {

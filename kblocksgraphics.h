@@ -23,6 +23,7 @@ class KBlocksGraphics
     virtual ~KBlocksGraphics();
     
   public:
+    bool loadTheme ( const QString& themeFile );
     void readThemeValues();
     void adjustForSize(const QSize& newsize);
     void setData(int key, qreal value);
