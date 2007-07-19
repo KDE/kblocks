@@ -30,15 +30,15 @@ class KBlocksGraphics
     qreal data ( int key );
     KGameTheme * theme() { return m_theme; }
     QSvgRenderer * renderer() { return m_renderer; }
-    QPixmap elementPixmap(short width, short height, const QString & elementid);
+    QPixmap elementPixmap(qreal width, qreal height, const QString & elementid);
     
   private:
     QHash<int, qreal> m_data;
     KGameTheme * m_theme;
     QSvgRenderer *m_renderer;
     
-    QPixmap renderElement(short width, short height, const QString & elementid);
-    QString pixmapCacheNameFromElementId(short width, short height, const QString & elementid);
+    QPixmap renderElement(qreal width, qreal height, const QString & elementid);
+    QString pixmapCacheNameFromElementId(qreal width, qreal height, const QString & elementid);
 };
 
 //TODO: Keep this in sync with propList (readThemeValues)

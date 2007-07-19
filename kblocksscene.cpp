@@ -24,13 +24,13 @@ KBlocksScene::KBlocksScene() : m_paused(false)
     nextPiece = new Piece();
     QString themeFile(Settings::theme());
     grafx = new KBlocksGraphics(themeFile);
-    setSceneRect(0, 0, (int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height));
+    setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
 
     //playArea is our first item, non parented. We add it explicitally.
     playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(grafx->elementPixmap((int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height), QString("FIELD_AREA")));
+    playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("FIELD_AREA")));
     addItem(playArea);
 
     //Our Message Item, hidden by default
@@ -83,21 +83,21 @@ void KBlocksScene::viewScaled(const QSize& newsize)
 
 void KBlocksScene::updateDimensions()
 {
-  setSceneRect(0, 0, (int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height));
-  playArea->setPixmap(grafx->elementPixmap((int)grafx->data(View_Size_Width), (int)grafx->data(View_Size_Height), QString("FIELD_AREA")));
+  setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
+  playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("FIELD_AREA")));
 
   foreach (Piece* piece, activePieces) {
     foreach (Block *block, piece->children()) {
-      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
       block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
     }
   }
   foreach (Block *block, nextPiece->children()) {
-    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
     block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
   }
   foreach (Block* block, frozenBlocks) {
-    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
     block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
   }
 }
@@ -216,7 +216,7 @@ void KBlocksScene::prepareNewPiece()
     Block *block = new Block(playArea);
     //block->setSharedRenderer(renderer);
     //block->setElementId(QString("BLOCK_%1").arg(chosenset));
-    block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
+    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i)+QPoint(14,2);
@@ -250,7 +250,7 @@ void KBlocksScene::releasePiece()
       Block *block = new Block(playArea);
       //block->setSharedRenderer(renderer);
       //block->setElementId(QString("BLOCK_%1").arg(setidx));
-      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_%1").arg(setidx)));
+      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(setidx)));
 
       block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
       block->setData(Block_Color, setidx);
@@ -289,9 +289,9 @@ bool KBlocksScene::canMove(Piece * piece, const QPoint& delta)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= (int)grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= (int) grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= (int)grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= (int) grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -339,9 +339,9 @@ bool KBlocksScene::canRotate(Piece * piece)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= (int)grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= (int) grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= (int)grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= (int) grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -425,9 +425,9 @@ void KBlocksScene::searchForCompleteLines()
   
   QList<int> linesToRemove;
   //We are scanning top to bottom, and analyzing the whole field to see which lines are complete
-  for (int y=0; y<(int)grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
+  for (int y=0; y< (int) grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
     bool lineComplete = true;
-    for (int x=0; x<(int)grafx->data(PlayArea_NumberOfBlocks_X); x++) {
+    for (int x=0; x< (int) grafx->data(PlayArea_NumberOfBlocks_X); x++) {
       if (!frozenBlocksMap.contains(coordToIndex(QPoint(x,y)))) {
         lineComplete = false;
       }
@@ -452,7 +452,7 @@ void KBlocksScene::removeLine(int liney)
     if (checkcoord.y()==liney) {
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
-      block->setPixmap(grafx->elementPixmap((int)grafx->data(Block_Size), (int)grafx->data(Block_Size), QString("BLOCK_OUT_%1").arg(color)));
+      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_OUT_%1").arg(color)));
       //block->setElementId(QString("BLOCK_OUT_0"));
       fadeOutBlocks << block;
       //block->hide();

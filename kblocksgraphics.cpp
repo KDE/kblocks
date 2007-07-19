@@ -108,7 +108,7 @@ qreal KBlocksGraphics::data ( int key )
   return m_data.value(key);
 }
 
-QPixmap KBlocksGraphics::elementPixmap(short width, short height, const QString & elementid) {
+QPixmap KBlocksGraphics::elementPixmap(qreal width, qreal height, const QString & elementid) {
   QPixmap pm;
   if (!QPixmapCache::find(pixmapCacheNameFromElementId(width, height, elementid), pm)) {
     pm = renderElement(width, height, elementid);
@@ -117,18 +117,19 @@ QPixmap KBlocksGraphics::elementPixmap(short width, short height, const QString 
   return pm;
 }
 
-QPixmap KBlocksGraphics::renderElement(short width, short height, const QString & elementid) {
-  QImage qiRend(QSize(width, height),QImage::Format_ARGB32_Premultiplied);
+QPixmap KBlocksGraphics::renderElement(qreal width, qreal height, const QString & elementid) {
+  //Create an image 1 pixel larger than our element, so it is not cut as dimensions are doubles
+  QImage qiRend(QSize((int)width+1, (int)height+1),QImage::Format_ARGB32_Premultiplied);
   qiRend.fill(0);
 
   if (m_renderer->isValid()) {
     QPainter p(&qiRend);
-    m_renderer->render(&p, elementid);
+    m_renderer->render(&p, elementid, QRectF(0,0,width,height));
   }
   return QPixmap::fromImage(qiRend);
 }
 
-QString KBlocksGraphics::pixmapCacheNameFromElementId(short width, short height, const QString & elementid) {
+QString KBlocksGraphics::pixmapCacheNameFromElementId(qreal width, qreal height, const QString & elementid) {
   return elementid + QString("W%1H%2").arg(width).arg(height);
 }
 
