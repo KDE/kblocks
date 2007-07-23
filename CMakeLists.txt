@@ -27,7 +27,7 @@ install(TARGETS kblocks  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( FILES kblocks.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kblocks.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kblocksui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kblocks )
 
