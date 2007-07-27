@@ -231,7 +231,7 @@ void KBlocksScene::prepareNewPiece()
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
-    QPoint point = chosenpiecerotation.at(i)+QPoint(14,2);
+    QPoint point = chosenpiecerotation.at(i)+QPoint(20,16);
     block->setData(Block_Coord, point);
     block->setPos(coordToPoint(point));
       //and append them to temporary collection
