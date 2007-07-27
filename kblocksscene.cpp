@@ -18,7 +18,7 @@
 
 const int UPDATE_INTERVAL = 300;
 
-KBlocksScene::KBlocksScene() : m_paused(false)
+KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), currentPoints(0), currentRemovedLines(0)
 {
     initPieceTypes();
     nextPiece = new Piece();
@@ -74,11 +74,11 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
 void KBlocksScene::viewScaled(const QSize& newsize)
 {
   //Temporarily halt game timer while resizing elements
-  stepTimer.stop();
+  if (gameState==Game_Active) stepTimer.stop();
   grafx->adjustForSize(newsize);
   updateDimensions();
   //Do not restart if game was paused
-  if (!m_paused) stepTimer.start();
+  if (gameState==Game_Active) stepTimer.start();
 }
 
 void KBlocksScene::updateDimensions()
@@ -114,6 +114,7 @@ void KBlocksScene::step()
           QString end("Game Over"); 
           showMessage( end, 4000 );
           stepTimer.stop();
+          gameState=Game_Finished;
         } else {
           //we hit something, stop and detach
           freezePiece(piece);
@@ -154,6 +155,8 @@ void KBlocksScene::startGame()
   cleanAll();
   stepTimer.start();
   prepareNewPiece();
+  currentLevel++;
+  gameState=Game_Active;
     //Fire the first piece in two second
   QTimer::singleShot(2000, this, SLOT(releasePiece())); 
   QTimer::singleShot(500, this, SLOT(greetPlayer())); 
@@ -167,16 +170,17 @@ void KBlocksScene::greetPlayer()
 
 void KBlocksScene::pauseGame()
 {
-  if (m_paused) {
+  if (gameState==Game_Paused)  {
     stepTimer.start();
     QString end("Resuming Game"); 
     showMessage( end, 2000 );
-  } else {
+    gameState=Game_Active;
+  } else if (gameState==Game_Active){
     QString end("Game Paused"); 
     showMessage( end, 2000 );
     stepTimer.stop();
+    gameState=Game_Paused;
   }
-  m_paused = !m_paused;
 }
 
 void KBlocksScene::attemptMove(const QPoint& delta)
@@ -441,6 +445,8 @@ void KBlocksScene::searchForCompleteLines()
   foreach (int liney, linesToRemove) {
     removeLine(liney);
   }
+  //Score all lines at once, to allow combo values
+  if (linesToRemove.count()>0) addToScore(Score_Lines, linesToRemove.count());
 }
 
 void KBlocksScene::removeLine(int liney)
@@ -496,6 +502,24 @@ void KBlocksScene::removeLine(int liney)
   connect(dropAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
 }
 
+void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
+{
+  switch (type) {
+    case Score_Blocks:
+      //TODO
+      break;
+    case Score_Lines:
+      //multiply individual line score (40) by level and number of lines removed
+      currentPoints = currentPoints + (count*40*currentLevel*count);
+      currentRemovedLines += count;
+      break;
+    case Score_Level:
+      //TODO
+      break;
+  }
+  //kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+}
+
 void KBlocksScene::animationFinished(QObject * animation)
 {
   animators.removeAll(animation);
@@ -529,7 +553,7 @@ void KBlocksScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void KBlocksScene::keyPressEvent(QKeyEvent *event)
 {
-    if (m_paused) {
+    if (gameState!=Game_Active) {
       return;
     }
     switch (event->key()) {

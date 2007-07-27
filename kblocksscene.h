@@ -28,6 +28,15 @@ typedef QList<QPoint> PieceRotation;
 //And a list of possible rotations for the same basic piece type makes up a PieceSet
 typedef QList<PieceRotation> PieceSet;
 
+enum KBlocksGameState { Game_Starting=0, 
+  Game_Active,
+  Game_Paused,
+  Game_Finished };
+
+enum KBlocksScoreEvent { Score_Blocks=0,
+  Score_Lines,
+  Score_Level };
+
 class KGamePopupItem;
 class KBlocksGraphics;
 
@@ -59,7 +68,10 @@ private:
     
     KGamePopupItem *messageItem;
     
-    bool m_paused;
+    int gameState;
+    int currentLevel;
+    int currentPoints;
+    int currentRemovedLines;
     
     void cleanAll();
     void updateDimensions();
@@ -80,6 +92,7 @@ private:
     QPoint indexToCoord(int idx);
     QPointF coordToPoint(const QPoint& coord);
     void showMessage( const QString& message, int ms );
+    void addToScore(KBlocksScoreEvent type, int count);
     
 private slots:
     void step();
