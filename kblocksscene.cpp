@@ -16,9 +16,9 @@
 
 #include "settings.h"
 
-const int UPDATE_INTERVAL = 300;
+const int UPDATE_INTERVAL = 400;
 
-KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), currentPoints(0), currentRemovedLines(0)
+KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), currentPoints(0), currentRemovedLines(0), inLockPosition(false)
 {
     initPieceTypes();
     nextPiece = new Piece();
@@ -113,6 +113,11 @@ void KBlocksScene::step()
       if (canMove(piece, QPoint(0,1))) {
         movePiece(piece, QPoint(0,1));
       } else {
+        //maybe approaching lock
+        if (!inLockPosition) {
+          inLockPosition = true;
+          return;
+        }
         //Has it ended?
         if (isTrappedAtTop(piece)) {
           QString end("Game Over"); 
@@ -124,6 +129,7 @@ void KBlocksScene::step()
           freezePiece(piece);
           int linesRemoved = searchForCompleteLines();
           releaseTimer.start(linesRemoved*200);
+          inLockPosition = false;
         }
       }
     }
@@ -164,6 +170,7 @@ void KBlocksScene::startGame()
   currentLevel = 0;
   currentRemovedLines = 0;
   currentPoints = 0;
+  inLockPosition = false;
   gameState=Game_Active;
     //Fire the first piece in two seconds
   releaseTimer.start(2000);

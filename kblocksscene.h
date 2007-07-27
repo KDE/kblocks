@@ -76,6 +76,7 @@ private:
     int currentLevel;
     int currentPoints;
     int currentRemovedLines;
+    int inLockPosition;
     
     void cleanAll();
     void updateDimensions();
