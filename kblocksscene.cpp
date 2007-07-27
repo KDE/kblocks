@@ -197,12 +197,12 @@ void KBlocksScene::attemptMove(const QPoint& delta)
   }
 }
 
-void KBlocksScene::attemptRotation()
+void KBlocksScene::attemptRotation(KBlocksRotationDirection direction)
 {
   foreach (Piece* piece, activePieces) {
       //check if we can rotate
-    if (canRotate(piece)) {
-      rotatePiece(piece);
+    if (canRotate(piece, direction)) {
+      rotatePiece(piece, direction);
     } 
   }
 }
@@ -321,7 +321,7 @@ bool KBlocksScene::isTrappedAtTop(Piece * piece)
   return false;
 }
 
-bool KBlocksScene::canRotate(Piece * piece)
+bool KBlocksScene::canRotate(Piece * piece, KBlocksRotationDirection direction)
 {
   //Retrieve pieceSet and orientation
   int setidx = piece->data(Piece_Set).toInt();
@@ -329,10 +329,19 @@ bool KBlocksScene::canRotate(Piece * piece)
   PieceSet pieceset = pieceTypes.at(setidx);
   PieceRotation curpiecerotation = pieceset.at(rotationidx);
   //get here current delta
-  int nextrotationidx = rotationidx+1;
-  if (nextrotationidx >= pieceset.count()) {
-    //wrap up next rotation
-    nextrotationidx = 0;
+  int nextrotationidx;
+  if (direction==Rotate_Clockwise) {
+    nextrotationidx = rotationidx+1;
+    if (nextrotationidx >= pieceset.count()) {
+      //wrap up next rotation
+      nextrotationidx = 0;
+    } 
+  } else { //CCW rotation
+    nextrotationidx = rotationidx-1;
+    if (nextrotationidx < 0) {
+      //wrap up next rotation
+      nextrotationidx = pieceset.count() - 1;
+    } 
   }
   PieceRotation testrotation = pieceset.at(nextrotationidx);
   //now find out the current offset using current piece orientation
@@ -377,7 +386,7 @@ void KBlocksScene::moveBlock(Block * block, QPoint delta)
   block->setPos(coordToPoint(coord));
 }
 
-void KBlocksScene::rotatePiece(Piece * piece)
+void KBlocksScene::rotatePiece(Piece * piece, KBlocksRotationDirection direction)
 {
   //Retrieve pieceSet and orientation
   int setidx = piece->data(Piece_Set).toInt();
@@ -385,10 +394,19 @@ void KBlocksScene::rotatePiece(Piece * piece)
   PieceSet pieceset = pieceTypes.at(setidx);
   PieceRotation curpiecerotation = pieceset.at(rotationidx);
   //get here current delta
-  int nextrotationidx = rotationidx+1;
-  if (nextrotationidx >= pieceset.count()) {
-    //wrap up next rotation
-    nextrotationidx = 0;
+  int nextrotationidx;
+  if (direction==Rotate_Clockwise) {
+    nextrotationidx = rotationidx+1;
+    if (nextrotationidx >= pieceset.count()) {
+      //wrap up next rotation
+      nextrotationidx = 0;
+    } 
+  } else { //CCW rotation
+    nextrotationidx = rotationidx-1;
+    if (nextrotationidx < 0) {
+      //wrap up next rotation
+      nextrotationidx = pieceset.count() - 1;
+    } 
   }
   PieceRotation nextrotation = pieceset.at(nextrotationidx);
   piece->setData(Piece_Rotation, nextrotationidx);
@@ -589,7 +607,13 @@ void KBlocksScene::keyPressEvent(QKeyEvent *event)
         attemptMove(QPoint(0,1));
         break;
       case Qt::Key_Up:
-        attemptRotation();
+        attemptRotation(Rotate_Clockwise);
+        break;
+      case Qt::Key_Z:
+        attemptRotation(Rotate_CounterClockwise);
+        break;
+      case Qt::Key_X:
+        attemptRotation(Rotate_Clockwise);
         break;
       case Qt::Key_Space:
         attemptMove(QPoint(0,1));

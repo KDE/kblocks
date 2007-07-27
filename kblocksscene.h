@@ -36,6 +36,9 @@ enum KBlocksGameState { Game_Starting=0,
 enum KBlocksScoreEvent { Score_Blocks=0,
   Score_Lines,
   Score_Level };
+  
+enum KBlocksRotationDirection { Rotate_Clockwise=0,
+    Rotate_CounterClockwise };
 
 class KGamePopupItem;
 class KBlocksGraphics;
@@ -77,13 +80,13 @@ private:
     void updateDimensions();
     void initPieceTypes();
     bool canMove(Piece *piece, const QPoint& delta);
-    bool canRotate(Piece * piece);
+    bool canRotate(Piece * piece, KBlocksRotationDirection direction);
     bool isTrappedAtTop(Piece * piece);
     void movePiece(Piece * piece, const QPoint& delta);
     void moveBlock(Block * block, QPoint delta);
-    void rotatePiece(Piece * piece);
+    void rotatePiece(Piece * piece, KBlocksRotationDirection direction);
     void attemptMove(const QPoint& delta);
-    void attemptRotation();
+    void attemptRotation(KBlocksRotationDirection direction);
     void freezePiece(Piece * piece);
     int searchForCompleteLines();
     void removeLine(int liney);
