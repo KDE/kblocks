@@ -41,6 +41,10 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     setItemIndexMethod(NoIndex);
     stepTimer.setInterval(UPDATE_INTERVAL);
     connect(&stepTimer, SIGNAL(timeout()), SLOT(step()));
+    
+    releaseTimer.setSingleShot(true);
+    connect(&releaseTimer, SIGNAL(timeout()), SLOT(releasePiece()));
+    releaseTimer.stop();
 
     startGame();
 }
@@ -119,7 +123,7 @@ void KBlocksScene::step()
           //we hit something, stop and detach
           freezePiece(piece);
           int linesRemoved = searchForCompleteLines();
-          QTimer::singleShot(linesRemoved*200, this, SLOT(releasePiece()));
+          releaseTimer.start(linesRemoved*200);
         }
       }
     }
@@ -162,7 +166,7 @@ void KBlocksScene::startGame()
   currentPoints = 0;
   gameState=Game_Active;
     //Fire the first piece in two seconds
-  QTimer::singleShot(2000, this, SLOT(releasePiece())); 
+  releaseTimer.start(2000);
   QTimer::singleShot(500, this, SLOT(greetPlayer())); 
 }
 

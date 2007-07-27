@@ -65,6 +65,7 @@ private:
     Piece * nextPiece;
     
     QTimer stepTimer;
+    QTimer releaseTimer;
     
     //QGraphicsPixmapItem * bg;
     QGraphicsPixmapItem * playArea;
