@@ -155,9 +155,12 @@ void KBlocksScene::startGame()
   cleanAll();
   stepTimer.start();
   prepareNewPiece();
-  currentLevel++;
+  //Classical games start at level 0
+  currentLevel = 0;
+  currentRemovedLines = 0;
+  currentPoints = 0;
   gameState=Game_Active;
-    //Fire the first piece in two second
+    //Fire the first piece in two seconds
   QTimer::singleShot(2000, this, SLOT(releasePiece())); 
   QTimer::singleShot(500, this, SLOT(greetPlayer())); 
 }
@@ -510,14 +513,30 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       break;
     case Score_Lines:
       //multiply individual line score (40) by level and number of lines removed
-      currentPoints = currentPoints + (count*40*currentLevel*count);
+      int comboLinesValue;
+      switch (count) {
+        case 1: 
+          comboLinesValue = 40;
+          break;
+        case 2: 
+          comboLinesValue = 100;
+          break;
+        case 3: 
+          comboLinesValue = 300;
+          break;
+        case 4: 
+          comboLinesValue = 1200;
+          break;
+      }
+      //Classical scoring and gameplay uses level 0 as the first one
+      currentPoints = currentPoints + (comboLinesValue*(currentLevel+1));
       currentRemovedLines += count;
       break;
     case Score_Level:
       //TODO
       break;
   }
-  //kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+  kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
 }
 
 void KBlocksScene::animationFinished(QObject * animation)
