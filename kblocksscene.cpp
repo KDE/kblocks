@@ -118,7 +118,8 @@ void KBlocksScene::step()
         } else {
           //we hit something, stop and detach
           freezePiece(piece);
-          releasePiece();
+          int linesRemoved = searchForCompleteLines();
+          QTimer::singleShot(linesRemoved*200, this, SLOT(releasePiece()));
         }
       }
     }
@@ -419,10 +420,9 @@ void KBlocksScene::freezePiece(Piece * piece)
   activePieces.removeAll(piece);
   //and finally delete it (removeItem gaves us ownership of it, according to the docs)
   delete piece;
-  searchForCompleteLines();
 }
 
-void KBlocksScene::searchForCompleteLines()
+int KBlocksScene::searchForCompleteLines()
 {
   QList<int> frozenBlocksMap;
   foreach (QGraphicsItem *block, frozenBlocks) {
@@ -449,7 +449,10 @@ void KBlocksScene::searchForCompleteLines()
     removeLine(liney);
   }
   //Score all lines at once, to allow combo values
-  if (linesToRemove.count()>0) addToScore(Score_Lines, linesToRemove.count());
+  int linesRemoved = linesToRemove.count();
+  if (linesRemoved>0) addToScore(Score_Lines, linesRemoved);
+  
+  return linesRemoved;
 }
 
 void KBlocksScene::removeLine(int liney)
@@ -470,7 +473,7 @@ void KBlocksScene::removeLine(int liney)
     }
   }
   //FadeOut animator also removes blocks from scene and deletes them when it is done :)
-  FadeAnimator * fadeOutAnim = new FadeAnimator(fadeOutBlocks, 200, QTimeLine::Backward, true);
+  FadeAnimator * fadeOutAnim = new FadeAnimator(fadeOutBlocks, 600, QTimeLine::Backward, true);
   animators << fadeOutAnim;
   connect(fadeOutAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
   //Now we drop all blocks above this line, one line down
@@ -500,7 +503,7 @@ void KBlocksScene::removeLine(int liney)
       }
     }
   }
-  DropAnimator * dropAnim = new DropAnimator(dropBlocks, 200, QTimeLine::Forward, false);
+  DropAnimator * dropAnim = new DropAnimator(dropBlocks, 600, QTimeLine::Forward, false);
   animators << dropAnim;
   connect(dropAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
 }
@@ -536,7 +539,7 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       //TODO
       break;
   }
-  kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+  //kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
 }
 
 void KBlocksScene::animationFinished(QObject * animation)

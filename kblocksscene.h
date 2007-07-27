@@ -85,7 +85,7 @@ private:
     void attemptMove(const QPoint& delta);
     void attemptRotation();
     void freezePiece(Piece * piece);
-    void searchForCompleteLines();
+    int searchForCompleteLines();
     void removeLine(int liney);
     void prepareNewPiece();
     int coordToIndex(const QPoint& coord);
