@@ -30,7 +30,7 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     playArea = new QGraphicsPixmapItem();
     //playArea->setSharedRenderer(renderer);
     //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("FIELD_AREA")));
+    playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("VIEW")));
     addItem(playArea);
 
     //Our Message Item, hidden by default
@@ -88,7 +88,7 @@ void KBlocksScene::viewScaled(const QSize& newsize)
 void KBlocksScene::updateDimensions()
 {
   setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
-  playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("FIELD_AREA")));
+  playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("VIEW")));
 
   foreach (Piece* piece, activePieces) {
     foreach (Block *block, piece->children()) {

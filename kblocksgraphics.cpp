@@ -78,23 +78,22 @@ void KBlocksGraphics::adjustForSize(const QSize& newsize)
 
 void KBlocksGraphics::readThemeValues()
 {
-  QStringList proplist;
-  //Follow the BlockGraphicsData enum order
-  proplist << "Block_Size" << "View_Size_Width" << "View_Size_Height" << "PlayArea_OffsetPoint_X" << "PlayArea_OffsetPoint_Y";
-  proplist << "PlayArea_NumberOfBlocks_X" << "PlayArea_NumberOfBlocks_Y" << "PreviewArea_CenterPoint_X" << "PreviewArea_CenterPoint_Y";
-  
-  QString propString;
-  bool ok;
-  qreal propValue;
-  int i=0;
-  
-  foreach (QString propKey, proplist) {
-    propString = m_theme->themeProperty(propKey);
-    propValue = propString.toFloat(&ok);
-    setData(i, propValue);
-    if (!ok) kDebug(11000) << "Bad layout data in KBlocks theme.";
-    i++;
-  }
+  //Extract values from SVG elements
+  QRectF bounds;
+  bounds = m_renderer->boundsOnElement ( "BLOCK_SIZE" );
+  setData(Block_Size, bounds.width());
+  bounds = m_renderer->boundsOnElement ( "VIEW" );
+  setData(View_Size_Width, bounds.width());
+  setData(View_Size_Height, bounds.height());
+  bounds = m_renderer->boundsOnElement ( "PLAY_AREA" );
+  setData(PlayArea_OffsetPoint_X, bounds.x());
+  setData(PlayArea_OffsetPoint_Y, bounds.y());
+  setData(PlayArea_NumberOfBlocks_X, bounds.width()/data(Block_Size));
+  setData(PlayArea_NumberOfBlocks_Y, bounds.height()/data(Block_Size));
+  bounds = m_renderer->boundsOnElement ( "NEXTPIECE_AREA" );
+  setData(PreviewArea_CenterPoint_X, bounds.center().x());
+  setData(PreviewArea_CenterPoint_Y, bounds.center().y());
+
   //kDebug(11000) << m_data;
 }
 

@@ -37678,7 +37678,7 @@
      style="opacity:0.5;fill:none;stroke:none;display:inline"
      id="rect15767" />
   <g
-     id="FIELD_AREA"
+     id="VIEW"
      inkscape:label="#g16207">
     <rect
        inkscape:label="playarea gradient"
@@ -39362,4 +39362,28 @@
      x="85"
      y="40"
      inkscape:label="#PLAY_AREA" />
+  <rect
+     style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1"
+     id="POINTS_AREA"
+     width="220"
+     height="46"
+     x="650"
+     y="57.999992"
+     inkscape:label="#rect7097" />
+  <rect
+     inkscape:label="#rect7097"
+     y="164"
+     x="650"
+     height="46"
+     width="220"
+     id="LEVEL_AREA"
+     style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1" />
+  <rect
+     style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1"
+     id="NEXTPIECE_AREA"
+     width="150"
+     height="150"
+     x="645"
+     y="475"
+     inkscape:label="#rect7101" />
 </svg>

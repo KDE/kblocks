@@ -41,7 +41,6 @@ class KBlocksGraphics
     QString pixmapCacheNameFromElementId(qreal width, qreal height, const QString & elementid);
 };
 
-//TODO: Keep this in sync with propList (readThemeValues)
 enum BlockGraphicsData { Block_Size=0, 
   View_Size_Width,
   View_Size_Height,
