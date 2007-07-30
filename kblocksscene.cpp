@@ -98,7 +98,7 @@ void KBlocksScene::updateDimensions()
   }
   foreach (Block *block, nextPiece->children()) {
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
-    block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
+    block->setPos(nextPieceCoordToPoint(block->data(Block_Coord).toPoint()));
   }
   foreach (Block* block, frozenBlocks) {
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
@@ -238,9 +238,9 @@ void KBlocksScene::prepareNewPiece()
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
-    QPoint point = chosenpiecerotation.at(i)+QPoint(20,16);
+    QPoint point = chosenpiecerotation.at(i);
     block->setData(Block_Coord, point);
-    block->setPos(coordToPoint(point));
+    block->setPos(nextPieceCoordToPoint(point));
       //and append them to temporary collection
     nextPiece->addItem(block);
   }
@@ -593,6 +593,14 @@ QPointF KBlocksScene::coordToPoint(const QPoint& coord)
   QPointF point(coord.x(),coord.y());
   point = point*grafx->data(Block_Size);
   point = point+QPointF(grafx->data(PlayArea_OffsetPoint_X),grafx->data(PlayArea_OffsetPoint_Y));
+  return point;
+}
+
+QPointF KBlocksScene::nextPieceCoordToPoint(const QPoint& coord)
+{
+  QPointF point(coord.x(),coord.y());
+  point = point*grafx->data(Block_Size);
+  point = point+QPointF(grafx->data(PreviewArea_CenterPoint_X),grafx->data(PreviewArea_CenterPoint_Y));
   return point;
 }
 
