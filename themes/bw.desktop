@@ -1,0 +1,10 @@
+[KGameTheme]
+Name=Black and White
+Description=KBlocks Black and White
+VersionFormat=1
+Author=Mauricio Piacentini
+AuthorEmail=mauricio@tabuleiro.com
+Type=SVG
+FileName=bw_theme.svg
+Preview=bw_preview.png
+
