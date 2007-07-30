@@ -97,6 +97,8 @@ private:
     QPoint indexToCoord(int idx);
     QPointF coordToPoint(const QPoint& coord);
     QPointF nextPieceCoordToPoint(const QPoint& coord);
+    QPointF pieceCenterPoint(Piece * piece);
+    void centerPiecePreview(Piece * piece);
     void showMessage( const QString& message, int ms );
     void addToScore(KBlocksScoreEvent type, int count);
     

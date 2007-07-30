@@ -100,6 +100,8 @@ void KBlocksScene::updateDimensions()
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
     block->setPos(nextPieceCoordToPoint(block->data(Block_Coord).toPoint()));
   }
+  centerPiecePreview(nextPiece);
+  
   foreach (Block* block, frozenBlocks) {
     block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
     block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
@@ -240,6 +242,7 @@ void KBlocksScene::prepareNewPiece()
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i);
     block->setData(Block_Coord, point);
+    //Position the block initially in the preview area
     block->setPos(nextPieceCoordToPoint(point));
       //and append them to temporary collection
     nextPiece->addItem(block);
@@ -247,6 +250,9 @@ void KBlocksScene::prepareNewPiece()
   //Store blueprint data needed to recreate/rotate the piece
   nextPiece->setData(Piece_Set, chosenset);
   nextPiece->setData(Piece_Rotation, chosenorientation);
+  
+  //Adjust the position of the blocks so that the piece is nicely centered in the preview area
+  centerPiecePreview(nextPiece);
   
   FadeAnimator * fadeInAnim = new FadeAnimator(nextPiece->children(), 200, QTimeLine::Forward, false);
   animators << fadeInAnim;
@@ -602,6 +608,39 @@ QPointF KBlocksScene::nextPieceCoordToPoint(const QPoint& coord)
   point = point*grafx->data(Block_Size);
   point = point+QPointF(grafx->data(PreviewArea_CenterPoint_X),grafx->data(PreviewArea_CenterPoint_Y));
   return point;
+}
+
+QPointF KBlocksScene::pieceCenterPoint(Piece * piece)
+{
+  qreal minX=0.0;
+  qreal minY=0.0;
+  qreal maxX=0.0;
+  qreal maxY=0.0;
+  foreach (Block *block, piece->children()) {
+    QPoint coord = block->data(Block_Coord).toPoint();
+    if (coord.x() < minX) minX = (qreal) coord.x();
+    if (coord.y() < minY) minY = (qreal) coord.y();
+    if (coord.x() > maxX) maxX = (qreal) coord.x();
+    if (coord.y() > maxY) maxY = (qreal) coord.y();
+  }
+  QPointF center((minX+maxX)/2.0, (minY+maxY)/2.0);
+  return center;
+}
+
+void KBlocksScene::centerPiecePreview(Piece * piece)
+{
+  //Now we will adjust our position so that the piece is nicely centered in the preview area
+  //no matter the orientation or size of it
+  //This assumes the piece has already been placed in the previewArea (using nextPieceCoordToPoint)
+  //Find out pieceCenterPoint
+  QPointF centerPoint = pieceCenterPoint(piece);
+  centerPoint = centerPoint*grafx->data(Block_Size);
+  //Remember that QGV coordinate system takes the top left of the element for pixmaps, so add 1/2 block size
+  centerPoint = centerPoint+QPointF(grafx->data(Block_Size)/2, grafx->data(Block_Size)/2);
+  //Now reposition all blocks
+  foreach (Block *block, piece->children()) {
+    block->setPos(block->pos() - centerPoint);
+  }
 }
 
 void KBlocksScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
