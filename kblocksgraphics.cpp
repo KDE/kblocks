@@ -94,7 +94,7 @@ void KBlocksGraphics::readThemeValues()
   setData(PreviewArea_CenterPoint_X, bounds.center().x());
   setData(PreviewArea_CenterPoint_Y, bounds.center().y());
 
-  kDebug(11000) << m_data;
+  //kDebug(11000) << m_data;
 }
 
 void KBlocksGraphics::setData(int key, qreal value)

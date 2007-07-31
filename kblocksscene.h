@@ -77,8 +77,10 @@ private:
     int currentPoints;
     int currentRemovedLines;
     int inLockPosition;
+    int updateInterval;
     
     void cleanAll();
+    void levelUp();
     void updateDimensions();
     void initPieceTypes();
     bool canMove(Piece *piece, const QPoint& delta);

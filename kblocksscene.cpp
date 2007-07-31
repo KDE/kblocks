@@ -16,9 +16,9 @@
 
 #include "settings.h"
 
-const int UPDATE_INTERVAL = 400;
+const int INITIAL_UPDATE_INTERVAL = 400;
 
-KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), currentPoints(0), currentRemovedLines(0), inLockPosition(false)
+KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), currentPoints(0), currentRemovedLines(0), inLockPosition(false), updateInterval(INITIAL_UPDATE_INTERVAL)
 {
     initPieceTypes();
     nextPiece = new Piece();
@@ -39,7 +39,7 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     addItem(messageItem);
 
     setItemIndexMethod(NoIndex);
-    stepTimer.setInterval(UPDATE_INTERVAL);
+    stepTimer.setInterval(updateInterval);
     connect(&stepTimer, SIGNAL(timeout()), SLOT(step()));
     
     releaseTimer.setSingleShot(true);
@@ -173,6 +173,8 @@ void KBlocksScene::startGame()
   currentRemovedLines = 0;
   currentPoints = 0;
   inLockPosition = false;
+  updateInterval = INITIAL_UPDATE_INTERVAL;
+  stepTimer.setInterval(updateInterval);
   gameState=Game_Active;
     //Fire the first piece in two seconds
   releaseTimer.start(2000);
@@ -198,6 +200,19 @@ void KBlocksScene::pauseGame()
     stepTimer.stop();
     gameState=Game_Paused;
   }
+}
+
+void KBlocksScene::levelUp()
+{
+  currentLevel++;
+  //TODO: fine tune update interval variation based on play testing
+  updateInterval -= 25;
+  //Lock minimal drop rate
+  if (updateInterval < 50) {
+    updateInterval = 25;
+  }
+  stepTimer.setInterval(updateInterval);
+  //kDebug(1100) << "Update interval is now: " << updateInterval;
 }
 
 void KBlocksScene::attemptMove(const QPoint& delta)
@@ -550,7 +565,7 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       //TODO
       break;
     case Score_Lines:
-      //multiply individual line score (40) by level and number of lines removed
+      //compute value for combos (multiple lines removed at once)
       int comboLinesValue;
       switch (count) {
         case 1: 
@@ -569,12 +584,16 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       //Classical scoring and gameplay uses level 0 as the first one
       currentPoints = currentPoints + (comboLinesValue*(currentLevel+1));
       currentRemovedLines += count;
+      //test for levelUp
+      if ((currentRemovedLines/10) >= (currentLevel+1)) {
+        levelUp();
+      }
       break;
     case Score_Level:
       //TODO
       break;
   }
-  //kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+  kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
 }
 
 void KBlocksScene::animationFinished(QObject * animation)
