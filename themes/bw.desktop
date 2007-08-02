@@ -1,6 +1,12 @@
 [KGameTheme]
 Name=Black and White
+Name[pt]=Preto e Branco
+Name[pt_BR]=Preto e Branco
+Name[sv]=Svartvitt
 Description=KBlocks Black and White
+Description[pt]=KBlocks a Preto-e-Branco
+Description[pt_BR]=KBlocks a Preto-e-Branco
+Description[sv]=Kblocks svartvitt
 VersionFormat=1
 Author=Mauricio Piacentini
 AuthorEmail=mauricio@tabuleiro.com
