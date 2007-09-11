@@ -1,9 +1,11 @@
 [KGameTheme]
 Name=Black and White
+Name[nl]=Zwart en wit
 Name[pt]=Preto e Branco
 Name[pt_BR]=Preto e Branco
 Name[sv]=Svartvitt
 Description=KBlocks Black and White
+Description[nl]=KBlocks zwart en wit
 Description[pt]=KBlocks a Preto-e-Branco
 Description[pt_BR]=KBlocks a Preto-e-Branco
 Description[sv]=Kblocks svartvitt
