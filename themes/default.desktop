@@ -1,10 +1,12 @@
 [KGameTheme]
 Name=Default
+Name[bg]=По подразбиране
 Name[nl]=Standaard
 Name[pt]=Por Omissão
 Name[pt_BR]=Por Omissão
 Name[sv]=Förval
 Description=KBlocks Oxygen theme for KDE 4
+Description[bg]=Тема за KBlocks Oxygen за KDE 4
 Description[nl]=KBlocks Oxygen-thema voor KDE 4
 Description[pt]=Tema Oxygen do KBlocks para o KDE 4
 Description[pt_BR]=Tema Oxygen do KBlocks para o KDE 4
