@@ -8,6 +8,7 @@ Type=Application
 DocPath=kblocks/index.html
 GenericName=Falling blocks game
 GenericName[bg]=Падащи блокове
+GenericName[de]=Fallende Blöcke Spiel
 GenericName[nl]=Spel met vallende blokken
 GenericName[pt]=Jogo de blocos em queda
 GenericName[pt_BR]=Jogo de blocos em queda
