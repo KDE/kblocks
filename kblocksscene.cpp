@@ -37,7 +37,18 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     messageItem = new KGamePopupItem();
     messageItem->setMessageOpacity(0.9);
     addItem(messageItem);
-
+    
+    //Score display
+    scoreArea = new QGraphicsTextItem(playArea);
+    scoreArea->setPlainText("0");
+    //TODO: calculate font size
+    scoreArea->setPos(grafx->data(ScoreArea_OffsetPoint_X), grafx->data(ScoreArea_OffsetPoint_Y));
+    //Level display
+    levelArea = new QGraphicsTextItem(playArea);
+    levelArea->setPlainText("0");
+    //TODO: calculate font size
+    levelArea->setPos(grafx->data(LevelArea_OffsetPoint_X), grafx->data(LevelArea_OffsetPoint_Y));
+    
     setItemIndexMethod(NoIndex);
     stepTimer.setInterval(updateInterval);
     connect(&stepTimer, SIGNAL(timeout()), SLOT(step()));
@@ -89,6 +100,10 @@ void KBlocksScene::updateDimensions()
 {
   setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
   playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("VIEW")));
+  
+  //TODO: calculate font size
+  scoreArea->setPos(grafx->data(ScoreArea_OffsetPoint_X), grafx->data(ScoreArea_OffsetPoint_Y));
+  levelArea->setPos(grafx->data(LevelArea_OffsetPoint_X), grafx->data(LevelArea_OffsetPoint_Y));
 
   foreach (Piece* piece, activePieces) {
     foreach (Block *block, piece->children()) {
@@ -593,6 +608,8 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       //TODO
       break;
   }
+  scoreArea->setPlainText(QString("%1").arg(currentPoints));
+  levelArea->setPlainText(QString("%1").arg(currentLevel));
   kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
 }
 

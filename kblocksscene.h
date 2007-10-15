@@ -69,6 +69,8 @@ private:
     
     //QGraphicsPixmapItem * bg;
     QGraphicsPixmapItem * playArea;
+    QGraphicsTextItem * scoreArea;
+    QGraphicsTextItem * levelArea;
     
     KGamePopupItem *messageItem;
     

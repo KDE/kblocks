@@ -49,6 +49,14 @@ enum BlockGraphicsData { Block_Size=0,
   PlayArea_NumberOfBlocks_X,
   PlayArea_NumberOfBlocks_Y,
   PreviewArea_CenterPoint_X,
-  PreviewArea_CenterPoint_Y };
+  PreviewArea_CenterPoint_Y,
+  ScoreArea_OffsetPoint_X,
+  ScoreArea_OffsetPoint_Y,
+  ScoreArea_Width,
+  ScoreArea_Height,
+  LevelArea_OffsetPoint_X,
+  LevelArea_OffsetPoint_Y,
+  LevelArea_Width,
+  LevelArea_Height};
 
 #endif

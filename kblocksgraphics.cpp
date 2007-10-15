@@ -74,6 +74,14 @@ void KBlocksGraphics::adjustForSize(const QSize& newsize)
   setData(PlayArea_OffsetPoint_Y, aspectratio*data(PlayArea_OffsetPoint_Y));
   setData(PreviewArea_CenterPoint_X, aspectratio*data(PreviewArea_CenterPoint_X));
   setData(PreviewArea_CenterPoint_Y, aspectratio*data(PreviewArea_CenterPoint_Y));
+  setData(ScoreArea_OffsetPoint_X, aspectratio*data(ScoreArea_OffsetPoint_X));
+  setData(ScoreArea_OffsetPoint_Y, aspectratio*data(ScoreArea_OffsetPoint_Y));
+  setData(ScoreArea_Width, aspectratio*data(ScoreArea_Width));
+  setData(ScoreArea_Height, aspectratio*data(ScoreArea_Height));
+  setData(LevelArea_OffsetPoint_X, aspectratio*data(LevelArea_OffsetPoint_X));
+  setData(LevelArea_OffsetPoint_Y, aspectratio*data(LevelArea_OffsetPoint_Y));
+  setData(LevelArea_Width, aspectratio*data(LevelArea_Width));
+  setData(LevelArea_Height, aspectratio*data(LevelArea_Height));
 }
 
 void KBlocksGraphics::readThemeValues()
@@ -93,8 +101,17 @@ void KBlocksGraphics::readThemeValues()
   bounds = m_renderer->boundsOnElement ( "NEXTPIECE_AREA" );
   setData(PreviewArea_CenterPoint_X, bounds.center().x());
   setData(PreviewArea_CenterPoint_Y, bounds.center().y());
-
-  //kDebug(11000) << m_data;
+  bounds = m_renderer->boundsOnElement ( "SCORE_AREA" );
+  setData(ScoreArea_OffsetPoint_X, bounds.x());
+  setData(ScoreArea_OffsetPoint_Y, bounds.y());
+  setData(ScoreArea_Width, bounds.width());
+  setData(ScoreArea_Height, bounds.height());
+  bounds = m_renderer->boundsOnElement ( "LEVEL_AREA" );
+  setData(LevelArea_OffsetPoint_X, bounds.x());
+  setData(LevelArea_OffsetPoint_Y, bounds.y());
+  setData(LevelArea_Width, bounds.width());
+  setData(LevelArea_Height, bounds.height());
+  kDebug(11000) << m_data;
 }
 
 void KBlocksGraphics::setData(int key, qreal value)
