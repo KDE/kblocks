@@ -33,8 +33,8 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:window-height="764"
-     inkscape:window-width="1398"
+     inkscape:window-height="700"
+     inkscape:window-width="1024"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -44,9 +44,9 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:zoom="0.71016305"
-     inkscape:cx="472.13681"
-     inkscape:cy="323.2063"
+     inkscape:zoom="1.6256291"
+     inkscape:cx="223.54423"
+     inkscape:cy="-285.79705"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:current-layer="svg2193"
@@ -37158,13 +37158,10 @@
          d="M 694.05055,779.1612 L 607.70905,777.63852 L 604.36005,1127.3303 L 690.70155,1128.8529 L 694.05055,779.1612 z " />
     </g>
   </g>
-  <rect
-     id="BLOCK_SIZE"
-     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-     y="904.66492"
-     x="83.835419"
-     height="30"
-     width="30" />
+  <path
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.72727251;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     d="M 83.699055,907.52856 L 110.97179,907.52856 L 110.97179,934.80129 L 83.699055,934.80129 L 83.699055,907.52856 z "
+     id="BLOCK_SIZE" />
   <g
      id="layer1"
      transform="matrix(0.767829,0,0,0.767829,403.54615,246.68371)" />

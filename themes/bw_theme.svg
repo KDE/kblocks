@@ -173,8 +173,8 @@
        d="M 431.21274,20.57654 L 536.77934,20.57654 L 536.77934,108.2505 L 431.21274,108.2505 L 431.21274,20.57654 z "
        id="BACKGROUND" />
     <path
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-       d="M 421.71273,133.53579 L 441.71273,133.53579 L 441.71273,153.53579 L 421.71273,153.53579 L 421.71273,133.53579 z "
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.95238084;stroke-opacity:1"
+       d="M 421.68892,134.51198 L 440.73654,134.51198 L 440.73654,153.5596 L 421.68892,153.5596 L 421.68892,134.51198 z "
        id="BLOCK_SIZE"
        inkscape:label="#BLOCK_SIZE" />
     <rect
