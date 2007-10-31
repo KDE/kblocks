@@ -4,13 +4,6 @@
 
 #include <limits.h>
 
-#include <kaboutdata.h>
-#include <kaction.h>
-#include <kconfigdialog.h>
-#include <kinputdialog.h>
-#include <kmenubar.h>
-#include <kmessagebox.h>
-#include <kstandardgameaction.h>
 /***************************************************************************
  *   KBlocks, a falling blocks game for KDE                                *
  *   Copyright (C) 2007 Mauricio Piacentini <mauricio@tabuleiro.com>       *
@@ -20,14 +13,21 @@
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  ***************************************************************************/
- 
-#include <kstandardaction.h>
-#include <kicon.h>
+
+#include <KAboutData>
+#include <KAction>
+#include <KConfigDialog>
+#include <KInputDialog>
+#include <KMenuBar>
+#include <KMessageBox>
+#include <KStandardGameAction>
+#include <KStandardAction>
+#include <KIcon>
 #include <KScoreDialog>
-#include <kgamethemeselector.h>
-#include <klocale.h>
-#include <ktoggleaction.h>
-#include <kactioncollection.h>
+#include <KGameThemeSelector>
+#include <KLocale>
+#include <KToggleAction>
+#include <KActionCollection>
 
 #include <QPixmapCache>
 

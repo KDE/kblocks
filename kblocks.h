@@ -11,7 +11,7 @@
 #ifndef _KBLOCKS_H
 #define _KBLOCKS_H
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 
 #include "kblocksview.h"
 
