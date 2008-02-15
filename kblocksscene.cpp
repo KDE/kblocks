@@ -344,9 +344,9 @@ bool KBlocksScene::canMove(Piece * piece, const QPoint& delta)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= (int) grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= (int) grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -403,9 +403,9 @@ bool KBlocksScene::canRotate(Piece * piece, KBlocksRotationDirection direction)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= (int) grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= (int) grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -497,9 +497,9 @@ int KBlocksScene::searchForCompleteLines()
   
   QList<int> linesToRemove;
   //We are scanning top to bottom, and analyzing the whole field to see which lines are complete
-  for (int y=0; y< (int) grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
+  for (int y=0; y<  grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
     bool lineComplete = true;
-    for (int x=0; x< (int) grafx->data(PlayArea_NumberOfBlocks_X); x++) {
+    for (int x=0; x<  grafx->data(PlayArea_NumberOfBlocks_X); x++) {
       if (!frozenBlocksMap.contains(coordToIndex(QPoint(x,y)))) {
         lineComplete = false;
       }
@@ -621,12 +621,13 @@ void KBlocksScene::animationFinished(QObject * animation)
 
 int KBlocksScene::coordToIndex(const QPoint& coord)
 {
-  return coord.x()+(coord.y()*(int)grafx->data(PlayArea_NumberOfBlocks_X));
+  return coord.x()+(coord.y()*grafx->data(PlayArea_NumberOfBlocks_X));
 }
 
 QPoint KBlocksScene::indexToCoord(int idx)
 {
-  QPoint point(idx%(int)grafx->data(PlayArea_NumberOfBlocks_X), idx/(int)grafx->data(PlayArea_NumberOfBlocks_X));
+  int numblocksx = grafx->data(PlayArea_NumberOfBlocks_X);	
+  QPoint point(idx%numblocksx, idx/numblocksx);
   return point;
 }
 
