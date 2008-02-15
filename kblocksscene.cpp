@@ -616,7 +616,7 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
 void KBlocksScene::animationFinished(QObject * animation)
 {
   animators.removeAll(animation);
-  delete animation;
+  animation->deleteLater();
 }
 
 int KBlocksScene::coordToIndex(const QPoint& coord)
