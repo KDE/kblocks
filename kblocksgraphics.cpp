@@ -111,7 +111,7 @@ void KBlocksGraphics::readThemeValues()
   setData(LevelArea_OffsetPoint_Y, bounds.y());
   setData(LevelArea_Width, bounds.width());
   setData(LevelArea_Height, bounds.height());
-  kDebug(11000) << m_data;
+  //kDebug(11000) << m_data;
 }
 
 void KBlocksGraphics::setData(int key, qreal value)
