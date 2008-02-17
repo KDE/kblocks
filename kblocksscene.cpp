@@ -24,30 +24,19 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     nextPiece = new Piece();
     QString themeFile(Settings::theme());
     grafx = new KBlocksGraphics(themeFile);
-    setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
+    setSceneRect(0, 0, grafx->m_View_Size_Width, grafx->m_View_Size_Height);
 
     //playArea is our first item, non parented. We add it explicitally.
-    playArea = new QGraphicsPixmapItem();
-    //playArea->setSharedRenderer(renderer);
-    //playArea->setElementId("FIELD_AREA");
-    playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("VIEW")));
+    playArea = new QGraphicsSvgItem();
+    playArea->setSharedRenderer(grafx->renderer());
+    playArea->setElementId("VIEW");
+    //playArea->setPixmap(grafx->elementPixmap(grafx->m_View_Size_Width, grafx->m_View_Size_Height, QString("VIEW")));
     addItem(playArea);
 
     //Our Message Item, hidden by default
     messageItem = new KGamePopupItem();
     messageItem->setMessageOpacity(0.9);
     addItem(messageItem);
-    
-    //Score display
-    scoreArea = new QGraphicsTextItem(playArea);
-    scoreArea->setPlainText("0");
-    //TODO: calculate font size
-    scoreArea->setPos(grafx->data(ScoreArea_OffsetPoint_X), grafx->data(ScoreArea_OffsetPoint_Y));
-    //Level display
-    levelArea = new QGraphicsTextItem(playArea);
-    levelArea->setPlainText("0");
-    //TODO: calculate font size
-    levelArea->setPos(grafx->data(LevelArea_OffsetPoint_X), grafx->data(LevelArea_OffsetPoint_Y));
     
     setItemIndexMethod(NoIndex);
     stepTimer.setInterval(updateInterval);
@@ -73,6 +62,7 @@ void KBlocksScene::readSettings(const QSize & viewSize)
   if (grafx->theme()->fileName()!=Settings::theme())
   {
     grafx->loadTheme(Settings::theme());
+    
     grafx->adjustForSize(viewSize);
     updateDimensions();
   }
@@ -89,36 +79,45 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
 void KBlocksScene::viewScaled(const QSize& newsize)
 {
   //Temporarily halt game timer while resizing elements
-  if (gameState==Game_Active) stepTimer.stop();
-  grafx->adjustForSize(newsize);
-  updateDimensions();
+  //if (gameState==Game_Active) stepTimer.stop();
+  //grafx->adjustForSize(newsize);
+  //updateDimensions();
   //Do not restart if game was paused
-  if (gameState==Game_Active) stepTimer.start();
+  //if (gameState==Game_Active) stepTimer.start();
 }
 
 void KBlocksScene::updateDimensions()
 {
-  setSceneRect(0, 0, grafx->data(View_Size_Width), grafx->data(View_Size_Height));
-  playArea->setPixmap(grafx->elementPixmap(grafx->data(View_Size_Width), grafx->data(View_Size_Height), QString("VIEW")));
+  setSceneRect(0, 0, grafx->m_View_Size_Width, grafx->m_View_Size_Height);
+  //return;
+  //playArea->setPixmap(grafx->elementPixmap(grafx->m_View_Size_Width, grafx->m_View_Size_Height, QString("VIEW")));
+  playArea->setSharedRenderer(grafx->renderer());
+  playArea->setElementId("VIEW");
   
   //TODO: calculate font size
-  scoreArea->setPos(grafx->data(ScoreArea_OffsetPoint_X), grafx->data(ScoreArea_OffsetPoint_Y));
-  levelArea->setPos(grafx->data(LevelArea_OffsetPoint_X), grafx->data(LevelArea_OffsetPoint_Y));
+  //scoreArea->setPos(grafx->m_ScoreArea_OffsetPoint_X, grafx->m_ScoreArea_OffsetPoint_Y);
+  //levelArea->setPos(grafx->m_LevelArea_OffsetPoint_X, grafx->m_LevelArea_OffsetPoint_Y);
 
   foreach (Piece* piece, activePieces) {
     foreach (Block *block, piece->children()) {
-      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+      //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+      block->setSharedRenderer(grafx->renderer());
+      block->setElementId(QString("BLOCK_%1").arg(block->data(Block_Color).toInt()));
       block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
     }
   }
   foreach (Block *block, nextPiece->children()) {
-    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setSharedRenderer(grafx->renderer());
+    block->setElementId(QString("BLOCK_%1").arg(block->data(Block_Color).toInt()));
     block->setPos(nextPieceCoordToPoint(block->data(Block_Coord).toPoint()));
   }
   centerPiecePreview(nextPiece);
   
   foreach (Block* block, frozenBlocks) {
-    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_%1").arg(block->data(Block_Color).toInt())));
+    block->setSharedRenderer(grafx->renderer());
+    block->setElementId(QString("BLOCK_%1").arg(block->data(Block_Color).toInt()));
     block->setPos(coordToPoint(block->data(Block_Coord).toPoint()));
   }
 }
@@ -265,9 +264,9 @@ void KBlocksScene::prepareNewPiece()
   //Use the piece blueprint to construct our blocks
   for (int i = 0; i < chosenpiecerotation.size(); ++i) {
     Block *block = new Block(playArea);
-    //block->setSharedRenderer(renderer);
-    //block->setElementId(QString("BLOCK_%1").arg(chosenset));
-    block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(chosenset)));
+    block->setSharedRenderer(grafx->renderer());
+    block->setElementId(QString("BLOCK_%1").arg(chosenset));
+    //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_%1").arg(chosenset)));
     block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
     block->setData(Block_Color, chosenset);
     QPoint point = chosenpiecerotation.at(i);
@@ -303,13 +302,13 @@ void KBlocksScene::releasePiece()
   //Use the piece blueprint to construct our blocks
   for (int i = 0; i < chosenpiecerotation.size(); ++i) {
       Block *block = new Block(playArea);
-      //block->setSharedRenderer(renderer);
-      //block->setElementId(QString("BLOCK_%1").arg(setidx));
-      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_%1").arg(setidx)));
+      block->setSharedRenderer(grafx->renderer());
+      block->setElementId(QString("BLOCK_%1").arg(setidx));
+      //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_%1").arg(setidx)));
 
       block->setData(Block_OffsetInPiece, chosenpiecerotation.at(i));
       block->setData(Block_Color, setidx);
-      QPoint point = chosenpiecerotation.at(i)+QPoint((int)grafx->data(PlayArea_NumberOfBlocks_X)/2,0);
+      QPoint point = chosenpiecerotation.at(i)+QPoint(grafx->m_PlayArea_NumberOfBlocks_X/2,0);
       block->setData(Block_Coord, point);
       block->setPos(coordToPoint(point));
       //and append them to temporary collection
@@ -344,9 +343,9 @@ bool KBlocksScene::canMove(Piece * piece, const QPoint& delta)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= grafx->m_PlayArea_NumberOfBlocks_Y ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= grafx->m_PlayArea_NumberOfBlocks_X)||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -403,9 +402,9 @@ bool KBlocksScene::canRotate(Piece * piece, KBlocksRotationDirection direction)
     piececoord = piececoord+delta;
     
     //Did we hit the floor?
-    if (piececoord.y() >= grafx->data(PlayArea_NumberOfBlocks_Y) ) return false;
+    if (piececoord.y() >= grafx->m_PlayArea_NumberOfBlocks_Y ) return false;
     //Or maybe the edges?
-    if ((piececoord.x() >= grafx->data(PlayArea_NumberOfBlocks_X))||(piececoord.x() < 0)) return false;
+    if ((piececoord.x() >= grafx->m_PlayArea_NumberOfBlocks_X)||(piececoord.x() < 0)) return false;
     
     //Check only against the frozenBlocks
     foreach (QGraphicsItem *block, frozenBlocks) {
@@ -497,9 +496,9 @@ int KBlocksScene::searchForCompleteLines()
   
   QList<int> linesToRemove;
   //We are scanning top to bottom, and analyzing the whole field to see which lines are complete
-  for (int y=0; y<  grafx->data(PlayArea_NumberOfBlocks_Y); y++) {
+  for (int y=0; y<  grafx->m_PlayArea_NumberOfBlocks_Y; y++) {
     bool lineComplete = true;
-    for (int x=0; x<  grafx->data(PlayArea_NumberOfBlocks_X); x++) {
+    for (int x=0; x<  grafx->m_PlayArea_NumberOfBlocks_X; x++) {
       if (!frozenBlocksMap.contains(coordToIndex(QPoint(x,y)))) {
         lineComplete = false;
       }
@@ -529,8 +528,8 @@ void KBlocksScene::removeLine(int liney)
     if (checkcoord.y()==liney) {
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
-      block->setPixmap(grafx->elementPixmap(grafx->data(Block_Size), grafx->data(Block_Size), QString("BLOCK_OUT_%1").arg(color)));
-      //block->setElementId(QString("BLOCK_OUT_0"));
+      //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_OUT_%1").arg(color)));
+      block->setElementId(QString("BLOCK_OUT_0"));
       fadeOutBlocks << block;
       //block->hide();
       //removeItem(block);
@@ -608,8 +607,8 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
       //TODO
       break;
   }
-  scoreArea->setPlainText(QString("%1").arg(currentPoints));
-  levelArea->setPlainText(QString("%1").arg(currentLevel));
+  //scoreArea->setPlainText(QString("%1").arg(currentPoints));
+  //levelArea->setPlainText(QString("%1").arg(currentLevel));
   kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
 }
 
@@ -621,12 +620,12 @@ void KBlocksScene::animationFinished(QObject * animation)
 
 int KBlocksScene::coordToIndex(const QPoint& coord)
 {
-  return coord.x()+(coord.y()*grafx->data(PlayArea_NumberOfBlocks_X));
+  return coord.x()+(coord.y()*grafx->m_PlayArea_NumberOfBlocks_X);
 }
 
 QPoint KBlocksScene::indexToCoord(int idx)
 {
-  int numblocksx = grafx->data(PlayArea_NumberOfBlocks_X);	
+  int numblocksx = grafx->m_PlayArea_NumberOfBlocks_X;	
   QPoint point(idx%numblocksx, idx/numblocksx);
   return point;
 }
@@ -634,16 +633,16 @@ QPoint KBlocksScene::indexToCoord(int idx)
 QPointF KBlocksScene::coordToPoint(const QPoint& coord)
 {
   QPointF point(coord.x(),coord.y());
-  point = point*grafx->data(Block_Size);
-  point = point+QPointF(grafx->data(PlayArea_OffsetPoint_X),grafx->data(PlayArea_OffsetPoint_Y));
+  point = point*grafx->m_Block_Size;
+  point = point+QPointF(grafx->m_PlayArea_OffsetPoint_X,grafx->m_PlayArea_OffsetPoint_Y);
   return point;
 }
 
 QPointF KBlocksScene::nextPieceCoordToPoint(const QPoint& coord)
 {
   QPointF point(coord.x(),coord.y());
-  point = point*grafx->data(Block_Size);
-  point = point+QPointF(grafx->data(PreviewArea_CenterPoint_X),grafx->data(PreviewArea_CenterPoint_Y));
+  point = point*grafx->m_Block_Size;
+  point = point+QPointF(grafx->m_PreviewArea_CenterPoint_X,grafx->m_PreviewArea_CenterPoint_Y);
   return point;
 }
 
@@ -671,9 +670,9 @@ void KBlocksScene::centerPiecePreview(Piece * piece)
   //This assumes the piece has already been placed in the previewArea (using nextPieceCoordToPoint)
   //Find out pieceCenterPoint
   QPointF centerPoint = pieceCenterPoint(piece);
-  centerPoint = centerPoint*grafx->data(Block_Size);
+  centerPoint = centerPoint*grafx->m_Block_Size;
   //Remember that QGV coordinate system takes the top left of the element for pixmaps, so add 1/2 block size
-  centerPoint = centerPoint+QPointF(grafx->data(Block_Size)/2, grafx->data(Block_Size)/2);
+  centerPoint = centerPoint+QPointF(grafx->m_Block_Size/2, grafx->m_Block_Size/2);
   //Now reposition all blocks
   foreach (Block *block, piece->children()) {
     block->setPos(block->pos() - centerPoint);

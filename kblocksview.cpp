@@ -22,8 +22,8 @@ KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
   setMinimumSize ( 120, 120 );
 
   setOptimizationFlags( QGraphicsView::DontClipPainter |
-      QGraphicsView::DontSavePainterState |
-      QGraphicsView::DontAdjustForAntialiasing );
+      QGraphicsView::DontSavePainterState /*|
+      QGraphicsView::DontAdjustForAntialiasing*/ );
   setCacheMode(QGraphicsView::CacheBackground);
   setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
   show();
@@ -50,11 +50,12 @@ void KBlocksView::settingsChanged()
 }
 
 void KBlocksView::resizeEvent(QResizeEvent* event) {
-  //fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
-  if (event->spontaneous()) return;
-  m_scene->viewScaled(event->size());
+  fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
+  //if (event->spontaneous()) return;
+  //m_scene->viewScaled(event->size());
   
-  QGraphicsView::resizeEvent(event);
+  //QGraphicsView::resizeEvent(event);
+  event->accept();
 }
 
 #include "kblocksview.moc"

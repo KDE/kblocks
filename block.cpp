@@ -14,7 +14,7 @@
 #include <QTimeLine>
 
 Block::Block (QGraphicsItem * parent)
-  : QGraphicsPixmapItem (parent) , m_opacity(0.0), m_animatingPos(false)
+  : QGraphicsSvgItem (parent) , m_opacity(0.0), m_animatingPos(false)
 {
 }
 
@@ -31,7 +31,7 @@ void Block::setOpacity( qreal opacity )
 void Block::paint( QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget )
 {
     painter->setOpacity( m_opacity );
-    QGraphicsPixmapItem::paint( painter, option, widget );
+    QGraphicsSvgItem::paint( painter, option, widget );
 }
 
 bool Block::animatePosSetup ( QPointF initialpos, QPointF finalpos ) { 

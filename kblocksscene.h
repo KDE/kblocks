@@ -68,9 +68,9 @@ private:
     QTimer releaseTimer;
     
     //QGraphicsPixmapItem * bg;
-    QGraphicsPixmapItem * playArea;
-    QGraphicsTextItem * scoreArea;
-    QGraphicsTextItem * levelArea;
+    QGraphicsSvgItem * playArea;
+    //QGraphicsTextItem * scoreArea;
+    //QGraphicsTextItem * levelArea;
     
     KGamePopupItem *messageItem;
     

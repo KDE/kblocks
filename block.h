@@ -14,7 +14,8 @@
 #include <QtSvg>
 #include <QGraphicsPixmapItem>
 
-class Block : public QObject, public QGraphicsPixmapItem
+class Block : //public QObject, public QGraphicsSvgItem
+    public QGraphicsSvgItem
 {
   Q_OBJECT
   public:

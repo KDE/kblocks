@@ -22,7 +22,7 @@ KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
     kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
     m_theme->loadDefault();
   }
-  m_renderer = new QSvgRenderer(m_theme->graphics());
+  m_renderer = new KSvgRenderer(m_theme->graphics());
   readThemeValues();
 }
 
@@ -43,22 +43,25 @@ bool KBlocksGraphics::loadTheme ( const QString& themeFile )
     return false;
   }
   //clear the cache or pixmaps from the old theme will be returned
-  QPixmapCache::clear();
+  //QPixmapCache::clear();
   readThemeValues();
   return true;
 }
+
 
 void KBlocksGraphics::adjustForSize(const QSize& newsize)
 {
   //Reset our values
   readThemeValues();
+  
+  return;
 
-  qreal aspectratio;
-  qreal nw = newsize.width();
-  qreal nh = newsize.height();
+  /*double aspectratio;
+  double nw = newsize.width();
+  double nh = newsize.height();
 
-  qreal origw = data(View_Size_Width);
-  qreal origh = data(View_Size_Height);
+  double origw = m_View_Size_Width;
+  double origh = m_View_Size_Height;
 
   if ((origw/origh)>(nw/nh)) {
     //space will be left on height, use width as limit
@@ -67,21 +70,13 @@ void KBlocksGraphics::adjustForSize(const QSize& newsize)
     aspectratio = nh/origh;
   }
   //kDebug(11000) << aspectratio;
-  setData(Block_Size, aspectratio*data(Block_Size));
-  setData(View_Size_Width, aspectratio*data(View_Size_Width));
-  setData(View_Size_Height, aspectratio*data(View_Size_Height));
-  setData(PlayArea_OffsetPoint_X, aspectratio*data(PlayArea_OffsetPoint_X));
-  setData(PlayArea_OffsetPoint_Y, aspectratio*data(PlayArea_OffsetPoint_Y));
-  setData(PreviewArea_CenterPoint_X, aspectratio*data(PreviewArea_CenterPoint_X));
-  setData(PreviewArea_CenterPoint_Y, aspectratio*data(PreviewArea_CenterPoint_Y));
-  setData(ScoreArea_OffsetPoint_X, aspectratio*data(ScoreArea_OffsetPoint_X));
-  setData(ScoreArea_OffsetPoint_Y, aspectratio*data(ScoreArea_OffsetPoint_Y));
-  setData(ScoreArea_Width, aspectratio*data(ScoreArea_Width));
-  setData(ScoreArea_Height, aspectratio*data(ScoreArea_Height));
-  setData(LevelArea_OffsetPoint_X, aspectratio*data(LevelArea_OffsetPoint_X));
-  setData(LevelArea_OffsetPoint_Y, aspectratio*data(LevelArea_OffsetPoint_Y));
-  setData(LevelArea_Width, aspectratio*data(LevelArea_Width));
-  setData(LevelArea_Height, aspectratio*data(LevelArea_Height));
+  m_Block_Size = (int) (aspectratio*(qreal)m_Block_Size);
+  m_View_Size_Width = (int) (aspectratio*(double)m_View_Size_Width);
+  m_View_Size_Height = (int) (aspectratio*(double)m_View_Size_Height);
+  m_PlayArea_OffsetPoint_X = (int) (aspectratio*(qreal)m_PlayArea_OffsetPoint_X);
+  m_PlayArea_OffsetPoint_Y = (int) (aspectratio*(qreal)m_PlayArea_OffsetPoint_Y);
+  m_PreviewArea_CenterPoint_X = (int) (aspectratio*(qreal)m_PreviewArea_CenterPoint_X);
+  m_PreviewArea_CenterPoint_Y = (int) (aspectratio*(qreal)m_PreviewArea_CenterPoint_Y);*/
 }
 
 void KBlocksGraphics::readThemeValues()
@@ -89,42 +84,23 @@ void KBlocksGraphics::readThemeValues()
   //Extract values from SVG elements
   QRectF bounds;
   bounds = m_renderer->boundsOnElement ( "BLOCK_SIZE" );
-  setData(Block_Size, bounds.width());
+  m_Block_Size = bounds.width();
   bounds = m_renderer->boundsOnElement ( "VIEW" );
-  setData(View_Size_Width, bounds.width());
-  setData(View_Size_Height, bounds.height());
+  m_View_Size_Width = bounds.width();
+  m_View_Size_Height = bounds.height();
   bounds = m_renderer->boundsOnElement ( "PLAY_AREA" );
-  setData(PlayArea_OffsetPoint_X, bounds.x());
-  setData(PlayArea_OffsetPoint_Y, bounds.y());
-  setData(PlayArea_NumberOfBlocks_X, bounds.width()/data(Block_Size));
-  setData(PlayArea_NumberOfBlocks_Y, bounds.height()/data(Block_Size));
+  m_PlayArea_OffsetPoint_X = bounds.x();
+  m_PlayArea_OffsetPoint_Y = bounds.y();
+  m_PlayArea_NumberOfBlocks_X = bounds.width()/(double)m_Block_Size;
+  m_PlayArea_NumberOfBlocks_Y = bounds.height()/(double)m_Block_Size;
   bounds = m_renderer->boundsOnElement ( "NEXTPIECE_AREA" );
-  setData(PreviewArea_CenterPoint_X, bounds.center().x());
-  setData(PreviewArea_CenterPoint_Y, bounds.center().y());
-  bounds = m_renderer->boundsOnElement ( "SCORE_AREA" );
-  setData(ScoreArea_OffsetPoint_X, bounds.x());
-  setData(ScoreArea_OffsetPoint_Y, bounds.y());
-  setData(ScoreArea_Width, bounds.width());
-  setData(ScoreArea_Height, bounds.height());
-  bounds = m_renderer->boundsOnElement ( "LEVEL_AREA" );
-  setData(LevelArea_OffsetPoint_X, bounds.x());
-  setData(LevelArea_OffsetPoint_Y, bounds.y());
-  setData(LevelArea_Width, bounds.width());
-  setData(LevelArea_Height, bounds.height());
-  //kDebug(11000) << m_data;
+  m_PreviewArea_CenterPoint_X = bounds.center().x();
+  m_PreviewArea_CenterPoint_Y = bounds.center().y();
+
 }
 
-void KBlocksGraphics::setData(int key, qreal value)
-{
-  m_data.insert ( key,value);
-}
 
-qreal KBlocksGraphics::data ( int key )
-{
-  return m_data.value(key);
-}
-
-QPixmap KBlocksGraphics::elementPixmap(qreal width, qreal height, const QString & elementid) {
+/*QPixmap KBlocksGraphics::elementPixmap(int width, int height, const QString & elementid) {
   QPixmap pm;
   if (!QPixmapCache::find(pixmapCacheNameFromElementId(width, height, elementid), pm)) {
     pm = renderElement(width, height, elementid);
@@ -133,9 +109,8 @@ QPixmap KBlocksGraphics::elementPixmap(qreal width, qreal height, const QString 
   return pm;
 }
 
-QPixmap KBlocksGraphics::renderElement(qreal width, qreal height, const QString & elementid) {
-  //Create an image 1 pixel larger than our element, so it is not cut as dimensions are doubles
-  QImage qiRend(QSize((int)width+1, (int)height+1),QImage::Format_ARGB32_Premultiplied);
+QPixmap KBlocksGraphics::renderElement(int width, int height, const QString & elementid) {
+  QImage qiRend(QSize(width, height),QImage::Format_ARGB32_Premultiplied);
   qiRend.fill(0);
 
   if (m_renderer->isValid()) {
@@ -145,8 +120,8 @@ QPixmap KBlocksGraphics::renderElement(qreal width, qreal height, const QString 
   return QPixmap::fromImage(qiRend);
 }
 
-QString KBlocksGraphics::pixmapCacheNameFromElementId(qreal width, qreal height, const QString & elementid) {
+QString KBlocksGraphics::pixmapCacheNameFromElementId(int width, int height, const QString & elementid) {
   return elementid + QString("W%1H%2").arg(width).arg(height);
-}
+}*/
 
 

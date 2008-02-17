@@ -13,7 +13,7 @@
 
 #include "kgametheme.h"
 #include <QHash>
-#include <QSvgRenderer>
+#include <KSvgRenderer>
 #include <QPixmap>
 
 class KBlocksGraphics
@@ -26,37 +26,28 @@ class KBlocksGraphics
     bool loadTheme ( const QString& themeFile );
     void readThemeValues();
     void adjustForSize(const QSize& newsize);
-    void setData(int key, qreal value);
-    qreal data ( int key );
     KGameTheme * theme() { return m_theme; }
     QSvgRenderer * renderer() { return m_renderer; }
-    QPixmap elementPixmap(qreal width, qreal height, const QString & elementid);
+    //QPixmap elementPixmap(int width, int height, const QString & elementid);
+    
+    int m_Block_Size;
+    int m_View_Size_Width;
+    int m_View_Size_Height;
+    int m_PlayArea_OffsetPoint_X;
+    int m_PlayArea_OffsetPoint_Y;
+    int m_PlayArea_NumberOfBlocks_X;
+    int m_PlayArea_NumberOfBlocks_Y;
+    int m_PreviewArea_CenterPoint_X;
+    int m_PreviewArea_CenterPoint_Y;
     
   private:
-    QHash<int, qreal> m_data;
     KGameTheme * m_theme;
     QSvgRenderer *m_renderer;
     
-    QPixmap renderElement(qreal width, qreal height, const QString & elementid);
-    QString pixmapCacheNameFromElementId(qreal width, qreal height, const QString & elementid);
+    //QPixmap renderElement(int width, int height, const QString & elementid);
+    //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);
 };
 
-enum BlockGraphicsData { Block_Size=0, 
-  View_Size_Width,
-  View_Size_Height,
-  PlayArea_OffsetPoint_X,
-  PlayArea_OffsetPoint_Y,
-  PlayArea_NumberOfBlocks_X,
-  PlayArea_NumberOfBlocks_Y,
-  PreviewArea_CenterPoint_X,
-  PreviewArea_CenterPoint_Y,
-  ScoreArea_OffsetPoint_X,
-  ScoreArea_OffsetPoint_Y,
-  ScoreArea_Width,
-  ScoreArea_Height,
-  LevelArea_OffsetPoint_X,
-  LevelArea_OffsetPoint_Y,
-  LevelArea_Width,
-  LevelArea_Height};
+  
 
 #endif
