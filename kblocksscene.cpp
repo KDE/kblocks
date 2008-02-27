@@ -58,7 +58,7 @@ KBlocksScene::~KBlocksScene()
 
 void KBlocksScene::readSettings(const QSize & viewSize)
 {
-  stepTimer.stop();
+  if (gameState==Game_Active) stepTimer.stop();
   if (grafx->theme()->fileName()!=Settings::theme())
   {
     grafx->loadTheme(Settings::theme());
@@ -66,7 +66,7 @@ void KBlocksScene::readSettings(const QSize & viewSize)
     grafx->adjustForSize(viewSize);
     updateDimensions();
   }
-  stepTimer.start();
+  if (gameState==Game_Active) stepTimer.start();
 }
 
 void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )

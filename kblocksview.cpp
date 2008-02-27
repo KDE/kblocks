@@ -47,6 +47,7 @@ void KBlocksView::pauseGame()
 void KBlocksView::settingsChanged()
 {
   m_scene->readSettings(size());
+  fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
 void KBlocksView::resizeEvent(QResizeEvent* event) {
