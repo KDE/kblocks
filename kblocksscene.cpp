@@ -58,7 +58,6 @@ KBlocksScene::~KBlocksScene()
 
 void KBlocksScene::readSettings(const QSize & viewSize)
 {
-  if (gameState==Game_Active) stepTimer.stop();
   if (grafx->theme()->fileName()!=Settings::theme())
   {
     grafx->loadTheme(Settings::theme());
@@ -66,7 +65,6 @@ void KBlocksScene::readSettings(const QSize & viewSize)
     grafx->adjustForSize(viewSize);
     updateDimensions();
   }
-  if (gameState==Game_Active) stepTimer.start();
 }
 
 void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
@@ -201,18 +199,39 @@ void KBlocksScene::greetPlayer()
    showMessage( start, 2000 ); 
 }
 
-void KBlocksScene::pauseGame()
+void KBlocksScene::pauseGame(bool pause, bool fromUI)
 {
-  if (gameState==Game_Paused)  {
+  //Only work for paused, suspended and active states
+  /*if ((gameState!=Game_Paused)&&(gameState!=Game_Active) &&(gameState!=Game_Suspended))
+    return;*/
+  
+  if (!fromUI) {
+   //not user initiated, check if we must suspend or resume
+    if (pause) {
+      previousGameState = gameState;
+      gameState = Game_Suspended;
+      stepTimer.stop();
+    } else {
+      gameState = previousGameState;
+      if (gameState==Game_Active) stepTimer.start();
+      if (gameState==Game_Paused) stepTimer.stop();
+    }
+    return;
+  }
+  
+  if ((gameState==Game_Paused)&&!pause)  {
     stepTimer.start();
     QString end("Resuming Game"); 
     showMessage( end, 2000 );
     gameState=Game_Active;
-  } else if (gameState==Game_Active){
+  } else if ((gameState==Game_Active)&&pause){
     QString end("Game Paused"); 
     showMessage( end, 2000 );
     stepTimer.stop();
     gameState=Game_Paused;
+  } else {
+    //inconsistency, restore state and log
+    kDebug()<<"Inconsistent Game State at pauseGame:"<<gameState<<pause;
   }
 }
 

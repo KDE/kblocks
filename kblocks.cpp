@@ -49,8 +49,8 @@ KBlocks::KBlocks()
     QAction *action = KStandardGameAction::gameNew(view, SLOT(newGame()), actionCollection());
     actionCollection()->addAction("newGame", action);
     
-    action = KStandardGameAction::pause(view, SLOT(pauseGame()), actionCollection());
-    actionCollection()->addAction("pauseGame", action);
+    m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
+    actionCollection()->addAction("pauseGame", m_pauseAction);
 
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     actionCollection()->addAction("quit", action);
@@ -65,14 +65,25 @@ KBlocks::~KBlocks()
     delete view;
 }
 
+void KBlocks::pauseGame()
+{
+  view->pauseGame(m_pauseAction->isChecked());
+}
+
 void KBlocks::configureSettings()
 {
-  if ( KConfigDialog::showDialog("settings") ) return;
+  if ( KConfigDialog::showDialog("settings") ) {
+    view->pauseToConfigure();
+    return;
+  }
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "game_theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), view, SLOT(settingsChanged()));
+  connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
+  view->pauseToConfigure();
   dialog->show();
+
 }
 
 

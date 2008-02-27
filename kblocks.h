@@ -34,9 +34,11 @@ class KBlocks : public KXmlGuiWindow
       ~KBlocks();
   private slots:
       void configureSettings();
+      void pauseGame();
 
     private:
       KBlocksView* view;
+      QAction*  m_pauseAction;
 
 };
 

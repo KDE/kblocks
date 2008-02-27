@@ -39,9 +39,21 @@ void KBlocksView::newGame()
   m_scene->startGame();
 }
 
-void KBlocksView::pauseGame()
+void KBlocksView::pauseGame(bool pressed)
 {
-  m_scene->pauseGame();
+  m_scene->pauseGame(pressed, true);
+}
+
+void KBlocksView::pauseToConfigure()
+{
+  //Force suspended state, sinalize it was not initiated by UI
+  m_scene->pauseGame(true, false);
+}
+
+void KBlocksView::resumeFromConfigure()
+{
+  //Recover from suspended state, sinalize it was not initiated by UI
+  m_scene->pauseGame(false,false);
 }
 
 void KBlocksView::settingsChanged()

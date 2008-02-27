@@ -31,6 +31,7 @@ typedef QList<PieceRotation> PieceSet;
 enum KBlocksGameState { Game_Starting=0, 
   Game_Active,
   Game_Paused,
+  Game_Suspended, //not by user
   Game_Finished };
 
 enum KBlocksScoreEvent { Score_Blocks=0,
@@ -51,7 +52,7 @@ public:
     virtual ~KBlocksScene();
     
   public slots:
-    void pauseGame();
+    void pauseGame(bool pause, bool fromUI);
     void startGame();
     void readSettings(const QSize & viewSize);
     void viewScaled(const QSize& newsize);
@@ -75,6 +76,7 @@ private:
     KGamePopupItem *messageItem;
     
     int gameState;
+    int previousGameState;
     int currentLevel;
     int currentPoints;
     int currentRemovedLines;
