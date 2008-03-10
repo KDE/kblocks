@@ -12,7 +12,7 @@
 #include "kblocksgraphics.h"
 #include <QtDebug>
 #include <KStandardDirs>
-#include <KGamePopupItem>
+#include <KDE/KGamePopupItem>
 
 #include "settings.h"
 
