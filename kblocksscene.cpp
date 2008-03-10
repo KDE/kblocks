@@ -250,6 +250,9 @@ void KBlocksScene::levelUp()
 
 void KBlocksScene::attemptMove(const QPoint& delta)
 {
+  if (gameState!=Game_Active) {
+    return;
+  }
   foreach (Piece* piece, activePieces) {
       //check if we can move
     if (canMove(piece, delta)) {
@@ -260,6 +263,9 @@ void KBlocksScene::attemptMove(const QPoint& delta)
 
 void KBlocksScene::attemptRotation(KBlocksRotationDirection direction)
 {
+  if (gameState!=Game_Active) {
+    return;
+  }
   foreach (Piece* piece, activePieces) {
       //check if we can rotate
     if (canRotate(piece, direction)) {
@@ -702,36 +708,6 @@ void KBlocksScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //releasePiece();
     QGraphicsScene::mousePressEvent(event);
-}
-
-void KBlocksScene::keyPressEvent(QKeyEvent *event)
-{
-    if (gameState!=Game_Active) {
-      return;
-    }
-    switch (event->key()) {
-      case Qt::Key_Left:
-        attemptMove(QPoint(-1,0));
-        break;
-      case Qt::Key_Right:
-        attemptMove(QPoint(1,0));
-        break;
-      case Qt::Key_Down:
-        attemptMove(QPoint(0,1));
-        break;
-      case Qt::Key_Up:
-        attemptRotation(Rotate_Clockwise);
-        break;
-      case Qt::Key_Z:
-        attemptRotation(Rotate_CounterClockwise);
-        break;
-      case Qt::Key_X:
-        attemptRotation(Rotate_Clockwise);
-        break;
-      case Qt::Key_Space:
-        attemptMove(QPoint(0,1));
-        break;
-    }
 }
 
 void KBlocksScene::initPieceTypes()

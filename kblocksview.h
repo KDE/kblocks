@@ -28,6 +28,11 @@ class KBlocksView : public QGraphicsView
     void pauseToConfigure();
     void resumeFromConfigure();
     void settingsChanged();
+    void rotateCW();
+    void rotateCCW();
+    void moveLeft();
+    void moveRight();
+    void moveDown();
 
   protected:
     KBlocksScene * m_scene;

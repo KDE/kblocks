@@ -62,6 +62,31 @@ void KBlocksView::settingsChanged()
   fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
+void KBlocksView::rotateCW()
+{
+  m_scene->attemptRotation(Rotate_Clockwise);
+}
+
+void KBlocksView::rotateCCW()
+{
+  m_scene->attemptRotation(Rotate_CounterClockwise);
+}
+
+void KBlocksView::moveLeft()
+{
+  m_scene->attemptMove(QPoint(-1,0));
+}
+
+void KBlocksView::moveRight()
+{
+  m_scene->attemptMove(QPoint(1,0));
+}
+
+void KBlocksView::moveDown()
+{
+  m_scene->attemptMove(QPoint(0,1));
+}
+
 void KBlocksView::resizeEvent(QResizeEvent* event) {
   fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
   //if (event->spontaneous()) return;

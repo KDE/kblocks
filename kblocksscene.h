@@ -14,7 +14,6 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QKeyEvent>
 #include <QtSvg>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup>
@@ -56,6 +55,8 @@ public:
     void startGame();
     void readSettings(const QSize & viewSize);
     void viewScaled(const QSize& newsize);
+    void attemptMove(const QPoint& delta);
+    void attemptRotation(KBlocksRotationDirection direction);
 
 private:
     KBlocksGraphics *grafx;
@@ -93,8 +94,6 @@ private:
     void movePiece(Piece * piece, const QPoint& delta);
     void moveBlock(Block * block, QPoint delta);
     void rotatePiece(Piece * piece, KBlocksRotationDirection direction);
-    void attemptMove(const QPoint& delta);
-    void attemptRotation(KBlocksRotationDirection direction);
     void freezePiece(Piece * piece);
     int searchForCompleteLines();
     void removeLine(int liney);
@@ -117,7 +116,6 @@ private slots:
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *keyEvent);
     void drawBackground ( QPainter * painter, const QRectF & rect );
-    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif //SCENE
