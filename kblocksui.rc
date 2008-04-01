@@ -1,10 +1,13 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="kblocks" version="1">
+<kpartgui name="kblocks" version="2">
 
 <MenuBar>
   <Menu name="game">
     <Action name="newGame" />
     <Action name="pauseGame" />
+    <Seperator/>
+    <Action name="showHighscores" />
+    <Seperator/>
     <Action name="quit" />
   </Menu>
 </MenuBar>

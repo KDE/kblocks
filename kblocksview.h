@@ -21,6 +21,7 @@ class KBlocksView : public QGraphicsView
   public:
     KBlocksView (QWidget * parent = 0 );
     ~KBlocksView();
+    QObject * getSceneObject() { return (QObject *) m_scene; }
     
   public slots:
     void newGame();

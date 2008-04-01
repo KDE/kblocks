@@ -12,6 +12,7 @@
 #define _KBLOCKS_H
 
 #include <KXmlGuiWindow>
+#include <KGameDifficulty>
 
 #include "kblocksview.h"
 
@@ -33,9 +34,15 @@ class KBlocks : public KXmlGuiWindow
      * Default Destructor */
       ~KBlocks();
   private slots:
+      void close();
       void configureSettings();
       void pauseGame();
-
+      void showHighscore();
+      void onScoreChanged(int points, int lines, int level);
+      void onIsHighscore(int points, int level);
+      void levelChanged(KGameDifficulty::standardLevel);
+  protected:
+      virtual void closeEvent(QCloseEvent *);
     private:
       KBlocksView* view;
       QAction*  m_pauseAction;

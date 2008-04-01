@@ -25,11 +25,15 @@
 #include <KIcon>
 #include <KDE/KScoreDialog>
 #include <KDE/KGameThemeSelector>
+#include <KDE/KStatusBar>
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>
 
 #include <QPixmapCache>
+#include <QCloseEvent>
+
+#include <time.h>
 
 #include "settings.h"
 
@@ -46,12 +50,18 @@ KBlocks::KBlocks()
     view = new KBlocksView( this );
     setCentralWidget( view );
     
+    qsrand(time(0));
+    setAutoSaveSettings();
+    
     QAction *action = KStandardGameAction::gameNew(view, SLOT(newGame()), actionCollection());
     actionCollection()->addAction("newGame", action);
     
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
     actionCollection()->addAction("pauseGame", m_pauseAction);
-
+    
+    action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
+    actionCollection()->addAction("showHighscores", action);
+    
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     actionCollection()->addAction("quit", action);
     
@@ -86,6 +96,26 @@ KBlocks::KBlocks()
     movedown->setIcon(KIcon("arrow-down"));
     movedown->setShortcuts( KShortcut( Qt::Key_Down ) );
     connect(movedown, SIGNAL(triggered(bool)), view, SLOT(moveDown()));
+    
+    statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
+    connect(view->getSceneObject(), SIGNAL(scoreChanged(int,int,int)), this,  SLOT(onScoreChanged(int,int,int)));
+    connect(view->getSceneObject(), SIGNAL(isHighscore(int,int)), this,  SLOT(onIsHighscore(int,int)));
+    
+    KGameDifficulty::init(this, this, SLOT(levelChanged(KGameDifficulty::standardLevel)));
+    KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+    
+    //restore difficulty from settings, need to read it first
+    Settings::self()->readConfig();
+    int difficulty = Settings::difficulty();
+    if ((difficulty < KGameDifficulty::Easy) || (difficulty > KGameDifficulty::Hard) )
+      //unexpected, but use a default
+      KGameDifficulty::setLevel(KGameDifficulty::Easy);
+    else
+      KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (difficulty));
+    
     setupGUI();
 }
 
@@ -94,9 +124,38 @@ KBlocks::~KBlocks()
     delete view;
 }
 
+void KBlocks::close()
+{
+  Settings::self()->writeConfig();
+}
+
+void KBlocks::closeEvent(QCloseEvent *event)
+{
+  close();
+  event->accept();
+}
+
 void KBlocks::pauseGame()
 {
   view->pauseGame(m_pauseAction->isChecked());
+}
+
+void KBlocks::showHighscore()
+{
+  KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
+  ksdialog.setConfigGroup(KGameDifficulty::levelString());
+  ksdialog.exec();
+}
+
+void KBlocks::onIsHighscore(int points, int level)
+{
+  KScoreDialog ksdialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
+  ksdialog.setConfigGroup(KGameDifficulty::levelString());
+  KScoreDialog::FieldInfo info;
+  info[KScoreDialog::Score].setNum( points );
+  info[KScoreDialog::Level].setNum( level );
+  if ( ksdialog.addScore( info ) )
+    ksdialog.exec();
 }
 
 void KBlocks::configureSettings()
@@ -114,6 +173,18 @@ void KBlocks::configureSettings()
   dialog->show();
 
 }
+
+void KBlocks::onScoreChanged(int points, int lines, int level)
+{
+  statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level), 0 );
+}
+
+void KBlocks::levelChanged(KGameDifficulty::standardLevel)
+{
+  //Scene reads the difficulty level for us
+  view->newGame();
+}
+
 
 
 #include "kblocks.moc"

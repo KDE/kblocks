@@ -2,4 +2,4 @@
 File=kblocks.kcfg
 ClassName=Settings
 Singleton=true
-Mutators=false
+Mutators=true

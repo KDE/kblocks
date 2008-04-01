@@ -50,6 +50,10 @@ public:
     explicit KBlocksScene();
     virtual ~KBlocksScene();
     
+  signals:
+    void scoreChanged(int,int,int);
+    void isHighscore(int,int);
+    
   public slots:
     void pauseGame(bool pause, bool fromUI);
     void startGame();
@@ -112,6 +116,7 @@ private slots:
     void animationFinished(QObject * animation);
     void releasePiece();
     void greetPlayer();
+    void checkHighscore();
     
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *keyEvent);

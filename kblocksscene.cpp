@@ -13,6 +13,7 @@
 #include <QtDebug>
 #include <KStandardDirs>
 #include <KDE/KGamePopupItem>
+#include <KDE/KGameDifficulty>
 
 #include "settings.h"
 
@@ -138,6 +139,8 @@ void KBlocksScene::step()
           showMessage( end, 4000 );
           stepTimer.stop();
           gameState=Game_Finished;
+          //check if we have a highscore, but allow player to see the game over first
+          QTimer::singleShot(1500, this, SLOT(checkHighscore())); 
         } else {
           //we hit something, stop and detach
           freezePiece(piece);
@@ -187,16 +190,40 @@ void KBlocksScene::startGame()
   inLockPosition = false;
   updateInterval = INITIAL_UPDATE_INTERVAL;
   stepTimer.setInterval(updateInterval);
+  KGameDifficulty::standardLevel level = KGameDifficulty::level();
+  Settings::setDifficulty((int) level);
+  switch(KGameDifficulty::level())
+  {
+    case KGameDifficulty::Easy:
+      //nothing to do
+      break;
+    case KGameDifficulty::Medium:
+      for (short a=0; a<5; a++) levelUp();
+      break;
+    case KGameDifficulty::Hard:
+      for (short a=0; a<10; a++) levelUp();
+      break;
+    default:
+      //unsupported
+      break;
+  }
   gameState=Game_Active;
     //Fire the first piece in two seconds
   releaseTimer.start(2000);
   QTimer::singleShot(500, this, SLOT(greetPlayer())); 
+  KGameDifficulty::setRunning(true);
+  emit scoreChanged(currentPoints, currentRemovedLines, currentLevel);
 }
 
 void KBlocksScene::greetPlayer()
 {
    QString start("Game started"); 
    showMessage( start, 2000 ); 
+}
+
+void KBlocksScene::checkHighscore()
+{
+  emit isHighscore(currentPoints, currentLevel);
 }
 
 void KBlocksScene::pauseGame(bool pause, bool fromUI)
@@ -216,7 +243,7 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
       if (gameState==Game_Active) stepTimer.start();
       if (gameState==Game_Paused) stepTimer.stop();
     }
-    return;
+    goto setStatusAndExit;
   }
   
   if ((gameState==Game_Paused)&&!pause)  {
@@ -233,6 +260,10 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
     //inconsistency, restore state and log
     kDebug()<<"Inconsistent Game State at pauseGame:"<<gameState<<pause;
   }
+setStatusAndExit:
+  //Set KGameDifficulty state, for prompting user on restart
+  if (gameState==Game_Active) KGameDifficulty::setRunning(true);
+  else KGameDifficulty::setRunning(false);
 }
 
 void KBlocksScene::levelUp()
@@ -308,7 +339,7 @@ void KBlocksScene::prepareNewPiece()
   //Adjust the position of the blocks so that the piece is nicely centered in the preview area
   centerPiecePreview(nextPiece);
   
-  FadeAnimator * fadeInAnim = new FadeAnimator(nextPiece->children(), 200, QTimeLine::Forward, false);
+  FadeAnimator * fadeInAnim = new FadeAnimator(nextPiece->children(), 100, QTimeLine::Forward, false);
   animators << fadeInAnim;
   connect(fadeInAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
 }
@@ -352,7 +383,7 @@ void KBlocksScene::releasePiece()
   connect(fadeInAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
   
   //FadeOut animator also removes blocks from scene and deletes them when it is done :)
-  FadeAnimator * fadeOutAnim = new FadeAnimator(nextPiece->children(), 200, QTimeLine::Backward, true);
+  FadeAnimator * fadeOutAnim = new FadeAnimator(nextPiece->children(), 100, QTimeLine::Backward, true);
   animators << fadeOutAnim;
   connect(fadeOutAnim, SIGNAL(finished(QObject *)), SLOT(animationFinished(QObject *)) );
   foreach(Block * block, nextPiece->children()){
@@ -634,7 +665,8 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
   }
   //scoreArea->setPlainText(QString("%1").arg(currentPoints));
   //levelArea->setPlainText(QString("%1").arg(currentLevel));
-  kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+  //kDebug(11000) << "Points:" << currentPoints << "Lines:" << currentRemovedLines << "Level:" << currentLevel;
+  emit scoreChanged(currentPoints, currentRemovedLines, currentLevel);
 }
 
 void KBlocksScene::animationFinished(QObject * animation)
