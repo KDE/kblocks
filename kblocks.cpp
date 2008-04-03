@@ -155,7 +155,6 @@ void KBlocks::onIsHighscore(int points, int level)
 void KBlocks::configureSettings()
 {
   if ( KConfigDialog::showDialog("settings") ) {
-    view->pauseToConfigure();
     return;
   }
 
@@ -163,7 +162,6 @@ void KBlocks::configureSettings()
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "game_theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), view, SLOT(settingsChanged()));
   connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
-  view->pauseToConfigure();
   dialog->show();
 
 }

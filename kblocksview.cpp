@@ -10,6 +10,7 @@
  
 #include "kblocksview.h"
 #include "kblocksscene.h"
+#include <KDebug>
 
 KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
 {
@@ -44,18 +45,6 @@ void KBlocksView::pauseGame(bool pressed)
   m_scene->pauseGame(pressed, true);
 }
 
-void KBlocksView::pauseToConfigure()
-{
-  //Force suspended state, sinalize it was not initiated by UI
-  m_scene->pauseGame(true, false);
-}
-
-void KBlocksView::resumeFromConfigure()
-{
-  //Recover from suspended state, sinalize it was not initiated by UI
-  m_scene->pauseGame(false,false);
-}
-
 void KBlocksView::settingsChanged()
 {
   m_scene->readSettings(size());
@@ -85,6 +74,17 @@ void KBlocksView::moveRight()
 void KBlocksView::moveDown()
 {
   m_scene->attemptMove(QPoint(0,1));
+}
+
+void KBlocksView::focusInEvent ( QFocusEvent * event )
+{
+  //Recover from suspended state, sinalize it was not initiated by UI
+  m_scene->pauseGame(false,false);
+}
+void KBlocksView::focusOutEvent ( QFocusEvent * event )
+{
+  //Force suspended state, sinalize it was not initiated by UI
+  m_scene->pauseGame(true, false);
 }
 
 void KBlocksView::resizeEvent(QResizeEvent* event) {

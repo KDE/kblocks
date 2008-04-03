@@ -47,6 +47,7 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     connect(&releaseTimer, SIGNAL(timeout()), SLOT(releasePiece()));
     releaseTimer.stop();
 
+    previousGameState = Game_Active;
     startGame();
 }
 
@@ -231,16 +232,21 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
   //Only work for paused, suspended and active states
   /*if ((gameState!=Game_Paused)&&(gameState!=Game_Active) &&(gameState!=Game_Suspended))
     return;*/
+  QString resuming("Resuming Game"); 
+  QString pausing("Game Paused"); 
   
   if (!fromUI) {
    //not user initiated, check if we must suspend or resume
     if (pause) {
       previousGameState = gameState;
       gameState = Game_Suspended;
+      //showMessage( pausing, 2000 );
       stepTimer.stop();
     } else {
       gameState = previousGameState;
-      if (gameState==Game_Active) stepTimer.start();
+      if (gameState==Game_Active) {
+        stepTimer.start();
+      }
       if (gameState==Game_Paused) stepTimer.stop();
     }
     goto setStatusAndExit;
@@ -248,12 +254,10 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
   
   if ((gameState==Game_Paused)&&!pause)  {
     stepTimer.start();
-    QString end("Resuming Game"); 
-    showMessage( end, 2000 );
+    showMessage( resuming, 2000 );
     gameState=Game_Active;
   } else if ((gameState==Game_Active)&&pause){
-    QString end("Game Paused"); 
-    showMessage( end, 2000 );
+    showMessage( pausing, 2000 );
     stepTimer.stop();
     gameState=Game_Paused;
   } else {

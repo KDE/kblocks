@@ -26,14 +26,16 @@ class KBlocksView : public QGraphicsView
   public slots:
     void newGame();
     void pauseGame(bool pressed);
-    void pauseToConfigure();
-    void resumeFromConfigure();
     void settingsChanged();
     void rotateCW();
     void rotateCCW();
     void moveLeft();
     void moveRight();
     void moveDown();
+    
+  protected:
+    void focusInEvent ( QFocusEvent * event );
+    void focusOutEvent ( QFocusEvent * event );
 
   protected:
     KBlocksScene * m_scene;
