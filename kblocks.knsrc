@@ -1,0 +1,4 @@
+[KNewStuff2]
+ProvidersUrl=http://games.kde.org/knewstuff/kde4.0/kblocks/providers.xml
+TargetDir=kblocks/themes
+Uncompress=true

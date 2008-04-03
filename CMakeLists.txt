@@ -20,7 +20,7 @@ kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
 kde4_add_executable(kblocks ${kblocks_SRCS})
 
-target_link_libraries(kblocks  ${KDE4_KDEUI_LIBS} ${KDEGAMES_LIBRARY} )
+target_link_libraries(kblocks  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEUI_LIBS} ${KDEGAMES_LIBRARY} )
 
 install(TARGETS kblocks  DESTINATION ${BIN_INSTALL_DIR} )
 
@@ -30,6 +30,7 @@ install(TARGETS kblocks  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kblocks.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kblocksui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kblocks )
+install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )
 
