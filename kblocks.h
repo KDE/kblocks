@@ -34,7 +34,6 @@ class KBlocks : public KXmlGuiWindow
      * Default Destructor */
       ~KBlocks();
   private slots:
-      void close();
       void configureSettings();
       void pauseGame();
       void showHighscore();
@@ -42,7 +41,7 @@ class KBlocks : public KXmlGuiWindow
       void onIsHighscore(int points, int level);
       void levelChanged(KGameDifficulty::standardLevel);
   protected:
-      virtual void closeEvent(QCloseEvent *);
+      virtual bool queryExit();
     private:
       KBlocksView* view;
       QAction*  m_pauseAction;

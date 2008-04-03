@@ -31,7 +31,6 @@
 #include <KActionCollection>
 
 #include <QPixmapCache>
-#include <QCloseEvent>
 
 #include <time.h>
 
@@ -124,15 +123,10 @@ KBlocks::~KBlocks()
     delete view;
 }
 
-void KBlocks::close()
+bool KBlocks::queryExit()
 {
   Settings::self()->writeConfig();
-}
-
-void KBlocks::closeEvent(QCloseEvent *event)
-{
-  close();
-  event->accept();
+  return true;
 }
 
 void KBlocks::pauseGame()
