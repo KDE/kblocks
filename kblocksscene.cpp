@@ -12,6 +12,7 @@
 #include "kblocksgraphics.h"
 #include <QtDebug>
 #include <KStandardDirs>
+#include <KLocale>
 #include <KDE/KGamePopupItem>
 #include <KDE/KGameDifficulty>
 
@@ -136,7 +137,7 @@ void KBlocksScene::step()
         }
         //Has it ended?
         if (isTrappedAtTop(piece)) {
-          QString end("Game Over"); 
+          QString end(i18n("Game Over")); 
           showMessage( end, 4000 );
           stepTimer.stop();
           gameState=Game_Finished;
@@ -218,7 +219,7 @@ void KBlocksScene::startGame()
 
 void KBlocksScene::greetPlayer()
 {
-   QString start("Game started"); 
+  QString start(i18n("Game started")); 
    showMessage( start, 2000 ); 
 }
 
@@ -232,8 +233,8 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
   //Only work for paused, suspended and active states
   /*if ((gameState!=Game_Paused)&&(gameState!=Game_Active) &&(gameState!=Game_Suspended))
     return;*/
-  QString resuming("Resuming Game"); 
-  QString pausing("Game Paused"); 
+  QString resuming(i18n("Resuming Game")); 
+  QString pausing(i18n("Game Paused")); 
   
   if (!fromUI) {
    //not user initiated, check if we must suspend or resume
