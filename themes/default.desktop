@@ -1,22 +1,6 @@
 [KGameTheme]
 Name=Default
-Name[bg]=По подразбиране
-Name[de]=Standard
-Name[et]=Vaikimisi
-Name[nl]=Standaard
-Name[pt]=Por Omissão
-Name[pt_BR]=Por Omissão
-Name[sv]=Förval
-Name[xx]=xxDefaultxx
 Description=KBlocks Oxygen theme for KDE 4
-Description[bg]=Тема за KBlocks Oxygen за KDE 4
-Description[de]=KBlocks Oxygen-Thema für KDE 4
-Description[et]=KBlocks KDE4 Oxygeni teemaga
-Description[nl]=KBlocks Oxygen-thema voor KDE 4
-Description[pt]=Tema Oxygen do KBlocks para o KDE 4
-Description[pt_BR]=Tema Oxygen do KBlocks para o KDE 4
-Description[sv]=Kblocks Oxygen-tema för KDE 4
-Description[xx]=xxKBlocks Oxygen theme for KDE 4xx
 VersionFormat=1
 Author=Johann-Ollivier Lapeyre
 AuthorEmail=johann.ollivierlapeyre@gmail.com
