@@ -437,13 +437,13 @@ bool KBlocksScene::canRotate(Piece * piece, KBlocksRotationDirection direction)
   PieceRotation curpiecerotation = pieceset.at(rotationidx);
   //get here current delta
   int nextrotationidx;
-  if (direction==Rotate_Clockwise) {
+  if (direction==Rotate_CounterClockwise) {
     nextrotationidx = rotationidx+1;
     if (nextrotationidx >= pieceset.count()) {
       //wrap up next rotation
       nextrotationidx = 0;
     } 
-  } else { //CCW rotation
+  } else { //CW rotation
     nextrotationidx = rotationidx-1;
     if (nextrotationidx < 0) {
       //wrap up next rotation
@@ -502,13 +502,13 @@ void KBlocksScene::rotatePiece(Piece * piece, KBlocksRotationDirection direction
   PieceRotation curpiecerotation = pieceset.at(rotationidx);
   //get here current delta
   int nextrotationidx;
-  if (direction==Rotate_Clockwise) {
+  if (direction==Rotate_CounterClockwise) {
     nextrotationidx = rotationidx+1;
     if (nextrotationidx >= pieceset.count()) {
       //wrap up next rotation
       nextrotationidx = 0;
     } 
-  } else { //CCW rotation
+  } else { //CW rotation
     nextrotationidx = rotationidx-1;
     if (nextrotationidx < 0) {
       //wrap up next rotation
