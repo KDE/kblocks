@@ -9,7 +9,7 @@
 <book lang="&language;">
 
 <bookinfo>
-<title>The &kblocks; Handbook</title>
+<title>The &kappname; Handbook</title>
 
 <authorgroup>
 <author>
@@ -283,7 +283,7 @@ How can I pause the game?
 </question>
 <answer>
 <para>
-Yes, press the <guibutton>Pause</guibutton> button, select <menuchoice><guimenu>Game</guimenu>
+To pause the game press the <guibutton>Pause</guibutton> button, select <menuchoice><guimenu>Game</guimenu>
 <guimenuitem>Pause</guimenuitem></menuchoice> from the menubar or press 
 <keycap>P</keycap>
 </para>
