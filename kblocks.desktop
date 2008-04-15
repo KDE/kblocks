@@ -1,14 +1,15 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KBlocks
-Name[sv]=Kblocks
 Icon=kblocks
 Exec=kblocks -caption "%c"
 Type=Application
 DocPath=kblocks/index.html
 GenericName=Falling blocks game
-GenericName[et]=Langevate klotside mäng
-GenericName[sv]=Spel med fallande block
+GenericName[es]=Juego en el que caen bloques
+GenericName[ja]=落ちてくるブロックのゲーム
+GenericName[pt]=Jogo de blocos em queda
+GenericName[pt_BR]=Jogo de blocos em queda
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
