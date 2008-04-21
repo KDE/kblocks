@@ -24,8 +24,8 @@
 #include <KStandardAction>
 #include <KIcon>
 #include <kscoredialog.h>
-#include <KDE/KGameThemeSelector>
-#include <KDE/KStatusBar>
+#include <KGameThemeSelector>
+#include <KStatusBar>
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>

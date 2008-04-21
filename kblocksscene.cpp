@@ -13,8 +13,8 @@
 #include <QtDebug>
 #include <KStandardDirs>
 #include <KLocale>
-#include <KDE/KGamePopupItem>
-#include <KDE/KGameDifficulty>
+#include <KGamePopupItem>
+#include <KGameDifficulty>
 
 #include "settings.h"
 
