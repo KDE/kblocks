@@ -20,7 +20,7 @@ kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
 kde4_add_executable(kblocks ${kblocks_SRCS})
 
-target_link_libraries(kblocks  ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEUI_LIBS} ${KDEGAMES_LIBRARY} )
+target_link_libraries(kblocks kdegames ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEUI_LIBS} )
 
 install(TARGETS kblocks  DESTINATION ${BIN_INSTALL_DIR} )
 
