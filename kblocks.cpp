@@ -20,10 +20,10 @@
 #include <KInputDialog>
 #include <KMenuBar>
 #include <KMessageBox>
-#include <KDE/KStandardGameAction>
+#include <kstandardgameaction.h>
 #include <KStandardAction>
 #include <KIcon>
-#include <KDE/KScoreDialog>
+#include <kscoredialog.h>
 #include <KDE/KGameThemeSelector>
 #include <KDE/KStatusBar>
 #include <KLocale>
