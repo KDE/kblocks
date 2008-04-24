@@ -1,11 +1,15 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KBlocks
+Name[sv]=Kblock
 Icon=kblocks
 Exec=kblocks -caption "%c"
 Type=Application
 DocPath=kblocks/index.html
 GenericName=Falling blocks game
+GenericName[pt_BR]=Jogo estilo tetris
+GenericName[sv]=Spel med fallande block
+GenericName[zh_TW]=類似俄羅斯方塊遊戲
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
