@@ -29,7 +29,7 @@
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>
-#include <KUser>
+
 #include <QPixmapCache>
 
 #include <time.h>
@@ -143,17 +143,12 @@ void KBlocks::showHighscore()
 
 void KBlocks::onIsHighscore(int points, int level)
 {
-  KUser user;
-  QString userName = user.property(KUser::FullName).toString();
-  if ( userName.isEmpty() )
-    userName = user.loginName();
   KScoreDialog ksdialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
   ksdialog.setConfigGroup(KGameDifficulty::levelString());
   KScoreDialog::FieldInfo info;
-  info[KScoreDialog::Name] = userName;
   info[KScoreDialog::Score].setNum( points );
   info[KScoreDialog::Level].setNum( level );
-  if ( ksdialog.addScore( info, KScoreDialog::AskName ) )
+  if ( ksdialog.addScore( info ) )
     ksdialog.exec();
 }
 
