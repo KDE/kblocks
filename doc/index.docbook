@@ -70,7 +70,7 @@ Shortcuts...</guimenuitem></menuchoice>
 <title>Rules</title>
 <itemizedlist>
 <listitem><para>The rules are simple: just keep space for the blocks to fall!</para></listitem>
-<listitem><para>When a new block can not fall, the game is over.</para></listitem>
+<listitem><para>When a new block cannot fall, the game is over.</para></listitem>
 </itemizedlist>
 </sect1>
 
