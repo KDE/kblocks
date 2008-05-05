@@ -1,0 +1,12 @@
+[KGameTheme]
+Name=Aztec
+Name[xx]=xxAztecxx
+Description=Aztec ritual describing the eternal battle of Fire of Life versus Waters of Time
+Description[xx]=xxAztec ritual describing the eternal battle of Fire of Life versus Waters of Timexx
+VersionFormat=1
+Author=Eugene Trounev
+AuthorEmail=eugene.trounev@gmail.org
+Type=SVG
+FileName=aztek.svgz
+Preview=aztec.png
+
