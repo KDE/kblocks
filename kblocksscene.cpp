@@ -590,7 +590,7 @@ void KBlocksScene::removeLine(int liney)
       frozenBlocks.removeAll(block);
       int color = block->data(Block_Color).toInt();
       //block->setPixmap(grafx->elementPixmap(grafx->m_Block_Size, grafx->m_Block_Size, QString("BLOCK_OUT_%1").arg(color)));
-      block->setElementId(QString("BLOCK_OUT_0"));
+      block->setElementId(QString("BLOCK_OUT_%1").arg(color));
       fadeOutBlocks << block;
       //block->hide();
       //removeItem(block);
