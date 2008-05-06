@@ -27,7 +27,7 @@ class KBlocksGraphics
     void readThemeValues();
     void adjustForSize(const QSize& newsize);
     KGameTheme * theme() { return m_theme; }
-    QSvgRenderer * renderer() { return m_renderer; }
+    KSvgRenderer * renderer() { return m_renderer; }
     //QPixmap elementPixmap(int width, int height, const QString & elementid);
     
     int m_Block_Size;
@@ -42,7 +42,7 @@ class KBlocksGraphics
     
   private:
     KGameTheme * m_theme;
-    QSvgRenderer *m_renderer;
+    KSvgRenderer *m_renderer;
     
     //QPixmap renderElement(int width, int height, const QString & elementid);
     //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);
