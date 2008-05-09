@@ -1,4 +1,4 @@
 [KNewStuff2]
-ProvidersUrl=http://games.kde.org/knewstuff/kde4.0/kblocks/providers.xml
+ProvidersUrl=http://newstuff.kde.org/cgi-bin/hotstuff-provider?site=kblocks
 TargetDir=kblocks/themes
 Uncompress=true
