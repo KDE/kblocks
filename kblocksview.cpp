@@ -11,6 +11,7 @@
 #include "kblocksview.h"
 #include "kblocksscene.h"
 #include <KDebug>
+#include <QResizeEvent>
 
 KBlocksView::KBlocksView (QWidget * parent): QGraphicsView(parent)
 {

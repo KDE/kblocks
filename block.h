@@ -11,8 +11,9 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include <QtSvg>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsSvgItem>
+#include <QHash>
 
 class Block : //public QObject, public QGraphicsSvgItem
     public QGraphicsSvgItem

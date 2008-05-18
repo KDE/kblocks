@@ -11,7 +11,6 @@
 #ifndef BLOCKANIMATOR_H
 #define BLOCKANIMATOR_H
 
-#include <QtSvg>
 #include <QGraphicsView>
 #include <QTimeLine>
 

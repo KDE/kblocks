@@ -14,7 +14,6 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QtSvg>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup>
 #include <QTimer>
