@@ -18,6 +18,8 @@ set(kblocks_SRCS
 
 kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
+kde4_add_app_icon(kblocks_SRCS "hi*-app-kblocks.png")
+
 kde4_add_executable(kblocks ${kblocks_SRCS})
 
 target_link_libraries(kblocks kdegames ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEUI_LIBS} )
@@ -33,5 +35,6 @@ install( FILES kblocksui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kblocks )
 install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}   )
+
 
 
