@@ -1,0 +1,26 @@
+[KGameTheme]
+Name=Black and White
+Name[bg]=Черно и бяло
+Name[de]=Schwarz und Weiß
+Name[et]=Mustvalge
+Name[nl]=Zwart en wit
+Name[pt]=Preto e Branco
+Name[pt_BR]=Preto e Branco
+Name[sv]=Svartvitt
+Name[xx]=xxBlack and Whitexx
+Description=KBlocks Black and White
+Description[bg]=KBlocks - черно и бяло
+Description[de]=KBlocks Schwarz und Weiß
+Description[et]=Mustvalge KBlocks
+Description[nl]=KBlocks zwart en wit
+Description[pt]=KBlocks a Preto-e-Branco
+Description[pt_BR]=KBlocks a Preto-e-Branco
+Description[sv]=Kblocks svartvitt
+Description[xx]=xxKBlocks Black and Whitexx
+VersionFormat=1
+Author=Mauricio Piacentini, Eugene Trounev
+AuthorEmail=piacentini@kde.org, eugene.trounev@gmail.com
+Type=SVG
+FileName=bw_theme.svg
+Preview=bw_preview.png
+
