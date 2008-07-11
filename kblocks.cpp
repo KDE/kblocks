@@ -161,7 +161,7 @@ void KBlocks::configureSettings()
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), view, SLOT(settingsChanged()));
-  connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
+  //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
   dialog->show();
 
 }
