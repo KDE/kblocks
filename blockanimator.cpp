@@ -73,3 +73,5 @@ void DropAnimator::animationFinished( )
   }
   emit finished(this);
 }
+
+#include "blockanimator.moc"

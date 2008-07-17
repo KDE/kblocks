@@ -87,3 +87,5 @@ QVariant  Piece::data ( int key )
 
 //#include "block.moc"
 
+
+#include "block.moc"

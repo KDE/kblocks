@@ -843,3 +843,5 @@ void KBlocksScene::showMessage( const QString& message, int ms )
   messageItem->setMessageTimeout( ms );
   messageItem->showMessage( message, KGamePopupItem::TopLeft );
 }
+
+#include "kblocksscene.moc"
