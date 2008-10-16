@@ -51,6 +51,7 @@ bool KBlocksGraphics::loadTheme ( const QString& themeFile )
 
 void KBlocksGraphics::adjustForSize(const QSize& newsize)
 {
+  Q_UNUSED(newsize)
   //Reset our values
   readThemeValues();
   

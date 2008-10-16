@@ -77,7 +77,7 @@ void KBlocksScene::drawBackground ( QPainter * painter, const QRectF & rect )
   }
 }
 
-void KBlocksScene::viewScaled(const QSize& newsize)
+void KBlocksScene::viewScaled(const QSize& /*newsize*/)
 {
   //Temporarily halt game timer while resizing elements
   //if (gameState==Game_Active) stepTimer.stop();
@@ -655,6 +655,8 @@ void KBlocksScene::addToScore(KBlocksScoreEvent type, int count)
         case 4: 
           comboLinesValue = 1200;
           break;
+        default:
+          comboLinesValue = 0;
       }
       //Classical scoring and gameplay uses level 0 as the first one
       currentPoints = currentPoints + (comboLinesValue*(currentLevel+1));

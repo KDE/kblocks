@@ -77,12 +77,12 @@ void KBlocksView::moveDown()
   m_scene->attemptMove(QPoint(0,1));
 }
 
-void KBlocksView::focusInEvent ( QFocusEvent * event )
+void KBlocksView::focusInEvent ( QFocusEvent * )
 {
   //Recover from suspended state, sinalize it was not initiated by UI
   m_scene->pauseGame(false,false);
 }
-void KBlocksView::focusOutEvent ( QFocusEvent * event )
+void KBlocksView::focusOutEvent ( QFocusEvent * )
 {
   //Force suspended state, sinalize it was not initiated by UI
   m_scene->pauseGame(true, false);
