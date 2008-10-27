@@ -66,31 +66,31 @@ KBlocks::KBlocks()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
     
-    QAction* rotatecw = actionCollection()->addAction("rotate_cw");
+    KAction* rotatecw = actionCollection()->addAction("rotate_cw");
     rotatecw->setText(i18n("Rotate Piece Clockwise"));
     rotatecw->setIcon(KIcon("object-rotate-right"));
     rotatecw->setShortcuts( KShortcut( "z" ) );
     connect(rotatecw, SIGNAL(triggered(bool)), view, SLOT(rotateCW()));
     
-    QAction* rotateccw = actionCollection()->addAction("rotate_ccw");
+    KAction* rotateccw = actionCollection()->addAction("rotate_ccw");
     rotateccw->setText(i18n("Rotate Piece Counter Clockwise"));
     rotateccw->setIcon(KIcon("object-rotate-left"));
     rotateccw->setShortcuts( KShortcut( Qt::Key_Up  ) );
     connect(rotateccw, SIGNAL(triggered(bool)), view, SLOT(rotateCCW()));
     
-    QAction* moveleft = actionCollection()->addAction("move_left");
+    KAction* moveleft = actionCollection()->addAction("move_left");
     moveleft->setText(i18n("Move Piece Left"));
     moveleft->setIcon(KIcon("arrow-left"));
     moveleft->setShortcuts( KShortcut( Qt::Key_Left ) );
     connect(moveleft, SIGNAL(triggered(bool)), view, SLOT(moveLeft()));
     
-    QAction* moveright = actionCollection()->addAction("move_right");
+    KAction* moveright = actionCollection()->addAction("move_right");
     moveright->setText(i18n("Move Piece Right"));
     moveright->setIcon(KIcon("arrow-right"));
     moveright->setShortcuts( KShortcut( Qt::Key_Right) );
     connect(moveright, SIGNAL(triggered(bool)), view, SLOT(moveRight()));
     
-    QAction* movedown = actionCollection()->addAction("move_down");
+    KAction* movedown = actionCollection()->addAction("move_down");
     movedown->setText(i18n("Move Piece Down"));
     movedown->setIcon(KIcon("arrow-down"));
     movedown->setShortcuts( KShortcut( Qt::Key_Down ) );
