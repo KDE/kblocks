@@ -41,6 +41,7 @@ enum KBlocksRotationDirection { Rotate_Clockwise=0,
 
 class KGamePopupItem;
 class KBlocksGraphics;
+class KBlocksSound;
 
 class KBlocksScene : public QGraphicsScene
 {
@@ -63,6 +64,7 @@ public:
 
 private:
     KBlocksGraphics *grafx;
+    KBlocksSound *snd;
     QList<QObject *> animators;
     QList<Piece *> activePieces;
     QList<Block *> frozenBlocks;

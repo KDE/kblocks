@@ -10,7 +10,7 @@
  
 #include "kblocksscene.h"
 #include "kblocksgraphics.h"
-#include <QtDebug>
+#include "kblockssound.h"
 #include <KStandardDirs>
 #include <KLocale>
 #include <KGamePopupItem>
@@ -26,6 +26,7 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     nextPiece = new Piece();
     QString themeFile(Settings::theme());
     grafx = new KBlocksGraphics(themeFile);
+    snd = new KBlocksSound(themeFile);
     setSceneRect(0, 0, grafx->m_View_Size_Width, grafx->m_View_Size_Height);
 
     //playArea is our first item, non parented. We add it explicitally.
@@ -57,6 +58,7 @@ KBlocksScene::~KBlocksScene()
   cleanAll();
   delete nextPiece;
   delete grafx;
+  delete snd;
 }
 
 void KBlocksScene::readSettings(const QSize & viewSize)
@@ -64,7 +66,7 @@ void KBlocksScene::readSettings(const QSize & viewSize)
   if (grafx->theme()->fileName()!=Settings::theme())
   {
     grafx->loadTheme(Settings::theme());
-    
+    snd->loadTheme(Settings::theme());
     grafx->adjustForSize(viewSize);
     updateDimensions();
   }
@@ -292,6 +294,7 @@ void KBlocksScene::attemptMove(const QPoint& delta)
   foreach (Piece* piece, activePieces) {
       //check if we can move
     if (canMove(piece, delta)) {
+      snd->playSound("Sound_Block_Move");
       movePiece(piece, delta);
     } 
   }
@@ -305,6 +308,7 @@ void KBlocksScene::attemptRotation(KBlocksRotationDirection direction)
   foreach (Piece* piece, activePieces) {
       //check if we can rotate
     if (canRotate(piece, direction)) {
+      snd->playSound("Sound_Block_Move");
       rotatePiece(piece, direction);
     } 
   }
@@ -534,6 +538,7 @@ void KBlocksScene::rotatePiece(Piece * piece, KBlocksRotationDirection direction
 
 void KBlocksScene::freezePiece(Piece * piece)
 {
+  snd->playSound("Sound_Block_Fall");
   foreach (Block *block, piece->children()) {
     piece->removeItem(block);
     //frozenBlocksMap.insert(coordToIndex(block->data(Block_Coord).toPoint()), block);

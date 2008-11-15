@@ -72,4 +72,6 @@ AuthorEmail=johann.ollivierlapeyre@gmail.com
 Type=SVG
 FileName=default_theme.svg
 Preview=default_preview.png
+Sound_Block_Move=default_block_move.ogg
+Sound_Block_Fall=default_block_fall.ogg
 
