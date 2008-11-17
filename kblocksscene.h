@@ -58,6 +58,7 @@ public:
     void pauseGame(bool pause, bool fromUI);
     void startGame();
     void readSettings(const QSize & viewSize);
+    void setSoundsEnabled(bool enabled);
     void viewScaled(const QSize& newsize);
     void attemptMove(const QPoint& delta);
     void attemptRotation(KBlocksRotationDirection direction);

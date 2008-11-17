@@ -851,4 +851,9 @@ void KBlocksScene::showMessage( const QString& message, int ms )
   messageItem->showMessage( message, KGamePopupItem::TopLeft );
 }
 
+void KBlocksScene::setSoundsEnabled( bool enabled )
+{
+  snd->setSoundsEnabled(enabled);
+}
+
 #include "kblocksscene.moc"

@@ -33,6 +33,7 @@ class KBlocksSound
     QString sndDirectory;
     Phonon::MediaObject* m_media1;
     Phonon::MediaObject* m_media2;
+    bool sndActive;
 
 };
 

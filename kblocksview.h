@@ -27,6 +27,7 @@ class KBlocksView : public QGraphicsView
     void newGame();
     void pauseGame(bool pressed);
     void settingsChanged();
+    void setSoundsEnabled(bool enabled);
     void rotateCW();
     void rotateCCW();
     void moveLeft();

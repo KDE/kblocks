@@ -40,6 +40,7 @@ class KBlocks : public KXmlGuiWindow
       void onScoreChanged(int points, int lines, int level);
       void onIsHighscore(int points, int level);
       void levelChanged(KGameDifficulty::standardLevel);
+      void setSoundsEnabled(bool enabled);
   protected:
       virtual bool queryExit();
     private:

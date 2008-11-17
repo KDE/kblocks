@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="kblocks" version="3">
+<kpartgui name="kblocks" version="4">
 
 <MenuBar>
   <Menu name="game">
@@ -9,6 +9,9 @@
     <Action name="showHighscores" />
     <Separator/>
     <Action name="quit" />
+  </Menu>
+  <Menu name="settings">
+    <Action name="sounds" />
   </Menu>
 </MenuBar>
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>

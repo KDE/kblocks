@@ -16,6 +16,8 @@
 #include <QFile>
 #include <QFileInfo>
 
+#include "settings.h"
+
 KBlocksSound::KBlocksSound ( const QString& themeFile )
 {
   m_media1 = 0;
@@ -26,8 +28,8 @@ KBlocksSound::KBlocksSound ( const QString& themeFile )
     m_theme->loadDefault();
   }
   readThemeValues();
-  //enable sounds by default
-  setSoundsEnabled(true);
+
+  setSoundsEnabled(Settings::sounds());
 }
 
 KBlocksSound::~KBlocksSound()
@@ -58,6 +60,7 @@ void KBlocksSound::readThemeValues()
 }
 
 void KBlocksSound::setSoundsEnabled(bool p_enabled) {
+	sndActive = p_enabled;
         if (p_enabled) {
                 if (!m_media1) {
                         m_media1 = Phonon::createPlayer(Phonon::GameCategory);
@@ -77,7 +80,7 @@ void KBlocksSound::playSound(const QString& p_soundkey) {
     Phonon::MediaObject* m_usedMedia;
     QString p_sound = sndDirectory+m_theme->themeProperty(p_soundkey);
     kDebug() << p_sound;
-//    if (Settings::sounds()) {
+    if (sndActive) {
         // Choose the media object with the smallest remaining time
         if (m_media1->remainingTime() <= m_media2->remainingTime()) {
              m_usedMedia = m_media1;
@@ -86,7 +89,7 @@ void KBlocksSound::playSound(const QString& p_soundkey) {
         }
         m_usedMedia->setCurrentSource(p_sound);
         m_usedMedia->play();
-//    }
+    }
 }
 
 

@@ -95,6 +95,11 @@ KBlocks::KBlocks()
     movedown->setIcon(KIcon("arrow-down"));
     movedown->setShortcuts( KShortcut( Qt::Key_Down ) );
     connect(movedown, SIGNAL(triggered(bool)), view, SLOT(moveDown()));
+
+    KAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
+    soundAction->setChecked(Settings::sounds());
+    actionCollection()->addAction("sounds", soundAction);
+    connect(soundAction, SIGNAL(triggered(bool)), this, SLOT(setSoundsEnabled(bool)));
     
     statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
     connect(view->getSceneObject(), SIGNAL(scoreChanged(int,int,int)), this,  SLOT(onScoreChanged(int,int,int)));
@@ -175,6 +180,10 @@ void KBlocks::levelChanged(KGameDifficulty::standardLevel)
 {
   //Scene reads the difficulty level for us
   view->newGame();
+}
+
+void KBlocks::setSoundsEnabled(bool enabled) {
+  view->setSoundsEnabled(enabled);
 }
 
 

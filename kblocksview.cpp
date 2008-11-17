@@ -52,6 +52,11 @@ void KBlocksView::settingsChanged()
   fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
+void KBlocksView::setSoundsEnabled(bool enabled)
+{
+  m_scene->setSoundsEnabled(enabled);
+}
+
 void KBlocksView::rotateCW()
 {
   m_scene->attemptRotation(Rotate_Clockwise);
