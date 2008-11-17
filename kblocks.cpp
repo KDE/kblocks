@@ -185,6 +185,7 @@ void KBlocks::levelChanged(KGameDifficulty::standardLevel)
 
 void KBlocks::setSoundsEnabled(bool enabled) {
   view->setSoundsEnabled(enabled);
+  Settings::setSounds(enabled);
 }
 
 
