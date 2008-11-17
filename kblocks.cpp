@@ -96,6 +96,9 @@ KBlocks::KBlocks()
     movedown->setShortcuts( KShortcut( Qt::Key_Down ) );
     connect(movedown, SIGNAL(triggered(bool)), view, SLOT(moveDown()));
 
+    //restore difficulty and sound from settings, need to read them first
+    Settings::self()->readConfig();
+
     KAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction("sounds", soundAction);
@@ -111,8 +114,6 @@ KBlocks::KBlocks()
     KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
     
-    //restore difficulty from settings, need to read it first
-    Settings::self()->readConfig();
     int difficulty = Settings::difficulty();
     if ((difficulty < KGameDifficulty::Easy) || (difficulty > KGameDifficulty::Hard) )
       //unexpected, but use a default
