@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KBlocks
+Name[ro]=KBlocuri
 Name[sv]=Kblock
 Name[x-test]=xxKBlocksxx
 Icon=kblocks
@@ -26,6 +27,7 @@ GenericName[nn]=Spel med fallande brikker
 GenericName[pl]=Gra w spadające bloki
 GenericName[pt]=Jogo de blocos em queda
 GenericName[pt_BR]=Jogo estilo tetris
+GenericName[ro]=Joc de blocuri căzătoare
 GenericName[ru]=Тетрис, исконно русская забава
 GenericName[sl]=Igra padajočih kock
 GenericName[sv]=Spel med fallande block
