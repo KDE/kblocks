@@ -263,36 +263,6 @@ Shortcuts...</guimenuitem> </menuchoice> from the menubar.</para>
 <qandaentry>
 <question>
 <para>
-How do I start a new game?
-</para>
-</question>
-<answer>
-<para>
-Press the <guibutton>New</guibutton> button, select <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem></menuchoice> from the menubar or press 
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-How can I pause the game?
-</para>
-</question>
-<answer>
-<para>
-To pause the game press the <guibutton>Pause</guibutton> button, select <menuchoice><guimenu>Game</guimenu>
-<guimenuitem>Pause</guimenuitem></menuchoice> from the menubar or press 
-<keycap>P</keycap>
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
 Can I change the way the game looks?
 </para>
 </question>
