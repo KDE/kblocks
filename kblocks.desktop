@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KBlocks
+Name[hne]=के-बाक्स
 Name[ro]=KBlocuri
 Name[sv]=Kblock
 Name[x-test]=xxKBlocksxx
@@ -17,6 +18,7 @@ GenericName[et]=Langevate klotside mäng
 GenericName[fr]=Jeu de blocs qui tombent
 GenericName[ga]=Cluiche le bloic atá ag titim
 GenericName[gl]=Xogo de pezas a cair
+GenericName[hne]=गिरत इंटा खेल
 GenericName[it]=Gioco di blocchi che cadono
 GenericName[ja]=落下するブロックのゲーム
 GenericName[km]=ល្បែង​ប្លុក​ទម្លាក់
