@@ -95,6 +95,12 @@ KBlocks::KBlocks()
     movedown->setIcon(KIcon("arrow-down"));
     movedown->setShortcuts( KShortcut( Qt::Key_Down ) );
     connect(movedown, SIGNAL(triggered(bool)), view, SLOT(moveDown()));
+    
+    KAction* pushdown = actionCollection()->addAction("push_down");
+    pushdown->setText(i18n("Drop the Piece"));
+    pushdown->setIcon(KIcon("arrow-down"));
+    pushdown->setShortcuts( KShortcut( Qt::Key_Space ) );
+    connect(pushdown, SIGNAL(triggered(bool)), view, SLOT(pushDown()));
 
     //restore difficulty and sound from settings, need to read them first
     Settings::self()->readConfig();

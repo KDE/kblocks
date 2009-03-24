@@ -300,6 +300,24 @@ void KBlocksScene::attemptMove(const QPoint& delta)
   }
 }
 
+void KBlocksScene::attemptPushDown(const QPoint& delta)
+{
+  if (gameState!=Game_Active) {
+    return;
+  }
+  //check how deep we can move
+  bool moveable = true;
+  while(moveable) {
+    moveable=false;
+    foreach (Piece* piece, activePieces){
+      if (canMove(piece, delta)) {
+	movePiece(piece,delta);
+	moveable=true;
+      }
+    }
+  }
+}
+
 void KBlocksScene::attemptRotation(KBlocksRotationDirection direction)
 {
   if (gameState!=Game_Active) {

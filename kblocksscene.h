@@ -61,6 +61,7 @@ public:
     void setSoundsEnabled(bool enabled);
     void viewScaled(const QSize& newsize);
     void attemptMove(const QPoint& delta);
+    void attemptPushDown(const QPoint& delta);
     void attemptRotation(KBlocksRotationDirection direction);
 
 private:

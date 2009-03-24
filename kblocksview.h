@@ -33,6 +33,7 @@ class KBlocksView : public QGraphicsView
     void moveLeft();
     void moveRight();
     void moveDown();
+    void pushDown();
     
   protected:
     void focusInEvent ( QFocusEvent * event );

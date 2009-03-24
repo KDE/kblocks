@@ -82,6 +82,11 @@ void KBlocksView::moveDown()
   m_scene->attemptMove(QPoint(0,1));
 }
 
+void KBlocksView::pushDown()
+{
+  m_scene->attemptPushDown(QPoint(0,1));
+}
+
 void KBlocksView::focusInEvent ( QFocusEvent * )
 {
   //Recover from suspended state, sinalize it was not initiated by UI
