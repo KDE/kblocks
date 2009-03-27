@@ -269,7 +269,7 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
   }
 setStatusAndExit:
   //Set KGameDifficulty state, for prompting user on restart
-  if (gameState==Game_Active) KGameDifficulty::setRunning(true);
+  if (previousGameState==Game_Active) KGameDifficulty::setRunning(true);
   else KGameDifficulty::setRunning(false);
 }
 
