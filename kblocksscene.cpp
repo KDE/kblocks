@@ -127,6 +127,8 @@ void KBlocksScene::updateDimensions()
 
 void KBlocksScene::step()
 {
+//   gets callet by the stepTimer
+
     foreach (Piece* piece, activePieces) {
       //check if we can move down
       if (canMove(piece, QPoint(0,1))) {
@@ -233,8 +235,6 @@ void KBlocksScene::checkHighscore()
 void KBlocksScene::pauseGame(bool pause, bool fromUI)
 {
   //Only work for paused, suspended and active states
-  /*if ((gameState!=Game_Paused)&&(gameState!=Game_Active) &&(gameState!=Game_Suspended))
-    return;*/
   QString resuming(i18n("Resuming Game")); 
   QString pausing(i18n("Game Paused")); 
   
@@ -243,7 +243,6 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
     if (pause) {
       previousGameState = gameState;
       gameState = Game_Suspended;
-      //showMessage( pausing, 2000 );
       stepTimer.stop();
     } else {
       gameState = previousGameState;
@@ -252,22 +251,21 @@ void KBlocksScene::pauseGame(bool pause, bool fromUI)
       }
       if (gameState==Game_Paused) stepTimer.stop();
     }
-    goto setStatusAndExit;
-  }
-  
-  if ((gameState==Game_Paused)&&!pause)  {
-    stepTimer.start();
-    showMessage( resuming, 2000 );
-    gameState=Game_Active;
-  } else if ((gameState==Game_Active)&&pause){
-    showMessage( pausing, 2000 );
-    stepTimer.stop();
-    gameState=Game_Paused;
   } else {
-    //inconsistency, restore state and log
-    kDebug()<<"Inconsistent Game State at pauseGame:"<<gameState<<pause;
+     //user initiated
+    if ((gameState==Game_Paused)&&!pause)  {
+      stepTimer.start();
+      showMessage( resuming, 2000 );
+      gameState=Game_Active;
+    } else if ((gameState==Game_Active)&&pause){
+      showMessage( pausing, 2000 );
+      stepTimer.stop();
+      gameState=Game_Paused;
+    } else {
+      //inconsistency, restore state and log
+      kDebug()<<"Inconsistent Game State at pauseGame:"<<gameState<<pause;
+    }
   }
-setStatusAndExit:
   //Set KGameDifficulty state, for prompting user on restart
   if (previousGameState==Game_Active) KGameDifficulty::setRunning(true);
   else KGameDifficulty::setRunning(false);

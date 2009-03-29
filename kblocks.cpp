@@ -187,6 +187,7 @@ void KBlocks::levelChanged(KGameDifficulty::standardLevel)
 {
   //Scene reads the difficulty level for us
   view->newGame();
+  view->setFocus(Qt::MouseFocusReason);
 }
 
 void KBlocks::setSoundsEnabled(bool enabled) {
