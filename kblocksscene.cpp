@@ -28,6 +28,7 @@ KBlocksScene::KBlocksScene() : gameState(Game_Starting), currentLevel(0), curren
     grafx = new KBlocksGraphics(themeFile);
     snd = new KBlocksSound(themeFile);
     setSceneRect(0, 0, grafx->m_View_Size_Width, grafx->m_View_Size_Height);
+    firstBlock=true;
 
     //playArea is our first item, non parented. We add it explicitally.
     playArea = new QGraphicsSvgItem();
@@ -194,6 +195,7 @@ void KBlocksScene::startGame()
   currentRemovedLines = 0;
   currentPoints = 0;
   inLockPosition = false;
+  firstBlock = true;
   updateInterval = INITIAL_UPDATE_INTERVAL;
   stepTimer.setInterval(updateInterval);
   KGameDifficulty::standardLevel level = KGameDifficulty::level();
@@ -333,8 +335,16 @@ void KBlocksScene::attemptRotation(KBlocksRotationDirection direction)
 void KBlocksScene::prepareNewPiece()
 {
   //Chose one of the available piece types
+  //but for the first peace only a nice one
   int availablepiecetypes = pieceTypes.size();
-  int chosenset = rand()%availablepiecetypes; 
+  int chosenset;
+  if (firstBlock){
+    chosenset = rand()%4; 
+    firstBlock=false;
+  } else {
+    chosenset = rand()%availablepiecetypes; 
+  }
+    
   //qDebug() << chosenset;
   PieceSet chosenpieceset = pieceTypes.at(chosenset);
   //From the chosen piece set we now pick an initial orientation
@@ -343,6 +353,7 @@ void KBlocksScene::prepareNewPiece()
   PieceRotation chosenpiecerotation = chosenpieceset.at(chosenorientation);
 
   //Use the piece blueprint to construct our blocks
+  //First build nextPiece
   for (int i = 0; i < chosenpiecerotation.size(); ++i) {
     Block *block = new Block(playArea);
     block->setSharedRenderer(grafx->renderer());
@@ -354,13 +365,14 @@ void KBlocksScene::prepareNewPiece()
     block->setData(Block_Coord, point);
     //Position the block initially in the preview area
     block->setPos(nextPieceCoordToPoint(point));
-      //and append them to temporary collection
+    //and append them to temporary collection
     nextPiece->addItem(block);
   }
   //Store blueprint data needed to recreate/rotate the piece
   nextPiece->setData(Piece_Set, chosenset);
   nextPiece->setData(Piece_Rotation, chosenorientation);
   
+
   //Adjust the position of the blocks so that the piece is nicely centered in the preview area
   centerPiecePreview(nextPiece);
   
@@ -785,42 +797,6 @@ void KBlocksScene::initPieceTypes()
   pieceTypes << aset;
   aset.clear();
 
-  //Four blocks, resembling an airplane (T)
-  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(-1,0);
-  aset << apiece;
-  apiece.clear();
-  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(-1,0) << QPoint(0,1);
-  aset << apiece;
-  apiece.clear();
-  apiece << QPoint(0,0) << QPoint(1,0) << QPoint(-1,0) << QPoint(0,1); 
-  aset << apiece;
-  apiece.clear();
-  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(0,1);
-  aset << apiece;
-  apiece.clear();
-  pieceTypes << aset;
-  aset.clear();
-
-  //Four blocks, stair-like (S)
-  apiece << QPoint(0,0) << QPoint(0,1) << QPoint(1,0) << QPoint(1,-1);
-  aset << apiece;
-  apiece.clear();
-  apiece << QPoint(0,0) << QPoint(-1,0) << QPoint(0,1) << QPoint(1,1);
-  aset << apiece;
-  apiece.clear();
-  pieceTypes << aset;
-  aset.clear();
-
-  //Four blocks, also stair-like (Z)
-  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(1,1);
-  aset << apiece;
-  apiece.clear();
-  apiece << QPoint(0,0) << QPoint(-1,0) << QPoint(0,-1) << QPoint(1,-1);
-  aset << apiece;
-  apiece.clear();
-  pieceTypes << aset;
-  aset.clear();
-
   //Four blocks, L shape (L)
   apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(0,-2) << QPoint(1,0);
   aset << apiece;
@@ -855,6 +831,42 @@ void KBlocksScene::initPieceTypes()
 
   //Four blocks, square (O)
   apiece << QPoint(0,0) << QPoint(1,0) << QPoint(0,-1) << QPoint(1,-1);
+  aset << apiece;
+  apiece.clear();
+  pieceTypes << aset;
+  aset.clear();
+
+  //Four blocks, resembling an airplane (T)
+  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(-1,0);
+  aset << apiece;
+  apiece.clear();
+  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(-1,0) << QPoint(0,1);
+  aset << apiece;
+  apiece.clear();
+  apiece << QPoint(0,0) << QPoint(1,0) << QPoint(-1,0) << QPoint(0,1); 
+  aset << apiece;
+  apiece.clear();
+  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(0,1);
+  aset << apiece;
+  apiece.clear();
+  pieceTypes << aset;
+  aset.clear();
+
+  //Four blocks, stair-like (S)
+  apiece << QPoint(0,0) << QPoint(0,1) << QPoint(1,0) << QPoint(1,-1);
+  aset << apiece;
+  apiece.clear();
+  apiece << QPoint(0,0) << QPoint(-1,0) << QPoint(0,1) << QPoint(1,1);
+  aset << apiece;
+  apiece.clear();
+  pieceTypes << aset;
+  aset.clear();
+
+  //Four blocks, also stair-like (Z)
+  apiece << QPoint(0,0) << QPoint(0,-1) << QPoint(1,0) << QPoint(1,1);
+  aset << apiece;
+  apiece.clear();
+  apiece << QPoint(0,0) << QPoint(-1,0) << QPoint(0,-1) << QPoint(1,-1);
   aset << apiece;
   apiece.clear();
   pieceTypes << aset;

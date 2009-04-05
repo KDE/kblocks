@@ -90,6 +90,7 @@ private:
     int currentRemovedLines;
     int inLockPosition;
     int updateInterval;
+    bool firstBlock;
     
     void cleanAll();
     void levelUp();
