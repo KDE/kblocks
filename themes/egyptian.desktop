@@ -1,0 +1,12 @@
+[KGameTheme]
+Name=Egyptian
+Description=KBlocks, Egyptian style.
+VersionFormat=1
+Author=Sean Wilson
+AuthorEmail=suseux@gmail.com
+Type=SVG
+FileName=egyptian.svg
+Preview=egyptian_preview.png
+Sound_Block_Move=default_block_move.ogg
+Sound_Block_Fall=default_block_fall.ogg
+
