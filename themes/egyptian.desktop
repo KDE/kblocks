@@ -1,11 +1,16 @@
 [KGameTheme]
 Name=Egyptian
+Name[et]=Egiptus
 Name[pt]=Egípcio
 Name[pt_BR]=Egípcio
 Name[sv]=Egyptisk
 Name[uk]=Єгиптянин
 Name[zh_TW]=埃及式
 Description=KBlocks, Egyptian style.
+Description[pt]=KBlocks, estilo Egípcio.
+Description[pt_BR]=KBlocks, estilo Egípcio.
+Description[sv]=Kblock, egyptisk stil.
+Description[uk]=KBlocks, єгипетський стиль.
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
