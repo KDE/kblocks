@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Egyptian
+Name[el]=Αιγύπτιο
 Name[et]=Egiptus
 Name[pt]=Egípcio
 Name[pt_BR]=Egípcio
@@ -8,6 +9,7 @@ Name[uk]=Єгиптянин
 Name[x-test]=xxEgyptianxx
 Name[zh_TW]=埃及式
 Description=KBlocks, Egyptian style.
+Description[el]=KBlocks, Αιγυπτιακό στυλ.
 Description[et]=KBlocks Egiptuse stiilis.
 Description[pt]=KBlocks, estilo Egípcio.
 Description[pt_BR]=KBlocks, estilo Egípcio.
