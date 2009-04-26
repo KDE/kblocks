@@ -22,6 +22,7 @@ int main( int argc, char** argv )
                         "0.1", ki18n("A falling blocks game for KDE"), KAboutData::License_GPL,
                             ki18n("(c) 2007, Mauricio Piacentini"));
   aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Author"), "piacentini@kde.org");
+  aboutData.addAuthor(ki18n("Dirk Leifeld"), ki18n("Developer"), "dirkleifeld@yahoo.de");
   aboutData.addCredit(ki18n("Johann Ollivier Lapeyre"), ki18n("Oxygen art for KDE4"), "johann.ollivierlapeyre@gmail.com");
 
   KCmdLineArgs::init( argc, argv, &aboutData );
