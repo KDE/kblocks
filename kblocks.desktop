@@ -9,6 +9,7 @@ Exec=kblocks -caption "%c"
 Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
+GenericName[et]=Langevate klotside mäng
 GenericName[pt]=Jogo de Blocos em Queda
 GenericName[pt_BR]=Jogo de Blocos em Queda
 GenericName[sv]=Spel med fallande block
