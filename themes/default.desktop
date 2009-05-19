@@ -2,6 +2,7 @@
 Name=Egyptian
 Name[el]=Αιγύπτιο
 Name[et]=Egiptus
+Name[nn]=Egyptisk
 Name[pt]=Egípcio
 Name[pt_BR]=Egípcio
 Name[sv]=Egyptisk
@@ -11,6 +12,7 @@ Name[zh_TW]=埃及式
 Description=KBlocks, Egyptian style.
 Description[el]=KBlocks, Αιγυπτιακό στυλ.
 Description[et]=KBlocks Egiptuse stiilis.
+Description[nn]=KBlocks i egyptisk stil.
 Description[pt]=KBlocks, estilo Egípcio.
 Description[pt_BR]=KBlocks, estilo Egípcio.
 Description[sv]=Kblock, egyptisk stil.
