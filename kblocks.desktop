@@ -2,6 +2,8 @@
 Name=KBlocks
 Name[hne]=के-बाक्स
 Name[ro]=KBlocuri
+Name[sr]=К‑блокови
+Name[sr@latin]=K‑blokovi
 Name[sv]=Kblock
 Name[x-test]=xxKBlocksxx
 Icon=kblocks
@@ -14,6 +16,8 @@ GenericName[et]=Langevate klotside mäng
 GenericName[nn]=Spel med fallande brikker
 GenericName[pt]=Jogo de Blocos em Queda
 GenericName[pt_BR]=Jogo de Blocos em Queda
+GenericName[sr]=Игра падајућих блокова
+GenericName[sr@latin]=Igra padajućih blokova
 GenericName[sv]=Spel med fallande block
 GenericName[uk]=Гра з падаючими блоками
 GenericName[zh_CN]=俄罗斯方块游戏
