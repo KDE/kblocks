@@ -11,6 +11,7 @@ Exec=kblocks -caption "%c"
 Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
+GenericName[da]=Faldende blokke-spil
 GenericName[de]=Tetrisspiel
 GenericName[et]=Langevate klotside mäng
 GenericName[nn]=Spel med fallande brikker
