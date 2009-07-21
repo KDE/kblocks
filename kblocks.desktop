@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBlocks
 Name[hne]=के-बाक्स
+Name[pa]=ਕੇ-ਬਲੌਕ
 Name[ro]=KBlocuri
 Name[sr]=К‑блокови
 Name[sr@latin]=K‑blokovi
@@ -19,8 +20,10 @@ GenericName[et]=Langevate klotside mäng
 GenericName[fr]=Jeu de blocs qui tombent
 GenericName[gl]=Xogo de caída de bloques
 GenericName[it]=Gioco di blocchi che cadono
+GenericName[ja]=落下するブロックのゲーム
 GenericName[km]=ល្បែង​ប្លុក​ទម្លាក់
 GenericName[lv]=Krītošo bloku spēle
+GenericName[nds]=Speel mit fallen Blöck
 GenericName[nl]=Vallende blokken-spel
 GenericName[nn]=Spel med fallande brikker
 GenericName[pt]=Jogo de Blocos em Queda
