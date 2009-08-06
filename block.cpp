@@ -11,7 +11,6 @@
 #include "block.h"
 
 #include <QPainter>
-#include <QTimeLine>
 
 Block::Block (QGraphicsItem * parent)
   : QGraphicsSvgItem (parent) , m_opacity(0.0), m_animatingPos(false)

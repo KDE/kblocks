@@ -14,21 +14,17 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include <KAboutData>
 #include <KAction>
 #include <KConfigDialog>
-#include <KInputDialog>
-#include <KMenuBar>
-#include <KMessageBox>
 #include <kstandardgameaction.h>
 #include <KStandardAction>
 #include <KIcon>
 #include <kscoredialog.h>
 #include <KGameThemeSelector>
-#include <KStatusBar>
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>
+#include <KStatusBar>
 
 #include <QPixmapCache>
 

@@ -11,7 +11,6 @@
 #include "kblocksscene.h"
 #include "kblocksgraphics.h"
 #include "kblockssound.h"
-#include <KStandardDirs>
 #include <KLocale>
 #include <KGamePopupItem>
 #include <KGameDifficulty>

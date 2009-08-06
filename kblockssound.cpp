@@ -11,8 +11,6 @@
 
 #include "kblockssound.h"
 #include <KDebug>
-#include <KStandardDirs>
-#include <QVariant>
 #include <QFile>
 #include <QFileInfo>
 

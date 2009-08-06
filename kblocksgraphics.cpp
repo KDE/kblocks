@@ -11,7 +11,6 @@
 #include "kblocksgraphics.h"
 #include <KDebug>
 
-#include <QVariant>
 #include <QPixmapCache>
 #include <QPainter>
 
