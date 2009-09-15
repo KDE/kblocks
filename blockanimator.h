@@ -25,7 +25,7 @@ class BlockAnimator : public QObject
   public slots:
     virtual void removeBlock(Block * block);
   signals:
-    virtual void finished(QObject * animation);
+    void finished(QObject * animation);
   private slots:
     virtual void valueChanged( qreal value );
     virtual void animationFinished();
