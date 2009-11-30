@@ -9,7 +9,7 @@
  ***************************************************************************/
  //Uses routines from Kapman sound manager (game.cpp)
 
-#include "kblockssound.h"
+#include "KBlocksSound.h"
 #include <KDebug>
 #include <QFile>
 #include <QFileInfo>
@@ -18,71 +18,79 @@
 
 KBlocksSound::KBlocksSound ( const QString& themeFile )
 {
-  m_media1 = 0;
-  m_media2 = 0;
-  m_theme = new KGameTheme();
-  if (!m_theme->load(themeFile)) {
-    kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
-    m_theme->loadDefault();
-  }
-  readThemeValues();
-
-  setSoundsEnabled(Settings::sounds());
+    m_media1 = 0;
+    m_media2 = 0;
+    m_theme = new KGameTheme();
+    if (!m_theme->load(themeFile)) {
+        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        m_theme->loadDefault();
+        kDebug(11000) << "Load default sound theme." << endl;
+    }
+    readThemeValues();
+    setSoundsEnabled(Settings::sounds());
 }
 
 KBlocksSound::~KBlocksSound()
 {
-  delete m_theme;
-  delete m_media1;
-  delete m_media2;
+    delete m_theme;
+    delete m_media1;
+    delete m_media2;
 }
 
 bool KBlocksSound::loadTheme ( const QString& themeFile )
 {
-  if (!m_theme->load(themeFile)) {
-    kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
-    return false;
-  }
-
-  readThemeValues();
-  return true;
+    if (!m_theme->load(themeFile)) {
+        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        return false;
+    }
+    readThemeValues();
+    return true;
 }
 
 void KBlocksSound::readThemeValues()
 {
-  //Extract sound directory info
-  //This functionality should be exposed by KGameTheme
+    //Extract sound directory info
+    //This functionality should be exposed by KGameTheme
     QFile themefile(m_theme->path());
     sndDirectory = QFileInfo(themefile).absolutePath() + '/';
     themefile.close();
 }
 
 void KBlocksSound::setSoundsEnabled(bool p_enabled) {
-	sndActive = p_enabled;
-        if (p_enabled) {
-                if (!m_media1) {
-                        m_media1 = Phonon::createPlayer(Phonon::GameCategory);
-                }
-                if (!m_media2) {
-                        m_media2 = Phonon::createPlayer(Phonon::GameCategory);
-                }
-        } else {
-                delete m_media1;
-                delete m_media2;
-                m_media1 = 0;
-                m_media2 = 0;
+    sndActive = p_enabled;
+    if (p_enabled)
+    {
+        if (!m_media1)
+        {
+            m_media1 = Phonon::createPlayer(Phonon::GameCategory);
         }
+        if (!m_media2)
+        {
+            m_media2 = Phonon::createPlayer(Phonon::GameCategory);
+        }
+    }
+    else
+    {
+        delete m_media1;
+        delete m_media2;
+        m_media1 = 0;
+        m_media2 = 0;
+    }
 }
 
 void KBlocksSound::playSound(const QString& p_soundkey) {
     Phonon::MediaObject* m_usedMedia;
     QString p_sound = sndDirectory+m_theme->themeProperty(p_soundkey);
-    kDebug() << p_sound;
-    if (sndActive) {
+    //kDebug(11000) << "Playing sound : " << p_sound << endl;
+    if (sndActive)
+    {
         // Choose the media object with the smallest remaining time
-        if (m_media1->remainingTime() <= m_media2->remainingTime()) {
-             m_usedMedia = m_media1;
-          } else {
+        if (m_media1->remainingTime() <= m_media2->remainingTime())
+        {
+            m_usedMedia = m_media1;
+        }
+        else
+        {
             m_usedMedia = m_media2;
         }
         m_usedMedia->setCurrentSource(p_sound);

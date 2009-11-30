@@ -9,13 +9,25 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdeg
 
 set(kblocks_SRCS 
    main.cpp 
-   kblocks.cpp 
-   kblocksview.cpp 
-   kblocksscene.cpp 
-   kblocksgraphics.cpp 
-   kblockssound.cpp 
-   block.cpp 
-   blockanimator.cpp )
+   KBlocksWin.cpp 
+   KBlocksScene.cpp 
+   KBlocksView.cpp 
+   KBlocksScore.cpp
+   KBlocksGraphics.cpp 
+   KBlocksSound.cpp 
+   KBlocksItemGroup.cpp 
+   KBlocksSvgItem.cpp 
+   KBlocksAnimator.cpp
+   KBlocksAnimFade.cpp
+   KBlocksAnimDrop.cpp
+   KBlocksEvent.cpp 
+   KBlocksControl.cpp 
+   KBlocksLayout.cpp 
+   KBlocksGameLogic.cpp 
+   KBlocksSingleGame.cpp 
+   KBlocksField.cpp 
+   KBlocksPiece.cpp 
+   KBlocksPieceGenerator.cpp )
 
 kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
