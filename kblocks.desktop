@@ -1,15 +1,23 @@
 [Desktop Entry]
 Name=KBlocks
+Name[en_GB]=KBlocks
 Name[ga]=KBlocks
 Name[hi]=केब्लॉक्स
 Name[hne]=केब्लाक्स
+Name[pt]=KBlocks
+Name[sv]=Kblock
 Name[uk]=KBlocks
+Name[x-test]=xxKBlocksxx
 Icon=kblocks
 Exec=kblocks -caption "%c"
 Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
+GenericName[en_GB]=Falling Blocks Game
+GenericName[pt]=Jogo de Blocos em Queda
+GenericName[sv]=Spel med fallande block
 GenericName[uk]=Гра з падаючими блоками
+GenericName[x-test]=xxFalling Blocks Gamexx
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
