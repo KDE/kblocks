@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=oxygen
 Name[en_GB]=oxygen
+Name[nn]=Oksygen
 Name[pt]=oxygen
 Name[sv]=oxygen
 Name[uk]=oxygen
@@ -9,6 +10,7 @@ Description=KBlocks Oxygen theme for KDE 4
 Description[en_GB]=KBlocks Oxygen theme for KDE 4
 Description[hi]=केडीई४ के लिए केब्लॉक्स ऑक्सीजन प्रसंग
 Description[hne]=केडीई४ बर केब्लाक्स आक्सीजन प्रसंग
+Description[nn]=Oksygen-tema for KBlocks
 Description[pt]=Tema do Oxygen para o KBlocks do KDE 4
 Description[sv]=Oxygen-tema för Kblock i KDE 4
 Description[uk]=Тема KBlocks Oxygen для KDE 4
