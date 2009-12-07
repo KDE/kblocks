@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBlocks
 Name[en_GB]=KBlocks
+Name[fr]=KBlocks
 Name[ga]=KBlocks
 Name[hi]=केब्लॉक्स
 Name[hne]=केब्लाक्स
@@ -17,6 +18,7 @@ Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
 GenericName[en_GB]=Falling Blocks Game
+GenericName[fr]=Jeu de chute de blocs
 GenericName[nn]=Spel med fallande brikker
 GenericName[pt]=Jogo de Blocos em Queda
 GenericName[sv]=Spel med fallande block
