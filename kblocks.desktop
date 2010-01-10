@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBlocks
 Name[ca]=KBlocks
+Name[ca@valencia]=KBlocks
 Name[cs]=KBlocks
 Name[da]=KBlocks
 Name[de]=KBlocks
@@ -46,6 +47,7 @@ Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
 GenericName[ca]=Joc de blocs que cauen
+GenericName[ca@valencia]=Joc de blocs que cauen
 GenericName[da]=Faldende blokke-spil
 GenericName[de]=„Tetris“-Spiel
 GenericName[en_GB]=Falling Blocks Game
