@@ -7,21 +7,24 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSSINGLEGAME_H
 #define KBLOCKSSINGLEGAME_H
+
+#include <sys/time.h>
 
 #include "SingleGameInterface.h"
 
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
 #include "KBlocksPieceGenerator.h"
+#include "KBlocksGameMessage.h"
 
 #include "KBlocksDefine.h"
 
-class KBlocksSingleGame : public SingleGameInterface {
+class KBlocksSingleGame : public SingleGameInterface
+{
 	public:
-		KBlocksSingleGame(int showPieceCount = 2);
+		KBlocksSingleGame(int gameIndex, int fieldWidth = 10, int fieldHeight = 20, int showPieceCount = 2, int messagePoolSize = 256);
 		~KBlocksSingleGame();
         
     public:
@@ -30,28 +33,36 @@ class KBlocksSingleGame : public SingleGameInterface {
         int getPieceCount();
         KBlocksPiece* getPiece(int index);
         
+        bool isActive();
+        bool isGameRunning();
+        
+        void setGameStandbyMode(bool flag);
+        void setGameInterval(int interval);
+        
+        int forceUpdateGame();
+        int updateGame();
+        int punishGame(int lineCount, int punishSeed);
+        
 		bool setCurrentPiece(int xPos, int yPos, int rotation);
-        
-        bool pushGameAction(int type, int param);
-        
-        bool popGameAction(int type, int * param);
-        void clearGameActions();
 		
 		int startGame(int seed);
-        int pauseGame();
-        int resumeGame();
         int stopGame();
         
-        int runStep();
-        int runEvent(int gameEvent);
+        int pauseGame(bool flag);
+        int continueGame();
         
-        int getLastGameResult();
+        bool pickGameResult(int * result);
+        bool pickGameAction(int * type, int * action);
         
     private:
+        int doUpdateGame(bool force);
+        bool runGameOneStep(int * gameResult);
         bool checkPieceTouchGround(KBlocksPiece * p);
         void freezePieceToField(KBlocksPiece * p);
-        bool removeFieldLines();
+        int removeFieldLines();
         void prepareNextPiece();
+        
+        long getMillisecOfNow();
         
     protected:
         KBlocksField* mpField;
@@ -61,13 +72,15 @@ class KBlocksSingleGame : public SingleGameInterface {
         
     private:
         KBlocksPieceGenerator* mpPieceGenerator;
+        KBlocksGameMessage* mpGameMessage;
         
-        int mActionIndex;
-        int* maActionType;
-        int* maActionParam;
-        
-        int mLastGameResult;
+        int mGameIndex;
         int mCurrentGameState;
+        
+        bool mStandbyMode;
+        bool mStandbyFlag;
+        long mGameInterval;
+        long mGameStartTime;
 };
 
 #endif

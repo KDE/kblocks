@@ -7,17 +7,18 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSSCORE_H
 #define KBLOCKSSCORE_H
 
-enum KBlocks_Score_Type {
+enum KBlocks_Score_Type
+{
     KBlocksScore_Level_x_Factor = 0,
     KBlocksScore_Level_x_Level_x_Factor,
     KBlocksScore_Max_Count,
 };
 
-class KBlocksScore {
+class KBlocksScore
+{
     public:
         KBlocksScore();
         ~KBlocksScore();
@@ -29,7 +30,7 @@ class KBlocksScore {
         void setLevelUpFactor(int type, int factor);
         void setScoreUpFactor(int factor);
         
-        void addScore(int lines);
+        bool addScore(int lines);
         void clearScore();
         
     private:

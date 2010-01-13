@@ -7,32 +7,40 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
+#ifndef KBLOCKSNETPLAYER_H
+#define KBLOCKSNETPLAYER_H
 
-#ifndef KBLOCKSEVENT_H
-#define KBLOCKSEVENT_H
+#include "KBlocksNetClient.h"
+#include "KBlocksSingleGame.h"
+#include "GamePlayerInterface.h"
 
-#include "GameLogicInterface.h"
-
-#include "KBlocksDefine.h"
-
-class KBlocksEvent
+class KBlocksNetPlayer
 {
     public:
-        KBlocksEvent();
-        ~KBlocksEvent();
+        KBlocksNetPlayer(GamePlayerInterface * player, const string& serverIP, int localPort);
+        ~KBlocksNetPlayer();
         
-        void setGameLogic(GameLogicInterface * p);
+    public:
+        void joinGame(int gameIndex);
+        void quitGame();
         
-        void startGame();
-        void pauseGame();
-        void resumeGame();
+        void startGame(KBlocksSingleGame * p);
         void stopGame();
         
-        int runGameAll(int * gameResult);
-        int runGameByIndex(int gameIndex);
-
-    protected:
-        GameLogicInterface* mpGameLogic;
+        bool execute();
+        
+    private:
+        int  formIntFromByte(unsigned char * data);
+        
+    private:
+        GamePlayerInterface* mpPlayer;
+        KBlocksSingleGame* mpGame;
+        KBlocksNetClient* mpNetClient;
+        
+        int mSendLength;
+        
+        int mLastModifyID;
+        GamePlayer_ActionList mActionList;
 };
 
 #endif

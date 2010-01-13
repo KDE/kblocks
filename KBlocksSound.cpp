@@ -1,6 +1,7 @@
 /***************************************************************************
  *   KBlocks, a falling blocks game for KDE                                *
- *   Copyright (C) 20078 Mauricio Piacentini <piacentini@kde.org>          *
+ *   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+ *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

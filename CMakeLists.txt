@@ -4,12 +4,16 @@ add_subdirectory( themes )
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 
-
 ########### next target ###############
 
 set(kblocks_SRCS 
    main.cpp 
+   KBlocksNetServer.cpp 
+   KBlocksNetClient.cpp 
+   KBlocksConfigManager.cpp 
    KBlocksWin.cpp 
+   KBlocksDisplay.cpp 
+   KBlocksAppThread.cpp 
    KBlocksScene.cpp 
    KBlocksView.cpp 
    KBlocksScore.cpp
@@ -17,17 +21,28 @@ set(kblocks_SRCS
    KBlocksSound.cpp 
    KBlocksItemGroup.cpp 
    KBlocksSvgItem.cpp 
-   KBlocksAnimator.cpp
-   KBlocksAnimFade.cpp
-   KBlocksAnimDrop.cpp
-   KBlocksEvent.cpp 
-   KBlocksControl.cpp 
+   KBlocksAnimator.cpp 
+   KBlocksAnimFade.cpp 
+   KBlocksAnimDrop.cpp 
+   KBlocksPlayManager.cpp 
+   KBlocksPlayNetwork.cpp 
+   KBlocksSinglePlayer.cpp 
+   KBlocksNetPlayer.cpp 
+   KBlocksKeyboardPlayer.cpp 
+   KBlocksDummyAI.cpp 
    KBlocksLayout.cpp 
    KBlocksGameLogic.cpp 
    KBlocksSingleGame.cpp 
    KBlocksField.cpp 
    KBlocksPiece.cpp 
-   KBlocksPieceGenerator.cpp )
+   KBlocksPieceGenerator.cpp 
+   KBlocksGameMessage.cpp 
+   AI/KBlocksAIPlayer.cpp 
+   AI/KBlocksAIPlanner.cpp 
+   AI/KBlocksAIPlannerExtend.cpp 
+   AI/KBlocksAIEvaluation.cpp 
+   AI/KBlocksAIFeature.cpp 
+   AI/KBlocksAILog.cpp   )
 
 kde4_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
@@ -38,7 +53,6 @@ kde4_add_executable(kblocks ${kblocks_SRCS})
 target_link_libraries(kblocks kdegames ${KDE4_KNEWSTUFF2_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} )
 
 install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
-
 
 ########### install files ###############
 

@@ -7,7 +7,6 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #include "KBlocksScore.h"
 
 KBlocksScore::KBlocksScore()
@@ -51,7 +50,7 @@ void KBlocksScore::setScoreUpFactor(int factor)
     mSFactor = factor;
 }
 
-void KBlocksScore::addScore(int lines)
+bool KBlocksScore::addScore(int lines)
 {
     mLines += lines;
     
@@ -90,7 +89,10 @@ void KBlocksScore::addScore(int lines)
     if (mPoint >= levelUpScore)
     {
         mLevel++;
+        return true;
     }
+    
+    return false;
 }
 
 void KBlocksScore::clearScore()

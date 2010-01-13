@@ -7,24 +7,27 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSPIECE_H
 #define KBLOCKSPIECE_H
 
 #include "PieceInterface.h"
 
-enum KBlocks_PieceType {
-    PieceType_Shape_I = 0,
-    PieceType_Shape_L,
-    PieceType_Shape_J,
-    PieceType_Shape_Z,
+#define KBlocksPiece_CellCount    4
+
+enum KBlocks_PieceType
+{
+    PieceType_Shape_Z = 0,
     PieceType_Shape_S,
+    PieceType_Shape_I,
     PieceType_Shape_T,
     PieceType_Shape_O,
+    PieceType_Shape_L,
+    PieceType_Shape_J,
     PieceType_Max_Count,
 };
 
-enum KBlocks_PieceRotation {
+enum KBlocks_PieceRotation
+{
     PieceRotation_Up = 0,
     PieceRotation_Left,
     PieceRotation_Down,
@@ -32,20 +35,9 @@ enum KBlocks_PieceRotation {
     PieceRotation_Max_Count,
 };
 
-enum KBlocks_PieceType_Detail {
-    PieceType_Shape_I_1 = 0,
-    PieceType_Shape_I_2,
-    PieceType_Shape_I_3,
-    PieceType_Shape_I_4,
-    PieceType_Shape_L_1,
-    PieceType_Shape_L_2,
-    PieceType_Shape_L_3,
-    PieceType_Shape_L_4,
-    PieceType_Shape_J_1,
-    PieceType_Shape_J_2,
-    PieceType_Shape_J_3,
-    PieceType_Shape_J_4,
-    PieceType_Shape_Z_1,
+enum KBlocks_PieceType_Detail
+{
+    PieceType_Shape_Z_1 = 0,
     PieceType_Shape_Z_2,
     PieceType_Shape_Z_3,
     PieceType_Shape_Z_4,
@@ -53,6 +45,10 @@ enum KBlocks_PieceType_Detail {
     PieceType_Shape_S_2,
     PieceType_Shape_S_3,
     PieceType_Shape_S_4,
+    PieceType_Shape_I_1,
+    PieceType_Shape_I_2,
+    PieceType_Shape_I_3,
+    PieceType_Shape_I_4,
     PieceType_Shape_T_1,
     PieceType_Shape_T_2,
     PieceType_Shape_T_3,
@@ -61,24 +57,44 @@ enum KBlocks_PieceType_Detail {
     PieceType_Shape_O_2,
     PieceType_Shape_O_3,
     PieceType_Shape_O_4,
+    PieceType_Shape_L_1,
+    PieceType_Shape_L_2,
+    PieceType_Shape_L_3,
+    PieceType_Shape_L_4,
+    PieceType_Shape_J_1,
+    PieceType_Shape_J_2,
+    PieceType_Shape_J_3,
+    PieceType_Shape_J_4,
     PieceType_Detail_Max_Count,
 };
 
-class KBlocksPiece : public PieceInterface {
-    protected:
-        int type;
-        int rotation;
+class PiecePoint
+{
+    public:
+        PiecePoint(int x, int y);
+        ~PiecePoint();
         
-        int posX;
-        int posY;
-    
+    public:
+        int x();
+        int y();
+        
+    private:
+        int mPosX;
+        int mPosY;
+};
+
+class KBlocksPiece : public PieceInterface
+{
     public:
         KBlocksPiece();
+        KBlocksPiece(PieceInterface * p);
         ~KBlocksPiece();
     
     public:
-        void fromValue(int val);
+        void copy(PieceInterface * p);
+        
         int  toValue();
+        void fromValue(int val);
         
         int  getType();
         void setType(int newType);
@@ -92,8 +108,24 @@ class KBlocksPiece : public PieceInterface {
         int  getPosY();
         void setPosY(int newPosY);
         
+        int  getCellCount();
         int  getCellPosX(int index);
         int  getCellPosY(int index);
+        
+        int  getWidth();
+        int  getHeight();
+        int  getRotationCount();
+        
+        int  getSignature(int * signature);
+        
+        void encodeData(unsigned char * data);
+        void decodeData(unsigned char * data);
+        
+    protected:
+        int mType;
+        int mPosX;
+        int mPosY;
+        int mRotation;
 };
 
 #endif

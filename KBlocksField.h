@@ -7,32 +7,43 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSFIELD_H
 #define KBLOCKSFIELD_H
 
 #include "FieldInterface.h"
 
-class KBlocksField : public FieldInterface {
+class KBlocksField : public FieldInterface
+{
     protected:
-        bool** board;
-        int height;
-        int width;
+        bool** maBoard;
+        int mHeight;
+        int mWidth;
+        
+    private:
+        int mCurModifyID;
+        int mLastModifyID;
+        unsigned char* maEncodeData;
     
     public:
-        KBlocksField(int w = 10, int h = 20);
+        KBlocksField(int width, int height);
+        KBlocksField(FieldInterface * p);
         ~KBlocksField();
     
     public:
         bool getCell(int xPos, int yPos);
         void setCell(int xPos, int yPos, bool value);
         
-        void clearAll();
+        void copy(FieldInterface * p);
+        void clear();
         
         bool checkFilledLine(int lineID);
         void removeFilledLine(int lineID);
         
-        bool addPunishLine(int emptyID = -1);
+        bool addPunishLine(int lineCount, int punishSeed);
+        
+        int  getModifyID();
+        int  encodeData(unsigned char * data);
+        void decodeData(unsigned char * data);
         
         int  getWidth();
         int  getHeight();

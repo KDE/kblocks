@@ -7,20 +7,6 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
-/****************************************************************
- *
- * $RCSfile: SingleGameInterface.h,v $
- *
- * $Revision: 1.0 $
- *
- * $Date: 2009/11/01 10:00:00 $
- *
- * AUTHOR: ZhongJie Cai
- *
- * DESCRIPTION: Interface for single game logic of KBlocks 
- *
- ****************************************************************/  
 #ifndef SINGLE_GAME_INTERFACE
 #define SINGLE_GAME_INTERFACE
 
@@ -29,7 +15,8 @@
 
 class GameLogicInterface;
 
-class SingleGameInterface {
+class SingleGameInterface
+{
     public:
         SingleGameInterface(){};
         virtual ~SingleGameInterface(){};
@@ -38,11 +25,19 @@ class SingleGameInterface {
         virtual FieldInterface* getField() = 0;
         
         virtual int getPieceCount() = 0;
-        virtual PieceInterface* getPiece(int index) = 0;
+        virtual PieceInterface* getPiece(int) = 0;
         
-        virtual bool setCurrentPiece(int xPos, int yPos, int rotation) = 0;
+        virtual bool isActive() = 0;
+        virtual bool isGameRunning() = 0;
         
-        virtual bool popGameAction(int type, int * param) = 0;
+        virtual int forceUpdateGame() = 0;
+        virtual int updateGame() = 0;
+        virtual int continueGame() = 0;
+        
+        virtual bool setCurrentPiece(int, int, int) = 0;
+        
+        virtual bool pickGameResult(int*) = 0;
+        virtual bool pickGameAction(int*, int*) = 0;
         
     protected:
         FieldInterface* mpField;

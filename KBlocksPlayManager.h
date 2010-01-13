@@ -7,37 +7,34 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
+#ifndef KBLOCKSPLAYMANAGER_H
+#define KBLOCKSPLAYMANAGER_H
 
-#ifndef KBLOCKSCONTROL_H
-#define KBLOCKSCONTROL_H
+#include "GamePlayerInterface.h"
+#include "GameLogicInterface.h"
+#include "KBlocksSinglePlayer.h"
 
-#include "SingleGameInterface.h"
-
-#include "KBlocksDefine.h"
-
-class KBlocksControl {
+class KBlocksPlayManager
+{
     public:
-        KBlocksControl();
-        ~KBlocksControl();
-        
-        void setSingleGame(SingleGameInterface * p);
+        KBlocksPlayManager(GameLogicInterface * p, int capacity);
+        ~KBlocksPlayManager();
         
     public:
-        bool rotateCW();
-        bool rotateCCW();
-        bool moveLeft();
-        bool moveRight();
-        bool moveDown();
-        bool pushDown();
+        bool addGamePlayer(GamePlayerInterface * p, int thinkInterval, int processInterval);
+        void clearGamePlayer();
         
-        int getRemovedLines(int * lineList);
-        int getRemovedCount();
+        void startGame();
+        void stopGame();
         
-        int getNewPiecePosX(int * posX);
-        int getNewPiecePosY(int * posY);
+        void pauseGame(bool flag);
         
     private:
-        SingleGameInterface* mpSingleGame;
+        GameLogicInterface* mpGameLogic;
+        
+        int mPlayerCount;
+        int mMaxCapacity;
+        KBlocksSinglePlayer** maPlayerList;
 };
 
 #endif

@@ -1,6 +1,7 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -13,71 +14,55 @@
 
 #include <QGraphicsItemGroup>
 #include <QTimer>
+#include <QList>
 
 #include "KBlocksGraphics.h"
 #include "KBlocksSound.h"
 #include "KBlocksSvgItem.h"
-#include "KBlocksControl.h"
 #include "KBlocksAnimator.h"
 
 #include "SingleGameInterface.h"
 
-#define  FADE_ANIM_TIME_LINE        250//1000//
-#define  DROP_ANIM_TIME_LINE        250//1000//
-#define  PREPARE_PIECE_INTERVAL     100
-
-#define  INITIAL_UPDATE_INTERVAL    500
-#define  LEVEL_UP_INTERVAL_STEP     25
-
-#define  PREPARE_AREA_WIDTH         5
+#include "KBlocksDefine.h"
 
 class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
 {
     Q_OBJECT
     
     public:
-        KBlocksItemGroup(SingleGameInterface * pS, KBlocksGraphics * pG);
+        KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocksGraphics * pG, KBlocksSound * pS, bool snapshotMode = false);
         ~KBlocksItemGroup();
         
     public:
-        void setControlHandler(KBlocksControl * p);
-        void setSoundHandler(KBlocksSound * p);
-        
-        void setGroupID(int groupID);
-        void refreshPosition(KBlocksGraphics * pG);
+        void setUpdateInterval(int interval);
+        void setGameAnimEnabled(bool flag);
+        void setWaitForAllUpdate(bool flag);
+        void refreshPosition();
         
         void startGame();
-        void pauseGame();
-        void resumeGame();
         void stopGame();
         
-        void gameLevelUp();
-        
-        void updateGroupItems();
-        
-        void prepareNextPiece();
+        void pauseGame(bool flag);
         
     signals:
-        void stepEmited(int groupID);
-        
-    public slots:
-        void rotateCW();
-        void rotateCCW();
-        void moveLeft();
-        void moveRight();
-        void moveDown();
-        void pushDown();
+        void readyForAction(int groupID);
         
     private slots:
-        void stepGame();
-        void releasePiece();
-        
+        void updateGame();
+        void updateSnapshot();
         void endAnimation(int animType);
         
     private:
+        bool updateLayout();
+        void refreshItems();
+        
+        void refreshItemByPos(const QList<int> & dataList);
+        
         void fadeInNewPiece();
         void fadeOutOldLine();
         void dropFreezeLine();
+        
+        void updateGraphicInfo();
         
     private:
         int mGroupID;
@@ -88,25 +73,24 @@ class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
         KBlocksSvgItem** maFreezeCells;
         KBlocksSvgItem** maPrepareCells;
         
-        KBlocksLayout*  mpGameLayout;
-        
-        KBlocksControl* mpGameControl;
-        
+        SingleGameInterface* mpSingleGame;
+        KBlocksLayout* mpGameLayout;
+        KBlocksGraphics* mpGrafx;
         KBlocksSound* mpSnd;
         
-        QTimer mStepTimer;
-        QTimer mReleaseTimer;
+        QTimer mUpdateTimer;
         int mUpdateInterval;
+        bool mGameAnimEnabled;
+        bool mWaitForAllUpdate;
         
         KBlocksAnimator* mpAnimator;
         QList<KBlocksSvgItem*> mFadeInItems;
         QList<KBlocksSvgItem*> mFadeOutItems;
         QList<KBlocksSvgItem*> mDropItems;
         
-        bool mPreparingPiece;
-        
-        int mRemovedLineCount;
-        int mRemovedLineList[4];
+        QList<int> mRemovedLine;
+        QList<int> mPunishLine;
+        QList<int> mNewPiecePos;
         
         int mFieldWidth;
         int mFieldHeight;

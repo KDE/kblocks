@@ -7,42 +7,28 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
-/****************************************************************
- *
- * $RCSfile: GameLogicInterface.h,v $
- *
- * $Revision: 1.0 $
- *
- * $Date: 2009/11/01 10:00:00 $
- *
- * AUTHOR: ZhongJie Cai
- *
- * DESCRIPTION: Interface for multi game logic of KBlocks 
- *
- ****************************************************************/  
 #ifndef GAME_LOGIC_INTERFACE
 #define GAME_LOGIC_INTERFACE
 
 #include "SingleGameInterface.h"
 
-class GameLogicInterface {
+class GameLogicInterface
+{
     public:
         GameLogicInterface(){};
         virtual ~GameLogicInterface(){};
     
     public:
-        virtual void createSingleGames(int gameCount) = 0;
-        virtual void deleteSingleGames() = 0;
+        virtual SingleGameInterface* getSingleGame(int) = 0;
         
-        virtual void setGameSeed(int seed) = 0;
+        virtual int levelUpGame(int) = 0;
+        virtual int updateGame(int*) = 0;
         
-        virtual int getGameMaxCapacity() = 0;
-        virtual int getGameCount() = 0;
-        virtual SingleGameInterface* getSingleGame(int index) = 0;
+        virtual bool startGame(int) = 0;
+        virtual bool stopGame() = 0;
         
-        virtual int* runStep(int gameIndex) = 0;
-        virtual int runEvent(int gameEvent, int gameIndex) = 0;
+        virtual void pauseGame(bool) = 0;
+        virtual void continueGame() = 0;
         
     protected:
         SingleGameInterface** maGameList;

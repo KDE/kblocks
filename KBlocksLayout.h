@@ -7,33 +7,45 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSLAYOUT_H
 #define KBLOCKSLAYOUT_H
 
 #include "FieldInterface.h"
 #include "PieceInterface.h"
 
+#include "KBlocksDefine.h"
+
 #include <QPoint>
+#include <QList>
 
-#define  PREPARE_AREA_WIDTH         5
+enum KBlocks_Layout_Update_Type
+{
+    KBlocksLayout_Update_FreezePiece = 0,
+    KBlocksLayout_Update_RemoveLine,
+    KBlocksLayout_Update_PunishLine,
+    KBlocksLayout_Update_Max_Count,
+};
 
-class KBlocksLayout {
+class KBlocksLayout
+{
     public:
-        KBlocksLayout();
+        KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInterface * pN);
         ~KBlocksLayout();
         
-        void setGameField(FieldInterface * p);
-        void setActivePiece(PieceInterface * p);
-        void setNextPiece(PieceInterface * p);
+        void beginUpdate(QList<int> * list);
+        void updateLayout(int type, const QList<int> & dataList);
+        void endUpdate();
         
-        void initLayout();
-        void freeLayout();
-        
-        void updateLayout(int lineCount = 0, int * lineList = 0);
+        void updateSnapshot();
         
         int getFieldColor(int posX, int posY);
         int getPrepareColor(int posX, int posY);
+        
+    private:
+        void updatePrepareArea();
+        void updateFreezePiece(const QList<int> & dataList);
+        void updateRemoveLine(const QList<int> & dataList);
+        void updatePunishLine(const QList<int> & dataList);
         
     private:
         FieldInterface* mpGameField;
@@ -43,7 +55,11 @@ class KBlocksLayout {
         int** boardInfo;
         int** prepareInfo;
         
+        int mPieceCellCount;
         QPoint** mpLastPiecePos;
+        
+        int mWidth;
+        int mHeight;
 };
 
 #endif

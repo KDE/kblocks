@@ -7,12 +7,10 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #include <stdlib.h>
 
 #include "KBlocksPieceGenerator.h"
-
-#define  KBLOCKS_PIECE_TYPE_NUM    28
+#include "KBlocksPiece.h"
 
 KBlocksPieceGenerator::KBlocksPieceGenerator(int size)
 {
@@ -32,7 +30,7 @@ void KBlocksPieceGenerator::genList(int seed)
     
     for(int i = 0; i < maxCapacity; i++)
     {
-        maPieceList[i] = rand() % KBLOCKS_PIECE_TYPE_NUM;
+        maPieceList[i] = rand() % PieceType_Detail_Max_Count;
     }
     
     pieceIndex = 0;
@@ -49,3 +47,9 @@ int KBlocksPieceGenerator::getPiece()
     
     return maPieceList[pieceIndex];
 }
+
+int KBlocksPieceGenerator::getIndex()
+{
+    return pieceIndex;
+}
+

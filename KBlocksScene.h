@@ -1,13 +1,13 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSSCENE_H
 #define KBLOCKSSCENE_H
 
@@ -16,80 +16,92 @@
 
 #include <KLocale>
 #include <KGamePopupItem>
+#include <KGameDifficulty>
 
 #include "KBlocksSound.h"
 #include "KBlocksGraphics.h"
 #include "KBlocksItemGroup.h"
-
-#include "KBlocksEvent.h"
-
-#include "KBlocksGameLogic.h"
-
 #include "KBlocksScore.h"
 
-#include "KBlocksDefine.h"
+#include "GameLogicInterface.h"
 
-#define  SCENE_GAMES_PER_WIDTH    4
+#include "KBlocksDefine.h"
 
 class KBlocksScene : public QGraphicsScene
 {
     Q_OBJECT
     
     public:
-        KBlocksScene(int capacity = 1);
+        KBlocksScene(GameLogicInterface * p, int capacity = 1);
         ~KBlocksScene();
         
-        void setEventHandler(KBlocksEvent * p);
+        KBlocksItemGroup* getItemGroup(int index);
+        KBlocksScore* getScoreHandler(int index);
         
-        void createGameItemGroups(int groupCount, GameLogicInterface * p);
+        void createGameItemGroups(int groupCount, bool snapshotMode = false);
         void deleteGameItemGroups();
         
-        KBlocksGraphics* getGraphicHandler();
-        KBlocksSound* getSoundHandler();
-        
-        KBlocksItemGroup* getItemGroup(int index);
-        KBlocksControl* getControlHandler(int index);
+        void setGamesPerLine(int count);
+        void setGameAnimEnabled(bool flag);
+        void setWaitForAllUpdate(bool flag);
+        void setUpdateInterval(int interval);
+        void setSoundsEnabled(bool enabled);
         
         void readSettings(const QSize & viewSize);
         void viewScaled(const QSize& newsize);
-        void updateDimensions();
-        void setSoundsEnabled(bool enabled);
         
         void startGame();
-        void pauseGame(bool flag, bool fromUser);
         void stopGame();
         
-        int getGameState();
+        void pauseGame(bool flag, bool fromUI = false);
+        
+        void addScore(int gameIndex, int lineCount);
         
     signals:
-        void scoreChanged(int points, int lines, int level);
-        void isHighscore(int points, int level);
+        void scoreChanged(int index, int points, int lines, int level);
+        void isHighscore(int index, int points, int level);
         
-    public slots:
-        void runGameOneStep(int gameIndex);
+    private:
+        void updateDimensions();
         
     private slots:
         void greetPlayer();
         void gameOverPlayer();
+        void gameOverMultiWin();
+        void gameOverMultiLose();
+        
+        void showMessage(const QString& message, int ms);
+        
+        void updateGame();
+        void readyForAction(int groupID);
         
     protected:
         void drawBackground(QPainter * painter, const QRectF & rect);
         
     private:
+        GameLogicInterface* mpGameLogic;
+        
         KBlocksGraphics* mpGrafx;
         KBlocksSound* mpSnd;
+        
+        int mSceneGamesPerLine;
+        bool mGameAnimEnabled;
+        bool mWaitForAllUpdate;
+        bool* maGameReadySignal;
+        
+        bool mSnapshotMode;
+        
+        int mTopGameLevel;
         
         int mMaxCapacity;
         int mGroupCount;
         KBlocksItemGroup** maGroupList;
-        KBlocksControl** maControlList;
         KBlocksScore** maGameScoreList;
         
         KGamePopupItem* mMessageBox;
         
-        KBlocksEvent* mpGameEvent;
-        
-        int mCurrentGameState;
+        int mUpdateInterval;
+        QTimer mUpdateTimer;
 };
 
 #endif

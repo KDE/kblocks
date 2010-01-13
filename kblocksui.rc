@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gui name="kblocks"
-     version="4"
+     version="8"
      xmlns="http://www.kde.org/standards/kxmlgui/1.0"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
@@ -9,6 +9,8 @@
 <MenuBar>
   <Menu name="game">
     <Action name="newGame" />
+    <Action name="pve_step" />
+    <Separator/>
     <Action name="pauseGame" />
     <Separator/>
     <Action name="showHighscores" />
@@ -25,5 +27,4 @@
   <Action name="pauseGame"/>
   <Action name="quit"/>
 </ToolBar>
-
 </gui>

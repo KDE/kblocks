@@ -1,47 +1,37 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #include "KBlocksItemGroup.h"
 
-#include <KDebug>
-
-KBlocksItemGroup::KBlocksItemGroup(SingleGameInterface * pS, KBlocksGraphics * pG)
+KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocksGraphics * pG, KBlocksSound * pS, bool snapshotMode)
 {
-    mItemSize = pG->m_Block_Size;
-    mPrepareLeft = pG->m_PreviewArea_CenterPoint_X - PREPARE_AREA_WIDTH * pG->m_Block_Size / 2;
-    mPrepareTop = pG->m_PreviewArea_CenterPoint_Y - PREPARE_AREA_WIDTH * pG->m_Block_Size / 2;
-    mFieldLeft = pG->m_PlayArea_OffsetPoint_X;
-    mFieldTop = pG->m_PlayArea_OffsetPoint_Y;
-    mFieldWidth = (pS->getField())->getWidth();
-    mFieldHeight = (pS->getField())->getHeight();
+    mGroupID = groupID;
+    mpSingleGame = p;
+    mpGrafx = pG;
+    mpSnd = pS;
     
-    mpGameLayout = new KBlocksLayout();
-    mpGameLayout->setGameField(pS->getField());
-    mpGameLayout->setActivePiece(pS->getPiece(0));
-    mpGameLayout->setNextPiece(pS->getPiece(1));
-    mpGameLayout->initLayout();
+    updateGraphicInfo();
     
-    mpBackground = new KBlocksSvgItem();
-    mpBackground->setLayoutHandler(mpGameLayout);
-    mpBackground->setSharedRenderer(pG->renderer());
+    mpGameLayout = new KBlocksLayout(mpSingleGame->getField(), mpSingleGame->getPiece(0), mpSingleGame->getPiece(1));
+    
+    mpBackground = new KBlocksSvgItem(mpGameLayout, -1, 0, 0);
+    mpBackground->setSharedRenderer(mpGrafx->renderer());
     mpBackground->setElementId("VIEW");
     addToGroup(mpBackground);
     
     maPrepareCells = new KBlocksSvgItem*[PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH]();
     for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
     {
-        maPrepareCells[i] = new KBlocksSvgItem();
-        maPrepareCells[i]->setLayoutHandler(mpGameLayout);
-        maPrepareCells[i]->setLayoutPos(i % PREPARE_AREA_WIDTH, i / PREPARE_AREA_WIDTH);
-        maPrepareCells[i]->setLayoutType(KBlocksSvgItem_PrepareArea);
-        maPrepareCells[i]->setSharedRenderer(pG->renderer());
+        maPrepareCells[i] = new KBlocksSvgItem( mpGameLayout, KBlocksSvgItem_PrepareArea,
+                                                i % PREPARE_AREA_WIDTH, i / PREPARE_AREA_WIDTH);
+        maPrepareCells[i]->setSharedRenderer(mpGrafx->renderer());
         maPrepareCells[i]->setElementId("BLOCK_0");
         maPrepareCells[i]->setVisible(false);
         addToGroup(maPrepareCells[i]);
@@ -51,31 +41,34 @@ KBlocksItemGroup::KBlocksItemGroup(SingleGameInterface * pS, KBlocksGraphics * p
     maFreezeCells = new KBlocksSvgItem*[mMaxFreezeCellNum]();
     for(int i = 0; i < mMaxFreezeCellNum; i++)
     {
-        maFreezeCells[i] = new KBlocksSvgItem();
-        maFreezeCells[i]->setLayoutHandler(mpGameLayout);
-        maFreezeCells[i]->setLayoutPos(i % mFieldWidth, i / mFieldWidth);
-        maFreezeCells[i]->setLayoutType(KBlocksSvgItem_FieldArea);
-        maFreezeCells[i]->setSharedRenderer(pG->renderer());
+        maFreezeCells[i] = new KBlocksSvgItem( mpGameLayout, KBlocksSvgItem_FieldArea,
+                                               i % mFieldWidth, i / mFieldWidth);
+        maFreezeCells[i]->setSharedRenderer(mpGrafx->renderer());
         maFreezeCells[i]->setElementId("BLOCK_0");
         maFreezeCells[i]->setVisible(false);
         addToGroup(maFreezeCells[i]);
     }
     
-    mpGameControl = 0;
-    mpSnd = 0;
-    
-    mStepTimer.stop();
-    mReleaseTimer.stop();
-    
+    mGameAnimEnabled = true;
+    mWaitForAllUpdate = false;
     mpAnimator = new KBlocksAnimator();
     connect(mpAnimator, SIGNAL(animFinished(int)), this, SLOT(endAnimation(int)));
-    
-    mPreparingPiece = true;
     
     mFadeInItems.clear();
     mFadeOutItems.clear();
     mDropItems.clear();
     
+    mUpdateInterval = 50;
+    mUpdateTimer.setInterval(mUpdateInterval);
+    if (snapshotMode)
+    {
+        connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(updateSnapshot()));
+    }
+    else
+    {
+        connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(updateGame()));
+    }
+    mUpdateTimer.stop();
 }
 
 KBlocksItemGroup::~KBlocksItemGroup()
@@ -99,33 +92,30 @@ KBlocksItemGroup::~KBlocksItemGroup()
     removeFromGroup(mpBackground);
     delete mpBackground;
     
-    mpGameLayout->freeLayout();
     delete mpGameLayout;
 }
 
-void KBlocksItemGroup::setControlHandler(KBlocksControl * p)
+void KBlocksItemGroup::setUpdateInterval(int interval)
 {
-    mpGameControl = p;
+    mUpdateInterval = interval;
+    mUpdateTimer.setInterval(mUpdateInterval);
 }
 
-void KBlocksItemGroup::setSoundHandler(KBlocksSound * p)
+void KBlocksItemGroup::setGameAnimEnabled(bool flag)
 {
-    mpSnd = p;
+    mGameAnimEnabled = flag;
 }
 
-void KBlocksItemGroup::setGroupID(int groupID)
+void KBlocksItemGroup::setWaitForAllUpdate(bool flag)
 {
-    mGroupID = groupID;
+    mWaitForAllUpdate = flag;
 }
 
-void KBlocksItemGroup::refreshPosition(KBlocksGraphics * pG)
+void KBlocksItemGroup::refreshPosition()
 {
-    mItemSize = pG->m_Block_Size;
-    mPrepareLeft = pG->m_PreviewArea_CenterPoint_X - PREPARE_AREA_WIDTH * pG->m_Block_Size / 2;
-    mPrepareTop = pG->m_PreviewArea_CenterPoint_Y - PREPARE_AREA_WIDTH * pG->m_Block_Size / 2;
-    mFieldLeft = pG->m_PlayArea_OffsetPoint_X;
-    mFieldTop = pG->m_PlayArea_OffsetPoint_Y;
+    updateGraphicInfo();
     
+    mpBackground->setElementId("VIEW");
     mpBackground->setPos(0, 0);
     
     for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
@@ -143,181 +133,65 @@ void KBlocksItemGroup::refreshPosition(KBlocksGraphics * pG)
 
 void KBlocksItemGroup::startGame()
 {
-    mUpdateInterval = INITIAL_UPDATE_INTERVAL;
-    mStepTimer.setInterval(mUpdateInterval);
-    connect(&mStepTimer, SIGNAL(timeout()), SLOT(stepGame()));
-    mStepTimer.stop();
-    
-    mReleaseTimer.setSingleShot(true);
-    connect(&mReleaseTimer, SIGNAL(timeout()), SLOT(releasePiece()));
-    mReleaseTimer.stop();
-    
-    mReleaseTimer.start(INITIAL_UPDATE_INTERVAL);
-    mPreparingPiece = true;
-}
-
-void KBlocksItemGroup::pauseGame()
-{
-    mReleaseTimer.stop();
-    mStepTimer.stop();
-    mPreparingPiece = true;
-}
-
-void KBlocksItemGroup::resumeGame()
-{
-    mReleaseTimer.stop();
-    mStepTimer.start();
-    mPreparingPiece = false;
+    mUpdateTimer.start();
 }
 
 void KBlocksItemGroup::stopGame()
 {
-    mStepTimer.stop();
-    mReleaseTimer.stop();
-    mPreparingPiece = true;
+    mUpdateTimer.stop();
 }
 
-void KBlocksItemGroup::gameLevelUp()
+void KBlocksItemGroup::pauseGame(bool flag)
 {
-    mUpdateInterval -= LEVEL_UP_INTERVAL_STEP;
-    if (mUpdateInterval < LEVEL_UP_INTERVAL_STEP * 2)
+    if (flag)
     {
-        mUpdateInterval = LEVEL_UP_INTERVAL_STEP;
+        mUpdateTimer.stop();
     }
-    mStepTimer.setInterval(mUpdateInterval);
+    else
+    {
+        mUpdateTimer.start();
+    }
 }
 
-void KBlocksItemGroup::updateGroupItems()
+void KBlocksItemGroup::updateGame()
 {
-    mpGameLayout->updateLayout(-1, 0);
+    int gameResult = mpSingleGame->updateGame();
     
-    for(int i = 0; i < mMaxFreezeCellNum; i++)
+    if (gameResult == GameResult_Game_Over)
     {
-        maFreezeCells[i]->updateSelf();
+        mUpdateTimer.stop();
+        return;
     }
-    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
-    {
-        maPrepareCells[i]->updateSelf();
-    }
-}
-
-void KBlocksItemGroup::prepareNextPiece()
-{
-    mStepTimer.stop();
     
-    mRemovedLineCount = mpGameControl->getRemovedLines(mRemovedLineList);
+    bool hasRemovedLines = updateLayout();
     
-    fadeOutOldLine();
-    dropFreezeLine();
-    
-    mPreparingPiece = true;
-}
-
-void KBlocksItemGroup::rotateCW()
-{
-    if (mPreparingPiece)
+    if (hasRemovedLines && mGameAnimEnabled)
     {
-        return;
+        mUpdateTimer.stop();
+        fadeOutOldLine();
+        dropFreezeLine();
     }
-    if (mpGameControl->rotateCW())
+    else
     {
-        if (mpSnd)
+        refreshItems();
+        if (hasRemovedLines)
         {
-            mpSnd->playSound("Sound_Block_Move");
+            if (!mWaitForAllUpdate)
+            {
+                mpSingleGame->continueGame();
+            }
+            else
+            {
+                emit readyForAction(mGroupID);
+            }
         }
-        updateGroupItems();
     }
 }
 
-void KBlocksItemGroup::rotateCCW()
+void KBlocksItemGroup::updateSnapshot()
 {
-    if (mPreparingPiece)
-    {
-        return;
-    }
-    if (mpGameControl->rotateCCW())
-    {
-        if (mpSnd)
-        {
-            mpSnd->playSound("Sound_Block_Move");
-        }
-        updateGroupItems();
-    }
-}
-
-void KBlocksItemGroup::moveLeft()
-{
-    if (mPreparingPiece)
-    {
-        return;
-    }
-    if (mpGameControl->moveLeft())
-    {
-        if (mpSnd)
-        {
-            mpSnd->playSound("Sound_Block_Move");
-        }
-        updateGroupItems();
-    }
-}
-
-void KBlocksItemGroup::moveRight()
-{
-    if (mPreparingPiece)
-    {
-        return;
-    }
-    if (mpGameControl->moveRight())
-    {
-        if (mpSnd)
-        {
-            mpSnd->playSound("Sound_Block_Move");
-        }
-        updateGroupItems();
-    }
-}
-
-void KBlocksItemGroup::moveDown()
-{
-    if (mPreparingPiece)
-    {
-        return;
-    }
-    if (mpGameControl->moveDown())
-    {
-        if (mpSnd)
-        {
-            mpSnd->playSound("Sound_Block_Move");
-        }
-        updateGroupItems();
-    }
-}
-
-void KBlocksItemGroup::pushDown()
-{
-    if (mPreparingPiece)
-    {
-        return;
-    }
-    if (mpGameControl->pushDown())
-    {
-        if (mpSnd)
-        {
-            mpSnd->playSound("Sound_Block_Move");
-        }
-        updateGroupItems();
-    }
-}
-
-void KBlocksItemGroup::stepGame()
-{
-    emit stepEmited(mGroupID);
-}
-
-void KBlocksItemGroup::releasePiece()
-{
-    mStepTimer.start();
-    mPreparingPiece = false;
+    mpGameLayout->updateSnapshot();
+    refreshItems();
 }
 
 void KBlocksItemGroup::endAnimation(int animType)
@@ -326,7 +200,15 @@ void KBlocksItemGroup::endAnimation(int animType)
     {
         case KBlocks_Animation_Fade_In:
             mpAnimator->deleteFadeAnim();
-            mReleaseTimer.start(PREPARE_PIECE_INTERVAL);
+            if (!mWaitForAllUpdate)
+            {
+                mpSingleGame->continueGame();
+            }
+            else
+            {
+                emit readyForAction(mGroupID);
+            }
+            mUpdateTimer.start();
             break;
         case KBlocks_Animation_Fade_Out:
             mpAnimator->deleteFadeAnim();
@@ -340,15 +222,107 @@ void KBlocksItemGroup::endAnimation(int animType)
     }
 }
 
+bool KBlocksItemGroup::updateLayout()
+{
+    int tmpActionType = GameAction_None;
+    int tmpActionData = 0;
+    QList<int> tmpDataList;
+    
+    bool hasAnim = false;
+    int pieceCellCount = mpSingleGame->getPiece(0)->getCellCount() * 2;
+    
+    mpGameLayout->beginUpdate(&tmpDataList);
+    refreshItemByPos(tmpDataList);
+    tmpDataList.clear();
+    
+    mRemovedLine.clear();
+    mPunishLine.clear();
+    mNewPiecePos.clear();
+    
+    while(mpSingleGame->pickGameAction(&tmpActionType, &tmpActionData))
+    {
+        switch(tmpActionType)
+        {
+            case GameAction_Freeze_Piece_Color:
+                tmpDataList.append(tmpActionData);
+                for(int i = 0; i < pieceCellCount; i++)
+                {
+                    tmpActionType = GameAction_None;
+                    mpSingleGame->pickGameAction(&tmpActionType, &tmpActionData);
+                    tmpDataList.append(tmpActionData);
+                }
+                mpGameLayout->updateLayout(KBlocksLayout_Update_FreezePiece, tmpDataList);
+                tmpDataList.takeFirst();
+                refreshItemByPos(tmpDataList);
+                break;
+            case GameAction_Remove_Line:
+                mRemovedLine.append(tmpActionData);
+                tmpDataList.append(tmpActionData);
+                mpGameLayout->updateLayout(KBlocksLayout_Update_RemoveLine, tmpDataList);
+                hasAnim = true;
+                break;
+            case GameAction_Punish_Line:
+                mPunishLine.append(tmpActionData);
+                tmpDataList.append(tmpActionData);
+                mpGameLayout->updateLayout(KBlocksLayout_Update_PunishLine, tmpDataList);
+                break;
+            case GameAction_New_Piece_X:
+            case GameAction_New_Piece_Y:
+                mNewPiecePos.append(tmpActionData);
+                hasAnim = true;
+                break;
+        }
+        tmpActionType = GameAction_None;
+        tmpActionData = 0;
+        tmpDataList.clear();
+    }
+    
+    mpGameLayout->endUpdate();
+    
+    return hasAnim;
+}
+
+void KBlocksItemGroup::refreshItems()
+{
+    for(int i = 0; i < mMaxFreezeCellNum; i++)
+    {
+        maFreezeCells[i]->updateSelf();
+    }
+    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
+    {
+        maPrepareCells[i]->updateSelf();
+    }
+}
+
+void KBlocksItemGroup::refreshItemByPos(const QList<int> & dataList)
+{
+    int posX = 0;
+    int posY = 0;
+    int pieceCellCount = dataList.size() / 2;
+    for(int i = 0; i < pieceCellCount; i++)
+    {
+        posX = dataList[i * 2];
+        posY = dataList[i * 2 + 1];
+        if ((posX >= 0) && (posX < mFieldWidth)
+         && (posY >= 0) && (posY < mFieldHeight))
+        {
+            maFreezeCells[posX + posY * mFieldWidth]->updateSelf();
+        }
+    }
+}
+
 void KBlocksItemGroup::fadeInNewPiece()
 {
-    mpGameLayout->updateLayout(mRemovedLineCount, mRemovedLineList);
+    int count = mNewPiecePos.size() / 2;
     
     int posX[4] = {-1, -1, -1, -1};
     int posY[4] = {-1, -1, -1, -1};
     
-    mpGameControl->getNewPiecePosX(posX);
-    mpGameControl->getNewPiecePosY(posY);
+    for(int i = 0; i < count; i++)
+    {
+        posX[i] = mNewPiecePos[i * 2];
+        posY[i] = mNewPiecePos[i * 2 + 1];
+    }
     
     mFadeInItems.clear();
     for(int i = 0; i < 4; i++)
@@ -368,6 +342,7 @@ void KBlocksItemGroup::fadeInNewPiece()
     foreach(KBlocksSvgItem * tmpItem, mFadeOutItems)
     {
         tmpItem->setOpacity(1);
+        tmpItem->stopOpAnim();
     }
     foreach(KBlocksSvgItem * tmpItem, mDropItems)
     {
@@ -389,12 +364,15 @@ void KBlocksItemGroup::fadeInNewPiece()
 
 void KBlocksItemGroup::fadeOutOldLine()
 {
+    int count = mRemovedLine.size();
+    
     mFadeOutItems.clear();
-    for(int i = 0; i < mRemovedLineCount; i++)
+    for(int i = 0; i < count; i++)
     {
         for(int j = 0; j < mFieldWidth; j++)
         {
-            mFadeOutItems.append(maFreezeCells[j + mRemovedLineList[i] * mFieldWidth]);
+            maFreezeCells[j + mRemovedLine[i] * mFieldWidth]->startOpAnim();
+            mFadeOutItems.append(maFreezeCells[j + mRemovedLine[i] * mFieldWidth]);
         }
     }
     
@@ -411,19 +389,21 @@ void KBlocksItemGroup::fadeOutOldLine()
 
 void KBlocksItemGroup::dropFreezeLine()
 {
+    int count = mRemovedLine.size();
+    
     int fallLine[mFieldHeight];
     int removeLine = 0;
     
-    if (mRemovedLineCount == 0)
+    if (count == 0)
     {
         return;
     }
     
     for(int i = mFieldHeight - 1; i >= 0; i--)
     {
-        if (removeLine < mRemovedLineCount)
+        if (removeLine < count)
         {
-            if (i == mRemovedLineList[removeLine])
+            if (i == mRemovedLine[removeLine])
             {
                 fallLine[i] = 0;
                 removeLine++;
@@ -461,3 +441,13 @@ void KBlocksItemGroup::dropFreezeLine()
     mpAnimator->createDropAnim(mDropItems, DROP_ANIM_TIME_LINE, QTimeLine::Forward);
 }
 
+void KBlocksItemGroup::updateGraphicInfo()
+{
+    mItemSize = mpGrafx->m_Block_Size;
+    mPrepareLeft = mpGrafx->m_PreviewArea_CenterPoint_X - PREPARE_AREA_WIDTH * mpGrafx->m_Block_Size / 2;
+    mPrepareTop = mpGrafx->m_PreviewArea_CenterPoint_Y - PREPARE_AREA_WIDTH * mpGrafx->m_Block_Size / 2;
+    mFieldLeft = mpGrafx->m_PlayArea_OffsetPoint_X;
+    mFieldTop = mpGrafx->m_PlayArea_OffsetPoint_Y;
+    mFieldWidth = mpGrafx->m_PlayArea_NumberOfBlocks_X;
+    mFieldHeight = mpGrafx->m_PlayArea_NumberOfBlocks_Y;
+}

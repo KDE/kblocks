@@ -7,18 +7,19 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSPIECEGENERATOR_H
 #define KBLOCKSPIECEGENERATOR_H
 
-class KBlocksPieceGenerator {
+class KBlocksPieceGenerator
+{
     public:
-        KBlocksPieceGenerator(int size = 2048);
+        KBlocksPieceGenerator(int size = 4096);
         ~KBlocksPieceGenerator();
         
+    public:
         void genList(int seed);
-        
         int getPiece();
+        int getIndex();
         
     private:
         int  maxCapacity;

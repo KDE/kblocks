@@ -7,55 +7,28 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #include "KBlocksLayout.h"
 
-KBlocksLayout::KBlocksLayout()
+KBlocksLayout::KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInterface * pN)
 {
-    mpGameField = 0;
-    mpActivePiece = 0;
-    mpNextPiece = 0;
+    mpGameField = pF;
+    mpActivePiece = pA;
+    mpNextPiece = pN;
     
-    mpLastPiecePos = new QPoint*[4]();
-    for(int i = 0; i < 4; i++)
+    mPieceCellCount = mpActivePiece->getCellCount();
+    mpLastPiecePos = new QPoint*[mPieceCellCount]();
+    for(int i = 0; i < mPieceCellCount; i++)
     {
         mpLastPiecePos[i] = new QPoint(0, 0);
     }
-}
-
-KBlocksLayout::~KBlocksLayout()
-{
-    for(int i = 0; i < 4; i++)
+    
+    mWidth = mpGameField->getWidth();
+    mHeight = mpGameField->getHeight();
+    boardInfo = new int*[mHeight]();
+    for(int i = 0; i < mHeight; i++)
     {
-        delete mpLastPiecePos[i];
-    }
-    delete [] mpLastPiecePos;
-}
-
-void KBlocksLayout::setGameField(FieldInterface * p)
-{
-    mpGameField = p;
-}
-
-void KBlocksLayout::setActivePiece(PieceInterface * p)
-{
-    mpActivePiece = p;
-}
-
-void KBlocksLayout::setNextPiece(PieceInterface * p)
-{
-    mpNextPiece = p;
-}
-
-void KBlocksLayout::initLayout()
-{
-    int width = mpGameField->getWidth();
-    int height = mpGameField->getHeight();
-    boardInfo = new int*[height]();
-    for(int i = 0; i < height; i++)
-    {
-        boardInfo[i] = new int[width];
-        for(int j = 0; j < width; j++)
+        boardInfo[i] = new int[mWidth];
+        for(int j = 0; j < mWidth; j++)
         {
             boardInfo[i][j] = -1;
         }
@@ -72,10 +45,9 @@ void KBlocksLayout::initLayout()
     }
 }
 
-void KBlocksLayout::freeLayout()
+KBlocksLayout::~KBlocksLayout()
 {
-    int height = mpGameField->getHeight();
-    for(int i = 0; i < height; i++)
+    for(int i = 0; i < mHeight; i++)
     {
         delete boardInfo[i];
     }
@@ -86,67 +58,112 @@ void KBlocksLayout::freeLayout()
         delete prepareInfo[i];
     }
     delete [] prepareInfo;
+    
+    for(int i = 0; i < mPieceCellCount; i++)
+    {
+        delete mpLastPiecePos[i];
+    }
+    delete [] mpLastPiecePos;
 }
 
-void KBlocksLayout::updateLayout(int lineCount, int * lineList)
+void KBlocksLayout::beginUpdate(QList<int> * list)
 {
-    if ((!boardInfo) or (!prepareInfo))
+    int px = 0;
+    int py = 0;
+    list->clear();
+    for(int i = 0; i < mPieceCellCount; i++)
     {
-        return;
-    }
-    
-    if ((!mpGameField) or (!mpActivePiece) or (!mpNextPiece))
-    {
-        return;
-    }
-    
-    int width = mpGameField->getWidth();
-    int height = mpGameField->getHeight();
-    
-    if (lineCount == -1)
-    {
-        for(int i = 0; i < 4; i++)
+        px = mpLastPiecePos[i]->x();
+        py = mpLastPiecePos[i]->y();
+        list->append(px);
+        list->append(py);
+        if ((px >= 0) && (px < mWidth)
+         && (py >= 0) && (py < mHeight))
         {
-            int posX = mpLastPiecePos[i]->x();
-            int posY = mpLastPiecePos[i]->y();
-            if ((posX >= 0) && (posX < width)
-             && (posY >= 0) && (posY < height))
-            {
-                boardInfo[posY][posX] = -1;
-            }
+            boardInfo[py][px] = -1;
         }
     }
-    else if (lineCount > 0)
+}
+
+void KBlocksLayout::updateLayout(int type, const QList<int> & dataList)
+{
+    switch(type)
     {
-        for(int k = lineCount - 1; k >= 0; k--)
-        {
-            for(int i = lineList[k]; i > 0; i--)
-            {
-                for(int j = 0; j < width; j++)
-                {
-                    boardInfo[i][j] = boardInfo[i - 1][j];
-                }
-            }
-            for(int j = 0; j < width; j++)
-            {
-                boardInfo[0][j] = -1;
-            }
-        }
+        case KBlocksLayout_Update_FreezePiece:
+            updateFreezePiece(dataList);
+            break;
+        case KBlocksLayout_Update_RemoveLine:
+            updateRemoveLine(dataList);
+            break;
+        case KBlocksLayout_Update_PunishLine:
+            updatePunishLine(dataList);
+            break;
     }
-    
+}
+
+void KBlocksLayout::endUpdate()
+{
+    int px = 0;
+    int py = 0;
     int activePieceColor = mpActivePiece->getType();
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < mPieceCellCount; i++)
     {
-        int posX = mpActivePiece->getCellPosX(i);
-        int posY = mpActivePiece->getCellPosY(i);
-        mpLastPiecePos[i]->setX(posX);
-        mpLastPiecePos[i]->setY(posY);
-        if ((posX >= 0) && (posX < width) && (posY >= 0) && (posY < height))
+        px = mpActivePiece->getCellPosX(i);
+        py = mpActivePiece->getCellPosY(i);
+        mpLastPiecePos[i]->setX(px);
+        mpLastPiecePos[i]->setY(py);
+        if ((px >= 0) && (px < mWidth)
+         && (py >= 0) && (py < mHeight))
         {
-            boardInfo[posY][posX] = activePieceColor;
+            boardInfo[py][px] = activePieceColor;
         }
     }
     
+    updatePrepareArea();
+}
+
+void KBlocksLayout::updateSnapshot()
+{
+    for(int y = 0; y < mHeight; y++)
+    {
+        for(int x = 0; x < mWidth; x++)
+        {
+            if (mpGameField->getCell(x, y))
+            {
+                boardInfo[y][x] = 0; // TODO : what color is better here?
+            }
+            else
+            {
+                boardInfo[y][x] = -1;
+            }
+        }
+    }
+    
+    endUpdate();
+}
+
+int KBlocksLayout::getFieldColor(int posX, int posY)
+{
+    if ((posX < 0) || (posX >= mWidth) || (posY < 0) || (posY >= mHeight))
+    {
+        return -1;
+    }
+    
+    return boardInfo[posY][posX];
+}
+
+int KBlocksLayout::getPrepareColor(int posX, int posY)
+{
+    if ((posX < 0) || (posX >= PREPARE_AREA_WIDTH) || (posY < 0) || (posY >= PREPARE_AREA_WIDTH))
+    {
+        return -1;
+    }
+    
+    return prepareInfo[posY][posX];
+}
+
+void KBlocksLayout::updatePrepareArea()
+{
     for(int i = 0; i < PREPARE_AREA_WIDTH; i++)
     {
         for(int j = 0; j < PREPARE_AREA_WIDTH; j++)
@@ -164,22 +181,68 @@ void KBlocksLayout::updateLayout(int lineCount, int * lineList)
     }
 }
 
-int KBlocksLayout::getFieldColor(int posX, int posY)
+void KBlocksLayout::updateFreezePiece(const QList<int> & dataList)
 {
-    if (!boardInfo)
+    QList<int> tmpList = dataList;
+    int freezeColor = tmpList.takeFirst();
+    int loopCount = tmpList.size() / 2;
+    for(int i = 0; i < loopCount; i++)
     {
-        return -1;
+        int posX = tmpList[i * 2];
+        int posY = tmpList[i * 2 + 1];
+        if ((posX >= 0) && (posX < mWidth)
+         && (posY >= 0) && (posY < mHeight))
+        {
+            boardInfo[posY][posX] = freezeColor;
+        }
     }
-    
-    return boardInfo[posY][posX];
 }
 
-int KBlocksLayout::getPrepareColor(int posX, int posY)
+void KBlocksLayout::updateRemoveLine(const QList<int> & dataList)
 {
-    if (!prepareInfo)
+    int lineCount = dataList.size();
+    for(int k = 0; k < lineCount; k++)
     {
-        return -1;
+        for(int i = dataList[k]; i > 0; i--)
+        {
+            for(int j = 0; j < mWidth; j++)
+            {
+                boardInfo[i][j] = boardInfo[i - 1][j];
+            }
+        }
+        for(int j = 0; j < mWidth; j++)
+        {
+            boardInfo[0][j] = -1;
+        }
     }
-    
-    return prepareInfo[posY][posX];
+}
+
+void KBlocksLayout::updatePunishLine(const QList<int> & dataList)
+{
+    int punishColor = mpNextPiece->getType(); // TODO : this color or new color?
+    int lineCount = dataList.size();
+    for(int k = 0; k < lineCount; k++)
+    {
+        for(int i = 0; i < mHeight - dataList[k]; i++)
+        {
+            for(int j = 0; j < mWidth; j++)
+            {
+                boardInfo[i][j] = boardInfo[i + dataList[k]][j];
+            }
+        }
+        for(int i = mHeight - dataList[k]; i < mHeight; i++)
+        {
+            for(int j = 0; j < mWidth; j++)
+            {
+                if (mpGameField->getCell(j, i))
+                {
+                    boardInfo[i][j] = punishColor;
+                }
+                else
+                {
+                    boardInfo[i][j] = -1;
+                }
+            }
+        }
+    }
 }

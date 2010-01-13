@@ -7,9 +7,10 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #ifndef KBLOCKSGAMELOGIC_H
 #define KBLOCKSGAMELOGIC_H
+
+#include <stdlib.h>
 
 #include "GameLogicInterface.h"
 #include "SingleGameInterface.h"
@@ -18,23 +19,39 @@
 
 #include "KBlocksDefine.h"
 
-class KBlocksGameLogic : public GameLogicInterface {
+class KBlocksGameLogic : public GameLogicInterface
+{
     public:
         KBlocksGameLogic(int capacity);
+        KBlocksGameLogic(char* replay);
         ~KBlocksGameLogic();
         
     public:
-        void createSingleGames(int gameCount);
-        void deleteSingleGames();
-        
-        void setGameSeed(int seed);
-        
-        int getGameMaxCapacity();
-        int getGameCount();
+        int getActiveGameCount();
         KBlocksSingleGame* getSingleGame(int index);
         
-        int* runStep(int gameIndex = -1);
-        int runEvent(int gameEvent, int gameIndex = -1);
+        void setRecordMode(bool flag);
+        
+        int levelUpGame(int level);
+        int updateGame(int * lineList);
+        
+        void setGameSeed(int seed);
+        void setGamePunish(bool flag);
+        
+        void setGameStandbyMode(bool flag);
+        void setGameInterval(int interval);
+        void setInitInterval(int interval);
+        void setLevelUpInterval(int interval);
+        
+        bool startGame(int gameCount);
+        bool stopGame();
+        
+        void pauseGame(bool pauseFlag);
+        void continueGame();
+        
+    private:
+        void createSingleGames(int gameCount);
+        void deleteSingleGames();
         
     protected:
         KBlocksSingleGame** maGameList;
@@ -42,7 +59,17 @@ class KBlocksGameLogic : public GameLogicInterface {
     private:
         int mGameMax;
         int mGameCount;
+        
 		int mGameSeed;
+		int mPunishFlag;
+		
+        bool mStandbyMode;
+        int mGameInterval;
+        int mInitialInterval;
+        int mLevelUpInterval;
+		
+		bool mRecordMode;
+		bool mReplayMode;
 };
 
 #endif

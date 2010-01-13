@@ -7,39 +7,25 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
-/****************************************************************
- *
- * $RCSfile: FieldInterface.h,v $
- *
- * $Revision: 1.0 $
- *
- * $Date: 2009/11/01 10:00:00 $
- *
- * AUTHOR: ZhongJie Cai
- *
- * DESCRIPTION: Interface for game board of KBlocks 
- *
- ****************************************************************/  
 #ifndef FIELD_INTERFACE
 #define FIELD_INTERFACE
 
-class FieldInterface {
-    protected:
-        bool** board;
-        int height;
-        int width;
-    
+class FieldInterface
+{
     public:
         FieldInterface(){};
         virtual ~FieldInterface(){};
     
     public:
         virtual bool getCell(int xPos, int yPos) = 0;
-        virtual void setCell(int xPos, int yPos, bool value) = 0;
         
         virtual int  getWidth() = 0;
         virtual int  getHeight() = 0;
+        
+    protected:
+        bool** maBoard;
+        int mHeight;
+        int mWidth;
 };
 
 #endif //FIELD_INTERFACE

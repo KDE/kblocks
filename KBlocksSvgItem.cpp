@@ -1,25 +1,25 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-
 #include "KBlocksSvgItem.h"
 
 #include <QPainter>
 
-KBlocksSvgItem::KBlocksSvgItem()
+KBlocksSvgItem::KBlocksSvgItem(KBlocksLayout * p, int type, int posX, int posY)
 {
-    mpGameLayout = 0;
+    mpGameLayout = p;
     
-    mPosX = 0;
-    mPosY = 0;
+    mPosX = posX;
+    mPosY = posY;
     
-    mType = KBlocksSvgItem_None;
+    mType = type;
     mColor = -1;
     
     mOpacity = 1;
@@ -29,20 +29,10 @@ KBlocksSvgItem::~KBlocksSvgItem()
 {
 }
 
-void KBlocksSvgItem::setLayoutHandler(KBlocksLayout * p)
-{
-    mpGameLayout = p;
-}
-
 void KBlocksSvgItem::setLayoutPos(int posX, int posY)
 {
     mPosX = posX;
     mPosY = posY;
-}
-
-void KBlocksSvgItem::setLayoutType(int type)
-{
-    mType = type;
 }
 
 bool KBlocksSvgItem::updateSelf()
@@ -79,11 +69,22 @@ bool KBlocksSvgItem::updateSelf()
     return true;
 }
 
+void KBlocksSvgItem::startOpAnim()
+{
+    setElementId(QString("BLOCK_OUT_%1").arg(mColor));
+}
+
 void KBlocksSvgItem::setOpacity(qreal opacity)
 {
     mOpacity = opacity;
     update();
 }
+
+void KBlocksSvgItem::stopOpAnim()
+{
+    setElementId(QString("BLOCK_%1").arg(mColor));
+}
+        
 void KBlocksSvgItem::startPosAnim(QPointF target)
 {
     mOriginPos = pos();
