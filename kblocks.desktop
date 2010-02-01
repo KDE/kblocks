@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KBlocks
+Name[de]=KBlocks
 Name[en_GB]=KBlocks
 Name[es]=KBlocks
 Name[fr]=KBlocks
@@ -19,6 +20,7 @@ Exec=kblocks -caption "%c"
 Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
+GenericName[de]=„Tetris“-Spiel
 GenericName[en_GB]=Falling Blocks Game
 GenericName[es]=Juego de bloques descendentes
 GenericName[fr]=Jeu de chute de blocs
