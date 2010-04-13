@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -26,8 +26,9 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocks
     mpBackground->setElementId("VIEW");
     addToGroup(mpBackground);
     
-    maPrepareCells = new KBlocksSvgItem*[PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH]();
-    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
+    mMaxPrepareCellNum = PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH;
+    maPrepareCells = new KBlocksSvgItem*[mMaxPrepareCellNum];
+    for(int i = 0; i < mMaxPrepareCellNum; i++)
     {
         maPrepareCells[i] = new KBlocksSvgItem( mpGameLayout, KBlocksSvgItem_PrepareArea,
                                                 i % PREPARE_AREA_WIDTH, i / PREPARE_AREA_WIDTH);
@@ -38,7 +39,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocks
     }
     
     mMaxFreezeCellNum = (mFieldWidth * mFieldHeight);
-    maFreezeCells = new KBlocksSvgItem*[mMaxFreezeCellNum]();
+    maFreezeCells = new KBlocksSvgItem*[mMaxFreezeCellNum];
     for(int i = 0; i < mMaxFreezeCellNum; i++)
     {
         maFreezeCells[i] = new KBlocksSvgItem( mpGameLayout, KBlocksSvgItem_FieldArea,
@@ -82,7 +83,7 @@ KBlocksItemGroup::~KBlocksItemGroup()
     }
     delete [] maFreezeCells;
     
-    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
+    for(int i = 0; i < mMaxPrepareCellNum; i++)
     {
         removeFromGroup(maPrepareCells[i]);
         delete maPrepareCells[i];
@@ -118,7 +119,7 @@ void KBlocksItemGroup::refreshPosition()
     mpBackground->setElementId("VIEW");
     mpBackground->setPos(0, 0);
     
-    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
+    for(int i = 0; i < mMaxPrepareCellNum; i++)
     {
         maPrepareCells[i]->setPos(mPrepareLeft + mItemSize * (i % PREPARE_AREA_WIDTH),
                                   mPrepareTop + mItemSize * (i / PREPARE_AREA_WIDTH));
@@ -288,7 +289,7 @@ void KBlocksItemGroup::refreshItems()
     {
         maFreezeCells[i]->updateSelf();
     }
-    for(int i = 0; i < PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH; i++)
+    for(int i = 0; i < mMaxPrepareCellNum; i++)
     {
         maPrepareCells[i]->updateSelf();
     }

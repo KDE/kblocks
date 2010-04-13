@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -15,22 +15,27 @@
 #include "GameLogicInterface.h"
 #include "SingleGameInterface.h"
 
-#include "KBlocksSingleGame.h"
-
 #include "KBlocksDefine.h"
+
+#include "KBlocksGameRecorder.h"
+#include "KBlocksGameReplayer.h"
+
+#include "KBlocksSingleGame.h"
 
 class KBlocksGameLogic : public GameLogicInterface
 {
     public:
-        KBlocksGameLogic(int capacity);
-        KBlocksGameLogic(char* replay);
+        KBlocksGameLogic(int capacity, bool record = false);
+        KBlocksGameLogic(KBlocksGameReplayer * p);
         ~KBlocksGameLogic();
         
     public:
         int getActiveGameCount();
         KBlocksSingleGame* getSingleGame(int index);
         
-        void setRecordMode(bool flag);
+        bool playRecordOneStep(int * changedPiece);
+        void getRecordLastField(int index);
+        void saveRecord(const char * fileName, bool binaryMode = true);
         
         int levelUpGame(int level);
         int updateGame(int * lineList);
@@ -60,16 +65,17 @@ class KBlocksGameLogic : public GameLogicInterface
         int mGameMax;
         int mGameCount;
         
-		int mGameSeed;
-		int mPunishFlag;
-		
+        int mGameSeed;
+        int mPunishFlag;
+        
         bool mStandbyMode;
         int mGameInterval;
         int mInitialInterval;
         int mLevelUpInterval;
 		
-		bool mRecordMode;
-		bool mReplayMode;
+        KBlocksGameRecorder * mpGameRecorder;
+        KBlocksGameReplayer * mpGameReplayer;
 };
 
 #endif
+

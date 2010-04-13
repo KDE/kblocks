@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -9,28 +9,10 @@
 ***************************************************************************/
 #include "KBlocksGameRecorder.h"
 
-const char * KBlocksRecordText[RecordDataType_Max_Count] =
-{
-    "GameCount",
-    "PunishFactor",
-    "StandbyMode",
-    "FieldWidth",
-    "FieldHeight",
-    "ShowPieceCount",
-    "MessagePoolSize",
-    "MovePieceLeft",
-    "MovePieceRight",
-    "MovePieceDown",
-    "RotatePieceCW",
-    "RotatePieceCCW",
-    "GameOneStep",
-};
+#include <sys/time.h>
 
-KBlocksGameRecorder::KBlocksGameRecorder(string fileName, bool isBinaryMode = true)
+KBlocksGameRecorder::KBlocksGameRecorder()
 {
-    mFileName = fileName;
-    mBinaryMode = isBinaryMode;
-    
     mGameRecord.clear();
 }
 
@@ -41,46 +23,18 @@ KBlocksGameRecorder::~KBlocksGameRecorder()
 
 void KBlocksGameRecorder::append(int index, int type, int value)
 {
-    _game_record_data tmpLastData = mGameRecord.back();
-    if ((tmpLastData.index == index) && (tmpLastData.type == type))
-    {
-        switch(type)
-        {
-            case RecordDataType_GameCount:
-            case RecordDataType_PunishFactor:
-            case RecordDataType_StandbyMode:
-            case RecordDataType_FieldWidth:
-            case RecordDataType_FieldHeight:
-            case RecordDataType_ShowPieceCount:
-            case RecordDataType_MessagePoolSize:
-                tmpLastData.value = value; // Overwrite with new value
-                break;
-            case RecordDataType_MovePieceLeft:
-            case RecordDataType_MovePieceRight:
-            case RecordDataType_MovePieceDown:
-            case RecordDataType_RotatePieceCW:
-            case RecordDataType_RotatePieceCCW:
-            case RecordDataType_GameOneStep:
-                tmpLastData.value += value; // Add up value with new value
-                break;
-            default:
-                break;
-        }
-        mGameRecord.back() = tmpLastData;
-    }
-    else
-    {
-        tmpLastData.index = index;
-        tmpLastData.type = type;
-        tmpLastData.value = value;
-        mGameRecord.push_back(tmpLastData);
-    }
+    _game_record_data tmpLastData;
+    tmpLastData.index = index;
+    tmpLastData.type = type;
+    tmpLastData.value = value;
+    tmpLastData.time = getMillisecOfNow();
+    mGameRecord.push_back(tmpLastData);
 }
 
-void KBlocksGameRecorder::save()
+void KBlocksGameRecorder::save(const char * fileName, bool isBinaryMode)
 {
-    FILE * pFile = fopen(mFileName, "w");
-    if (mBinaryMode)
+    FILE * pFile = fopen(fileName, "w");
+    if (isBinaryMode)
     {
         saveBinary(pFile);
     }
@@ -93,23 +47,41 @@ void KBlocksGameRecorder::save()
 
 void KBlocksGameRecorder::saveText(FILE * pFile)
 {
-    char tmpBuffer[256];
+    int tmpTime = 0;
+    timeLong oldTime = mGameRecord.front().time;
     list<_game_record_data>::iterator it;
-    for(it = mylist.begin(); it != mylist.end(); it++)
+    for(it = mGameRecord.begin(); it != mGameRecord.end(); it++)
     {
-        sprintf(tmpBuffer, "%ld %s %d %d\n", it->time, KBlocksRecordText[it->type].c_str(), it->index, it->value);
-        fputs(tmpBuffer, pFile);
+        tmpTime = (int)(it->time - oldTime);
+        oldTime = it->time;
+        fprintf(pFile, "%d %s %d %d\n", tmpTime, KBlocksRecordText[it->type], it->index, it->value);
     }
 }
 
 void KBlocksGameRecorder::saveBinary(FILE * pFile)
 {
+    int tmpTime = 0;
+    timeLong oldTime = mGameRecord.front().time;
     list<_game_record_data>::iterator it;
-    for(it = mylist.begin(); it != mylist.end(); it++)
+    for(it = mGameRecord.begin(); it != mGameRecord.end(); it++)
     {
-        writeByte(pFile, it->index);
+        tmpTime = (int)(it->time - oldTime);
+        oldTime = it->time;
+        if (tmpTime > 255)
+        {
+            while(tmpTime > 255)
+            {
+                writeByte(pFile, 255);
+                writeByte(pFile, RecordDataType_Skipped);
+                writeByte(pFile, it->index);
+                writeByte(pFile, it->value);
+                tmpTime -= 255;
+            }
+        }
+        writeByte(pFile, tmpTime);
         writeByte(pFile, it->type);
-        writeInt(pFile, it->value);
+        writeByte(pFile, it->index);
+        writeByte(pFile, it->value);
     }
 }
 
@@ -119,12 +91,14 @@ void KBlocksGameRecorder::writeByte(FILE * pFile, int value)
     fputc(tmpByte, pFile);
 }
 
-void KBlocksGameRecorder::writeInt(FILE * pFile, int value)
+timeLong KBlocksGameRecorder::getMillisecOfNow()
 {
-    int tmpByte = 0;
-    for(int i = 0; i < 4; i++)
-    {
-        tmpByte = ((value >> (i * 8)) & 0xFF);
-        fputc(tmpByte, pFile);
-    }
+    timeval tmpCurTime;
+    
+    gettimeofday(&tmpCurTime, NULL);
+    
+    timeLong tmpMilliTime = (timeLong)tmpCurTime.tv_usec / 1000;
+    tmpMilliTime += (timeLong)tmpCurTime.tv_sec * 1000;
+    
+    return tmpMilliTime;
 }

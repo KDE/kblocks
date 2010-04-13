@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -71,6 +71,7 @@ class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
         
         int mMaxFreezeCellNum;
         KBlocksSvgItem** maFreezeCells;
+        int mMaxPrepareCellNum;
         KBlocksSvgItem** maPrepareCells;
         
         SingleGameInterface* mpSingleGame;
@@ -103,3 +104,4 @@ class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
 };
 
 #endif
+

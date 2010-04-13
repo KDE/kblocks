@@ -7,45 +7,50 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-#ifndef KBLOCKSDISPLAY_H
-#define KBLOCKSDISPLAY_H
-
-#include <string>
+#ifndef KBLOCKSREPWIN_H
+#define KBLOCKSREPWIN_H
 
 #include <KMainWindow>
 #include <QTimer>
+#include <QString>
+#include <QPixmap>
 
 #include "KBlocksScene.h"
 #include "KBlocksView.h"
-
 #include "KBlocksGameLogic.h"
-#include "KBlocksNetClient.h"
+#include "KBlocksGameReplayer.h"
 
 using std::string;
 
-class KBlocksDisplay : public KMainWindow
+class KBlocksRepWin : public KMainWindow
 {
     Q_OBJECT
     
     public:
-        KBlocksDisplay(int gameCount, const string& serverIP, int localPort);
-        ~KBlocksDisplay();
+        KBlocksRepWin(const char * replayFile, bool binaryMode = true);
+        ~KBlocksRepWin();
         
     public:
         void setGamesPerLine(int count);
+        
         void setUpdateInterval(int interval);
+        void setReplayStepLength(int stepLen);
+        
+        void setSnapshotFolder(const QString& folder);
+        void setSnapshotFilename(const QString& fileName);
+        
+        bool replayLoaded();
         
     public:
-        void startDisplay();
-        void stopDisplay();
+        void startReplay();
+        void stopReplay();
         
     private:
-        int  formIntFromByte(char * data);
-        void updateScore();
+        QString getTimeString();
+        void snapshotView();
         
     private slots:
-        void updateEvent();
-        void updateGameDisplay(int size);
+        void replayOneStep();
         
     private:
         int mGameCount;
@@ -54,14 +59,15 @@ class KBlocksDisplay : public KMainWindow
         int mUpdateInterval;
         QTimer mUpdateTimer;
         
-        int maScoreList[8];
+        QString mSnapshotFolder;
+        QString mSnapshotFilename;
+        QPixmap mSnapshoter;
         
         KBlocksScene* mpGameScene;
         KBlocksView*  mpGameView;
         
         KBlocksGameLogic* mpGameLogic;
-        KBlocksNetClient* mpNetClient;
+        KBlocksGameReplayer* mpGameReplayer;
 };
 
 #endif
-

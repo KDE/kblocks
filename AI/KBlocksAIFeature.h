@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -27,10 +27,10 @@ enum FeatureEnumeration
     FEATURE_CLOSED_HOLES_COUNT,
     FEATURE_WELLS_COUNT,
     FEATURE_AVERAGE_HEIGHT,
-    FEATURE_AVERAGE_HEIGHT_DIFFERENT,    		
-    FEATURE_MAX_HEIGHT_DIFFERENT,    		
+    FEATURE_AVERAGE_HEIGHT_DIFFERENT,            
+    FEATURE_MAX_HEIGHT_DIFFERENT,            
     FEATURE_KONTUR_COUNT,
-    FEATURE_MAX_KONTUR_LENGTH,	
+    FEATURE_MAX_KONTUR_LENGTH,    
     FEATURE_BLOCKS_COUNT,
     FEATURE_BLOCKS_OVER_HOLES_COUNT,
     FEATURE_WEIGHTED_BLOCKS_COUNT,

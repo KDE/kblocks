@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -10,57 +10,50 @@
 #ifndef KBLOCKSNETSERVER_H
 #define KBLOCKSNETSERVER_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <strings.h>
-
-#include <map>
-#include <list>
-#include <string>
+#include <QObject>
+#include <QUdpSocket>
+#include <QMap>
+#include <QList>
+#include <QString>
+#include <QByteArray>
 
 #include "KBlocksGameLogic.h"
 #include "KBlocksScore.h"
 
 using namespace std;
 
-class KBlocksNetServer
+class KBlocksNetServer : public QObject
 {
+    Q_OBJECT
+    
     public:
-        KBlocksNetServer(KBlocksGameLogic * p, const string& localIP);
+        KBlocksNetServer(KBlocksGameLogic * p, const QString& localIP);
         ~KBlocksNetServer();
         
     public:
-        int  exec(int gameCount, bool waitForAll);
+        int  executeGame(int gameCount, bool waitForAll);
         
-        void setTimeOut(int timeOut);
         void setSendLength(int initLen, int lvUpLen);
+        void setRecordFile(const char * fileName, bool binaryMode = true);
         
     private:
-        int  recvRemoteData();
-        int  processGame(int gameIndex, bool waitForAll);
+        void recvRemoteData(QVector<QByteArray> * recvData, QVector<QString> * recvAddr);
+        int  processGame(int gameIndex);
         
-        void addPlayerIP(int gameIndex, char * name);
-        void delPlayerIP();
+        void addPlayerIP(int gameIndex, const QByteArray& data, const QString& addr);
+        void delPlayerIP(const QString& addr);
         
         void sendPlayerActionLength();
         void sendPlayerData(int gameIndex);
         void sendGameOver();
-        void sendGuiData();
+        void sendGuiData(const QString& addr);
         
-        int  parseRemoteData(char * data);
-        int  parsePlayerReply(char * data);
+        int  parseRemoteData(const QByteArray& data, const QString& addr);
+        int  parsePlayerReply(const QByteArray& data, const QString& addr);
         
-        int  parseIPString(const string& input, string * ip, int * port);
-        string formIPString(const sockaddr_in& inAddr);
-        
-        int  getDecIntFromString(const string& input);
-        void formByteFromInt(int value, unsigned char * data);
+        bool parseIPString(const QString& input, QHostAddress * ip, quint16 * port);
+        QString formIPString(const QHostAddress& inAddr, quint16 inPort);
+        void formByteFromInt(int value, char * data);
         
         void printGameResult();
         
@@ -68,25 +61,31 @@ class KBlocksNetServer
         KBlocksGameLogic* mpGameLogic;
         KBlocksScore** maGameScoreList;
         
-        string mLocalIP;
-        
+        bool mWaitForAll;
         bool mSpeedMode;
         int mTimeOut;
         int mTopGameLevel;
         int mInitSendLength;
         int mLvUpSendLength;
         
-        int mServerSocketFD;
-        struct sockaddr_in mRemoteAddr;
-        int mRemoteAddrLen;
+        QHostAddress mLocalAddress;
+        quint16 mLocalPort;
+        QUdpSocket * mpServerSocket;
+        
+        QHostAddress mRemoteAddress;
+        quint16 mRemotePort;
         
         bool mRunningFlag;
         int mGameCount;
         bool mGameStarted;
         
-        map<string, int> mPlayerMapping;
-        map<int, string> mPlayerName;
-        list<string> mPlayerIPList;
+        QMap<QString, int> mPlayerMapping;
+        QMap<int, QString> mPlayerName;
+        QList<QString> mPlayerIPList;
+        
+        string mRecordFileName;
+        bool mRecordFileType;
 };
 
 #endif
+

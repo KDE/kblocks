@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -25,7 +25,7 @@ class KBlocksField : public FieldInterface
         unsigned char* maEncodeData;
     
     public:
-        KBlocksField(int width, int height);
+        KBlocksField(int width = 10, int height = 20);
         KBlocksField(FieldInterface * p);
         ~KBlocksField();
     
@@ -47,6 +47,13 @@ class KBlocksField : public FieldInterface
         
         int  getWidth();
         int  getHeight();
+        
+        bool equals(KBlocksField * rhs);
+        
+        int  getBlockHeight(int xPos);
+        int  getFreeHeight(int xPos);
+        void getSignature(int * data);
 };
 
 #endif
+

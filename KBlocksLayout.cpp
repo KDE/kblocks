@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -16,7 +16,7 @@ KBlocksLayout::KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInte
     mpNextPiece = pN;
     
     mPieceCellCount = mpActivePiece->getCellCount();
-    mpLastPiecePos = new QPoint*[mPieceCellCount]();
+    mpLastPiecePos = new QPoint*[mPieceCellCount];
     for(int i = 0; i < mPieceCellCount; i++)
     {
         mpLastPiecePos[i] = new QPoint(0, 0);
@@ -24,7 +24,7 @@ KBlocksLayout::KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInte
     
     mWidth = mpGameField->getWidth();
     mHeight = mpGameField->getHeight();
-    boardInfo = new int*[mHeight]();
+    boardInfo = new int*[mHeight];
     for(int i = 0; i < mHeight; i++)
     {
         boardInfo[i] = new int[mWidth];
@@ -34,7 +34,7 @@ KBlocksLayout::KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInte
         }
     }
     
-    prepareInfo = new int*[PREPARE_AREA_WIDTH]();
+    prepareInfo = new int*[PREPARE_AREA_WIDTH];
     for(int i = 0; i < PREPARE_AREA_WIDTH; i++)
     {
         prepareInfo[i] = new int[PREPARE_AREA_WIDTH];
@@ -49,13 +49,13 @@ KBlocksLayout::~KBlocksLayout()
 {
     for(int i = 0; i < mHeight; i++)
     {
-        delete boardInfo[i];
+        delete [] boardInfo[i];
     }
     delete [] boardInfo;
     
     for(int i = 0; i < PREPARE_AREA_WIDTH; i++)
     {
-        delete prepareInfo[i];
+        delete [] prepareInfo[i];
     }
     delete [] prepareInfo;
     

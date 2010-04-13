@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,8 @@ KBlocksSvgItem::KBlocksSvgItem(KBlocksLayout * p, int type, int posX, int posY)
     mColor = -1;
     
     mOpacity = 1;
+
+    setCacheMode(QGraphicsItem::DeviceCoordinateCache);
 }
 
 KBlocksSvgItem::~KBlocksSvgItem()

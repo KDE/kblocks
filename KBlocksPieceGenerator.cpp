@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -8,6 +8,7 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "KBlocksPieceGenerator.h"
 #include "KBlocksPiece.h"
@@ -16,7 +17,7 @@ KBlocksPieceGenerator::KBlocksPieceGenerator(int size)
 {
     maxCapacity = size;
     pieceIndex = 0;
-    maPieceList = new int[maxCapacity]();
+    maPieceList = new int[maxCapacity];
 }
 
 KBlocksPieceGenerator::~KBlocksPieceGenerator()
@@ -43,6 +44,7 @@ int KBlocksPieceGenerator::getPiece()
     if (pieceIndex > maxCapacity)
     {
         pieceIndex = 0;
+        genList(maPieceList[0]);
     }
     
     return maPieceList[pieceIndex];

@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -160,6 +160,14 @@ bool KBlocksAIPlanner::getNextBoardStatus(int index, KBlocksField * field)
     for(int i = 0; i < KBlocksPiece_CellCount; i++)
     {
         field->setCell(piece->getCellPosX(i), piece->getCellPosY(i), true);
+    }
+    int maxLines = field->getHeight();
+    for(int i = 0; i < maxLines; i++)
+    {
+        if (field->checkFilledLine(i))
+        {
+            field->removeFilledLine(i);
+        }
     }
     
     delete piece;

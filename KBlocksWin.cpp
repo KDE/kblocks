@@ -11,6 +11,7 @@
 #include "KBlocksWin.h"
 
 #include <limits.h>
+#include <stdlib.h>
 
 #include <KConfigDialog>
 #include <kstandardgameaction.h>
@@ -97,6 +98,8 @@ void KBlocksWin::startGame()
         return;
     }
     
+    srand(time(0));
+    mpGameLogic->setGameSeed(rand());
     if (mpGameLogic->startGame(mGameCount))
     {
         mpPlayManager->startGame();

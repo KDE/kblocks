@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -17,7 +17,7 @@ KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string& serverIP, int
     mPlayerCount = 0;
     mMaxCapacity = capacity;
     
-    maPlayerList = new KBlocksNetPlayer*[mMaxCapacity]();
+    maPlayerList = new KBlocksNetPlayer*[mMaxCapacity];
     
     mpGameLogic = new KBlocksGameLogic(mMaxCapacity);
     mpGameLogic->setGameSeed(0);

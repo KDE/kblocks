@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -364,22 +364,22 @@ double NBSEvaluation::evaluate(KBlocksField * field)
 {
     Feature features [] =
     {
-        {FEATURE_MAX_HEIGHT,-62709},		    //1
-        {FEATURE_HOLES_COUNT,-30271},		    //2
-        {FEATURE_CLOSED_HOLES_COUNT,0},		    //3
-        {FEATURE_MAX_HEIGHT_DIFFERENT,35395},	//5
-        {FEATURE_MAX_WELL_DEPTH,-12},		    //6
-        {FEATURE_WELLS_COUNT,-43810},		    //7
-        {FEATURE_BLOCKS_COUNT,0},		        //9
-        {FEATURE_WEIGHTED_BLOCKS_COUNT,-4041},	//10
-        {FEATURE_ROW_TRANSITION_COUNT,-44262},	//11
+        {FEATURE_MAX_HEIGHT,-62709},            //1
+        {FEATURE_HOLES_COUNT,-30271},            //2
+        {FEATURE_CLOSED_HOLES_COUNT,0},            //3
+        {FEATURE_MAX_HEIGHT_DIFFERENT,35395},    //5
+        {FEATURE_MAX_WELL_DEPTH,-12},            //6
+        {FEATURE_WELLS_COUNT,-43810},            //7
+        {FEATURE_BLOCKS_COUNT,0},                //9
+        {FEATURE_WEIGHTED_BLOCKS_COUNT,-4041},    //10
+        {FEATURE_ROW_TRANSITION_COUNT,-44262},    //11
         {FEATURE_COLUMN_TRANSITION_COUNT,-5832},//12
     };
     
     SFeature sfeatures [] =
     {
-        {FEATURE_REMOVE_LINES,13344},	//4
-        {FEATURE_LANDING_HEIGHT,0},	    //8
+        {FEATURE_REMOVE_LINES,13344},    //4
+        {FEATURE_LANDING_HEIGHT,0},        //8
     };
     
     uint n1 = sizeof(features)/sizeof(Feature);

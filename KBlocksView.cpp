@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -10,7 +10,6 @@
 ***************************************************************************/
 #include "KBlocksView.h"
 
-#include <KDebug>
 #include <QResizeEvent>
 
 KBlocksView::KBlocksView(KBlocksScene * scene, QWidget * parent): QGraphicsView(scene, parent)

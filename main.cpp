@@ -8,6 +8,10 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
+#include <time.h>
+#include <string>
+#include <vector>
+
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
@@ -29,8 +33,11 @@ using namespace std;
 #include "KBlocksPlayNetwork.h"
 #include "KBlocksWin.h"
 #include "KBlocksDisplay.h"
+#include "KBlocksRepWin.h"
+
 #include "KBlocksAppThread.h"
 
+#include "KBlocksPlayNetwork.h"
 #include "AI/KBlocksAIPlayer.h"
 #include "KBlocksKeyboardPlayer.h"
 
@@ -53,6 +60,7 @@ enum KBlocksGameMode
     KBlocksGame_EngineMode,
     KBlocksGame_GuiMode,
     KBlocksGame_PlayerMode,
+    KBlocksGame_ReplayMode,
     KBlocksGame_MaxMode_Count,
 };
 
@@ -88,13 +96,28 @@ int gameEngineMode(KBlocksConfigManager * config)
     bool sendLimit;
     string serverIP;
     
+    string recordFile;
+    string recordType;
+    bool recordBinary;
+    
     config->GetKeyInt("Engine", "GameCount", &gameCount, 1);
     config->GetKeyBool("Engine", "SameSequence", &sameSeq, true);
     config->GetKeyBool("Engine", "HasAttack", &hasAttack, true);
     config->GetKeyBool("Engine", "Synchronized", &standbyMode, false);
     config->GetKeyBool("Engine", "HasHuman", &hasHuman, false);
-    config->GetKeyBool("Engine", "SpeedLimit", &sendLimit, false);
+    config->GetKeyBool("Engine", "SendLimit", &sendLimit, false);
     config->GetKeyString("Engine", "ServerIP", &serverIP, "127.0.0.1:10086");
+    
+    config->GetKeyString("RecordReplay", "Record", &recordFile, "");
+    config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
+    if (recordType.find("text") == 0)
+    {
+        recordBinary = false;
+    }
+    else
+    {
+        recordBinary = true;
+    }
     
     printf("Creating game engine...\n");
     printf("\tGame Count    = %d\n", gameCount);
@@ -103,7 +126,7 @@ int gameEngineMode(KBlocksConfigManager * config)
     printf("\tSynchronized  = %s\n", standbyMode ? "true" : "false");
     printf("\tHas Human     = %s\n", hasHuman ? "true" : "false");
     printf("\tSpeed Limit   = %s\n", sendLimit ? "true" : "false");
-    mpKBlocksGameLogic = new KBlocksGameLogic(gameCount);
+    mpKBlocksGameLogic = new KBlocksGameLogic(gameCount, true);
     mpKBlocksGameLogic->setGameSeed(sameSeq ? time(0) : -time(0));
     mpKBlocksGameLogic->setGamePunish(hasAttack);
     mpKBlocksGameLogic->setGameStandbyMode(standbyMode);
@@ -113,14 +136,16 @@ int gameEngineMode(KBlocksConfigManager * config)
     
     printf("Creating network server...\n");
     printf("\tServer IP = %s\n", serverIP.c_str());
-    KBlocksNetServer* mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, serverIP);
-    mpKBlocksServer->setTimeOut(100000);
+    printf("\tRecord File = %s\n", recordFile.c_str());
+    printf("\tRecord Type = %s\n", recordBinary ? "Binary" : "Text");
+    KBlocksNetServer* mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, serverIP.c_str());
     mpKBlocksServer->setSendLength(sendLimit ? 10 : 0, sendLimit ? 1 : 0);
+    mpKBlocksServer->setRecordFile(recordFile.c_str(), recordBinary);
     printf("Done...\n");
     
     printf("Executing game engine and network server...\n");
-    return mpKBlocksServer->exec(gameCount, standbyMode);
-};
+    return mpKBlocksServer->executeGame(gameCount, standbyMode);
+}
 
 int gameGuiMode(KBlocksConfigManager * config, const KApplication& app)
 {
@@ -153,7 +178,70 @@ int gameGuiMode(KBlocksConfigManager * config, const KApplication& app)
     printf("Done...\n");
     
     return app.exec();
-};
+}
+
+int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
+{
+    int gamesPerLine;
+    int updateInterval;
+    int stepLength;
+    string snapshotFolder;
+    string snapshotFile;
+    string recordFile;
+    string recordType;
+    bool recordBinary;
+    
+    config->GetKeyInt("RecordReplay", "GamesPerLine", &gamesPerLine, 4);
+    config->GetKeyInt("RecordReplay", "UpdateInterval", &updateInterval, 100);
+    config->GetKeyInt("RecordReplay", "StepLength", &stepLength, 100);
+    config->GetKeyString("RecordReplay", "SnapshotFolder", &snapshotFolder, "./snapshot/");
+    config->GetKeyString("RecordReplay", "SnapshotFile", &snapshotFile, "");
+    config->GetKeyString("RecordReplay", "Record", &recordFile, "");
+    config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
+    if (recordType.find("text") == 0)
+    {
+        recordBinary = false;
+    }
+    else
+    {
+        recordBinary = true;
+    }
+    
+    if (recordFile.empty())
+    {
+        printf("Error loading replay file: File name is empty!\n");
+        return -1;
+    }
+    
+    printf("Creating game gui...\n");
+    printf("\tGames Per Line  = %d\n", gamesPerLine);
+    printf("\tUpdate Interval = %d\n", updateInterval);
+    printf("\tStep Length     = %d\n", stepLength);
+    printf("\tSnapshot Folder = %s\n", snapshotFolder.c_str());
+    printf("\tSnapshot File   = %s\n", snapshotFile.c_str());
+    printf("\tRecord File     = %s\n", recordFile.c_str());
+    printf("\tRecord Type     = %s\n", recordBinary ? "Binary" : "Text");
+    
+    KBlocksRepWin* mpKBlocksRepWin = new KBlocksRepWin(recordFile.c_str(), recordBinary);
+    if (!mpKBlocksRepWin->replayLoaded())
+    {
+        printf("Error loading replay file: Failed to load replay file!\n");
+        return -2;
+    }
+    mpKBlocksRepWin->setGamesPerLine(gamesPerLine);
+    mpKBlocksRepWin->setUpdateInterval(updateInterval);
+    mpKBlocksRepWin->setReplayStepLength(stepLength);
+    mpKBlocksRepWin->setSnapshotFolder(snapshotFolder.c_str());
+    mpKBlocksRepWin->setSnapshotFilename(snapshotFile.c_str());
+    mpKBlocksRepWin->show();
+    printf("Done...\n");
+    
+    printf("Starting game gui...\n");
+    mpKBlocksRepWin->startReplay();
+    printf("Done...\n");
+    
+    return app.exec();
+}
 
 int gamePlayerMode(KBlocksConfigManager * config, const KApplication& app)
 {
@@ -174,8 +262,8 @@ int gamePlayerMode(KBlocksConfigManager * config, const KApplication& app)
     printf("Done...\n");
     
     printf("Adding game players...\n");
-    maAIPlayers = new KBlocksAIPlayer*[playerCount]();
-    maHumanPlayers = new KBlocksKeyboardPlayer*[playerCount]();
+    maAIPlayers = new KBlocksAIPlayer*[playerCount];
+    maHumanPlayers = new KBlocksKeyboardPlayer*[playerCount];
     for(int i = 0; i < playerCount; i++)
     {
         maAIPlayers[i] = 0;
@@ -235,14 +323,14 @@ int gamePlayerMode(KBlocksConfigManager * config, const KApplication& app)
     
     printf("Exit program...\n");
     return ret;
-};
+}
 
 int main (int argc, char *argv[])
 {
     // Game abouts...
     KAboutData aboutData( "kblocks", 0,
                           ki18n("KBlocks"),
-                          "0.1",
+                          "0.3",
                           ki18n("A falling blocks game for KDE"),
                           KAboutData::License_GPL,
                           ki18n("(c) 2007, Mauricio Piacentini") );
@@ -287,6 +375,9 @@ int main (int argc, char *argv[])
             break;
         case KBlocksGame_PlayerMode:
             mResult = gamePlayerMode(config, app);
+            break;
+        case KBlocksGame_ReplayMode:
+            mResult = gameReplayMode(config, app);
             break;
     }
     

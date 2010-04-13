@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -9,57 +9,26 @@
 ***************************************************************************/
 #include "KBlocksNetClient.h"
 
-KBlocksNetClient::KBlocksNetClient(const string& remoteIP, int localPort)
+KBlocksNetClient::KBlocksNetClient(const QString& remoteIP, quint16 localPort)
 {
-    mRemoteIP = remoteIP;
-    mTimeOut = 1000;
+    mLocalAddress = QHostAddress::Any;
+    mLocalPort = localPort;
     
-    string tmpIPAddress;
-    int tmpPortNum;
-    parseIPString(mRemoteIP, &tmpIPAddress, &tmpPortNum);
+    parseIPString(remoteIP, &mRemoteAddress, &mRemotePort);
     
-    mRemoteAddrLen = sizeof(mRemoteAddr);
-    bzero(&mRemoteAddr, mRemoteAddrLen);
-    mRemoteAddr.sin_family = AF_INET;
-    mRemoteAddr.sin_addr.s_addr = inet_addr(tmpIPAddress.c_str());
-    mRemoteAddr.sin_port = htons(tmpPortNum);
-    
-    mClientSocketFD = socket(AF_INET, SOCK_DGRAM, 0);
-    if (mClientSocketFD < 0)
-    {
-        printf("\tSocket error\n");
-        return;
-    }
-    else
-    {
-        printf("\tSocket %d started.\n", mClientSocketFD);
-    }
-    
-    struct sockaddr_in tmpLocalAddr;
-    int tmpLocalAddrLen;
-    tmpLocalAddrLen = sizeof(tmpLocalAddr);
-    bzero(&tmpLocalAddr, tmpLocalAddrLen);
-    tmpLocalAddr.sin_family = AF_INET;
-    tmpLocalAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    tmpLocalAddr.sin_port = htons(localPort);
-    
-    if (bind(mClientSocketFD, (struct sockaddr *)&tmpLocalAddr, tmpLocalAddrLen) < 0)
-    {
-        printf("\tBind error\n");
-    }
-    
-    int r = fcntl(mClientSocketFD, F_GETFL, 0);
-    fcntl(mClientSocketFD, F_SETFL, r & ~O_NONBLOCK);
+    mpClientSocket = new QUdpSocket(this);
+    mpClientSocket->bind(mLocalAddress, mLocalPort);
+    connect(mpClientSocket, SIGNAL(readyRead()), this, SLOT(receivedData()));
 }
 
 KBlocksNetClient::~KBlocksNetClient()
 {
-    close(mClientSocketFD);
+    delete mpClientSocket;
 }
 
-int KBlocksNetClient::sendData(int count, unsigned char * data)
+int KBlocksNetClient::sendData(int count, char * data)
 {
-    int ret = sendto(mClientSocketFD, data, count, 0, (struct sockaddr *)&mRemoteAddr, mRemoteAddrLen);
+    int ret = mpClientSocket->writeDatagram(data, count, mRemoteAddress, mRemotePort);
     if (ret < 0)
     {
         printf("Send error\n");
@@ -67,52 +36,24 @@ int KBlocksNetClient::sendData(int count, unsigned char * data)
     return ret;
 }
 
-int KBlocksNetClient::recvData(int count, unsigned char * data)
+int KBlocksNetClient::recvData(int count, char * data)
 {
-    int netResult;
-    fd_set rd_set;
-    
-    struct timeval timeout;
-    timeout.tv_sec = 0;
-    timeout.tv_usec = mTimeOut;
-    
-    do {
-        FD_ZERO(&rd_set);
-        FD_SET(mClientSocketFD, &rd_set);
-        
-        netResult = select((mClientSocketFD+1), &rd_set, NULL, NULL, &timeout);
-        if (netResult < 0)
-        {
-            printf("Select error\n");
-            return -3;
-        }
-        else if (netResult == 0)
-        {
-            return -1;
-        }
-        
-        netResult = recvfrom(mClientSocketFD, data, count, 0, (struct sockaddr *)&mRemoteAddr, (socklen_t *)&mRemoteAddrLen);
-        if (netResult < 0)
-        {
-            printf("Recv error\n");
-            return -2;
-        }
-        else
-        {
-            return netResult;
-        }
-    } while (timeout.tv_usec > 0);
-    
-    return netResult;
+    if (!mpClientSocket->hasPendingDatagrams())
+    {
+        return -1;
+    }
+    return mpClientSocket->readDatagram(data, count);
 }
 
-void KBlocksNetClient::setTimeOut(int timeOut)
+bool KBlocksNetClient::parseIPString(const QString& input, QHostAddress * ip, quint16 * port)
 {
-    mTimeOut = timeOut;
+    bool result = false;
+    ip->setAddress(input.left(input.indexOf(":")));
+    *port = input.mid(input.indexOf(":") + 1).toUInt(&result);
+    return result;
 }
 
-int KBlocksNetClient::parseIPString(const string& input, string * ip, int * port)
+void KBlocksNetClient::receivedData()
 {
-    *ip = input.substr(0, input.find(":"));
-    return sscanf(input.substr(input.find(":") + 1).c_str(), "%d", port);
+    emit(dataArrived(mpClientSocket->pendingDatagramSize()));
 }

@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -14,11 +14,11 @@ KBlocksGameMessage::KBlocksGameMessage(int poolSize)
     mPoolSize = poolSize;
     
     mActionCount = 0;
-    maActionType = new int[mPoolSize]();
-    maActionList = new int[mPoolSize]();
+    maActionType = new int[mPoolSize];
+    maActionList = new int[mPoolSize];
     
     mResultCount = 0;
-    maResultList = new int[mPoolSize]();
+    maResultList = new int[mPoolSize];
 }
 
 KBlocksGameMessage::~KBlocksGameMessage()

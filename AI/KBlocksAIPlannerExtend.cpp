@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -16,7 +16,7 @@ using namespace PlanningPath;
 **** Data Structure - PathNode *************************************************
 ********************************************************************************/
 PathNode::PathNode(KBlocksPiece * piece)
-{	
+{    
     parent = 0;
     next = 0;
     setContent(piece);
@@ -61,7 +61,7 @@ void PathNode::setNext(PathTree* &next)
 **** Planner  ******************************************************************
 ********************************************************************************/
 KBlocksAIPlannerExtend::KBlocksAIPlannerExtend(KBlocksField* field) : KBlocksAIPlanner(field)
-{  	
+{      
     mPathTree = new PathTree();
     mPathList = new LeafList();
 }
@@ -84,7 +84,7 @@ bool KBlocksAIPlannerExtend::getPath(int index, AIPlanner_PieceInfo_Sequence * p
     PathNode *node  = (*mPathList)[index];
     while (node != 0)
     {
-        KBlocksPiece piece = node->getContent();		
+        KBlocksPiece piece = node->getContent();        
         pseq->push_back(piece);
         node = node->getParent();
     }
@@ -117,12 +117,20 @@ bool KBlocksAIPlannerExtend::getNextBoardStatus(int index, KBlocksField * field,
     
     field->copy(mpField);
     
-    for(int i = 0; i < (int)path.size(); i++)
+    for(int i = (int)path.size() - 1; i >= 0; i--)
     {
         KBlocksPiece * piece = &path[i];
         for(int j = 0; j < KBlocksPiece_CellCount; j++)
         {
             field->setCell(piece->getCellPosX(j), piece->getCellPosY(j), true);
+        }
+        int maxLines = field->getHeight();
+        for(int i = 0; i < maxLines; i++)
+        {
+            if (field->checkFilledLine(i))
+            {
+                field->removeFilledLine(i);
+            }
         }
     }
     
@@ -130,7 +138,7 @@ bool KBlocksAIPlannerExtend::getNextBoardStatus(int index, KBlocksField * field,
 }
 
 bool KBlocksAIPlannerExtend::getNextPieceState(int index, KBlocksPiece * piece)
-{	
+{    
     if (index >= (int)mPathList->size())
     {
         return false;
@@ -209,6 +217,15 @@ void KBlocksAIPlannerExtend::process_nstep_recursive( PlanningPath::PathNode* pa
         for(int i = 0; i < KBlocksPiece_CellCount; i++)
         {
             _tmpBS->setCell(_pstate.getCellPosX(i), _pstate.getCellPosY(i), true);
+        }
+        // remove the filled lines in current board
+        int maxLines = _tmpBS->getHeight();
+        for(int i = 0; i < maxLines; i++)
+        {
+            if (_tmpBS->checkFilledLine(i))
+            {
+                _tmpBS->removeFilledLine(i);
+            }
         }
         
         // get copy of piece_info_sequence

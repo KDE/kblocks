@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -375,7 +375,7 @@ Evaluation_Blocks_Over_Holes_Count *Evaluation_Blocks_Over_Holes_Count::_instanc
 double Evaluation_Blocks_Over_Holes_Count::evaluate(KBlocksField * field)
 {
     int w = field->getWidth();
-    int h0 = field->getHeight();	  
+    int h0 = field->getHeight();      
     int count = 0;  
     for(int col = 0; col < w; col++)
     {

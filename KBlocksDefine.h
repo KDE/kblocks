@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -15,6 +15,8 @@
 
 #define FADE_ANIM_TIME_LINE   250
 #define DROP_ANIM_TIME_LINE   250
+
+typedef unsigned long         timeLong;
 
 enum KBlocks_Game_Action
 {
@@ -50,4 +52,26 @@ enum KBlocks_Game_State
     GameState_Max_Count,
 };
 
+enum KBlocks_Record_DataType
+{
+    RecordDataType_GameCount = 0,
+    RecordDataType_GameSeed,
+    
+    RecordDataType_Skipped,
+    RecordDataType_MovePieceLeft,
+    RecordDataType_MovePieceRight,
+    RecordDataType_MovePieceUp,
+    RecordDataType_MovePieceDown,
+    RecordDataType_RotatePieceCW,
+    RecordDataType_RotatePieceCCW,
+    RecordDataType_GameOneStep,
+    RecordDataType_PunishLineCount,
+    RecordDataType_PunishLineSeed,
+    
+    RecordDataType_Max_Count,
+};
+
+extern const char * KBlocksRecordText[RecordDataType_Max_Count];
+
 #endif
+

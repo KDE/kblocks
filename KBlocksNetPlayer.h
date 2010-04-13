@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -30,7 +30,7 @@ class KBlocksNetPlayer
         bool execute();
         
     private:
-        int  formIntFromByte(unsigned char * data);
+        int  formIntFromByte(char * data);
         
     private:
         GamePlayerInterface* mpPlayer;
@@ -39,8 +39,8 @@ class KBlocksNetPlayer
         
         int mSendLength;
         
-        int mLastModifyID;
         GamePlayer_ActionList mActionList;
 };
 
 #endif
+

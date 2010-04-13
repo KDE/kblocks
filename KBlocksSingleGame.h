@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -18,6 +18,8 @@
 #include "KBlocksPiece.h"
 #include "KBlocksPieceGenerator.h"
 #include "KBlocksGameMessage.h"
+
+#include "KBlocksGameRecorder.h"
 
 #include "KBlocksDefine.h"
 
@@ -38,6 +40,7 @@ class KBlocksSingleGame : public SingleGameInterface
         
         void setGameStandbyMode(bool flag);
         void setGameInterval(int interval);
+        void setGameRecorder(KBlocksGameRecorder * p);
         
         int forceUpdateGame();
         int updateGame();
@@ -62,7 +65,7 @@ class KBlocksSingleGame : public SingleGameInterface
         int removeFieldLines();
         void prepareNextPiece();
         
-        long getMillisecOfNow();
+        timeLong getMillisecOfNow();
         
     protected:
         KBlocksField* mpField;
@@ -73,14 +76,16 @@ class KBlocksSingleGame : public SingleGameInterface
     private:
         KBlocksPieceGenerator* mpPieceGenerator;
         KBlocksGameMessage* mpGameMessage;
+        KBlocksGameRecorder* mpGameRecorder;
         
         int mGameIndex;
         int mCurrentGameState;
         
         bool mStandbyMode;
         bool mStandbyFlag;
-        long mGameInterval;
-        long mGameStartTime;
+        int mGameInterval;
+        timeLong mGameStartTime;
 };
 
 #endif
+

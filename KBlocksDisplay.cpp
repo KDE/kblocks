@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -20,8 +20,13 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3*1024);
     
-    mpNetClient = new KBlocksNetClient(serverIP, localPort);
-    mpNetClient->setTimeOut(1000000);
+    for (int i = 0; i < 8; ++i)
+    {
+        maScoreList[i] = 0;
+    }
+    
+    mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
+    connect(mpNetClient, SIGNAL(dataArrived(int)), this, SLOT(updateGameDisplay(int)));
     
     mGameCount = gameCount;
     mpGameLogic = new KBlocksGameLogic(mGameCount);
@@ -41,7 +46,7 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     
     mUpdateInterval = 1000;
     mUpdateTimer.setInterval(mUpdateInterval);
-    connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(updateGameDisplay()));
+    connect(&mUpdateTimer, SIGNAL(timeout()), this, SLOT(updateEvent()));
     mUpdateTimer.stop();
     
     statusBar()->insertItem( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"), 0 );
@@ -94,7 +99,7 @@ void KBlocksDisplay::stopDisplay()
     mpGameLogic->stopGame();
 }
 
-int KBlocksDisplay::formIntFromByte(unsigned char * data)
+int KBlocksDisplay::formIntFromByte(char * data)
 {
     int value = 0;
     value += ((int)data[0]) & 0x000000FF;
@@ -104,46 +109,46 @@ int KBlocksDisplay::formIntFromByte(unsigned char * data)
     return value;
 }
 
-void KBlocksDisplay::updateGameDisplay()
+void KBlocksDisplay::updateScore()
 {
-    int tmpByteCount;
-    unsigned char* tmpByteData = new unsigned char[256];
+    statusBar()->changeItem( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
+                             maScoreList[0], maScoreList[1], maScoreList[2], maScoreList[3], 
+                             maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]), 0 );
+}
     
-    tmpByteData[0] = '|';
-    tmpByteData[1] = 'r';
-    tmpByteData[2] = 'g';
-    tmpByteData[3] = '|';
-    tmpByteData[4] = '\0';
+void KBlocksDisplay::updateEvent()
+{
+    char tmpByteData[5] = {'|', 'r', 'g', '|', '\0'};
+    mpNetClient->sendData(5, tmpByteData);
+}
     
-    if (mpNetClient->sendData(5, tmpByteData) > 0)
+void KBlocksDisplay::updateGameDisplay(int size)
+{
+    char* tmpByteData = new char[size];
+    
+    int ret = mpNetClient->recvData(size, tmpByteData);
+    if (ret < size)
     {
-        int scoreList[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-        for(int i = 0; i < mGameCount; i++)
-        {
-            int ret = mpNetClient->recvData(256, tmpByteData);
-            if (ret < 0)
-            {
-                return;
-            }
-            
-            int gameID = tmpByteData[0];
-            
-            //int scorePoint = formIntFromByte(tmpByteData + 1);
-            //int lineCount  = formIntFromByte(tmpByteData + 5);
-            //int gameLevel  = formIntFromByte(tmpByteData + 9);
-            scoreList[gameID] = formIntFromByte(tmpByteData + 5);
-            
-            mpGameLogic->getSingleGame(gameID)->getPiece(0)->decodeData(tmpByteData + 13);
-            mpGameLogic->getSingleGame(gameID)->getPiece(1)->decodeData(tmpByteData + 17);
-            
-            tmpByteCount = tmpByteData[21];
-            mpGameLogic->getSingleGame(gameID)->getField()->decodeData(tmpByteData + 22);
-        }
-        
-        statusBar()->changeItem( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
-                                      scoreList[0], scoreList[1], scoreList[2], scoreList[3], 
-                                      scoreList[4], scoreList[5], scoreList[6], scoreList[7]), 0 );
+        return;
     }
+    
+    int gameID = tmpByteData[0];
+    
+    //int scorePoint = formIntFromByte(tmpByteData + 1);
+    //int lineCount  = formIntFromByte(tmpByteData + 5);
+    //int gameLevel  = formIntFromByte(tmpByteData + 9);
+    maScoreList[gameID] = formIntFromByte(tmpByteData + 5);
+            
+    int tmpPieceCount = formIntFromByte(tmpByteData + 13);
+    for (int i = 0; i < tmpPieceCount; ++i)
+    {
+        mpGameLogic->getSingleGame(gameID)->getPiece(i)->decodeData((unsigned char*)tmpByteData + 17 + i * 4);
+    }
+            
+    formIntFromByte(tmpByteData + 17 + tmpPieceCount * 4);
+    mpGameLogic->getSingleGame(gameID)->getField()->decodeData((unsigned char*)tmpByteData + 18 + tmpPieceCount * 4);
+        
+    updateScore();
     
     delete [] tmpByteData;
 }

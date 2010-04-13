@@ -8,11 +8,13 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdeg
 
 set(kblocks_SRCS 
    main.cpp 
+   KBlocksDefine.cpp 
    KBlocksNetServer.cpp 
    KBlocksNetClient.cpp 
    KBlocksConfigManager.cpp 
    KBlocksWin.cpp 
    KBlocksDisplay.cpp 
+   KBlocksRepWin.cpp 
    KBlocksAppThread.cpp 
    KBlocksScene.cpp 
    KBlocksView.cpp 
@@ -37,6 +39,8 @@ set(kblocks_SRCS
    KBlocksPiece.cpp 
    KBlocksPieceGenerator.cpp 
    KBlocksGameMessage.cpp 
+   KBlocksGameRecorder.cpp 
+   KBlocksGameReplayer.cpp 
    AI/KBlocksAIPlayer.cpp 
    AI/KBlocksAIPlanner.cpp 
    AI/KBlocksAIPlannerExtend.cpp 

@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -10,42 +10,40 @@
 #ifndef KBLOCKSNETCLIENT_H
 #define KBLOCKSNETCLIENT_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <strings.h>
-#include <string>
+#include <QObject>
+#include <QUdpSocket>
+#include <QString>
+#include <QByteArray>
 
-using namespace std;
-
-class KBlocksNetClient
+class KBlocksNetClient : public QObject
 {
+    Q_OBJECT
+
     public:
-        KBlocksNetClient(const string& remoteIP, int localPort);
+        KBlocksNetClient(const QString& remoteIP, quint16 localPort);
         ~KBlocksNetClient();
         
     public:
-        int sendData(int count, unsigned char * data);
-        int recvData(int count, unsigned char * data);
+        int sendData(int count, char * data);
+        int recvData(int count, char * data);
         
-        void setTimeOut(int timeOut);
-        
-    private:
-        int parseIPString(const string& input, string * ip, int * port);
+    signals:
+        void dataArrived(int size);
         
     private:
-        string mRemoteIP;
+        bool parseIPString(const QString& input, QHostAddress * ip, quint16 * port);
         
-        int mTimeOut;
+    private slots:
+        void receivedData();
         
-        int mClientSocketFD;
-        struct sockaddr_in mRemoteAddr;
-        int mRemoteAddrLen;
+    private:
+        QUdpSocket * mpClientSocket;
+        
+        QHostAddress mLocalAddress;
+        quint16 mLocalPort;
+        
+        QHostAddress mRemoteAddress;
+        quint16 mRemotePort;
 };
 
 #endif

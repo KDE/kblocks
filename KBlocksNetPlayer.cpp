@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -13,8 +13,7 @@
 
 KBlocksNetPlayer::KBlocksNetPlayer(GamePlayerInterface * player, const string& serverIP, int localPort)
 {
-    mpNetClient = new KBlocksNetClient(serverIP, localPort);
-    mpNetClient->setTimeOut(1000);
+    mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
     
     mpPlayer = player;
     
@@ -29,18 +28,18 @@ KBlocksNetPlayer::~KBlocksNetPlayer()
 void KBlocksNetPlayer::joinGame(int gameIndex)
 {
     int tmpByteCount = 0;
-    unsigned char tmpByteData[256];
+    char tmpByteData[256];
     string tmpName = mpPlayer->getName();
     
     tmpByteData[tmpByteCount++] = '|';
     tmpByteData[tmpByteCount++] = 'a';
     tmpByteData[tmpByteCount++] = 'p';
     tmpByteData[tmpByteCount++] = '|';
-    tmpByteData[tmpByteCount++] = (unsigned char)gameIndex + '0';
+    tmpByteData[tmpByteCount++] = (char)gameIndex + '0';
     tmpByteData[tmpByteCount++] = '|';
-    for(unsigned int i = 0; i < tmpName.length(); i++)
+    for(size_t i = 0; i < tmpName.length(); ++i)
     {
-        tmpByteData[tmpByteCount++] = (unsigned char)tmpName[i];
+        tmpByteData[tmpByteCount++] = (char)tmpName[i];
     }
     tmpByteData[tmpByteCount++] = 0;
     
@@ -49,16 +48,14 @@ void KBlocksNetPlayer::joinGame(int gameIndex)
 
 void KBlocksNetPlayer::quitGame()
 {
-    unsigned char tmpByteData[5] = {'|', 'd', 'p', '|', '\0'};
+    char tmpByteData[5] = {'|', 'd', 'p', '|', '\0'};
     mpNetClient->sendData(5, tmpByteData);
 }
 
 void KBlocksNetPlayer::startGame(KBlocksSingleGame * p)
 {
-    unsigned char tmpByteData[4] = {'|', 's', '|', '\0'};
+    char tmpByteData[4] = {'|', 's', '|', '\0'};
     mpNetClient->sendData(4, tmpByteData);
-    
-    mLastModifyID = -1;
     
     mpGame = p;
     mpPlayer->startGame(mpGame);
@@ -68,7 +65,7 @@ void KBlocksNetPlayer::startGame(KBlocksSingleGame * p)
 
 void KBlocksNetPlayer::stopGame()
 {
-    unsigned char tmpByteData[4] = {'|', 'c', '|', '\0'};
+    char tmpByteData[4] = {'|', 'c', '|', '\0'};
     mpNetClient->sendData(4, tmpByteData);
     
     mpPlayer->stopGame();
@@ -80,40 +77,41 @@ void KBlocksNetPlayer::stopGame()
 bool KBlocksNetPlayer::execute()
 {
     bool execResult = true;
-    int tmpByteCount;
-    unsigned char* tmpByteData = new unsigned char[256];
+    char* tmpByteData = new char[256];
     
     int ret = mpNetClient->recvData(256, tmpByteData);
     if (ret < 0)
     {
         // Do nothing...
+        //printf("--Nothing received\n");
     }
-    else if (tmpByteData[0] == 255)
+    else if (tmpByteData[0] == -1)
     {
-        mSendLength = tmpByteData[1];
+        mSendLength = (unsigned char)tmpByteData[1];
+        //printf("--Send Length = %d\n", mSendLength);
     }
-    else if (tmpByteData[0] == 128)
+    else if (tmpByteData[0] == 127)
     {
         execResult = false;
+        //printf("--Game Ended\n");
     }
     else
     {
-        mpGame->getPiece(0)->decodeData(tmpByteData + 13);
-        mpGame->getPiece(1)->decodeData(tmpByteData + 17);
-        
-        tmpByteCount = tmpByteData[21];
-        mpGame->getField()->decodeData(tmpByteData + 22);
-        
-        int tmpModifyID = mpGame->getField()->getModifyID();
-        if (mActionList.empty() || (mLastModifyID != tmpModifyID))
+        //printf("++Game Updates (%d) of [%d bytes]\n", (int)tmpByteData[0], ret);
+        int tmpPieceCount = formIntFromByte(tmpByteData + 13);
+        for (int i = 0; i < tmpPieceCount; ++i)
         {
-            mActionList.clear();
-            mpPlayer->think(&mActionList);
+            mpGame->getPiece(i)->decodeData((unsigned char*)tmpByteData + 17 + i * 4);
         }
+        
+        mpGame->getField()->decodeData((unsigned char*)tmpByteData + 18 + tmpPieceCount * 4);
+        
+        mActionList.clear();
+        mpPlayer->think(&mActionList);
         
         GamePlayer_ActionList::iterator it;
         int byteCounter = 0;
-        unsigned char* tmpSendData = new unsigned char[256];
+        char* tmpSendData = new char[256];
         tmpSendData[byteCounter++] = '|';
         tmpSendData[byteCounter++] = 'r';
         tmpSendData[byteCounter++] = 'p';
@@ -122,14 +120,14 @@ bool KBlocksNetPlayer::execute()
         {
             for(it = mActionList.begin(); it != mActionList.end(); it++)
             {
-                tmpSendData[byteCounter++] = (unsigned char)*it + '0';
+                tmpSendData[byteCounter++] = (char)*it + '0';
             }
         }
         else if (!mActionList.empty())
         {
             for(int i = 0; i < mSendLength; i++)
             {
-                tmpSendData[byteCounter++] = (unsigned char)mActionList.front() + '0';
+                tmpSendData[byteCounter++] = (char)mActionList.front() + '0';
                 mActionList.pop_front();
                 if (mActionList.empty())
                 {
@@ -141,6 +139,7 @@ bool KBlocksNetPlayer::execute()
         tmpSendData[byteCounter++] = '\0';
         
         mpNetClient->sendData(byteCounter, tmpSendData);
+        //printf("Sending : [%s]\n", tmpSendData);
         
         delete [] tmpSendData;
     }
@@ -150,7 +149,7 @@ bool KBlocksNetPlayer::execute()
     return execResult;
 }
 
-int KBlocksNetPlayer::formIntFromByte(unsigned char * data)
+int KBlocksNetPlayer::formIntFromByte(char * data)
 {
     int value = 0;
     value += ((int)data[0]) & 0x000000FF;

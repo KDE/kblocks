@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 University Freiburg                                *
+*   Copyright (C) 2010 University Freiburg                                *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -19,8 +19,6 @@
 
 typedef std::pair<KBlocksPiece, double> Result;
 typedef std::vector<Result> Result_Sequence;
-
-using namespace KGrid2D;
 
 #define MAX_UTILITY     // choose the goal with the highest utility
 //#  PLANNER  ######################################
@@ -318,7 +316,7 @@ void KBlocksAIPlayer::generateGoalAction()
             dynamic_cast<SpecialEvaluationInterface*>(mpEvaluatorFinal);
             evaluator->setCurrentPiece(piece);
             value = evaluator->evaluate(field);
-#endif 
+#endif
 #endif
             result.push_back(Result(piece, value));
 #ifdef MAX_UTILITY
@@ -407,13 +405,13 @@ void KBlocksAIPlayer::generateGoalAction()
     }
 #endif
 #endif
-    
+
 #ifdef INITLIST
     int goal_index = best_goals[0];
 #else
     int goal_index = best_goals[rand() % best_goals.size()];
 #endif
-    
+
     KBlocksPiece * goal_piece = &(result[goal_index].first);
     
     mBestRotation = goal_piece->getRotation() - mpCurPiece->getRotation();

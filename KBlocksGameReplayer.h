@@ -7,45 +7,56 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-#ifndef KBLOCKSGAMERECORDER_H
-#define KBLOCKSGAMERECORDER_H
+#ifndef KBLOCKSGAMEREPLAYER_H
+#define KBLOCKSGAMEREPLAYER_H
 
 #include "KBlocksDefine.h"
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 #include <list>
+#include <map>
 
 using std::string;
+using std::vector;
 using std::list;
+using std::map;
 
-struct _game_record_data
+struct KBlocksReplayData
 {
     int index;
     int type;
     int value;
-    timeLong time;
+    int time;
 };
 
-class KBlocksGameRecorder
+class KBlocksGameReplayer
 {
     public:
-        KBlocksGameRecorder();
-        ~KBlocksGameRecorder();
+        KBlocksGameReplayer(const char * fileName, bool isBinaryMode = true);
+        ~KBlocksGameReplayer();
         
     public:
-        void append(int index, int type, int value);
-        void save(const char * fileName, bool isBinaryMode = true);
+        void setStepLength(int stepLen);
+        
+        int getGameCount();
+        int getGameSeed();
+        bool isSameSeed();
+        
+        bool getNextRecords(vector<KBlocksReplayData> * data);
         
     private:
-        void saveText(FILE * pFile);
-        void saveBinary(FILE * pFile);
-        void writeByte(FILE * pFile, int value);
-        
-        timeLong getMillisecOfNow();
+        void loadText(FILE * pFile);
+        void loadBinary(FILE * pFile);
         
     private:
-        list<_game_record_data> mGameRecord;
+        int mGameCount;
+        int mGameSeed;
+        bool mSameSeed;
+        int mStepLength;
+        list<KBlocksReplayData> mReplayList;
+        map<string, int> mRTMap;
 };
 
 #endif

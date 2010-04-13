@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -17,9 +17,13 @@ KBlocksField::KBlocksField(int width, int height)
     mCurModifyID = 0;
     mLastModifyID = -1;
     
-    maEncodeData = new unsigned char[width * height / 8 + 1];
+    maEncodeData = new unsigned char[mWidth * mHeight / 8 + 1];
+    for(int i = 0; i < mWidth * mHeight / 8 + 1; ++i)
+    {
+        maEncodeData[i] = 0;
+    }
     
-    maBoard = new bool*[mHeight]();
+    maBoard = new bool*[mHeight];
     for(int i = 0; i < mHeight; i++)
     {
         maBoard[i] = new bool[mWidth];
@@ -38,9 +42,13 @@ KBlocksField::KBlocksField(FieldInterface * p)
     mCurModifyID = 0;
     mLastModifyID = -1;
     
-    maEncodeData = new unsigned char[mWidth * mHeight / 8 + 1]();
+    maEncodeData = new unsigned char[mWidth * mHeight / 8 + 1];
+    for(int i = 0; i < mWidth * mHeight / 8 + 1; ++i)
+    {
+        maEncodeData[i] = 0;
+    }
     
-    maBoard = new bool*[mHeight]();
+    maBoard = new bool*[mHeight];
     for(int i = 0; i < mHeight; i++)
     {
         maBoard[i] = new bool[mWidth];
@@ -55,7 +63,7 @@ KBlocksField::~KBlocksField()
 {
     for(int i = 0; i < mHeight; i++)
     {
-        delete maBoard[i];
+        delete [] maBoard[i];
     }
     delete [] maBoard;
     delete [] maEncodeData;
@@ -249,4 +257,55 @@ int KBlocksField::getWidth()
 int KBlocksField::getHeight()
 {
     return mHeight;
+}
+
+bool KBlocksField::equals(KBlocksField * rhs)
+{
+    if ((rhs->getWidth() != mWidth) || (rhs->getHeight() != mHeight))
+    {
+        return false;
+    }
+    for(int i = 0; i < mHeight; i++)
+    {
+        for(int j = 0; j < mWidth; j++)
+        {
+            if (maBoard[i][j] != rhs->getCell(j, i))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+int KBlocksField::getBlockHeight(int xPos)
+{
+    for (int i = 0; i < mHeight; ++i)
+    {
+        if (maBoard[i][xPos])
+        {
+            return (mHeight - i);
+        }
+    }
+    return 0;
+}
+
+int KBlocksField::getFreeHeight(int xPos)
+{
+    for (int i = 0; i < mHeight; ++i)
+    {
+        if (maBoard[i][xPos])
+        {
+            return i;
+        }
+    }
+    return mHeight;
+}
+
+void KBlocksField::getSignature(int * data)
+{
+    for (int i = 0; i < mWidth; ++i)
+    {
+        data[i] = getBlockHeight(i);
+    }
 }

@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
+*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -206,8 +206,8 @@ void KBlocksScene::stopGame()
 
 void KBlocksScene::pauseGame(bool flag, bool fromUI)
 {
-    QString resuming(i18n("Resuming Game"));
-    QString pausing(i18n("Game Paused"));
+    QString resuming(i18n("Game Resumed!"));
+    QString pausing(i18n("Game Paused!"));
     
     for(int i = 0; i < mGroupCount; i++)
     {
@@ -268,13 +268,13 @@ void KBlocksScene::updateDimensions()
 
 void KBlocksScene::greetPlayer()
 {
-    QString greets(i18n("Game started")); 
+    QString greets(i18n("Game Start!")); 
     showMessage( greets, 2000 );
 }
 
 void KBlocksScene::gameOverPlayer()
 {
-    QString greets(i18n("Game Over")); 
+    QString greets(i18n("Game Over!")); 
     showMessage( greets, 2000 );
 }
 
@@ -306,7 +306,7 @@ void KBlocksScene::updateGame()
     int removedLines[mGroupCount];
     int gameCount = mpGameLogic->updateGame(removedLines);
     
-    for(int i = 0; i < gameCount; i++)
+    for(int i = 0; i < mGroupCount; i++)
     {
         if (removedLines[i] > 0)
         {
@@ -326,21 +326,30 @@ void KBlocksScene::updateGame()
         else if (removedLines[i] == -1)
         {
             maGroupList[i]->stopGame();
-            emit isHighscore(i, maGameScoreList[i]->getScorePoint(),
-                                maGameScoreList[i]->getGameLevel());
             if (mGroupCount == 1)
             {
                 QTimer::singleShot(500, this, SLOT(gameOverPlayer()));
+                emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                                    maGameScoreList[0]->getGameLevel());
             }
             else
             {
-                if (i > 0)
+                if (i == 0)
                 {
-                    QTimer::singleShot(500, this, SLOT(gameOverMultiWin()));
-                }
-                else
-                {
+                    for (int j = 0; j < mGroupCount; j++)
+                    {
+                        maGroupList[j]->stopGame();
+                    }
                     QTimer::singleShot(500, this, SLOT(gameOverMultiLose()));
+                    emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                                        maGameScoreList[0]->getGameLevel());
+                }
+                else if (gameCount <= 1)
+                {
+                    maGroupList[0]->stopGame();
+                    QTimer::singleShot(500, this, SLOT(gameOverMultiWin()));
+                    emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                                        maGameScoreList[0]->getGameLevel());
                 }
             }
         }

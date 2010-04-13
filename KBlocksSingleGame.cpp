@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -20,7 +20,7 @@ KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHei
     mpField = new KBlocksField(fieldWidth, fieldHeight);
     
     mPieceCount = showPieceCount;
-    mpPieceList = new KBlocksPiece*[mPieceCount]();
+    mpPieceList = new KBlocksPiece*[mPieceCount];
     for(int i = 0; i < mPieceCount; i++)
     {
         mpPieceList[i] = new KBlocksPiece();
@@ -28,6 +28,7 @@ KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHei
     
     mpPieceGenerator = new KBlocksPieceGenerator();
     mpGameMessage = new KBlocksGameMessage(messagePoolSize);
+    mpGameRecorder = 0;
     
     mCurrentGameState = GameState_Stop;
     
@@ -99,6 +100,11 @@ void KBlocksSingleGame::setGameInterval(int interval)
     mGameInterval = interval;
 }
 
+void KBlocksSingleGame::setGameRecorder(KBlocksGameRecorder * p)
+{
+    mpGameRecorder = p;
+}
+
 int KBlocksSingleGame::forceUpdateGame()
 {
     return doUpdateGame(true);
@@ -120,11 +126,19 @@ int KBlocksSingleGame::punishGame(int lineCount, int punishSeed)
     
     int gameResult = GameResult_None;
     
+    if (mpGameRecorder)
+    {
+        mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineCount, lineCount);
+        mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineSeed, punishSeed);
+    }
+    
     srand(punishSeed);
+    int punishIndex = 0;
     for(int i = 0; i < lineCount; i++)
     {
         setCurrentPiece(0, -1, 0);
-        mpField->addPunishLine(lineCount, rand() % width);
+        punishIndex = rand() % width;
+        mpField->addPunishLine(lineCount, punishIndex);
     }
     
     if (lineCount > 0)
@@ -164,6 +178,34 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
     mpPieceList[0]->setPosX(tmpPiece->getPosX());
     mpPieceList[0]->setPosY(tmpPiece->getPosY());
     mpPieceList[0]->setRotation(tmpPiece->getRotation());
+    
+    if (mpGameRecorder)
+    {
+        if (xPos < 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceLeft, 1);
+        }
+        if (xPos > 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceRight, 1);
+        }
+        if (yPos < 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceUp, 1);
+        }
+        if (yPos > 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceDown, 1);
+        }
+        if (rotation < 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_RotatePieceCW, 1);
+        }
+        if (rotation > 0)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_RotatePieceCCW, 1);
+        }
+    }
     
     return true;
 }
@@ -254,7 +296,7 @@ int KBlocksSingleGame::doUpdateGame(bool force)
         return GameResult_None;
     }
     
-    long tmpCurTime = getMillisecOfNow();
+    timeLong tmpCurTime = getMillisecOfNow();
     
     int gameResult = GameResult_None;
     
@@ -309,6 +351,11 @@ bool KBlocksSingleGame::runGameOneStep(int * gameResult)
             *gameResult = GameResult_Game_Over;
             mCurrentGameState = GameState_Stop;
             mpGameMessage->putGameResult(-1);
+        }
+        
+        if (mpGameRecorder)
+        {
+            mpGameRecorder->append(mGameIndex, RecordDataType_GameOneStep, 1);
         }
         
         return true;
@@ -396,14 +443,14 @@ void KBlocksSingleGame::prepareNextPiece()
     }
 }
 
-long KBlocksSingleGame::getMillisecOfNow()
+timeLong KBlocksSingleGame::getMillisecOfNow()
 {
     timeval tmpCurTime;
     
     gettimeofday(&tmpCurTime, NULL);
     
-    long tmpMilliTime = (long)tmpCurTime.tv_usec / 1000;
-    tmpMilliTime += (long)tmpCurTime.tv_sec * 1000;
+    timeLong tmpMilliTime = (timeLong)tmpCurTime.tv_usec / 1000;
+    tmpMilliTime += (timeLong)tmpCurTime.tv_sec * 1000;
     
     return tmpMilliTime;
 }

@@ -1,6 +1,6 @@
 /***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
-*   Copyright (C) 2009 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
+*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -9,7 +9,7 @@
 ***************************************************************************/
 #include "KBlocksGameLogic.h"
 
-KBlocksGameLogic::KBlocksGameLogic(int capacity)
+KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
 {
     mGameCount = 0;
     mGameMax = capacity;
@@ -20,19 +20,42 @@ KBlocksGameLogic::KBlocksGameLogic(int capacity)
     mStandbyMode = false;
     mGameInterval = 0;
     
-    mRecordMode = false;
-    mReplayMode = false;
+    maGameList = new KBlocksSingleGame*[capacity];
     
-    maGameList = new KBlocksSingleGame*[capacity]();
+    if (record)
+    {
+        mpGameRecorder = new KBlocksGameRecorder();
+    }
+    else
+    {
+        mpGameRecorder = 0;
+    }
+    mpGameReplayer = 0;
 }
 
-KBlocksGameLogic::KBlocksGameLogic(char* replay)
+KBlocksGameLogic::KBlocksGameLogic(KBlocksGameReplayer * p)
 {
-    mReplayMode = true;
+    mGameCount = 0;
+    mGameMax = p->getGameCount();
+    
+    mGameSeed = 0;
+    mPunishFlag = true;
+    
+    mStandbyMode = false;
+    mGameInterval = 0;
+    
+    maGameList = new KBlocksSingleGame*[mGameMax];
+    
+    mpGameRecorder = 0;
+    mpGameReplayer = p;
 }
 
 KBlocksGameLogic::~KBlocksGameLogic()
 {
+    if (mpGameRecorder)
+    {
+        delete mpGameRecorder;
+    }
     delete [] maGameList;
 }
 
@@ -56,6 +79,79 @@ KBlocksSingleGame* KBlocksGameLogic::getSingleGame(int index)
         return 0;
     }
     return maGameList[index];
+}
+
+bool KBlocksGameLogic::playRecordOneStep(int * changedPiece)
+{
+    int tmpCount;
+    vector<KBlocksReplayData> tmpData;
+    *changedPiece = 0;
+    if (mpGameReplayer->getNextRecords(&tmpData))
+    {
+        for(size_t i = 0; i < tmpData.size(); i++)
+        {
+            switch(tmpData[i].type)
+            {
+                case RecordDataType_MovePieceLeft:
+                    maGameList[tmpData[i].index]->setCurrentPiece(-1, 0, 0);
+//                    printf("[%d] - Move Left\n", tmpData[i].index);
+                    break;
+                case RecordDataType_MovePieceRight:
+                    maGameList[tmpData[i].index]->setCurrentPiece(1, 0, 0);
+//                    printf("[%d] - Move Right\n", tmpData[i].index);
+                    break;
+                case RecordDataType_MovePieceUp:
+                    maGameList[tmpData[i].index]->setCurrentPiece(0, -1, 0);
+//                    printf("[%d] - Move Up\n", tmpData[i].index);
+                    break;
+                case RecordDataType_MovePieceDown:
+                    maGameList[tmpData[i].index]->setCurrentPiece(0, 1, 0);
+//                    printf("[%d] - Move Down\n", tmpData[i].index);
+                    break;
+                case RecordDataType_RotatePieceCW:
+                    maGameList[tmpData[i].index]->setCurrentPiece(0, 0, -1);
+//                    printf("[%d] - Rotate Left\n", tmpData[i].index);
+                    break;
+                case RecordDataType_RotatePieceCCW:
+                    maGameList[tmpData[i].index]->setCurrentPiece(0, 0, 1);
+//                    printf("[%d] - Rotate Right\n", tmpData[i].index);
+                    break;
+                case RecordDataType_GameOneStep:
+                    maGameList[tmpData[i].index]->forceUpdateGame();
+                    *changedPiece |= (1 << tmpData[i].index);
+//                    printf("[%d] - Game Stepped\n", tmpData[i].index);
+                    break;
+                case RecordDataType_PunishLineCount:
+                    tmpCount = tmpData[i].value;
+                    ++i;
+                    if (tmpData[i].type == RecordDataType_PunishLineSeed)
+                    {
+                        maGameList[tmpData[i].index]->punishGame(tmpCount, tmpData[i].value);
+//                        printf("[%d] - Punish %d(%d)\n", tmpData[i].index, tmpCount, tmpData[i].value);
+                    }
+                    break;
+                case RecordDataType_Skipped:
+//                    printf("[%d] - A skipper step\n", tmpData[i].index);
+                    break;
+                default:
+//                    printf("[%d] - Error default\n", tmpData[i].index);
+                    break;
+            }
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void KBlocksGameLogic::saveRecord(const char * fileName, bool binaryMode)
+{
+    if (mpGameRecorder)
+    {
+        mpGameRecorder->save(fileName, binaryMode);
+    }
 }
 
 int KBlocksGameLogic::levelUpGame(int level)
@@ -93,7 +189,7 @@ int KBlocksGameLogic::updateGame(int * lineList)
         
         if ((mPunishFlag) && (tmpPunishCount > 0))
         {
-            int punishSeed = rand();
+            int punishSeed = rand() % 256;
             for(int j = 0; j < i; j++)
             {
                 maGameList[j]->punishGame(tmpPunishCount, punishSeed);
@@ -105,12 +201,12 @@ int KBlocksGameLogic::updateGame(int * lineList)
         }
     }
     
-    return mGameCount;
+    return getActiveGameCount();
 }
 
 void KBlocksGameLogic::setGameSeed(int seed)
 {
-    mGameSeed = seed;
+    mGameSeed = (seed % 256);
 }
 
 void KBlocksGameLogic::setGamePunish(bool flag)
@@ -164,6 +260,7 @@ bool KBlocksGameLogic::stopGame()
         return false;
     }
     deleteSingleGames();
+    
     return true;
 }
 
@@ -191,6 +288,19 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     }
     mGameCount = gameCount;
     
+    if (mpGameRecorder)
+    {
+        mpGameRecorder->append(0, RecordDataType_GameCount, mGameCount);
+        if (mGameSeed < 0)
+        {
+            mpGameRecorder->append(0, RecordDataType_GameSeed, -mGameSeed);
+        }
+        else
+        {
+            mpGameRecorder->append(1, RecordDataType_GameSeed, mGameSeed);
+        }
+    }
+    
     int seedList[mGameCount];
     if (mGameSeed < 0)
     {
@@ -198,7 +308,7 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
         srand(mGameSeed);
         for(int i = 0; i < mGameCount; i++)
         {
-            seedList[i] = rand();
+            seedList[i] = rand() % 256;
         }
     }
     else
@@ -214,6 +324,7 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
         maGameList[i] = new KBlocksSingleGame(i);
         maGameList[i]->setGameStandbyMode(mStandbyMode);
         maGameList[i]->setGameInterval(mGameInterval);
+        maGameList[i]->setGameRecorder(mpGameRecorder);
         maGameList[i]->startGame(seedList[i]);
     }
 }
