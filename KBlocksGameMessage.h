@@ -39,3 +39,4 @@ class KBlocksGameMessage
 };
 
 #endif
+
