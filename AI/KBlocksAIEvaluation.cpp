@@ -251,16 +251,21 @@ double BlockRemoverEvaluation::evaluate(KBlocksField * field)
 {
     double res = 0;
     
+    // ### reenable the two following #if 0 comments when the features array is not empty
+#if 0    
     Feature features [] = {};
     
     uint n = sizeof(features)/sizeof(Feature);
+#endif
     
     update_board_signature(field);
     
+#if 0
     for(uint i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight; 
     }
+#endif
     
     return res;
 }
