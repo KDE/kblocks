@@ -15,6 +15,7 @@
 #include "KBlocksPiece.h"
 
 #include <QVector>
+#include <QVarLengthArray>
 
 KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic * p, const QString& localIP)
 {
@@ -171,11 +172,11 @@ int KBlocksNetServer::processGame(int gameIndex)
     }
     else
     {
-        int removedLines[mGameCount];
+        QVarLengthArray<int, 16> removedLines(mGameCount);
         int activeCount = mpGameLogic->getActiveGameCount();
         if ((activeCount > 1) || (mGameCount == activeCount))
         {
-            mpGameLogic->updateGame(removedLines);
+            mpGameLogic->updateGame(removedLines.data());
             for(int i = 0; i < mGameCount; i++)
             {
                 if (maGameScoreList[i]->addScore(removedLines[i]))
