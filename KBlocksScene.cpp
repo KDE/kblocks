@@ -12,6 +12,8 @@
 
 #include "settings.h"
 
+#include <QVarLengthArray>
+
 KBlocksScene::KBlocksScene(GameLogicInterface * p, int capacity)
 {
     mpGameLogic = p;
@@ -303,8 +305,8 @@ void KBlocksScene::updateGame()
         return;
     }
     
-    int removedLines[mGroupCount];
-    int gameCount = mpGameLogic->updateGame(removedLines);
+    QVarLengthArray<int, 16> removedLines(mGroupCount);
+    int gameCount = mpGameLogic->updateGame(removedLines.data());
     
     for(int i = 0; i < mGroupCount; i++)
     {
