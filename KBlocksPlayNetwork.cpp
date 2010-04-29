@@ -94,7 +94,11 @@ int KBlocksPlayNetwork::execute()
                 break;
             }
         }
+#ifndef Q_OS_WIN
         usleep(100000);
+#else
+        Sleep(100);
+#endif
     }
     
     return 0;
