@@ -173,11 +173,11 @@ double BaseEvaluation::evaluate(KBlocksField * field)
         {FEATURE_PREDICTION_COUNT,0.005},
     };
     */
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
 
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
@@ -200,11 +200,11 @@ double WellsFillerEvaluation::evaluate(KBlocksField * field)
         {FEATURE_AVERAGE_HEIGHT_DIFFERENT, -1.1},
     };
 
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
 
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
@@ -231,11 +231,11 @@ double HeightKillerEvaluation::evaluate(KBlocksField * field)
         {FEATURE_PREDICTION_COUNT, 0.001},
     };
     
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
     
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight; 
     }
@@ -255,13 +255,13 @@ double BlockRemoverEvaluation::evaluate(KBlocksField * field)
 #if 0    
     Feature features [] = {};
     
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
 #endif
     
     update_board_signature(field);
     
 #if 0
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight; 
     }
@@ -288,11 +288,11 @@ double DeepNarrowRemoverEvaluation::evaluate(KBlocksField * field)
         {FEATURE_PREDICTION_COUNT, 0.001},
     };
 
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
     
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
@@ -318,11 +318,11 @@ double TetrisPreparingEvaluation::evaluate(KBlocksField * field)
         {FEATURE_PREDICTION_COUNT, 0.002},
     };
 
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
     
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
@@ -349,11 +349,11 @@ double TetrisEliminationEvaluation::evaluate(KBlocksField * field)
         {FEATURE_PREDICTION_COUNT, 0.002},
     };
 
-    uint n = sizeof(features)/sizeof(Feature);
+    unsigned int n = sizeof(features)/sizeof(Feature);
     
     update_board_signature(field);
     
-    for(uint i = 0; i < n; i++)
+    for(unsigned int i = 0; i < n; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
@@ -387,20 +387,20 @@ double NBSEvaluation::evaluate(KBlocksField * field)
         {FEATURE_LANDING_HEIGHT,0},        //8
     };
     
-    uint n1 = sizeof(features)/sizeof(Feature);
+    unsigned int n1 = sizeof(features)/sizeof(Feature);
     
-    uint n2 = sizeof(sfeatures)/sizeof(SFeature);
+    unsigned int n2 = sizeof(sfeatures)/sizeof(SFeature);
     
     update_board_signature(field);
     
     double res = 0;
     
-    for(uint i = 0; i < n1; i++)
+    for(unsigned int i = 0; i < n1; i++)
     {
         res += getFeature(features[i].id, field) * features[i].weight;
     }
     
-    for(uint i = 0; i < n2; i++)
+    for(unsigned int i = 0; i < n2; i++)
     {
         res += getSpecialFeature(sfeatures[i].id, field, mpField, mpPiece) * sfeatures[i].weight; 
     }
