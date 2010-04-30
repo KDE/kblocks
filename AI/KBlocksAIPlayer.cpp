@@ -92,7 +92,7 @@ void KBlocksAIPlayer::startGame(SingleGameInterface * p)
     mpPlanner = new KBlocksAIPlannerExtend(mpAIField);
 }
 
-void KBlocksAIPlayer::KBlocksAIPlayer::stopGame()
+void KBlocksAIPlayer::stopGame()
 {
     if (!mAIStarted)
     {
