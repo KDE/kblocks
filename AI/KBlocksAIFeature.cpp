@@ -556,7 +556,7 @@ double Evaluation_Prediction_Count::evaluate(KBlocksField * field)
     int count = 0;
     KBlocksPiece piece;
     int signatureCount = w;
-    int signaturePiece[w];
+    int *signaturePiece = new int[w];
     for(int type = 0; type < PieceType_Detail_Max_Count; type++)
     {
         piece.fromValue(type);
@@ -581,6 +581,7 @@ double Evaluation_Prediction_Count::evaluate(KBlocksField * field)
             }
         }
     }  
+    delete[] signaturePiece;
     return count;
 }
 //# SPECIAL FEATURE #######################################

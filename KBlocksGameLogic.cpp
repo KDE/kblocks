@@ -301,7 +301,7 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
         }
     }
     
-    int seedList[mGameCount];
+    int *seedList = new int[mGameCount];
     if (mGameSeed < 0)
     {
         mGameSeed = -mGameSeed;
@@ -327,6 +327,8 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
         maGameList[i]->setGameRecorder(mpGameRecorder);
         maGameList[i]->startGame(seedList[i]);
     }
+
+    delete[] seedList;
 }
 
 void KBlocksGameLogic::deleteSingleGames()
