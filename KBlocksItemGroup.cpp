@@ -392,7 +392,7 @@ void KBlocksItemGroup::dropFreezeLine()
 {
     int count = mRemovedLine.size();
     
-    int fallLine[mFieldHeight];
+    int *fallLine = new int[mFieldHeight];
     int removeLine = 0;
     
     if (count == 0)
@@ -440,6 +440,7 @@ void KBlocksItemGroup::dropFreezeLine()
     }
     
     mpAnimator->createDropAnim(mDropItems, DROP_ANIM_TIME_LINE, QTimeLine::Forward);
+    delete fallLine;
 }
 
 void KBlocksItemGroup::updateGraphicInfo()
