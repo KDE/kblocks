@@ -21,7 +21,7 @@ enum KBlocks_SvgItem_Type
     KBlocksSvgItem_None = -1,
     KBlocksSvgItem_FieldArea = 0,
     KBlocksSvgItem_PrepareArea,
-    KBlocksSvgItem_Max_Count,
+    KBlocksSvgItem_Max_Count
 };
 
 class KBlocksSvgItem : public QGraphicsSvgItem

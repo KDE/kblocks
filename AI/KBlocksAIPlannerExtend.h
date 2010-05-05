@@ -40,7 +40,7 @@ namespace PlanningPath
     
     typedef std::vector<PathNode>  PathTree;
     typedef std::vector<PathNode*> LeafList;  
-};
+}
 
 /****************************************************************
 **  Planner  ****************************************************

@@ -23,7 +23,7 @@ enum Log_Mode
 {
     LOG_MODE_PRINTSCREEN,
     LOG_MODE_PRINTFILE,
-    LOG_MODE_PRINTBOTH,
+    LOG_MODE_PRINTBOTH
 };
 
 /*****************************************************************

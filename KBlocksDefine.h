@@ -28,7 +28,7 @@ enum KBlocks_Game_Action
     GameAction_Freeze_Piece_Y,
     GameAction_New_Piece_X,
     GameAction_New_Piece_Y,
-    GameAction_Max_Count,
+    GameAction_Max_Count
 };
 
 enum KBlocks_Game_Result
@@ -41,7 +41,7 @@ enum KBlocks_Game_Result
     GameResult_Remove_Line_2,
     GameResult_Remove_Line_3,
     GameResult_Remove_Line_4,
-    GameResult_Max_Count,
+    GameResult_Max_Count
 };
 
 enum KBlocks_Game_State
@@ -49,7 +49,7 @@ enum KBlocks_Game_State
     GameState_Stop = 0,
     GameState_Running,
     GameState_Pause,
-    GameState_Max_Count,
+    GameState_Max_Count
 };
 
 enum KBlocks_Record_DataType
@@ -68,7 +68,7 @@ enum KBlocks_Record_DataType
     RecordDataType_PunishLineCount,
     RecordDataType_PunishLineSeed,
     
-    RecordDataType_Max_Count,
+    RecordDataType_Max_Count
 };
 
 extern const char * KBlocksRecordText[RecordDataType_Max_Count];

@@ -23,7 +23,7 @@ enum KBlocks_Animation_Type {
     KBlocks_Animation_Fade_In,
     KBlocks_Animation_Fade_Out,
     KBlocks_Animation_Drop,
-    KBlocks_Animation_Max_Count,
+    KBlocks_Animation_Max_Count
 };
 
 class KBlocksAnimator : public QObject

@@ -61,7 +61,7 @@ enum KBlocksGameMode
     KBlocksGame_GuiMode,
     KBlocksGame_PlayerMode,
     KBlocksGame_ReplayMode,
-    KBlocksGame_MaxMode_Count,
+    KBlocksGame_MaxMode_Count
 };
 
 int gameDesktopMode(const KApplication& app)

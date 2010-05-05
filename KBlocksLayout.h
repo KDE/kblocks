@@ -23,7 +23,7 @@ enum KBlocks_Layout_Update_Type
     KBlocksLayout_Update_FreezePiece = 0,
     KBlocksLayout_Update_RemoveLine,
     KBlocksLayout_Update_PunishLine,
-    KBlocksLayout_Update_Max_Count,
+    KBlocksLayout_Update_Max_Count
 };
 
 class KBlocksLayout

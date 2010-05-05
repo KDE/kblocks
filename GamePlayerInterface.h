@@ -22,7 +22,7 @@ enum KBlocks_Player_Action
     PlayerAction_Push_Down,
     PlayerAction_Rotate_CW,
     PlayerAction_Rotate_CCW,
-    PlayerAction_Max_Count,
+    PlayerAction_Max_Count
 };
 
 typedef std::list<KBlocks_Player_Action> GamePlayer_ActionList;

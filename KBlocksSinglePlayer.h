@@ -20,7 +20,7 @@ enum KBlocksPlayer_State
 {
     KBlocksPlayer_ThinkingState = 0,
     KBlocksPlayer_ProcessingState,
-    KBlocksPlayer_Max_State_Count,
+    KBlocksPlayer_Max_State_Count
 };
 
 class KBlocksSinglePlayer : public QObject

@@ -39,13 +39,13 @@ enum FeatureEnumeration
     FEATURE_MAX_WELL_DEPTH,
     FEATURE_NARROW_COUNT,
     FEATURE_PREDICTION_COUNT,
-    FEATURE_COUNT,
+    FEATURE_COUNT
 };
 
 enum SpecialFeatureEnumeration
 {
     FEATURE_REMOVE_LINES,
-    FEATURE_LANDING_HEIGHT,
+    FEATURE_LANDING_HEIGHT
 };
 
 double getFeature(const FeatureEnumeration, KBlocksField*);

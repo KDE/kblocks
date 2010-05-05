@@ -23,7 +23,7 @@ enum KBlocks_PieceType
     PieceType_Shape_O,
     PieceType_Shape_L,
     PieceType_Shape_J,
-    PieceType_Max_Count,
+    PieceType_Max_Count
 };
 
 enum KBlocks_PieceRotation
@@ -32,7 +32,7 @@ enum KBlocks_PieceRotation
     PieceRotation_Left,
     PieceRotation_Down,
     PieceRotation_Right,
-    PieceRotation_Max_Count,
+    PieceRotation_Max_Count
 };
 
 enum KBlocks_PieceType_Detail
@@ -65,7 +65,7 @@ enum KBlocks_PieceType_Detail
     PieceType_Shape_J_2,
     PieceType_Shape_J_3,
     PieceType_Shape_J_4,
-    PieceType_Detail_Max_Count,
+    PieceType_Detail_Max_Count
 };
 
 class PiecePoint

@@ -24,7 +24,7 @@ enum DecisionFeatureEnumeration
     DF_LAYER_SCAN,
     DF_CREATING_TETRIS,
     DF_REMOVE_TETRIS,
-    DF_DEEP_NARROW,
+    DF_DEEP_NARROW
 };
 
 bool getDecisionFeature(const DecisionFeatureEnumeration, KBlocksField*);

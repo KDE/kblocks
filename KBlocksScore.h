@@ -14,7 +14,7 @@ enum KBlocks_Score_Type
 {
     KBlocksScore_Level_x_Factor = 0,
     KBlocksScore_Level_x_Level_x_Factor,
-    KBlocksScore_Max_Count,
+    KBlocksScore_Max_Count
 };
 
 class KBlocksScore
