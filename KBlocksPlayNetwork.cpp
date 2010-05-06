@@ -9,6 +9,10 @@
 ***************************************************************************/
 #include "KBlocksPlayNetwork.h"
 
+#ifdef Q_OS_WIN32
+#include <windows.h>
+#endif
+
 KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string& serverIP, int localPort)
 {
     mServerIP = serverIP;
