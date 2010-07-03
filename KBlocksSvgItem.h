@@ -37,16 +37,12 @@ class KBlocksSvgItem : public QGraphicsSvgItem
         bool updateSelf();
         
         void startOpAnim();
-        void setOpacity(qreal opacity);
         void stopOpAnim();
         
         void startPosAnim(QPointF target);
         void execPosAnim(qreal step);
         void stopPosAnim();
         
-    private:
-        void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0);
-
     private:
         KBlocksLayout* mpGameLayout;
         
@@ -55,8 +51,6 @@ class KBlocksSvgItem : public QGraphicsSvgItem
         
         int mType;
         int mColor;
-        
-        qreal mOpacity;
         
         QPointF mOriginPos;
         QPointF mTargetPos;

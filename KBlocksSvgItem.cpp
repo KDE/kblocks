@@ -22,8 +22,6 @@ KBlocksSvgItem::KBlocksSvgItem(KBlocksLayout * p, int type, int posX, int posY)
     mType = type;
     mColor = -1;
     
-    mOpacity = 1;
-
     setCacheMode(QGraphicsItem::DeviceCoordinateCache);
 }
 
@@ -76,12 +74,6 @@ void KBlocksSvgItem::startOpAnim()
     setElementId(QString("BLOCK_OUT_%1").arg(mColor));
 }
 
-void KBlocksSvgItem::setOpacity(qreal opacity)
-{
-    mOpacity = opacity;
-    update();
-}
-
 void KBlocksSvgItem::stopOpAnim()
 {
     setElementId(QString("BLOCK_%1").arg(mColor));
@@ -105,10 +97,3 @@ void KBlocksSvgItem::stopPosAnim()
     setPos(mOriginPos);
     mTargetPos = mOriginPos;
 }
-
-void KBlocksSvgItem::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
-{
-    painter->setOpacity(mOpacity);
-    QGraphicsSvgItem::paint(painter, option, widget);
-}
-
