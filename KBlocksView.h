@@ -20,7 +20,7 @@ class KBlocksView : public QGraphicsView
     Q_OBJECT
 
     public:
-        KBlocksView(KBlocksScene * scene, QWidget * parent = 0);
+        explicit KBlocksView(KBlocksScene * scene, QWidget * parent = 0);
         ~KBlocksView();
         
     signals:

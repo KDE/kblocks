@@ -33,7 +33,7 @@ class KBlocksScene : public QGraphicsScene
     Q_OBJECT
     
     public:
-        KBlocksScene(GameLogicInterface * p, int capacity = 1);
+        explicit KBlocksScene(GameLogicInterface * p, int capacity = 1);
         ~KBlocksScene();
         
         KBlocksItemGroup* getItemGroup(int index);

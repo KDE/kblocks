@@ -25,7 +25,7 @@
 class KBlocksGameLogic : public GameLogicInterface
 {
     public:
-        KBlocksGameLogic(int capacity, bool record = false);
+        explicit KBlocksGameLogic(int capacity, bool record = false);
         KBlocksGameLogic(KBlocksGameReplayer * p);
         ~KBlocksGameLogic();
         

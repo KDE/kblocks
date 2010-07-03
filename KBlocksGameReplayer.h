@@ -34,7 +34,7 @@ struct KBlocksReplayData
 class KBlocksGameReplayer
 {
     public:
-        KBlocksGameReplayer(const char * fileName, bool isBinaryMode = true);
+        explicit KBlocksGameReplayer(const char * fileName, bool isBinaryMode = true);
         ~KBlocksGameReplayer();
         
     public:

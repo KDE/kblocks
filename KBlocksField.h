@@ -25,8 +25,8 @@ class KBlocksField : public FieldInterface
         unsigned char* maEncodeData;
     
     public:
-        KBlocksField(int width = 10, int height = 20);
-        KBlocksField(FieldInterface * p);
+        explicit KBlocksField(int width = 10, int height = 20);
+        explicit KBlocksField(FieldInterface * p);
         ~KBlocksField();
     
     public:

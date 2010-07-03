@@ -27,7 +27,7 @@ class KBlocksRepWin : public KMainWindow
     Q_OBJECT
     
     public:
-        KBlocksRepWin(const char * replayFile, bool binaryMode = true);
+        explicit KBlocksRepWin(const char * replayFile, bool binaryMode = true);
         ~KBlocksRepWin();
         
     public:

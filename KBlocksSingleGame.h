@@ -26,7 +26,7 @@
 class KBlocksSingleGame : public SingleGameInterface
 {
 	public:
-		KBlocksSingleGame(int gameIndex, int fieldWidth = 10, int fieldHeight = 20, int showPieceCount = 2, int messagePoolSize = 256);
+		explicit KBlocksSingleGame(int gameIndex, int fieldWidth = 10, int fieldHeight = 20, int showPieceCount = 2, int messagePoolSize = 256);
 		~KBlocksSingleGame();
         
     public:
