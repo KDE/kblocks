@@ -13,7 +13,7 @@
 
 #include "kgametheme.h"
 #include <QHash>
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <QPixmap>
 
 class KBlocksGraphics
@@ -27,7 +27,7 @@ class KBlocksGraphics
         void readThemeValues();
         void adjustForSize(const QSize& newsize);
         KGameTheme * theme() { return m_theme; }
-        KSvgRenderer * renderer() { return m_renderer; }
+        QSvgRenderer * renderer() { return m_renderer; }
         //QPixmap elementPixmap(int width, int height, const QString & elementid);
 
         int m_Block_Size;
@@ -42,7 +42,7 @@ class KBlocksGraphics
 
     private:
         KGameTheme * m_theme;
-        KSvgRenderer *m_renderer;
+        QSvgRenderer *m_renderer;
 
         //QPixmap renderElement(int width, int height, const QString & elementid);
         //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);

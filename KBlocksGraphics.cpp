@@ -21,7 +21,7 @@ KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
         kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
         m_theme->loadDefault();
     }
-    m_renderer = new KSvgRenderer(m_theme->graphics());
+    m_renderer = new QSvgRenderer(m_theme->graphics());
     readThemeValues();
 }
 
