@@ -110,14 +110,7 @@ int gameEngineMode(KBlocksConfigManager * config)
     
     config->GetKeyString("RecordReplay", "Record", &recordFile, "");
     config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
-    if (recordType.find("text") == 0)
-    {
-        recordBinary = false;
-    }
-    else
-    {
-        recordBinary = true;
-    }
+    recordBinary = recordType.find("text") != 0;
     
     printf("Creating game engine...\n");
     printf("\tGame Count    = %d\n", gameCount);
@@ -198,14 +191,7 @@ int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
     config->GetKeyString("RecordReplay", "SnapshotFile", &snapshotFile, "");
     config->GetKeyString("RecordReplay", "Record", &recordFile, "");
     config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
-    if (recordType.find("text") == 0)
-    {
-        recordBinary = false;
-    }
-    else
-    {
-        recordBinary = true;
-    }
+    recordBinary = recordType.find("text") != 0;
     
     if (recordFile.empty())
     {
