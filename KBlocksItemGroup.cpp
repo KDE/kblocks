@@ -440,7 +440,7 @@ void KBlocksItemGroup::dropFreezeLine()
     }
     
     mpAnimator->createDropAnim(mDropItems, DROP_ANIM_TIME_LINE, QTimeLine::Forward);
-    delete fallLine;
+    delete[] fallLine;
 }
 
 void KBlocksItemGroup::updateGraphicInfo()
