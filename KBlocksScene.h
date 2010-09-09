@@ -81,6 +81,7 @@ class KBlocksScene : public QGraphicsScene
         
     private:
         GameLogicInterface* mpGameLogic;
+        bool mGameStarted;
         
         KBlocksGraphics* mpGrafx;
         KBlocksSound* mpSnd;

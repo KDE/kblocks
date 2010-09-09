@@ -17,6 +17,7 @@
 KBlocksScene::KBlocksScene(GameLogicInterface * p, int capacity)
 {
     mpGameLogic = p;
+    mGameStarted = false;
     
     mSnapshotMode = false;
     mTopGameLevel = 0;
@@ -183,6 +184,12 @@ void KBlocksScene::viewScaled(const QSize& /*newsize*/)
 
 void KBlocksScene::startGame()
 {
+    if (mGameStarted)
+    {
+        return;
+    }
+    mGameStarted = true;
+    
     mTopGameLevel = 0;
     for(int i = 0; i < mGroupCount; i++)
     {
@@ -198,6 +205,12 @@ void KBlocksScene::startGame()
 
 void KBlocksScene::stopGame()
 {
+    if (!mGameStarted)
+    {
+        return;
+    }
+    mGameStarted = false;
+    
     for(int i = 0; i < mGroupCount; i++)
     {
         maGroupList[i]->stopGame();
@@ -208,6 +221,11 @@ void KBlocksScene::stopGame()
 
 void KBlocksScene::pauseGame(bool flag, bool fromUI)
 {
+    if (!mGameStarted)
+    {
+        return;
+    }
+    
     QString resuming(i18n("Game Resumed!"));
     QString pausing(i18n("Game Paused!"));
     
