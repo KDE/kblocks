@@ -337,7 +337,7 @@ int main (int argc, char *argv[])
     
     // Application
     KApplication app;
-    KGlobal::locale()->insertCatalog("libkdegames");
+    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
     
     // Get game mode
     int mGameMode = args->getOption("mode").toInt();

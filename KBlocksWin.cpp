@@ -258,21 +258,21 @@ void KBlocksWin::setupGUILayout()
     
     action = KStandardGameAction::gameNew(this, SLOT(singleGame()), actionCollection());
     action->setText(i18n("Single Game"));
-    actionCollection()->addAction("newGame", action);
+    actionCollection()->addAction( QLatin1String( "newGame" ), action);
     
     action = new KAction(this);
     action->setText(i18n("Human vs AI"));
-    actionCollection()->addAction("pve_step", action);
+    actionCollection()->addAction( QLatin1String( "pve_step" ), action);
     connect(action, SIGNAL(triggered(bool)), this, SLOT(pveStepGame()));
     
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
-    actionCollection()->addAction("pauseGame", m_pauseAction);
+    actionCollection()->addAction( QLatin1String( "pauseGame" ), m_pauseAction);
     
     action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
-    actionCollection()->addAction("showHighscores", action);
+    actionCollection()->addAction( QLatin1String( "showHighscores" ), action);
     
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-    actionCollection()->addAction("quit", action);
+    actionCollection()->addAction( QLatin1String( "quit" ), action);
     
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
     
@@ -281,7 +281,7 @@ void KBlocksWin::setupGUILayout()
     
     KAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
-    actionCollection()->addAction("sounds", soundAction);
+    actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
     connect(soundAction, SIGNAL(triggered(bool)), this, SLOT(setSoundsEnabled(bool)));
     
     // TODO
