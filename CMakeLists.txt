@@ -60,7 +60,7 @@ install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kblocks.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kblocksui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kblocks )
 install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
