@@ -127,6 +127,8 @@ void KBlocksWin::startGame()
         stopGame();
         startGame();
     }
+
+    statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0), 0 );
 }
 
 void KBlocksWin::stopGame()
