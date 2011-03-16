@@ -21,8 +21,6 @@
 #include <QString>
 #include <QList>
 #include <QByteArray>
-#include <string>
-#include <time.h>
 
 using namespace std;
 
