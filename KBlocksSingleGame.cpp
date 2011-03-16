@@ -155,7 +155,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
     {
         return false;
     }
-    
+    //FIXME: new without delete (is the new really necessary here?)
     KBlocksPiece* tmpPiece = new KBlocksPiece();
     
     tmpPiece->fromValue(mpPieceList[0]->toValue());
