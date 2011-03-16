@@ -196,7 +196,7 @@ void KBlocksKeyboardPlayer::rotateCW()
     }
     else
     {
-        mpGame->setCurrentPiece(0, 0, 1);
+        mpGame->setCurrentPiece(0, 0, -1);
     }
 }
 
@@ -212,6 +212,6 @@ void KBlocksKeyboardPlayer::rotateCCW()
     }
     else
     {
-        mpGame->setCurrentPiece(0, 0, -1);
+        mpGame->setCurrentPiece(0, 0, 1);
     }
 }
