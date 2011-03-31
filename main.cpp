@@ -316,7 +316,7 @@ int main (int argc, char *argv[])
     // Game abouts...
     KAboutData aboutData( "kblocks", 0,
                           ki18n("KBlocks"),
-                          "0.3",
+                          "0.3.1",
                           ki18n("A falling blocks game for KDE"),
                           KAboutData::License_GPL,
                           ki18n("(c) 2007, Mauricio Piacentini") );
