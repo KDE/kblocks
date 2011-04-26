@@ -397,6 +397,7 @@ void KBlocksItemGroup::dropFreezeLine()
     
     if (count == 0)
     {
+	delete [] fallLine;
         return;
     }
     
