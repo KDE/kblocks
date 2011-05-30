@@ -212,6 +212,7 @@ void KBlocksWin::configureSettings()
     }
     KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
     dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
+	dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
     connect(dialog, SIGNAL(settingsChanged(const QString &)), mpGameView, SLOT(settingsChanged()));
     //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
     dialog->show();
