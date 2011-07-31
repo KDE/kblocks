@@ -213,7 +213,7 @@ void KBlocksWin::configureSettings()
     KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
     dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
 	dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
-    connect(dialog, SIGNAL(settingsChanged(const QString &)), mpGameView, SLOT(settingsChanged()));
+    connect(dialog, SIGNAL(settingsChanged(QString)), mpGameView, SLOT(settingsChanged()));
     //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
     dialog->show();
 }
@@ -289,8 +289,8 @@ void KBlocksWin::setupGUILayout()
     
     // TODO
     statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
-    connect(mpGameScene, SIGNAL(scoreChanged(int, int, int, int)), this,  SLOT(onScoreChanged(int, int, int, int)));
-    connect(mpGameScene, SIGNAL(isHighscore(int, int, int)), this,  SLOT(onIsHighscore(int, int, int)));
+    connect(mpGameScene, SIGNAL(scoreChanged(int,int,int,int)), this,  SLOT(onScoreChanged(int,int,int,int)));
+    connect(mpGameScene, SIGNAL(isHighscore(int,int,int)), this,  SLOT(onIsHighscore(int,int,int)));
     
     KGameDifficulty::init(this, this, SLOT(levelChanged(KGameDifficulty::standardLevel)));
     KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
