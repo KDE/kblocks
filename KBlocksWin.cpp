@@ -23,6 +23,7 @@
 #include <KToggleAction>
 #include <KActionCollection>
 #include <KStatusBar>
+#include <KgDifficulty>
 
 #include <QPixmapCache>
 
@@ -107,20 +108,19 @@ void KBlocksWin::startGame()
         mpGameScene->createGameItemGroups(mGameCount, false);
         mpGameScene->startGame();
         
-        KGameDifficulty::standardLevel level = KGameDifficulty::level();
-        Settings::setDifficulty((int) level);
         int levelUpTime = 0;
-        if (KGameDifficulty::level() == KGameDifficulty::Medium)
+        switch ((int) Kg::difficultyLevel())
         {
-            levelUpTime = 5;
-        }
-        else if (KGameDifficulty::level() == KGameDifficulty::Hard)
-        {
-            levelUpTime = 10;
+            case KgDifficultyLevel::Medium:
+                levelUpTime = 5;
+                break;
+            case KgDifficultyLevel::Hard:
+                levelUpTime = 10;
+                break;
         }
         mpGameLogic->levelUpGame(levelUpTime);
         
-        KGameDifficulty::setRunning(true);
+        Kg::difficulty()->setGameRunning(true);
     }
     else
     {
@@ -140,7 +140,7 @@ void KBlocksWin::stopGame()
         mpGameScene->stopGame();
         mpGameScene->deleteGameItemGroups();
         
-        KGameDifficulty::setRunning(false);
+        Kg::difficulty()->setGameRunning(false);
     }
 }
 
@@ -150,7 +150,7 @@ void KBlocksWin::pauseGame()
     mpPlayManager->pauseGame(m_pauseAction->isChecked());
     mpGameScene->pauseGame(m_pauseAction->isChecked());
     
-    KGameDifficulty::setRunning(!m_pauseAction->isChecked());
+    Kg::difficulty()->setGameRunning(!m_pauseAction->isChecked());
 }
 
 void KBlocksWin::singleGame()
@@ -200,7 +200,7 @@ bool KBlocksWin::queryExit()
 void KBlocksWin::showHighscore()
 {
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
-    ksdialog.setConfigGroup(KGameDifficulty::localizedLevelString());
+    ksdialog.initFromDifficulty(Kg::difficulty());
     ksdialog.exec();
 }
 
@@ -231,7 +231,7 @@ void KBlocksWin::onIsHighscore(int index, int points, int level)
     if (index == 0) // TODO : game id?? multi game display??
     {
         KScoreDialog ksdialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
-        ksdialog.setConfigGroup(KGameDifficulty::localizedLevelString());
+        ksdialog.initFromDifficulty(Kg::difficulty());
         KScoreDialog::FieldInfo info;
         info[KScoreDialog::Score].setNum( points );
         info[KScoreDialog::Level].setNum( level );
@@ -242,7 +242,7 @@ void KBlocksWin::onIsHighscore(int index, int points, int level)
     }
 }
 
-void KBlocksWin::levelChanged(KGameDifficulty::standardLevel)
+void KBlocksWin::levelChanged()
 {
     //Scene reads the difficulty level for us
     startGame();
@@ -279,9 +279,6 @@ void KBlocksWin::setupGUILayout()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
     
-    //restore difficulty and sound from settings, need to read them first
-    Settings::self()->readConfig();
-    
     KAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
@@ -292,22 +289,11 @@ void KBlocksWin::setupGUILayout()
     connect(mpGameScene, SIGNAL(scoreChanged(int,int,int,int)), this,  SLOT(onScoreChanged(int,int,int,int)));
     connect(mpGameScene, SIGNAL(isHighscore(int,int,int)), this,  SLOT(onIsHighscore(int,int,int)));
     
-    KGameDifficulty::init(this, this, SLOT(levelChanged(KGameDifficulty::standardLevel)));
-    KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-    
-    int difficulty = Settings::difficulty();
-    if ((difficulty < KGameDifficulty::Easy) || (difficulty > KGameDifficulty::Hard) )
-    {
-        //unexpected, but use a default
-        KGameDifficulty::setLevel(KGameDifficulty::Easy);
-    }
-    else
-    {
-        KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (difficulty));
-    }
+    Kg::difficulty()->addStandardLevelRange(
+        KgDifficultyLevel::Easy, KgDifficultyLevel::Hard
+    );
+    KgDifficultyGUI::init(this);
+    connect(Kg::difficulty(), SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(levelChanged()));
     
     setupGUI();
 }

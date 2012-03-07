@@ -17,7 +17,7 @@
 
 #include <KLocale>
 #include <KGamePopupItem>
-#include <KGameDifficulty>
+#include <KgDifficulty>
 
 #include "KBlocksSound.h"
 #include "KBlocksGraphics.h"

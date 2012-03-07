@@ -10,10 +10,6 @@
     </entry>
   </group>
   <group name="Preferences">
-    <entry name="Difficulty" type="Int">
-      <label>The difficulty level.</label>
-      <default>0</default>
-    </entry>
     <entry name="Sounds" type="Bool" key="Sounds">
       <label>Whether sound effects should be played.</label>
       <default>true</default>

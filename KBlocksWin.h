@@ -12,7 +12,6 @@
 #define KBLOCKSWIN_H
 
 #include <KXmlGuiWindow>
-#include <KGameDifficulty>
 
 #include "KBlocksScene.h"
 #include "KBlocksView.h"
@@ -53,7 +52,7 @@ class KBlocksWin : public KXmlGuiWindow
         void showHighscore();
         void onScoreChanged(int index, int points, int lines, int level);
         void onIsHighscore(int index, int points, int level);
-        void levelChanged(KGameDifficulty::standardLevel);
+        void levelChanged();
         void setSoundsEnabled(bool enabled);
         
     private:
