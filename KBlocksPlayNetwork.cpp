@@ -11,6 +11,8 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
+#else
+#include <unistd.h>
 #endif
 
 KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string& serverIP, int localPort)
