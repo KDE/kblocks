@@ -15,6 +15,9 @@
 #include <QFile>
 #include <QFileInfo>
 
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgametheme.h>
+
 #include "settings.h"
 
 KBlocksSound::KBlocksSound ( const QString& themeFile )

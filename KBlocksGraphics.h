@@ -11,10 +11,12 @@
 #ifndef KBLOCKSGRAPHICS_H
 #define KBLOCKSGRAPHICS_H
 
-#include "kgametheme.h"
 #include <QHash>
 #include <QSvgRenderer>
 #include <QPixmap>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgametheme.h>
 
 class KBlocksGraphics
 {

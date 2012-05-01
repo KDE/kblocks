@@ -18,7 +18,6 @@
 #include <KStandardAction>
 #include <KIcon>
 #include <kscoredialog.h>
-#include <KGameThemeSelector>
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>
@@ -26,6 +25,9 @@
 #include <KgDifficulty>
 
 #include <QPixmapCache>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamethemeselector.h>
 
 #include "settings.h"
 

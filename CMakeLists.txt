@@ -54,7 +54,7 @@ kde4_add_app_icon(kblocks_SRCS "hi*-app-kblocks.png")
 
 kde4_add_executable(kblocks ${kblocks_SRCS})
 
-target_link_libraries(kblocks kdegames ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} )
+target_link_libraries(kblocks kdegames kdegamesprivate ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${QT_QTNETWORK_LIBRARY})
 
 install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

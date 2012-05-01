@@ -11,7 +11,7 @@
 #ifndef KBLOCKSSOUND_H
 #define KBLOCKSSOUND_H
 
-#include "kgametheme.h"
+class KGameTheme;
 #include <QHash>
 #include <Phonon/MediaObject>
 
