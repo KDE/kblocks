@@ -29,8 +29,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2008-04-01</date>
-<releaseinfo>1.0</releaseinfo>
+<date>2012-08-06</date>
+<releaseinfo>0.3 (&kde; 4.9)</releaseinfo>
 
 <abstract><para>&kblocks; is the &kde; version of the classic falling blocks
 game.</para></abstract>
@@ -101,10 +101,12 @@ Shortcuts...</guimenuitem></menuchoice>
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>New</guimenuitem> </menuchoice></term>
-<listitem><para>Starts a new game.</para></listitem>
+<guimenuitem>Single Game</guimenuitem> </menuchoice></term>
+<listitem><para>Starts a new single player game.</para></listitem>
 </varlistentry>
-
+<!--missing
+Human vs AI
+ -->
 <varlistentry>
 <term><menuchoice>
 <shortcut>
@@ -232,7 +234,7 @@ Options</link>.</para></listitem>
 <tgroup cols="2">
 <thead><row><entry>Key Combo</entry><entry>Action</entry></row></thead>
 <tbody>
-<row><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry><entry>New Game</entry></row>
+<row><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry><entry>Single Game</entry></row>
 <row><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry><entry>Quit &kblocks;</entry></row>
 <row><entry><keycap>F1</keycap></entry><entry>&kblocks; Handbook</entry></row>
 <row><entry><keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></entry><entry>What's This Help</entry></row>
@@ -283,12 +285,16 @@ select <guimenuitem>Configure &kblocks;...</guimenuitem>.
 The game settings can be configured by selecting <menuchoice><guimenu>Settings</guimenu>
 <guimenuitem>Configure &kblocks;...</guimenuitem></menuchoice> from the menubar. A dialog will appear.
 </para>
-
-<para>
-On the theme tab, you can set the theme. Select a theme from the list to see a preview
-of it on the right. You can set it by clicking <guibutton>Apply</guibutton> and <guibutton>OK</guibutton>.
-</para>
-
+		<para>
+			To select a new theme simply choose the theme from
+			the selection list. Each item in the list shows a small
+			preview left to the theme name. A selection is immediately applied.
+		</para>
+		<para>
+			Once you are satisfied with the theme you have selected you
+			can click the <guibutton>Close</guibutton>
+			button, located at the bottom part of this dialog.
+		</para>
 </chapter>
 
 <chapter id="credits"><title>Credits and License</title>
