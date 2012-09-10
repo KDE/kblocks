@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Egyptian
+Name[uk]=Єгиптянин
+Name[x-test]=xxEgyptianxx
 Description=KBlocks, Egyptian style.
+Description[uk]=KBlocks, єгипетський стиль.
+Description[x-test]=xxKBlocks, Egyptian style.xx
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com

@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=oxygen
+Name[uk]=oxygen
+Name[x-test]=xxoxygenxx
 Description=KBlocks Oxygen theme for KDE 4
+Description[uk]=Тема KBlocks Oxygen для KDE 4
+Description[x-test]=xxKBlocks Oxygen theme for KDE 4xx
 VersionFormat=1
 Author=Johann-Ollivier Lapeyre
 AuthorEmail=johann.ollivierlapeyre@gmail.com
