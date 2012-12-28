@@ -292,9 +292,6 @@ int KBlocksConfigManager::ParseConfigFile(FILE* fp)
     string curKey = "DefaultKey";
     string curValue = "DefaultValue";
 
-    char tmpChar[2];
-    tmpChar[1] = '\0';
-
     int lenth;
     string tmpString;
     char tmpBuff[1024];
