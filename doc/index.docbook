@@ -29,8 +29,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2012-08-06</date>
-<releaseinfo>0.3 (&kde; 4.9)</releaseinfo>
+<date>2013-05-05</date>
+<releaseinfo>0.3 (&kde; 4.11)</releaseinfo>
 
 <abstract><para>&kblocks; is the &kde; version of the classic falling blocks
 game.</para></abstract>
@@ -89,10 +89,8 @@ Shortcuts...</guimenuitem></menuchoice>
 
 <para>The following sections briefly describes each menubar option.</para>
 
-<sect1 id="game-menu">
-<title><guimenu>Game</guimenu> Menu</title>
-
-<para>The <guimenu>Game</guimenu> menu consists of 4 options.</para>
+<sect1 id="menu">
+<title>Menu Items</title>
 
 <variablelist>
 <varlistentry>
@@ -104,9 +102,15 @@ Shortcuts...</guimenuitem></menuchoice>
 <guimenuitem>Single Game</guimenuitem> </menuchoice></term>
 <listitem><para>Starts a new single player game.</para></listitem>
 </varlistentry>
-<!--missing
-Human vs AI
- -->
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Human vs AI</guimenuitem> </menuchoice></term>
+<listitem><para>Compare your skills with the AI and play against the computer 
+using the same sequence of falling blocks, where you have the first turn.</para></listitem>
+</varlistentry>
+
 <varlistentry>
 <term><menuchoice>
 <shortcut>
@@ -137,41 +141,17 @@ difficulty level.</para></listitem>
 <guimenuitem>Quit</guimenuitem> </menuchoice></term>
 <listitem><para><action>Quits</action> &kblocks;</para></listitem>
 </varlistentry>
-</variablelist>
-</sect1>
-
-<sect1 id="settings-menu"><title><guimenu>Settings</guimenu> Menu</title>
-<variablelist>
+<!--FIXME when is sound played ? see https://bugs.kde.org/show_bug.cgi?id=319372
 <varlistentry>
-<term>
-<menuchoice>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
 <guimenu>Settings</guimenu>
-<guimenuitem>Show Toolbar</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Toggle on or off the display of the toolbar.</action> The
-default is on.
-</para>
-</listitem>
+<guimenuitem>Play sound</guimenuitem> </menuchoice></term>
+<listitem><para>???</para></listitem>
 </varlistentry>
-
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Toggle on or off the display of the statusbar.</action> The
-default is on.
-</para>
-</listitem>
-</varlistentry>
-
+-->
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -186,48 +166,19 @@ default is on.
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure
-Shortcuts...</guimenuitem></menuchoice></term>
-<listitem><para>This item lets you change the keyboard shortcuts used by &kblocks;, including the keys used to rotate blocks clockwise and counter clockwise</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Toolbars...</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Configure</action> the toolbars provided by &kblocks;.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure &kblocks;...</guimenuitem> </menuchoice></term>
-<listitem><para>Allows you to adjust game options.  For more detailed
-information, see the section entitled <link linkend="settings">Game
-Options</link>.</para></listitem>
-</varlistentry>
-
 </variablelist>
-</sect1>
 
-<sect1 id="help-menu">
-<title><guimenu>Help</guimenu> Menu</title>
-
-&help.menu.documentation;
+<para>
+Additionally &kblocks; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
 <sect1 id="keys"><title>Default Keyboard Shortcuts</title>
 <para>The following table shows you the default keyboard shortcuts.</para>
-
 
 <table>
 <title>Keyboard Shortcuts</title>
