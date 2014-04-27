@@ -59,7 +59,7 @@ class KBlocksWin : public KXmlGuiWindow
         void setupGUILayout();
 
     protected:
-        virtual bool queryExit();
+        virtual void closeEvent(QCloseEvent *event);
         
     private:
         int mMaxGameCapacity;

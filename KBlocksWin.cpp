@@ -193,10 +193,10 @@ void KBlocksWin::focusEvent(bool flag)
     mpGameScene->pauseGame(flag, true);
 }
 
-bool KBlocksWin::queryExit()
+void KBlocksWin::closeEvent(QCloseEvent *event)
 {
     Settings::self()->writeConfig();
-    return true;
+    KXmlGuiWindow::closeEvent(event);
 }
 
 void KBlocksWin::showHighscore()
