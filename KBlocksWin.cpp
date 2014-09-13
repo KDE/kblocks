@@ -37,8 +37,6 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic * p, KBlocksPlayManager * pM, int capaci
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3*1024);
     
-    mFirstInit = true;
-    
     mpKBPlayer = new KBlocksKeyboardPlayer(this);
     mpAIPlayer = new KBlocksAIPlayer();
     
@@ -96,12 +94,6 @@ void KBlocksWin::addScore(int gameIndex, int lineCount)
 
 void KBlocksWin::startGame()
 {
-    if (mFirstInit)
-    {
-        mFirstInit = false;
-        return;
-    }
-    
     srand(time(0));
     mpGameLogic->setGameSeed(rand());
     if (mpGameLogic->startGame(mGameCount))
