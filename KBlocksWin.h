@@ -65,8 +65,6 @@ class KBlocksWin : public KXmlGuiWindow
         int mMaxGameCapacity;
         int mGameCount;
         
-        bool mFirstInit;
-        
         bool mGameAnim;
         bool mWaitForAll;
         
