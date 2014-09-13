@@ -30,7 +30,6 @@ enum Log_Mode
 **  screen setting  **********************************************
 *****************************************************************/
 #ifndef KSIRTET
-void clrscr();
 void gotoXY(int x, int y);
 #endif
 

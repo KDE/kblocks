@@ -7,6 +7,8 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
+#include "KBlocksConfigManager.h"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -14,8 +16,6 @@
 #include <stdlib.h>
 #include <cctype>
 #include <algorithm>
-
-#include "KBlocksConfigManager.h"
 
 KBlocksConfigManager::KBlocksConfigManager()
 {

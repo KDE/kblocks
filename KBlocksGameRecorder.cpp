@@ -50,7 +50,7 @@ void KBlocksGameRecorder::saveText(FILE * pFile)
     int tmpTime = 0;
     timeLong oldTime = mGameRecord.front().time;
     list<_game_record_data>::iterator it;
-    for(it = mGameRecord.begin(); it != mGameRecord.end(); it++)
+    for(it = mGameRecord.begin(); it != mGameRecord.end(); ++it)
     {
         tmpTime = (int)(it->time - oldTime);
         oldTime = it->time;
@@ -63,7 +63,7 @@ void KBlocksGameRecorder::saveBinary(FILE * pFile)
     int tmpTime = 0;
     timeLong oldTime = mGameRecord.front().time;
     list<_game_record_data>::iterator it;
-    for(it = mGameRecord.begin(); it != mGameRecord.end(); it++)
+    for(it = mGameRecord.begin(); it != mGameRecord.end(); ++it)
     {
         tmpTime = (int)(it->time - oldTime);
         oldTime = it->time;

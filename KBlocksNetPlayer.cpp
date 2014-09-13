@@ -118,7 +118,7 @@ bool KBlocksNetPlayer::execute()
         tmpSendData[byteCounter++] = '|';
         if (mSendLength == 0)
         {
-            for(it = mActionList.begin(); it != mActionList.end(); it++)
+            for(it = mActionList.begin(); it != mActionList.end(); ++it)
             {
                 tmpSendData[byteCounter++] = (char)*it + '0';
             }

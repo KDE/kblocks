@@ -15,7 +15,7 @@
 class KBlocksGameMessage
 {
     public:
-        KBlocksGameMessage(int poolSize);
+        explicit KBlocksGameMessage(int poolSize);
         ~KBlocksGameMessage();
         
     public:

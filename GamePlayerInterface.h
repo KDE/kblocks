@@ -7,8 +7,8 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-#ifndef GAMEPLAYINTERFACE_H
-#define GAMEPLAYINTERFACE_H
+#ifndef GAMEPLAYERINTERFACE_H
+#define GAMEPLAYERINTERFACE_H
 
 #include <list>
 #include <string>
@@ -49,5 +49,4 @@ class GamePlayerInterface
         SingleGameInterface* mpGame;
 };
 
-#endif
-
+#endif //GAMEPLAYERINTERFACE_H

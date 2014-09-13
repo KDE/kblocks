@@ -25,6 +25,7 @@
 #include <KgDifficulty>
 
 #include <QPixmapCache>
+#include <QPointer>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -232,15 +233,16 @@ void KBlocksWin::onIsHighscore(int index, int points, int level)
 {
     if (index == 0) // TODO : game id?? multi game display??
     {
-        KScoreDialog ksdialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
-        ksdialog.initFromDifficulty(Kg::difficulty());
+        QPointer<KScoreDialog> ksdialog = new KScoreDialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
+        ksdialog->initFromDifficulty(Kg::difficulty());
         KScoreDialog::FieldInfo info;
         info[KScoreDialog::Score].setNum( points );
         info[KScoreDialog::Level].setNum( level );
-        if ( ksdialog.addScore( info ) )
+        if ( ksdialog->addScore( info ) )
         {
-            ksdialog.exec();
+            ksdialog->exec();
         }
+        delete ksdialog;
     }
 }
 

@@ -35,7 +35,6 @@ using namespace std;
 
 #include "KBlocksAppThread.h"
 
-#include "KBlocksPlayNetwork.h"
 #include "AI/KBlocksAIPlayer.h"
 #include "KBlocksKeyboardPlayer.h"
 

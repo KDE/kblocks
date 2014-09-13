@@ -18,7 +18,7 @@
 class PlannerInterface
 {
 public:
-    PlannerInterface(KBlocksField * p){mpField = p;};
+    explicit PlannerInterface(KBlocksField * p){mpField = p;};
     virtual ~PlannerInterface(){};
     
     virtual int  process(KBlocks_PieceType_Detail) = 0;

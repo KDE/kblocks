@@ -75,11 +75,6 @@ void close_file(int ch)
     is_channel_open[ch] = false;
 }
 
-void clrscr()
-{
-    system("clear");
-}
-
 void gotoXY(int x, int y)
 {
 #ifdef DEBUG

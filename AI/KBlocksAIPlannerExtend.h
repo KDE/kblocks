@@ -22,7 +22,7 @@ namespace PlanningPath
     class PathNode
     {
         public:
-            PathNode(KBlocksPiece * piece);
+            explicit PathNode(KBlocksPiece * piece);
             ~PathNode();
             
             KBlocksPiece getContent();
@@ -48,7 +48,7 @@ namespace PlanningPath
 class KBlocksAIPlannerExtend : public KBlocksAIPlanner
 {
 public:
-    KBlocksAIPlannerExtend(KBlocksField * field);
+    explicit KBlocksAIPlannerExtend(KBlocksField * field);
     ~KBlocksAIPlannerExtend();
     
     int process(KBlocks_PieceType_Detail pieceValue);

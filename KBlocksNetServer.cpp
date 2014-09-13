@@ -259,7 +259,7 @@ void KBlocksNetServer::sendPlayerActionLength()
     }
     
     QList<QString>::iterator it;
-    for(it = mPlayerIPList.begin(); it != mPlayerIPList.end(); it++)
+    for(it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it)
     {
         parseIPString(*it, &tmpIP, &tmpPort);
         

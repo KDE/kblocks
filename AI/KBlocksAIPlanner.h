@@ -21,7 +21,7 @@ typedef std::vector<KBlocksPiece> AIPlanner_PieceInfo_Sequence;
 class KBlocksAIPlanner : public PlannerInterface
 {
 public:
-    KBlocksAIPlanner(KBlocksField * p);
+    explicit KBlocksAIPlanner(KBlocksField * p);
     ~KBlocksAIPlanner();
     
     int  process(KBlocks_PieceType_Detail pieceValue);

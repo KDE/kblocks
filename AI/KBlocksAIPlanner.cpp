@@ -50,7 +50,7 @@ int KBlocksAIPlanner::process(KBlocks_PieceType_Detail pieceValue)
     // board rect
     Lines b_Col_maxHeight = Lines(w);
     
-    // board info - max height per coloumn
+    // board info - max height per column
     for(int x = 0; x < w; x++)
     {
         int y = 0;
@@ -75,7 +75,7 @@ int KBlocksAIPlanner::process(KBlocks_PieceType_Detail pieceValue)
     // scan all possible rotation
     for(int rotation = 0; rotation < loopCount; rotation++)
     {
-        // piece info - min/max height per coloumn      
+        // piece info - min/max height per column
         piece.setRotation(rotation);
         
         // scan all possible x position - put piece on board  

@@ -13,7 +13,7 @@
 class KBlocksPieceGenerator
 {
     public:
-        KBlocksPieceGenerator(int size = 4096);
+        explicit KBlocksPieceGenerator(int size = 4096);
         ~KBlocksPieceGenerator();
         
     public:
