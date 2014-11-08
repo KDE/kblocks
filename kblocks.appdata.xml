@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<component type="desktop">
+  <id>kblocks.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KBlocks</name>
+  <summary>Falling Blocks Game</summary>
+  <description>
+    <p>
+      KBlocks is the classic falling blocks game. The idea is to stack the falling blocks to create horizontal
+      lines without any gaps. When a line is completed it is removed, and more space is available in the play area.
+      When there is not enough space for blocks to fall, the game is over.
+    </p>
+  </description>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kblocks</url>
+  <url type="help">http://docs.kde.org/stable/en/kdegames/kblocks/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://kde.org/images/screenshots/kblocks.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+</component>
