@@ -14,7 +14,7 @@
 
 #include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <klocale.h>
 #include <kglobal.h>
 
@@ -311,11 +311,11 @@ int gamePlayerMode(KBlocksConfigManager * config, const KApplication& app)
 int main (int argc, char *argv[])
 {
     // Game abouts...
-    KAboutData aboutData( "kblocks", 0,
+    K4AboutData aboutData( "kblocks", 0,
                           ki18n("KBlocks"),
                           "0.3",
                           ki18n("A falling blocks game for KDE"),
-                          KAboutData::License_GPL,
+                          K4AboutData::License_GPL,
                           ki18n("(c) 2007, Mauricio Piacentini") );
     aboutData.addAuthor(ki18n("Mauricio Piacentini"), ki18n("Author"), "piacentini@kde.org");
     aboutData.addAuthor(ki18n("Dirk Leifeld"), ki18n("Developer"), "dirkleifeld@yahoo.de");

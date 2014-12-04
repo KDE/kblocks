@@ -13,7 +13,7 @@
 #include <string>
 using namespace std;
 
-#include <KAction>
+#include <QAction>
 #include <KActionCollection>
 #include <KMainWindow>
 #include <KXmlGuiWindow>
@@ -54,12 +54,12 @@ class KBlocksKeyboardPlayer : public QObject, public GamePlayerInterface
         SingleGameInterface* mpGame;
         bool mPauseFlag;
         
-        KAction* rotatecw;
-        KAction* rotateccw;
-        KAction* moveleft;
-        KAction* moveright;
-        KAction* movedown;
-        KAction* pushdown;
+        QAction * rotatecw;
+        QAction * rotateccw;
+        QAction * moveleft;
+        QAction * moveright;
+        QAction * movedown;
+        QAction * pushdown;
         
     private:
         bool mNetMode;

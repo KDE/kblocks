@@ -49,7 +49,7 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     connect(&mUpdateTimer, SIGNAL(timeout()), this, SLOT(updateEvent()));
     mUpdateTimer.stop();
     
-    statusBar()->insertItem( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"), 0 );
+    //QT5 statusBar()->insertItem( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"), 0 );
 }
 
 KBlocksDisplay::~KBlocksDisplay()
@@ -111,9 +111,12 @@ int KBlocksDisplay::formIntFromByte(char * data)
 
 void KBlocksDisplay::updateScore()
 {
+//QT5
+#if 0
     statusBar()->changeItem( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
                              maScoreList[0], maScoreList[1], maScoreList[2], maScoreList[3], 
                              maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]), 0 );
+#endif
 }
     
 void KBlocksDisplay::updateEvent()

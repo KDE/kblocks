@@ -17,7 +17,7 @@
 #include <kstandardgameaction.h>
 #include <KStandardAction>
 #include <KIcon>
-#include <kscoredialog.h>
+#include <highscore/kscoredialog.h>
 #include <KLocale>
 #include <KToggleAction>
 #include <KActionCollection>
@@ -123,7 +123,7 @@ void KBlocksWin::startGame()
         startGame();
     }
 
-    statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0), 0 );
+    //QT5 statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0), 0 );
 }
 
 void KBlocksWin::stopGame()
@@ -217,7 +217,7 @@ void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)
 {
     if (index == 0) // TODO : game id?? multi game display??
     {
-        statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level), 0 );
+        //QT5 statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level), 0 );
     }
 }
 
@@ -259,7 +259,7 @@ void KBlocksWin::setupGUILayout()
     action->setText(i18n("Single Game"));
     actionCollection()->addAction( QLatin1String( "newGame" ), action);
     
-    action = new KAction(this);
+    action = new QAction(this);
     action->setText(i18n("Human vs AI"));
     actionCollection()->addAction( QLatin1String( "pve_step" ), action);
     connect(action, SIGNAL(triggered(bool)), this, SLOT(pveStepGame()));
@@ -275,13 +275,13 @@ void KBlocksWin::setupGUILayout()
     
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
     
-    KAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
+    KToggleAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
     connect(soundAction, SIGNAL(triggered(bool)), this, SLOT(setSoundsEnabled(bool)));
     
     // TODO
-    statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
+    //QT5 statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
     connect(mpGameScene, SIGNAL(scoreChanged(int,int,int,int)), this,  SLOT(onScoreChanged(int,int,int,int)));
     connect(mpGameScene, SIGNAL(isHighscore(int,int,int)), this,  SLOT(onIsHighscore(int,int,int)));
     

@@ -8,7 +8,8 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksKeyboardPlayer.h"
-
+#include <KIcon>
+#include <KShortcut>
 KBlocksKeyboardPlayer::KBlocksKeyboardPlayer(KXmlGuiWindow * parent, string name, bool netMode)
 {
     mpGame = 0;
