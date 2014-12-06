@@ -105,3 +105,4 @@ GenericName[zh_TW]=類似俄羅斯方塊遊戲
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
+X-DBUS-ServiceName=org.kde.kblocks

@@ -89,7 +89,7 @@ set(kblocks_SRCS
 
 kconfig_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
-kde4_add_app_icon(kblocks_SRCS "hi*-app-kblocks.png")
+kde4_add_app_icon(kblocks_SRCS "hi*-apps-kblocks.png")
 
 add_executable(kblocks ${kblocks_SRCS})
 
@@ -99,13 +99,13 @@ install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( PROGRAMS kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES kblocks.appdata.xml DESTINATION  share/appdata )
 install( FILES kblocks.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
-install( FILES kblocksui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kblocks )
+install( FILES kblocksui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kblocks )
 install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
 
-ecm_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ICONS hi128-apps-kblocks.png  hi16-apps-kblocks.png  hi22-apps-kblocks.png  hi32-apps-kblocks.png  hi48-apps-kblocks.png  hi64-apps-kblocks.png DESTINATION ${ICON_INSTALL_DIR}   )
 
 
 
