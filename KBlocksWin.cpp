@@ -16,7 +16,7 @@
 #include <KConfigDialog>
 #include <kstandardgameaction.h>
 #include <KStandardAction>
-#include <KIcon>
+#include <QIcon>
 #include <highscore/kscoredialog.h>
 #include <KLocale>
 #include <KToggleAction>
