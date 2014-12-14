@@ -18,10 +18,10 @@
 #include <KStandardAction>
 #include <QIcon>
 #include <highscore/kscoredialog.h>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KToggleAction>
 #include <KActionCollection>
-#include <KStatusBar>
+#include <QStatusBar>
 #include <KgDifficulty>
 
 #include <QPixmapCache>
@@ -188,7 +188,7 @@ void KBlocksWin::focusEvent(bool flag)
 
 void KBlocksWin::closeEvent(QCloseEvent *event)
 {
-    Settings::self()->writeConfig();
+    Settings::self()->save();
     KXmlGuiWindow::closeEvent(event);
 }
 

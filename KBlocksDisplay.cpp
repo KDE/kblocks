@@ -11,8 +11,8 @@
 
 #include "AI/KBlocksAILog.h"
 
-#include <KLocale>
-#include <KStatusBar>
+#include <KLocalizedString>
+#include <QStatusBar>
 #include <QPixmapCache>
 
 KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localPort) : KMainWindow()
