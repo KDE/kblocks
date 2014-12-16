@@ -9,6 +9,7 @@
   <name xml:lang="de">KBlocks</name>
   <name xml:lang="en-GB">KBlocks</name>
   <name xml:lang="es">KBlock</name>
+  <name xml:lang="it">KBlocks</name>
   <name xml:lang="nl">KBlocks</name>
   <name xml:lang="pl">KBloki</name>
   <name xml:lang="pt">KBlocks</name>
@@ -25,6 +26,7 @@
   <summary xml:lang="cs">Hra s padajícími bloky</summary>
   <summary xml:lang="en-GB">Falling Blocks Game</summary>
   <summary xml:lang="es">Juego de caída de bloques</summary>
+  <summary xml:lang="it">Gioco con oggetti che cadono</summary>
   <summary xml:lang="nl">Vallende blokken-spel</summary>
   <summary xml:lang="pl">Gra w spadające bloki</summary>
   <summary xml:lang="pt">Jogo de Blocos em Queda</summary>
@@ -45,6 +47,7 @@
     </p>
     <p xml:lang="en-GB">KBlocks is the classic falling blocks game. The idea is to stack the falling blocks to create horizontal lines without any gaps. When a line is completed it is removed, and more space is available in the play area. When there is not enough space for blocks to fall, the game is over.</p>
     <p xml:lang="es">KBlocks es un juego clásico de caída de bloques. La idea es apilar los bloques que van cayendo para crear líneas horizontaes sin huecos. Cuando se completa una línea se elimina, y hay más espacio disponible en la zona de juego. Cuando no queda más sitio para que los bloques caigan, se termina el juego.</p>
+    <p xml:lang="it">KBlocks è il classico gioco di blocchi in caduta. L'idea è impilarli in modo da riempire completamente delle righe. Quando una riga è completata viene rimossa, e c'è più spazio a disposizione nell'area di gioco. Quando manca lo spazio per far cadere i blocchi, la partita finisce. </p>
     <p xml:lang="nl">KBlocks is het klassieke spel met vallende blokken Het idee is de vallende blokken zo op te stapelen dat horizontale lijnen volledig zijn opgevuld. Wanneer een lijn volledig is opgevuld wordt deze verwijderd en komt er meer ruimte in het speelgebied. Wanneer er onvoldoende ruimte over is om een blok te laten vallen is het spel over.</p>
     <p xml:lang="pl">KBloki jest klasyczną grą w spadające bloki. Celem jest takie układanie spadających bloków, aby tworzyły one poziome linie bez przerw. Po ułożeniu takiej linii jest ona usuwana zwalniając miejsce w obszarze gry. Brak miejsca na spadające bloki oznacza przegraną.</p>
     <p xml:lang="pt">O KBlocks é o clássico jogo de blocos em queda. A ideia é empilhar os blocos em queda para criar linhas horizontais sem lacunas. Quando uma linha ficar completa, será removida, ficando mais espaço disponível na área de jogo. Quando não existir mais espaço para os blocos caírem, o jogo terminou.</p>
