@@ -108,4 +108,4 @@ install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
 ecm_install_icons( ICONS hi128-apps-kblocks.png  hi16-apps-kblocks.png  hi22-apps-kblocks.png  hi32-apps-kblocks.png  hi48-apps-kblocks.png  hi64-apps-kblocks.png DESTINATION ${ICON_INSTALL_DIR}   )
 
 
-
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
