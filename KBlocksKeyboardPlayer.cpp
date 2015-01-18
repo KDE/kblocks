@@ -9,7 +9,6 @@
 ***************************************************************************/
 #include "KBlocksKeyboardPlayer.h"
 #include <QIcon>
-#include <KShortcut>
 KBlocksKeyboardPlayer::KBlocksKeyboardPlayer(KXmlGuiWindow * parent, string name, bool netMode)
 {
     mpGame = 0;

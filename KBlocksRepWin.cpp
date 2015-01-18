@@ -9,8 +9,8 @@
 ***************************************************************************/
 #include "KBlocksRepWin.h"
 
-#include <KLocale>
-#include <KStatusBar>
+#include <KLocalizedString>
+#include <QStatusBar>
 #include <QPixmapCache>
 
 #include <qdatetime.h>

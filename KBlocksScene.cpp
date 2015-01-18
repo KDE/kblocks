@@ -13,6 +13,7 @@
 #include "settings.h"
 
 #include <QVarLengthArray>
+#include <KLocalizedString>
 
 KBlocksScene::KBlocksScene(GameLogicInterface * p, int capacity)
 {

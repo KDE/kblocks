@@ -15,7 +15,6 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QString>
 
-#include <KLocale>
 #include <KGamePopupItem>
 #include <KgDifficulty>
 
