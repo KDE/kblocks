@@ -11,7 +11,7 @@
  //Uses routines from Kapman sound manager (game.cpp)
 
 #include "KBlocksSound.h"
-#include <KDebug>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 
@@ -26,9 +26,9 @@ KBlocksSound::KBlocksSound ( const QString& themeFile )
     m_media2 = 0;
     m_theme = new KGameTheme();
     if (!m_theme->load(themeFile)) {
-        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
         m_theme->loadDefault();
-        kDebug(11000) << "Load default sound theme." << endl;
+        qWarning() << "Load default sound theme." << endl;
     }
     readThemeValues();
     setSoundsEnabled(Settings::sounds());
@@ -44,7 +44,7 @@ KBlocksSound::~KBlocksSound()
 bool KBlocksSound::loadTheme ( const QString& themeFile )
 {
     if (!m_theme->load(themeFile)) {
-        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
         return false;
     }
     readThemeValues();
@@ -85,7 +85,7 @@ void KBlocksSound::setSoundsEnabled(bool p_enabled) {
 void KBlocksSound::playSound(const QString& p_soundkey) {
     Phonon::MediaObject* m_usedMedia;
     QString p_sound = sndDirectory+m_theme->themeProperty(p_soundkey);
-    //kDebug(11000) << "Playing sound : " << p_sound << endl;
+    //qDebug() << "Playing sound : " << p_sound << endl;
     if (sndActive)
     {
         // Choose the media object with the smallest remaining time

@@ -22,7 +22,7 @@ find_package(KF5 REQUIRED COMPONENTS
     KIO
     NotifyConfig
     NewStuff
-    KDELibs4Support)
+    )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
@@ -93,7 +93,7 @@ kde4_add_app_icon(kblocks_SRCS "hi*-apps-kblocks.png")
 
 add_executable(kblocks ${kblocks_SRCS})
 
-target_link_libraries(kblocks KF5KDEGames KF5KDEGamesPrivate  Phonon::phonon4qt5 Qt5::Network KF5::KDELibs4Support Qt5::Svg)
+target_link_libraries(kblocks KF5KDEGames KF5KDEGamesPrivate  Phonon::phonon4qt5 Qt5::Network KF5::XmlGui KF5::I18n Qt5::Svg)
 
 install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

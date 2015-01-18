@@ -9,7 +9,7 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksGraphics.h"
-#include <KDebug>
+#include <QDebug>
 
 #include <QPixmapCache>
 #include <QPainter>
@@ -18,7 +18,7 @@ KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
 {
     m_theme = new KGameTheme();
     if (!m_theme->load(themeFile)) {
-        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
         m_theme->loadDefault();
     }
     m_renderer = new QSvgRenderer(m_theme->graphics());
@@ -34,11 +34,11 @@ KBlocksGraphics::~KBlocksGraphics()
 bool KBlocksGraphics::loadTheme ( const QString& themeFile )
 {
     if (!m_theme->load(themeFile)) {
-        kDebug(11000) << "Error loading KBlocks .desktop theme" << themeFile << endl;
+        qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
         return false;
     }
     if (!m_renderer->load(m_theme->graphics())) {
-        kDebug(11000) << "Error loading SVG theme" << m_theme->graphics() << endl;
+        qWarning() << "Error loading SVG theme" << m_theme->graphics() << endl;
         return false;
     }
     //clear the cache or pixmaps from the old theme will be returned
@@ -70,7 +70,7 @@ void KBlocksGraphics::adjustForSize(const QSize& newsize)
     } else {
         aspectratio = nh/origh;
     }
-    //kDebug(11000) << aspectratio;
+    //qWarning() << aspectratio;
     m_Block_Size = (int) (aspectratio*(qreal)m_Block_Size);
     m_View_Size_Width = (int) (aspectratio*(double)m_View_Size_Width);
     m_View_Size_Height = (int) (aspectratio*(double)m_View_Size_Height);
