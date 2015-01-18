@@ -14,6 +14,7 @@
 #include <KLocalizedString>
 #include <QStatusBar>
 #include <QPixmapCache>
+#include <QLabel>
 
 KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localPort) : KMainWindow()
 {
@@ -48,8 +49,8 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     mUpdateTimer.setInterval(mUpdateInterval);
     connect(&mUpdateTimer, SIGNAL(timeout()), this, SLOT(updateEvent()));
     mUpdateTimer.stop();
-    
-    //QT5 statusBar()->insertItem( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"), 0 );
+    mScore = new QLabel( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0") );
+    statusBar()->addPermanentWidget( mScore ); 
 }
 
 KBlocksDisplay::~KBlocksDisplay()
@@ -111,12 +112,9 @@ int KBlocksDisplay::formIntFromByte(char * data)
 
 void KBlocksDisplay::updateScore()
 {
-//QT5
-#if 0
-    statusBar()->changeItem( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
+    mScore->setText( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
                              maScoreList[0], maScoreList[1], maScoreList[2], maScoreList[3], 
-                             maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]), 0 );
-#endif
+                             maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]));
 }
     
 void KBlocksDisplay::updateEvent()

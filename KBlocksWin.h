@@ -21,7 +21,7 @@
 
 #include "KBlocksGameLogic.h"
 #include "KBlocksPlayManager.h"
-
+class QLabel;
 class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -78,6 +78,7 @@ class KBlocksWin : public KXmlGuiWindow
         KBlocksAIPlayer* mpAIPlayer;
         
         QAction* m_pauseAction;
+        QLabel* mScore;
 };
 
 #endif

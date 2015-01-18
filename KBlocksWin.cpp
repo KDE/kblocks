@@ -26,6 +26,7 @@
 
 #include <QPixmapCache>
 #include <QPointer>
+#include <QLabel>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -123,7 +124,7 @@ void KBlocksWin::startGame()
         startGame();
     }
 
-    //QT5 statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0), 0 );
+    mScore->setText( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0) );
 }
 
 void KBlocksWin::stopGame()
@@ -217,7 +218,7 @@ void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)
 {
     if (index == 0) // TODO : game id?? multi game display??
     {
-        //QT5 statusBar()->changeItem( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level), 0 );
+        mScore->setText( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level) );
     }
 }
 
@@ -281,7 +282,8 @@ void KBlocksWin::setupGUILayout()
     connect(soundAction, SIGNAL(triggered(bool)), this, SLOT(setSoundsEnabled(bool)));
     
     // TODO
-    //QT5 statusBar()->insertItem( i18n("Points: 0 - Lines: 0 - Level: 0"), 0 );
+    mScore = new QLabel(i18n("Points: 0 - Lines: 0 - Level: 0"));
+    statusBar()->addPermanentWidget( mScore );    
     connect(mpGameScene, SIGNAL(scoreChanged(int,int,int,int)), this,  SLOT(onScoreChanged(int,int,int,int)));
     connect(mpGameScene, SIGNAL(isHighscore(int,int,int)), this,  SLOT(onIsHighscore(int,int,int)));
     

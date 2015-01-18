@@ -22,7 +22,7 @@
 #include "KBlocksNetClient.h"
 
 using std::string;
-
+class QLabel;
 class KBlocksDisplay : public KMainWindow
 {
     Q_OBJECT
@@ -61,6 +61,7 @@ class KBlocksDisplay : public KMainWindow
         
         KBlocksGameLogic* mpGameLogic;
         KBlocksNetClient* mpNetClient;
+        QLabel *mScore;
 };
 
 #endif
