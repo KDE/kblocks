@@ -27,7 +27,7 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     }
     
     mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
-    connect(mpNetClient, SIGNAL(dataArrived(int)), this, SLOT(updateGameDisplay(int)));
+    connect(mpNetClient, &KBlocksNetClient::dataArrived, this, &KBlocksDisplay::updateGameDisplay);
     
     mGameCount = gameCount;
     mpGameLogic = new KBlocksGameLogic(mGameCount);
@@ -47,7 +47,7 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     
     mUpdateInterval = 1000;
     mUpdateTimer.setInterval(mUpdateInterval);
-    connect(&mUpdateTimer, SIGNAL(timeout()), this, SLOT(updateEvent()));
+    connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksDisplay::updateEvent);
     mUpdateTimer.stop();
     mScore = new QLabel( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0") );
     statusBar()->addPermanentWidget( mScore ); 

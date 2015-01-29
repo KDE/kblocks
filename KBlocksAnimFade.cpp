@@ -18,8 +18,8 @@ KBlocksAnimFade::KBlocksAnimFade(const QList<KBlocksSvgItem*> & items, int durat
     mpTimeLine->setFrameRange( 0, 30 );
     mpTimeLine->setDirection(direction);
     
-    connect(mpTimeLine, SIGNAL(valueChanged(qreal)), SLOT(valueChanged(qreal)));
-    connect(mpTimeLine, SIGNAL(finished()), SLOT(endAnimation()));
+    connect(mpTimeLine, &QTimeLine::valueChanged, this, &KBlocksAnimFade::valueChanged);
+    connect(mpTimeLine, &QTimeLine::finished, this, &KBlocksAnimFade::endAnimation);
     
     mpTimeLine->start();
 }

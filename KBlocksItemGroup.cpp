@@ -53,7 +53,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocks
     mGameAnimEnabled = true;
     mWaitForAllUpdate = false;
     mpAnimator = new KBlocksAnimator();
-    connect(mpAnimator, SIGNAL(animFinished(int)), this, SLOT(endAnimation(int)));
+    connect(mpAnimator, &KBlocksAnimator::animFinished, this, &KBlocksItemGroup::endAnimation);
     
     mFadeInItems.clear();
     mFadeOutItems.clear();
@@ -63,11 +63,11 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface * p, KBlocks
     mUpdateTimer.setInterval(mUpdateInterval);
     if (snapshotMode)
     {
-        connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(updateSnapshot()));
+        connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksItemGroup::updateSnapshot);
     }
     else
     {
-        connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(updateGame()));
+        connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksItemGroup::updateGame);
     }
     mUpdateTimer.stop();
 }

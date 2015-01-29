@@ -50,7 +50,7 @@ KBlocksRepWin::KBlocksRepWin(const char * replayFile, bool binaryMode) : KMainWi
     
     mUpdateInterval = 1000;
     mUpdateTimer.setInterval(mUpdateInterval);
-    connect(&mUpdateTimer, SIGNAL(timeout()), SLOT(replayOneStep()));
+    connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksRepWin::replayOneStep);
     mUpdateTimer.stop();
     
     mSnapshotFilename = QString("");

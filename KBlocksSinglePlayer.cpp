@@ -21,7 +21,7 @@ KBlocksSinglePlayer::KBlocksSinglePlayer(GamePlayerInterface * player, int think
     if (mThinkInterval >= 0)
     {
         mActionTimer.setInterval(thinkInterval);
-        connect(&mActionTimer, SIGNAL(timeout()), this, SLOT(doAction()));
+        connect(&mActionTimer, &QTimer::timeout, this, &KBlocksSinglePlayer::doAction);
     }
     mActionTimer.stop();
     

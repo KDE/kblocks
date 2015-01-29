@@ -51,7 +51,7 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic * p, KBlocksPlayManager * pM, int capaci
     mpGameView = new KBlocksView(mpGameScene, this);
 	mpGameView->show();
     setCentralWidget(mpGameView);
-    connect(mpGameView, SIGNAL(focusEvent(bool)), this, SLOT(focusEvent(bool)));
+    connect(mpGameView, &KBlocksView::focusEvent, this, &KBlocksWin::focusEvent);
     
     setAutoSaveSettings();
     
@@ -209,7 +209,7 @@ void KBlocksWin::configureSettings()
     KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
     dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
 	dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
-    connect(dialog, SIGNAL(settingsChanged(QString)), mpGameView, SLOT(settingsChanged()));
+    connect(dialog, &KConfigDialog::settingsChanged, mpGameView, &KBlocksView::settingsChanged);
     //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
     dialog->show();
 }
@@ -263,7 +263,7 @@ void KBlocksWin::setupGUILayout()
     action = new QAction(this);
     action->setText(i18n("Human vs AI"));
     actionCollection()->addAction( QLatin1String( "pve_step" ), action);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(pveStepGame()));
+    connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
     
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
     actionCollection()->addAction( QLatin1String( "pauseGame" ), m_pauseAction);
@@ -279,13 +279,13 @@ void KBlocksWin::setupGUILayout()
     KToggleAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
-    connect(soundAction, SIGNAL(triggered(bool)), this, SLOT(setSoundsEnabled(bool)));
+    connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
     
     // TODO
     mScore = new QLabel(i18n("Points: 0 - Lines: 0 - Level: 0"));
     statusBar()->addPermanentWidget( mScore );    
-    connect(mpGameScene, SIGNAL(scoreChanged(int,int,int,int)), this,  SLOT(onScoreChanged(int,int,int,int)));
-    connect(mpGameScene, SIGNAL(isHighscore(int,int,int)), this,  SLOT(onIsHighscore(int,int,int)));
+    connect(mpGameScene, &KBlocksScene::scoreChanged, this, &KBlocksWin::onScoreChanged);
+    connect(mpGameScene, &KBlocksScene::isHighscore, this, &KBlocksWin::onIsHighscore);
     
     Kg::difficulty()->addStandardLevelRange(
         KgDifficultyLevel::Easy, KgDifficultyLevel::Hard

@@ -18,8 +18,8 @@ KBlocksAnimDrop::KBlocksAnimDrop(const QList<KBlocksSvgItem*> & items, int durat
     mpTimeLine->setFrameRange( 0, 30 );
     mpTimeLine->setDirection(direction);
     
-    connect(mpTimeLine, SIGNAL(valueChanged(qreal)), SLOT(valueChanged(qreal)));
-    connect(mpTimeLine, SIGNAL(finished()), SLOT(endAnimation()));
+    connect(mpTimeLine, &QTimeLine::valueChanged, this, &KBlocksAnimDrop::valueChanged);
+    connect(mpTimeLine, &QTimeLine::finished, this, &KBlocksAnimDrop::endAnimation);
     
     mpTimeLine->start();
 }

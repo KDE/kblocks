@@ -18,7 +18,7 @@ KBlocksNetClient::KBlocksNetClient(const QString& remoteIP, quint16 localPort)
     
     mpClientSocket = new QUdpSocket(this);
     mpClientSocket->bind(mLocalAddress, mLocalPort);
-    connect(mpClientSocket, SIGNAL(readyRead()), this, SLOT(receivedData()));
+    connect(mpClientSocket, &QUdpSocket::readyRead, this, &KBlocksNetClient::receivedData);
 }
 
 KBlocksNetClient::~KBlocksNetClient()

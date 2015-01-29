@@ -41,11 +41,11 @@ bool KBlocksAnimator::createFadeAnim(const QList<KBlocksSvgItem*> & items, int d
     
     if (direction == QTimeLine::Forward)
     {
-        connect(mpAnimFade, SIGNAL(animationFinished()), this, SLOT(endFadeInAnim()));
+        connect(mpAnimFade, &KBlocksAnimFade::animationFinished, this, &KBlocksAnimator::endFadeInAnim);
     }
     else
     {
-        connect(mpAnimFade, SIGNAL(animationFinished()), this, SLOT(endFadeOutAnim()));
+        connect(mpAnimFade, &KBlocksAnimFade::animationFinished, this, &KBlocksAnimator::endFadeOutAnim);
     }
     
     return true;
@@ -76,7 +76,7 @@ bool KBlocksAnimator::createDropAnim(const QList<KBlocksSvgItem*> & items, int d
     
     mpAnimDrop = new KBlocksAnimDrop(items, duration, direction);
     
-    connect(mpAnimDrop, SIGNAL(animationFinished()), this, SLOT(endDropAnim()));
+    connect(mpAnimDrop, &KBlocksAnimDrop::animationFinished, this, &KBlocksAnimator::endDropAnim);
     
     return true;
 }
