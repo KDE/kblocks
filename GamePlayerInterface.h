@@ -13,8 +13,7 @@
 #include <list>
 #include <string>
 
-enum KBlocks_Player_Action
-{
+enum KBlocks_Player_Action {
     PlayerAction_None = 0,
     PlayerAction_Move_Left,
     PlayerAction_Move_Right,
@@ -31,22 +30,22 @@ typedef std::list<KBlocks_Player_Action> GamePlayer_ActionList;
 
 class GamePlayerInterface
 {
-    public:
-        GamePlayerInterface(){};
-        virtual ~GamePlayerInterface(){};
-        
-    public:
-        virtual void startGame(SingleGameInterface*) = 0;
-        virtual void stopGame() = 0;
-        
-        virtual void pauseGame(bool) = 0;
-        
-        virtual void think(GamePlayer_ActionList * actionList) = 0;
-        
-        virtual std::string getName() = 0;
-        
-    protected:
-        SingleGameInterface* mpGame;
+public:
+    GamePlayerInterface() {};
+    virtual ~GamePlayerInterface() {};
+
+public:
+    virtual void startGame(SingleGameInterface *) = 0;
+    virtual void stopGame() = 0;
+
+    virtual void pauseGame(bool) = 0;
+
+    virtual void think(GamePlayer_ActionList *actionList) = 0;
+
+    virtual std::string getName() = 0;
+
+protected:
+    SingleGameInterface *mpGame;
 };
 
 #endif //GAMEPLAYERINTERFACE_H

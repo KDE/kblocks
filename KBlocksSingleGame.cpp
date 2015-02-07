@@ -16,25 +16,24 @@
 KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHeight, int showPieceCount, int messagePoolSize)
 {
     mGameIndex = gameIndex;
-    
+
     mpField = new KBlocksField(fieldWidth, fieldHeight);
-    
+
     mPieceCount = showPieceCount;
     mpPieceList = new KBlocksPiece*[mPieceCount];
-    for(int i = 0; i < mPieceCount; i++)
-    {
+    for (int i = 0; i < mPieceCount; i++) {
         mpPieceList[i] = new KBlocksPiece();
     }
-    
+
     mpPieceGenerator = new KBlocksPieceGenerator();
     mpGameMessage = new KBlocksGameMessage(messagePoolSize);
     mpGameRecorder = 0;
-    
+
     mCurrentGameState = GameState_Stop;
-    
+
     mStandbyMode = false;
     mStandbyFlag = false;
-    
+
     mGameInterval = 0;
     mGameStartTime = 0;
 }
@@ -43,17 +42,16 @@ KBlocksSingleGame::~KBlocksSingleGame()
 {
     delete mpGameMessage;
     delete mpPieceGenerator;
-    
-    for(int i = 0; i < mPieceCount; i++)
-    {
+
+    for (int i = 0; i < mPieceCount; i++) {
         delete mpPieceList[i];
     }
     delete [] mpPieceList;
-    
+
     delete mpField;
 }
 
-KBlocksField* KBlocksSingleGame::getField()
+KBlocksField *KBlocksSingleGame::getField()
 {
     return mpField;
 }
@@ -63,10 +61,9 @@ int KBlocksSingleGame::getPieceCount()
     return mPieceCount;
 }
 
-KBlocksPiece* KBlocksSingleGame::getPiece(int index)
+KBlocksPiece *KBlocksSingleGame::getPiece(int index)
 {
-    if ((index < 0) || (index >= mPieceCount))
-    {
+    if ((index < 0) || (index >= mPieceCount)) {
         return 0;
     }
     return mpPieceList[index];
@@ -74,8 +71,7 @@ KBlocksPiece* KBlocksSingleGame::getPiece(int index)
 
 bool KBlocksSingleGame::isActive()
 {
-    if ((mCurrentGameState != GameState_Running) || mStandbyFlag)
-    {
+    if ((mCurrentGameState != GameState_Running) || mStandbyFlag) {
         return false;
     }
     return true;
@@ -83,8 +79,7 @@ bool KBlocksSingleGame::isActive()
 
 bool KBlocksSingleGame::isGameRunning()
 {
-    if (mCurrentGameState == GameState_Stop)
-    {
+    if (mCurrentGameState == GameState_Stop) {
         return false;
     }
     return true;
@@ -100,7 +95,7 @@ void KBlocksSingleGame::setGameInterval(int interval)
     mGameInterval = interval;
 }
 
-void KBlocksSingleGame::setGameRecorder(KBlocksGameRecorder * p)
+void KBlocksSingleGame::setGameRecorder(KBlocksGameRecorder *p)
 {
     mpGameRecorder = p;
 }
@@ -117,276 +112,235 @@ int KBlocksSingleGame::updateGame()
 
 int KBlocksSingleGame::punishGame(int lineCount, int punishSeed)
 {
-    if (mCurrentGameState == GameState_Stop)
-    {
+    if (mCurrentGameState == GameState_Stop) {
         return GameResult_None;
     }
-    
+
     int width = mpField->getWidth();
-    
+
     int gameResult = GameResult_None;
-    
-    if (mpGameRecorder)
-    {
+
+    if (mpGameRecorder) {
         mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineCount, lineCount);
         mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineSeed, punishSeed);
     }
-    
+
     srand(punishSeed);
     int punishIndex = 0;
-    for(int i = 0; i < lineCount; i++)
-    {
+    for (int i = 0; i < lineCount; i++) {
         setCurrentPiece(0, -1, 0);
         punishIndex = rand() % width;
         mpField->addPunishLine(lineCount, punishIndex);
     }
-    
-    if (lineCount > 0)
-    {
+
+    if (lineCount > 0) {
         mpGameMessage->putGameAction(GameAction_Punish_Line, lineCount);
     }
-    
+
     return gameResult;
 }
 
 bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
 {
-    if ((mCurrentGameState != GameState_Running) || mStandbyFlag)
-    {
+    if ((mCurrentGameState != GameState_Running) || mStandbyFlag) {
         return false;
     }
     //FIXME: new without delete (is the new really necessary here?)
-    KBlocksPiece* tmpPiece = new KBlocksPiece();
-    
+    KBlocksPiece *tmpPiece = new KBlocksPiece();
+
     tmpPiece->fromValue(mpPieceList[0]->toValue());
     tmpPiece->setPosX(mpPieceList[0]->getPosX() + xPos);
-    if (mpPieceList[0]->getPosY() + yPos < 0)
-    {
+    if (mpPieceList[0]->getPosY() + yPos < 0) {
         tmpPiece->setPosY(0);
-    }
-    else
-    {
+    } else {
         tmpPiece->setPosY(mpPieceList[0]->getPosY() + yPos);
     }
     tmpPiece->setRotation(mpPieceList[0]->getRotation() + rotation);
-    
-    if (checkPieceTouchGround(tmpPiece))
-    {
+
+    if (checkPieceTouchGround(tmpPiece)) {
         return false;
     }
-    
+
     mpPieceList[0]->setPosX(tmpPiece->getPosX());
     mpPieceList[0]->setPosY(tmpPiece->getPosY());
     mpPieceList[0]->setRotation(tmpPiece->getRotation());
-    
-    if (mpGameRecorder)
-    {
-        if (xPos < 0)
-        {
+
+    if (mpGameRecorder) {
+        if (xPos < 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceLeft, 1);
         }
-        if (xPos > 0)
-        {
+        if (xPos > 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceRight, 1);
         }
-        if (yPos < 0)
-        {
+        if (yPos < 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceUp, 1);
         }
-        if (yPos > 0)
-        {
+        if (yPos > 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_MovePieceDown, 1);
         }
-        if (rotation < 0)
-        {
+        if (rotation < 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_RotatePieceCW, 1);
         }
-        if (rotation > 0)
-        {
+        if (rotation > 0) {
             mpGameRecorder->append(mGameIndex, RecordDataType_RotatePieceCCW, 1);
         }
     }
-    
+
     return true;
 }
 
 int KBlocksSingleGame::startGame(int seed)
 {
-    if (mCurrentGameState != GameState_Stop)
-    {
+    if (mCurrentGameState != GameState_Stop) {
         return mCurrentGameState;
     }
-    
+
     mpPieceGenerator->genList(seed);
-    
-    for(int i = 0; i < mPieceCount; i++)
-    {
+
+    for (int i = 0; i < mPieceCount; i++) {
         mpPieceList[i]->fromValue(mpPieceGenerator->getPiece());
     }
-    
+
     mpPieceList[0]->setPosX(mpField->getWidth() / 2);
     mpPieceList[0]->setPosY(0);
-    
+
     mpPieceList[1]->setPosX(2);
     mpPieceList[1]->setPosY(2);
-    
+
     mpGameMessage->clearGameResult();
     mpGameMessage->clearGameAction();
-    
+
     mCurrentGameState = GameState_Running;
-    
+
     mGameStartTime = getMillisecOfNow();
-    
+
     return mCurrentGameState;
 }
 
 int KBlocksSingleGame::stopGame()
 {
     mCurrentGameState = GameState_Stop;
-    
+
     return mCurrentGameState;
 }
 
 int KBlocksSingleGame::pauseGame(bool flag)
 {
-    if ((mCurrentGameState == GameState_Running) && flag)
-    {
+    if ((mCurrentGameState == GameState_Running) && flag) {
         mCurrentGameState = GameState_Pause;
-    }
-    else if ((mCurrentGameState == GameState_Pause) && (!flag))
-    {
+    } else if ((mCurrentGameState == GameState_Pause) && (!flag)) {
         mCurrentGameState = GameState_Running;
-        
+
         mGameStartTime = getMillisecOfNow();
     }
-    
+
     return mCurrentGameState;
 }
 
 int KBlocksSingleGame::continueGame()
 {
-    if ((mCurrentGameState != GameState_Stop) && mStandbyFlag)
-    {
+    if ((mCurrentGameState != GameState_Stop) && mStandbyFlag) {
         mStandbyFlag = false;
-        
+
         mGameStartTime = getMillisecOfNow();
     }
-    
+
     return mCurrentGameState;
 }
 
-bool KBlocksSingleGame::pickGameResult(int * result)
+bool KBlocksSingleGame::pickGameResult(int *result)
 {
     return mpGameMessage->pickGameResult(result);
 }
 
-bool KBlocksSingleGame::pickGameAction(int * type, int * action)
+bool KBlocksSingleGame::pickGameAction(int *type, int *action)
 {
     return mpGameMessage->pickGameAction(type, action);
 }
 
 int KBlocksSingleGame::doUpdateGame(bool force)
 {
-    if (mCurrentGameState == GameState_Stop)
-    {
+    if (mCurrentGameState == GameState_Stop) {
         return GameResult_Game_Over;
-    }
-    else if ((mCurrentGameState != GameState_Running) || mStandbyFlag)
-    {
+    } else if ((mCurrentGameState != GameState_Running) || mStandbyFlag) {
         return GameResult_None;
     }
-    
+
     timeLong tmpCurTime = getMillisecOfNow();
-    
+
     int gameResult = GameResult_None;
-    
-    if (force)
-    {
+
+    if (force) {
         runGameOneStep(&gameResult);
-    }
-    else
-    {
-        if (mGameInterval < 0)
-        {
+    } else {
+        if (mGameInterval < 0) {
             return gameResult;
         }
-        
-        while(1)
-        {
-            if (mGameStartTime + mGameInterval > tmpCurTime)
-            {
+
+        while (1) {
+            if (mGameStartTime + mGameInterval > tmpCurTime) {
                 break;
             }
-            
+
             mGameStartTime += mGameInterval;
-            
-            if (runGameOneStep(&gameResult) || (mGameInterval == 0))
-            {
+
+            if (runGameOneStep(&gameResult) || (mGameInterval == 0)) {
                 break;
             }
         }
     }
-    
+
     return gameResult;
 }
 
-bool KBlocksSingleGame::runGameOneStep(int * gameResult)
+bool KBlocksSingleGame::runGameOneStep(int *gameResult)
 {
-    if (!setCurrentPiece(0, 1, 0))
-    {
+    if (!setCurrentPiece(0, 1, 0)) {
         *gameResult = GameResult_Next_Piece;
-        
+
         freezePieceToField(mpPieceList[0]);
-        
+
         *gameResult += removeFieldLines();
-        
-        if (mStandbyMode)
-        {
+
+        if (mStandbyMode) {
             mStandbyFlag = true;
         }
-        
+
         prepareNextPiece();
-        if (checkPieceTouchGround(mpPieceList[0]))
-        {
+        if (checkPieceTouchGround(mpPieceList[0])) {
             *gameResult = GameResult_Game_Over;
             mCurrentGameState = GameState_Stop;
             mpGameMessage->putGameResult(-1);
         }
-        
-        if (mpGameRecorder)
-        {
+
+        if (mpGameRecorder) {
             mpGameRecorder->append(mGameIndex, RecordDataType_GameOneStep, 1);
         }
-        
+
         return true;
-    }
-    else
-    {
+    } else {
         *gameResult = GameResult_One_Step;
-        
+
         return false;
     }
 }
 
-bool KBlocksSingleGame::checkPieceTouchGround(KBlocksPiece * p)
+bool KBlocksSingleGame::checkPieceTouchGround(KBlocksPiece *p)
 {
-    for(int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
         int posX = p->getCellPosX(i);
         int posY = p->getCellPosY(i);
-        if (mpField->getCell(posX, posY))
-        {
+        if (mpField->getCell(posX, posY)) {
             return true;
         }
     }
     return false;
 }
 
-void KBlocksSingleGame::freezePieceToField(KBlocksPiece * p)
+void KBlocksSingleGame::freezePieceToField(KBlocksPiece *p)
 {
     mpGameMessage->putGameAction(GameAction_Freeze_Piece_Color, mpPieceList[0]->getType());
-    for(int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
         int posX = p->getCellPosX(i);
         int posY = p->getCellPosY(i);
         mpField->setCell(posX, posY, true);
@@ -398,44 +352,39 @@ void KBlocksSingleGame::freezePieceToField(KBlocksPiece * p)
 int KBlocksSingleGame::removeFieldLines()
 {
     int lineCount = 0;
-    
+
     int maxLines = mpField->getHeight();
-    for(int i = 0; i < maxLines; i++)
-    {
-        if (mpField->checkFilledLine(i))
-        {
+    for (int i = 0; i < maxLines; i++) {
+        if (mpField->checkFilledLine(i)) {
             mpGameMessage->putGameAction(GameAction_Remove_Line, i);
             mpField->removeFilledLine(i);
             lineCount++;
         }
     }
-    
-    if (lineCount > 0)
-    {
+
+    if (lineCount > 0) {
         mpGameMessage->putGameResult(lineCount);
     }
-    
+
     return lineCount;
 }
 
 void KBlocksSingleGame::prepareNextPiece()
 {
-    for(int i = 0; i < mPieceCount - 1; i++)
-    {
-        mpPieceList[i]->fromValue(mpPieceList[i+1]->toValue());
+    for (int i = 0; i < mPieceCount - 1; i++) {
+        mpPieceList[i]->fromValue(mpPieceList[i + 1]->toValue());
     }
-    
+
     int pieceValue = mpPieceGenerator->getPiece();
-    mpPieceList[mPieceCount-1]->fromValue(pieceValue);
-    
+    mpPieceList[mPieceCount - 1]->fromValue(pieceValue);
+
     mpPieceList[0]->setPosX(mpField->getWidth() / 2);
     mpPieceList[0]->setPosY(0);
-    
+
     mpPieceList[1]->setPosX(2);
     mpPieceList[1]->setPosY(2);
-    
-    for(int i = 0; i < 4; i++)
-    {
+
+    for (int i = 0; i < 4; i++) {
         int posX = mpPieceList[0]->getCellPosX(i);
         int posY = mpPieceList[0]->getCellPosY(i);
         mpGameMessage->putGameAction(GameAction_New_Piece_X, posX);
@@ -446,11 +395,11 @@ void KBlocksSingleGame::prepareNextPiece()
 timeLong KBlocksSingleGame::getMillisecOfNow()
 {
     timeval tmpCurTime;
-    
+
     gettimeofday(&tmpCurTime, NULL);
-    
+
     timeLong tmpMilliTime = (timeLong)tmpCurTime.tv_usec / 1000;
     tmpMilliTime += (timeLong)tmpCurTime.tv_sec * 1000;
-    
+
     return tmpMilliTime;
 }

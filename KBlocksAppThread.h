@@ -15,15 +15,15 @@
 
 class KBlocksAppThread : public QThread
 {
-    public:
-        explicit KBlocksAppThread(KBlocksPlayNetwork * p);
-        ~KBlocksAppThread();
-        
-    public:
-        void run();
-        
-    private:
-        KBlocksPlayNetwork* mPlayNetwork;
+public:
+    explicit KBlocksAppThread(KBlocksPlayNetwork *p);
+    ~KBlocksAppThread();
+
+public:
+    void run();
+
+private:
+    KBlocksPlayNetwork *mPlayNetwork;
 };
 
 #endif

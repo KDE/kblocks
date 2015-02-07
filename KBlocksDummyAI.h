@@ -14,24 +14,24 @@
 
 class KBlocksDummyAI : public GamePlayerInterface
 {
-    public:
-        KBlocksDummyAI();
-        ~KBlocksDummyAI();
-        
-    public:
-        void startGame(SingleGameInterface * p);
-        void stopGame();
-        
-        void pauseGame(bool flag);
-        
-        void think(GamePlayer_ActionList * actionList);
-        
-    protected:
-        SingleGameInterface* mpGame;
-        bool mPauseFlag;
-        
-        int mFieldWidth;
-        int mRotateCount;
+public:
+    KBlocksDummyAI();
+    ~KBlocksDummyAI();
+
+public:
+    void startGame(SingleGameInterface *p);
+    void stopGame();
+
+    void pauseGame(bool flag);
+
+    void think(GamePlayer_ActionList *actionList);
+
+protected:
+    SingleGameInterface *mpGame;
+    bool mPauseFlag;
+
+    int mFieldWidth;
+    int mRotateCount;
 };
 
 #endif

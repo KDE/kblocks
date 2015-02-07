@@ -19,27 +19,27 @@
 ****************************************************************/
 namespace PlanningPath
 {
-    class PathNode
-    {
-        public:
-            explicit PathNode(KBlocksPiece * piece);
-            ~PathNode();
-            
-            KBlocksPiece getContent();
-            void setContent(KBlocksPiece * piece);
-            void setParent(PathNode *parent);
-            PathNode *getParent();
-            
-            void setNext(std::vector<PathNode>* &);
-            
-        private:
-            KBlocksPiece content;
-            PathNode *parent;
-            std::vector<PathNode> *next;
-    };
-    
-    typedef std::vector<PathNode>  PathTree;
-    typedef std::vector<PathNode*> LeafList;  
+class PathNode
+{
+public:
+    explicit PathNode(KBlocksPiece *piece);
+    ~PathNode();
+
+    KBlocksPiece getContent();
+    void setContent(KBlocksPiece *piece);
+    void setParent(PathNode *parent);
+    PathNode *getParent();
+
+    void setNext(std::vector<PathNode> *&);
+
+private:
+    KBlocksPiece content;
+    PathNode *parent;
+    std::vector<PathNode> *next;
+};
+
+typedef std::vector<PathNode>  PathTree;
+typedef std::vector<PathNode *> LeafList;
 }
 
 /****************************************************************
@@ -48,26 +48,26 @@ namespace PlanningPath
 class KBlocksAIPlannerExtend : public KBlocksAIPlanner
 {
 public:
-    explicit KBlocksAIPlannerExtend(KBlocksField * field);
+    explicit KBlocksAIPlannerExtend(KBlocksField *field);
     ~KBlocksAIPlannerExtend();
-    
+
     int process(KBlocks_PieceType_Detail pieceValue);
     int process(const AIPlanner_PieceValue_Sequence &p);
-    
-    bool getNextBoardStatus(int index, KBlocksField* field);
-    bool getNextBoardStatus(int index, KBlocksField* field, bool first);
-    bool getNextPieceState(int index, KBlocksPiece* piece);
-    bool getPath(int index, AIPlanner_PieceInfo_Sequence * pseq);
-    
+
+    bool getNextBoardStatus(int index, KBlocksField *field);
+    bool getNextBoardStatus(int index, KBlocksField *field, bool first);
+    bool getNextPieceState(int index, KBlocksPiece *piece);
+    bool getPath(int index, AIPlanner_PieceInfo_Sequence *pseq);
+
     int count();
-    
+
 private:
     PlanningPath::PathTree *mPathTree;
     PlanningPath::LeafList *mPathList;
-    void process_nstep_recursive( PlanningPath::PathNode* parent, 
-                                  AIPlanner_PieceValue_Sequence &pseq,
-                                  PlanningPath::PathTree &tree,
-                                  PlanningPath::LeafList &leaf);
+    void process_nstep_recursive(PlanningPath::PathNode *parent,
+                                 AIPlanner_PieceValue_Sequence &pseq,
+                                 PlanningPath::PathTree &tree,
+                                 PlanningPath::LeafList &leaf);
 };
 
 #endif

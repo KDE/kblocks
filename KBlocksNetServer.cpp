@@ -17,23 +17,23 @@
 #include <QVector>
 #include <QVarLengthArray>
 
-KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic * p, const QString& localIP)
+KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic *p, const QString &localIP)
 {
     mpGameLogic = p;
-    
+
     mGameCount = 0;
     mGameStarted = false;
     mWaitForAll = false;
     mInitSendLength = 0;
     mLvUpSendLength = 0;
-    
+
     parseIPString(localIP, &mLocalAddress, &mLocalPort);
-    
+
     mpServerSocket = new QUdpSocket(this);
     mpServerSocket->bind(mLocalAddress, mLocalPort);
-    
+
     mRunningFlag = false;
-    
+
     mRecordFileName = string("");
     mRecordFileType = true;
 }
@@ -49,76 +49,62 @@ int KBlocksNetServer::executeGame(int gameCount, bool waitForAll)
     mWaitForAll = waitForAll;
     maGameScoreList = new KBlocksScore*[mGameCount];
     mTopGameLevel = -1;
-    for(int i = 0; i < mGameCount; i++)
-    {
+    for (int i = 0; i < mGameCount; i++) {
         maGameScoreList[i] = new KBlocksScore();
         maGameScoreList[i]->setLevelUpFactor(KBlocksScore_Level_x_Level_x_Factor, 1000);
         maGameScoreList[i]->setScoreUpFactor(10);
     }
-    
+
     mRunningFlag = true;
-    
+
     QVector<QByteArray> tmpRecvData;
     QVector<QString> tmpRecvAddr;
     int recvResult = 0;
-    while (mRunningFlag)
-    {
+    while (mRunningFlag) {
         recvRemoteData(&tmpRecvData, &tmpRecvAddr);
-        
-        if (tmpRecvData.isEmpty())
-        {
+
+        if (tmpRecvData.isEmpty()) {
             recvResult = processGame(-1);
-        }
-        else
-        {
+        } else {
             recvResult = 0;
-            for (int i = 0; i < tmpRecvData.size(); ++i)
-            {
+            for (int i = 0; i < tmpRecvData.size(); ++i) {
                 int result = parseRemoteData(tmpRecvData[i], tmpRecvAddr[i]);
-                if (result != -1)
-                {
+                if (result != -1) {
                     processGame(result);
-                }
-                else
-                {
+                } else {
                     recvResult = 1;
                 }
             }
-            
-            if ((!mWaitForAll) && (recvResult == 0))
-            {
+
+            if ((!mWaitForAll) && (recvResult == 0)) {
                 recvResult = processGame(-1);
             }
         }
-        
-        if ((recvResult < -1) && mGameStarted)
-        {
+
+        if ((recvResult < -1) && mGameStarted) {
             break;
         }
     }
-    
+
     mRunningFlag = false;
-    
-    if (!mRecordFileName.empty())
-    {
+
+    if (!mRecordFileName.empty()) {
         mpGameLogic->saveRecord(mRecordFileName.c_str(), mRecordFileType);
     }
-    
+
     sendGameOver();
-    
+
     printGameResult();
-    
-    for(int i = 0; i < mGameCount; i++)
-    {
+
+    for (int i = 0; i < mGameCount; i++) {
         delete maGameScoreList[i];
     }
     delete [] maGameScoreList;
-    
-    if (recvResult != -2)
-    {
+
+    if (recvResult != -2) {
         return 0;
     }
-    
+
     return recvResult;
 }
 
@@ -128,33 +114,31 @@ void KBlocksNetServer::setSendLength(int initLen, int lvUpLen)
     mLvUpSendLength = lvUpLen;
 }
 
-void KBlocksNetServer::setRecordFile(const char * fileName, bool binaryMode)
+void KBlocksNetServer::setRecordFile(const char *fileName, bool binaryMode)
 {
     mRecordFileName = string(fileName);
     mRecordFileType = binaryMode;
 }
 
-void KBlocksNetServer::recvRemoteData(QVector<QByteArray> * recvData, QVector<QString> * recvAddr)
+void KBlocksNetServer::recvRemoteData(QVector<QByteArray> *recvData, QVector<QString> *recvAddr)
 {
-    if (!mRunningFlag)
-    {
+    if (!mRunningFlag) {
         return;
     }
-    
+
     recvData->clear();
     recvAddr->clear();
-    
-    while (mpServerSocket->hasPendingDatagrams())
-    {
+
+    while (mpServerSocket->hasPendingDatagrams()) {
         QByteArray tmpData;
         tmpData.resize(mpServerSocket->pendingDatagramSize());
-        
+
         mpServerSocket->readDatagram(tmpData.data(), tmpData.size(), &mRemoteAddress, &mRemotePort);
         QString tmpAddr = formIPString(mRemoteAddress, mRemotePort);
-        
+
         recvData->append(tmpData);
         recvAddr->append(tmpAddr);
-        
+
         //printf(" Recv From %s : %s\n", tmpAddr.toStdString().c_str(), tmpData.data());
         //printf("   [%s:%d]\n", mRemoteAddress.toString().toStdString().c_str(), mRemotePort);
     }
@@ -162,74 +146,59 @@ void KBlocksNetServer::recvRemoteData(QVector<QByteArray> * recvData, QVector<QS
 
 int KBlocksNetServer::processGame(int gameIndex)
 {
-    if (gameIndex >= 0)
-    {
+    if (gameIndex >= 0) {
         //printf("\tStepping game (%d)...\n", gameIndex);
         mpGameLogic->getSingleGame(gameIndex)->updateGame();
         //printf("\tSending new play data (%d)...\n", gameIndex);
         sendPlayerData(gameIndex);
         return gameIndex;
-    }
-    else
-    {
+    } else {
         QVarLengthArray<int, 16> removedLines(mGameCount);
         int activeCount = mpGameLogic->getActiveGameCount();
-        if ((activeCount > 1) || (mGameCount == activeCount))
-        {
+        if ((activeCount > 1) || (mGameCount == activeCount)) {
             mpGameLogic->updateGame(removedLines.data());
-            for(int i = 0; i < mGameCount; i++)
-            {
-                if (maGameScoreList[i]->addScore(removedLines[i]))
-                {
+            for (int i = 0; i < mGameCount; i++) {
+                if (maGameScoreList[i]->addScore(removedLines[i])) {
                     int tmpLevel = maGameScoreList[i]->getGameLevel();
-                    if (mTopGameLevel < tmpLevel)
-                    {
+                    if (mTopGameLevel < tmpLevel) {
                         mpGameLogic->levelUpGame(tmpLevel - mTopGameLevel);
                         mTopGameLevel = tmpLevel;
                         sendPlayerActionLength();
                     }
                 }
             }
-            if (mWaitForAll)
-            {
+            if (mWaitForAll) {
                 bool allWait = true;
-                for(int i = 0; i < mGameCount; i++)
-                {
-                    if (mpGameLogic->getSingleGame(i)->isActive())
-                    {
+                for (int i = 0; i < mGameCount; i++) {
+                    if (mpGameLogic->getSingleGame(i)->isActive()) {
                         allWait = false;
                         break;
                     }
                 }
-                if (allWait)
-                {
+                if (allWait) {
                     mpGameLogic->continueGame();
                 }
             }
             return -1;
-        }
-        else
-        {
+        } else {
             return -2;
         }
     }
 }
 
-void KBlocksNetServer::addPlayerIP(int gameIndex, const QByteArray& data, const QString& addr)
+void KBlocksNetServer::addPlayerIP(int gameIndex, const QByteArray &data, const QString &addr)
 {
     QString playerName = QString(data).mid(6);
-    if (mPlayerMapping.find(addr) == mPlayerMapping.end())
-    {
+    if (mPlayerMapping.find(addr) == mPlayerMapping.end()) {
         mPlayerIPList.append(addr);
     }
     mPlayerMapping[addr] = gameIndex;
     mPlayerName[gameIndex] = playerName;
 }
 
-void KBlocksNetServer::delPlayerIP(const QString& addr)
+void KBlocksNetServer::delPlayerIP(const QString &addr)
 {
-    if (mPlayerMapping.find(addr) != mPlayerMapping.end())
-    {
+    if (mPlayerMapping.find(addr) != mPlayerMapping.end()) {
         mPlayerMapping.remove(addr);
         mPlayerIPList.removeOne(addr);
     }
@@ -240,33 +209,26 @@ void KBlocksNetServer::sendPlayerActionLength()
     QHostAddress tmpIP;
     quint16 tmpPort;
     QByteArray tmpByteData;
-    
+
     int tmpLength = mInitSendLength - mTopGameLevel * mLvUpSendLength;
-    if (mInitSendLength <= 0)
-    {
+    if (mInitSendLength <= 0) {
         return;
-    }
-    else
-    {
-        if (tmpLength < 1)
-        {
+    } else {
+        if (tmpLength < 1) {
             tmpLength = 1;
-        }
-        else if (tmpLength > 255)
-        {
+        } else if (tmpLength > 255) {
             tmpLength = 255;
         }
     }
-    
+
     QList<QString>::iterator it;
-    for(it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it)
-    {
+    for (it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it) {
         parseIPString(*it, &tmpIP, &tmpPort);
-        
-        tmpByteData.append((char)-1);
+
+        tmpByteData.append((char) - 1);
         tmpByteData.append((char)tmpLength);
         tmpByteData.append((char)0);
-        
+
         mpServerSocket->writeDatagram(tmpByteData, tmpIP, tmpPort);
     }
 }
@@ -276,45 +238,42 @@ void KBlocksNetServer::sendPlayerData(int gameIndex)
     char tmpData[256];
     int tmpByteCount;
     QByteArray tmpByteData;
-    
+
     QList<QString>::iterator it;
-    for(it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it)
-    {
+    for (it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it) {
         int gameID = mPlayerMapping[*it];
-        
-        if (gameIndex == gameID)
-        {
+
+        if (gameIndex == gameID) {
             tmpByteData.clear();
-            
+
             tmpByteData.append((char)gameID);
-            
+
             formByteFromInt(maGameScoreList[gameID]->getScorePoint(), tmpData + 0);
             formByteFromInt(maGameScoreList[gameID]->getLineCount(),  tmpData + 4);
             formByteFromInt(maGameScoreList[gameID]->getGameLevel(),  tmpData + 8);
             tmpByteData.append(tmpData, 12);
-            
+
             int tmpPieceCount = mpGameLogic->getSingleGame(gameID)->getPieceCount();
             formByteFromInt(tmpPieceCount, tmpData);
             tmpByteData.append(tmpData, 4);
-            
-            for (int i = 0; i < tmpPieceCount; ++i)
-            {
+
+            for (int i = 0; i < tmpPieceCount; ++i) {
                 mpGameLogic->getSingleGame(gameID)->getPiece(i)->encodeData((unsigned char *)tmpData + i * 4);
             }
             tmpByteData.append(tmpData, tmpPieceCount * 4);
-            
+
             tmpByteCount = mpGameLogic->getSingleGame(gameID)->getField()->encodeData((unsigned char *)tmpData);
             tmpByteData.append((char)tmpByteCount);
             tmpByteData.append(tmpData, tmpByteCount);
-            
+
             formByteFromInt(mpGameLogic->getSingleGame(gameID)->getField()->getModifyID(), tmpData);
             tmpByteData.append(tmpData, 4);
-            
+
             QHostAddress tmpIP;
             quint16 tmpPort;
             parseIPString(*it, &tmpIP, &tmpPort);
             mpServerSocket->writeDatagram(tmpByteData, tmpIP, tmpPort);
-            
+
             //printf("  Sending data to %d @ %s\n", gameID, it->toStdString().c_str());
             return;
         }
@@ -326,176 +285,151 @@ void KBlocksNetServer::sendGameOver()
     QHostAddress tmpIP;
     quint16 tmpPort;
     QByteArray tmpByteData;
-    
+
     QList<QString>::iterator it;
-    for(it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it)
-    {
+    for (it = mPlayerIPList.begin(); it != mPlayerIPList.end(); ++it) {
         parseIPString(*it, &tmpIP, &tmpPort);
-        
+
         tmpByteData.append((char)127);
-        tmpByteData.append((char)-1);
+        tmpByteData.append((char) - 1);
         tmpByteData.append((char)0);
-        
+
         mpServerSocket->writeDatagram(tmpByteData, tmpIP, tmpPort);
     }
 }
 
-void KBlocksNetServer::sendGuiData(const QString& addr)
+void KBlocksNetServer::sendGuiData(const QString &addr)
 {
     char tmpData[256];
     int tmpByteCount;
     QByteArray tmpByteData;
-    
-    if (!mGameStarted)
-    {
+
+    if (!mGameStarted) {
         return;
     }
-    
+
     QHostAddress tmpIP;
     quint16 tmpPort;
     parseIPString(addr, &tmpIP, &tmpPort);
-    
-    for(int gameID = 0; gameID < mGameCount; ++gameID)
-    {
+
+    for (int gameID = 0; gameID < mGameCount; ++gameID) {
         tmpByteData.clear();
-        
+
         tmpByteData.append((char)gameID);
-        
+
         formByteFromInt(maGameScoreList[gameID]->getScorePoint(), tmpData + 0);
         formByteFromInt(maGameScoreList[gameID]->getLineCount(),  tmpData + 4);
         formByteFromInt(maGameScoreList[gameID]->getGameLevel(),  tmpData + 8);
         tmpByteData.append(tmpData, 12);
-        
+
         int tmpPieceCount = mpGameLogic->getSingleGame(gameID)->getPieceCount();
         formByteFromInt(tmpPieceCount, tmpData);
         tmpByteData.append(tmpData, 4);
-        
-        for (int i = 0; i < tmpPieceCount; ++i)
-        {
+
+        for (int i = 0; i < tmpPieceCount; ++i) {
             mpGameLogic->getSingleGame(gameID)->getPiece(i)->encodeData((unsigned char *)tmpData + i * 4);
         }
         tmpByteData.append(tmpData, tmpPieceCount * 4);
-        
+
         tmpByteCount = mpGameLogic->getSingleGame(gameID)->getField()->encodeData((unsigned char *)tmpData);
         tmpByteData.append((char)tmpByteCount);
         tmpByteData.append(tmpData, tmpByteCount);
-        
+
         formByteFromInt(mpGameLogic->getSingleGame(gameID)->getField()->getModifyID(), tmpData);
         tmpByteData.append(tmpData, 4);
-        
+
         mpServerSocket->writeDatagram(tmpByteData, tmpIP, tmpPort);
     }
 }
 
-int KBlocksNetServer::parseRemoteData(const QByteArray& data, const QString& addr)
+int KBlocksNetServer::parseRemoteData(const QByteArray &data, const QString &addr)
 {
     int result = -1;
     QString input = QString(data);
-    
-    if (input.contains(QString("|ap|")))
-    {
+
+    if (input.contains(QString("|ap|"))) {
         addPlayerIP((int)(data[4] - '0'), data, addr);
         //printf("Added player @ %s\n", input.toStdString().c_str());
-    }
-    else if (input.contains("|dp|"))
-    {
+    } else if (input.contains("|dp|")) {
         delPlayerIP(addr);
         //printf("Deleted player @ %s\n", input.toStdString().c_str());
-    }
-    else if (input.contains("|rp|"))
-    {
+    } else if (input.contains("|rp|")) {
         result = parsePlayerReply(data, addr);
         //printf("Received Player Data @ %s\n", input.toStdString().c_str());
-    }
-    else if (input.contains("|rg|"))
-    {
+    } else if (input.contains("|rg|")) {
         sendGuiData(addr);
         //printf("Send Gui Data @ %s\n", input.toStdString().c_str());
-    }
-    else if (input.contains("|s|"))
-    {
-        if (!mGameStarted)
-        {
+    } else if (input.contains("|s|")) {
+        if (!mGameStarted) {
             mpGameLogic->startGame(mGameCount);
             mGameStarted = true;
-            for(int i = 0; i < mGameCount; i++)
-            {
+            for (int i = 0; i < mGameCount; i++) {
                 sendPlayerData(i);
             }
             //printf("Game started\n");
         }
-    }
-    else if (input.contains("|c|"))
-    {
-        if (mGameStarted)
-        {
+    } else if (input.contains("|c|")) {
+        if (mGameStarted) {
             mGameStarted = false;
             mpGameLogic->stopGame();
             //printf("Game stopped\n");
         }
-    }
-    else
-    {
+    } else {
         printf("Error transmission data : %s\n", data.data());
     }
-    
+
     return result;
 }
 
-int KBlocksNetServer::parsePlayerReply(const QByteArray& data, const QString& addr)
+int KBlocksNetServer::parsePlayerReply(const QByteArray &data, const QString &addr)
 {
-    if (!mGameStarted)
-    {
+    if (!mGameStarted) {
         return -1;
     }
-    
-    if (mPlayerMapping.find(addr) == mPlayerMapping.end())
-    {
+
+    if (mPlayerMapping.find(addr) == mPlayerMapping.end()) {
         return -1;
     }
-    
+
     int gameID = mPlayerMapping[addr];
-    KBlocksSingleGame * mpSingleGame = mpGameLogic->getSingleGame(gameID);
-    if (mpSingleGame == 0)
-    {
+    KBlocksSingleGame *mpSingleGame = mpGameLogic->getSingleGame(gameID);
+    if (mpSingleGame == 0) {
         return -1;
     }
-    
+
     int counter = 4;
-    while(data[counter] != '|')
-    {
-        switch(data[counter] - '0')
-        {
-            case PlayerAction_Move_Left:
-                mpSingleGame->setCurrentPiece(-1, 0, 0);
-                break;
-            case PlayerAction_Move_Right:
-                mpSingleGame->setCurrentPiece(1, 0, 0);
-                break;
-            case PlayerAction_Move_Down:
-                mpSingleGame->setCurrentPiece(0, 1, 0);
-                break;
-            case PlayerAction_Push_Down:
-                while(mpSingleGame->setCurrentPiece(0, 1, 0)) ;
-                mpSingleGame->forceUpdateGame();
-                break;
-            case PlayerAction_Rotate_CW:
-                mpSingleGame->setCurrentPiece(0, 0, 1);
-                break;
-            case PlayerAction_Rotate_CCW:
-                mpSingleGame->setCurrentPiece(0, 0, -1);
-                break;
-            case PlayerAction_None:
-            default:
-                break;
+    while (data[counter] != '|') {
+        switch (data[counter] - '0') {
+        case PlayerAction_Move_Left:
+            mpSingleGame->setCurrentPiece(-1, 0, 0);
+            break;
+        case PlayerAction_Move_Right:
+            mpSingleGame->setCurrentPiece(1, 0, 0);
+            break;
+        case PlayerAction_Move_Down:
+            mpSingleGame->setCurrentPiece(0, 1, 0);
+            break;
+        case PlayerAction_Push_Down:
+            while (mpSingleGame->setCurrentPiece(0, 1, 0)) ;
+            mpSingleGame->forceUpdateGame();
+            break;
+        case PlayerAction_Rotate_CW:
+            mpSingleGame->setCurrentPiece(0, 0, 1);
+            break;
+        case PlayerAction_Rotate_CCW:
+            mpSingleGame->setCurrentPiece(0, 0, -1);
+            break;
+        case PlayerAction_None:
+        default:
+            break;
         }
         ++counter;
     }
-    
+
     return gameID;
 }
 
-bool KBlocksNetServer::parseIPString(const QString& input, QHostAddress * ip, quint16 * port)
+bool KBlocksNetServer::parseIPString(const QString &input, QHostAddress *ip, quint16 *port)
 {
     bool result = false;
     ip->setAddress(input.left(input.indexOf(":")));
@@ -503,13 +437,13 @@ bool KBlocksNetServer::parseIPString(const QString& input, QHostAddress * ip, qu
     return result;
 }
 
-QString KBlocksNetServer::formIPString(const QHostAddress& inAddr, quint16 inPort)
+QString KBlocksNetServer::formIPString(const QHostAddress &inAddr, quint16 inPort)
 {
     QString result = inAddr.toString() + QString(":%1").arg(inPort);
     return result;
 }
 
-void KBlocksNetServer::formByteFromInt(int value, char * data)
+void KBlocksNetServer::formByteFromInt(int value, char *data)
 {
     data[0] = value & 0x00FF;
     data[1] = (value >>  8) & 0x00FF;
@@ -520,8 +454,7 @@ void KBlocksNetServer::formByteFromInt(int value, char * data)
 void KBlocksNetServer::printGameResult()
 {
     printf("-------- Game Report --------\n");
-    for(int gameID = 0; gameID < mGameCount; gameID++)
-    {
+    for (int gameID = 0; gameID < mGameCount; gameID++) {
         QString tmpPlayerName = mPlayerName[gameID];
         printf("Game ID : %d\n", gameID);
         printf("\tPlayer Name : %s\n", tmpPlayerName.toAscii().constData());

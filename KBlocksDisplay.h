@@ -26,42 +26,42 @@ class QLabel;
 class KBlocksDisplay : public KMainWindow
 {
     Q_OBJECT
-    
-    public:
-        KBlocksDisplay(int gameCount, const string& serverIP, int localPort);
-        ~KBlocksDisplay();
-        
-    public:
-        void setGamesPerLine(int count);
-        void setUpdateInterval(int interval);
-        
-    public:
-        void startDisplay();
-        void stopDisplay();
-        
-    private:
-        int  formIntFromByte(char * data);
-        void updateScore();
-        
-    private slots:
-        void updateEvent();
-        void updateGameDisplay(int size);
-        
-    private:
-        int mGameCount;
-        int mGamesPerWidth;
-        
-        int mUpdateInterval;
-        QTimer mUpdateTimer;
-        
-        int maScoreList[8];
-        
-        KBlocksScene* mpGameScene;
-        KBlocksView*  mpGameView;
-        
-        KBlocksGameLogic* mpGameLogic;
-        KBlocksNetClient* mpNetClient;
-        QLabel *mScore;
+
+public:
+    KBlocksDisplay(int gameCount, const string &serverIP, int localPort);
+    ~KBlocksDisplay();
+
+public:
+    void setGamesPerLine(int count);
+    void setUpdateInterval(int interval);
+
+public:
+    void startDisplay();
+    void stopDisplay();
+
+private:
+    int  formIntFromByte(char *data);
+    void updateScore();
+
+private slots:
+    void updateEvent();
+    void updateGameDisplay(int size);
+
+private:
+    int mGameCount;
+    int mGamesPerWidth;
+
+    int mUpdateInterval;
+    QTimer mUpdateTimer;
+
+    int maScoreList[8];
+
+    KBlocksScene *mpGameScene;
+    KBlocksView  *mpGameView;
+
+    KBlocksGameLogic *mpGameLogic;
+    KBlocksNetClient *mpNetClient;
+    QLabel *mScore;
 };
 
 #endif

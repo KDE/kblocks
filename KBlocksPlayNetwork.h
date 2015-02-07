@@ -16,32 +16,32 @@
 
 class KBlocksPlayNetwork
 {
-    public:
-        KBlocksPlayNetwork(int capacity, const string& serverIP, int localPort);
-        ~KBlocksPlayNetwork();
-        
-    public:
-        bool addGamePlayer(GamePlayerInterface * p);
-        void clearGamePlayer();
-        
-        void startGame();
-        void stopGame();
-        
-        int  execute();
-        
-        void cancelExecute();
-        
-    private:
-        string mServerIP;
-        int mLocalPort;
-        
-        bool mRunning;
-        
-        int mPlayerCount;
-        int mMaxCapacity;
-        KBlocksNetPlayer** maPlayerList;
-        
-        KBlocksGameLogic* mpGameLogic;
+public:
+    KBlocksPlayNetwork(int capacity, const string &serverIP, int localPort);
+    ~KBlocksPlayNetwork();
+
+public:
+    bool addGamePlayer(GamePlayerInterface *p);
+    void clearGamePlayer();
+
+    void startGame();
+    void stopGame();
+
+    int  execute();
+
+    void cancelExecute();
+
+private:
+    string mServerIP;
+    int mLocalPort;
+
+    bool mRunning;
+
+    int mPlayerCount;
+    int mMaxCapacity;
+    KBlocksNetPlayer **maPlayerList;
+
+    KBlocksGameLogic *mpGameLogic;
 };
 
 #endif

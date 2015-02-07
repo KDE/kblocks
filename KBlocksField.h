@@ -14,45 +14,45 @@
 
 class KBlocksField : public FieldInterface
 {
-    protected:
-        bool** maBoard;
-        int mHeight;
-        int mWidth;
-        
-    private:
-        int mCurModifyID;
-        int mLastModifyID;
-        unsigned char* maEncodeData;
-    
-    public:
-        explicit KBlocksField(int width = 10, int height = 20);
-        explicit KBlocksField(FieldInterface * p);
-        ~KBlocksField();
-    
-    public:
-        bool getCell(int xPos, int yPos);
-        void setCell(int xPos, int yPos, bool value);
-        
-        void copy(FieldInterface * p);
-        void clear();
-        
-        bool checkFilledLine(int lineID);
-        void removeFilledLine(int lineID);
-        
-        bool addPunishLine(int lineCount, int punishSeed);
-        
-        int  getModifyID();
-        int  encodeData(unsigned char * data);
-        void decodeData(unsigned char * data);
-        
-        int  getWidth();
-        int  getHeight();
-        
-        bool equals(KBlocksField * rhs);
-        
-        int  getBlockHeight(int xPos);
-        int  getFreeHeight(int xPos);
-        void getSignature(int * data);
+protected:
+    bool **maBoard;
+    int mHeight;
+    int mWidth;
+
+private:
+    int mCurModifyID;
+    int mLastModifyID;
+    unsigned char *maEncodeData;
+
+public:
+    explicit KBlocksField(int width = 10, int height = 20);
+    explicit KBlocksField(FieldInterface *p);
+    ~KBlocksField();
+
+public:
+    bool getCell(int xPos, int yPos);
+    void setCell(int xPos, int yPos, bool value);
+
+    void copy(FieldInterface *p);
+    void clear();
+
+    bool checkFilledLine(int lineID);
+    void removeFilledLine(int lineID);
+
+    bool addPunishLine(int lineCount, int punishSeed);
+
+    int  getModifyID();
+    int  encodeData(unsigned char *data);
+    void decodeData(unsigned char *data);
+
+    int  getWidth();
+    int  getHeight();
+
+    bool equals(KBlocksField *rhs);
+
+    int  getBlockHeight(int xPos);
+    int  getFreeHeight(int xPos);
+    void getSignature(int *data);
 };
 
 #endif

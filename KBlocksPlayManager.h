@@ -16,25 +16,25 @@
 
 class KBlocksPlayManager
 {
-    public:
-        KBlocksPlayManager(GameLogicInterface * p, int capacity);
-        ~KBlocksPlayManager();
-        
-    public:
-        bool addGamePlayer(GamePlayerInterface * p, int thinkInterval, int processInterval);
-        void clearGamePlayer();
-        
-        void startGame();
-        void stopGame();
-        
-        void pauseGame(bool flag);
-        
-    private:
-        GameLogicInterface* mpGameLogic;
-        
-        int mPlayerCount;
-        int mMaxCapacity;
-        KBlocksSinglePlayer** maPlayerList;
+public:
+    KBlocksPlayManager(GameLogicInterface *p, int capacity);
+    ~KBlocksPlayManager();
+
+public:
+    bool addGamePlayer(GamePlayerInterface *p, int thinkInterval, int processInterval);
+    void clearGamePlayer();
+
+    void startGame();
+    void stopGame();
+
+    void pauseGame(bool flag);
+
+private:
+    GameLogicInterface *mpGameLogic;
+
+    int mPlayerCount;
+    int mMaxCapacity;
+    KBlocksSinglePlayer **maPlayerList;
 };
 
 #endif

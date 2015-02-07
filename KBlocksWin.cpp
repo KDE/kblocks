@@ -33,28 +33,28 @@
 
 #include "settings.h"
 
-KBlocksWin::KBlocksWin(KBlocksGameLogic * p, KBlocksPlayManager * pM, int capacity, int gamecount) : KXmlGuiWindow()
+KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity, int gamecount) : KXmlGuiWindow()
 {
     //Use up to 3MB for global application pixmap cache
-    QPixmapCache::setCacheLimit(3*1024);
-    
+    QPixmapCache::setCacheLimit(3 * 1024);
+
     mpKBPlayer = new KBlocksKeyboardPlayer(this);
     mpAIPlayer = new KBlocksAIPlayer();
-    
+
     mMaxGameCapacity = capacity;
     mGameCount = gamecount;
     mpGameLogic = p;
     mpPlayManager = pM;
-    
+
     mpGameScene = new KBlocksScene(mpGameLogic, capacity);
-    
+
     mpGameView = new KBlocksView(mpGameScene, this);
-	mpGameView->show();
+    mpGameView->show();
     setCentralWidget(mpGameView);
     connect(mpGameView, &KBlocksView::focusEvent, this, &KBlocksWin::focusEvent);
-    
+
     setAutoSaveSettings();
-    
+
     setupGUILayout();
 }
 
@@ -97,45 +97,40 @@ void KBlocksWin::startGame()
 {
     srand(time(0));
     mpGameLogic->setGameSeed(rand());
-    if (mpGameLogic->startGame(mGameCount))
-    {
+    if (mpGameLogic->startGame(mGameCount)) {
         mpPlayManager->startGame();
-        
+
         mpGameScene->createGameItemGroups(mGameCount, false);
         mpGameScene->startGame();
-        
+
         int levelUpTime = 0;
-        switch ((int) Kg::difficultyLevel())
-        {
-            case KgDifficultyLevel::Medium:
-                levelUpTime = 5;
-                break;
-            case KgDifficultyLevel::Hard:
-                levelUpTime = 10;
-                break;
+        switch ((int) Kg::difficultyLevel()) {
+        case KgDifficultyLevel::Medium:
+            levelUpTime = 5;
+            break;
+        case KgDifficultyLevel::Hard:
+            levelUpTime = 10;
+            break;
         }
         mpGameLogic->levelUpGame(levelUpTime);
-        
+
         Kg::difficulty()->setGameRunning(true);
-    }
-    else
-    {
+    } else {
         stopGame();
         startGame();
     }
 
-    mScore->setText( i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0) );
+    mScore->setText(i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0));
 }
 
 void KBlocksWin::stopGame()
 {
-    if (mpGameLogic->stopGame())
-    {
+    if (mpGameLogic->stopGame()) {
         mpPlayManager->stopGame();
-        
+
         mpGameScene->stopGame();
         mpGameScene->deleteGameItemGroups();
-        
+
         Kg::difficulty()->setGameRunning(false);
     }
 }
@@ -145,7 +140,7 @@ void KBlocksWin::pauseGame()
     mpGameLogic->pauseGame(m_pauseAction->isChecked());
     mpPlayManager->pauseGame(m_pauseAction->isChecked());
     mpGameScene->pauseGame(m_pauseAction->isChecked());
-    
+
     Kg::difficulty()->setGameRunning(!m_pauseAction->isChecked());
 }
 
@@ -155,7 +150,7 @@ void KBlocksWin::singleGame()
     mpPlayManager->clearGamePlayer();
     mpPlayManager->addGamePlayer(mpKBPlayer, -1, -1);
     mGameCount = 1;
-    
+
     startGame();
 }
 
@@ -166,19 +161,17 @@ void KBlocksWin::pveStepGame()
     mpPlayManager->addGamePlayer(mpKBPlayer, -1, -1);
     mpPlayManager->addGamePlayer(mpAIPlayer, 200, 50);
     mGameCount = 2;
-    
+
     mpGameLogic->setGameStandbyMode(true);
     setWaitForAllUpdate(true);
-    
+
     startGame();
 }
 
 void KBlocksWin::focusEvent(bool flag)
 {
-    if (!flag)
-    {
-        if (m_pauseAction->isChecked())
-        {
+    if (!flag) {
+        if (m_pauseAction->isChecked()) {
             return;
         }
     }
@@ -202,13 +195,12 @@ void KBlocksWin::showHighscore()
 
 void KBlocksWin::configureSettings()
 {
-    if ( KConfigDialog::showDialog("settings") )
-    {
+    if (KConfigDialog::showDialog("settings")) {
         return;
     }
     KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
     dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
-	dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
+    dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
     connect(dialog, &KConfigDialog::settingsChanged, mpGameView, &KBlocksView::settingsChanged);
     //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
     dialog->show();
@@ -216,23 +208,20 @@ void KBlocksWin::configureSettings()
 
 void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)
 {
-    if (index == 0) // TODO : game id?? multi game display??
-    {
-        mScore->setText( i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level) );
+    if (index == 0) { // TODO : game id?? multi game display??
+        mScore->setText(i18n("Points: %1 - Lines: %2 - Level: %3", points, lines, level));
     }
 }
 
 void KBlocksWin::onIsHighscore(int index, int points, int level)
 {
-    if (index == 0) // TODO : game id?? multi game display??
-    {
-        QPointer<KScoreDialog> ksdialog = new KScoreDialog( KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this );
+    if (index == 0) { // TODO : game id?? multi game display??
+        QPointer<KScoreDialog> ksdialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
         ksdialog->initFromDifficulty(Kg::difficulty());
         KScoreDialog::FieldInfo info;
-        info[KScoreDialog::Score].setNum( points );
-        info[KScoreDialog::Level].setNum( level );
-        if ( ksdialog->addScore( info ) )
-        {
+        info[KScoreDialog::Score].setNum(points);
+        info[KScoreDialog::Level].setNum(level);
+        if (ksdialog->addScore(info)) {
             ksdialog->exec();
         }
         delete ksdialog;
@@ -255,44 +244,44 @@ void KBlocksWin::setSoundsEnabled(bool enabled)
 void KBlocksWin::setupGUILayout()
 {
     QAction *action;
-    
+
     action = KStandardGameAction::gameNew(this, SLOT(singleGame()), actionCollection());
     action->setText(i18n("Single Game"));
-    actionCollection()->addAction( QLatin1String( "newGame" ), action);
-    
+    actionCollection()->addAction(QLatin1String("newGame"), action);
+
     action = new QAction(this);
     action->setText(i18n("Human vs AI"));
-    actionCollection()->addAction( QLatin1String( "pve_step" ), action);
+    actionCollection()->addAction(QLatin1String("pve_step"), action);
     connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
-    
+
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
-    actionCollection()->addAction( QLatin1String( "pauseGame" ), m_pauseAction);
-    
+    actionCollection()->addAction(QLatin1String("pauseGame"), m_pauseAction);
+
     action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
-    actionCollection()->addAction( QLatin1String( "showHighscores" ), action);
-    
+    actionCollection()->addAction(QLatin1String("showHighscores"), action);
+
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-    actionCollection()->addAction( QLatin1String( "quit" ), action);
-    
+    actionCollection()->addAction(QLatin1String("quit"), action);
+
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
-    
-    KToggleAction* soundAction = new KToggleAction(i18n("&Play sounds"), this);
+
+    KToggleAction *soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
-    actionCollection()->addAction( QLatin1String( "sounds" ), soundAction);
+    actionCollection()->addAction(QLatin1String("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
-    
+
     // TODO
     mScore = new QLabel(i18n("Points: 0 - Lines: 0 - Level: 0"));
-    statusBar()->addPermanentWidget( mScore );    
+    statusBar()->addPermanentWidget(mScore);
     connect(mpGameScene, &KBlocksScene::scoreChanged, this, &KBlocksWin::onScoreChanged);
     connect(mpGameScene, &KBlocksScene::isHighscore, this, &KBlocksWin::onIsHighscore);
-    
+
     Kg::difficulty()->addStandardLevelRange(
         KgDifficultyLevel::Easy, KgDifficultyLevel::Hard
     );
     KgDifficultyGUI::init(this);
     connect(Kg::difficulty(), SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(levelChanged()));
-    
+
     setupGUI();
 }
 

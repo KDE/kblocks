@@ -10,17 +10,17 @@
 ***************************************************************************/
 #include "KBlocksAnimDrop.h"
 
-KBlocksAnimDrop::KBlocksAnimDrop(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction)
+KBlocksAnimDrop::KBlocksAnimDrop(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
 {
     mItemList = items;
-    
+
     mpTimeLine = new QTimeLine(duration);
-    mpTimeLine->setFrameRange( 0, 30 );
+    mpTimeLine->setFrameRange(0, 30);
     mpTimeLine->setDirection(direction);
-    
+
     connect(mpTimeLine, &QTimeLine::valueChanged, this, &KBlocksAnimDrop::valueChanged);
     connect(mpTimeLine, &QTimeLine::finished, this, &KBlocksAnimDrop::endAnimation);
-    
+
     mpTimeLine->start();
 }
 
@@ -32,8 +32,7 @@ KBlocksAnimDrop::~KBlocksAnimDrop()
 void KBlocksAnimDrop::valueChanged(qreal value)
 {
     Q_UNUSED(value);
-    foreach(KBlocksSvgItem * pItem, mItemList)
-    {
+    foreach (KBlocksSvgItem *pItem, mItemList) {
         pItem->execPosAnim(value);
     }
 }

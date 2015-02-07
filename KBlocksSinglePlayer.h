@@ -16,8 +16,7 @@
 #include "SingleGameInterface.h"
 #include "GamePlayerInterface.h"
 
-enum KBlocksPlayer_State
-{
+enum KBlocksPlayer_State {
     KBlocksPlayer_ThinkingState = 0,
     KBlocksPlayer_ProcessingState,
     KBlocksPlayer_Max_State_Count
@@ -26,36 +25,36 @@ enum KBlocksPlayer_State
 class KBlocksSinglePlayer : public QObject
 {
     Q_OBJECT
-    
-    public:
-        KBlocksSinglePlayer(GamePlayerInterface * player, int thinkInterval, int processInterval);
-        ~KBlocksSinglePlayer();
-        
-    public:
-        void startGame(SingleGameInterface * p);
-        void stopGame();
-        
-        void pauseGame(bool flag);
-        
-    private:
-        void think();
-        bool process();
-        
-    private slots:
-        void doAction();
-        
-    private:
-        GamePlayerInterface* mpPlayer;
-        SingleGameInterface* mpGame;
-        
-        int mPlayerState;
-        
-        int mThinkInterval;
-        int mProcessInterval;
-        
-        QTimer mActionTimer;
-        
-        GamePlayer_ActionList mActionList;
+
+public:
+    KBlocksSinglePlayer(GamePlayerInterface *player, int thinkInterval, int processInterval);
+    ~KBlocksSinglePlayer();
+
+public:
+    void startGame(SingleGameInterface *p);
+    void stopGame();
+
+    void pauseGame(bool flag);
+
+private:
+    void think();
+    bool process();
+
+private slots:
+    void doAction();
+
+private:
+    GamePlayerInterface *mpPlayer;
+    SingleGameInterface *mpGame;
+
+    int mPlayerState;
+
+    int mThinkInterval;
+    int mProcessInterval;
+
+    QTimer mActionTimer;
+
+    GamePlayer_ActionList mActionList;
 };
 
 #endif

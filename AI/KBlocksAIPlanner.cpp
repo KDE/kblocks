@@ -13,9 +13,11 @@
 /* ############################################################
 #####   Definition    #########################################
 ############################################################ */
-struct Span
-{
-    Span() {Span(0,0);}
+struct Span {
+    Span()
+    {
+        Span(0, 0);
+    }
     Span(int mn, int mx)
     {
         min = mn;
@@ -31,12 +33,13 @@ typedef std::vector<Span> Spans;
 /* ############################################################
 #####   KBlocksAIPlanner    ###################################
 ############################################################ */
-KBlocksAIPlanner::KBlocksAIPlanner(KBlocksField * p) : PlannerInterface(p)
+KBlocksAIPlanner::KBlocksAIPlanner(KBlocksField *p) : PlannerInterface(p)
 {
     mNextPieceValues.clear();
 }
 
-KBlocksAIPlanner::~KBlocksAIPlanner(){
+KBlocksAIPlanner::~KBlocksAIPlanner()
+{
     mNextPieceValues.clear();
 }
 
@@ -49,136 +52,116 @@ int KBlocksAIPlanner::process(KBlocks_PieceType_Detail pieceValue)
     Spans p_Col_Height = Spans(w);
     // board rect
     Lines b_Col_maxHeight = Lines(w);
-    
+
     // board info - max height per column
-    for(int x = 0; x < w; x++)
-    {
+    for (int x = 0; x < w; x++) {
         int y = 0;
-        for(y = 0; y < h; y++)
-        {
-            if (mpField->getCell(x, y))
-            {
+        for (y = 0; y < h; y++) {
+            if (mpField->getCell(x, y)) {
                 break;
             }
         }
         b_Col_maxHeight[x] = y;
     }
-    
-    // init next_states list  
+
+    // init next_states list
     mNextPieceValues.clear();
-    
+
     // init piece state
     KBlocksPiece piece;
     piece.fromValue(pieceValue);
-    
+
     int loopCount = piece.getRotationCount();
     // scan all possible rotation
-    for(int rotation = 0; rotation < loopCount; rotation++)
-    {
+    for (int rotation = 0; rotation < loopCount; rotation++) {
         // piece info - min/max height per column
         piece.setRotation(rotation);
-        
-        // scan all possible x position - put piece on board  
-        for(int x = 0; x < w; x++)
-        {
+
+        // scan all possible x position - put piece on board
+        for (int x = 0; x < w; x++) {
             bool invalidPos = false;
             piece.setPosX(x);
             piece.setPosY(0);
-            
+
             // init
-            for(int i = 0; i < w; i++)
-            {
+            for (int i = 0; i < w; i++) {
                 p_Col_Height[i] = Span(h, -1);
             }
-            for(int i = 0; i < KBlocksPiece_CellCount; i++)
-            {
+            for (int i = 0; i < KBlocksPiece_CellCount; i++) {
                 int cx = piece.getCellPosX(i);
                 int cy = piece.getCellPosY(i);
-                if (mpField->getCell(cx, cy))
-                {
+                if (mpField->getCell(cx, cy)) {
                     invalidPos = true;
                     break;
                 }
-                if( p_Col_Height[cx].min > cy)
-                {
+                if (p_Col_Height[cx].min > cy) {
                     p_Col_Height[cx].min = cy;
                 }
-                if( p_Col_Height[cx].max < cy)
-                {
+                if (p_Col_Height[cx].max < cy) {
                     p_Col_Height[cx].max = cy;
                 }
             }
-            if (invalidPos)
-            {
+            if (invalidPos) {
                 continue;
             }
-            
+
             // get response height
             int y = h;
-            for(int px = 0; px < w; px++)
-            {
-                if (p_Col_Height[px].min == h)
-                {
+            for (int px = 0; px < w; px++) {
+                if (p_Col_Height[px].min == h) {
                     continue;
                 }
                 int dy = b_Col_maxHeight[px] - 1 - p_Col_Height[px].max;
-                if (dy < y)
-                {
+                if (dy < y) {
                     y = dy;
                 }
             }
-            
-            if ((y < 0) || (y >= h))
-            {
+
+            if ((y < 0) || (y >= h)) {
                 continue;
             }
-            
+
             // state
             piece.setPosY(y);
             // insert to list
             mNextPieceValues.push_back(piece);
         }
     }
-    
+
     return (int)(mNextPieceValues.size());
 }
 
-bool KBlocksAIPlanner::getNextBoardStatus(int index, KBlocksField * field)
+bool KBlocksAIPlanner::getNextBoardStatus(int index, KBlocksField *field)
 {
-    KBlocksPiece * piece = new KBlocksPiece();
-    
-    if (!getNextPieceState(index, piece))
-    {
+    KBlocksPiece *piece = new KBlocksPiece();
+
+    if (!getNextPieceState(index, piece)) {
         delete field;
         field = 0;
         delete piece;
         return false;
     }
-    
+
     field->copy(mpField);
-    
-    for(int i = 0; i < KBlocksPiece_CellCount; i++)
-    {
+
+    for (int i = 0; i < KBlocksPiece_CellCount; i++) {
         field->setCell(piece->getCellPosX(i), piece->getCellPosY(i), true);
     }
     int maxLines = field->getHeight();
-    for(int i = 0; i < maxLines; i++)
-    {
-        if (field->checkFilledLine(i))
-        {
+    for (int i = 0; i < maxLines; i++) {
+        if (field->checkFilledLine(i)) {
             field->removeFilledLine(i);
         }
     }
-    
+
     delete piece;
-    
+
     return true;
 }
 
-bool KBlocksAIPlanner::getNextPieceState(int index, KBlocksPiece * piece)
+bool KBlocksAIPlanner::getNextPieceState(int index, KBlocksPiece *piece)
 {
-    if ((index >= (int)mNextPieceValues.size()) || (index < 0))
-    {
+    if ((index >= (int)mNextPieceValues.size()) || (index < 0)) {
         return false;
     }
     piece->copy(&mNextPieceValues[index]);

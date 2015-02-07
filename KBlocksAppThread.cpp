@@ -9,7 +9,7 @@
 ***************************************************************************/
 #include "KBlocksAppThread.h"
 
-KBlocksAppThread::KBlocksAppThread(KBlocksPlayNetwork * p)
+KBlocksAppThread::KBlocksAppThread(KBlocksPlayNetwork *p)
 {
     mPlayNetwork = p;
 }

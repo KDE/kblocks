@@ -12,19 +12,19 @@
 
 #include <QResizeEvent>
 
-KBlocksView::KBlocksView(KBlocksScene * scene, QWidget * parent): QGraphicsView(scene, parent)
+KBlocksView::KBlocksView(KBlocksScene *scene, QWidget *parent): QGraphicsView(scene, parent)
 {
     mpGameScene = scene;
-    
+
     //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-    setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-    setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFrameStyle(QFrame::NoFrame);
 
-    setOptimizationFlags( QGraphicsView::DontClipPainter |
-                          QGraphicsView::DontSavePainterState /*|
-                          QGraphicsView::DontAdjustForAntialiasing*/ );
-    
+    setOptimizationFlags(QGraphicsView::DontClipPainter |
+                         QGraphicsView::DontSavePainterState /*|
+                          QGraphicsView::DontAdjustForAntialiasing*/);
+
     setCacheMode(QGraphicsView::CacheBackground);
     setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 }
@@ -49,7 +49,7 @@ void KBlocksView::focusOutEvent(QFocusEvent *)
     emit focusEvent(true);
 }
 
-void KBlocksView::resizeEvent(QResizeEvent * event)
+void KBlocksView::resizeEvent(QResizeEvent *event)
 {
     fitInView(mpGameScene->sceneRect(), Qt::KeepAspectRatio);
     event->accept();

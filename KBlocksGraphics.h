@@ -20,34 +20,40 @@
 
 class KBlocksGraphics
 {
-    public:
-        explicit KBlocksGraphics( const QString& themeFile );
-        virtual ~KBlocksGraphics();
+public:
+    explicit KBlocksGraphics(const QString &themeFile);
+    virtual ~KBlocksGraphics();
 
-    public:
-        bool loadTheme ( const QString& themeFile );
-        void readThemeValues();
-        void adjustForSize(const QSize& newsize);
-        KGameTheme * theme() { return m_theme; }
-        QSvgRenderer * renderer() { return m_renderer; }
-        //QPixmap elementPixmap(int width, int height, const QString & elementid);
+public:
+    bool loadTheme(const QString &themeFile);
+    void readThemeValues();
+    void adjustForSize(const QSize &newsize);
+    KGameTheme *theme()
+    {
+        return m_theme;
+    }
+    QSvgRenderer *renderer()
+    {
+        return m_renderer;
+    }
+    //QPixmap elementPixmap(int width, int height, const QString & elementid);
 
-        int m_Block_Size;
-        int m_View_Size_Width;
-        int m_View_Size_Height;
-        int m_PlayArea_OffsetPoint_X;
-        int m_PlayArea_OffsetPoint_Y;
-        int m_PlayArea_NumberOfBlocks_X;
-        int m_PlayArea_NumberOfBlocks_Y;
-        int m_PreviewArea_CenterPoint_X;
-        int m_PreviewArea_CenterPoint_Y;
+    int m_Block_Size;
+    int m_View_Size_Width;
+    int m_View_Size_Height;
+    int m_PlayArea_OffsetPoint_X;
+    int m_PlayArea_OffsetPoint_Y;
+    int m_PlayArea_NumberOfBlocks_X;
+    int m_PlayArea_NumberOfBlocks_Y;
+    int m_PreviewArea_CenterPoint_X;
+    int m_PreviewArea_CenterPoint_Y;
 
-    private:
-        KGameTheme * m_theme;
-        QSvgRenderer *m_renderer;
+private:
+    KGameTheme *m_theme;
+    QSvgRenderer *m_renderer;
 
-        //QPixmap renderElement(int width, int height, const QString & elementid);
-        //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);
+    //QPixmap renderElement(int width, int height, const QString & elementid);
+    //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);
 };
 
 #endif

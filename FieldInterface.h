@@ -12,20 +12,20 @@
 
 class FieldInterface
 {
-    public:
-        FieldInterface(){};
-        virtual ~FieldInterface(){};
-    
-    public:
-        virtual bool getCell(int xPos, int yPos) = 0;
-        
-        virtual int  getWidth() = 0;
-        virtual int  getHeight() = 0;
-        
-    protected:
-        bool** maBoard;
-        int mHeight;
-        int mWidth;
+public:
+    FieldInterface() {};
+    virtual ~FieldInterface() {};
+
+public:
+    virtual bool getCell(int xPos, int yPos) = 0;
+
+    virtual int  getWidth() = 0;
+    virtual int  getHeight() = 0;
+
+protected:
+    bool **maBoard;
+    int mHeight;
+    int mWidth;
 };
 
 #endif //FIELD_INTERFACE

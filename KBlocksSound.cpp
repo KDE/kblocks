@@ -8,7 +8,7 @@
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  ***************************************************************************/
- //Uses routines from Kapman sound manager (game.cpp)
+//Uses routines from Kapman sound manager (game.cpp)
 
 #include "KBlocksSound.h"
 #include <QDebug>
@@ -20,7 +20,7 @@
 
 #include "settings.h"
 
-KBlocksSound::KBlocksSound ( const QString& themeFile )
+KBlocksSound::KBlocksSound(const QString &themeFile)
 {
     m_media1 = 0;
     m_media2 = 0;
@@ -41,7 +41,7 @@ KBlocksSound::~KBlocksSound()
     delete m_media2;
 }
 
-bool KBlocksSound::loadTheme ( const QString& themeFile )
+bool KBlocksSound::loadTheme(const QString &themeFile)
 {
     if (!m_theme->load(themeFile)) {
         qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
@@ -60,21 +60,17 @@ void KBlocksSound::readThemeValues()
     themefile.close();
 }
 
-void KBlocksSound::setSoundsEnabled(bool p_enabled) {
+void KBlocksSound::setSoundsEnabled(bool p_enabled)
+{
     sndActive = p_enabled;
-    if (p_enabled)
-    {
-        if (!m_media1)
-        {
+    if (p_enabled) {
+        if (!m_media1) {
             m_media1 = Phonon::createPlayer(Phonon::GameCategory);
         }
-        if (!m_media2)
-        {
+        if (!m_media2) {
             m_media2 = Phonon::createPlayer(Phonon::GameCategory);
         }
-    }
-    else
-    {
+    } else {
         delete m_media1;
         delete m_media2;
         m_media1 = 0;
@@ -82,24 +78,20 @@ void KBlocksSound::setSoundsEnabled(bool p_enabled) {
     }
 }
 
-void KBlocksSound::playSound(const QString& p_soundkey) {
-    Phonon::MediaObject* m_usedMedia;
-    QString p_sound = sndDirectory+m_theme->themeProperty(p_soundkey);
+void KBlocksSound::playSound(const QString &p_soundkey)
+{
+    Phonon::MediaObject *m_usedMedia;
+    QString p_sound = sndDirectory + m_theme->themeProperty(p_soundkey);
     //qDebug() << "Playing sound : " << p_sound << endl;
-    if (sndActive)
-    {
+    if (sndActive) {
         // Choose the media object with the smallest remaining time
-        if (m_media1->remainingTime() <= m_media2->remainingTime())
-        {
+        if (m_media1->remainingTime() <= m_media2->remainingTime()) {
             m_usedMedia = m_media1;
-        }
-        else
-        {
+        } else {
             m_usedMedia = m_media2;
         }
         m_usedMedia->setCurrentSource(p_sound);
         m_usedMedia->play();
     }
 }
-
 

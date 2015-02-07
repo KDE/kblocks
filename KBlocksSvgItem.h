@@ -16,8 +16,7 @@
 
 #include "KBlocksLayout.h"
 
-enum KBlocks_SvgItem_Type
-{
+enum KBlocks_SvgItem_Type {
     KBlocksSvgItem_None = -1,
     KBlocksSvgItem_FieldArea = 0,
     KBlocksSvgItem_PrepareArea,
@@ -27,33 +26,33 @@ enum KBlocks_SvgItem_Type
 class KBlocksSvgItem : public QGraphicsSvgItem
 {
     Q_OBJECT
-    
-    public:
-        KBlocksSvgItem(KBlocksLayout * p, int type, int posX, int posY);
-        ~KBlocksSvgItem();
-        
-        void setLayoutPos(int posX, int posY);
-        
-        bool updateSelf();
-        
-        void startOpAnim();
-        void stopOpAnim();
-        
-        void startPosAnim(QPointF target);
-        void execPosAnim(qreal step);
-        void stopPosAnim();
-        
-    private:
-        KBlocksLayout* mpGameLayout;
-        
-        int mPosX;
-        int mPosY;
-        
-        int mType;
-        int mColor;
-        
-        QPointF mOriginPos;
-        QPointF mTargetPos;
+
+public:
+    KBlocksSvgItem(KBlocksLayout *p, int type, int posX, int posY);
+    ~KBlocksSvgItem();
+
+    void setLayoutPos(int posX, int posY);
+
+    bool updateSelf();
+
+    void startOpAnim();
+    void stopOpAnim();
+
+    void startPosAnim(QPointF target);
+    void execPosAnim(qreal step);
+    void stopPosAnim();
+
+private:
+    KBlocksLayout *mpGameLayout;
+
+    int mPosX;
+    int mPosY;
+
+    int mType;
+    int mColor;
+
+    QPointF mOriginPos;
+    QPointF mTargetPos;
 };
 
 #endif

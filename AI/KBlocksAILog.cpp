@@ -16,7 +16,7 @@
 static const int MAX_CHANNEL = 10;
 static const int SCREEN_CHANNEL = MAX_CHANNEL;
 static int current_channel = SCREEN_CHANNEL;
-static FILE *channel[MAX_CHANNEL]={0};
+static FILE *channel[MAX_CHANNEL] = {0};
 static bool is_channel_open[MAX_CHANNEL] = {false};
 
 void set_screen_channel()
@@ -26,12 +26,9 @@ void set_screen_channel()
 
 void set_channel(int ch)
 {
-    if (abs(ch) >= MAX_CHANNEL)
-    {
+    if (abs(ch) >= MAX_CHANNEL) {
         set_screen_channel();
-    }
-    else
-    {
+    } else {
         current_channel = ch;
     }
 }
@@ -41,20 +38,19 @@ void set_screen_file_channel(int ch)
     set_channel(-ch);
 }
 
-void open_file(const char* fn)
+void open_file(const char *fn)
 {
     open_file(abs(current_channel), fn);
 }
 
-void open_file(int ch, const char* fn)
+void open_file(int ch, const char *fn)
 {
     set_channel(ch);
     ch = abs(current_channel);
-    if ((ch == SCREEN_CHANNEL) || (is_channel_open[ch]))
-    {
+    if ((ch == SCREEN_CHANNEL) || (is_channel_open[ch])) {
         return;
     }
-    channel[ch] = fopen(fn,"w");
+    channel[ch] = fopen(fn, "w");
     is_channel_open[ch] = true;
 }
 
@@ -67,8 +63,7 @@ void close_file(int ch)
 {
     set_channel(ch);
     ch = abs(current_channel);
-    if ((ch == SCREEN_CHANNEL) || (!is_channel_open[ch]))
-    {
+    if ((ch == SCREEN_CHANNEL) || (!is_channel_open[ch])) {
         return;
     }
     fclose(channel[ch]);
@@ -115,37 +110,32 @@ bool isFileChannel(int channel)
 void println()
 {
 #ifdef DEBUG
-    if (isScreenChannel(current_channel))
-    {
+    if (isScreenChannel(current_channel)) {
         printf("\n");
     }
 #endif
 #ifdef LOG
-    if (isFileChannel(current_channel))
-    {
+    if (isFileChannel(current_channel)) {
         fprintf(channel[current_channel], "\n");
     }
 #endif
 }
 
-void print(const char* s)
-{  
+void print(const char *s)
+{
 #ifdef DEBUG
-    if (isScreenChannel(current_channel))
-    {
-        printf("%s",s);
+    if (isScreenChannel(current_channel)) {
+        printf("%s", s);
     }
 #endif
 #ifdef LOG
-    if(isFileChannel(current_channel))
-    {
+    if (isFileChannel(current_channel)) {
         fprintf(channel[current_channel], "%s", s);
     }
 #endif
 }
 
-
-void println(const char* s)
+void println(const char *s)
 {
     print(s);
     println();
@@ -154,14 +144,12 @@ void println(const char* s)
 void print(int i)
 {
 #ifdef DEBUG
-    if(isScreenChannel(current_channel))
-    {
-        printf("%d",i);
+    if (isScreenChannel(current_channel)) {
+        printf("%d", i);
     }
 #endif
 #ifdef LOG
-    if(isFileChannel(current_channel))
-    {
+    if (isFileChannel(current_channel)) {
         fprintf(channel[current_channel], "%d", i);
     }
 #endif
@@ -176,14 +164,12 @@ void println(int i)
 void print(double d)
 {
 #ifdef DEBUG
-    if(isScreenChannel(current_channel))
-    {
-        printf("%f",d);
+    if (isScreenChannel(current_channel)) {
+        printf("%f", d);
     }
 #endif
 #ifdef LOG
-    if(isFileChannel(current_channel))
-    {
+    if (isFileChannel(current_channel)) {
         fprintf(channel[current_channel], "%f", d);
     }
 #endif
@@ -197,48 +183,42 @@ void println(double d)
 /*****************************************************************
 **  print object  ************************************************
 *****************************************************************/
-void println(KBlocksPiece * piece)
+void println(KBlocksPiece *piece)
 {
-    const char* Piece_Type_Name[7] =
-    {
+    const char *Piece_Type_Name[7] = {
         "PIECE_TYPE_Z", // 0
-        "PIECE_TYPE_S", // 1 
+        "PIECE_TYPE_S", // 1
         "PIECE_TYPE_I", // 2
         "PIECE_TYPE_T", // 3
-        "PIECE_TYPE_Q", // 4 
-        "PIECE_TYPE_L", // 5 
+        "PIECE_TYPE_Q", // 4
+        "PIECE_TYPE_L", // 5
         "PIECE_TYPE_J", // 6
     };
     println("PIECE");
-    print("Type:");println(Piece_Type_Name[piece->getType()]);
+    print("Type:"); println(Piece_Type_Name[piece->getType()]);
 }
 
-void println(KBlocksPiece * piece, bool full)
+void println(KBlocksPiece *piece, bool full)
 {
     println(piece, -1, 0, full);
 }
 
-void println(KBlocksPiece * piece, int x, int y, bool full)
+void println(KBlocksPiece *piece, int x, int y, bool full)
 {
-    if(full)
-    {
-        if (x != -1)
-        {
+    if (full) {
+        if (x != -1) {
             gotoXY(x, y++);
         }
         println(piece);
-        if (x != -1)
-        {
+        if (x != -1) {
             gotoXY(x, y++);
         }
         println("STATE");
-        if (x != -1)
-        {
+        if (x != -1) {
             gotoXY(x, y++);
         }
-        print("Rotation Id   :");println(piece->getRotation());
-        if (x != -1)
-        {
+        print("Rotation Id   :"); println(piece->getRotation());
+        if (x != -1) {
             gotoXY(x, y++);
         }
         print("pos: (");
@@ -247,10 +227,8 @@ void println(KBlocksPiece * piece, int x, int y, bool full)
         print(piece->getPosY());
         println(")");
         println("Cells: ");
-        for(int i = 0; i < KBlocksPiece_CellCount; i++)
-        {
-            if (x != -1)
-            {
+        for (int i = 0; i < KBlocksPiece_CellCount; i++) {
+            if (x != -1) {
                 gotoXY(x, y++);
             }
             print("[");
@@ -262,33 +240,27 @@ void println(KBlocksPiece * piece, int x, int y, bool full)
     }
 }
 
-void println(KBlocksField * field)
-{  
+void println(KBlocksField *field)
+{
     println(field, -1, 0);
 }
 
-void println(KBlocksField * field, int x, int y)
+void println(KBlocksField *field, int x, int y)
 {
     int w = field->getWidth();
     int h = field->getHeight();
-    for(int j = 0; j < h; j++)
-    {
-        if (x != -1)
-        {
+    for (int j = 0; j < h; j++) {
+        if (x != -1) {
             gotoXY(x, y + j);
         }
-        print("|");  
-        for(int i = 0; i < w; i++)
-        {
-            if (field->getCell(i, j))
-            {
+        print("|");
+        for (int i = 0; i < w; i++) {
+            if (field->getCell(i, j)) {
                 print("*");
-            }
-            else
-            {
+            } else {
                 print(" ");
             }
         }
-        println("|");  
+        println("|");
     }
 }

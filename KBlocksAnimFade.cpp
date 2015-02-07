@@ -10,17 +10,17 @@
 ***************************************************************************/
 #include "KBlocksAnimFade.h"
 
-KBlocksAnimFade::KBlocksAnimFade(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction)
+KBlocksAnimFade::KBlocksAnimFade(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
 {
     mItemList = items;
-    
+
     mpTimeLine = new QTimeLine(duration);
-    mpTimeLine->setFrameRange( 0, 30 );
+    mpTimeLine->setFrameRange(0, 30);
     mpTimeLine->setDirection(direction);
-    
+
     connect(mpTimeLine, &QTimeLine::valueChanged, this, &KBlocksAnimFade::valueChanged);
     connect(mpTimeLine, &QTimeLine::finished, this, &KBlocksAnimFade::endAnimation);
-    
+
     mpTimeLine->start();
 }
 
@@ -31,8 +31,7 @@ KBlocksAnimFade::~KBlocksAnimFade()
 
 void KBlocksAnimFade::valueChanged(qreal value)
 {
-    foreach(KBlocksSvgItem * pItem, mItemList)
-    {
+    foreach (KBlocksSvgItem *pItem, mItemList) {
         pItem->setOpacity(value);
     }
 }

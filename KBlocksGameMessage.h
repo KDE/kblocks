@@ -14,28 +14,28 @@
 
 class KBlocksGameMessage
 {
-    public:
-        explicit KBlocksGameMessage(int poolSize);
-        ~KBlocksGameMessage();
-        
-    public:
-        bool pickGameResult(int * result);
-        bool putGameResult(int result);
-        void clearGameResult();
-        
-        bool pickGameAction(int * type, int * action);
-        bool putGameAction(int type, int action);
-        void clearGameAction();
-        
-    private:
-        int mPoolSize;
-        
-        int mActionCount;
-        int* maActionType;
-        int* maActionList;
-        
-        int mResultCount;
-        int* maResultList;
+public:
+    explicit KBlocksGameMessage(int poolSize);
+    ~KBlocksGameMessage();
+
+public:
+    bool pickGameResult(int *result);
+    bool putGameResult(int result);
+    void clearGameResult();
+
+    bool pickGameAction(int *type, int *action);
+    bool putGameAction(int type, int action);
+    void clearGameAction();
+
+private:
+    int mPoolSize;
+
+    int mActionCount;
+    int *maActionType;
+    int *maActionList;
+
+    int mResultCount;
+    int *maResultList;
 };
 
 #endif

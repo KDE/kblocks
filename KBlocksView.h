@@ -19,23 +19,23 @@ class KBlocksView : public QGraphicsView
 {
     Q_OBJECT
 
-    public:
-        explicit KBlocksView(KBlocksScene * scene, QWidget * parent = 0);
-        ~KBlocksView();
-        
-    signals:
-        void focusEvent(bool flag);
-        
-    public slots:
-        void settingsChanged();
-    
-    protected:
-        void focusInEvent(QFocusEvent * event);
-        void focusOutEvent(QFocusEvent * event);
-        void resizeEvent(QResizeEvent * event);
+public:
+    explicit KBlocksView(KBlocksScene *scene, QWidget *parent = 0);
+    ~KBlocksView();
 
-    protected:
-        KBlocksScene* mpGameScene;
+signals:
+    void focusEvent(bool flag);
+
+public slots:
+    void settingsChanged();
+
+protected:
+    void focusInEvent(QFocusEvent *event);
+    void focusOutEvent(QFocusEvent *event);
+    void resizeEvent(QResizeEvent *event);
+
+protected:
+    KBlocksScene *mpGameScene;
 };
 
 #endif

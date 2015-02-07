@@ -15,7 +15,7 @@ KBlocksDummyAI::KBlocksDummyAI()
 {
     mpGame = 0;
     mPauseFlag = false;
-    
+
     mFieldWidth = 0;
     mRotateCount = 0;
 }
@@ -24,11 +24,11 @@ KBlocksDummyAI::~KBlocksDummyAI()
 {
 }
 
-void KBlocksDummyAI::startGame(SingleGameInterface * p)
+void KBlocksDummyAI::startGame(SingleGameInterface *p)
 {
     mpGame = p;
     mPauseFlag = false;
-    
+
     mFieldWidth = mpGame->getField()->getWidth();
     mRotateCount = mpGame->getPiece(0)->getRotationCount();
 }
@@ -43,47 +43,36 @@ void KBlocksDummyAI::pauseGame(bool flag)
     mPauseFlag = flag;
 }
 
-void KBlocksDummyAI::think(GamePlayer_ActionList * actionList)
+void KBlocksDummyAI::think(GamePlayer_ActionList *actionList)
 {
-    if (mPauseFlag)
-    {
+    if (mPauseFlag) {
         return;
     }
-    
+
     int rotation = rand() % (mRotateCount + 1) - mRotateCount / 2;
     int motionx = rand() % (mFieldWidth + 1) - mFieldWidth / 2;
-    
-    if (rotation > 0)
-    {
-        for(int i = 0; i < rotation; i++)
-        {
+
+    if (rotation > 0) {
+        for (int i = 0; i < rotation; i++) {
             actionList->push_back(PlayerAction_Rotate_CW);
         }
-    }
-    else
-    {
+    } else {
         rotation = -rotation;
-        for(int i = 0; i < rotation; i++)
-        {
+        for (int i = 0; i < rotation; i++) {
             actionList->push_back(PlayerAction_Rotate_CCW);
         }
     }
-    
-    if (motionx > 0)
-    {
-        for(int i = 0; i < motionx; i++)
-        {
+
+    if (motionx > 0) {
+        for (int i = 0; i < motionx; i++) {
             actionList->push_back(PlayerAction_Move_Right);
         }
-    }
-    else
-    {
+    } else {
         motionx = -motionx;
-        for(int i = 0; i < motionx; i++)
-        {
+        for (int i = 0; i < motionx; i++) {
             actionList->push_back(PlayerAction_Move_Left);
         }
     }
-    
+
     //actionList->push_back(PlayerAction_Push_Down);
 }

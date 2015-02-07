@@ -19,31 +19,31 @@ class KBlocksNetClient : public QObject
 {
     Q_OBJECT
 
-    public:
-        KBlocksNetClient(const QString& remoteIP, quint16 localPort);
-        ~KBlocksNetClient();
-        
-    public:
-        int sendData(int count, char * data);
-        int recvData(int count, char * data);
-        
-    signals:
-        void dataArrived(int size);
-        
-    private:
-        bool parseIPString(const QString& input, QHostAddress * ip, quint16 * port);
-        
-    private slots:
-        void receivedData();
-        
-    private:
-        QUdpSocket * mpClientSocket;
-        
-        QHostAddress mLocalAddress;
-        quint16 mLocalPort;
-        
-        QHostAddress mRemoteAddress;
-        quint16 mRemotePort;
+public:
+    KBlocksNetClient(const QString &remoteIP, quint16 localPort);
+    ~KBlocksNetClient();
+
+public:
+    int sendData(int count, char *data);
+    int recvData(int count, char *data);
+
+signals:
+    void dataArrived(int size);
+
+private:
+    bool parseIPString(const QString &input, QHostAddress *ip, quint16 *port);
+
+private slots:
+    void receivedData();
+
+private:
+    QUdpSocket *mpClientSocket;
+
+    QHostAddress mLocalAddress;
+    quint16 mLocalPort;
+
+    QHostAddress mRemoteAddress;
+    quint16 mRemotePort;
 };
 
 #endif

@@ -18,8 +18,7 @@
 
 typedef unsigned long         timeLong;
 
-enum KBlocks_Game_Action
-{
+enum KBlocks_Game_Action {
     GameAction_None = 0,
     GameAction_Punish_Line,
     GameAction_Remove_Line,
@@ -31,8 +30,7 @@ enum KBlocks_Game_Action
     GameAction_Max_Count
 };
 
-enum KBlocks_Game_Result
-{
+enum KBlocks_Game_Result {
     GameResult_None = 0,
     GameResult_Game_Over,
     GameResult_One_Step,
@@ -44,19 +42,17 @@ enum KBlocks_Game_Result
     GameResult_Max_Count
 };
 
-enum KBlocks_Game_State
-{
+enum KBlocks_Game_State {
     GameState_Stop = 0,
     GameState_Running,
     GameState_Pause,
     GameState_Max_Count
 };
 
-enum KBlocks_Record_DataType
-{
+enum KBlocks_Record_DataType {
     RecordDataType_GameCount = 0,
     RecordDataType_GameSeed,
-    
+
     RecordDataType_Skipped,
     RecordDataType_MovePieceLeft,
     RecordDataType_MovePieceRight,
@@ -67,11 +63,11 @@ enum KBlocks_Record_DataType
     RecordDataType_GameOneStep,
     RecordDataType_PunishLineCount,
     RecordDataType_PunishLineSeed,
-    
+
     RecordDataType_Max_Count
 };
 
-extern const char * KBlocksRecordText[RecordDataType_Max_Count];
+extern const char *KBlocksRecordText[RecordDataType_Max_Count];
 
 #endif
 

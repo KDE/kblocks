@@ -9,39 +9,34 @@
 ***************************************************************************/
 #include "KBlocksGameReplayer.h"
 
-KBlocksGameReplayer::KBlocksGameReplayer(const char * fileName, bool isBinaryMode)
+KBlocksGameReplayer::KBlocksGameReplayer(const char *fileName, bool isBinaryMode)
 {
-    for(int i = 0; i < RecordDataType_Max_Count; ++i)
-    {
+    for (int i = 0; i < RecordDataType_Max_Count; ++i) {
         mRTMap[ KBlocksRecordText[i] ] = i;
     }
     mRTMap[string("MaxCount")] = -1;
-    
-    FILE * pFile = fopen(fileName, "r");
-    
-    if (!pFile)
-    {
+
+    FILE *pFile = fopen(fileName, "r");
+
+    if (!pFile) {
         mGameCount = 0;
         return;
     }
-    
-    if (isBinaryMode)
-    {
+
+    if (isBinaryMode) {
         loadBinary(pFile);
-    }
-    else
-    {
+    } else {
         loadText(pFile);
     }
-    
+
     mGameCount = mReplayList.front().value;
     mReplayList.pop_front();
     mGameSeed = mReplayList.front().value;
     mSameSeed = (mReplayList.front().index == 1);
     mReplayList.pop_front();
-    
+
     mStepLength = 1;
-    
+
     fclose(pFile);
 }
 
@@ -66,66 +61,55 @@ bool KBlocksGameReplayer::isSameSeed()
 
 void KBlocksGameReplayer::setStepLength(int stepLen)
 {
-    if (stepLen > 1)
-    {
+    if (stepLen > 1) {
         mStepLength = stepLen;
-    }
-    else
-    {
+    } else {
         mStepLength = 1;
     }
 }
 
-bool KBlocksGameReplayer::getNextRecords(vector<KBlocksReplayData> * data)
+bool KBlocksGameReplayer::getNextRecords(vector<KBlocksReplayData> *data)
 {
-    if (mReplayList.empty())
-    {
+    if (mReplayList.empty()) {
         return false;
     }
-    
+
     KBlocksReplayData tmpData;
     int tmpLength = mStepLength;
-    while(tmpLength > 0)
-    {
+    while (tmpLength > 0) {
         tmpData = mReplayList.front();
         tmpLength -= tmpData.time;
-        if (tmpLength > 0)
-        {
+        if (tmpLength > 0) {
             data->push_back(tmpData);
             mReplayList.pop_front();
-        }
-        else
-        {
+        } else {
             mReplayList.front().time = -tmpLength;
         }
-        if (mReplayList.empty())
-        {
+        if (mReplayList.empty()) {
             return true;
         }
     }
-    
+
     return true;
 }
 
-void KBlocksGameReplayer::loadText(FILE * pFile)
+void KBlocksGameReplayer::loadText(FILE *pFile)
 {
     int count = 0;
     char tmpString[256];
     KBlocksReplayData tmpData;
     mReplayList.clear();
-    while(1)
-    {
+    while (1) {
         count = fscanf(pFile, "%d %s %d %d", &(tmpData.time), tmpString, &(tmpData.index), &(tmpData.value));
         tmpData.type = mRTMap[string(tmpString)];
-        if ((tmpData.type == -1) || (count != 4))
-        {
+        if ((tmpData.type == -1) || (count != 4)) {
             break;
         }
         mReplayList.push_back(tmpData);
     }
 }
 
-void KBlocksGameReplayer::loadBinary(FILE * pFile)
+void KBlocksGameReplayer::loadBinary(FILE *pFile)
 {
     KBlocksReplayData tmpData;
     mReplayList.clear();
@@ -133,18 +117,15 @@ void KBlocksGameReplayer::loadBinary(FILE * pFile)
     tmpData.type  = fgetc(pFile);
     tmpData.index = fgetc(pFile);
     tmpData.value = fgetc(pFile);
-    while(tmpData.time != EOF)
-    {
-        if (tmpData.type == RecordDataType_Skipped)
-        {
+    while (tmpData.time != EOF) {
+        if (tmpData.type == RecordDataType_Skipped) {
             int tmpTime = tmpData.time;
-            while(tmpData.type == RecordDataType_Skipped)
-            {
+            while (tmpData.type == RecordDataType_Skipped) {
                 tmpData.time  = fgetc(pFile);
                 tmpData.type  = fgetc(pFile);
                 tmpData.index = fgetc(pFile);
                 tmpData.value = fgetc(pFile);
-                
+
                 tmpTime += tmpData.time;
             }
             tmpData.time = tmpTime;

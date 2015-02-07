@@ -17,38 +17,38 @@
 using namespace std;
 class KBlocksConfigManager
 {
-    private:
-        map< int, string > stConfigSectionList;
-        map< string, map< int, string > > stConfigKeyNameList;
-        map< string, map< string, string > > stConfigDataTable;
-        
-        bool isDebug;
-        
-    public:
-        KBlocksConfigManager();
-        ~KBlocksConfigManager();
-        
-        int SetDebugOutput(bool flag);
-        
-        int LoadConfigFile(string filename);
-        int SaveConfigFile(string filename);
-        
-        int GetSectionCount();
-        int GetKeyCount(string SectionName);
-        
-        int GetKeyString(string SectionName, string KeyName, string* KeyString, const string Default);
-        int GetKeyInt(string SectionName, string KeyName, int* KeyInt, const int Default);
-        int GetKeyBool(string SectionName, string KeyName, bool* KeyBool, const bool Default);
-        
-        int SetKeyString(string SectionName, string KeyName, string KeyString);
-        int SetKeyInt(string SectionName, string KeyName, int KeyInt);
-        int SetKeyBool(string SectionName, string KeyName, bool KeyBool);
-        
-    private:
-        int ParseConfigFile(FILE* fp);
-        int ConstructConfigFile(FILE* fp);
-        
-        string int16tostring(int input);
+private:
+    map< int, string > stConfigSectionList;
+    map< string, map< int, string > > stConfigKeyNameList;
+    map< string, map< string, string > > stConfigDataTable;
+
+    bool isDebug;
+
+public:
+    KBlocksConfigManager();
+    ~KBlocksConfigManager();
+
+    int SetDebugOutput(bool flag);
+
+    int LoadConfigFile(string filename);
+    int SaveConfigFile(string filename);
+
+    int GetSectionCount();
+    int GetKeyCount(string SectionName);
+
+    int GetKeyString(string SectionName, string KeyName, string *KeyString, const string Default);
+    int GetKeyInt(string SectionName, string KeyName, int *KeyInt, const int Default);
+    int GetKeyBool(string SectionName, string KeyName, bool *KeyBool, const bool Default);
+
+    int SetKeyString(string SectionName, string KeyName, string KeyString);
+    int SetKeyInt(string SectionName, string KeyName, int KeyInt);
+    int SetKeyBool(string SectionName, string KeyName, bool KeyBool);
+
+private:
+    int ParseConfigFile(FILE *fp);
+    int ConstructConfigFile(FILE *fp);
+
+    string int16tostring(int input);
 };
 
 #endif // KBLOCKSCONFIGMANAGER_H_INCLUDED

@@ -12,8 +12,6 @@
 #include <string>
 #include <vector>
 
-
-
 #include <KAboutData>
 #include <KLocalizedString>
 
@@ -44,18 +42,17 @@ using namespace std;
 #include "KBlocksNetServer.h"
 #include "KBlocksNetClient.h"
 
-KBlocksGameLogic* mpKBlocksGameLogic;
-KBlocksPlayManager* mpKBlocksPlayManager;
-KBlocksPlayNetwork* mpKBlocksPlayNetwork;
-KBlocksWin* mpKBlocksWindow;
-KBlocksDisplay* mpKBlocksDisplay;
-KBlocksAppThread* mpKBlocksAppThread;
+KBlocksGameLogic *mpKBlocksGameLogic;
+KBlocksPlayManager *mpKBlocksPlayManager;
+KBlocksPlayNetwork *mpKBlocksPlayNetwork;
+KBlocksWin *mpKBlocksWindow;
+KBlocksDisplay *mpKBlocksDisplay;
+KBlocksAppThread *mpKBlocksAppThread;
 
-KBlocksAIPlayer** maAIPlayers;
-KBlocksKeyboardPlayer** maHumanPlayers;
+KBlocksAIPlayer **maAIPlayers;
+KBlocksKeyboardPlayer **maHumanPlayers;
 
-enum KBlocksGameMode
-{
+enum KBlocksGameMode {
     KBlocksGame_DesktopMode = 0,
     KBlocksGame_EngineMode,
     KBlocksGame_GuiMode,
@@ -64,7 +61,7 @@ enum KBlocksGameMode
     KBlocksGame_MaxMode_Count
 };
 
-int gameDesktopMode(const QApplication& app)
+int gameDesktopMode(const QApplication &app)
 {
     // Desktop User Mode
     mpKBlocksGameLogic = new KBlocksGameLogic(2);
@@ -73,20 +70,20 @@ int gameDesktopMode(const QApplication& app)
     mpKBlocksGameLogic->setGameStandbyMode(true);
     mpKBlocksGameLogic->setInitInterval(500);
     mpKBlocksGameLogic->setLevelUpInterval(25);
-    
+
     mpKBlocksPlayManager = new KBlocksPlayManager(mpKBlocksGameLogic, 2);
-    
+
     mpKBlocksWindow = new KBlocksWin(mpKBlocksGameLogic, mpKBlocksPlayManager, 2, 1);
     mpKBlocksWindow->setUpdateInterval(50);
     mpKBlocksWindow->setGamesPerLine(4);
     mpKBlocksWindow->setGameAnimEnabled(true);
     mpKBlocksWindow->setWaitForAllUpdate(true);
     mpKBlocksWindow->show();
-    
+
     return app.exec();
 }
 
-int gameEngineMode(KBlocksConfigManager * config)
+int gameEngineMode(KBlocksConfigManager *config)
 {
     int gameCount;
     bool sameSeq;
@@ -95,11 +92,11 @@ int gameEngineMode(KBlocksConfigManager * config)
     bool hasHuman;
     bool sendLimit;
     string serverIP;
-    
+
     string recordFile;
     string recordType;
     bool recordBinary;
-    
+
     config->GetKeyInt("Engine", "GameCount", &gameCount, 1);
     config->GetKeyBool("Engine", "SameSequence", &sameSeq, true);
     config->GetKeyBool("Engine", "HasAttack", &hasAttack, true);
@@ -107,11 +104,11 @@ int gameEngineMode(KBlocksConfigManager * config)
     config->GetKeyBool("Engine", "HasHuman", &hasHuman, false);
     config->GetKeyBool("Engine", "SendLimit", &sendLimit, false);
     config->GetKeyString("Engine", "ServerIP", &serverIP, "127.0.0.1:10086");
-    
+
     config->GetKeyString("RecordReplay", "Record", &recordFile, "");
     config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
     recordBinary = recordType.find("text") != 0;
-    
+
     printf("Creating game engine...\n");
     printf("\tGame Count    = %d\n", gameCount);
     printf("\tSame Sequence = %s\n", sameSeq ? "true" : "false");
@@ -126,34 +123,34 @@ int gameEngineMode(KBlocksConfigManager * config)
     mpKBlocksGameLogic->setInitInterval(hasHuman ? 500 : 0);
     mpKBlocksGameLogic->setLevelUpInterval(hasHuman ? 25 : 0);
     printf("Done...\n");
-    
+
     printf("Creating network server...\n");
     printf("\tServer IP = %s\n", serverIP.c_str());
     printf("\tRecord File = %s\n", recordFile.c_str());
     printf("\tRecord Type = %s\n", recordBinary ? "Binary" : "Text");
-    KBlocksNetServer* mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, serverIP.c_str());
+    KBlocksNetServer *mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, serverIP.c_str());
     mpKBlocksServer->setSendLength(sendLimit ? 10 : 0, sendLimit ? 1 : 0);
     mpKBlocksServer->setRecordFile(recordFile.c_str(), recordBinary);
     printf("Done...\n");
-    
+
     printf("Executing game engine and network server...\n");
     return mpKBlocksServer->executeGame(gameCount, standbyMode);
 }
 
-int gameGuiMode(KBlocksConfigManager * config, const QApplication& app)
+int gameGuiMode(KBlocksConfigManager *config, const QApplication &app)
 {
     int gameCount;
     int gamesPerLine;
     int updateInterval;
     int localPort;
     string serverIP;
-    
+
     config->GetKeyInt("Gui", "GameCount", &gameCount, 1);
     config->GetKeyInt("Gui", "GamesPerLine", &gamesPerLine, 4);
     config->GetKeyInt("Gui", "UpdateInterval", &updateInterval, 1000);
     config->GetKeyInt("Gui", "LocalPort", &localPort, 10088);
     config->GetKeyString("Gui", "ServerIP", &serverIP, "127.0.0.1:10086");
-    
+
     printf("Creating game gui...\n");
     printf("\tGame Count      = %d\n", gameCount);
     printf("\tGames Per Line  = %d\n", gamesPerLine);
@@ -165,15 +162,15 @@ int gameGuiMode(KBlocksConfigManager * config, const QApplication& app)
     mpKBlocksDisplay->setUpdateInterval(updateInterval);
     mpKBlocksDisplay->show();
     printf("Done...\n");
-    
+
     printf("Starting game gui...\n");
     mpKBlocksDisplay->startDisplay();
     printf("Done...\n");
-    
+
     return app.exec();
 }
 
-int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
+int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
 {
     int gamesPerLine;
     int updateInterval;
@@ -183,7 +180,7 @@ int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
     string recordFile;
     string recordType;
     bool recordBinary;
-    
+
     config->GetKeyInt("RecordReplay", "GamesPerLine", &gamesPerLine, 4);
     config->GetKeyInt("RecordReplay", "UpdateInterval", &updateInterval, 100);
     config->GetKeyInt("RecordReplay", "StepLength", &stepLength, 100);
@@ -192,13 +189,12 @@ int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
     config->GetKeyString("RecordReplay", "Record", &recordFile, "");
     config->GetKeyString("RecordReplay", "Type", &recordType, "binary");
     recordBinary = recordType.find("text") != 0;
-    
-    if (recordFile.empty())
-    {
+
+    if (recordFile.empty()) {
         printf("Error loading replay file: File name is empty!\n");
         return -1;
     }
-    
+
     printf("Creating game gui...\n");
     printf("\tGames Per Line  = %d\n", gamesPerLine);
     printf("\tUpdate Interval = %d\n", updateInterval);
@@ -207,10 +203,9 @@ int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
     printf("\tSnapshot File   = %s\n", snapshotFile.c_str());
     printf("\tRecord File     = %s\n", recordFile.c_str());
     printf("\tRecord Type     = %s\n", recordBinary ? "Binary" : "Text");
-    
-    KBlocksRepWin* mpKBlocksRepWin = new KBlocksRepWin(recordFile.c_str(), recordBinary);
-    if (!mpKBlocksRepWin->replayLoaded())
-    {
+
+    KBlocksRepWin *mpKBlocksRepWin = new KBlocksRepWin(recordFile.c_str(), recordBinary);
+    if (!mpKBlocksRepWin->replayLoaded()) {
         printf("Error loading replay file: Failed to load replay file!\n");
         return -2;
     }
@@ -221,97 +216,90 @@ int gameReplayMode(KBlocksConfigManager * config, const QApplication& app)
     mpKBlocksRepWin->setSnapshotFilename(snapshotFile.c_str());
     mpKBlocksRepWin->show();
     printf("Done...\n");
-    
+
     printf("Starting game gui...\n");
     mpKBlocksRepWin->startReplay();
     printf("Done...\n");
-    
+
     return app.exec();
 }
 
-int gamePlayerMode(KBlocksConfigManager * config, const QApplication& app)
+int gamePlayerMode(KBlocksConfigManager *config, const QApplication &app)
 {
     bool hasHuman = false;
     int playerCount;
     int localPort;
     string serverIP;
-    
+
     config->GetKeyInt("Player", "PlayerCount", &playerCount, 1);
     config->GetKeyInt("Player", "LocalPort", &localPort, 10090);
     config->GetKeyString("Player", "ServerIP", &serverIP, "127.0.0.1:10086");
-    
+
     printf("Creating game player manager...\n");
     printf("\tPlayer Count = %d\n", playerCount);
     printf("\tLocal Port   = %d\n", localPort);
     printf("\tServer IP    = %s\n", serverIP.c_str());
     mpKBlocksPlayNetwork = new KBlocksPlayNetwork(playerCount, serverIP, localPort);
     printf("Done...\n");
-    
+
     printf("Adding game players...\n");
     maAIPlayers = new KBlocksAIPlayer*[playerCount];
     maHumanPlayers = new KBlocksKeyboardPlayer*[playerCount];
-    for(int i = 0; i < playerCount; i++)
-    {
+    for (int i = 0; i < playerCount; i++) {
         maAIPlayers[i] = 0;
         maHumanPlayers[i] = 0;
-        
+
         char tmpBuf[256];
-        sprintf( tmpBuf, "PlayerType%d", i+1 );
+        sprintf(tmpBuf, "PlayerType%d", i + 1);
         string tmpType = string(tmpBuf);
-        sprintf( tmpBuf, "PlayerName%d", i+1 );
+        sprintf(tmpBuf, "PlayerName%d", i + 1);
         string tmpName = string(tmpBuf);
         config->GetKeyString("Player", tmpType, &tmpType, "AI");
         config->GetKeyString("Player", tmpName, &tmpName, "NoName");
-        
+
         printf("\tNew Player (%d) Type = %s\n", i, tmpType.c_str());
         printf("\t               Name = %s\n", tmpName.c_str());
-        if (tmpType.find("ai") != tmpType.npos)
-        {
+        if (tmpType.find("ai") != tmpType.npos) {
             maAIPlayers[i] = new KBlocksAIPlayer(tmpName);
             mpKBlocksPlayNetwork->addGamePlayer(maAIPlayers[i]);
-        }
-        else if (tmpType.find("human") != tmpType.npos)
-        {
+        } else if (tmpType.find("human") != tmpType.npos) {
             maHumanPlayers[i] = new KBlocksKeyboardPlayer(NULL, tmpName, true);
             mpKBlocksPlayNetwork->addGamePlayer(maHumanPlayers[i]);
             hasHuman = true;
         }
     }
     printf("Done...\n");
-    
+
     printf("Starting play manager...\n");
     mpKBlocksPlayNetwork->startGame();
-    
+
     int ret = 0;
-    if (hasHuman)
-    {
+    if (hasHuman) {
         mpKBlocksAppThread = new KBlocksAppThread(mpKBlocksPlayNetwork);
         printf("Executing play manager...\n");
         mpKBlocksAppThread->start();
-        
+
         printf("Executing keyboard window...\n");
         ret = app.exec();
-        
+
         printf("Terminating play manager execution...\n");
         mpKBlocksPlayNetwork->cancelExecute();
-    }
-    else
-    {
+    } else {
         printf("Executing...\n");
         ret = mpKBlocksPlayNetwork->execute();
     }
-    
+
     printf("Stopping play manager...\n");
     mpKBlocksPlayNetwork->stopGame();
-    
+
     printf("Clearing game players...\n");
     mpKBlocksPlayNetwork->clearGamePlayer();
-    
+
     printf("Exit program...\n");
     return ret;
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     Kdelibs4ConfigMigrator migrate(QLatin1String("kblocks"));
@@ -321,17 +309,17 @@ int main (int argc, char *argv[])
 
     // Game abouts...
 
-    KAboutData aboutData( "kblocks",
-                          i18n("KBlock"),
-                          QLatin1String("0.4"),
-                          i18n("A falling blocks game for KDE"),
-                          KAboutLicense::GPL,
-                          i18n("(c) 2007, Mauricio Piacentini") );
+    KAboutData aboutData("kblocks",
+                         i18n("KBlock"),
+                         QLatin1String("0.4"),
+                         i18n("A falling blocks game for KDE"),
+                         KAboutLicense::GPL,
+                         i18n("(c) 2007, Mauricio Piacentini"));
     aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Author"), "piacentini@kde.org");
     aboutData.addAuthor(i18n("Dirk Leifeld"), i18n("Developer"), "dirkleifeld@yahoo.de");
     aboutData.addAuthor(i18n("Zhongjie Cai"), i18n("New design of KBlocks for AI and tetris research platform"), "squall.leonhart.cai@gmail.com");
     aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Oxygen art for KDE4"), "johann.ollivierlapeyre@gmail.com");
-    
+
     // Command line argument options
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
@@ -343,35 +331,34 @@ int main (int argc, char *argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    
+
     // Get game mode
     int mGameMode = parser.value("mode").toInt();
-    
+
     QByteArray tmpFileArray = parser.value("conf").toLatin1();
     const char *tmpFileChar = tmpFileArray.data();
-    KBlocksConfigManager* config = new KBlocksConfigManager();
+    KBlocksConfigManager *config = new KBlocksConfigManager();
     config->LoadConfigFile(string(tmpFileChar));
-    
+
     int mResult = 0;
-    switch(mGameMode)
-    {
-        case KBlocksGame_DesktopMode:
-            mResult = gameDesktopMode(app);
-            break;
-        case KBlocksGame_EngineMode:
-            mResult = gameEngineMode(config);
-            break;
-        case KBlocksGame_GuiMode:
-            mResult = gameGuiMode(config, app);
-            break;
-        case KBlocksGame_PlayerMode:
-            mResult = gamePlayerMode(config, app);
-            break;
-        case KBlocksGame_ReplayMode:
-            mResult = gameReplayMode(config, app);
-            break;
+    switch (mGameMode) {
+    case KBlocksGame_DesktopMode:
+        mResult = gameDesktopMode(app);
+        break;
+    case KBlocksGame_EngineMode:
+        mResult = gameEngineMode(config);
+        break;
+    case KBlocksGame_GuiMode:
+        mResult = gameGuiMode(config, app);
+        break;
+    case KBlocksGame_PlayerMode:
+        mResult = gamePlayerMode(config, app);
+        break;
+    case KBlocksGame_ReplayMode:
+        mResult = gameReplayMode(config, app);
+        break;
     }
-    
+
     return mResult;
 }
 

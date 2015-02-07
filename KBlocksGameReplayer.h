@@ -23,8 +23,7 @@ using std::vector;
 using std::list;
 using std::map;
 
-struct KBlocksReplayData
-{
+struct KBlocksReplayData {
     int index;
     int type;
     int value;
@@ -33,30 +32,30 @@ struct KBlocksReplayData
 
 class KBlocksGameReplayer
 {
-    public:
-        explicit KBlocksGameReplayer(const char * fileName, bool isBinaryMode = true);
-        ~KBlocksGameReplayer();
-        
-    public:
-        void setStepLength(int stepLen);
-        
-        int getGameCount();
-        int getGameSeed();
-        bool isSameSeed();
-        
-        bool getNextRecords(vector<KBlocksReplayData> * data);
-        
-    private:
-        void loadText(FILE * pFile);
-        void loadBinary(FILE * pFile);
-        
-    private:
-        int mGameCount;
-        int mGameSeed;
-        bool mSameSeed;
-        int mStepLength;
-        list<KBlocksReplayData> mReplayList;
-        map<string, int> mRTMap;
+public:
+    explicit KBlocksGameReplayer(const char *fileName, bool isBinaryMode = true);
+    ~KBlocksGameReplayer();
+
+public:
+    void setStepLength(int stepLen);
+
+    int getGameCount();
+    int getGameSeed();
+    bool isSameSeed();
+
+    bool getNextRecords(vector<KBlocksReplayData> *data);
+
+private:
+    void loadText(FILE *pFile);
+    void loadBinary(FILE *pFile);
+
+private:
+    int mGameCount;
+    int mGameSeed;
+    bool mSameSeed;
+    int mStepLength;
+    list<KBlocksReplayData> mReplayList;
+    map<string, int> mRTMap;
 };
 
 #endif

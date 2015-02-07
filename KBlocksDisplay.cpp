@@ -16,19 +16,18 @@
 #include <QPixmapCache>
 #include <QLabel>
 
-KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localPort) : KMainWindow()
+KBlocksDisplay::KBlocksDisplay(int gameCount, const string &serverIP, int localPort) : KMainWindow()
 {
     //Use up to 3MB for global application pixmap cache
-    QPixmapCache::setCacheLimit(3*1024);
-    
-    for (int i = 0; i < 8; ++i)
-    {
+    QPixmapCache::setCacheLimit(3 * 1024);
+
+    for (int i = 0; i < 8; ++i) {
         maScoreList[i] = 0;
     }
-    
+
     mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
     connect(mpNetClient, &KBlocksNetClient::dataArrived, this, &KBlocksDisplay::updateGameDisplay);
-    
+
     mGameCount = gameCount;
     mpGameLogic = new KBlocksGameLogic(mGameCount);
     mpGameLogic->setGameSeed(0);
@@ -36,31 +35,31 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string& serverIP, int localP
     mpGameLogic->setGameStandbyMode(true);
     mpGameLogic->setInitInterval(0);
     mpGameLogic->setLevelUpInterval(0);
-    
+
     mpGameScene = new KBlocksScene(mpGameLogic, mGameCount);
     mpGameScene->setGameAnimEnabled(false);
     mpGameScene->setWaitForAllUpdate(false);
-    
+
     mpGameView = new KBlocksView(mpGameScene, this);
-	mpGameView->show();
+    mpGameView->show();
     setCentralWidget(mpGameView);
-    
+
     mUpdateInterval = 1000;
     mUpdateTimer.setInterval(mUpdateInterval);
     connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksDisplay::updateEvent);
     mUpdateTimer.stop();
-    mScore = new QLabel( i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0") );
-    statusBar()->addPermanentWidget( mScore ); 
+    mScore = new QLabel(i18n("Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"));
+    statusBar()->addPermanentWidget(mScore);
 }
 
 KBlocksDisplay::~KBlocksDisplay()
 {
     mpGameLogic->stopGame();
     delete mpGameLogic;
-    
+
     delete mpGameView;
     delete mpGameScene;
-    
+
     delete mpNetClient;
 }
 
@@ -79,28 +78,27 @@ void KBlocksDisplay::setUpdateInterval(int interval)
 void KBlocksDisplay::startDisplay()
 {
     mpGameLogic->startGame(mGameCount);
-    for(int i = 0; i < mGameCount; i++)
-    {
+    for (int i = 0; i < mGameCount; i++) {
         mpGameLogic->getSingleGame(i)->stopGame();
     }
-    
+
     mpGameScene->createGameItemGroups(mGameCount, true);
     mpGameScene->startGame();
-    
+
     mUpdateTimer.start();
 }
 
 void KBlocksDisplay::stopDisplay()
 {
     mUpdateTimer.stop();
-    
+
     mpGameScene->stopGame();
     mpGameScene->deleteGameItemGroups();
-    
+
     mpGameLogic->stopGame();
 }
 
-int KBlocksDisplay::formIntFromByte(char * data)
+int KBlocksDisplay::formIntFromByte(char *data)
 {
     int value = 0;
     value += ((int)data[0]) & 0x000000FF;
@@ -112,44 +110,42 @@ int KBlocksDisplay::formIntFromByte(char * data)
 
 void KBlocksDisplay::updateScore()
 {
-    mScore->setText( i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
-                             maScoreList[0], maScoreList[1], maScoreList[2], maScoreList[3], 
-                             maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]));
+    mScore->setText(i18n("Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8",
+                         maScoreList[0], maScoreList[1], maScoreList[2], maScoreList[3],
+                         maScoreList[4], maScoreList[5], maScoreList[6], maScoreList[7]));
 }
-    
+
 void KBlocksDisplay::updateEvent()
 {
     char tmpByteData[5] = {'|', 'r', 'g', '|', '\0'};
     mpNetClient->sendData(5, tmpByteData);
 }
-    
+
 void KBlocksDisplay::updateGameDisplay(int size)
 {
-    char* tmpByteData = new char[size];
-    
+    char *tmpByteData = new char[size];
+
     int ret = mpNetClient->recvData(size, tmpByteData);
-    if (ret < size)
-    {
+    if (ret < size) {
         return;
     }
-    
+
     int gameID = tmpByteData[0];
-    
+
     //int scorePoint = formIntFromByte(tmpByteData + 1);
     //int lineCount  = formIntFromByte(tmpByteData + 5);
     //int gameLevel  = formIntFromByte(tmpByteData + 9);
     maScoreList[gameID] = formIntFromByte(tmpByteData + 5);
-            
+
     int tmpPieceCount = formIntFromByte(tmpByteData + 13);
-    for (int i = 0; i < tmpPieceCount; ++i)
-    {
-        mpGameLogic->getSingleGame(gameID)->getPiece(i)->decodeData((unsigned char*)tmpByteData + 17 + i * 4);
+    for (int i = 0; i < tmpPieceCount; ++i) {
+        mpGameLogic->getSingleGame(gameID)->getPiece(i)->decodeData((unsigned char *)tmpByteData + 17 + i * 4);
     }
-            
+
     formIntFromByte(tmpByteData + 17 + tmpPieceCount * 4);
-    mpGameLogic->getSingleGame(gameID)->getField()->decodeData((unsigned char*)tmpByteData + 18 + tmpPieceCount * 4);
-        
+    mpGameLogic->getSingleGame(gameID)->getField()->decodeData((unsigned char *)tmpByteData + 18 + tmpPieceCount * 4);
+
     updateScore();
-    
+
     delete [] tmpByteData;
 }

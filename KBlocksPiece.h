@@ -14,8 +14,7 @@
 
 #define KBlocksPiece_CellCount    4
 
-enum KBlocks_PieceType
-{
+enum KBlocks_PieceType {
     PieceType_Shape_Z = 0,
     PieceType_Shape_S,
     PieceType_Shape_I,
@@ -26,8 +25,7 @@ enum KBlocks_PieceType
     PieceType_Max_Count
 };
 
-enum KBlocks_PieceRotation
-{
+enum KBlocks_PieceRotation {
     PieceRotation_Up = 0,
     PieceRotation_Left,
     PieceRotation_Down,
@@ -35,8 +33,7 @@ enum KBlocks_PieceRotation
     PieceRotation_Max_Count
 };
 
-enum KBlocks_PieceType_Detail
-{
+enum KBlocks_PieceType_Detail {
     PieceType_Shape_Z_1 = 0,
     PieceType_Shape_Z_2,
     PieceType_Shape_Z_3,
@@ -70,62 +67,62 @@ enum KBlocks_PieceType_Detail
 
 class PiecePoint
 {
-    public:
-        PiecePoint(int x, int y);
-        ~PiecePoint();
-        
-    public:
-        int x();
-        int y();
-        
-    private:
-        int mPosX;
-        int mPosY;
+public:
+    PiecePoint(int x, int y);
+    ~PiecePoint();
+
+public:
+    int x();
+    int y();
+
+private:
+    int mPosX;
+    int mPosY;
 };
 
 class KBlocksPiece : public PieceInterface
 {
-    public:
-        KBlocksPiece();
-        KBlocksPiece(PieceInterface * p);
-        ~KBlocksPiece();
-    
-    public:
-        void copy(PieceInterface * p);
-        
-        int  toValue();
-        void fromValue(int val);
-        
-        int  getType();
-        void setType(int newType);
-        
-        int  getRotation();
-        void setRotation(int newRotation);
-        
-        int  getPosX();
-        void setPosX(int newPosX);
-        
-        int  getPosY();
-        void setPosY(int newPosY);
-        
-        int  getCellCount();
-        int  getCellPosX(int index);
-        int  getCellPosY(int index);
-        
-        int  getWidth();
-        int  getHeight();
-        int  getRotationCount();
-        
-        int  getSignature(int * signature);
-        
-        void encodeData(unsigned char * data);
-        void decodeData(unsigned char * data);
-        
-    protected:
-        int mType;
-        int mPosX;
-        int mPosY;
-        int mRotation;
+public:
+    KBlocksPiece();
+    KBlocksPiece(PieceInterface *p);
+    ~KBlocksPiece();
+
+public:
+    void copy(PieceInterface *p);
+
+    int  toValue();
+    void fromValue(int val);
+
+    int  getType();
+    void setType(int newType);
+
+    int  getRotation();
+    void setRotation(int newRotation);
+
+    int  getPosX();
+    void setPosX(int newPosX);
+
+    int  getPosY();
+    void setPosY(int newPosY);
+
+    int  getCellCount();
+    int  getCellPosX(int index);
+    int  getCellPosY(int index);
+
+    int  getWidth();
+    int  getHeight();
+    int  getRotationCount();
+
+    int  getSignature(int *signature);
+
+    void encodeData(unsigned char *data);
+    void decodeData(unsigned char *data);
+
+protected:
+    int mType;
+    int mPosX;
+    int mPosY;
+    int mRotation;
 };
 
 #endif

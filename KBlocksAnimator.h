@@ -29,30 +29,30 @@ enum KBlocks_Animation_Type {
 class KBlocksAnimator : public QObject
 {
     Q_OBJECT
-    
-    public:
-        KBlocksAnimator();
-        ~KBlocksAnimator();
-        
-        bool createFadeAnim(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction);
-        bool deleteFadeAnim();
-        KBlocksAnimFade* getFadeAnim();
-        
-        bool createDropAnim(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction);
-        bool deleteDropAnim();
-        KBlocksAnimDrop* getDropAnim();
-        
-    private slots:
-        void endFadeInAnim();
-        void endFadeOutAnim();
-        void endDropAnim();
-        
-    signals:
-        void animFinished(int animType);
-        
-    protected:
-        KBlocksAnimFade* mpAnimFade;
-        KBlocksAnimDrop* mpAnimDrop;
+
+public:
+    KBlocksAnimator();
+    ~KBlocksAnimator();
+
+    bool createFadeAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction);
+    bool deleteFadeAnim();
+    KBlocksAnimFade *getFadeAnim();
+
+    bool createDropAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction);
+    bool deleteDropAnim();
+    KBlocksAnimDrop *getDropAnim();
+
+private slots:
+    void endFadeInAnim();
+    void endFadeOutAnim();
+    void endDropAnim();
+
+signals:
+    void animFinished(int animType);
+
+protected:
+    KBlocksAnimFade *mpAnimFade;
+    KBlocksAnimDrop *mpAnimDrop;
 };
 
 #endif

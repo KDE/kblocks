@@ -18,43 +18,36 @@ KBlocksAnimator::KBlocksAnimator()
 
 KBlocksAnimator::~KBlocksAnimator()
 {
-    if (mpAnimDrop)
-    {
+    if (mpAnimDrop) {
         delete mpAnimDrop;
         mpAnimDrop = 0;
     }
-    if (mpAnimFade)
-    {
+    if (mpAnimFade) {
         delete mpAnimFade;
         mpAnimFade = 0;
     }
 }
 
-bool KBlocksAnimator::createFadeAnim(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction)
+bool KBlocksAnimator::createFadeAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
 {
-    if (mpAnimFade)
-    {
+    if (mpAnimFade) {
         return false;
     }
-    
+
     mpAnimFade = new KBlocksAnimFade(items, duration, direction);
-    
-    if (direction == QTimeLine::Forward)
-    {
+
+    if (direction == QTimeLine::Forward) {
         connect(mpAnimFade, &KBlocksAnimFade::animationFinished, this, &KBlocksAnimator::endFadeInAnim);
-    }
-    else
-    {
+    } else {
         connect(mpAnimFade, &KBlocksAnimFade::animationFinished, this, &KBlocksAnimator::endFadeOutAnim);
     }
-    
+
     return true;
 }
 
 bool KBlocksAnimator::deleteFadeAnim()
 {
-    if (mpAnimFade)
-    {
+    if (mpAnimFade) {
         delete mpAnimFade;
         mpAnimFade = 0;
         return true;
@@ -62,29 +55,27 @@ bool KBlocksAnimator::deleteFadeAnim()
     return false;
 }
 
-KBlocksAnimFade* KBlocksAnimator::getFadeAnim()
+KBlocksAnimFade *KBlocksAnimator::getFadeAnim()
 {
     return mpAnimFade;
 }
 
-bool KBlocksAnimator::createDropAnim(const QList<KBlocksSvgItem*> & items, int duration, QTimeLine::Direction direction)
+bool KBlocksAnimator::createDropAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
 {
-    if (mpAnimDrop)
-    {
+    if (mpAnimDrop) {
         return false;
     }
-    
+
     mpAnimDrop = new KBlocksAnimDrop(items, duration, direction);
-    
+
     connect(mpAnimDrop, &KBlocksAnimDrop::animationFinished, this, &KBlocksAnimator::endDropAnim);
-    
+
     return true;
 }
 
 bool KBlocksAnimator::deleteDropAnim()
 {
-    if (mpAnimDrop)
-    {
+    if (mpAnimDrop) {
         delete mpAnimDrop;
         mpAnimDrop = 0;
         return true;
@@ -92,7 +83,7 @@ bool KBlocksAnimator::deleteDropAnim()
     return false;
 }
 
-KBlocksAnimDrop* KBlocksAnimator::getDropAnim()
+KBlocksAnimDrop *KBlocksAnimator::getDropAnim()
 {
     return mpAnimDrop;
 }

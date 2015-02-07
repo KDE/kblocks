@@ -29,42 +29,42 @@ class KBlocksAIPlayer : public GamePlayerInterface
 public:
     explicit KBlocksAIPlayer(string name = "");
     ~KBlocksAIPlayer();
-    
+
 public:
-    void startGame(SingleGameInterface * p);
+    void startGame(SingleGameInterface *p);
     void stopGame();
-    
+
     void pauseGame(bool flag);
-    
-    void think(GamePlayer_ActionList * actionList);
-    
+
+    void think(GamePlayer_ActionList *actionList);
+
     string getName();
-    
+
 private:
     string mAIName;
-    
+
     // Private Control Data
     bool mAIStarted;
     bool mAIPaused;
-    
+
     // Phase I   - State Update
-    SingleGameInterface* mpGame;
+    SingleGameInterface *mpGame;
     KBlocksField *mpAIField;
     KBlocksPiece *mpCurPiece;
     KBlocksPiece *mpNextPiece;
     void update();
-    
+
     // Phase II  - Planning
     PlannerInterface *mpPlanner;
     int mNextCount;
     void planning();
-    
+
     // Phase III - Situation Analysis
     EvaluationInterface *mpEvaluatorFinal;
     EvaluationInterface *mpEvaluatorFirst;
     EvaluationInterface *mpEvaluatorPre;
     void situationAdaption();
-    
+
     // Phase IV  - States Evaluation
     int mBestPosition;
     int mBestRotation;

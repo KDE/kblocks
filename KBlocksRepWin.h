@@ -25,49 +25,49 @@ using std::string;
 class KBlocksRepWin : public KMainWindow
 {
     Q_OBJECT
-    
-    public:
-        explicit KBlocksRepWin(const char * replayFile, bool binaryMode = true);
-        ~KBlocksRepWin();
-        
-    public:
-        void setGamesPerLine(int count);
-        
-        void setUpdateInterval(int interval);
-        void setReplayStepLength(int stepLen);
-        
-        void setSnapshotFolder(const QString& folder);
-        void setSnapshotFilename(const QString& fileName);
-        
-        bool replayLoaded();
-        
-    public:
-        void startReplay();
-        void stopReplay();
-        
-    private:
-        QString getTimeString();
-        void snapshotView();
-        
-    private slots:
-        void replayOneStep();
-        
-    private:
-        int mGameCount;
-        int mGamesPerWidth;
-        
-        int mUpdateInterval;
-        QTimer mUpdateTimer;
-        
-        QString mSnapshotFolder;
-        QString mSnapshotFilename;
-        QPixmap mSnapshoter;
-        
-        KBlocksScene* mpGameScene;
-        KBlocksView*  mpGameView;
-        
-        KBlocksGameLogic* mpGameLogic;
-        KBlocksGameReplayer* mpGameReplayer;
+
+public:
+    explicit KBlocksRepWin(const char *replayFile, bool binaryMode = true);
+    ~KBlocksRepWin();
+
+public:
+    void setGamesPerLine(int count);
+
+    void setUpdateInterval(int interval);
+    void setReplayStepLength(int stepLen);
+
+    void setSnapshotFolder(const QString &folder);
+    void setSnapshotFilename(const QString &fileName);
+
+    bool replayLoaded();
+
+public:
+    void startReplay();
+    void stopReplay();
+
+private:
+    QString getTimeString();
+    void snapshotView();
+
+private slots:
+    void replayOneStep();
+
+private:
+    int mGameCount;
+    int mGamesPerWidth;
+
+    int mUpdateInterval;
+    QTimer mUpdateTimer;
+
+    QString mSnapshotFolder;
+    QString mSnapshotFilename;
+    QPixmap mSnapshoter;
+
+    KBlocksScene *mpGameScene;
+    KBlocksView  *mpGameView;
+
+    KBlocksGameLogic *mpGameLogic;
+    KBlocksGameReplayer *mpGameReplayer;
 };
 
 #endif

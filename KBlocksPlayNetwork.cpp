@@ -15,16 +15,16 @@
 #include <unistd.h>
 #endif
 
-KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string& serverIP, int localPort)
+KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string &serverIP, int localPort)
 {
     mServerIP = serverIP;
     mLocalPort = localPort;
-    
+
     mPlayerCount = 0;
     mMaxCapacity = capacity;
-    
+
     maPlayerList = new KBlocksNetPlayer*[mMaxCapacity];
-    
+
     mpGameLogic = new KBlocksGameLogic(mMaxCapacity);
     mpGameLogic->setGameSeed(0);
     mpGameLogic->setGamePunish(false);
@@ -37,14 +37,13 @@ KBlocksPlayNetwork::~KBlocksPlayNetwork()
 {
     mpGameLogic->stopGame();
     delete mpGameLogic;
-    
+
     delete [] maPlayerList;
 }
 
-bool KBlocksPlayNetwork::addGamePlayer(GamePlayerInterface * p)
+bool KBlocksPlayNetwork::addGamePlayer(GamePlayerInterface *p)
 {
-    if (mPlayerCount == mMaxCapacity)
-    {
+    if (mPlayerCount == mMaxCapacity) {
         return false;
     }
     maPlayerList[mPlayerCount] = new KBlocksNetPlayer(p, mServerIP, mLocalPort + mPlayerCount);
@@ -54,8 +53,7 @@ bool KBlocksPlayNetwork::addGamePlayer(GamePlayerInterface * p)
 
 void KBlocksPlayNetwork::clearGamePlayer()
 {
-    for(int i = 0; i < mPlayerCount; i++)
-    {
+    for (int i = 0; i < mPlayerCount; i++) {
         delete maPlayerList[i];
         maPlayerList[i] = 0;
     }
@@ -65,21 +63,18 @@ void KBlocksPlayNetwork::clearGamePlayer()
 void KBlocksPlayNetwork::startGame()
 {
     mpGameLogic->startGame(mPlayerCount);
-    for(int i = 0; i < mPlayerCount; i++)
-    {
+    for (int i = 0; i < mPlayerCount; i++) {
         mpGameLogic->getSingleGame(i)->stopGame();
         maPlayerList[i]->joinGame(i);
     }
-    for(int i = 0; i < mPlayerCount; i++)
-    {
+    for (int i = 0; i < mPlayerCount; i++) {
         maPlayerList[i]->startGame(mpGameLogic->getSingleGame(i));
     }
 }
 
 void KBlocksPlayNetwork::stopGame()
 {
-    for(int i = 0; i < mPlayerCount; i++)
-    {
+    for (int i = 0; i < mPlayerCount; i++) {
         maPlayerList[i]->stopGame();
         maPlayerList[i]->quitGame();
     }
@@ -89,13 +84,10 @@ void KBlocksPlayNetwork::stopGame()
 int KBlocksPlayNetwork::execute()
 {
     mRunning = true;
-    
-    while(mRunning)
-    {
-        for(int i = 0; i < mPlayerCount; i++)
-        {
-            if (!maPlayerList[i]->execute())
-            {
+
+    while (mRunning) {
+        for (int i = 0; i < mPlayerCount; i++) {
+            if (!maPlayerList[i]->execute()) {
                 mRunning = false;
                 break;
             }
@@ -106,7 +98,7 @@ int KBlocksPlayNetwork::execute()
         Sleep(100);
 #endif
     }
-    
+
     return 0;
 }
 

@@ -21,17 +21,17 @@
         return #class;\
     }
 #else
-#define CLASSNAME(class) 
+#define CLASSNAME(class)
 #endif
- 
+
 class EvaluationInterface
 {
-public:  
-    EvaluationInterface(){};
-    virtual ~EvaluationInterface(){};
-    virtual double evaluate(KBlocksField*) = 0;
+public:
+    EvaluationInterface() {};
+    virtual ~EvaluationInterface() {};
+    virtual double evaluate(KBlocksField *) = 0;
 #ifdef DEBUG_EVALUATION
-    virtual const char* evaluationName()
+    virtual const char *evaluationName()
     {
         return "";
     }
@@ -40,34 +40,34 @@ public:
 
 class SpecialEvaluationInterface : public EvaluationInterface
 {
-public:  
+public:
     SpecialEvaluationInterface()
     {
         mpPiece = 0;
         mpField = 0;
     }
-    virtual ~SpecialEvaluationInterface(){};
-    
-    virtual double evaluate(KBlocksField*) = 0;
-    void setCurrentPiece(KBlocksPiece * piece)
+    virtual ~SpecialEvaluationInterface() {};
+
+    virtual double evaluate(KBlocksField *) = 0;
+    void setCurrentPiece(KBlocksPiece *piece)
     {
         mpPiece = piece;
     }
-    void setCurrentBoard(KBlocksField * field)
+    void setCurrentBoard(KBlocksField *field)
     {
         mpField = field;
     }
 
 #ifdef DEBUG_EVALUATION
-    virtual const char* evaluationName()
+    virtual const char *evaluationName()
     {
         return "";
     }
 #endif
 
 protected:
-    KBlocksPiece* mpPiece;
-    KBlocksField* mpField;
+    KBlocksPiece *mpPiece;
+    KBlocksField *mpField;
 };
 
 #endif //EVALUATIONINTERFACE_H

@@ -29,25 +29,23 @@ KBlocksPieceGenerator::~KBlocksPieceGenerator()
 void KBlocksPieceGenerator::genList(int seed)
 {
     srand(seed);
-    
-    for(int i = 0; i < maxCapacity; i++)
-    {
+
+    for (int i = 0; i < maxCapacity; i++) {
         maPieceList[i] = rand() % PieceType_Detail_Max_Count;
     }
-    
+
     pieceIndex = 0;
 }
 
 int KBlocksPieceGenerator::getPiece()
 {
     pieceIndex++;
-    
-    if (pieceIndex > maxCapacity)
-    {
+
+    if (pieceIndex > maxCapacity) {
         pieceIndex = 0;
         genList(maPieceList[0]);
     }
-    
+
     return maPieceList[pieceIndex];
 }
 

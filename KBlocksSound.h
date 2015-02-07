@@ -17,26 +17,27 @@ class KGameTheme;
 
 class KBlocksSound
 {
-  public:
-    explicit KBlocksSound( const QString& themeFile );
+public:
+    explicit KBlocksSound(const QString &themeFile);
     virtual ~KBlocksSound();
-    
-  public:
-    bool loadTheme ( const QString& themeFile );
+
+public:
+    bool loadTheme(const QString &themeFile);
     void readThemeValues();
     void setSoundsEnabled(bool p_enabled);
-    void playSound(const QString& p_sound);
-    KGameTheme * theme() { return m_theme; }
-    
-  private:
-    KGameTheme * m_theme;
+    void playSound(const QString &p_sound);
+    KGameTheme *theme()
+    {
+        return m_theme;
+    }
+
+private:
+    KGameTheme *m_theme;
     QString sndDirectory;
-    Phonon::MediaObject* m_media1;
-    Phonon::MediaObject* m_media2;
+    Phonon::MediaObject *m_media1;
+    Phonon::MediaObject *m_media2;
     bool sndActive;
 
 };
-
-  
 
 #endif

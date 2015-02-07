@@ -21,7 +21,7 @@
 #ifndef DEBUG
 #define DEBUG
 #endif
- 
+
 #ifndef LOG
 #define LOG
 #endif

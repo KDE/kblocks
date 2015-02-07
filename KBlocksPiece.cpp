@@ -9,22 +9,20 @@
 ***************************************************************************/
 #include "KBlocksPiece.h"
 
-const int C_PieceRotationCount[PieceType_Max_Count] =
-{
+const int C_PieceRotationCount[PieceType_Max_Count] = {
     2, 2, 2, 4, 1, 4, 4,
 };
 
-const PiecePoint C_PieceSize[PieceType_Detail_Max_Count] =
-{
+const PiecePoint C_PieceSize[PieceType_Detail_Max_Count] = {
     //Four blocks, also stair-like (Z)
     PiecePoint(2, 3), PiecePoint(3, 2), PiecePoint(2, 3), PiecePoint(3, 2),
-    
+
     //Four blocks, stair-like (S)
     PiecePoint(2, 3), PiecePoint(3, 2), PiecePoint(2, 3), PiecePoint(3, 2),
 
     //Four blocks, straight line (I)
     PiecePoint(1, 4), PiecePoint(4, 1), PiecePoint(1, 4), PiecePoint(4, 1),
-    
+
     //Four blocks, resembling an airplane (T)
     PiecePoint(2, 3), PiecePoint(3, 2), PiecePoint(2, 3), PiecePoint(3, 2),
 
@@ -38,38 +36,36 @@ const PiecePoint C_PieceSize[PieceType_Detail_Max_Count] =
     PiecePoint(2, 3), PiecePoint(3, 2), PiecePoint(2, 3), PiecePoint(3, 2),
 };
 
-const PiecePoint C_PieceOffset[PieceType_Detail_Max_Count] =
-{
+const PiecePoint C_PieceOffset[PieceType_Detail_Max_Count] = {
     //Four blocks, also stair-like (Z)
-    PiecePoint(-1,-1), PiecePoint(-1, 0), PiecePoint(-1,-1), PiecePoint(-1, 0),
-    
+    PiecePoint(-1, -1), PiecePoint(-1, 0), PiecePoint(-1, -1), PiecePoint(-1, 0),
+
     //Four blocks, stair-like (S)
-    PiecePoint(-1,-1), PiecePoint(-1, 0), PiecePoint(-1,-1), PiecePoint(-1, 0),
-    
+    PiecePoint(-1, -1), PiecePoint(-1, 0), PiecePoint(-1, -1), PiecePoint(-1, 0),
+
     //Four blocks, straight line (I)
     PiecePoint(0, -1), PiecePoint(-1, 0), PiecePoint(0, -1), PiecePoint(-1, 0),
-    
+
     //Four blocks, resembling an airplane (T)
-    PiecePoint( 0,-1), PiecePoint(-1,-1), PiecePoint(-1,-1), PiecePoint(-1, 0),
-    
+    PiecePoint(0, -1), PiecePoint(-1, -1), PiecePoint(-1, -1), PiecePoint(-1, 0),
+
     //Four blocks, square (O)
-    PiecePoint(-1,-1), PiecePoint(-1,-1), PiecePoint(-1,-1), PiecePoint(-1,-1),
-    
+    PiecePoint(-1, -1), PiecePoint(-1, -1), PiecePoint(-1, -1), PiecePoint(-1, -1),
+
     //Four blocks, L shape (L)
-    PiecePoint(0, -1), PiecePoint(-1,-1), PiecePoint(-1,-1), PiecePoint(-1, 0),
-    
+    PiecePoint(0, -1), PiecePoint(-1, -1), PiecePoint(-1, -1), PiecePoint(-1, 0),
+
     //Four blocks, also (J)
-    PiecePoint(-1,-1), PiecePoint(-1, 0), PiecePoint( 0,-1), PiecePoint(-1,-1),
+    PiecePoint(-1, -1), PiecePoint(-1, 0), PiecePoint(0, -1), PiecePoint(-1, -1),
 };
 
-const PiecePoint C_PieceCell[PieceType_Detail_Max_Count][KBlocksPiece_CellCount] =
-{
+const PiecePoint C_PieceCell[PieceType_Detail_Max_Count][KBlocksPiece_CellCount] = {
     //Four blocks, also stair-like (Z)
     { PiecePoint(0, 1), PiecePoint(1, 0), PiecePoint(1, 1), PiecePoint(0, 2) },
     { PiecePoint(0, 0), PiecePoint(1, 0), PiecePoint(1, 1), PiecePoint(2, 1) },
     { PiecePoint(0, 1), PiecePoint(1, 0), PiecePoint(1, 1), PiecePoint(0, 2) },
     { PiecePoint(0, 0), PiecePoint(1, 0), PiecePoint(1, 1), PiecePoint(2, 1) },
-    
+
     //Four blocks, stair-like (S)
     { PiecePoint(0, 0), PiecePoint(0, 1), PiecePoint(1, 1), PiecePoint(1, 2) },
     { PiecePoint(0, 1), PiecePoint(1, 1), PiecePoint(1, 0), PiecePoint(2, 0) },
@@ -81,7 +77,7 @@ const PiecePoint C_PieceCell[PieceType_Detail_Max_Count][KBlocksPiece_CellCount]
     { PiecePoint(0, 0), PiecePoint(1, 0), PiecePoint(2, 0), PiecePoint(3, 0) },
     { PiecePoint(0, 0), PiecePoint(0, 1), PiecePoint(0, 2), PiecePoint(0, 3) },
     { PiecePoint(0, 0), PiecePoint(1, 0), PiecePoint(2, 0), PiecePoint(3, 0) },
-    
+
     //Four blocks, resembling an airplane (T)
     { PiecePoint(0, 0), PiecePoint(0, 1), PiecePoint(0, 2), PiecePoint(1, 1) },
     { PiecePoint(0, 1), PiecePoint(1, 1), PiecePoint(2, 1), PiecePoint(1, 0) },
@@ -137,7 +133,7 @@ KBlocksPiece::KBlocksPiece()
     mRotation = 0;
 }
 
-KBlocksPiece::KBlocksPiece(PieceInterface * p)
+KBlocksPiece::KBlocksPiece(PieceInterface *p)
 {
     copy(p);
 }
@@ -146,7 +142,7 @@ KBlocksPiece::~KBlocksPiece()
 {
 }
 
-void KBlocksPiece::copy(PieceInterface * p)
+void KBlocksPiece::copy(PieceInterface *p)
 {
     mType = p->getType();
     mPosX = p->getPosX();
@@ -212,27 +208,25 @@ int KBlocksPiece::getCellCount()
 
 int KBlocksPiece::getCellPosX(int index)
 {
-    if ((index < 0) || (index >= KBlocksPiece_CellCount))
-    {
+    if ((index < 0) || (index >= KBlocksPiece_CellCount)) {
         return -1;
     }
-    
+
     PiecePoint tmpCell = C_PieceCell[mType * PieceRotation_Max_Count + mRotation][index];
     PiecePoint tmpOffset = C_PieceOffset[mType * PieceRotation_Max_Count + mRotation];
-    
+
     return (mPosX + tmpCell.x() + tmpOffset.x());
 }
 
 int KBlocksPiece::getCellPosY(int index)
 {
-    if ((index < 0) || (index >= KBlocksPiece_CellCount))
-    {
+    if ((index < 0) || (index >= KBlocksPiece_CellCount)) {
         return -1;
     }
-    
+
     PiecePoint tmpCell = C_PieceCell[mType * PieceRotation_Max_Count + mRotation][index];
     PiecePoint tmpOffset = C_PieceOffset[mType * PieceRotation_Max_Count + mRotation];
-    
+
     return (mPosY + tmpCell.y() + tmpOffset.y());
 }
 
@@ -253,26 +247,23 @@ int KBlocksPiece::getRotationCount()
     return C_PieceRotationCount[mType];
 }
 
-int KBlocksPiece::getSignature(int * signature)
+int KBlocksPiece::getSignature(int *signature)
 {
-    for(int i = 0; i < KBlocksPiece_CellCount; i++)
-    {
+    for (int i = 0; i < KBlocksPiece_CellCount; i++) {
         signature[i] = -1;
     }
-    
-    for(int i = 0; i < KBlocksPiece_CellCount; i++)
-    {
+
+    for (int i = 0; i < KBlocksPiece_CellCount; i++) {
         PiecePoint tmpPoint = C_PieceCell[mType * PieceRotation_Max_Count + mRotation][i];
-        if (tmpPoint.y() > signature[tmpPoint.x()])
-        {
+        if (tmpPoint.y() > signature[tmpPoint.x()]) {
             signature[tmpPoint.x()] = tmpPoint.y();
         }
     }
-    
+
     return getWidth();
 }
 
-void KBlocksPiece::encodeData(unsigned char * data)
+void KBlocksPiece::encodeData(unsigned char *data)
 {
     data[0] = mType;
     data[1] = mPosX;
@@ -280,7 +271,7 @@ void KBlocksPiece::encodeData(unsigned char * data)
     data[3] = mRotation;
 }
 
-void KBlocksPiece::decodeData(unsigned char * data)
+void KBlocksPiece::decodeData(unsigned char *data)
 {
     mType = data[0];
     mPosX = data[1];

@@ -12,11 +12,11 @@
 KBlocksGameMessage::KBlocksGameMessage(int poolSize)
 {
     mPoolSize = poolSize;
-    
+
     mActionCount = 0;
     maActionType = new int[mPoolSize];
     maActionList = new int[mPoolSize];
-    
+
     mResultCount = 0;
     maResultList = new int[mPoolSize];
 }
@@ -28,36 +28,33 @@ KBlocksGameMessage::~KBlocksGameMessage()
     delete [] maActionType;
 }
 
-bool KBlocksGameMessage::pickGameResult(int * result)
+bool KBlocksGameMessage::pickGameResult(int *result)
 {
-    if (mResultCount == 0)
-    {
+    if (mResultCount == 0) {
         return false;
     }
-    
+
     *result = maResultList[0];
-    
-    for(int j = 0; j < mResultCount - 1; j++)
-    {
+
+    for (int j = 0; j < mResultCount - 1; j++) {
         maResultList[j] = maResultList[j + 1];
     }
-    
+
     mResultCount--;
-    
+
     return true;
 }
 
 bool KBlocksGameMessage::putGameResult(int result)
 {
-    if (mResultCount == mPoolSize)
-    {
+    if (mResultCount == mPoolSize) {
         return false;
     }
-    
+
     maResultList[mResultCount] = result;
-    
+
     mResultCount++;
-    
+
     return true;
 }
 
@@ -66,64 +63,55 @@ void KBlocksGameMessage::clearGameResult()
     mResultCount = 0;
 }
 
-bool KBlocksGameMessage::pickGameAction(int * type, int * action)
+bool KBlocksGameMessage::pickGameAction(int *type, int *action)
 {
-    if (mActionCount == 0)
-    {
+    if (mActionCount == 0) {
         return false;
     }
-    
-    if (*type != GameAction_None)
-    {
-        for(int i = 0; i < mActionCount; i++)
-        {
-            if (*type == maActionType[i])
-            {
+
+    if (*type != GameAction_None) {
+        for (int i = 0; i < mActionCount; i++) {
+            if (*type == maActionType[i]) {
                 *action = maActionList[i];
-                
-                for(int j = i; j < mActionCount - 1; j++)
-                {
+
+                for (int j = i; j < mActionCount - 1; j++) {
                     maActionType[j] = maActionType[j + 1];
                     maActionList[j] = maActionList[j + 1];
                 }
-                
+
                 mActionCount--;
-                
+
                 return true;
             }
         }
-        
+
         return false;
-    }
-    else
-    {
+    } else {
         *type = maActionType[0];
         *action = maActionList[0];
-        
-        for(int j = 0; j < mActionCount - 1; j++)
-        {
+
+        for (int j = 0; j < mActionCount - 1; j++) {
             maActionType[j] = maActionType[j + 1];
             maActionList[j] = maActionList[j + 1];
         }
-        
+
         mActionCount--;
-        
+
         return true;
     }
 }
 
 bool KBlocksGameMessage::putGameAction(int type, int action)
 {
-    if (mActionCount == mPoolSize)
-    {
+    if (mActionCount == mPoolSize) {
         return false;
     }
-    
+
     maActionType[mActionCount] = type;
     maActionList[mActionCount] = action;
-    
+
     mActionCount++;
-    
+
     return true;
 }
 

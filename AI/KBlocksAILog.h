@@ -19,8 +19,7 @@
 #include "../KBlocksPiece.h"
 #include "../KBlocksField.h"
 
-enum Log_Mode
-{
+enum Log_Mode {
     LOG_MODE_PRINTSCREEN,
     LOG_MODE_PRINTFILE,
     LOG_MODE_PRINTBOTH
@@ -39,8 +38,8 @@ void gotoXY(int x, int y);
 void set_channel(int ch);
 void set_screen_channel();
 void set_screen_file_channel(int ch);
-void open_file(const char* fn);
-void open_file(int ch, const char* fn);
+void open_file(const char *fn);
+void open_file(int ch, const char *fn);
 void close_file();
 void close_file(int ch);
 
@@ -48,8 +47,8 @@ void close_file(int ch);
 **  print element  ***********************************************
 *****************************************************************/
 void println();
-void print(const char* s);  
-void println(const char* s);
+void print(const char *s);
+void println(const char *s);
 void print(int i);
 void println(int i);
 void print(int i);
@@ -60,11 +59,11 @@ void println(double d);
 /*****************************************************************
 **  print object  ************************************************
 *****************************************************************/
-void println(KBlocksPiece*);
-void println(KBlocksPiece*, bool full);
-void println(KBlocksPiece*, int x, int y, bool full = false);
+void println(KBlocksPiece *);
+void println(KBlocksPiece *, bool full);
+void println(KBlocksPiece *, int x, int y, bool full = false);
 
-void println(KBlocksField*);
-void println(KBlocksField*, int x, int y);
+void println(KBlocksField *);
+void println(KBlocksField *, int x, int y);
 
 #endif

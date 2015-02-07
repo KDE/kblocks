@@ -16,8 +16,7 @@
 
 #include "../KBlocksField.h"
 
-enum DecisionFeatureEnumeration
-{  
+enum DecisionFeatureEnumeration {
     DF_HEIGHT_MAX,
     DF_PEEKS_COUNT,
     DF_BLOCK_SCAN,
@@ -27,7 +26,7 @@ enum DecisionFeatureEnumeration
     DF_DEEP_NARROW
 };
 
-bool getDecisionFeature(const DecisionFeatureEnumeration, KBlocksField*);
+bool getDecisionFeature(const DecisionFeatureEnumeration, KBlocksField *);
 
 /******************************************************
 ****   Evaluation Function    *************************
@@ -35,180 +34,171 @@ bool getDecisionFeature(const DecisionFeatureEnumeration, KBlocksField*);
 class BaseEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static BaseEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new BaseEvaluation();
         }
         return _instance;
     }
     CLASSNAME(BaseEvaluation)
-    
+
 private:
-    BaseEvaluation(){};
-    ~BaseEvaluation(){};
+    BaseEvaluation() {};
+    ~BaseEvaluation() {};
     static BaseEvaluation *_instance;
 };
 /*###################################################*/
 class HalfBaseEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static HalfBaseEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new HalfBaseEvaluation();
         }
         return _instance;
     }
     CLASSNAME(HalfBaseEvaluation)
-    
+
 private:
-    HalfBaseEvaluation(){};
-    ~HalfBaseEvaluation(){};
+    HalfBaseEvaluation() {};
+    ~HalfBaseEvaluation() {};
     static HalfBaseEvaluation *_instance;
 };
 /*###################################################*/
 class WellsFillerEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static WellsFillerEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new WellsFillerEvaluation();
         }
         return _instance;
     }
     CLASSNAME(WellsFillerEvaluation)
-    
+
 private:
-    WellsFillerEvaluation(){};
-    ~WellsFillerEvaluation(){};
+    WellsFillerEvaluation() {};
+    ~WellsFillerEvaluation() {};
     static WellsFillerEvaluation *_instance;
 };
 /*###################################################*/
 class HeightKillerEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static HeightKillerEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new HeightKillerEvaluation();
         }
         return _instance;
     }
     CLASSNAME(HeightKillerEvaluation)
-    
+
 private:
-    HeightKillerEvaluation(){};
-    ~HeightKillerEvaluation(){};
+    HeightKillerEvaluation() {};
+    ~HeightKillerEvaluation() {};
     static HeightKillerEvaluation *_instance;
 };
 /*###################################################*/
 class BlockRemoverEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static BlockRemoverEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new BlockRemoverEvaluation();
         }
         return _instance;
     }
     CLASSNAME(BlockRemoverEvaluation)
-    
+
 private:
-    BlockRemoverEvaluation(){};
-    ~BlockRemoverEvaluation(){};
+    BlockRemoverEvaluation() {};
+    ~BlockRemoverEvaluation() {};
     static BlockRemoverEvaluation *_instance;
 };
 /*###################################################*/
 class DeepNarrowRemoverEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static DeepNarrowRemoverEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new DeepNarrowRemoverEvaluation();
         }
         return _instance;
     }
     CLASSNAME(DeepNarrowRemoverEvaluation)
-    
+
 private:
-    DeepNarrowRemoverEvaluation(){};
-    ~DeepNarrowRemoverEvaluation(){};
+    DeepNarrowRemoverEvaluation() {};
+    ~DeepNarrowRemoverEvaluation() {};
     static DeepNarrowRemoverEvaluation *_instance;
 };
 /*###################################################*/
 class TetrisPreparingEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static TetrisPreparingEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new TetrisPreparingEvaluation();
         }
         return _instance;
     }
     CLASSNAME(TetrisPreparingEvaluation)
-    
+
 private:
-    TetrisPreparingEvaluation(){};
-    ~TetrisPreparingEvaluation(){};
+    TetrisPreparingEvaluation() {};
+    ~TetrisPreparingEvaluation() {};
     static TetrisPreparingEvaluation *_instance;
 };
 /*###################################################*/
 class TetrisEliminationEvaluation : public EvaluationInterface
 {
-public:  
-    double evaluate(KBlocksField*);
+public:
+    double evaluate(KBlocksField *);
     static TetrisEliminationEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new TetrisEliminationEvaluation();
         }
         return _instance;
     }
     CLASSNAME(TetrisEliminationEvaluation)
-    
+
 private:
-    TetrisEliminationEvaluation(){};
-    ~TetrisEliminationEvaluation(){};
+    TetrisEliminationEvaluation() {};
+    ~TetrisEliminationEvaluation() {};
     static TetrisEliminationEvaluation *_instance;
 };
 /*###################################################*/
 class NBSEvaluation : public SpecialEvaluationInterface
 {
 public:
-    double evaluate(KBlocksField*);
+    double evaluate(KBlocksField *);
     static NBSEvaluation *instance()
     {
-        if ( _instance == 0 )
-        {
+        if (_instance == 0) {
             _instance = new NBSEvaluation();
         }
         return _instance;
     }
     CLASSNAME(NBSEvaluation)
-    
+
 private:
-    NBSEvaluation(){};
-    ~NBSEvaluation(){};
+    NBSEvaluation() {};
+    ~NBSEvaluation() {};
     static NBSEvaluation *_instance;
 };
 /*###################################################*/

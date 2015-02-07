@@ -12,28 +12,28 @@
 
 class PieceInterface
 {
-    public:
-        PieceInterface(){};
-        virtual ~PieceInterface(){};
-    
-    public:
-        virtual int  toValue() = 0;
-        
-        virtual int  getType() = 0;
-        virtual int  getPosX() = 0;
-        virtual int  getPosY() = 0;
-        virtual int  getRotation() = 0;
-        
-        virtual int  getCellCount() = 0;
-        virtual int  getRotationCount() = 0;
-        virtual int  getCellPosX(int index) = 0;
-        virtual int  getCellPosY(int index) = 0;
-        
-    protected:
-        int mType;
-        int mPosX;
-        int mPosY;
-        int mRotation;
+public:
+    PieceInterface() {};
+    virtual ~PieceInterface() {};
+
+public:
+    virtual int  toValue() = 0;
+
+    virtual int  getType() = 0;
+    virtual int  getPosX() = 0;
+    virtual int  getPosY() = 0;
+    virtual int  getRotation() = 0;
+
+    virtual int  getCellCount() = 0;
+    virtual int  getRotationCount() = 0;
+    virtual int  getCellPosX(int index) = 0;
+    virtual int  getCellPosY(int index) = 0;
+
+protected:
+    int mType;
+    int mPosX;
+    int mPosY;
+    int mRotation;
 };
 
 #endif //PIECE_INTERFACE

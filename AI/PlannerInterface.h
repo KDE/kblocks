@@ -18,19 +18,21 @@
 class PlannerInterface
 {
 public:
-    explicit PlannerInterface(KBlocksField * p){mpField = p;};
-    virtual ~PlannerInterface(){};
-    
-    virtual int  process(KBlocks_PieceType_Detail) = 0;
-    
-    virtual bool getNextBoardStatus(int, KBlocksField*) = 0;
-    virtual bool getNextPieceState(int, KBlocksPiece*) = 0;
-    
-    virtual int  count() = 0;
-    
-protected:
-    KBlocksField* mpField;
-};
+    explicit PlannerInterface(KBlocksField *p)
+    {
+        mpField = p;
+    };
+    virtual ~PlannerInterface() {};
 
+    virtual int  process(KBlocks_PieceType_Detail) = 0;
+
+    virtual bool getNextBoardStatus(int, KBlocksField *) = 0;
+    virtual bool getNextPieceState(int, KBlocksPiece *) = 0;
+
+    virtual int  count() = 0;
+
+protected:
+    KBlocksField *mpField;
+};
 
 #endif

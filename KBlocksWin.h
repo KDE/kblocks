@@ -26,59 +26,59 @@ class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
 
-    public:
-        KBlocksWin(KBlocksGameLogic * p, KBlocksPlayManager * pM, int capacity, int gamecount);
-        ~KBlocksWin();
-        
-    public:
-        void setGamesPerLine(int count);
-        void setGameAnimEnabled(bool flag);
-        void setWaitForAllUpdate(bool flag);
-        void setUpdateInterval(int interval);
-        
-        void addScore(int gameIndex, int lineCount);
-        
-    private slots:
-        void startGame();
-        void stopGame();
-        void pauseGame();
-        
-        void singleGame();
-        void pveStepGame();
-        
-        void focusEvent(bool flag);
-        
-        void configureSettings();
-        void showHighscore();
-        void onScoreChanged(int index, int points, int lines, int level);
-        void onIsHighscore(int index, int points, int level);
-        void levelChanged();
-        void setSoundsEnabled(bool enabled);
-        
-    private:
-        void setupGUILayout();
+public:
+    KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity, int gamecount);
+    ~KBlocksWin();
 
-    protected:
-        virtual void closeEvent(QCloseEvent *event);
-        
-    private:
-        int mMaxGameCapacity;
-        int mGameCount;
-        
-        bool mGameAnim;
-        bool mWaitForAll;
-        
-        KBlocksScene* mpGameScene;
-        KBlocksView*  mpGameView;
-        
-        KBlocksGameLogic* mpGameLogic;
-        KBlocksPlayManager* mpPlayManager;
-        
-        KBlocksKeyboardPlayer* mpKBPlayer;
-        KBlocksAIPlayer* mpAIPlayer;
-        
-        QAction* m_pauseAction;
-        QLabel* mScore;
+public:
+    void setGamesPerLine(int count);
+    void setGameAnimEnabled(bool flag);
+    void setWaitForAllUpdate(bool flag);
+    void setUpdateInterval(int interval);
+
+    void addScore(int gameIndex, int lineCount);
+
+private slots:
+    void startGame();
+    void stopGame();
+    void pauseGame();
+
+    void singleGame();
+    void pveStepGame();
+
+    void focusEvent(bool flag);
+
+    void configureSettings();
+    void showHighscore();
+    void onScoreChanged(int index, int points, int lines, int level);
+    void onIsHighscore(int index, int points, int level);
+    void levelChanged();
+    void setSoundsEnabled(bool enabled);
+
+private:
+    void setupGUILayout();
+
+protected:
+    virtual void closeEvent(QCloseEvent *event);
+
+private:
+    int mMaxGameCapacity;
+    int mGameCount;
+
+    bool mGameAnim;
+    bool mWaitForAll;
+
+    KBlocksScene *mpGameScene;
+    KBlocksView  *mpGameView;
+
+    KBlocksGameLogic *mpGameLogic;
+    KBlocksPlayManager *mpPlayManager;
+
+    KBlocksKeyboardPlayer *mpKBPlayer;
+    KBlocksAIPlayer *mpAIPlayer;
+
+    QAction *m_pauseAction;
+    QLabel *mScore;
 };
 
 #endif

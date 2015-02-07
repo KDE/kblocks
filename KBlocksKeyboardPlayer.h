@@ -24,50 +24,50 @@ using namespace std;
 class KBlocksKeyboardPlayer : public QObject, public GamePlayerInterface
 {
     Q_OBJECT
-    
-    public:
-        explicit KBlocksKeyboardPlayer(KXmlGuiWindow * parent, string name = "", bool netMode = false);
-        ~KBlocksKeyboardPlayer();
-        
-    public:
-        void startGame(SingleGameInterface * p);
-        void stopGame();
-        
-        void pauseGame(bool flag);
-        
-        void think(GamePlayer_ActionList * actionList);
-        
-        string getName();
-        
-    private:
-        void bindKeys();
-        
-    private slots:
-        void moveLeft();
-        void moveRight();
-        void moveDown();
-        void pushDown();
-        void rotateCW();
-        void rotateCCW();
-        
-    protected:
-        SingleGameInterface* mpGame;
-        bool mPauseFlag;
-        
-        QAction * rotatecw;
-        QAction * rotateccw;
-        QAction * moveleft;
-        QAction * moveright;
-        QAction * movedown;
-        QAction * pushdown;
-        
-    private:
-        bool mNetMode;
-        string mPlayerName;
-        GamePlayer_ActionList mActionList;
-        
-        KXmlGuiWindow* mpKeyWindow;
-        KActionCollection* mpKeyShortcuts;
+
+public:
+    explicit KBlocksKeyboardPlayer(KXmlGuiWindow *parent, string name = "", bool netMode = false);
+    ~KBlocksKeyboardPlayer();
+
+public:
+    void startGame(SingleGameInterface *p);
+    void stopGame();
+
+    void pauseGame(bool flag);
+
+    void think(GamePlayer_ActionList *actionList);
+
+    string getName();
+
+private:
+    void bindKeys();
+
+private slots:
+    void moveLeft();
+    void moveRight();
+    void moveDown();
+    void pushDown();
+    void rotateCW();
+    void rotateCCW();
+
+protected:
+    SingleGameInterface *mpGame;
+    bool mPauseFlag;
+
+    QAction *rotatecw;
+    QAction *rotateccw;
+    QAction *moveleft;
+    QAction *moveright;
+    QAction *movedown;
+    QAction *pushdown;
+
+private:
+    bool mNetMode;
+    string mPlayerName;
+    GamePlayer_ActionList mActionList;
+
+    KXmlGuiWindow *mpKeyWindow;
+    KActionCollection *mpKeyShortcuts;
 };
 
 #endif

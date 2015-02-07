@@ -14,24 +14,24 @@
 
 class GameLogicInterface
 {
-    public:
-        GameLogicInterface(){};
-        virtual ~GameLogicInterface(){};
-    
-    public:
-        virtual SingleGameInterface* getSingleGame(int) = 0;
-        
-        virtual int levelUpGame(int) = 0;
-        virtual int updateGame(int*) = 0;
-        
-        virtual bool startGame(int) = 0;
-        virtual bool stopGame() = 0;
-        
-        virtual void pauseGame(bool) = 0;
-        virtual void continueGame() = 0;
-        
-    protected:
-        SingleGameInterface** maGameList;
+public:
+    GameLogicInterface() {};
+    virtual ~GameLogicInterface() {};
+
+public:
+    virtual SingleGameInterface *getSingleGame(int) = 0;
+
+    virtual int levelUpGame(int) = 0;
+    virtual int updateGame(int *) = 0;
+
+    virtual bool startGame(int) = 0;
+    virtual bool stopGame() = 0;
+
+    virtual void pauseGame(bool) = 0;
+    virtual void continueGame() = 0;
+
+protected:
+    SingleGameInterface **maGameList;
 };
 
 #endif //GAME_LOGIC_INTERFACE

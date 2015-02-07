@@ -18,8 +18,7 @@
 #include <QPoint>
 #include <QList>
 
-enum KBlocks_Layout_Update_Type
-{
+enum KBlocks_Layout_Update_Type {
     KBlocksLayout_Update_FreezePiece = 0,
     KBlocksLayout_Update_RemoveLine,
     KBlocksLayout_Update_PunishLine,
@@ -28,38 +27,38 @@ enum KBlocks_Layout_Update_Type
 
 class KBlocksLayout
 {
-    public:
-        KBlocksLayout(FieldInterface * pF, PieceInterface * pA, PieceInterface * pN);
-        ~KBlocksLayout();
-        
-        void beginUpdate(QList<int> * list);
-        void updateLayout(int type, const QList<int> & dataList);
-        void endUpdate();
-        
-        void updateSnapshot();
-        
-        int getFieldColor(int posX, int posY);
-        int getPrepareColor(int posX, int posY);
-        
-    private:
-        void updatePrepareArea();
-        void updateFreezePiece(const QList<int> & dataList);
-        void updateRemoveLine(const QList<int> & dataList);
-        void updatePunishLine(const QList<int> & dataList);
-        
-    private:
-        FieldInterface* mpGameField;
-        PieceInterface* mpActivePiece;
-        PieceInterface* mpNextPiece;
-        
-        int** boardInfo;
-        int** prepareInfo;
-        
-        int mPieceCellCount;
-        QPoint** mpLastPiecePos;
-        
-        int mWidth;
-        int mHeight;
+public:
+    KBlocksLayout(FieldInterface *pF, PieceInterface *pA, PieceInterface *pN);
+    ~KBlocksLayout();
+
+    void beginUpdate(QList<int> *list);
+    void updateLayout(int type, const QList<int> &dataList);
+    void endUpdate();
+
+    void updateSnapshot();
+
+    int getFieldColor(int posX, int posY);
+    int getPrepareColor(int posX, int posY);
+
+private:
+    void updatePrepareArea();
+    void updateFreezePiece(const QList<int> &dataList);
+    void updateRemoveLine(const QList<int> &dataList);
+    void updatePunishLine(const QList<int> &dataList);
+
+private:
+    FieldInterface *mpGameField;
+    PieceInterface *mpActivePiece;
+    PieceInterface *mpNextPiece;
+
+    int **boardInfo;
+    int **prepareInfo;
+
+    int mPieceCellCount;
+    QPoint **mpLastPiecePos;
+
+    int mWidth;
+    int mHeight;
 };
 
 #endif

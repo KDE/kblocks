@@ -14,7 +14,7 @@
 #include <QPixmapCache>
 #include <QPainter>
 
-KBlocksGraphics::KBlocksGraphics ( const QString& themeFile )
+KBlocksGraphics::KBlocksGraphics(const QString &themeFile)
 {
     m_theme = new KGameTheme();
     if (!m_theme->load(themeFile)) {
@@ -31,7 +31,7 @@ KBlocksGraphics::~KBlocksGraphics()
     delete m_renderer;
 }
 
-bool KBlocksGraphics::loadTheme ( const QString& themeFile )
+bool KBlocksGraphics::loadTheme(const QString &themeFile)
 {
     if (!m_theme->load(themeFile)) {
         qWarning() << "Error loading KBlocks .desktop theme" << themeFile << endl;
@@ -47,8 +47,7 @@ bool KBlocksGraphics::loadTheme ( const QString& themeFile )
     return true;
 }
 
-
-void KBlocksGraphics::adjustForSize(const QSize& newsize)
+void KBlocksGraphics::adjustForSize(const QSize &newsize)
 {
     Q_UNUSED(newsize)
     //Reset our values
@@ -85,44 +84,18 @@ void KBlocksGraphics::readThemeValues()
 {
     //Extract values from SVG elements
     QRectF bounds;
-    bounds = m_renderer->boundsOnElement ( "BLOCK_SIZE" );
+    bounds = m_renderer->boundsOnElement("BLOCK_SIZE");
     m_Block_Size = bounds.width();
-    bounds = m_renderer->boundsOnElement ( "VIEW" );
+    bounds = m_renderer->boundsOnElement("VIEW");
     m_View_Size_Width = bounds.width();
     m_View_Size_Height = bounds.height();
-    bounds = m_renderer->boundsOnElement ( "PLAY_AREA" );
+    bounds = m_renderer->boundsOnElement("PLAY_AREA");
     m_PlayArea_OffsetPoint_X = bounds.x();
     m_PlayArea_OffsetPoint_Y = bounds.y();
-    m_PlayArea_NumberOfBlocks_X = bounds.width()/(double)m_Block_Size;
-    m_PlayArea_NumberOfBlocks_Y = bounds.height()/(double)m_Block_Size;
-    bounds = m_renderer->boundsOnElement ( "NEXTPIECE_AREA" );
+    m_PlayArea_NumberOfBlocks_X = bounds.width() / (double)m_Block_Size;
+    m_PlayArea_NumberOfBlocks_Y = bounds.height() / (double)m_Block_Size;
+    bounds = m_renderer->boundsOnElement("NEXTPIECE_AREA");
     m_PreviewArea_CenterPoint_X = bounds.center().x();
     m_PreviewArea_CenterPoint_Y = bounds.center().y();
 }
-
-/*
-QPixmap KBlocksGraphics::elementPixmap(int width, int height, const QString & elementid) {
-    QPixmap pm;
-    if (!QPixmapCache::find(pixmapCacheNameFromElementId(width, height, elementid), pm)) {
-        pm = renderElement(width, height, elementid);
-        QPixmapCache::insert(pixmapCacheNameFromElementId(width, height, elementid), pm);
-    }
-    return pm;
-}
-
-QPixmap KBlocksGraphics::renderElement(int width, int height, const QString & elementid) {
-    QImage qiRend(QSize(width, height),QImage::Format_ARGB32_Premultiplied);
-    qiRend.fill(0);
-
-    if (m_renderer->isValid()) {
-        QPainter p(&qiRend);
-        m_renderer->render(&p, elementid, QRectF(0,0,width,height));
-    }
-    return QPixmap::fromImage(qiRend);
-}
-
-QString KBlocksGraphics::pixmapCacheNameFromElementId(int width, int height, const QString & elementid) {
-    return elementid + QString("W%1H%2").arg(width).arg(height);
-}
-*/
 

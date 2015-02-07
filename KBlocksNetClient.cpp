@@ -9,13 +9,13 @@
 ***************************************************************************/
 #include "KBlocksNetClient.h"
 
-KBlocksNetClient::KBlocksNetClient(const QString& remoteIP, quint16 localPort)
+KBlocksNetClient::KBlocksNetClient(const QString &remoteIP, quint16 localPort)
 {
     mLocalAddress = QHostAddress::Any;
     mLocalPort = localPort;
-    
+
     parseIPString(remoteIP, &mRemoteAddress, &mRemotePort);
-    
+
     mpClientSocket = new QUdpSocket(this);
     mpClientSocket->bind(mLocalAddress, mLocalPort);
     connect(mpClientSocket, &QUdpSocket::readyRead, this, &KBlocksNetClient::receivedData);
@@ -26,26 +26,24 @@ KBlocksNetClient::~KBlocksNetClient()
     delete mpClientSocket;
 }
 
-int KBlocksNetClient::sendData(int count, char * data)
+int KBlocksNetClient::sendData(int count, char *data)
 {
     int ret = mpClientSocket->writeDatagram(data, count, mRemoteAddress, mRemotePort);
-    if (ret < 0)
-    {
+    if (ret < 0) {
         printf("Send error\n");
     }
     return ret;
 }
 
-int KBlocksNetClient::recvData(int count, char * data)
+int KBlocksNetClient::recvData(int count, char *data)
 {
-    if (!mpClientSocket->hasPendingDatagrams())
-    {
+    if (!mpClientSocket->hasPendingDatagrams()) {
         return -1;
     }
     return mpClientSocket->readDatagram(data, count);
 }
 
-bool KBlocksNetClient::parseIPString(const QString& input, QHostAddress * ip, quint16 * port)
+bool KBlocksNetClient::parseIPString(const QString &input, QHostAddress *ip, quint16 *port)
 {
     bool result = false;
     ip->setAddress(input.left(input.indexOf(":")));

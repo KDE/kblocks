@@ -9,8 +9,7 @@
 ***************************************************************************/
 #include "KBlocksDefine.h"
 
-const char * KBlocksRecordText[RecordDataType_Max_Count] =
-{
+const char *KBlocksRecordText[RecordDataType_Max_Count] = {
     "GameCount",
     "GameSeed",
     "Skipped",

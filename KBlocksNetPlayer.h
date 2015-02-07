@@ -16,30 +16,30 @@
 
 class KBlocksNetPlayer
 {
-    public:
-        KBlocksNetPlayer(GamePlayerInterface * player, const string& serverIP, int localPort);
-        ~KBlocksNetPlayer();
-        
-    public:
-        void joinGame(int gameIndex);
-        void quitGame();
-        
-        void startGame(KBlocksSingleGame * p);
-        void stopGame();
-        
-        bool execute();
-        
-    private:
-        int  formIntFromByte(char * data);
-        
-    private:
-        GamePlayerInterface* mpPlayer;
-        KBlocksSingleGame* mpGame;
-        KBlocksNetClient* mpNetClient;
-        
-        int mSendLength;
-        
-        GamePlayer_ActionList mActionList;
+public:
+    KBlocksNetPlayer(GamePlayerInterface *player, const string &serverIP, int localPort);
+    ~KBlocksNetPlayer();
+
+public:
+    void joinGame(int gameIndex);
+    void quitGame();
+
+    void startGame(KBlocksSingleGame *p);
+    void stopGame();
+
+    bool execute();
+
+private:
+    int  formIntFromByte(char *data);
+
+private:
+    GamePlayerInterface *mpPlayer;
+    KBlocksSingleGame *mpGame;
+    KBlocksNetClient *mpNetClient;
+
+    int mSendLength;
+
+    GamePlayer_ActionList mActionList;
 };
 
 #endif

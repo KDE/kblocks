@@ -19,8 +19,7 @@
 using std::string;
 using std::list;
 
-struct _game_record_data
-{
+struct _game_record_data {
     int index;
     int type;
     int value;
@@ -29,23 +28,23 @@ struct _game_record_data
 
 class KBlocksGameRecorder
 {
-    public:
-        KBlocksGameRecorder();
-        ~KBlocksGameRecorder();
-        
-    public:
-        void append(int index, int type, int value);
-        void save(const char * fileName, bool isBinaryMode = true);
-        
-    private:
-        void saveText(FILE * pFile);
-        void saveBinary(FILE * pFile);
-        void writeByte(FILE * pFile, int value);
-        
-        timeLong getMillisecOfNow();
-        
-    private:
-        list<_game_record_data> mGameRecord;
+public:
+    KBlocksGameRecorder();
+    ~KBlocksGameRecorder();
+
+public:
+    void append(int index, int type, int value);
+    void save(const char *fileName, bool isBinaryMode = true);
+
+private:
+    void saveText(FILE *pFile);
+    void saveBinary(FILE *pFile);
+    void writeByte(FILE *pFile, int value);
+
+    timeLong getMillisecOfNow();
+
+private:
+    list<_game_record_data> mGameRecord;
 };
 
 #endif
