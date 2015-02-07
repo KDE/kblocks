@@ -332,6 +332,8 @@ int main(int argc, char *argv[])
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kblocks")));
+
     // Get game mode
     int mGameMode = parser.value("mode").toInt();
 
