@@ -27,6 +27,7 @@
   <name xml:lang="sv">Kblock</name>
   <name xml:lang="uk">KBlocks</name>
   <name xml:lang="x-test">xxKBlocksxx</name>
+  <name xml:lang="zh-CN">KBlocks</name>
   <name xml:lang="zh-TW">KBlocks</name>
   <summary>Falling Blocks Game</summary>
   <summary xml:lang="bs">Igra padajući blokovi</summary>
@@ -49,6 +50,7 @@
   <summary xml:lang="sv">Spel med fallande block</summary>
   <summary xml:lang="uk">Гра з блоками, що падають</summary>
   <summary xml:lang="x-test">xxFalling Blocks Gamexx</summary>
+  <summary xml:lang="zh-CN">俄罗斯方块游戏</summary>
   <summary xml:lang="zh-TW">類似俄羅斯方塊遊戲</summary>
   <description>
     <p>
