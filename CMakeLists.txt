@@ -90,7 +90,7 @@ set(kblocks_SRCS
 
 kconfig_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
-file(GLOB ICONS_SRCS "hi*-apps-kblocks.png")
+file(GLOB ICONS_SRCS "*-apps-kblocks.png")
 ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kblocks ${kblocks_SRCS})
@@ -107,7 +107,7 @@ install( FILES kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
 install( FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kblocks )
 install( FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_CONFDIR} )
 
-ecm_install_icons( ICONS hi128-apps-kblocks.png  hi16-apps-kblocks.png  hi22-apps-kblocks.png  hi32-apps-kblocks.png  hi48-apps-kblocks.png  hi64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR}   )
+ecm_install_icons( ICONS 128-apps-kblocks.png  16-apps-kblocks.png  22-apps-kblocks.png  32-apps-kblocks.png  48-apps-kblocks.png  64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
 
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
