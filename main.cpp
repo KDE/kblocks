@@ -310,7 +310,7 @@ int main(int argc, char *argv[])
     // Game abouts...
 
     KAboutData aboutData("kblocks",
-                         i18n("KBlock"),
+                         i18n("KBlocks"),
                          QLatin1String("0.4"),
                          i18n("A falling blocks game for KDE"),
                          KAboutLicense::GPL,
