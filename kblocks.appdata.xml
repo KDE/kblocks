@@ -18,6 +18,7 @@
   <name xml:lang="pl">KBloki</name>
   <name xml:lang="pt">KBlocks</name>
   <name xml:lang="pt-BR">KBlocks</name>
+  <name xml:lang="ru">KBlocks</name>
   <name xml:lang="sk">KBlocks</name>
   <name xml:lang="sl">KBlocks</name>
   <name xml:lang="sr">К‑блокови</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="pl">Gra w spadające bloki</summary>
   <summary xml:lang="pt">Jogo de Blocos em Queda</summary>
   <summary xml:lang="pt-BR">Jogo estilo Tetris</summary>
+  <summary xml:lang="ru">Клон игры Тетрис</summary>
   <summary xml:lang="sk">Hra s padajúcimi blokmi</summary>
   <summary xml:lang="sl">Igra padajočih kock</summary>
   <summary xml:lang="sr">Игра падајућих блокова</summary>
@@ -67,6 +69,7 @@
     <p xml:lang="pl">KBloki jest klasyczną grą w spadające bloki. Celem jest takie układanie spadających bloków, aby tworzyły one poziome linie bez przerw. Po ułożeniu takiej linii jest ona usuwana zwalniając miejsce w obszarze gry. Brak miejsca na spadające bloki oznacza przegraną.</p>
     <p xml:lang="pt">O KBlocks é o clássico jogo de blocos em queda. A ideia é empilhar os blocos em queda para criar linhas horizontais sem lacunas. Quando uma linha ficar completa, será removida, ficando mais espaço disponível na área de jogo. Quando não existir mais espaço para os blocos caírem, o jogo terminou.</p>
     <p xml:lang="pt-BR">KBlocks é o clássico jogo de encaixar blocos A ideia é empilhar os blocos para criar linhas horizontais sem lacunas. Quando completa-se uma linha, a mesma é removida, abrindo mais espaço na área de jogo. O jogo acaba quando não há mais espaço suficiente para os blocos caírem.</p>
+    <p xml:lang="ru">KBlocks — клон игры Тетрис. Нужно складывать падающий блоки так, чтобы получались горизонтальные ряды без пропусков. Когда ряд заполнен, он удаляется, освобождая место на игровом поле. Игра заканчивается, когда блоку негде упасть.</p>
     <p xml:lang="sk">KBlocks je klasická hra padajúcich blokov. Cieľom je na seba padajúcimi blokmi vytvoriť horizontálne línie bez medzier. Ak je linka dokončená, je odstránená, a viac priestoru je k dispozícii na hru. Keď nie je dostatok miesta pre bloky na padanie, hra sa končí.</p>
     <p xml:lang="sl">KBlocks je klasična igra padajočih kock. V igri združujete padajoče kocke v vodoravne vrste brez vmesnih praznin. Ko se vrsta odstrani, se sprosti tudi igralna površina. Igre je konec, ko zmanjka prostora za padajoče kocke.</p>
     <p xml:lang="sr">К‑блокови је класична игра падајућих блокова. Идеја је да се падајући блокови слажу у водоравне редове без процепа. Ред се уклања када се доврши, остављајући више простора у зони игре. Када више нема простора за нове блокове, партија је готова.</p>
