@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=KBlocks
-Name[ast]=KBlocks
 Name[bs]=KBlocks
 Name[ca]=KBlocks
 Name[ca@valencia]=KBlocks
@@ -56,7 +55,6 @@ Exec=kblocks -qwindowtitle %c
 Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
-GenericName[ast]=Xuegu de bloques en pimplón
 GenericName[bs]=Igra padajući blokovi
 GenericName[ca]=Joc de blocs que cauen
 GenericName[ca@valencia]=Joc de blocs que cauen
