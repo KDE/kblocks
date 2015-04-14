@@ -301,12 +301,12 @@ int gamePlayerMode(KBlocksConfigManager *config, const QApplication &app)
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
+
     Kdelibs4ConfigMigrator migrate(QLatin1String("kblocks"));
     migrate.setConfigFiles(QStringList() << QLatin1String("kblocksrc"));
     migrate.setUiFiles(QStringList() << QLatin1String("kblocksui.rc"));
     migrate.migrate();
-
-    QApplication app(argc, argv);
 
     // Game abouts...
 
