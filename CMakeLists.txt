@@ -100,7 +100,7 @@ install(TARGETS kblocks  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 ########### install files ###############
 
 install( PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES kblocks.appdata.xml DESTINATION  share/appdata )
+install( FILES kblocks.appdata.xml DESTINATION  ${DATA_INSTALL_DIR} )
 install( FILES kblocks.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kblocksui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kblocks )
 install( FILES kblocks.knsrc  DESTINATION  ${CONFIG_INSTALL_DIR} )
