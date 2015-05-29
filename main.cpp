@@ -307,7 +307,7 @@ int main(int argc, char *argv[])
     migrate.setConfigFiles(QStringList() << QLatin1String("kblocksrc"));
     migrate.setUiFiles(QStringList() << QLatin1String("kblocksui.rc"));
     migrate.migrate();
-
+    KLocalizedString::setApplicationDomain("kblocks");
     // Game abouts...
 
     KAboutData aboutData("kblocks",
