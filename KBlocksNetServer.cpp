@@ -457,7 +457,7 @@ void KBlocksNetServer::printGameResult()
     for (int gameID = 0; gameID < mGameCount; gameID++) {
         QString tmpPlayerName = mPlayerName[gameID];
         printf("Game ID : %d\n", gameID);
-        printf("\tPlayer Name : %s\n", tmpPlayerName.toAscii().constData());
+        printf("\tPlayer Name : %s\n", tmpPlayerName.toLatin1().constData());
         printf("\tTotal Score : %d\n", maGameScoreList[gameID]->getLineCount());
     }
     printf("-----------------------------\n");
