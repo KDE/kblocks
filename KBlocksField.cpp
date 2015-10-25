@@ -115,11 +115,35 @@ bool KBlocksField::checkFilledLine(int lineID)
 
 void KBlocksField::removeFilledLine(int lineID)
 {
+    // This function removes line number lineID which has been identified as
+    // containing no empty cells (by KBlocksField::checkFilledLine).
+    //
+    // The line is removed by moving the contents of all cells above
+    // line #lineID one line down, effectively overwriting the contents
+    // of line #lineID.
+    //
+    // To this end we iterate over all lines, starting at line #lineID and
+    // ending with the line just below the top line.
+
     for (int i = lineID; i > 0; i--) {
+
+        // For each line we iterate over all cells ...
+
         for (int j = 0; j < mWidth; j++) {
+
+            // ... and set the content of the cell to the content of the
+            // same cell one line above.
+
             maBoard[i][j] = maBoard[i - 1][j];
         }
     }
+
+    // Finally, the top line is filled with empty cells ...
+    for (int j = 0; j < mWidth; j++) {
+        maBoard[0][j] = false;
+    }
+
+    // ... and the modification ID is increased by one.
     mCurModifyID += 1;
 }
 
