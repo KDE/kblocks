@@ -90,7 +90,7 @@ void KBlocksScene::createGameItemGroups(int groupCount, bool snapshotMode)
         maGameScoreList[i]->setScoreUpFactor(10);
 
         maGameReadySignal[i] = false;
-        connect(maGroupList[i], SIGNAL(readyForAction(int)), this, SLOT(readyForAction(int)));
+        connect(maGroupList[i], &KBlocksItemGroup::readyForAction, this, &KBlocksScene::readyForAction);
     }
 
     updateDimensions();
@@ -107,7 +107,7 @@ void KBlocksScene::deleteGameItemGroups()
     delete mMessageBox;
 
     for (int i = 0; i < mGroupCount; i++) {
-        disconnect(maGroupList[i], SIGNAL(readyForAction(int)), this, SLOT(readyForAction(int)));
+        disconnect(maGroupList[i], &KBlocksItemGroup::readyForAction, this, &KBlocksScene::readyForAction);
 
         delete maGameScoreList[i];
         maGameScoreList[i] = 0;
@@ -190,7 +190,7 @@ void KBlocksScene::startGame()
 
     if (!mSnapshotMode) {
         mUpdateTimer.start();
-        QTimer::singleShot(500, this, SLOT(greetPlayer()));
+        QTimer::singleShot(500, this, &KBlocksScene::greetPlayer);
     }
 }
 
@@ -319,7 +319,7 @@ void KBlocksScene::updateGame()
         } else if (removedLines[i] == -1) {
             maGroupList[i]->stopGame();
             if (mGroupCount == 1) {
-                QTimer::singleShot(500, this, SLOT(gameOverPlayer()));
+                QTimer::singleShot(500, this, &KBlocksScene::gameOverPlayer);
                 emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                  maGameScoreList[0]->getGameLevel());
             } else {
@@ -327,12 +327,12 @@ void KBlocksScene::updateGame()
                     for (int j = 0; j < mGroupCount; j++) {
                         maGroupList[j]->stopGame();
                     }
-                    QTimer::singleShot(500, this, SLOT(gameOverMultiLose()));
+                    QTimer::singleShot(500, this, &KBlocksScene::gameOverMultiLose);
                     emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                      maGameScoreList[0]->getGameLevel());
                 } else if (gameCount <= 1) {
                     maGroupList[0]->stopGame();
-                    QTimer::singleShot(500, this, SLOT(gameOverMultiWin()));
+                    QTimer::singleShot(500, this, &KBlocksScene::gameOverMultiWin);
                     emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                      maGameScoreList[0]->getGameLevel());
                 }
@@ -363,7 +363,7 @@ void KBlocksScene::readyForAction(int groupID)
 void KBlocksScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
     if (mpGrafx->renderer()->isValid()) {
-        mpGrafx->renderer()->render(painter, QString("BACKGROUND"), rect);
+        mpGrafx->renderer()->render(painter, QStringLiteral("BACKGROUND"), rect);
     }
 }
 

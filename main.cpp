@@ -303,31 +303,31 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    Kdelibs4ConfigMigrator migrate(QLatin1String("kblocks"));
-    migrate.setConfigFiles(QStringList() << QLatin1String("kblocksrc"));
-    migrate.setUiFiles(QStringList() << QLatin1String("kblocksui.rc"));
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kblocks"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kblocksrc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kblocksui.rc"));
     migrate.migrate();
     KLocalizedString::setApplicationDomain("kblocks");
     // Game abouts...
 
-    KAboutData aboutData("kblocks",
+    KAboutData aboutData(QStringLiteral("kblocks"),
                          i18n("KBlocks"),
-                         QLatin1String("0.4"),
+                         QStringLiteral("0.4"),
                          i18n("A falling blocks game for KDE"),
                          KAboutLicense::GPL,
                          i18n("(c) 2007, Mauricio Piacentini"));
-    aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Author"), "piacentini@kde.org");
-    aboutData.addAuthor(i18n("Dirk Leifeld"), i18n("Developer"), "dirkleifeld@yahoo.de");
-    aboutData.addAuthor(i18n("Zhongjie Cai"), i18n("New design of KBlocks for AI and tetris research platform"), "squall.leonhart.cai@gmail.com");
-    aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Oxygen art for KDE4"), "johann.ollivierlapeyre@gmail.com");
+    aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Author"), QStringLiteral("piacentini@kde.org"));
+    aboutData.addAuthor(i18n("Dirk Leifeld"), i18n("Developer"), QStringLiteral("dirkleifeld@yahoo.de"));
+    aboutData.addAuthor(i18n("Zhongjie Cai"), i18n("New design of KBlocks for AI and tetris research platform"), QStringLiteral("squall.leonhart.cai@gmail.com"));
+    aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Oxygen art for KDE4"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
 
     // Command line argument options
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("mode"), i18n("Setup kblocks game running mode.\n\t0 = Desktop Mode\t1 = Game Engine Mode\n\t2 = Gui Mode\t3 = Player Mode"), QLatin1String("game mode"), QLatin1String("0")));
-    parser.addOption(QCommandLineOption(QStringList() << QLatin1String("conf"), i18n("Setup the configuration file for tetris researcher mode. Not for desktop users."), QLatin1String("configuration file"), QLatin1String("default.conf")));
+    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("mode"), i18n("Setup kblocks game running mode.\n\t0 = Desktop Mode\t1 = Game Engine Mode\n\t2 = Gui Mode\t3 = Player Mode"), QStringLiteral("game mode"), QStringLiteral("0")));
+    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("conf"), i18n("Setup the configuration file for tetris researcher mode. Not for desktop users."), QStringLiteral("configuration file"), QStringLiteral("default.conf")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
@@ -336,9 +336,9 @@ int main(int argc, char *argv[])
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kblocks")));
 
     // Get game mode
-    int mGameMode = parser.value("mode").toInt();
+    int mGameMode = parser.value(QStringLiteral("mode")).toInt();
 
-    QByteArray tmpFileArray = parser.value("conf").toLatin1();
+    QByteArray tmpFileArray = parser.value(QStringLiteral("conf")).toLatin1();
     const char *tmpFileChar = tmpFileArray.data();
     KBlocksConfigManager *config = new KBlocksConfigManager();
     config->LoadConfigFile(string(tmpFileChar));

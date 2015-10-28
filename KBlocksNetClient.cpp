@@ -46,8 +46,8 @@ int KBlocksNetClient::recvData(int count, char *data)
 bool KBlocksNetClient::parseIPString(const QString &input, QHostAddress *ip, quint16 *port)
 {
     bool result = false;
-    ip->setAddress(input.left(input.indexOf(":")));
-    *port = input.mid(input.indexOf(":") + 1).toUInt(&result);
+    ip->setAddress(input.left(input.indexOf(QStringLiteral(":"))));
+    *port = input.midRef(input.indexOf(QStringLiteral(":")) + 1).toUInt(&result);
     return result;
 }
 

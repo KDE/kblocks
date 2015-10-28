@@ -23,7 +23,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, KBlocksG
 
     mpBackground = new KBlocksSvgItem(mpGameLayout, -1, 0, 0);
     mpBackground->setSharedRenderer(mpGrafx->renderer());
-    mpBackground->setElementId("VIEW");
+    mpBackground->setElementId(QStringLiteral("VIEW"));
     addToGroup(mpBackground);
 
     mMaxPrepareCellNum = PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH;
@@ -32,7 +32,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, KBlocksG
         maPrepareCells[i] = new KBlocksSvgItem(mpGameLayout, KBlocksSvgItem_PrepareArea,
                                                i % PREPARE_AREA_WIDTH, i / PREPARE_AREA_WIDTH);
         maPrepareCells[i]->setSharedRenderer(mpGrafx->renderer());
-        maPrepareCells[i]->setElementId("BLOCK_0");
+        maPrepareCells[i]->setElementId(QStringLiteral("BLOCK_0"));
         maPrepareCells[i]->setVisible(false);
         addToGroup(maPrepareCells[i]);
     }
@@ -43,7 +43,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, KBlocksG
         maFreezeCells[i] = new KBlocksSvgItem(mpGameLayout, KBlocksSvgItem_FieldArea,
                                               i % mFieldWidth, i / mFieldWidth);
         maFreezeCells[i]->setSharedRenderer(mpGrafx->renderer());
-        maFreezeCells[i]->setElementId("BLOCK_0");
+        maFreezeCells[i]->setElementId(QStringLiteral("BLOCK_0"));
         maFreezeCells[i]->setVisible(false);
         addToGroup(maFreezeCells[i]);
     }
@@ -109,7 +109,7 @@ void KBlocksItemGroup::refreshPosition()
 {
     updateGraphicInfo();
 
-    mpBackground->setElementId("VIEW");
+    mpBackground->setElementId(QStringLiteral("VIEW"));
     mpBackground->setPos(0, 0);
 
     for (int i = 0; i < mMaxPrepareCellNum; i++) {

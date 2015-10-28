@@ -49,8 +49,8 @@ KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWin
     connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksRepWin::replayOneStep);
     mUpdateTimer.stop();
 
-    mSnapshotFilename = QString("");
-    mSnapshotFolder = QString("./snapshot/");
+    mSnapshotFilename = QLatin1String("");
+    mSnapshotFolder = QStringLiteral("./snapshot/");
 }
 
 KBlocksRepWin::~KBlocksRepWin()
@@ -118,7 +118,7 @@ QString KBlocksRepWin::getTimeString()
     QDate tmpDate = QDate::currentDate();
     QTime tmpTime = QTime::currentTime();
     QString result;
-    result = QString("%1-%2-%3_%4-%5-%6_%7")
+    result = QStringLiteral("%1-%2-%3_%4-%5-%6_%7")
              .arg(tmpDate.year(), 4, 10, QLatin1Char('0'))
              .arg(tmpDate.month(), 2, 10, QLatin1Char('0'))
              .arg(tmpDate.day(), 2, 10, QLatin1Char('0'))
@@ -134,8 +134,8 @@ void KBlocksRepWin::snapshotView()
     if (!mSnapshotFilename.isEmpty()) {
         //mSnapshoter = QPixmap::grabWindow(mpGameView->winId());
         mSnapshoter = QPixmap::grabWidget(this);
-        QString tmpFilename = mSnapshotFolder + mSnapshotFilename + QString("_")
-                              + getTimeString() + QString(".png");
+        QString tmpFilename = mSnapshotFolder + mSnapshotFilename + QStringLiteral("_")
+                              + getTimeString() + QStringLiteral(".png");
         mSnapshoter.save(tmpFilename);
     }
 }

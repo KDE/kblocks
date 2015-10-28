@@ -84,17 +84,17 @@ void KBlocksGraphics::readThemeValues()
 {
     //Extract values from SVG elements
     QRectF bounds;
-    bounds = m_renderer->boundsOnElement("BLOCK_SIZE");
+    bounds = m_renderer->boundsOnElement(QStringLiteral("BLOCK_SIZE"));
     m_Block_Size = bounds.width();
-    bounds = m_renderer->boundsOnElement("VIEW");
+    bounds = m_renderer->boundsOnElement(QStringLiteral("VIEW"));
     m_View_Size_Width = bounds.width();
     m_View_Size_Height = bounds.height();
-    bounds = m_renderer->boundsOnElement("PLAY_AREA");
+    bounds = m_renderer->boundsOnElement(QStringLiteral("PLAY_AREA"));
     m_PlayArea_OffsetPoint_X = bounds.x();
     m_PlayArea_OffsetPoint_Y = bounds.y();
     m_PlayArea_NumberOfBlocks_X = bounds.width() / (double)m_Block_Size;
     m_PlayArea_NumberOfBlocks_Y = bounds.height() / (double)m_Block_Size;
-    bounds = m_renderer->boundsOnElement("NEXTPIECE_AREA");
+    bounds = m_renderer->boundsOnElement(QStringLiteral("NEXTPIECE_AREA"));
     m_PreviewArea_CenterPoint_X = bounds.center().x();
     m_PreviewArea_CenterPoint_Y = bounds.center().y();
 }

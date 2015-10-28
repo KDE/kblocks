@@ -52,7 +52,7 @@ bool KBlocksSvgItem::updateSelf()
         if (mColor == -1) {
             setVisible(false);
         } else {
-            setElementId(QString("BLOCK_%1").arg(mColor));
+            setElementId(QStringLiteral("BLOCK_%1").arg(mColor));
             setVisible(true);
         }
     }
@@ -62,12 +62,12 @@ bool KBlocksSvgItem::updateSelf()
 
 void KBlocksSvgItem::startOpAnim()
 {
-    setElementId(QString("BLOCK_OUT_%1").arg(mColor));
+    setElementId(QStringLiteral("BLOCK_OUT_%1").arg(mColor));
 }
 
 void KBlocksSvgItem::stopOpAnim()
 {
-    setElementId(QString("BLOCK_%1").arg(mColor));
+    setElementId(QStringLiteral("BLOCK_%1").arg(mColor));
 }
 
 void KBlocksSvgItem::startPosAnim(QPointF target)

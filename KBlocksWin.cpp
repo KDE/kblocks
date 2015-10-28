@@ -195,11 +195,11 @@ void KBlocksWin::showHighscore()
 
 void KBlocksWin::configureSettings()
 {
-    if (KConfigDialog::showDialog("settings")) {
+    if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
         return;
     }
-    KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
-    dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), "games-config-theme");
+    KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
+    dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), QStringLiteral("games-config-theme"));
     dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
     connect(dialog, &KConfigDialog::settingsChanged, mpGameView, &KBlocksView::settingsChanged);
     //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
@@ -247,27 +247,27 @@ void KBlocksWin::setupGUILayout()
 
     action = KStandardGameAction::gameNew(this, SLOT(singleGame()), actionCollection());
     action->setText(i18n("Single Game"));
-    actionCollection()->addAction(QLatin1String("newGame"), action);
+    actionCollection()->addAction(QStringLiteral("newGame"), action);
 
     action = new QAction(this);
     action->setText(i18n("Human vs AI"));
-    actionCollection()->addAction(QLatin1String("pve_step"), action);
+    actionCollection()->addAction(QStringLiteral("pve_step"), action);
     connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
 
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
-    actionCollection()->addAction(QLatin1String("pauseGame"), m_pauseAction);
+    actionCollection()->addAction(QStringLiteral("pauseGame"), m_pauseAction);
 
     action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
-    actionCollection()->addAction(QLatin1String("showHighscores"), action);
+    actionCollection()->addAction(QStringLiteral("showHighscores"), action);
 
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-    actionCollection()->addAction(QLatin1String("quit"), action);
+    actionCollection()->addAction(QStringLiteral("quit"), action);
 
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
 
     KToggleAction *soundAction = new KToggleAction(i18n("&Play sounds"), this);
     soundAction->setChecked(Settings::sounds());
-    actionCollection()->addAction(QLatin1String("sounds"), soundAction);
+    actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
 
     // TODO
@@ -280,7 +280,7 @@ void KBlocksWin::setupGUILayout()
         KgDifficultyLevel::Easy, KgDifficultyLevel::Hard
     );
     KgDifficultyGUI::init(this);
-    connect(Kg::difficulty(), SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(levelChanged()));
+    connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged, this, &KBlocksWin::levelChanged);
 
     setupGUI();
 }

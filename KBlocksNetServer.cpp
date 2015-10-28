@@ -347,19 +347,19 @@ int KBlocksNetServer::parseRemoteData(const QByteArray &data, const QString &add
     int result = -1;
     QString input = QString(data);
 
-    if (input.contains(QString("|ap|"))) {
+    if (input.contains(QStringLiteral("|ap|"))) {
         addPlayerIP((int)(data[4] - '0'), data, addr);
         //printf("Added player @ %s\n", input.toStdString().c_str());
-    } else if (input.contains("|dp|")) {
+    } else if (input.contains(QStringLiteral("|dp|"))) {
         delPlayerIP(addr);
         //printf("Deleted player @ %s\n", input.toStdString().c_str());
-    } else if (input.contains("|rp|")) {
+    } else if (input.contains(QStringLiteral("|rp|"))) {
         result = parsePlayerReply(data, addr);
         //printf("Received Player Data @ %s\n", input.toStdString().c_str());
-    } else if (input.contains("|rg|")) {
+    } else if (input.contains(QStringLiteral("|rg|"))) {
         sendGuiData(addr);
         //printf("Send Gui Data @ %s\n", input.toStdString().c_str());
-    } else if (input.contains("|s|")) {
+    } else if (input.contains(QStringLiteral("|s|"))) {
         if (!mGameStarted) {
             mpGameLogic->startGame(mGameCount);
             mGameStarted = true;
@@ -368,7 +368,7 @@ int KBlocksNetServer::parseRemoteData(const QByteArray &data, const QString &add
             }
             //printf("Game started\n");
         }
-    } else if (input.contains("|c|")) {
+    } else if (input.contains(QStringLiteral("|c|"))) {
         if (mGameStarted) {
             mGameStarted = false;
             mpGameLogic->stopGame();
@@ -432,14 +432,14 @@ int KBlocksNetServer::parsePlayerReply(const QByteArray &data, const QString &ad
 bool KBlocksNetServer::parseIPString(const QString &input, QHostAddress *ip, quint16 *port)
 {
     bool result = false;
-    ip->setAddress(input.left(input.indexOf(":")));
-    *port = input.mid(input.indexOf(":") + 1).toUInt(&result);
+    ip->setAddress(input.left(input.indexOf(QStringLiteral(":"))));
+    *port = input.midRef(input.indexOf(QStringLiteral(":")) + 1).toUInt(&result);
     return result;
 }
 
 QString KBlocksNetServer::formIPString(const QHostAddress &inAddr, quint16 inPort)
 {
-    QString result = inAddr.toString() + QString(":%1").arg(inPort);
+    QString result = inAddr.toString() + QStringLiteral(":%1").arg(inPort);
     return result;
 }
 
