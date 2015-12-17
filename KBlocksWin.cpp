@@ -121,10 +121,17 @@ void KBlocksWin::startGame()
     }
 
     mScore->setText(i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0));
+
+    // Activate pause button
+    m_pauseAction->setEnabled(true);
+    m_pauseAction->setChecked(false);
 }
 
 void KBlocksWin::stopGame()
 {
+    // Deactivate pause button
+    m_pauseAction->setEnabled(false);
+
     if (mpGameLogic->stopGame()) {
         mpPlayManager->stopGame();
 
@@ -137,6 +144,14 @@ void KBlocksWin::stopGame()
 
 void KBlocksWin::pauseGame()
 {
+    // When the game is to be paused, first check if there is a running game.
+    if (!mpGameLogic->getActiveGameCount()) {
+        // If not, deactivate pause button.
+        m_pauseAction->setEnabled(false);
+        return;
+    }
+
+    // Else, pause game.
     mpGameLogic->pauseGame(m_pauseAction->isChecked());
     mpPlayManager->pauseGame(m_pauseAction->isChecked());
     mpGameScene->pauseGame(m_pauseAction->isChecked());
@@ -256,6 +271,8 @@ void KBlocksWin::setupGUILayout()
 
     m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
     actionCollection()->addAction(QStringLiteral("pauseGame"), m_pauseAction);
+    // Disable pause button until game is started
+    m_pauseAction->setEnabled(false);
 
     action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
     actionCollection()->addAction(QStringLiteral("showHighscores"), action);
