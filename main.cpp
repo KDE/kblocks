@@ -19,7 +19,6 @@
 #include <QList>
 #include <QByteArray>
 #include <QApplication>
-#include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 #include <Kdelibs4ConfigMigrator>
