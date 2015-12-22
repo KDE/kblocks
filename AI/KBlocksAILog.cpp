@@ -227,7 +227,7 @@ void println(KBlocksPiece *piece, int x, int y, bool full)
         print(piece->getPosY());
         println(")");
         println("Cells: ");
-        for (int i = 0; i < KBlocksPiece_CellCount; i++) {
+        for (int i = 0; i < KBlocksPiece_CellCount; ++i) {
             if (x != -1) {
                 gotoXY(x, y++);
             }
