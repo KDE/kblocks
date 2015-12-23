@@ -249,12 +249,12 @@ void println(KBlocksField *field, int x, int y)
 {
     int w = field->getWidth();
     int h = field->getHeight();
-    for (int j = 0; j < h; j++) {
+    for (int j = 0; j < h; ++j) {
         if (x != -1) {
             gotoXY(x, y + j);
         }
         print("|");
-        for (int i = 0; i < w; i++) {
+        for (int i = 0; i < w; ++i) {
             if (field->getCell(i, j)) {
                 print("*");
             } else {
