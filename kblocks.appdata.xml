@@ -13,6 +13,7 @@
   <name xml:lang="de">KBlocks</name>
   <name xml:lang="en-GB">KBlocks</name>
   <name xml:lang="es">KBlock</name>
+  <name xml:lang="et">KBlocks</name>
   <name xml:lang="fi">KBlocks</name>
   <name xml:lang="gl">KBlocks</name>
   <name xml:lang="it">KBlocks</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="de">„Tetris“-Spiel</summary>
   <summary xml:lang="en-GB">Falling Blocks Game</summary>
   <summary xml:lang="es">Juego de caída de bloques</summary>
+  <summary xml:lang="et">Langevate klotside mäng</summary>
   <summary xml:lang="fi">Putoavien kappaleiden peli</summary>
   <summary xml:lang="gl">Xogo no que caen bloques</summary>
   <summary xml:lang="it">Gioco con oggetti che cadono</summary>
@@ -80,6 +82,7 @@
     <p xml:lang="de">KBlocks ist ein klassisches Tetris-Spiel. Die herunterfallenden Blöcke müssen so gestapelt werden, dass sie waagerechte Zeilen ohne Lücken bilden. Eine solche Zeile verschwindet dann, und im Spielfeld ist wieder mehr Platz. Wenn es keinen Platz mehr für herunterfallende Blöcke gibt, ist das Spiel zu Ende.</p>
     <p xml:lang="en-GB">KBlocks is the classic falling blocks game. The idea is to stack the falling blocks to create horizontal lines without any gaps. When a line is completed it is removed, and more space is available in the play area. When there is not enough space for blocks to fall, the game is over.</p>
     <p xml:lang="es">KBlocks es un juego clásico de caída de bloques. La idea es apilar los bloques que van cayendo para crear líneas horizontaes sin huecos. Cuando se completa una línea se elimina, y hay más espacio disponible en la zona de juego. Cuando no queda más sitio para que los bloques caigan, se termina el juego.</p>
+    <p xml:lang="et">KBlocks on klassikaline langevate klotside mäng. Selle mõte on asetada langevad klotsid nii, et read saaksid rõhtsuunas täis. Kui rida on täis, see eemaldatakse ning mänguväljale tekib ruumi juurde. Kui klotsil ei ole enam ruumi langeda, on mäng läbi.</p>
     <p xml:lang="fi">KBlock on perinteinen putoavien kappaleiden peli. Tavoitteena on kasata putoavat kappaleet aukottomiksi vaakariveiksi. Kun rivi on valmis, se poistetaan ja pelialue kasvaa. Kun kappaleilla ei ole enää tilaa pudota, peli on lopussa.</p>
     <p xml:lang="gl">KBlocks é o xogo clásico dos bloques que caen A idea é amorear os bloques que caen de xeito que se formen liñas horizontais completas, sen ocos. Cando se completa unha liña, esta elimínase e amplíase o espazo dispoñíbel na área de xogo. Cando non fica espazo abondo para que caian os bloques, a partida acaba.</p>
     <p xml:lang="it">KBlocks è il classico gioco di blocchi in caduta. L'idea è impilarli in modo da riempire completamente delle righe. Quando una riga è completata viene rimossa, e c'è più spazio a disposizione nell'area di gioco. Quando manca lo spazio per far cadere i blocchi, la partita finisce. </p>
