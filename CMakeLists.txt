@@ -2,16 +2,18 @@ project(kblocks)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
+set (KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Network )
-find_package(KF5 REQUIRED COMPONENTS 
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Network)
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Crash
     DocTools
     I18n
     XmlGui
-    )
+)
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
@@ -28,8 +30,8 @@ include(ECMAddAppIcon)
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 
 
-add_subdirectory( themes )
-add_subdirectory( doc )
+add_subdirectory(themes)
+add_subdirectory(doc)
 
 
 ########### next target ###############
@@ -74,7 +76,8 @@ set(kblocks_SRCS
    AI/KBlocksAIPlannerExtend.cpp
    AI/KBlocksAIEvaluation.cpp
    AI/KBlocksAIFeature.cpp
-   AI/KBlocksAILog.cpp   )
+   AI/KBlocksAILog.cpp
+)
 
 kconfig_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
@@ -83,19 +86,28 @@ ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kblocks ${kblocks_SRCS})
 
-target_link_libraries(kblocks KF5KDEGames KF5KDEGamesPrivate  Phonon::phonon4qt5 Qt5::Network KF5::XmlGui KF5::I18n Qt5::Svg)
+target_link_libraries(kblocks
+    KF5KDEGames
+    KF5KDEGamesPrivate
+    Phonon::phonon4qt5
+    Qt5::Network
+    KF5::Crash
+    KF5::XmlGui
+    KF5::I18n
+    Qt5::Svg
+)
 
 install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
-install( FILES kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR} )
-install( FILES kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
-install( FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kblocks )
-install( FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_CONFDIR} )
+install(PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
+install(FILES kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
+install(FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kblocks)
+install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_CONFDIR})
 
-ecm_install_icons( ICONS 128-apps-kblocks.png  16-apps-kblocks.png  22-apps-kblocks.png  32-apps-kblocks.png  48-apps-kblocks.png  64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor   )
+ecm_install_icons(ICONS 128-apps-kblocks.png  16-apps-kblocks.png  22-apps-kblocks.png  32-apps-kblocks.png  48-apps-kblocks.png  64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

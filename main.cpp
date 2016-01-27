@@ -13,6 +13,7 @@
 #include <vector>
 
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedString>
 
 #include <QString>
@@ -324,6 +325,7 @@ int main(int argc, char *argv[])
     // Command line argument options
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
     parser.addVersionOption();
     parser.addHelpOption();
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("mode"), i18n("Setup kblocks game running mode.\n\t0 = Desktop Mode\t1 = Game Engine Mode\n\t2 = Gui Mode\t3 = Player Mode"), QStringLiteral("game mode"), QStringLiteral("0")));
