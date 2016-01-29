@@ -102,7 +102,7 @@ install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 ########### install files ###############
 
 install(PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
+install(FILES org.kde.kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
 install(FILES kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 install(FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kblocks)
 install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_CONFDIR})
