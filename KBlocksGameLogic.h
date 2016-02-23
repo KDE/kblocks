@@ -11,6 +11,7 @@
 #define KBLOCKSGAMELOGIC_H
 
 #include <stdlib.h>
+#include <QObject>
 
 #include "GameLogicInterface.h"
 #include "SingleGameInterface.h"
@@ -22,8 +23,10 @@
 
 #include "KBlocksSingleGame.h"
 
-class KBlocksGameLogic : public GameLogicInterface
+class KBlocksGameLogic : public QObject, public GameLogicInterface
 {
+    Q_OBJECT
+
 public:
     explicit KBlocksGameLogic(int capacity, bool record = false);
     explicit KBlocksGameLogic(KBlocksGameReplayer *p);
@@ -49,14 +52,20 @@ public:
     void setLevelUpInterval(int interval);
 
     bool startGame(int gameCount);
-    bool stopGame();
 
     void pauseGame(bool pauseFlag);
     void continueGame();
 
+    bool deleteSingleGames();
+
+public slots:
+    bool stopGame();
+
+signals:
+    void allGamesStopped();
+
 private:
     void createSingleGames(int gameCount);
-    void deleteSingleGames();
 
 protected:
     KBlocksSingleGame **maGameList;

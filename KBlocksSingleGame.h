@@ -11,6 +11,7 @@
 #define KBLOCKSSINGLEGAME_H
 
 #include <sys/time.h>
+#include <QObject>
 
 #include "SingleGameInterface.h"
 
@@ -23,8 +24,10 @@
 
 #include "KBlocksDefine.h"
 
-class KBlocksSingleGame : public SingleGameInterface
+class KBlocksSingleGame : public QObject, public SingleGameInterface
 {
+    Q_OBJECT
+
 public:
     explicit KBlocksSingleGame(int gameIndex, int fieldWidth = 10, int fieldHeight = 20, int showPieceCount = 2, int messagePoolSize = 256);
     ~KBlocksSingleGame();
@@ -56,6 +59,9 @@ public:
 
     bool pickGameResult(int *result);
     bool pickGameAction(int *type, int *action);
+
+signals:
+    void gameStopped();
 
 private:
     int doUpdateGame(bool force);

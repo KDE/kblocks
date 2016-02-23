@@ -44,6 +44,9 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity
     mMaxGameCapacity = capacity;
     mGameCount = gamecount;
     mpGameLogic = p;
+    connect(mpGameLogic, &KBlocksGameLogic::allGamesStopped,
+            this, &KBlocksWin::onAllGamesStopped);
+
     mpPlayManager = pM;
 
     mpGameScene = new KBlocksScene(mpGameLogic, capacity);
@@ -128,32 +131,27 @@ void KBlocksWin::startGame()
 
 void KBlocksWin::stopGame()
 {
-    m_pauseAction->setEnabled(false);
-
-    if (mpGameLogic->stopGame()) {
-        mpPlayManager->stopGame();
-
+    if (mpGameLogic->deleteSingleGames()) {
+        // Clear the game field
         mpGameScene->stopGame();
         mpGameScene->deleteGameItemGroups();
-
-        Kg::difficulty()->setGameRunning(false);
     }
 }
 
 void KBlocksWin::pauseGame()
 {
-    // When the game is to be paused, first check if there is a running game.
-    if (!mpGameLogic->getActiveGameCount()) {
-        // If not, deactivate pause button.
-        m_pauseAction->setEnabled(false);
-        return;
-    }
-
     mpGameLogic->pauseGame(m_pauseAction->isChecked());
     mpPlayManager->pauseGame(m_pauseAction->isChecked());
     mpGameScene->pauseGame(m_pauseAction->isChecked());
 
     Kg::difficulty()->setGameRunning(!m_pauseAction->isChecked());
+}
+
+void KBlocksWin::onAllGamesStopped()
+{
+    mpPlayManager->stopGame();
+    m_pauseAction->setEnabled(false);
+    Kg::difficulty()->setGameRunning(false);
 }
 
 void KBlocksWin::singleGame()

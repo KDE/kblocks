@@ -234,7 +234,11 @@ bool KBlocksGameLogic::stopGame()
     if (mGameCount == 0) {
         return false;
     }
-    deleteSingleGames();
+
+    for (int i = 0; i < mGameCount; ++i) {
+        maGameList[i]->stopGame();
+    }
+    emit allGamesStopped();
 
     return true;
 }
@@ -284,6 +288,8 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
 
     for (int i = 0; i < mGameCount; i++) {
         maGameList[i] = new KBlocksSingleGame(i);
+        connect(maGameList[i], &KBlocksSingleGame::gameStopped,
+                 this, &KBlocksGameLogic::stopGame);
         maGameList[i]->setGameStandbyMode(mStandbyMode);
         maGameList[i]->setGameInterval(mGameInterval);
         maGameList[i]->setGameRecorder(mpGameRecorder);
@@ -293,12 +299,18 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     delete[] seedList;
 }
 
-void KBlocksGameLogic::deleteSingleGames()
+bool KBlocksGameLogic::deleteSingleGames()
 {
+    if (mGameCount == 0) {
+        return false;
+    }
+
     for (int i = 0; i < mGameCount; i++) {
         maGameList[i]->stopGame();
         delete maGameList[i];
         maGameList[i] = 0;
     }
     mGameCount = 0;
+
+    return true;
 }

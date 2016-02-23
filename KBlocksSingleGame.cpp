@@ -219,7 +219,10 @@ int KBlocksSingleGame::startGame(int seed)
 
 int KBlocksSingleGame::stopGame()
 {
-    mCurrentGameState = GameState_Stop;
+    if (mCurrentGameState != GameState_Stop) {
+        mCurrentGameState = GameState_Stop;
+        emit gameStopped();
+    }
 
     return mCurrentGameState;
 }
@@ -309,8 +312,8 @@ bool KBlocksSingleGame::runGameOneStep(int *gameResult)
         prepareNextPiece();
         if (checkPieceTouchGround(mpPieceList[0])) {
             *gameResult = GameResult_Game_Over;
-            mCurrentGameState = GameState_Stop;
             mpGameMessage->putGameResult(-1);
+            stopGame();
         }
 
         if (mpGameRecorder) {

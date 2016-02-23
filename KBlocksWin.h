@@ -52,6 +52,7 @@ private slots:
     void showHighscore();
     void onScoreChanged(int index, int points, int lines, int level);
     void onIsHighscore(int index, int points, int level);
+    void onAllGamesStopped();
     void levelChanged();
     void setSoundsEnabled(bool enabled);
 
