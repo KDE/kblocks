@@ -241,7 +241,11 @@ void KBlocksWin::onIsHighscore(int index, int points, int level)
 void KBlocksWin::levelChanged()
 {
     //Scene reads the difficulty level for us
-    startGame();
+    if (mGameCount == 1) {
+        singleGame();
+    } else {
+        pveStepGame();
+    }
     mpGameView->setFocus(Qt::MouseFocusReason);
 }
 
