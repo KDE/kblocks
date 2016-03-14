@@ -31,6 +31,7 @@ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 
 
 add_subdirectory(themes)
+add_subdirectory(sounds)
 add_subdirectory(doc)
 
 

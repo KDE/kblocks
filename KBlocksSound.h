@@ -11,31 +11,28 @@
 #ifndef KBLOCKSSOUND_H
 #define KBLOCKSSOUND_H
 
-class KGameTheme;
-#include <QHash>
-#include <Phonon/MediaObject>
+class KgSound;
+
+enum class Sound {
+    BlockFall,
+    BlockMove,
+    BlockRemove
+};
 
 class KBlocksSound
 {
 public:
-    explicit KBlocksSound(const QString &themeFile);
-    virtual ~KBlocksSound();
+    KBlocksSound();
+    ~KBlocksSound();
 
 public:
-    bool loadTheme(const QString &themeFile);
-    void readThemeValues();
     void setSoundsEnabled(bool p_enabled);
-    void playSound(const QString &p_sound);
-    KGameTheme *theme()
-    {
-        return m_theme;
-    }
+    void playSound(Sound soundType);
 
 private:
-    KGameTheme *m_theme;
-    QString sndDirectory;
-    Phonon::MediaObject *m_media1;
-    Phonon::MediaObject *m_media2;
+    KgSound *m_blockFallSound;
+    KgSound *m_blockMoveSound;
+    KgSound *m_blockRemoveSound;
     bool sndActive;
 
 };
