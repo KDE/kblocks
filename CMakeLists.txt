@@ -9,16 +9,18 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Network)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    ConfigWidgets
+    CoreAddons
     Crash
     DocTools
+    DBusAddons
     I18n
+    WidgetsAddons
     XmlGui
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
-find_package(Phonon4Qt5 CONFIG REQUIRED)
-
-include_directories(BEFORE ${PHONON_INCLUDES})
 
 include(FeatureSummary)
 include(ECMInstallIcons)
@@ -90,9 +92,9 @@ add_executable(kblocks ${kblocks_SRCS})
 target_link_libraries(kblocks
     KF5KDEGames
     KF5KDEGamesPrivate
-    Phonon::phonon4qt5
     Qt5::Network
     KF5::Crash
+    KF5::DBusAddons
     KF5::XmlGui
     KF5::I18n
     Qt5::Svg
