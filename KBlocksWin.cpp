@@ -51,6 +51,11 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity
 
     mpGameScene = new KBlocksScene(mpGameLogic, capacity);
 
+    connect(mpKBPlayer, &KBlocksKeyboardPlayer::blockMoved,
+            mpGameScene, &KBlocksScene::playMoveSound);
+    connect(mpKBPlayer, &KBlocksKeyboardPlayer::blockDropped,
+            mpGameScene, &KBlocksScene::playDropSound);
+
     mpGameView = new KBlocksView(mpGameScene, this);
     mpGameView->show();
     setCentralWidget(mpGameView);

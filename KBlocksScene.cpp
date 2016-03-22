@@ -315,6 +315,10 @@ void KBlocksScene::updateGame()
             emit scoreChanged(i, maGameScoreList[i]->getScorePoint(),
                               maGameScoreList[i]->getLineCount(),
                               maGameScoreList[i]->getGameLevel());
+            // Play sound only for human player
+            if (i == 0) {
+                mpSnd->playSound(Sound::BlockRemove);
+            }
         } else if (removedLines[i] == -1) {
             maGroupList[i]->stopGame();
             if (mGroupCount == 1) {
@@ -357,6 +361,16 @@ void KBlocksScene::readyForAction(int groupID)
         }
         mpGameLogic->continueGame();
     }
+}
+
+void KBlocksScene::playMoveSound()
+{
+    mpSnd->playSound(Sound::BlockMove);
+}
+
+void KBlocksScene::playDropSound()
+{
+    mpSnd->playSound(Sound::BlockFall);
 }
 
 void KBlocksScene::drawBackground(QPainter *painter, const QRectF &rect)

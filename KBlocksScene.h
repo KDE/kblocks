@@ -75,6 +75,10 @@ private slots:
     void updateGame();
     void readyForAction(int groupID);
 
+public slots:
+    void playMoveSound();
+    void playDropSound();
+
 protected:
     void drawBackground(QPainter *painter, const QRectF &rect);
 

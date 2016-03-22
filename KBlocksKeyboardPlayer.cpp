@@ -122,6 +122,7 @@ void KBlocksKeyboardPlayer::moveLeft()
     } else {
         mpGame->setCurrentPiece(-1, 0, 0);
     }
+    emit blockMoved();
 }
 
 void KBlocksKeyboardPlayer::moveRight()
@@ -134,6 +135,7 @@ void KBlocksKeyboardPlayer::moveRight()
     } else {
         mpGame->setCurrentPiece(1, 0, 0);
     }
+    emit blockMoved();
 }
 
 void KBlocksKeyboardPlayer::moveDown()
@@ -146,6 +148,7 @@ void KBlocksKeyboardPlayer::moveDown()
     } else {
         mpGame->setCurrentPiece(0, 1, 0);
     }
+    emit blockMoved();
 }
 
 void KBlocksKeyboardPlayer::pushDown()
@@ -159,6 +162,7 @@ void KBlocksKeyboardPlayer::pushDown()
         while (mpGame->setCurrentPiece(0, 1, 0)) ;
         mpGame->forceUpdateGame();
     }
+    emit blockDropped();
 }
 
 void KBlocksKeyboardPlayer::rotateCW()
@@ -171,6 +175,7 @@ void KBlocksKeyboardPlayer::rotateCW()
     } else {
         mpGame->setCurrentPiece(0, 0, -1);
     }
+    emit blockMoved();
 }
 
 void KBlocksKeyboardPlayer::rotateCCW()
@@ -183,4 +188,5 @@ void KBlocksKeyboardPlayer::rotateCCW()
     } else {
         mpGame->setCurrentPiece(0, 0, 1);
     }
+    emit blockMoved();
 }

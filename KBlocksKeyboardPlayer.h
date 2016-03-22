@@ -42,6 +42,10 @@ public:
 private:
     void bindKeys();
 
+signals:
+    void blockMoved();
+    void blockDropped();
+
 private slots:
     void moveLeft();
     void moveRight();
