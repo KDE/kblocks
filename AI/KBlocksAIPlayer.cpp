@@ -289,7 +289,7 @@ void KBlocksAIPlayer::generateGoalAction()
             value = evaluator->evaluate(field);
 #endif
 #endif
-            result.push_back(Result(piece, value));
+            result.push_back(Result(KBlocksPiece(piece), value));
 #ifdef MAX_UTILITY
             bool better = (best_value < value);
 #else

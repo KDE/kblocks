@@ -84,7 +84,7 @@ class KBlocksPiece : public PieceInterface
 {
 public:
     KBlocksPiece();
-    KBlocksPiece(PieceInterface *p);
+    explicit KBlocksPiece(PieceInterface *p);
     ~KBlocksPiece();
 
 public:
