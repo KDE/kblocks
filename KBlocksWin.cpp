@@ -149,6 +149,9 @@ void KBlocksWin::pauseGame()
     mpPlayManager->pauseGame(m_pauseAction->isChecked());
     mpGameScene->pauseGame(m_pauseAction->isChecked());
 
+    mpKBPlayer->pauseGame(m_pauseAction->isChecked());
+    mpAIPlayer->pauseGame(m_pauseAction->isChecked());
+
     Kg::difficulty()->setGameRunning(!m_pauseAction->isChecked());
 }
 
