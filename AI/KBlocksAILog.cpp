@@ -73,7 +73,6 @@ void close_file(int ch)
 void gotoXY(int x, int y)
 {
 #ifdef DEBUG
-    y++;
     char essq[100];
     char xstr[100];
     char ystr[100];
@@ -207,19 +206,19 @@ void println(KBlocksPiece *piece, int x, int y, bool full)
 {
     if (full) {
         if (x != -1) {
-            gotoXY(x, y++);
+            gotoXY(x, ++y);
         }
         println(piece);
         if (x != -1) {
-            gotoXY(x, y++);
+            gotoXY(x, ++y);
         }
         println("STATE");
         if (x != -1) {
-            gotoXY(x, y++);
+            gotoXY(x, ++y);
         }
         print("Rotation Id   :"); println(piece->getRotation());
         if (x != -1) {
-            gotoXY(x, y++);
+            gotoXY(x, ++y);
         }
         print("pos: (");
         print(piece->getPosX());
@@ -229,7 +228,7 @@ void println(KBlocksPiece *piece, int x, int y, bool full)
         println("Cells: ");
         for (int i = 0; i < KBlocksPiece_CellCount; ++i) {
             if (x != -1) {
-                gotoXY(x, y++);
+                gotoXY(x, ++y);
             }
             print("[");
             print(piece->getCellPosX(i));
@@ -251,7 +250,7 @@ void println(KBlocksField *field, int x, int y)
     int h = field->getHeight();
     for (int j = 0; j < h; ++j) {
         if (x != -1) {
-            gotoXY(x, y + j);
+            gotoXY(x, y + j + 1);
         }
         print("|");
         for (int i = 0; i < w; ++i) {
