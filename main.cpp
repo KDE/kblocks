@@ -8,7 +8,7 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
-#include <time.h>
+#include <ctime>
 #include <string>
 #include <vector>
 
@@ -66,7 +66,7 @@ int gameDesktopMode(const QApplication &app)
 {
     // Desktop User Mode
     mpKBlocksGameLogic = new KBlocksGameLogic(2);
-    mpKBlocksGameLogic->setGameSeed(time(0));
+    mpKBlocksGameLogic->setGameSeed(std::time(nullptr));
     mpKBlocksGameLogic->setGamePunish(true);
     mpKBlocksGameLogic->setGameStandbyMode(true);
     mpKBlocksGameLogic->setInitInterval(500);
@@ -118,7 +118,7 @@ int gameEngineMode(KBlocksConfigManager *config)
     printf("\tHas Human     = %s\n", hasHuman ? "true" : "false");
     printf("\tSpeed Limit   = %s\n", sendLimit ? "true" : "false");
     mpKBlocksGameLogic = new KBlocksGameLogic(gameCount, true);
-    mpKBlocksGameLogic->setGameSeed(sameSeq ? time(0) : -time(0));
+    mpKBlocksGameLogic->setGameSeed(sameSeq ? std::time(nullptr) : -std::time(nullptr));
     mpKBlocksGameLogic->setGamePunish(hasAttack);
     mpKBlocksGameLogic->setGameStandbyMode(standbyMode);
     mpKBlocksGameLogic->setInitInterval(hasHuman ? 500 : 0);
