@@ -110,4 +110,7 @@
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
+  <provides>
+    <binary>kblocks</binary>
+  </provides>
 </component>
