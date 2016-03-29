@@ -22,6 +22,9 @@ KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
     mStandbyMode = false;
     mGameInterval = 0;
 
+    mInitialInterval = 0;
+    mLevelUpInterval = 0;
+
     maGameList = new KBlocksSingleGame*[capacity];
 
     if (record) {
