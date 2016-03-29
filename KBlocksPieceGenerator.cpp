@@ -9,7 +9,7 @@
 ***************************************************************************/
 #include "KBlocksPieceGenerator.h"
 
-#include <stdlib.h>
+#include <QtGlobal>
 #include <stdio.h>
 
 #include "KBlocksPiece.h"
@@ -28,10 +28,10 @@ KBlocksPieceGenerator::~KBlocksPieceGenerator()
 
 void KBlocksPieceGenerator::genList(int seed)
 {
-    srand(seed);
+    qsrand(seed);
 
     for (int i = 0; i < maxCapacity; i++) {
-        maPieceList[i] = rand() % PieceType_Detail_Max_Count;
+        maPieceList[i] = qrand() % PieceType_Detail_Max_Count;
     }
 
     pieceIndex = 0;

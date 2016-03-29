@@ -11,7 +11,6 @@
 #include "KBlocksWin.h"
 
 #include <limits.h>
-#include <stdlib.h>
 
 #include <KConfigDialog>
 #include <kstandardgameaction.h>
@@ -24,6 +23,7 @@
 #include <QStatusBar>
 #include <KgDifficulty>
 
+#include <QtGlobal>
 #include <QPixmapCache>
 #include <QPointer>
 #include <QLabel>
@@ -103,8 +103,8 @@ void KBlocksWin::addScore(int gameIndex, int lineCount)
 
 void KBlocksWin::startGame()
 {
-    srand(time(0));
-    mpGameLogic->setGameSeed(rand());
+    qsrand(time(0));
+    mpGameLogic->setGameSeed(qrand());
     if (mpGameLogic->startGame(mGameCount)) {
         mpPlayManager->startGame();
 

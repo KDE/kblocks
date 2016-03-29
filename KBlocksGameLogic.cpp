@@ -9,6 +9,8 @@
 ***************************************************************************/
 #include "KBlocksGameLogic.h"
 
+#include <QtGlobal>
+
 KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
 {
     mGameCount = 0;
@@ -170,7 +172,7 @@ int KBlocksGameLogic::updateGame(int *lineList)
         lineList[i] = tmpTotal;
 
         if ((mPunishFlag) && (tmpPunishCount > 0)) {
-            int punishSeed = rand() % 256;
+            int punishSeed = qrand() % 256;
             for (int j = 0; j < i; j++) {
                 maGameList[j]->punishGame(tmpPunishCount, punishSeed);
             }
@@ -276,9 +278,9 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     int *seedList = new int[mGameCount];
     if (mGameSeed < 0) {
         mGameSeed = -mGameSeed;
-        srand(mGameSeed);
+        qsrand(mGameSeed);
         for (int i = 0; i < mGameCount; i++) {
-            seedList[i] = rand() % 256;
+            seedList[i] = qrand() % 256;
         }
     } else {
         for (int i = 0; i < mGameCount; i++) {
