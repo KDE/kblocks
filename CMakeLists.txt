@@ -74,6 +74,7 @@ set(kblocks_SRCS
    KBlocksGameMessage.cpp
    KBlocksGameRecorder.cpp
    KBlocksGameReplayer.cpp
+   AI/KBlocksAITypeDefine.cpp
    AI/KBlocksAIPlayer.cpp
    AI/KBlocksAIPlanner.cpp
    AI/KBlocksAIPlannerExtend.cpp

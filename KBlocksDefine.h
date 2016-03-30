@@ -11,6 +11,9 @@
 #ifndef KBLOCKSDEFINE_H
 #define KBLOCKSDEFINE_H
 
+#include <QLoggingCategory>
+Q_DECLARE_LOGGING_CATEGORY(KBlocksGeneral)
+
 #define PREPARE_AREA_WIDTH    5
 
 #define FADE_ANIM_TIME_LINE   250
