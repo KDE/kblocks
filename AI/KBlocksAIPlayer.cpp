@@ -13,6 +13,7 @@
 #include "KBlocksAIFeature.h"
 #include "KBlocksAIPlannerExtend.h"
 #include "KBlocksAILog.h"
+#include "KBlocksAITypeDefine.h"
 
 #include <utility>
 #include <vector>
@@ -175,6 +176,10 @@ void KBlocksAIPlayer::update()
 /* Phase II  - Planning         ----------------------------------*/
 void KBlocksAIPlayer::planning()
 {
+    if (!mpPlanner) {
+        qCWarning(KBlocksAI) << "No planner set for AI evaluation!";
+        return;
+    }
 #ifdef TWO_PIECE_PLANNER
     AIPlanner_PieceValue_Sequence mPieceSequence = AIPlanner_PieceValue_Sequence(0);
     mPieceSequence.push_back(KBlocks_PieceType_Detail(mpCurPiece->toValue()));
