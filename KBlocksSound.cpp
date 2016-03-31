@@ -11,11 +11,11 @@
 //Uses routines from Kapman sound manager (game.cpp)
 
 #include "KBlocksSound.h"
+#include "KBlocksDefine.h"
 #include "settings.h"
 
 #include <kgsound.h>
 
-#include <QDebug>
 #include <QStandardPaths>
 
 KBlocksSound::KBlocksSound()
@@ -55,7 +55,7 @@ void KBlocksSound::playSound(Sound soundType)
             m_blockRemoveSound->start();
             break;
         default:
-            qDebug() << "Unknown Sound requested for playback.";
+            qCWarning(KBSound) << "Unknown Sound requested for playback.";
             break;
         }
     }

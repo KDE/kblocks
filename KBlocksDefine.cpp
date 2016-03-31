@@ -9,7 +9,9 @@
 ***************************************************************************/
 #include "KBlocksDefine.h"
 
-Q_LOGGING_CATEGORY(KBlocksGeneral, "KBlocks.General")
+Q_LOGGING_CATEGORY(KBGeneral, "KBlocks.General")
+Q_LOGGING_CATEGORY(KBGraphics, "KBlocks.Graphics")
+Q_LOGGING_CATEGORY(KBSound, "KBlocks.Sound")
 
 const char *KBlocksRecordText[RecordDataType_Max_Count] = {
     "GameCount",
