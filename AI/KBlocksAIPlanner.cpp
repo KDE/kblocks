@@ -90,7 +90,7 @@ int KBlocksAIPlanner::process(KBlocks_PieceType_Detail pieceValue)
             for (int i = 0; i < KBlocksPiece_CellCount; i++) {
                 int cx = piece.getCellPosX(i);
                 int cy = piece.getCellPosY(i);
-                if (mpField->getCell(cx, cy)) {
+                if (cx < 0 || cx >= w || mpField->getCell(cx, cy)) {
                     invalidPos = true;
                     break;
                 }
