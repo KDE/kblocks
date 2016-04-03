@@ -12,8 +12,10 @@
 
 class FieldInterface
 {
+protected:
+    FieldInterface() : maBoard(nullptr), mHeight(0), mWidth(0) {};
+
 public:
-    FieldInterface() {};
     virtual ~FieldInterface() {};
 
 public:
