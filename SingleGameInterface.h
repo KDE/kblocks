@@ -18,7 +18,8 @@ class GameLogicInterface;
 class SingleGameInterface
 {
 public:
-    SingleGameInterface() {};
+    SingleGameInterface()
+        : mpField(nullptr), mPieceCount(0), mpPieceList(nullptr) {};
     virtual ~SingleGameInterface() {};
 
 public:
