@@ -47,6 +47,8 @@ KBlocksScene::KBlocksScene(GameLogicInterface *p, int capacity)
     mUpdateTimer.setInterval(mUpdateInterval);
     connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksScene::updateGame);
     mUpdateTimer.stop();
+
+    mMessageBox = nullptr;
 }
 
 KBlocksScene::~KBlocksScene()
