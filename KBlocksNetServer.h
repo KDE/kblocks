@@ -62,8 +62,8 @@ private:
     KBlocksScore **maGameScoreList;
 
     bool mWaitForAll;
-    bool mSpeedMode;
-    int mTimeOut;
+    //bool mSpeedMode;
+    //int mTimeOut;
     int mTopGameLevel;
     int mInitSendLength;
     int mLvUpSendLength;
