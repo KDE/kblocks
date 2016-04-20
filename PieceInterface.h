@@ -13,7 +13,7 @@
 class PieceInterface
 {
 public:
-    PieceInterface() {};
+    PieceInterface() : mType(0), mPosX(0), mPosY(0), mRotation(0) {};
     virtual ~PieceInterface() {};
 
 public:

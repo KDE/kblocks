@@ -127,10 +127,6 @@ int PiecePoint::y()
 
 KBlocksPiece::KBlocksPiece()
 {
-    mType = 0;
-    mPosX = 0;
-    mPosY = 0;
-    mRotation = 0;
 }
 
 KBlocksPiece::KBlocksPiece(PieceInterface *p)

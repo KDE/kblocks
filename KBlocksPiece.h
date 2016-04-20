@@ -117,12 +117,6 @@ public:
 
     void encodeData(unsigned char *data);
     void decodeData(unsigned char *data);
-
-protected:
-    int mType;
-    int mPosX;
-    int mPosY;
-    int mRotation;
 };
 
 #endif
