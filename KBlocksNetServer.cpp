@@ -20,14 +20,19 @@
 KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic *p, const QString &localIP)
 {
     mpGameLogic = p;
+    maGameScoreList = nullptr;
 
     mGameCount = 0;
     mGameStarted = false;
     mWaitForAll = false;
+    mTopGameLevel = -1;
     mInitSendLength = 0;
     mLvUpSendLength = 0;
 
     parseIPString(localIP, &mLocalAddress, &mLocalPort);
+    // mRemoteAddress and mRemotePort are only used in recvRemoteData
+    // and will be set there.
+    mRemotePort = 0;
 
     mpServerSocket = new QUdpSocket(this);
     mpServerSocket->bind(mLocalAddress, mLocalPort);
