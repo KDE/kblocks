@@ -46,6 +46,9 @@ KBlocksGameLogic::KBlocksGameLogic(KBlocksGameReplayer *p)
     mStandbyMode = false;
     mGameInterval = 0;
 
+    mInitialInterval = 0;
+    mLevelUpInterval = 0;
+
     maGameList = new KBlocksSingleGame*[mGameMax];
 
     mpGameRecorder = 0;
