@@ -20,6 +20,9 @@ KBlocksGameReplayer::KBlocksGameReplayer(const char *fileName, bool isBinaryMode
 
     if (!pFile) {
         mGameCount = 0;
+        mGameSeed = 0;
+        mSameSeed = false;
+        mStepLength = 1;
         return;
     }
 
