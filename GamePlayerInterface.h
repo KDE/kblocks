@@ -31,7 +31,7 @@ typedef std::list<KBlocks_Player_Action> GamePlayer_ActionList;
 class GamePlayerInterface
 {
 public:
-    GamePlayerInterface() {};
+    GamePlayerInterface() : mpGame(nullptr) {};
     virtual ~GamePlayerInterface() {};
 
 public:

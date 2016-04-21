@@ -48,7 +48,6 @@ private:
     bool mAIPaused;
 
     // Phase I   - State Update
-    SingleGameInterface *mpGame;
     KBlocksField *mpAIField;
     KBlocksPiece *mpCurPiece;
     KBlocksPiece *mpNextPiece;

@@ -49,7 +49,6 @@ KBlocksAIPlayer::KBlocksAIPlayer(string name)
     mAIStarted = false;
     mAIPaused = false;
 
-    mpGame = 0;
     mpAIField = 0;
     mpCurPiece = 0;
     mpNextPiece = 0;

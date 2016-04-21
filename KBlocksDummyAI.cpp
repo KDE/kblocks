@@ -13,7 +13,6 @@
 
 KBlocksDummyAI::KBlocksDummyAI()
 {
-    mpGame = 0;
     mPauseFlag = false;
 
     mFieldWidth = 0;

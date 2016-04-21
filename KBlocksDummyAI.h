@@ -27,7 +27,6 @@ public:
     void think(GamePlayer_ActionList *actionList);
 
 protected:
-    SingleGameInterface *mpGame;
     bool mPauseFlag;
 
     int mFieldWidth;
