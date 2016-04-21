@@ -15,7 +15,7 @@
 class GameLogicInterface
 {
 public:
-    GameLogicInterface() {};
+    GameLogicInterface() : maGameList(nullptr) {};
     virtual ~GameLogicInterface() {};
 
 public:
