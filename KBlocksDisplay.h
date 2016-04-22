@@ -49,7 +49,7 @@ private slots:
 
 private:
     int mGameCount;
-    int mGamesPerWidth;
+    //int mGamesPerWidth;
 
     int mUpdateInterval;
     QTimer mUpdateTimer;
