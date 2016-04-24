@@ -20,6 +20,8 @@ KBlocksPlayNetwork::KBlocksPlayNetwork(int capacity, const string &serverIP, int
     mServerIP = serverIP;
     mLocalPort = localPort;
 
+    mRunning = false;
+
     mPlayerCount = 0;
     mMaxCapacity = capacity;
 
