@@ -16,7 +16,9 @@ KBlocksNetPlayer::KBlocksNetPlayer(GamePlayerInterface *player, const string &se
     mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
 
     mpPlayer = player;
+    mpGame = nullptr;
 
+    mSendLength = 0;
     mActionList.clear();
 }
 
