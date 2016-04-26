@@ -183,7 +183,10 @@ void KBlocksAIPlayer::planning()
     AIPlanner_PieceValue_Sequence mPieceSequence = AIPlanner_PieceValue_Sequence(0);
     mPieceSequence.push_back(KBlocks_PieceType_Detail(mpCurPiece->toValue()));
     mPieceSequence.push_back(KBlocks_PieceType_Detail(mpNextPiece->toValue()));
-    mNextCount = (dynamic_cast<KBlocksAIPlannerExtend *>(mpPlanner))->process(mPieceSequence);
+    KBlocksAIPlannerExtend *extendedPlanner = dynamic_cast<KBlocksAIPlannerExtend *>(mpPlanner);
+    if (extendedPlanner != nullptr) {
+        mNextCount = extendedPlanner->process(mPieceSequence);
+    }
 #else
     KBlocks_PieceType_Detail type = KBlocks_PieceType_Detail(mpCurPiece->toValue());
     mNextCount = mpPlanner->process(type);
