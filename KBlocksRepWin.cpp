@@ -20,10 +20,15 @@ KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWin
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
 
+    mUpdateInterval = 1000;
+
     mpGameReplayer = new KBlocksGameReplayer(replayFile, binaryMode);
 
     mGameCount = mpGameReplayer->getGameCount();
     if (mGameCount == 0) {
+        mpGameScene = nullptr;
+        mpGameView = nullptr;
+        mpGameLogic = nullptr;
         return;
     }
 
@@ -44,7 +49,6 @@ KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWin
     mpGameView->show();
     setCentralWidget(mpGameView);
 
-    mUpdateInterval = 1000;
     mUpdateTimer.setInterval(mUpdateInterval);
     connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksRepWin::replayOneStep);
     mUpdateTimer.stop();
