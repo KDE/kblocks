@@ -67,14 +67,18 @@ KBlocksRepWin::~KBlocksRepWin()
 
 void KBlocksRepWin::setGamesPerLine(int count)
 {
-    mpGameScene->setGamesPerLine(count);
+    if (mpGameScene) {
+        mpGameScene->setGamesPerLine(count);
+    }
 }
 
 void KBlocksRepWin::setUpdateInterval(int interval)
 {
-    mUpdateInterval = interval;
-    mUpdateTimer.setInterval(mUpdateInterval);
-    mpGameScene->setUpdateInterval(interval);
+    if (mpGameScene) {
+        mUpdateInterval = interval;
+        mUpdateTimer.setInterval(mUpdateInterval);
+        mpGameScene->setUpdateInterval(interval);
+    }
 }
 
 void KBlocksRepWin::setReplayStepLength(int stepLen)
@@ -99,10 +103,14 @@ bool KBlocksRepWin::replayLoaded()
 
 void KBlocksRepWin::startReplay()
 {
-    mpGameLogic->startGame(mGameCount);
+    if (mpGameLogic) {
+        mpGameLogic->startGame(mGameCount);
+    }
 
-    mpGameScene->createGameItemGroups(mGameCount);
-    mpGameScene->startGame();
+    if (mpGameScene) {
+        mpGameScene->createGameItemGroups(mGameCount);
+        mpGameScene->startGame();
+    }
 
     mUpdateTimer.start();
 }
@@ -111,10 +119,14 @@ void KBlocksRepWin::stopReplay()
 {
     mUpdateTimer.stop();
 
-    mpGameScene->stopGame();
-    mpGameScene->deleteGameItemGroups();
+    if (mpGameScene) {
+        mpGameScene->stopGame();
+        mpGameScene->deleteGameItemGroups();
+    }
 
-    mpGameLogic->stopGame();
+    if (mpGameLogic) {
+        mpGameLogic->stopGame();
+    }
 }
 
 QString KBlocksRepWin::getTimeString()
