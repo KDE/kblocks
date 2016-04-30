@@ -12,7 +12,7 @@
 
 #include "KBlocksDefine.h"
 
-#include <stdio.h>
+#include <fstream>
 #include <string>
 #include <vector>
 #include <list>
@@ -46,8 +46,8 @@ public:
     bool getNextRecords(vector<KBlocksReplayData> *data);
 
 private:
-    void loadText(FILE *pFile);
-    void loadBinary(FILE *pFile);
+    void loadText(std::ifstream &pFile);
+    void loadBinary(std::ifstream &pFile);
 
 private:
     int mGameCount;

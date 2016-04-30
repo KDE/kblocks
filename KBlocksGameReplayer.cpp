@@ -9,27 +9,50 @@
 ***************************************************************************/
 #include "KBlocksGameReplayer.h"
 
+#include <sstream>
+#include <string>
+
+#include "KBlocksDefine.h"
+
 KBlocksGameReplayer::KBlocksGameReplayer(const char *fileName, bool isBinaryMode)
 {
+    // Map data types to strings for reading text file
     for (int i = 0; i < RecordDataType_Max_Count; ++i) {
         mRTMap[ KBlocksRecordText[i] ] = i;
     }
     mRTMap[string("MaxCount")] = -1;
 
-    FILE *pFile = fopen(fileName, "r");
+    // Set default variables in case loading the file fails
+    mGameCount = 0;
+    mGameSeed = 0;
+    mSameSeed = false;
+    mStepLength = 1;
 
-    if (!pFile) {
-        mGameCount = 0;
-        mGameSeed = 0;
-        mSameSeed = false;
-        mStepLength = 1;
+    // Open replay file
+    std::ifstream replayFile;
+    if (isBinaryMode) {
+        replayFile.open(fileName, std::ios::binary);
+    } else {
+        replayFile.open(fileName);
+    }
+
+    // Check that replay file was opened successfully
+    if (!replayFile.is_open()) {
+        qCWarning(KBReplay) << "Unable to open file " << fileName;
         return;
     }
 
     if (isBinaryMode) {
-        loadBinary(pFile);
+        loadBinary(replayFile);
     } else {
-        loadText(pFile);
+        loadText(replayFile);
+    }
+
+    // Check that more than two Replay steps have been loaded
+    // The two first steps set the required variables.
+    if (mReplayList.size() < 2) {
+        qCWarning(KBReplay) << "Problem loading replay file" << fileName;
+        return;
     }
 
     mGameCount = mReplayList.front().value;
@@ -38,9 +61,7 @@ KBlocksGameReplayer::KBlocksGameReplayer(const char *fileName, bool isBinaryMode
     mSameSeed = (mReplayList.front().index == 1);
     mReplayList.pop_front();
 
-    mStepLength = 1;
-
-    fclose(pFile);
+    replayFile.close();
 }
 
 KBlocksGameReplayer::~KBlocksGameReplayer()
@@ -96,48 +117,54 @@ bool KBlocksGameReplayer::getNextRecords(vector<KBlocksReplayData> *data)
     return true;
 }
 
-void KBlocksGameReplayer::loadText(FILE *pFile)
+void KBlocksGameReplayer::loadText(std::ifstream &replayFile)
 {
-    int count = 0;
-    char tmpString[256];
+    std::string line;
+    std::istringstream inStream;
+    std::string tmpString;
     KBlocksReplayData tmpData;
     mReplayList.clear();
-    while (1) {
-        count = fscanf(pFile, "%d %s %d %d", &(tmpData.time), tmpString, &(tmpData.index), &(tmpData.value));
-        tmpData.type = mRTMap[string(tmpString)];
-        if ((tmpData.type == -1) || (count != 4)) {
+    do {
+        std::getline(replayFile, line);
+        inStream.str(line);
+        inStream >> tmpData.time >> tmpString >> tmpData.index >> tmpData.value;
+        tmpData.type = mRTMap[tmpString];
+        if ((tmpData.type == -1) || inStream.fail()) {
             break;
         }
         mReplayList.push_back(tmpData);
-    }
+        inStream.clear();
+    } while (!replayFile.eof());
 }
 
-void KBlocksGameReplayer::loadBinary(FILE *pFile)
+void KBlocksGameReplayer::loadBinary(std::ifstream &replayFile)
 {
     KBlocksReplayData tmpData;
     mReplayList.clear();
-    tmpData.time  = fgetc(pFile);
-    tmpData.type  = fgetc(pFile);
-    tmpData.index = fgetc(pFile);
-    tmpData.value = fgetc(pFile);
-    while (tmpData.time != EOF) {
+
+    tmpData.time  = replayFile.get();
+    tmpData.type  = replayFile.get();
+    tmpData.index = replayFile.get();
+    tmpData.value = replayFile.get();
+
+    do {
         if (tmpData.type == RecordDataType_Skipped) {
             int tmpTime = tmpData.time;
             while (tmpData.type == RecordDataType_Skipped) {
-                tmpData.time  = fgetc(pFile);
-                tmpData.type  = fgetc(pFile);
-                tmpData.index = fgetc(pFile);
-                tmpData.value = fgetc(pFile);
+                tmpData.time  = replayFile.get();
+                tmpData.type  = replayFile.get();
+                tmpData.index = replayFile.get();
+                tmpData.value = replayFile.get();
 
                 tmpTime += tmpData.time;
             }
             tmpData.time = tmpTime;
         }
         mReplayList.push_back(tmpData);
-        tmpData.time  = fgetc(pFile);
-        tmpData.type  = fgetc(pFile);
-        tmpData.index = fgetc(pFile);
-        tmpData.value = fgetc(pFile);
-    }
+        tmpData.time  = replayFile.get();
+        tmpData.type  = replayFile.get();
+        tmpData.index = replayFile.get();
+        tmpData.value = replayFile.get();
+    } while (!replayFile.eof());
 }
 

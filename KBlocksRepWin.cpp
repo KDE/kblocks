@@ -160,7 +160,7 @@ void KBlocksRepWin::replayOneStep()
 {
     int tmpPieceChanged = 0;
     if (!mpGameLogic->playRecordOneStep(&tmpPieceChanged)) {
-        printf("Finished Replay!\n");
+        qCDebug(KBReplay) << "Finished Replay!";
         mUpdateTimer.stop();
     }
     if (tmpPieceChanged != 0) {

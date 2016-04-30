@@ -11,6 +11,7 @@
 
 Q_LOGGING_CATEGORY(KBGeneral, "KBlocks.General")
 Q_LOGGING_CATEGORY(KBGraphics, "KBlocks.Graphics")
+Q_LOGGING_CATEGORY(KBReplay, "KBlocks.Replay")
 Q_LOGGING_CATEGORY(KBSound, "KBlocks.Sound")
 
 const char *KBlocksRecordText[RecordDataType_Max_Count] = {
