@@ -1,7 +1,5 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "&kblocks;">
-  <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
@@ -29,8 +27,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-05-05</date>
-<releaseinfo>0.3 (&kde; 4.11)</releaseinfo>
+<date>2016-05-09</date>
+<releaseinfo>0.4 (Applications 16.04)</releaseinfo>
 
 <abstract><para>&kblocks; is the &kde; version of the classic falling blocks
 game.</para></abstract>
@@ -55,6 +53,18 @@ game.</para></abstract>
 
 <chapter id="how-to-play">
 <title>How to Play</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>&kblocks; gameboard</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
 <note><title>Objective:</title><para>Rotate the falling blocks, and fit them together to complete lines and clear the playfield.</para></note><!--Describe the objective of the game.-->
 
 <para>
@@ -141,17 +151,7 @@ difficulty level.</para></listitem>
 <guimenuitem>Quit</guimenuitem> </menuchoice></term>
 <listitem><para><action>Quits</action> &kblocks;</para></listitem>
 </varlistentry>
-<!--FIXME when is sound played ? see https://bugs.kde.org/show_bug.cgi?id=319372
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
-</shortcut>
-<guimenu>Settings</guimenu>
-<guimenuitem>Play sound</guimenuitem> </menuchoice></term>
-<listitem><para>???</para></listitem>
-</varlistentry>
--->
+
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -196,6 +196,7 @@ of the &kde; Fundamentals.
 <row><entry><keycap>Down arrow</keycap></entry><entry>Move the block down</entry></row>
 <row><entry><keycap>Z</keycap></entry><entry>Rotate the block clockwise</entry></row>
 <row><entry><keycap>Up arrow</keycap></entry><entry>Rotate the block counter clockwise</entry></row>
+<row><entry><keysym>Space</keysym></entry><entry>Drop the block</entry></row>
 
 </tbody>
 </tgroup>
@@ -270,24 +271,6 @@ The game settings can be configured by selecting <menuchoice><guimenu>Settings</
 &underGPL;
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kblocks">
-<title>How to obtain &kblocks;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-</appendix>
 
 </book>
 <!--
