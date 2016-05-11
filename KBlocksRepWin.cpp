@@ -15,6 +15,8 @@
 
 #include <qdatetime.h>
 
+#include "KBlocks_debug.h"
+
 KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWindow()
 {
     //Use up to 3MB for global application pixmap cache

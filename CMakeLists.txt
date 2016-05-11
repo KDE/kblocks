@@ -41,6 +41,7 @@ add_subdirectory(doc)
 
 set(kblocks_SRCS
    main.cpp
+   KBlocks_debug.cpp
    KBlocksDefine.cpp
    KBlocksNetServer.cpp
    KBlocksNetClient.cpp
@@ -74,7 +75,6 @@ set(kblocks_SRCS
    KBlocksGameMessage.cpp
    KBlocksGameRecorder.cpp
    KBlocksGameReplayer.cpp
-   AI/KBlocksAITypeDefine.cpp
    AI/KBlocksAIPlayer.cpp
    AI/KBlocksAIPlanner.cpp
    AI/KBlocksAIPlannerExtend.cpp

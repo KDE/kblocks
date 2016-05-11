@@ -13,9 +13,6 @@
 #include <utility>
 #include <stdlib.h>
 
-#include <QLoggingCategory>
-Q_DECLARE_LOGGING_CATEGORY(KBlocksAI)
-
 #define KSIRTET
 
 #define INITLIST

@@ -9,7 +9,7 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksGraphics.h"
-#include "KBlocksDefine.h"
+#include "KBlocks_debug.h"
 
 #include <QPixmapCache>
 #include <QPainter>

@@ -11,12 +11,13 @@
 //Uses routines from Kapman sound manager (game.cpp)
 
 #include "KBlocksSound.h"
-#include "KBlocksDefine.h"
-#include "settings.h"
 
 #include <kgsound.h>
 
 #include <QStandardPaths>
+
+#include "KBlocks_debug.h"
+#include "settings.h"
 
 KBlocksSound::KBlocksSound()
 {

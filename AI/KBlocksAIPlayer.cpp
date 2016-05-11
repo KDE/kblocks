@@ -15,6 +15,8 @@
 #include "KBlocksAILog.h"
 #include "KBlocksAITypeDefine.h"
 
+#include "KBlocks_debug.h"
+
 #include <utility>
 #include <vector>
 

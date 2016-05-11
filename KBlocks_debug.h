@@ -1,4 +1,4 @@
-/**************************************************************************
+/***************************************************************************
 *   KBlocks, a falling blocks game for KDE                                *
 *   Copyright (C) 2016 Julian Helfferich <julian.helfferich@gmail.com>    *
 *                                                                         *
@@ -8,6 +8,14 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 
-#include "KBlocksAITypeDefine.h"
+#ifndef KBLOCKS_DEBUG_H
+#define KBLOCKS_DEBUG_H
 
-Q_LOGGING_CATEGORY(KBlocksAI,"KBlocks.AI")
+#include <QLoggingCategory>
+Q_DECLARE_LOGGING_CATEGORY(KBlocksAI)
+Q_DECLARE_LOGGING_CATEGORY(KBGeneral)
+Q_DECLARE_LOGGING_CATEGORY(KBGraphics)
+Q_DECLARE_LOGGING_CATEGORY(KBReplay)
+Q_DECLARE_LOGGING_CATEGORY(KBSound)
+
+#endif
