@@ -39,7 +39,6 @@
   <name xml:lang="zh-CN">KBlocks</name>
   <name xml:lang="zh-TW">KBlocks</name>
   <summary>Falling Blocks Game</summary>
-  <summary xml:lang="ast">Xuegu de bloques que cayen</summary>
   <summary xml:lang="bs">Igra padajući blokovi</summary>
   <summary xml:lang="ca">Joc de blocs que cauen</summary>
   <summary xml:lang="ca-valencia">Joc de blocs que cauen</summary>
@@ -78,7 +77,6 @@
       lines without any gaps. When a line is completed it is removed, and more space is available in the play area.
       When there is not enough space for blocks to fall, the game is over.
     </p>
-    <p xml:lang="ast">KBlocks ye'l xuegu clásicu de los bloque que cayen. La idea ye amontonar los bloques que cayen pa crear llinies horizontales ensin güecos. Cuando una llinia se completa, hai disponible más espaciu nel area de xuegu. Cuando nun hai espaciu abondo pa los bloques que cayen, la partida fínase.</p>
     <p xml:lang="ca">El KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per crear línies horitzontals sense cap forat. Quan s'ha completat una línia, aquesta s'elimina i queda més espai disponible a l'àrea de joc. Quan no hi ha espai suficient per als blocs que cauen el joc finalitza.</p>
     <p xml:lang="ca-valencia">El KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per crear línies horitzontals sense cap forat. Quan s'ha completat una línia, esta s'elimina i queda més espai disponible a l'àrea de joc. Quan no hi ha espai suficient per als blocs que cauen el joc finalitza.</p>
     <p xml:lang="de">KBlocks ist ein klassisches Tetris-Spiel. Die herunterfallenden Blöcke müssen so gestapelt werden, dass sie waagerechte Zeilen ohne Lücken bilden. Eine solche Zeile verschwindet dann, und im Spielfeld ist wieder mehr Platz. Wenn es keinen Platz mehr für herunterfallende Blöcke gibt, ist das Spiel zu Ende.</p>
