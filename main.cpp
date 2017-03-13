@@ -1,5 +1,5 @@
 /***************************************************************************
-*   KBlocks, a falling blocks game for KDE                                *
+*   KBlocks, a falling blocks game by KDE                                *
 *   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *
@@ -314,7 +314,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData(QStringLiteral("kblocks"),
                          i18n("KBlocks"),
                          QStringLiteral("0.4"),
-                         i18n("A falling blocks game for KDE"),
+                         i18n("A falling blocks game by KDE"),
                          KAboutLicense::GPL,
                          i18n("(c) 2007, Mauricio Piacentini"));
     aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Author"), QStringLiteral("piacentini@kde.org"));

@@ -1,5 +1,5 @@
 /***************************************************************************
-*   KBlocks, a falling blocks game for KDE                                *
+*   KBlocks, a falling blocks game by KDE                                *
 *   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
 *                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
 *                                                                         *

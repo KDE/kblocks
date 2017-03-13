@@ -1,5 +1,5 @@
 /***************************************************************************
-*   KBlocks, a falling blocks game for KDE                                *
+*   KBlocks, a falling blocks game by KDE                                *
 *   Copyright (C) 2016 Julian Helfferich <julian.helfferich@gmail.com>    *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
