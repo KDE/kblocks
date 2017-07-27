@@ -128,6 +128,8 @@ void KBlocksWin::startGame()
         startGame();
     }
 
+    mpGameView->fitInView(mpGameScene->sceneRect(), Qt::KeepAspectRatio);
+
     mScore->setText(i18n("Points: %1 - Lines: %2 - Level: %3", 0, 0, 0));
 
     m_pauseAction->setEnabled(true);
