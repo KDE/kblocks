@@ -327,8 +327,6 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
-    parser.addVersionOption();
-    parser.addHelpOption();
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("mode"), i18n("Setup kblocks game running mode.\n\t0 = Desktop Mode\t1 = Game Engine Mode\n\t2 = Gui Mode\t3 = Player Mode"), QStringLiteral("game mode"), QStringLiteral("0")));
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("conf"), i18n("Setup the configuration file for tetris researcher mode. Not for desktop users."), QStringLiteral("configuration file"), QStringLiteral("default.conf")));
 
