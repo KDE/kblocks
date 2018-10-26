@@ -16,7 +16,7 @@
 
 #include <QStandardPaths>
 
-#include "KBlocks_debug.h"
+#include "kblocks_sound_debug.h"
 #include "settings.h"
 
 KBlocksSound::KBlocksSound()

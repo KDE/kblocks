@@ -13,7 +13,7 @@
 #include <string>
 
 #include "KBlocksDefine.h"
-#include "KBlocks_debug.h"
+#include "kblocks_replay_debug.h"
 
 KBlocksGameReplayer::KBlocksGameReplayer(const char *fileName, bool isBinaryMode)
 {

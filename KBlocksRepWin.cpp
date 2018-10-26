@@ -15,7 +15,7 @@
 
 #include <qdatetime.h>
 
-#include "KBlocks_debug.h"
+#include "kblocks_replay_debug.h"
 
 KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWindow()
 {

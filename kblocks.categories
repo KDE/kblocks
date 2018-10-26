@@ -1,0 +1,4 @@
+KBlocks.AI kdegames (kblock ai) IDENTIFIER [KBlocksAI]
+KBlocks.Sound kdegames (kblock sound) IDENTIFIER [KBSound]
+KBlocks.Replay kdegames (kblock replay) IDENTIFIER [KBReplay]
+KBlocks.Graphics kdegames (kblock graphics) IDENTIFIER [KBGraphics]

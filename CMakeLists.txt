@@ -28,6 +28,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)
+include(ECMQtDeclareLoggingCategory)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 
@@ -41,7 +42,6 @@ add_subdirectory(doc)
 
 set(kblocks_SRCS
    main.cpp
-   KBlocks_debug.cpp
    KBlocksDefine.cpp
    KBlocksNetServer.cpp
    KBlocksNetClient.cpp
@@ -83,6 +83,12 @@ set(kblocks_SRCS
    AI/KBlocksAILog.cpp
 )
 
+
+ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_ai_debug.h IDENTIFIER KBlocksAI CATEGORY_NAME KBlocks.AI)
+ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_sound_debug.h IDENTIFIER KBSound CATEGORY_NAME KBlocks.Sound)
+ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_replay_debug.h IDENTIFIER KBReplay CATEGORY_NAME KBlocks.Replay)
+ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_graphics_debug.h IDENTIFIER KBGraphics CATEGORY_NAME KBlocks.Graphics)
+
 kconfig_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
 file(GLOB ICONS_SRCS "*-apps-kblocks.png")
@@ -113,5 +119,6 @@ install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_CONFDIR})
 
 ecm_install_icons(ICONS 128-apps-kblocks.png  16-apps-kblocks.png  22-apps-kblocks.png  32-apps-kblocks.png  48-apps-kblocks.png  64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 
+install( FILES kblocks.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
