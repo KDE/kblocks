@@ -146,7 +146,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
         return false;
     }
     //FIXME: new without delete (is the new really necessary here?)
-    KBlocksPiece *tmpPiece = new KBlocksPiece();
+    QScopedPointer<KBlocksPiece> tmpPiece(new KBlocksPiece());
 
     tmpPiece->fromValue(mpPieceList[0]->toValue());
     tmpPiece->setPosX(mpPieceList[0]->getPosX() + xPos);
@@ -157,7 +157,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
     }
     tmpPiece->setRotation(mpPieceList[0]->getRotation() + rotation);
 
-    if (checkPieceTouchGround(tmpPiece)) {
+    if (checkPieceTouchGround(tmpPiece.data())) {
         return false;
     }
 
