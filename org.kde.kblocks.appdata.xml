@@ -17,6 +17,7 @@
   <name xml:lang="fi">KBlocks</name>
   <name xml:lang="fr">KBlocks</name>
   <name xml:lang="gl">KBlocks</name>
+  <name xml:lang="id">KBlocks</name>
   <name xml:lang="it">KBlocks</name>
   <name xml:lang="ko">KBlocks</name>
   <name xml:lang="nl">KBlocks</name>
@@ -51,6 +52,7 @@
   <summary xml:lang="fi">Putoavien kappaleiden peli</summary>
   <summary xml:lang="fr">Jeu de blocs qui tombent</summary>
   <summary xml:lang="gl">Xogo no que caen bloques</summary>
+  <summary xml:lang="id">Permainan Balok Berjatuhan</summary>
   <summary xml:lang="it">Gioco con oggetti che cadono</summary>
   <summary xml:lang="ko">떨어지는 블록 게임</summary>
   <summary xml:lang="nl">Vallende blokken-spel</summary>
@@ -88,6 +90,7 @@
     <p xml:lang="fi">KBlock on perinteinen putoavien kappaleiden peli. Tavoitteena on kasata putoavat kappaleet aukottomiksi vaakariveiksi. Kun rivi on valmis, se poistetaan ja pelialue kasvaa. Kun kappaleilla ei ole enää tilaa pudota, peli on lopussa.</p>
     <p xml:lang="fr">KBlocks est un jeu de blocs qui tombent classique. L'objectif est d'empiler les blocs qui tombent afin de créer des lignes horizontales sans laisser aucun espace. Lorsqu'une ligne est complète, elle disparaît et libère de la place dans la zone de jeu. Lorsqu'il n'y a plus d'espace pour que les blocs puissent tomber, la partie est terminée.</p>
     <p xml:lang="gl">KBlocks é o xogo clásico dos bloques que caen A idea é amorear os bloques que caen de xeito que creen liñas horizontais completas, sen ocos. Cando se completa unha liña, esta retírase e amplíase o espazo dispoñíbel na área de xogo. Cando non queda espazo abondo para que caian os bloques, a partida acaba.</p>
+    <p xml:lang="id">KBlocks adalah permainan klasik balok yang berjatuhan. Gagasannya adalah menumpuk balok-balok yang berjatuhan untuk menciptakan garis secara mendatar tanpa celah apapun. Ketika garis sudah lengkap maka ia terhapus, dan ruang selebihnya tersedia di area main. Ketika tidak adanya ruang untuk jatuhnya balok-balok, maka tamatlah permainan.</p>
     <p xml:lang="it">KBlocks è il classico gioco di blocchi in caduta. L'idea è impilarli in modo da riempire completamente delle righe. Quando una riga è completata viene rimossa, e c'è più spazio a disposizione nell'area di gioco. Quando manca lo spazio per far cadere i blocchi, la partita finisce. </p>
     <p xml:lang="ko">KBlocks는 떨어지는 블록 게임입니다. 떨어지는 블록을 맞추어서 빈틈 없는 수평선을 만드는 것이 목표입니다. 줄을 맞추면 지워져서 더 많은 공간이 생기며, 더 이상 블록이 내려올 수 없으면 게임이 끝납니다.</p>
     <p xml:lang="nl">KBlocks is het klassieke spel met vallende blokken Het idee is de vallende blokken zo op te stapelen dat horizontale lijnen volledig zijn opgevuld. Wanneer een lijn volledig is opgevuld wordt deze verwijderd en komt er meer ruimte in het speelgebied. Wanneer er onvoldoende ruimte over is om een blok te laten vallen is het spel over.</p>
