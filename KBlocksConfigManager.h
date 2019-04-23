@@ -30,19 +30,19 @@ public:
 
     int SetDebugOutput(bool flag);
 
-    int LoadConfigFile(string filename);
-    int SaveConfigFile(string filename);
+    int LoadConfigFile(const string &filename);
+    int SaveConfigFile(const string &filename);
 
     int GetSectionCount();
-    int GetKeyCount(string SectionName);
+    int GetKeyCount(const string &SectionName);
 
-    int GetKeyString(string SectionName, string KeyName, string *KeyString, const string Default);
-    int GetKeyInt(string SectionName, string KeyName, int *KeyInt, const int Default);
-    int GetKeyBool(string SectionName, string KeyName, bool *KeyBool, const bool Default);
+    int GetKeyString(const string &SectionName, const string &KeyName, string *KeyString, const string &Default);
+    int GetKeyInt(const string &SectionName, const string &KeyName, int *KeyInt, const int Default);
+    int GetKeyBool(const string &SectionName, const string &KeyName, bool *KeyBool, const bool Default);
 
     int SetKeyString(string SectionName, string KeyName, string KeyString);
     int SetKeyInt(string SectionName, string KeyName, int KeyInt);
-    int SetKeyBool(string SectionName, string KeyName, bool KeyBool);
+    int SetKeyBool(const string &SectionName, const string &KeyName, bool KeyBool);
 
 private:
     int ParseConfigFile(FILE *fp);

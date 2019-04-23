@@ -9,7 +9,7 @@
 ***************************************************************************/
 #include "KBlocksKeyboardPlayer.h"
 #include <QIcon>
-KBlocksKeyboardPlayer::KBlocksKeyboardPlayer(KXmlGuiWindow *parent, string name, bool netMode)
+KBlocksKeyboardPlayer::KBlocksKeyboardPlayer(KXmlGuiWindow *parent, const string &name, bool netMode)
 {
     mpGame = 0;
     mPauseFlag = false;

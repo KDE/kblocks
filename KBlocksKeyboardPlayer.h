@@ -26,7 +26,7 @@ class KBlocksKeyboardPlayer : public QObject, public GamePlayerInterface
     Q_OBJECT
 
 public:
-    explicit KBlocksKeyboardPlayer(KXmlGuiWindow *parent, string name = "", bool netMode = false);
+    explicit KBlocksKeyboardPlayer(KXmlGuiWindow *parent, const string &name = "", bool netMode = false);
     ~KBlocksKeyboardPlayer();
 
 public:

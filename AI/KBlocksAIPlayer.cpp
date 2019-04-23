@@ -44,7 +44,7 @@ typedef std::vector<Result> Result_Sequence;
 #define NBS_EVALUATION
 #endif
 
-KBlocksAIPlayer::KBlocksAIPlayer(string name)
+KBlocksAIPlayer::KBlocksAIPlayer(const string &name)
 {
     mAIName = name;
 

@@ -22,11 +22,11 @@
 KBlocksSound::KBlocksSound()
 {
     m_blockFallSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, "sounds/block-fall.ogg"));
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-fall.ogg")));
     m_blockMoveSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, "sounds/block-move.ogg"));
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-move.ogg")));
     m_blockRemoveSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, "sounds/block-remove.ogg"));
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg")));
     setSoundsEnabled(Settings::sounds());
 }
 

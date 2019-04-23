@@ -40,7 +40,7 @@ int KBlocksConfigManager::SetDebugOutput(bool flag)
     return 0;
 }
 
-int KBlocksConfigManager::LoadConfigFile(string filename)
+int KBlocksConfigManager::LoadConfigFile(const string &filename)
 {
     FILE *fp;
     int result;
@@ -58,7 +58,7 @@ int KBlocksConfigManager::LoadConfigFile(string filename)
     return result;
 }
 
-int KBlocksConfigManager::SaveConfigFile(string filename)
+int KBlocksConfigManager::SaveConfigFile(const string &filename)
 {
     FILE *fp;
     int result;
@@ -81,7 +81,7 @@ int KBlocksConfigManager::GetSectionCount()
     return stConfigSectionList.size();
 }
 
-int KBlocksConfigManager::GetKeyCount(string SectionName)
+int KBlocksConfigManager::GetKeyCount(const string &SectionName)
 {
     map< string, map<string, string> >::iterator it;
 
@@ -96,7 +96,7 @@ int KBlocksConfigManager::GetKeyCount(string SectionName)
     return tmpMap.size();
 }
 
-int KBlocksConfigManager::GetKeyString(string SectionName, string KeyName, string *KeyString, const string Default)
+int KBlocksConfigManager::GetKeyString(const string &SectionName, const string &KeyName, string *KeyString, const string &Default)
 {
     map< string, map<string, string> >::iterator it;
 
@@ -119,7 +119,7 @@ int KBlocksConfigManager::GetKeyString(string SectionName, string KeyName, strin
     return 0;
 }
 
-int KBlocksConfigManager::GetKeyInt(string SectionName, string KeyName, int *KeyInt, const int Default)
+int KBlocksConfigManager::GetKeyInt(const string &SectionName, const string &KeyName, int *KeyInt, const int Default)
 {
     map< string, map<string, string> >::iterator it;
 
@@ -149,7 +149,7 @@ int KBlocksConfigManager::GetKeyInt(string SectionName, string KeyName, int *Key
     return 0;
 }
 
-int KBlocksConfigManager::GetKeyBool(string SectionName, string KeyName, bool *KeyBool, const bool Default)
+int KBlocksConfigManager::GetKeyBool(const string &SectionName, const string &KeyName, bool *KeyBool, const bool Default)
 {
     string tmpValue;
     if (GetKeyString(SectionName, KeyName, &tmpValue, "") == -1) {
@@ -240,7 +240,7 @@ int KBlocksConfigManager::SetKeyInt(string SectionName, string KeyName, int KeyI
     return 0;
 }
 
-int KBlocksConfigManager::SetKeyBool(string SectionName, string KeyName, bool KeyBool)
+int KBlocksConfigManager::SetKeyBool(const string &SectionName, const string &KeyName, bool KeyBool)
 {
     if (KeyBool) {
         return SetKeyString(SectionName, KeyName, "true");

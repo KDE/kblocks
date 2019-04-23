@@ -27,7 +27,7 @@ using namespace std;
 class KBlocksAIPlayer : public GamePlayerInterface
 {
 public:
-    explicit KBlocksAIPlayer(string name = "");
+    explicit KBlocksAIPlayer(const string &name = "");
     ~KBlocksAIPlayer();
 
 public:
