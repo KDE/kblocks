@@ -17,7 +17,7 @@
 #ifdef  DEBUG_EVALUATION
 #define CLASSNAME(class)\
     const char* evaluationName()\
-    {\
+    override {\
         return #class;\
     }
 #else
@@ -48,7 +48,7 @@ public:
     }
     virtual ~SpecialEvaluationInterface() {};
 
-    virtual double evaluate(KBlocksField *) = 0;
+    double evaluate(KBlocksField *) override = 0;
     void setCurrentPiece(KBlocksPiece *piece)
     {
         mpPiece = piece;
@@ -59,7 +59,7 @@ public:
     }
 
 #ifdef DEBUG_EVALUATION
-    virtual const char *evaluationName()
+    const char *evaluationName() override
     {
         return "";
     }

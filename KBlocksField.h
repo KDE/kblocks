@@ -30,7 +30,7 @@ public:
     ~KBlocksField();
 
 public:
-    bool getCell(int xPos, int yPos);
+    bool getCell(int xPos, int yPos) override;
     void setCell(int xPos, int yPos, bool value);
 
     void copy(FieldInterface *p);
@@ -45,8 +45,8 @@ public:
     int  encodeData(unsigned char *data);
     void decodeData(unsigned char *data);
 
-    int  getWidth();
-    int  getHeight();
+    int  getWidth() override;
+    int  getHeight() override;
 
     bool equals(KBlocksField *rhs);
 

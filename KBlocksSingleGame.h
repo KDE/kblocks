@@ -33,32 +33,32 @@ public:
     ~KBlocksSingleGame();
 
 public:
-    KBlocksField *getField();
+    KBlocksField *getField() override;
 
-    int getPieceCount();
-    KBlocksPiece *getPiece(int index);
+    int getPieceCount() override;
+    KBlocksPiece *getPiece(int index) override;
 
-    bool isActive();
-    bool isGameRunning();
+    bool isActive() override;
+    bool isGameRunning() override;
 
     void setGameStandbyMode(bool flag);
     void setGameInterval(int interval);
     void setGameRecorder(KBlocksGameRecorder *p);
 
-    int forceUpdateGame();
-    int updateGame();
+    int forceUpdateGame() override;
+    int updateGame() override;
     int punishGame(int lineCount, int punishSeed);
 
-    bool setCurrentPiece(int xPos, int yPos, int rotation);
+    bool setCurrentPiece(int xPos, int yPos, int rotation) override;
 
     int startGame(int seed);
     int stopGame();
 
     int pauseGame(bool flag);
-    int continueGame();
+    int continueGame() override;
 
-    bool pickGameResult(int *result);
-    bool pickGameAction(int *type, int *action);
+    bool pickGameResult(int *result) override;
+    bool pickGameAction(int *type, int *action) override;
 
 signals:
     void gameStopped();

@@ -34,14 +34,14 @@ public:
 
 public:
     int getActiveGameCount();
-    KBlocksSingleGame *getSingleGame(int index);
+    KBlocksSingleGame *getSingleGame(int index) override;
 
     bool playRecordOneStep(int *changedPiece);
     void getRecordLastField(int index);
     void saveRecord(const char *fileName, bool binaryMode = true);
 
-    int levelUpGame(int level);
-    int updateGame(int *lineList);
+    int levelUpGame(int level) override;
+    int updateGame(int *lineList) override;
 
     void setGameSeed(int seed);
     void setGamePunish(bool flag);
@@ -51,15 +51,15 @@ public:
     void setInitInterval(int interval);
     void setLevelUpInterval(int interval);
 
-    bool startGame(int gameCount);
+    bool startGame(int gameCount) override;
 
-    void pauseGame(bool pauseFlag);
-    void continueGame();
+    void pauseGame(bool pauseFlag) override;
+    void continueGame() override;
 
     bool deleteSingleGames();
 
 public slots:
-    bool stopGame();
+    bool stopGame() override;
 
 signals:
     void allGamesStopped();

@@ -80,7 +80,7 @@ public slots:
     void playDropSound();
 
 protected:
-    void drawBackground(QPainter *painter, const QRectF &rect);
+    void drawBackground(QPainter *painter, const QRectF &rect) override;
 
 private:
     GameLogicInterface *mpGameLogic;

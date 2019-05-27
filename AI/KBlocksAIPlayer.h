@@ -31,14 +31,14 @@ public:
     ~KBlocksAIPlayer();
 
 public:
-    void startGame(SingleGameInterface *p);
-    void stopGame();
+    void startGame(SingleGameInterface *p) override;
+    void stopGame() override;
 
-    void pauseGame(bool flag);
+    void pauseGame(bool flag) override;
 
-    void think(GamePlayer_ActionList *actionList);
+    void think(GamePlayer_ActionList *actionList) override;
 
-    string getName();
+    string getName() override;
 
 private:
     string mAIName;

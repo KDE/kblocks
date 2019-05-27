@@ -34,7 +34,7 @@ bool getDecisionFeature(const DecisionFeatureEnumeration, KBlocksField *);
 class BaseEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static BaseEvaluation *instance()
     {
         if (_instance == 0) {
@@ -53,7 +53,7 @@ private:
 class HalfBaseEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static HalfBaseEvaluation *instance()
     {
         if (_instance == 0) {
@@ -72,7 +72,7 @@ private:
 class WellsFillerEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static WellsFillerEvaluation *instance()
     {
         if (_instance == 0) {
@@ -91,7 +91,7 @@ private:
 class HeightKillerEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static HeightKillerEvaluation *instance()
     {
         if (_instance == 0) {
@@ -110,7 +110,7 @@ private:
 class BlockRemoverEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static BlockRemoverEvaluation *instance()
     {
         if (_instance == 0) {
@@ -129,7 +129,7 @@ private:
 class DeepNarrowRemoverEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static DeepNarrowRemoverEvaluation *instance()
     {
         if (_instance == 0) {
@@ -148,7 +148,7 @@ private:
 class TetrisPreparingEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static TetrisPreparingEvaluation *instance()
     {
         if (_instance == 0) {
@@ -167,7 +167,7 @@ private:
 class TetrisEliminationEvaluation : public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static TetrisEliminationEvaluation *instance()
     {
         if (_instance == 0) {
@@ -186,7 +186,7 @@ private:
 class NBSEvaluation : public SpecialEvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static NBSEvaluation *instance()
     {
         if (_instance == 0) {

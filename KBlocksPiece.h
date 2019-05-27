@@ -90,28 +90,28 @@ public:
 public:
     void copy(PieceInterface *p);
 
-    int  toValue();
+    int  toValue() override;
     void fromValue(int val);
 
-    int  getType();
+    int  getType() override;
     void setType(int newType);
 
-    int  getRotation();
+    int  getRotation() override;
     void setRotation(int newRotation);
 
-    int  getPosX();
+    int  getPosX() override;
     void setPosX(int newPosX);
 
-    int  getPosY();
+    int  getPosY() override;
     void setPosY(int newPosY);
 
-    int  getCellCount();
-    int  getCellPosX(int index);
-    int  getCellPosY(int index);
+    int  getCellCount() override;
+    int  getCellPosX(int index) override;
+    int  getCellPosY(int index) override;
 
     int  getWidth();
     int  getHeight();
-    int  getRotationCount();
+    int  getRotationCount() override;
 
     int  getSignature(int *signature);
 

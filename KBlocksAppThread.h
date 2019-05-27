@@ -20,7 +20,7 @@ public:
     ~KBlocksAppThread();
 
 public:
-    void run();
+    void run() override;
 
 private:
     KBlocksPlayNetwork *mPlayNetwork;

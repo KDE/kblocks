@@ -24,11 +24,11 @@ public:
     explicit KBlocksAIPlanner(KBlocksField *p);
     ~KBlocksAIPlanner();
 
-    int  process(KBlocks_PieceType_Detail pieceValue);
-    bool getNextBoardStatus(int index, KBlocksField *field);
-    bool getNextPieceState(int index, KBlocksPiece *piece);
+    int  process(KBlocks_PieceType_Detail pieceValue) override;
+    bool getNextBoardStatus(int index, KBlocksField *field) override;
+    bool getNextPieceState(int index, KBlocksPiece *piece) override;
 
-    virtual int count();
+    int count() override;
 
 private:
     AIPlanner_PieceInfo_Sequence mNextPieceValues;

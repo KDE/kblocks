@@ -51,15 +51,15 @@ public:
     explicit KBlocksAIPlannerExtend(KBlocksField *field);
     ~KBlocksAIPlannerExtend();
 
-    int process(KBlocks_PieceType_Detail pieceValue);
+    int process(KBlocks_PieceType_Detail pieceValue) override;
     int process(const AIPlanner_PieceValue_Sequence &p);
 
-    bool getNextBoardStatus(int index, KBlocksField *field);
+    bool getNextBoardStatus(int index, KBlocksField *field) override;
     bool getNextBoardStatus(int index, KBlocksField *field, bool first);
-    bool getNextPieceState(int index, KBlocksPiece *piece);
+    bool getNextPieceState(int index, KBlocksPiece *piece) override;
     bool getPath(int index, AIPlanner_PieceInfo_Sequence *pseq);
 
-    int count();
+    int count() override;
 
 private:
     PlanningPath::PathTree *mPathTree;

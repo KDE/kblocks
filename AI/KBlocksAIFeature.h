@@ -58,7 +58,7 @@ void set_ground_line(int);
 class Evaluation_Max_Height: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Max_Height *instance()
     {
         if (_instance == 0) {
@@ -76,7 +76,7 @@ private:
 class  Evaluation_Holes_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Holes_Count *instance()
     {
         if (_instance == 0) {
@@ -94,7 +94,7 @@ private:
 class  Evaluation_Average_Height: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Average_Height *instance()
     {
         if (_instance == 0) {
@@ -112,7 +112,7 @@ private:
 class  Evaluation_Max_Height_Difference: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Max_Height_Difference *instance()
     {
         if (_instance == 0) {
@@ -130,7 +130,7 @@ private:
 class  Evaluation_Average_Height_Difference: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Average_Height_Difference *instance()
     {
         if (_instance == 0) {
@@ -148,7 +148,7 @@ private:
 class  Evaluation_Kontur_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Kontur_Count *instance()
     {
         if (_instance == 0) {
@@ -166,7 +166,7 @@ private:
 class  Evaluation_Max_Kontur_Length: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Max_Kontur_Length *instance()
     {
         if (_instance == 0) {
@@ -184,7 +184,7 @@ private:
 class  Evaluation_Closed_Holes_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Closed_Holes_Count *instance()
     {
         if (_instance == 0) {
@@ -202,7 +202,7 @@ private:
 class  Evaluation_Wells_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Wells_Count *instance()
     {
         if (_instance == 0) {
@@ -220,7 +220,7 @@ private:
 class  Evaluation_Blocks_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Blocks_Count *instance()
     {
         if (_instance == 0) {
@@ -238,7 +238,7 @@ private:
 class  Evaluation_Blocks_Over_Holes_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Blocks_Over_Holes_Count *instance()
     {
         if (_instance == 0) {
@@ -256,7 +256,7 @@ private:
 class Evaluation_Weighted_Blocks_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Weighted_Blocks_Count *instance()
     {
         if (_instance == 0) {
@@ -274,7 +274,7 @@ private:
 class Evaluation_Row_Transition_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Row_Transition_Count *instance()
     {
         if (_instance == 0) {
@@ -292,7 +292,7 @@ private:
 class Evaluation_Column_Transition_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Column_Transition_Count *instance()
     {
         if (_instance == 0) {
@@ -310,7 +310,7 @@ private:
 class Evaluation_Narrow_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Narrow_Count *instance()
     {
         if (_instance == 0) {
@@ -328,7 +328,7 @@ private:
 class Evaluation_Prediction_Count: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Prediction_Count *instance()
     {
         if (_instance == 0) {
@@ -346,7 +346,7 @@ private:
 class Evaluation_Max_Well_Depth: public EvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Max_Well_Depth *instance()
     {
         if (_instance == 0) {
@@ -365,7 +365,7 @@ private:
 class Evaluation_Remove_Lines: public SpecialEvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Remove_Lines *instance()
     {
         if (_instance == 0) {
@@ -383,7 +383,7 @@ private:
 class Evaluation_Landing_Height: public SpecialEvaluationInterface
 {
 public:
-    double evaluate(KBlocksField *);
+    double evaluate(KBlocksField *) override;
     static Evaluation_Landing_Height *instance()
     {
         if (_instance == 0) {
