@@ -63,11 +63,11 @@ private:
     QString mSnapshotFilename;
     QPixmap mSnapshoter;
 
-    KBlocksScene *mpGameScene;
-    KBlocksView  *mpGameView;
+    KBlocksScene *mpGameScene = nullptr;
+    KBlocksView  *mpGameView = nullptr;
 
-    KBlocksGameLogic *mpGameLogic;
-    KBlocksGameReplayer *mpGameReplayer;
+    KBlocksGameLogic *mpGameLogic = nullptr;
+    KBlocksGameReplayer *mpGameReplayer = nullptr;
 };
 
 #endif

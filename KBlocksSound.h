@@ -30,9 +30,9 @@ public:
     void playSound(Sound soundType);
 
 private:
-    KgSound *m_blockFallSound;
-    KgSound *m_blockMoveSound;
-    KgSound *m_blockRemoveSound;
+    KgSound *m_blockFallSound = nullptr;
+    KgSound *m_blockMoveSound = nullptr;
+    KgSound *m_blockRemoveSound = nullptr;
     bool sndActive;
 
 };

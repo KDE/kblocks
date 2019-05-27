@@ -47,9 +47,9 @@ private:
     void updatePunishLine(const QList<int> &dataList);
 
 private:
-    FieldInterface *mpGameField;
-    PieceInterface *mpActivePiece;
-    PieceInterface *mpNextPiece;
+    FieldInterface *mpGameField = nullptr;
+    PieceInterface *mpActivePiece = nullptr;
+    PieceInterface *mpNextPiece = nullptr;
 
     int **boardInfo;
     int **prepareInfo;

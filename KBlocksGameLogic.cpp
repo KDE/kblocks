@@ -30,7 +30,7 @@ KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
     if (record) {
         mpGameRecorder = new KBlocksGameRecorder();
     } else {
-        mpGameRecorder = 0;
+        mpGameRecorder = nullptr;
     }
     mpGameReplayer = 0;
 }

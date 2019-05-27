@@ -69,17 +69,17 @@ private:
     bool mGameAnim;
     bool mWaitForAll;
 
-    KBlocksScene *mpGameScene;
-    KBlocksView  *mpGameView;
+    KBlocksScene *mpGameScene = nullptr;
+    KBlocksView  *mpGameView = nullptr;
 
-    KBlocksGameLogic *mpGameLogic;
-    KBlocksPlayManager *mpPlayManager;
+    KBlocksGameLogic *mpGameLogic = nullptr;
+    KBlocksPlayManager *mpPlayManager = nullptr;
 
-    KBlocksKeyboardPlayer *mpKBPlayer;
-    KBlocksAIPlayer *mpAIPlayer;
+    KBlocksKeyboardPlayer *mpKBPlayer = nullptr;
+    KBlocksAIPlayer *mpAIPlayer = nullptr;
 
-    QAction *m_pauseAction;
-    QLabel *mScore;
+    QAction *m_pauseAction = nullptr;
+    QLabel *mScore = nullptr;
 };
 
 #endif

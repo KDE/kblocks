@@ -83,16 +83,16 @@ protected:
     void drawBackground(QPainter *painter, const QRectF &rect) override;
 
 private:
-    GameLogicInterface *mpGameLogic;
+    GameLogicInterface *mpGameLogic = nullptr;
     bool mGameStarted;
 
-    KBlocksGraphics *mpGrafx;
-    KBlocksSound *mpSnd;
+    KBlocksGraphics *mpGrafx = nullptr;
+    KBlocksSound *mpSnd = nullptr;
 
     int mSceneGamesPerLine;
     bool mGameAnimEnabled;
     bool mWaitForAllUpdate;
-    bool *maGameReadySignal;
+    bool *maGameReadySignal = nullptr;
 
     bool mSnapshotMode;
 
@@ -100,10 +100,10 @@ private:
 
     int mMaxCapacity;
     int mGroupCount;
-    KBlocksItemGroup **maGroupList;
-    KBlocksScore **maGameScoreList;
+    KBlocksItemGroup **maGroupList = nullptr;
+    KBlocksScore **maGameScoreList = nullptr;
 
-    KGamePopupItem *mMessageBox;
+    KGamePopupItem *mMessageBox = nullptr;
 
     int mUpdateInterval;
     QTimer mUpdateTimer;

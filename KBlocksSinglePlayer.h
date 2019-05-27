@@ -44,8 +44,8 @@ private slots:
     void doAction();
 
 private:
-    GamePlayerInterface *mpPlayer;
-    SingleGameInterface *mpGame;
+    GamePlayerInterface *mpPlayer = nullptr;
+    SingleGameInterface *mpGame = nullptr;
 
     int mPlayerState;
 

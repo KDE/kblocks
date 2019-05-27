@@ -82,8 +82,8 @@ private:
     int mInitialInterval;
     int mLevelUpInterval;
 
-    KBlocksGameRecorder *mpGameRecorder;
-    KBlocksGameReplayer *mpGameReplayer;
+    KBlocksGameRecorder *mpGameRecorder = nullptr;
+    KBlocksGameReplayer *mpGameReplayer = nullptr;
 };
 
 #endif

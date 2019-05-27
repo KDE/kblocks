@@ -55,23 +55,23 @@ private slots:
     void rotateCCW();
 
 protected:
-    SingleGameInterface *mpGame;
+    SingleGameInterface *mpGame = nullptr;
     bool mPauseFlag;
 
-    QAction *rotatecw;
-    QAction *rotateccw;
-    QAction *moveleft;
-    QAction *moveright;
-    QAction *movedown;
-    QAction *pushdown;
+    QAction *rotatecw = nullptr;
+    QAction *rotateccw = nullptr;
+    QAction *moveleft = nullptr;
+    QAction *moveright = nullptr;
+    QAction *movedown = nullptr;
+    QAction *pushdown = nullptr;
 
 private:
     bool mNetMode;
     string mPlayerName;
     GamePlayer_ActionList mActionList;
 
-    KXmlGuiWindow *mpKeyWindow;
-    KActionCollection *mpKeyShortcuts;
+    KXmlGuiWindow *mpKeyWindow = nullptr;
+    KActionCollection *mpKeyShortcuts = nullptr;
 };
 
 #endif

@@ -33,9 +33,9 @@ private:
     int  formIntFromByte(char *data);
 
 private:
-    GamePlayerInterface *mpPlayer;
-    KBlocksSingleGame *mpGame;
-    KBlocksNetClient *mpNetClient;
+    GamePlayerInterface *mpPlayer = nullptr;
+    KBlocksSingleGame *mpGame = nullptr;
+    KBlocksNetClient *mpNetClient = nullptr;
 
     int mSendLength;
 

@@ -37,7 +37,7 @@ private slots:
     void receivedData();
 
 private:
-    QUdpSocket *mpClientSocket;
+    QUdpSocket *mpClientSocket = nullptr;
 
     QHostAddress mLocalAddress;
     quint16 mLocalPort;

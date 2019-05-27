@@ -20,7 +20,7 @@ class KBlocksView : public QGraphicsView
     Q_OBJECT
 
 public:
-    explicit KBlocksView(KBlocksScene *scene, QWidget *parent = 0);
+    explicit KBlocksView(KBlocksScene *scene, QWidget *parent = nullptr);
     ~KBlocksView();
 
 signals:
@@ -35,7 +35,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 protected:
-    KBlocksScene *mpGameScene;
+    KBlocksScene *mpGameScene = nullptr;
 };
 
 #endif

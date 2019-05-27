@@ -28,11 +28,11 @@ public:
     bool loadTheme(const QString &themeFile);
     void readThemeValues();
     void adjustForSize(const QSize &newsize);
-    KGameTheme *theme()
+    KGameTheme *theme() const
     {
         return m_theme;
     }
-    QSvgRenderer *renderer()
+    QSvgRenderer *renderer() const
     {
         return m_renderer;
     }
@@ -49,8 +49,8 @@ public:
     int m_PreviewArea_CenterPoint_Y;
 
 private:
-    KGameTheme *m_theme;
-    QSvgRenderer *m_renderer;
+    KGameTheme *m_theme = nullptr;
+    QSvgRenderer *m_renderer = nullptr;
 
     //QPixmap renderElement(int width, int height, const QString & elementid);
     //QString pixmapCacheNameFromElementId(int width, int height, const QString & elementid);

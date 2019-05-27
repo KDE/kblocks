@@ -19,8 +19,8 @@ class SingleGameInterface
 {
 public:
     SingleGameInterface()
-        : mpField(nullptr), mPieceCount(0), mpPieceList(nullptr) {};
-    virtual ~SingleGameInterface() {};
+        : mpField(nullptr), mPieceCount(0), mpPieceList(nullptr) {}
+    virtual ~SingleGameInterface() {}
 
 public:
     virtual FieldInterface *getField() = 0;
@@ -41,10 +41,10 @@ public:
     virtual bool pickGameAction(int *, int *) = 0;
 
 protected:
-    FieldInterface *mpField;
+    FieldInterface *mpField = nullptr;
 
     int mPieceCount;
-    PieceInterface **mpPieceList;
+    PieceInterface **mpPieceList = nullptr;
 };
 
 #endif //SINGLE_GAME_INTERFACE

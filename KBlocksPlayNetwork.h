@@ -41,7 +41,7 @@ private:
     int mMaxCapacity;
     KBlocksNetPlayer **maPlayerList;
 
-    KBlocksGameLogic *mpGameLogic;
+    KBlocksGameLogic *mpGameLogic = nullptr;
 };
 
 #endif

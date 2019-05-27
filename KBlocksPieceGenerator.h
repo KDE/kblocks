@@ -24,7 +24,7 @@ public:
 private:
     int  maxCapacity;
     int  pieceIndex;
-    int *maPieceList;
+    int *maPieceList = nullptr;
 };
 
 #endif

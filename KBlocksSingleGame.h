@@ -74,15 +74,15 @@ private:
     timeLong getMillisecOfNow();
 
 protected:
-    KBlocksField *mpField;
+    KBlocksField *mpField = nullptr;
 
     int mPieceCount;
-    KBlocksPiece **mpPieceList;
+    KBlocksPiece **mpPieceList = nullptr;
 
 private:
-    KBlocksPieceGenerator *mpPieceGenerator;
-    KBlocksGameMessage *mpGameMessage;
-    KBlocksGameRecorder *mpGameRecorder;
+    KBlocksPieceGenerator *mpPieceGenerator = nullptr;
+    KBlocksGameMessage *mpGameMessage = nullptr;
+    KBlocksGameRecorder *mpGameRecorder = nullptr;
 
     int mGameIndex;
     int mCurrentGameState;

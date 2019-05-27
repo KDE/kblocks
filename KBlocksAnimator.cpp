@@ -12,19 +12,17 @@
 
 KBlocksAnimator::KBlocksAnimator()
 {
-    mpAnimFade = 0;
-    mpAnimDrop = 0;
 }
 
 KBlocksAnimator::~KBlocksAnimator()
 {
     if (mpAnimDrop) {
         delete mpAnimDrop;
-        mpAnimDrop = 0;
+        mpAnimDrop = nullptr;
     }
     if (mpAnimFade) {
         delete mpAnimFade;
-        mpAnimFade = 0;
+        mpAnimFade = nullptr;
     }
 }
 
@@ -49,7 +47,7 @@ bool KBlocksAnimator::deleteFadeAnim()
 {
     if (mpAnimFade) {
         delete mpAnimFade;
-        mpAnimFade = 0;
+        mpAnimFade = nullptr;
         return true;
     }
     return false;
@@ -77,7 +75,7 @@ bool KBlocksAnimator::deleteDropAnim()
 {
     if (mpAnimDrop) {
         delete mpAnimDrop;
-        mpAnimDrop = 0;
+        mpAnimDrop = nullptr;
         return true;
     }
     return false;

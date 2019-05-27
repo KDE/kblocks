@@ -30,7 +30,7 @@ public:
     void pauseGame(bool flag);
 
 private:
-    GameLogicInterface *mpGameLogic;
+    GameLogicInterface *mpGameLogic = nullptr;
 
     int mPlayerCount;
     int mMaxCapacity;

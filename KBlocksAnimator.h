@@ -51,8 +51,8 @@ signals:
     void animFinished(int animType);
 
 protected:
-    KBlocksAnimFade *mpAnimFade;
-    KBlocksAnimDrop *mpAnimDrop;
+    KBlocksAnimFade *mpAnimFade = nullptr;
+    KBlocksAnimDrop *mpAnimDrop = nullptr;
 };
 
 #endif

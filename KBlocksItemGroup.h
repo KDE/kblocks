@@ -75,9 +75,9 @@ private:
     KBlocksSvgItem **maPrepareCells;
 
     SingleGameInterface *mpSingleGame;
-    KBlocksLayout *mpGameLayout;
-    KBlocksGraphics *mpGrafx;
-    KBlocksSound *mpSnd;
+    KBlocksLayout *mpGameLayout = nullptr;
+    KBlocksGraphics *mpGrafx = nullptr;
+    KBlocksSound *mpSnd = nullptr;
 
     QTimer mUpdateTimer;
     int mUpdateInterval;

@@ -56,12 +56,12 @@ private:
 
     int maScoreList[8];
 
-    KBlocksScene *mpGameScene;
-    KBlocksView  *mpGameView;
+    KBlocksScene *mpGameScene = nullptr;
+    KBlocksView  *mpGameView = nullptr;
 
-    KBlocksGameLogic *mpGameLogic;
-    KBlocksNetClient *mpNetClient;
-    QLabel *mScore;
+    KBlocksGameLogic *mpGameLogic = nullptr;
+    KBlocksNetClient *mpNetClient = nullptr;
+    QLabel *mScore = nullptr;
 };
 
 #endif
