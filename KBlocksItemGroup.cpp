@@ -305,11 +305,11 @@ void KBlocksItemGroup::fadeInNewPiece()
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i]->updateSelf();
     }
-    foreach (KBlocksSvgItem *tmpItem, mFadeOutItems) {
+    for (KBlocksSvgItem *tmpItem : qAsConst(mFadeOutItems)) {
         tmpItem->setOpacity(1);
         tmpItem->stopOpAnim();
     }
-    foreach (KBlocksSvgItem *tmpItem, mDropItems) {
+    for (KBlocksSvgItem *tmpItem : qAsConst(mDropItems)) {
         tmpItem->stopPosAnim();
     }
 

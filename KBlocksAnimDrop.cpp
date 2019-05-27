@@ -32,7 +32,7 @@ KBlocksAnimDrop::~KBlocksAnimDrop()
 void KBlocksAnimDrop::valueChanged(qreal value)
 {
     Q_UNUSED(value);
-    foreach (KBlocksSvgItem *pItem, mItemList) {
+    for (KBlocksSvgItem *pItem : qAsConst(mItemList)) {
         pItem->execPosAnim(value);
     }
 }

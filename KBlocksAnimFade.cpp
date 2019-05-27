@@ -31,7 +31,7 @@ KBlocksAnimFade::~KBlocksAnimFade()
 
 void KBlocksAnimFade::valueChanged(qreal value)
 {
-    foreach (KBlocksSvgItem *pItem, mItemList) {
+    for (KBlocksSvgItem *pItem : qAsConst(mItemList)) {
         pItem->setOpacity(value);
     }
 }
