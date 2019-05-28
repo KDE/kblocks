@@ -151,7 +151,7 @@ void KBlocksRepWin::snapshotView()
 {
     if (!mSnapshotFilename.isEmpty()) {
         //mSnapshoter = QPixmap::grabWindow(mpGameView->winId());
-        mSnapshoter = QPixmap::grabWidget(this);
+        mSnapshoter = grab();
         QString tmpFilename = mSnapshotFolder + mSnapshotFilename + QStringLiteral("_")
                               + getTimeString() + QStringLiteral(".png");
         mSnapshoter.save(tmpFilename);
