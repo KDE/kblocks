@@ -13,7 +13,6 @@
 #include "FieldInterface.h"
 #include "PieceInterface.h"
 
-class GameLogicInterface;
 
 class SingleGameInterface
 {
