@@ -19,22 +19,56 @@
 #include "kblocks_sound_debug.h"
 #include "settings.h"
 
-KBlocksSound::KBlocksSound()
+KBlocksSound::KBlocksSound(const QString &themeFile)
 {
-    m_blockFallSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-fall.ogg")));
-    m_blockMoveSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-move.ogg")));
-    m_blockRemoveSound = new KgSound(QStandardPaths::locate(
-                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg")));
-    setSoundsEnabled(Settings::sounds());
+    loadTheme(themeFile);
 }
 
 KBlocksSound::~KBlocksSound()
 {
+    delete m_theme;
     delete m_blockFallSound;
     delete m_blockMoveSound;
     delete m_blockRemoveSound;
+}
+
+bool KBlocksSound::loadTheme(const QString &themeFile)
+{
+    m_theme = new KGameTheme();
+    if (!m_theme->load(themeFile)) {
+        qCWarning(KBSound) << "Error loading KBlocks .desktop theme"
+                                   << themeFile << endl;
+        m_theme->loadDefault();
+    }
+
+    QString m_themeMoveSound;
+    if (m_theme->themeProperty("Sound_Block_Move") != "") {
+        m_themeMoveSound = m_theme->prefix() + m_theme->themeProperty("Sound_Block_Move");
+    } else {
+        m_themeMoveSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-move.ogg"));
+    }
+    
+    QString m_themeFallSound;
+    if (m_theme->themeProperty("Sound_Block_Fall") != "") {
+        m_themeFallSound = m_theme->prefix() + m_theme->themeProperty("Sound_Block_Fall");
+    } else {
+        m_themeFallSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-fall.ogg"));
+    }
+    
+    QString m_themeRemoveSound;
+    if (m_theme->themeProperty("Sound_Block_Remove") != "") {
+        m_themeRemoveSound = m_theme->prefix() + m_theme->themeProperty("Sound_Block_Remove");
+    } else {
+        m_themeRemoveSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg"));
+    }
+    
+    m_blockFallSound = new KgSound(m_themeFallSound);
+    m_blockMoveSound = new KgSound(m_themeMoveSound);
+    m_blockRemoveSound = new KgSound(m_themeRemoveSound);
+    return true;
 }
 
 void KBlocksSound::setSoundsEnabled(bool p_enabled)

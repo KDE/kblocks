@@ -34,7 +34,7 @@ KBlocksScene::KBlocksScene(GameLogicInterface *p, int capacity)
 
     QString themeFile(Settings::theme());
     mpGrafx = new KBlocksGraphics(themeFile);
-    mpSnd = new KBlocksSound();
+    mpSnd = new KBlocksSound(themeFile);
 
     int width = (capacity >= mSceneGamesPerLine) ? mSceneGamesPerLine : (capacity % mSceneGamesPerLine);
     int height = (int)(capacity / (mSceneGamesPerLine + 1)) + 1;
@@ -162,6 +162,8 @@ void KBlocksScene::readSettings(const QSize &viewSize)
         mpGrafx->loadTheme(Settings::theme());
         mpGrafx->adjustForSize(viewSize);
         updateDimensions();
+        // also update sounds fo rthe theme
+        mpSnd->loadTheme(Settings::theme());
     }
 }
 

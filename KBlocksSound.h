@@ -11,6 +11,9 @@
 #ifndef KBLOCKSSOUND_H
 #define KBLOCKSSOUND_H
 
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgametheme.h>
+
 class KgSound;
 
 enum class Sound {
@@ -22,18 +25,24 @@ enum class Sound {
 class KBlocksSound
 {
 public:
-    KBlocksSound();
+    KBlocksSound(const QString &themeFile);
     ~KBlocksSound();
 
 public:
+    bool loadTheme(const QString &themeFile);
     void setSoundsEnabled(bool p_enabled);
     void playSound(Sound soundType);
+    KGameTheme *theme()
+    {
+        return m_theme;
+    }
 
 private:
     KgSound *m_blockFallSound = nullptr;
     KgSound *m_blockMoveSound = nullptr;
     KgSound *m_blockRemoveSound = nullptr;
     bool sndActive;
+    KGameTheme *m_theme;
 
 };
 
