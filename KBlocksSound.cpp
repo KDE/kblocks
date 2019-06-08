@@ -64,6 +64,9 @@ bool KBlocksSound::loadTheme(const QString &themeFile)
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg"));
     }
     
+    delete m_blockFallSound;
+    delete m_blockMoveSound;
+    delete m_blockRemoveSound;
     m_blockFallSound = new KgSound(themeFallSound);
     m_blockMoveSound = new KgSound(themeMoveSound);
     m_blockRemoveSound = new KgSound(themeRemoveSound);
