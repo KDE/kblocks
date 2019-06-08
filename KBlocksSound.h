@@ -32,17 +32,12 @@ public:
     bool loadTheme(const QString &themeFile);
     void setSoundsEnabled(bool p_enabled);
     void playSound(Sound soundType);
-    KGameTheme *theme()
-    {
-        return m_theme;
-    }
 
 private:
     KgSound *m_blockFallSound = nullptr;
     KgSound *m_blockMoveSound = nullptr;
     KgSound *m_blockRemoveSound = nullptr;
     bool sndActive;
-    KGameTheme *m_theme;
 
 };
 
