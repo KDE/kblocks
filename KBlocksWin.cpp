@@ -294,6 +294,7 @@ void KBlocksWin::setupGUILayout()
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
+    mpGameScene->setSoundsEnabled(Settings::sounds());
 
     // TODO
     mScore = new QLabel(i18n("Points: 0 - Lines: 0 - Level: 0"));
