@@ -10,7 +10,6 @@
 ***************************************************************************/
 #include "KBlocksSvgItem.h"
 
-#include <QPainter>
 
 KBlocksSvgItem::KBlocksSvgItem(KBlocksLayout *p, int type, int posX, int posY)
 {

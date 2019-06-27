@@ -11,7 +11,6 @@
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
 
-#include <QtGlobal>
 
 KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHeight, int showPieceCount, int messagePoolSize)
 {

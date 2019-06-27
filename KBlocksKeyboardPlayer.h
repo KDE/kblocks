@@ -15,7 +15,6 @@ using namespace std;
 
 #include <QAction>
 #include <KActionCollection>
-#include <KMainWindow>
 #include <KXmlGuiWindow>
 #include <klocalizedstring.h>
 

@@ -13,7 +13,6 @@
 #include <QObject>
 #include <QUdpSocket>
 #include <QString>
-#include <QByteArray>
 
 class KBlocksNetClient : public QObject
 {

@@ -11,7 +11,6 @@
 #define KBLOCKSSINGLEPLAYER_H
 
 #include <QTimer>
-#include <QList>
 
 #include "SingleGameInterface.h"
 #include "GamePlayerInterface.h"

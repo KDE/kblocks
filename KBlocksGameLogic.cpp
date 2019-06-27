@@ -9,7 +9,6 @@
 ***************************************************************************/
 #include "KBlocksGameLogic.h"
 
-#include <QtGlobal>
 
 KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
 {

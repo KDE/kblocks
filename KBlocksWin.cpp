@@ -15,7 +15,6 @@
 #include <KConfigDialog>
 #include <kstandardgameaction.h>
 #include <KStandardAction>
-#include <QIcon>
 #include <highscore/kscoredialog.h>
 #include <KLocalizedString>
 #include <KToggleAction>
@@ -23,7 +22,6 @@
 #include <QStatusBar>
 #include <KgDifficulty>
 
-#include <QtGlobal>
 #include <QPixmapCache>
 #include <QPointer>
 #include <QLabel>

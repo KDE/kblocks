@@ -16,7 +16,6 @@
 #include <QString>
 
 #include <KGamePopupItem>
-#include <KgDifficulty>
 
 #include "KBlocksSound.h"
 #include "KBlocksGraphics.h"

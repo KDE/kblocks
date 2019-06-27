@@ -18,7 +18,6 @@
 #include <KLocalizedString>
 
 #include <QString>
-#include <QList>
 #include <QByteArray>
 #include <QApplication>
 #include <QCommandLineParser>

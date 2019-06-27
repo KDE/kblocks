@@ -12,7 +12,6 @@
 #include "kblocks_graphics_debug.h"
 
 #include <QPixmapCache>
-#include <QPainter>
 
 KBlocksGraphics::KBlocksGraphics(const QString &themeFile)
 {
