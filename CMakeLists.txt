@@ -1,6 +1,13 @@
-project(kblocks)
-
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+
+# KDE Application Version, managed by release script
+set(KDE_APPLICATIONS_VERSION_MAJOR "19")
+set(KDE_APPLICATIONS_VERSION_MINOR "11")
+set(KDE_APPLICATIONS_VERSION_MICRO "70")
+set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_MINOR}.${KDE_APPLICATIONS_VERSION_MICRO}")
+
+project(kblocks VERSION ${KDE_APPLICATIONS_VERSION})
+
 set (QT_MIN_VERSION "5.7.0")
 set (KF5_MIN_VERSION "5.30.0")
 
@@ -29,6 +36,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
+include(ECMSetupVersion)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 if (${KF5Config_VERSION} STRGREATER "5.56.0")
@@ -87,6 +95,7 @@ set(kblocks_SRCS
    AI/KBlocksAILog.cpp
 )
 
+ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
 
 ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_ai_debug.h IDENTIFIER KBlocksAI CATEGORY_NAME KBlocks.AI)
 ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_sound_debug.h IDENTIFIER KBSound CATEGORY_NAME KBlocks.Sound)

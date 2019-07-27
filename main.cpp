@@ -42,6 +42,8 @@ using namespace std;
 #include "KBlocksNetServer.h"
 #include "KBlocksNetClient.h"
 
+#include "kblocks_version.h"
+
 KBlocksGameLogic *mpKBlocksGameLogic;
 KBlocksPlayManager *mpKBlocksPlayManager;
 KBlocksPlayNetwork *mpKBlocksPlayNetwork;
@@ -312,7 +314,7 @@ int main(int argc, char *argv[])
 
     KAboutData aboutData(QStringLiteral("kblocks"),
                          i18n("KBlocks"),
-                         QStringLiteral("0.4"),
+                         QStringLiteral(KBLOCKS_VERSION_STRING),
                          i18n("A falling blocks game by KDE"),
                          KAboutLicense::GPL,
                          i18n("(c) 2007, Mauricio Piacentini"));
