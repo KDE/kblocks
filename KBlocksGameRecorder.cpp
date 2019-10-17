@@ -8,8 +8,7 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksGameRecorder.h"
-
-#include <sys/time.h>
+#include "utils.h"
 
 KBlocksGameRecorder::KBlocksGameRecorder()
 {
@@ -27,7 +26,7 @@ void KBlocksGameRecorder::append(int index, int type, int value)
     tmpLastData.index = index;
     tmpLastData.type = type;
     tmpLastData.value = value;
-    tmpLastData.time = getMillisecOfNow();
+    tmpLastData.time = Utils::getMillisecOfNow();
     mGameRecord.push_back(tmpLastData);
 }
 
@@ -84,14 +83,3 @@ void KBlocksGameRecorder::writeByte(FILE *pFile, int value)
     fputc(tmpByte, pFile);
 }
 
-timeLong KBlocksGameRecorder::getMillisecOfNow()
-{
-    timeval tmpCurTime;
-
-    gettimeofday(&tmpCurTime, NULL);
-
-    timeLong tmpMilliTime = (timeLong)tmpCurTime.tv_usec / 1000;
-    tmpMilliTime += (timeLong)tmpCurTime.tv_sec * 1000;
-
-    return tmpMilliTime;
-}

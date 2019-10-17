@@ -10,7 +10,6 @@
 #ifndef KBLOCKSSINGLEGAME_H
 #define KBLOCKSSINGLEGAME_H
 
-#include <sys/time.h>
 #include <QObject>
 
 #include "SingleGameInterface.h"
@@ -70,8 +69,6 @@ private:
     void freezePieceToField(KBlocksPiece *p);
     int removeFieldLines();
     void prepareNextPiece();
-
-    timeLong getMillisecOfNow();
 
 protected:
     KBlocksField *mpField = nullptr;

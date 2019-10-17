@@ -10,7 +10,7 @@
 #include "KBlocksSingleGame.h"
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
-
+#include "utils.h"
 
 KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHeight, int showPieceCount, int messagePoolSize)
 {
@@ -211,7 +211,7 @@ int KBlocksSingleGame::startGame(int seed)
 
     mCurrentGameState = GameState_Running;
 
-    mGameStartTime = getMillisecOfNow();
+    mGameStartTime = Utils::getMillisecOfNow();
 
     return mCurrentGameState;
 }
@@ -233,7 +233,7 @@ int KBlocksSingleGame::pauseGame(bool flag)
     } else if ((mCurrentGameState == GameState_Pause) && (!flag)) {
         mCurrentGameState = GameState_Running;
 
-        mGameStartTime = getMillisecOfNow();
+        mGameStartTime = Utils::getMillisecOfNow();
     }
 
     return mCurrentGameState;
@@ -244,7 +244,7 @@ int KBlocksSingleGame::continueGame()
     if ((mCurrentGameState != GameState_Stop) && mStandbyFlag) {
         mStandbyFlag = false;
 
-        mGameStartTime = getMillisecOfNow();
+        mGameStartTime = Utils::getMillisecOfNow();
     }
 
     return mCurrentGameState;
@@ -268,7 +268,7 @@ int KBlocksSingleGame::doUpdateGame(bool force)
         return GameResult_None;
     }
 
-    timeLong tmpCurTime = getMillisecOfNow();
+    timeLong tmpCurTime = Utils::getMillisecOfNow();
 
     int gameResult = GameResult_None;
 
@@ -394,14 +394,3 @@ void KBlocksSingleGame::prepareNextPiece()
     }
 }
 
-timeLong KBlocksSingleGame::getMillisecOfNow()
-{
-    timeval tmpCurTime;
-
-    gettimeofday(&tmpCurTime, NULL);
-
-    timeLong tmpMilliTime = (timeLong)tmpCurTime.tv_usec / 1000;
-    tmpMilliTime += (timeLong)tmpCurTime.tv_sec * 1000;
-
-    return tmpMilliTime;
-}

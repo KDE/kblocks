@@ -41,8 +41,6 @@ private:
     void saveBinary(FILE *pFile);
     void writeByte(FILE *pFile, int value);
 
-    timeLong getMillisecOfNow();
-
 private:
     list<_game_record_data> mGameRecord;
 };

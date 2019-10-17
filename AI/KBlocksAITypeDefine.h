@@ -27,6 +27,4 @@
 
 #define UNIX
 
-#include <unistd.h>
-
 #endif

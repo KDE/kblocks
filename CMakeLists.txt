@@ -93,6 +93,7 @@ set(kblocks_SRCS
    AI/KBlocksAIEvaluation.cpp
    AI/KBlocksAIFeature.cpp
    AI/KBlocksAILog.cpp
+   utils.cpp
 )
 
 ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
