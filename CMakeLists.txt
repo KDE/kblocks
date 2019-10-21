@@ -44,6 +44,7 @@ if (${KF5Config_VERSION} STRGREATER "5.56.0")
         MESSAGE(STATUS "compile without foreach")
 endif()
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
 
 add_subdirectory(themes)
 add_subdirectory(sounds)
