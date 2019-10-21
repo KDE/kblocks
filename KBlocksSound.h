@@ -25,7 +25,7 @@ enum class Sound {
 class KBlocksSound
 {
 public:
-    KBlocksSound(const QString &themeFile);
+    explicit KBlocksSound(const QString &themeFile);
     ~KBlocksSound();
 
 public:
