@@ -21,7 +21,7 @@ KBlocksView::KBlocksView(KBlocksScene *scene, QWidget *parent): QGraphicsView(sc
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFrameStyle(QFrame::NoFrame);
 
-    setOptimizationFlags(QGraphicsView::DontClipPainter |
+    setOptimizationFlags(
                          QGraphicsView::DontSavePainterState /*|
                           QGraphicsView::DontAdjustForAntialiasing*/);
 
