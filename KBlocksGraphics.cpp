@@ -18,7 +18,7 @@ KBlocksGraphics::KBlocksGraphics(const QString &themeFile)
     m_theme = new KGameTheme();
     if (!m_theme->load(themeFile)) {
         qCWarning(KBGraphics) << "Error loading KBlocks .desktop theme"
-                                   << themeFile << endl;
+                                   << themeFile;
         m_theme->loadDefault();
     }
     m_renderer = new QSvgRenderer(m_theme->graphics());
@@ -35,12 +35,12 @@ bool KBlocksGraphics::loadTheme(const QString &themeFile)
 {
     if (!m_theme->load(themeFile)) {
         qCWarning(KBGraphics) << "Error loading KBlocks .desktop theme"
-                                   << themeFile << endl;
+                                   << themeFile;
         return false;
     }
     if (!m_renderer->load(m_theme->graphics())) {
         qCWarning(KBGraphics) << "Error loading SVG theme"
-                                   << m_theme->graphics() << endl;
+                                   << m_theme->graphics();
         return false;
     }
     //clear the cache or pixmaps from the old theme will be returned

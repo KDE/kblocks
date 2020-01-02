@@ -36,7 +36,7 @@ bool KBlocksSound::loadTheme(const QString &themeFile)
     KGameTheme theme;
     if (!theme.load(themeFile)) {
         qCWarning(KBSound) << "Error loading KBlocks .desktop theme"
-                                   << themeFile << endl;
+                                   << themeFile;
         theme.loadDefault();
     }
 
