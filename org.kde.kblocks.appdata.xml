@@ -112,11 +112,11 @@
     <p xml:lang="zh-TW">KBlocks 是類似俄羅斯方塊的遊戲。俄羅斯方塊的玩法還需要多做介紹嗎？</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kblocks</url>
-  <url type="help">http://docs.kde.org/stable/en/kdegames/kblocks/index.html</url>
+  <url type="help">https://docs.kde.org/?application=kblocks</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kblocks&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
-      <image>http://kde.org/images/screenshots/kblocks.png</image>
+      <image>https://cdn.kde.org/screenshots/kblocks/kblocks.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
