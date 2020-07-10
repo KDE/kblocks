@@ -16,7 +16,7 @@ using namespace std;
 #include <QAction>
 #include <KActionCollection>
 #include <KXmlGuiWindow>
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 
 #include "GamePlayerInterface.h"
 

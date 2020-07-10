@@ -12,7 +12,7 @@
 
 #include "KBlocksSound.h"
 
-#include <kgsound.h>
+#include <KgSound>
 
 #include <QStandardPaths>
 

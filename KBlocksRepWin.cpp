@@ -11,7 +11,7 @@
 
 #include <QPixmapCache>
 
-#include <qdatetime.h>
+#include <QDateTime>
 
 #include "kblocks_replay_debug.h"
 
