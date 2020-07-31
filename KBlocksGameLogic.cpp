@@ -8,6 +8,7 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksGameLogic.h"
+#include <QRandomGenerator>
 
 
 KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
@@ -177,7 +178,7 @@ int KBlocksGameLogic::updateGame(int *lineList)
         lineList[i] = tmpTotal;
 
         if ((mPunishFlag) && (tmpPunishCount > 0)) {
-            int punishSeed = qrand() % 256;
+            int punishSeed = QRandomGenerator::global()->bounded(256);
             for (int j = 0; j < i; j++) {
                 maGameList[j]->punishGame(tmpPunishCount, punishSeed);
             }
@@ -283,9 +284,8 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     int *seedList = new int[mGameCount];
     if (mGameSeed < 0) {
         mGameSeed = -mGameSeed;
-        qsrand(mGameSeed);
         for (int i = 0; i < mGameCount; i++) {
-            seedList[i] = qrand() % 256;
+            seedList[i] = QRandomGenerator::global()->bounded(256);
         }
     } else {
         for (int i = 0; i < mGameCount; i++) {

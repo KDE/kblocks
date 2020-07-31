@@ -11,6 +11,7 @@
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
 #include "utils.h"
+#include <QRandomGenerator>
 
 KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHeight, int showPieceCount, int messagePoolSize)
 {
@@ -124,11 +125,11 @@ int KBlocksSingleGame::punishGame(int lineCount, int punishSeed)
         mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineSeed, punishSeed);
     }
 
-    qsrand(punishSeed);
     int punishIndex = 0;
+    auto random = QRandomGenerator::global();
     for (int i = 0; i < lineCount; i++) {
         setCurrentPiece(0, -1, 0);
-        punishIndex = qrand() % width;
+        punishIndex = random->bounded(width);
         mpField->addPunishLine(lineCount, punishIndex);
     }
 

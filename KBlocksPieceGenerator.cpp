@@ -10,6 +10,7 @@
 #include "KBlocksPieceGenerator.h"
 
 #include <QtGlobal>
+#include <QRandomGenerator>
 #include <stdio.h>
 
 #include "KBlocksPiece.h"
@@ -28,10 +29,9 @@ KBlocksPieceGenerator::~KBlocksPieceGenerator()
 
 void KBlocksPieceGenerator::genList(int seed)
 {
-    qsrand(seed);
-
+    auto random = QRandomGenerator::global();
     for (int i = 0; i < maxCapacity; i++) {
-        maPieceList[i] = qrand() % PieceType_Detail_Max_Count;
+        maPieceList[i] = random->bounded(PieceType_Detail_Max_Count);
     }
 
     pieceIndex = 0;

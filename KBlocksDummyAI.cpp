@@ -10,6 +10,7 @@
 #include "KBlocksDummyAI.h"
 
 #include <QtGlobal>
+#include <QRandomGenerator>
 
 KBlocksDummyAI::KBlocksDummyAI()
 {
@@ -48,8 +49,9 @@ void KBlocksDummyAI::think(GamePlayer_ActionList *actionList)
         return;
     }
 
-    int rotation = qrand() % (mRotateCount + 1) - mRotateCount / 2;
-    int motionx = qrand() % (mFieldWidth + 1) - mFieldWidth / 2;
+    auto random = QRandomGenerator::global();
+    int rotation = random->bounded(mRotateCount + 1) - mRotateCount / 2;
+    int motionx = random->bounded(mFieldWidth + 1) - mFieldWidth / 2;
 
     if (rotation > 0) {
         for (int i = 0; i < rotation; i++) {
