@@ -25,6 +25,7 @@
 #include <QPixmapCache>
 #include <QPointer>
 #include <QLabel>
+#include <QRandomGenerator>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -101,8 +102,7 @@ void KBlocksWin::addScore(int gameIndex, int lineCount)
 
 void KBlocksWin::startGame()
 {
-    qsrand(time(0));
-    mpGameLogic->setGameSeed(qrand());
+    mpGameLogic->setGameSeed(QRandomGenerator::global()->generate());
     if (mpGameLogic->startGame(mGameCount)) {
         mpPlayManager->startGame();
 
