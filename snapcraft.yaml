@@ -33,20 +33,46 @@ plugs:
         default-provider: kde-frameworks-5-qt-5-14-core18
         target: kf5
 parts:
+    kdegames:
+        plugin: cmake
+        source: https://download.kde.org/stable/release-service/20.08.0/src/libkdegames-20.08.0.tar.xz
+        build-packages:
+        - build-essential
+        - libopenal-dev
+        - libsndfile1-dev
+        configflags:
+        - "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
+        - "-DCMAKE_INSTALL_PREFIX=/usr"
+        - "-DCMAKE_BUILD_TYPE=Release"
+        - "-DENABLE_TESTING=OFF"
+        - "-DBUILD_TESTING=OFF"
+        - "-DKDE_SKIP_TEST_SETTINGS=ON"
+        - "-DCMAKE_FIND_ROOT_PATH=/snap/kde-frameworks-5-qt-5-14-core18-sdk/current"
+    #kdoctools5:
+    #    plugin: dump
+    #    source: https://archive.neon.kde.org/user/pool/main/k/kdoctools/kdoctools5_5.73.0-0xneon+20.04+focal+build4_amd64.deb
+    #libkf5doctools-dev:
+    #    plugin: dump
+    #    source: https://archive.neon.kde.org/user/pool/main/k/kdoctools/libkf5doctools-dev_5.73.0-0xneon+20.04+focal+build4_amd64.deb
     kblocks:
         parse-info:
         - usr/share/metainfo/org.kde.kblocks.appdata.xml
         build-snaps:
         - kde-frameworks-5-qt-5-14-core18-sdk
         after:
+        - kdegames
+        #- kdoctools5
+        #- libkf5doctools-dev
         - kde-frameworks-5-env
+        override-build: |
+            echo 'deb http://archive.neon.kde.org/user bionic main' >> /etc/apt/sources.list
+            wget 'https://archive.neon.kde.org/public.key' -O ppa-key
+            apt-key add ppa-key
+            rm -f /etc/apt/apt.conf.d/proxy
+            apt update
+            apt-get -y install libkf5doctools-dev
+            snapcraftctl build
         plugin: cmake
-        build-packages:
-        - kdoctools-dev
-        - libkf5kdegames-dev
-        stage-packages:
-        - libkf5kdegamesprivate1
-        - libkf5kdegames7
         source: http://download.kde.org/stable/release-service/20.08.0/src/kblocks-20.08.0.tar.xz
         configflags:
         - "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
