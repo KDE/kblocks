@@ -13,7 +13,6 @@
 #include "KBlocksAIFeature.h"
 #include "KBlocksAIPlannerExtend.h"
 #include "KBlocksAILog.h"
-#include "KBlocksAITypeDefine.h"
 
 #include "kblocks_ai_debug.h"
 

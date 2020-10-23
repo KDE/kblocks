@@ -8,8 +8,6 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "KBlocksSingleGame.h"
-#include "KBlocksField.h"
-#include "KBlocksPiece.h"
 #include "utils.h"
 #include <QRandomGenerator>
 
