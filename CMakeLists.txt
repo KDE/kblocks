@@ -14,7 +14,7 @@ set (KF5_MIN_VERSION "5.68.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Network)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Test Widgets Svg Network)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     ConfigWidgets
@@ -35,6 +35,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)
+include(ECMAddTests)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 
@@ -49,6 +50,9 @@ add_subdirectory(themes)
 add_subdirectory(sounds)
 add_subdirectory(doc)
 
+if(BUILD_TESTING)
+    add_subdirectory(autotests)
+endif()
 
 ########### next target ###############
 
