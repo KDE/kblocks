@@ -61,49 +61,7 @@ endif()
 
 ########### next target ###############
 
-set(kblocks_SRCS
-   main.cpp
-   KBlocksDefine.cpp
-   KBlocksNetServer.cpp
-   KBlocksNetClient.cpp
-   KBlocksConfigManager.cpp
-   KBlocksWin.cpp
-   KBlocksDisplay.cpp
-   KBlocksRepWin.cpp
-   KBlocksAppThread.cpp
-   KBlocksScene.cpp
-   KBlocksView.cpp
-   KBlocksScore.cpp
-   KBlocksGraphics.cpp
-   KBlocksSound.cpp
-   KBlocksItemGroup.cpp
-   KBlocksSvgItem.cpp
-   KBlocksAnimator.cpp
-   KBlocksAnimFade.cpp
-   KBlocksAnimDrop.cpp
-   KBlocksPlayManager.cpp
-   KBlocksPlayNetwork.cpp
-   KBlocksSinglePlayer.cpp
-   KBlocksNetPlayer.cpp
-   KBlocksKeyboardPlayer.cpp
-   KBlocksDummyAI.cpp
-   KBlocksLayout.cpp
-   KBlocksGameLogic.cpp
-   KBlocksSingleGame.cpp
-   KBlocksField.cpp
-   KBlocksPiece.cpp
-   KBlocksPieceGenerator.cpp
-   KBlocksGameMessage.cpp
-   KBlocksGameRecorder.cpp
-   KBlocksGameReplayer.cpp
-   AI/KBlocksAIPlayer.cpp
-   AI/KBlocksAIPlanner.cpp
-   AI/KBlocksAIPlannerExtend.cpp
-   AI/KBlocksAIEvaluation.cpp
-   AI/KBlocksAIFeature.cpp
-   AI/KBlocksAILog.cpp
-   utils.cpp
-)
+add_subdirectory(src)
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
 
