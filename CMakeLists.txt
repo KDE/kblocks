@@ -61,31 +61,17 @@ endif()
 
 ########### next target ###############
 
-add_subdirectory(src)
-
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
-
-ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_ai_debug.h IDENTIFIER KBlocksAI CATEGORY_NAME KBlocks.AI DESCRIPTION "kdegames (kblock ai)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_sound_debug.h IDENTIFIER KBSound CATEGORY_NAME KBlocks.Sound DESCRIPTION "kdegames (kblock sound)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_replay_debug.h IDENTIFIER KBReplay CATEGORY_NAME KBlocks.Replay DESCRIPTION "kdegames (kblock replay)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_graphics_debug.h IDENTIFIER KBGraphics CATEGORY_NAME KBlocks.Graphics DESCRIPTION "kdegames (kblock graphics)" EXPORT KBLOCKS)
-
-kconfig_add_kcfg_files(kblocks_SRCS settings.kcfgc )
 
 file(GLOB ICONS_SRCS "*-apps-kblocks.png")
 ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
 
-add_executable(kblocks ${kblocks_SRCS})
+add_subdirectory(src)
+
+add_executable(kblocks src/main.cpp)
 
 target_link_libraries(kblocks
-    KF5KDEGames
-    KF5KDEGamesPrivate
-    Qt5::Network
-    KF5::Crash
-    KF5::DBusAddons
-    KF5::XmlGui
-    KF5::I18n
-    Qt5::Svg
+    kblocks_lib
 )
 
 install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
