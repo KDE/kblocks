@@ -1,3 +1,45 @@
-file(GLOB_RECURSE kblocks_src_files *.cpp)
+set(kblocks_src_files
+    AI/KBlocksAIEvaluation.cpp
+    AI/KBlocksAIFeature.cpp
+    AI/KBlocksAILog.cpp
+    AI/KBlocksAIPlanner.cpp
+    AI/KBlocksAIPlannerExtend.cpp
+    AI/KBlocksAIPlayer.cpp
+    KBlocksAnimator.cpp
+    KBlocksAnimDrop.cpp
+    KBlocksAnimFade.cpp
+    KBlocksAppThread.cpp
+    KBlocksConfigManager.cpp
+    KBlocksDefine.cpp
+    KBlocksDisplay.cpp
+    KBlocksDummyAI.cpp
+    KBlocksField.cpp
+    KBlocksGameLogic.cpp
+    KBlocksGameMessage.cpp
+    KBlocksGameRecorder.cpp
+    KBlocksGameReplayer.cpp
+    KBlocksGraphics.cpp
+    KBlocksItemGroup.cpp
+    KBlocksKeyboardPlayer.cpp
+    KBlocksLayout.cpp
+    KBlocksNetClient.cpp
+    KBlocksNetPlayer.cpp
+    KBlocksNetServer.cpp
+    KBlocksPiece.cpp
+    KBlocksPieceGenerator.cpp
+    KBlocksPlayManager.cpp
+    KBlocksPlayNetwork.cpp
+    KBlocksRepWin.cpp
+    KBlocksScene.cpp
+    KBlocksScore.cpp
+    KBlocksSingleGame.cpp
+    KBlocksSinglePlayer.cpp
+    KBlocksSound.cpp
+    KBlocksSvgItem.cpp
+    KBlocksView.cpp
+    KBlocksWin.cpp
+    main.cpp
+    utils.cpp)
 
+list(TRANSFORM kblocks_src_files PREPEND "${CMAKE_CURRENT_SOURCE_DIR}/")
 set(kblocks_SRCS ${kblocks_src_files} PARENT_SCOPE)
