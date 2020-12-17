@@ -71,7 +71,7 @@ add_subdirectory(src)
 add_executable(kblocks src/main.cpp)
 
 target_link_libraries(kblocks
-    kblocks_lib
+    KBlocksCore
 )
 
 install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )

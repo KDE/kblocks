@@ -50,8 +50,8 @@ ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_graphics_debug.h IDE
 
 kconfig_add_kcfg_files(kblocks_SRCS ../settings.kcfgc )
 
-add_library(kblocks_lib STATIC ${kblocks_SRCS})
-target_link_libraries(kblocks_lib
+add_library(KBlocksCore STATIC ${kblocks_SRCS})
+target_link_libraries(KBlocksCore
     KF5KDEGames
     KF5KDEGamesPrivate
     Qt5::Network
