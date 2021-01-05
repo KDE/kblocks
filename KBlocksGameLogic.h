@@ -37,7 +37,6 @@ public:
     KBlocksSingleGame *getSingleGame(int index) override;
 
     bool playRecordOneStep(int *changedPiece);
-    void getRecordLastField(int index);
     void saveRecord(const char *fileName, bool binaryMode = true);
 
     int levelUpGame(int level) override;
