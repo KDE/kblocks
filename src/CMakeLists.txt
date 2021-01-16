@@ -1,4 +1,4 @@
-include_directories(APPEND "${CMAKE_CURRENT_BINARY_DIR}/..")
+#include_directories(APPEND "${CMAKE_CURRENT_BINARY_DIR}/..")
 
 set(kblocks_SRCS
     AI/KBlocksAIEvaluation.cpp
@@ -48,7 +48,7 @@ ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_sound_debug.h IDENTI
 ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_replay_debug.h IDENTIFIER KBReplay CATEGORY_NAME KBlocks.Replay DESCRIPTION "kdegames (kblock replay)" EXPORT KBLOCKS)
 ecm_qt_declare_logging_category(kblocks_SRCS HEADER kblocks_graphics_debug.h IDENTIFIER KBGraphics CATEGORY_NAME KBlocks.Graphics DESCRIPTION "kdegames (kblock graphics)" EXPORT KBLOCKS)
 
-kconfig_add_kcfg_files(kblocks_SRCS ../settings.kcfgc )
+kconfig_add_kcfg_files(kblocks_SRCS config/settings.kcfgc )
 
 add_library(KBlocksCore STATIC ${kblocks_SRCS})
 target_link_libraries(KBlocksCore
