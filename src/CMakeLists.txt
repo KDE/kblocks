@@ -1,5 +1,3 @@
-#include_directories(APPEND "${CMAKE_CURRENT_BINARY_DIR}/..")
-
 set(kblocks_SRCS
     AI/KBlocksAIEvaluation.cpp
     AI/KBlocksAIFeature.cpp
