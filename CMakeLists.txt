@@ -63,14 +63,14 @@ endif()
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
 
-set(kblocks_main src/main.cpp)
+set(kblocks_SRCS src/main.cpp)
 
 file(GLOB ICONS_SRCS "*-apps-kblocks.png")
-ecm_add_app_icon(kblocks_main ICONS ${ICONS_SRCS})
+ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
 
 add_subdirectory(src)
 
-add_executable(kblocks ${kblocks_main})
+add_executable(kblocks ${kblocks_SRCS})
 
 target_link_libraries(kblocks
     KBlocksCore
