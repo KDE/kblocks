@@ -16,7 +16,6 @@
 #include <QTimer>
 #include <QList>
 
-#include "KBlocksSound.h"
 #include "KBlocksSvgItem.h"
 #include "KBlocksAnimator.h"
 
@@ -25,13 +24,14 @@
 #include "KBlocksDefine.h"
 
 class GraphicsInterface;
+class SoundInterface;
 
 class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
 {
     Q_OBJECT
 
 public:
-    KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, KBlocksSound *pS, bool snapshotMode = false);
+    KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS, bool snapshotMode = false);
     ~KBlocksItemGroup();
 
 public:
@@ -78,7 +78,7 @@ private:
     SingleGameInterface *mpSingleGame;
     KBlocksLayout *mpGameLayout = nullptr;
     GraphicsInterface *mpGrafx = nullptr;
-    KBlocksSound *mpSnd = nullptr;
+    SoundInterface *mpSnd = nullptr;
 
     QTimer mUpdateTimer;
     int mUpdateInterval;

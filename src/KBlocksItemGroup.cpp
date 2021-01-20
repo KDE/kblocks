@@ -9,10 +9,11 @@
 *   (at your option) any later version.                                   *
 ***************************************************************************/
 #include "GraphicsInterface.h"
+#include "SoundInterface.h"
 
 #include "KBlocksItemGroup.h"
 
-KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, KBlocksSound *pS, bool snapshotMode)
+KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS, bool snapshotMode)
 {
     mGroupID = groupID;
     mpSingleGame = p;
