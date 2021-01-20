@@ -149,12 +149,12 @@ void KBlocksItemGroup::updateGame()
 {
     int gameResult = mpSingleGame->updateGame();
 
+    bool hasRemovedLines = updateLayout();
+
     if (gameResult == GameResult_Game_Over) {
         mUpdateTimer.stop();
         return;
     }
-
-    bool hasRemovedLines = updateLayout();
 
     if (hasRemovedLines && mGameAnimEnabled) {
         mUpdateTimer.stop();
