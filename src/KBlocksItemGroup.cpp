@@ -8,9 +8,11 @@
 *   the Free Software Foundation; either version 2 of the License, or     *
 *   (at your option) any later version.                                   *
 ***************************************************************************/
+#include "GraphicsInterface.h"
+
 #include "KBlocksItemGroup.h"
 
-KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, KBlocksGraphics *pG, KBlocksSound *pS, bool snapshotMode)
+KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, KBlocksSound *pS, bool snapshotMode)
 {
     mGroupID = groupID;
     mpSingleGame = p;
