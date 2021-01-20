@@ -32,7 +32,7 @@ class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
 
 public:
     KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS, bool snapshotMode = false);
-    ~KBlocksItemGroup();
+    virtual ~KBlocksItemGroup();
 
 public:
     void setUpdateInterval(int interval);
@@ -48,8 +48,10 @@ public:
 signals:
     void readyForAction(int groupID);
 
-private slots:
+protected slots:
     void updateGame();
+
+private slots:
     void updateSnapshot();
     void endAnimation(int animType);
 

@@ -15,16 +15,16 @@
 #include "Testing/MockSingleGame.h"
 #include "Testing/MockSound.h"
 
-#include "KBlocksItemGroup.h"
+#include "Testing/TestingKBlocksItemGroup.h"
 
 class testKBlocksItemGroup : public QObject
 {
     Q_OBJECT
 private slots:
-    void testStopGameShouldCallUpdateLayout();
+    void testUpdateGameShouldProcessGameActionsOnGameOver();
 };
 
-void testKBlocksItemGroup::testStopGameShouldCallUpdateLayout()
+void testKBlocksItemGroup::testUpdateGameShouldProcessGameActionsOnGameOver()
 {
     /**
      * When the game is stopped (on game over), updateLayout needs to be
@@ -34,10 +34,16 @@ void testKBlocksItemGroup::testStopGameShouldCallUpdateLayout()
      * See bug 407244
      */
     std::unique_ptr<SingleGameInterface> pSingleGame( new MockSingleGame() );
+    MockSingleGame *mock = dynamic_cast<MockSingleGame*>(pSingleGame.get());
+    mock->updateGameReturnValue = 1;
+
     std::unique_ptr<GraphicsInterface> pGraphics( new MockGraphics() );
     std::unique_ptr<SoundInterface> pSound( new MockSound() );
-    KBlocksItemGroup itemGroup(0, pSingleGame.get(), pGraphics.get(), pSound.get() );
-    QVERIFY( true );
+    TestingKBlocksItemGroup itemGroup(0, pSingleGame.get(), pGraphics.get(), pSound.get() );
+
+    itemGroup.callUpdateGame();
+
+    QCOMPARE( mock->numberOfPickGameActionCalls, 1 );
 }
 
 QTEST_MAIN(testKBlocksItemGroup)

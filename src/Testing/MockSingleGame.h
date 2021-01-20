@@ -24,6 +24,8 @@ class MockSingleGame : public SingleGameInterface
 public:
     MockSingleGame()
         : SingleGameInterface(),
+          numberOfPickGameActionCalls(0),
+          updateGameReturnValue(0),
           mockField(new MockField()),
           mockPiece(new MockPiece())
     {}
@@ -39,13 +41,22 @@ public:
     bool isGameRunning() override { return false; }
 
     int forceUpdateGame() override { return 0; }
-    int updateGame() override { return 0; }
+    int updateGame() override { return updateGameReturnValue; }
     int continueGame() override { return 0; }
 
     bool setCurrentPiece(int, int, int) override { return false; }
 
     bool pickGameResult(int *) override { return false; }
-    bool pickGameAction(int *, int *) override { return false; }
+
+    bool pickGameAction(int *, int *) override
+    {
+        ++numberOfPickGameActionCalls;
+        return false;
+    }
+
+public:
+    unsigned int numberOfPickGameActionCalls;
+    int updateGameReturnValue;
 
 private:
     std::unique_ptr<FieldInterface> mockField;
