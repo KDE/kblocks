@@ -18,7 +18,16 @@ class KGameTheme;
 class GraphicsInterface
 {
 public:
-    GraphicsInterface() = default;
+    GraphicsInterface()
+        : m_Block_Size{},
+          m_View_Size_Width{},
+          m_PlayArea_OffsetPoint_X{},
+          m_PlayArea_OffsetPoint_Y{},
+          m_PlayArea_NumberOfBlocks_X{},
+          m_PlayArea_NumberOfBlocks_Y{},
+          m_PreviewArea_CenterPoint_X{},
+          m_PreviewArea_CenterPoint_Y{}
+    {}
     virtual ~GraphicsInterface() = default;
 
 public:
