@@ -89,6 +89,8 @@ int gameDesktopMode(const QApplication &app)
         2,
         1
     );
+
+    mpKBlocksWindow->setupGUILayout();
     mpKBlocksWindow->setUpdateInterval(50);
     mpKBlocksWindow->setGamesPerLine(4);
     mpKBlocksWindow->setGameAnimEnabled(true);

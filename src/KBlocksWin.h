@@ -48,6 +48,8 @@ public:
 
     void addScore(int gameIndex, int lineCount);
 
+    void setupGUILayout();
+
 protected slots:
     void stopGame();
 
@@ -67,9 +69,6 @@ private slots:
     void onAllGamesStopped();
     void levelChanged();
     void setSoundsEnabled(bool enabled);
-
-private:
-    void setupGUILayout();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

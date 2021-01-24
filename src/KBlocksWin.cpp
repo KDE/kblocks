@@ -72,8 +72,6 @@ KBlocksWin::KBlocksWin(
     connect(mpGameView, &KBlocksView::focusEvent, this, &KBlocksWin::focusEvent);
 
     setAutoSaveSettings();
-
-    setupGUILayout();
 }
 
 KBlocksWin::~KBlocksWin()
