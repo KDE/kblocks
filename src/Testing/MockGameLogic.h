@@ -38,7 +38,7 @@ public:
     void continueGame() override {}
 
     bool hasSingleGames() override { return true; }
-    bool deleteSingleGames() override { singleGamesDeleted = true; return true; }
+    void deleteSingleGames() override { singleGamesDeleted = true; }
 
 public:
     bool singleGamesDeleted;

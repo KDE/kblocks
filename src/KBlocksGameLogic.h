@@ -59,7 +59,7 @@ public:
      * Return whether single games have been created.
      */
     bool hasSingleGames() override;
-    bool deleteSingleGames() override;
+    void deleteSingleGames() override;
 
 public slots:
     bool stopGame() override;

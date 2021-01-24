@@ -39,7 +39,7 @@ public:
     virtual void continueGame() = 0;
 
     virtual bool hasSingleGames() = 0;
-    virtual bool deleteSingleGames() = 0;
+    virtual void deleteSingleGames() = 0;
 
 signals:
     void allGamesStopped();

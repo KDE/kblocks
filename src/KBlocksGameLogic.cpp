@@ -312,18 +312,12 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     delete[] seedList;
 }
 
-bool KBlocksGameLogic::deleteSingleGames()
+void KBlocksGameLogic::deleteSingleGames()
 {
-    if (mGameCount == 0) {
-        return false;
-    }
-
     for (int i = 0; i < mGameCount; i++) {
         maGameList[i]->stopGame();
         delete maGameList[i];
         maGameList[i] = 0;
     }
     mGameCount = 0;
-
-    return true;
 }
