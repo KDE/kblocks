@@ -29,3 +29,10 @@ ecm_add_test(
     LINK_LIBRARIES Qt5::Test KBlocksCore KBlocksTesting
     NAME_PREFIX "UnitTest-"
 )
+
+ecm_add_test(
+    test_View-Scene.cpp
+    TEST_NAME View-Scene
+    LINK_LIBRARIES Qt5::Test KBlocksCore
+    NAME_PREFIX "IntegrationTest-"
+)

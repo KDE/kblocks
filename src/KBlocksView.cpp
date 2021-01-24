@@ -16,8 +16,6 @@
 
 KBlocksView::KBlocksView(SceneInterface *scene, QWidget *parent): QGraphicsView(scene, parent)
 {
-    mpGameScene = scene;
-
     //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -37,8 +35,11 @@ KBlocksView::~KBlocksView()
 
 void KBlocksView::settingsChanged()
 {
-    mpGameScene->readSettings(size());
-    fitInView(mpGameScene->sceneRect(), Qt::KeepAspectRatio);
+    SceneInterface* s = dynamic_cast<SceneInterface*>(scene());
+    if (s) {
+        s->readSettings(size());
+    }
+    fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
 }
 
 void KBlocksView::focusInEvent(QFocusEvent *)
@@ -53,7 +54,7 @@ void KBlocksView::focusOutEvent(QFocusEvent *)
 
 void KBlocksView::resizeEvent(QResizeEvent *event)
 {
-    fitInView(mpGameScene->sceneRect(), Qt::KeepAspectRatio);
+    fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
     event->accept();
 }
 

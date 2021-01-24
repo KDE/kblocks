@@ -18,6 +18,7 @@ class MockScene : public SceneInterface
 public:
     MockScene(MockGameLogic *gameLogic)
         : singleGameDeletedWhenStopGameCalled(false),
+          readSettingsCalled(false),
           mpGameLogic(gameLogic)
     {
     }
@@ -31,7 +32,7 @@ public:
     void setWaitForAllUpdate(bool) override {}
     void setUpdateInterval(int) override {}
     void setSoundsEnabled(bool) override {}
-    void readSettings(const QSize&) override {}
+    void readSettings(const QSize&) override { readSettingsCalled = true; }
     void startGame() override {}
     void stopGame() override {
         if (mpGameLogic->singleGamesDeleted) {
@@ -47,6 +48,7 @@ public slots:
 
 public:
     bool singleGameDeletedWhenStopGameCalled;
+    bool readSettingsCalled;
 
 private:
     MockGameLogic *mpGameLogic;

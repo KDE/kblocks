@@ -34,9 +34,6 @@ protected:
     void focusInEvent(QFocusEvent *event) override;
     void focusOutEvent(QFocusEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
-
-protected:
-    SceneInterface *mpGameScene = nullptr;
 };
 
 #endif
