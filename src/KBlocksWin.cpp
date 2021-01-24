@@ -140,9 +140,11 @@ void KBlocksWin::startGame()
 
 void KBlocksWin::stopGame()
 {
-    if (mpGameLogic->deleteSingleGames()) {
-        // Clear the game field
+    if (mpGameLogic->getSingleGame(0)) {
+        // If singleGame(s) exist
         mpGameScene->stopGame();
+        mpGameLogic->deleteSingleGames();
+        // Clear the game field
         mpGameScene->deleteGameItemGroups();
     }
 }

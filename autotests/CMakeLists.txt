@@ -15,3 +15,10 @@ ecm_add_test(
     LINK_LIBRARIES Qt5::Test KBlocksCore
     NAME_PREFIX "UnitTest-"
 )
+
+ecm_add_test(
+    test_KBlocksWin.cpp
+    TEST_NAME KBlocksWin
+    LINK_LIBRARIES Qt5::Test KBlocksCore
+    NAME_PREFIX "UnitTest-"
+)
