@@ -5,6 +5,7 @@ set(kblockscore_SRCS
     AI/KBlocksAIPlanner.cpp
     AI/KBlocksAIPlannerExtend.cpp
     AI/KBlocksAIPlayer.cpp
+    GameLogicInterface.cpp
     KBlocksAnimator.cpp
     KBlocksAnimDrop.cpp
     KBlocksAnimFade.cpp

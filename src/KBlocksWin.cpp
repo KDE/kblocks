@@ -31,11 +31,12 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
 
+#include "GameLogicInterface.h"
 #include "KBlocksScene.h"
 #include "SceneInterface.h"
 #include "settings.h"
 
-KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity, int gamecount) : KXmlGuiWindow()
+KBlocksWin::KBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount) : KXmlGuiWindow()
 {
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
@@ -46,7 +47,7 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity
     mMaxGameCapacity = capacity;
     mGameCount = gamecount;
     mpGameLogic = p;
-    connect(mpGameLogic, &KBlocksGameLogic::allGamesStopped,
+    connect(mpGameLogic, &GameLogicInterface::allGamesStopped,
             this, &KBlocksWin::onAllGamesStopped);
 
     mpPlayManager = pM;

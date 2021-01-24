@@ -19,16 +19,16 @@
 #include "KBlocksKeyboardPlayer.h"
 #include "AI/KBlocksAIPlayer.h"
 
-#include "KBlocksGameLogic.h"
 #include "KBlocksPlayManager.h"
 class QLabel;
+class GameLogicInterface;
 class SceneInterface;
 class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
 
 public:
-    KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity, int gamecount);
+    KBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount);
     ~KBlocksWin();
 
 public:
@@ -65,6 +65,12 @@ private:
 protected:
     void closeEvent(QCloseEvent *event) override;
 
+protected:
+    SceneInterface *mpGameScene = nullptr;
+    KBlocksView  *mpGameView = nullptr;
+
+    KBlocksKeyboardPlayer *mpKBPlayer = nullptr;
+
 private:
     int mMaxGameCapacity;
     int mGameCount;
@@ -72,13 +78,9 @@ private:
     bool mGameAnim;
     bool mWaitForAll;
 
-    SceneInterface *mpGameScene = nullptr;
-    KBlocksView  *mpGameView = nullptr;
-
-    KBlocksGameLogic *mpGameLogic = nullptr;
+    GameLogicInterface *mpGameLogic = nullptr;
     KBlocksPlayManager *mpPlayManager = nullptr;
 
-    KBlocksKeyboardPlayer *mpKBPlayer = nullptr;
     KBlocksAIPlayer *mpAIPlayer = nullptr;
 
     QAction *m_pauseAction = nullptr;

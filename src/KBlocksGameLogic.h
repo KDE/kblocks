@@ -1,17 +1,17 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #ifndef KBLOCKSGAMELOGIC_H
 #define KBLOCKSGAMELOGIC_H
 
 #include <stdlib.h>
-#include <QObject>
 
 #include "GameLogicInterface.h"
 #include "SingleGameInterface.h"
@@ -23,7 +23,7 @@
 
 #include "KBlocksSingleGame.h"
 
-class KBlocksGameLogic : public QObject, public GameLogicInterface
+class KBlocksGameLogic : public GameLogicInterface
 {
     Q_OBJECT
 
@@ -42,10 +42,10 @@ public:
     int levelUpGame(int level) override;
     int updateGame(int *lineList) override;
 
-    void setGameSeed(int seed);
+    void setGameSeed(int seed) override;
     void setGamePunish(bool flag);
 
-    void setGameStandbyMode(bool flag);
+    void setGameStandbyMode(bool flag) override;
     void setGameInterval(int interval);
     void setInitInterval(int interval);
     void setLevelUpInterval(int interval);
@@ -55,13 +55,10 @@ public:
     void pauseGame(bool pauseFlag) override;
     void continueGame() override;
 
-    bool deleteSingleGames();
+    bool deleteSingleGames() override;
 
 public slots:
     bool stopGame() override;
-
-signals:
-    void allGamesStopped();
 
 private:
     void createSingleGames(int gameCount);
