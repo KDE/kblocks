@@ -1,17 +1,17 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #ifndef KBLOCKSSCENE_H
 #define KBLOCKSSCENE_H
 
-#include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QString>
 
@@ -26,13 +26,15 @@
 
 #include "KBlocksDefine.h"
 
-class KBlocksScene : public QGraphicsScene
+#include "SceneInterface.h"
+
+class KBlocksScene : public SceneInterface
 {
     Q_OBJECT
 
 public:
     explicit KBlocksScene(GameLogicInterface *p, int capacity = 1);
-    ~KBlocksScene();
+    virtual ~KBlocksScene();
 
     KBlocksItemGroup *getItemGroup(int index);
     KBlocksScore *getScoreHandler(int index);
@@ -46,7 +48,7 @@ public:
     void setUpdateInterval(int interval);
     void setSoundsEnabled(bool enabled);
 
-    void readSettings(const QSize &viewSize);
+    void readSettings(const QSize &viewSize) override;
     void viewScaled(const QSize &newsize);
 
     void startGame();
