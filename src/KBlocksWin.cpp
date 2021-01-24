@@ -36,7 +36,14 @@
 #include "SceneInterface.h"
 #include "settings.h"
 
-KBlocksWin::KBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount) : KXmlGuiWindow()
+KBlocksWin::KBlocksWin(
+    GameLogicInterface *p,
+    GraphicsInterface *graphics,
+    SoundInterface *sound,
+    KBlocksPlayManager *pM,
+    int capacity,
+    int gamecount
+) : KXmlGuiWindow()
 {
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
@@ -52,7 +59,7 @@ KBlocksWin::KBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capaci
 
     mpPlayManager = pM;
 
-    mpGameScene = new KBlocksScene(mpGameLogic, capacity);
+    mpGameScene = new KBlocksScene(mpGameLogic, graphics, sound, capacity);
 
     connect(mpKBPlayer, &KBlocksKeyboardPlayer::blockMoved,
             mpGameScene, &SceneInterface::playMoveSound);

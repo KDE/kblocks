@@ -1,12 +1,13 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include "KBlocksRepWin.h"
 
 #include <QPixmapCache>
@@ -15,7 +16,12 @@
 
 #include "kblocks_replay_debug.h"
 
-KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWindow()
+KBlocksRepWin::KBlocksRepWin(
+    GraphicsInterface *graphics,
+    SoundInterface *sound,
+    const char *replayFile,
+    bool binaryMode
+) : KMainWindow()
 {
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
@@ -43,7 +49,7 @@ KBlocksRepWin::KBlocksRepWin(const char *replayFile, bool binaryMode) : KMainWin
     mpGameLogic->setInitInterval(0);
     mpGameLogic->setLevelUpInterval(0);
 
-    mpGameScene = new KBlocksScene(mpGameLogic, mGameCount);
+    mpGameScene = new KBlocksScene(mpGameLogic, graphics, sound, mGameCount);
 
     mpGameView = new KBlocksView(mpGameScene, this);
     mpGameView->show();

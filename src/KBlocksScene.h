@@ -27,12 +27,20 @@
 #include "KBlocksDefine.h"
 #include "SceneInterface.h"
 
+class SoundInterface;
+class GraphicsInterface;
+
 class KBlocksScene : public SceneInterface
 {
     Q_OBJECT
 
 public:
-    explicit KBlocksScene(GameLogicInterface *p, int capacity = 1);
+    explicit KBlocksScene(
+        GameLogicInterface *p,
+        GraphicsInterface *graphics,
+        SoundInterface *sound,
+        int capacity = 1
+    );
     virtual ~KBlocksScene();
 
     KBlocksItemGroup *getItemGroup(int index);
@@ -81,8 +89,8 @@ private:
     GameLogicInterface *mpGameLogic = nullptr;
     bool mGameStarted;
 
-    KBlocksGraphics *mpGrafx = nullptr;
-    KBlocksSound *mpSnd = nullptr;
+    GraphicsInterface *mpGrafx = nullptr;
+    SoundInterface *mpSnd = nullptr;
 
     int mSceneGamesPerLine;
     bool mGameAnimEnabled;

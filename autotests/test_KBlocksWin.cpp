@@ -12,7 +12,9 @@
 #include "KBlocksGameLogic.h"
 #include "KBlocksWin.h"
 #include "Testing/MockGameLogic.h"
+#include "Testing/MockGraphics.h"
 #include "Testing/MockScene.h"
+#include "Testing/MockSound.h"
 #include "Testing/TestingKBlocksWin.h"
 
 class testKBlocksWin : public QObject
@@ -32,7 +34,9 @@ void testKBlocksWin::callStopGameBeforeSingleGamesAreDeleted()
      * final game action items.
      */
     MockGameLogic logic;
-    TestingKBlocksWin win(&logic, nullptr, 0, 0);
+    MockGraphics graphics;
+    MockSound sound;
+    TestingKBlocksWin win(&logic, &graphics, &sound, nullptr, 0, 0);
     MockScene *scene = new MockScene(&logic);
     win.replaceScene(scene);
     win.callStopGame();

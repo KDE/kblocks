@@ -1,12 +1,13 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #ifndef KBLOCKSDISPLAY_H
 #define KBLOCKSDISPLAY_H
 
@@ -22,13 +23,23 @@
 #include "KBlocksNetClient.h"
 
 using std::string;
+
 class QLabel;
+class GraphicsInterface;
+class SoundInterface;
+
 class KBlocksDisplay : public KMainWindow
 {
     Q_OBJECT
 
 public:
-    KBlocksDisplay(int gameCount, const string &serverIP, int localPort);
+    KBlocksDisplay(
+        GraphicsInterface* graphics,
+        SoundInterface* sound,
+        int gameCount,
+        const std::string& serverIP,
+        int localPort
+    );
     ~KBlocksDisplay();
 
 public:

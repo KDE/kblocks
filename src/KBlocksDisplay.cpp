@@ -1,12 +1,13 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include "KBlocksDisplay.h"
 
 #include "AI/KBlocksAILog.h"
@@ -16,7 +17,16 @@
 #include <QPixmapCache>
 #include <QLabel>
 
-KBlocksDisplay::KBlocksDisplay(int gameCount, const string &serverIP, int localPort) : KMainWindow()
+class GraphicsInterface;
+class SoundInterface;
+
+KBlocksDisplay::KBlocksDisplay(
+    GraphicsInterface *graphics,
+    SoundInterface *sound,
+    int gameCount,
+    const string &serverIP,
+    int localPort
+) : KMainWindow()
 {
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
@@ -36,7 +46,7 @@ KBlocksDisplay::KBlocksDisplay(int gameCount, const string &serverIP, int localP
     mpGameLogic->setInitInterval(0);
     mpGameLogic->setLevelUpInterval(0);
 
-    mpGameScene = new KBlocksScene(mpGameLogic, mGameCount);
+    mpGameScene = new KBlocksScene(mpGameLogic, graphics, sound, mGameCount);
     mpGameScene->setGameAnimEnabled(false);
     mpGameScene->setWaitForAllUpdate(false);
 

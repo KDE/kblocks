@@ -10,8 +10,14 @@
 
 #include "TestingKBlocksWin.h"
 
-TestingKBlocksWin::TestingKBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount)
-    : KBlocksWin(p, pM, capacity, gamecount)
+TestingKBlocksWin::TestingKBlocksWin(
+    GameLogicInterface *p,
+    GraphicsInterface *graphics,
+    SoundInterface *sound,
+    KBlocksPlayManager *pM,
+    int capacity,
+    int gamecount
+) : KBlocksWin(p, graphics, sound, pM, capacity, gamecount)
 {
 }
 

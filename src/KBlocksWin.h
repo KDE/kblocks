@@ -22,13 +22,22 @@
 #include "KBlocksPlayManager.h"
 class QLabel;
 class GameLogicInterface;
+class GraphicsInterface;
 class SceneInterface;
+class SoundInterface;
 class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
 
 public:
-    KBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount);
+    KBlocksWin(
+        GameLogicInterface *p,
+        GraphicsInterface *graphics,
+        SoundInterface *sound,
+        KBlocksPlayManager *pM,
+        int capacity,
+        int gamecount
+    );
     ~KBlocksWin();
 
 public:

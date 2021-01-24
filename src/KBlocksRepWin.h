@@ -1,12 +1,13 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #ifndef KBLOCKSREPWIN_H
 #define KBLOCKSREPWIN_H
 
@@ -22,12 +23,20 @@
 
 using std::string;
 
+class GraphicsInterface;
+class SoundInterface;
+
 class KBlocksRepWin : public KMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit KBlocksRepWin(const char *replayFile, bool binaryMode = true);
+    explicit KBlocksRepWin(
+        GraphicsInterface *graphics,
+        SoundInterface *sound,
+        const char *replayFile,
+        bool binaryMode = true
+    );
     ~KBlocksRepWin();
 
 public:

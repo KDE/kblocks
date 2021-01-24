@@ -15,12 +15,21 @@
 #include "SceneInterface.h"
 
 class GameLogicInterface;
+class GraphicsInterface;
 class KBlocksPlayManager;
+class SoundInterface;
 
 class TestingKBlocksWin : private KBlocksWin
 {
 public:
-    TestingKBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount);
+    TestingKBlocksWin(
+        GameLogicInterface *p,
+        GraphicsInterface *graphics,
+        SoundInterface *sound,
+        KBlocksPlayManager *pM,
+        int capacity,
+        int gamecount
+    );
     virtual ~TestingKBlocksWin() = default;
 
     void callStopGame();

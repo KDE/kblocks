@@ -1,13 +1,14 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2010 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2010-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include "KBlocksScene.h"
 
 #include "settings.h"
@@ -15,7 +16,15 @@
 #include <QVarLengthArray>
 #include <KLocalizedString>
 
-KBlocksScene::KBlocksScene(GameLogicInterface *p, int capacity)
+#include "GraphicsInterface.h"
+#include "SoundInterface.h"
+
+KBlocksScene::KBlocksScene(
+    GameLogicInterface *p,
+    GraphicsInterface *graphics,
+    SoundInterface *sound,
+    int capacity
+)
 {
     mpGameLogic = p;
     mGameStarted = false;
@@ -32,9 +41,8 @@ KBlocksScene::KBlocksScene(GameLogicInterface *p, int capacity)
     maGameScoreList = new KBlocksScore*[capacity]();
     maGameReadySignal = new bool[capacity]();
 
-    QString themeFile(Settings::theme());
-    mpGrafx = new KBlocksGraphics(themeFile);
-    mpSnd = new KBlocksSound(themeFile);
+    mpGrafx = graphics;
+    mpSnd = sound;
 
     int width = (capacity >= mSceneGamesPerLine) ? mSceneGamesPerLine : (capacity % mSceneGamesPerLine);
     int height = (int)(capacity / (mSceneGamesPerLine + 1)) + 1;
@@ -56,9 +64,6 @@ KBlocksScene::~KBlocksScene()
     delete [] maGameReadySignal;
     delete [] maGameScoreList;
     delete [] maGroupList;
-
-    delete mpGrafx;
-    delete mpSnd;
 }
 
 KBlocksItemGroup *KBlocksScene::getItemGroup(int index)

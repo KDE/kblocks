@@ -1,13 +1,14 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include <ctime>
 #include <string>
 #include <vector>
@@ -43,6 +44,7 @@ using namespace std;
 #include "KBlocksNetClient.h"
 
 #include "kblocks_version.h"
+#include "settings.h"
 
 KBlocksGameLogic *mpKBlocksGameLogic;
 KBlocksPlayManager *mpKBlocksPlayManager;
@@ -75,7 +77,18 @@ int gameDesktopMode(const QApplication &app)
 
     mpKBlocksPlayManager = new KBlocksPlayManager(mpKBlocksGameLogic, 2);
 
-    mpKBlocksWindow = new KBlocksWin(mpKBlocksGameLogic, mpKBlocksPlayManager, 2, 1);
+    QString themeFile(Settings::theme());
+    KBlocksGraphics graphics(themeFile);
+    KBlocksSound sound(themeFile);
+
+    mpKBlocksWindow = new KBlocksWin(
+        mpKBlocksGameLogic,
+        &graphics,
+        &sound,
+        mpKBlocksPlayManager,
+        2,
+        1
+    );
     mpKBlocksWindow->setUpdateInterval(50);
     mpKBlocksWindow->setGamesPerLine(4);
     mpKBlocksWindow->setGameAnimEnabled(true);
@@ -159,7 +172,18 @@ int gameGuiMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tUpdate Interval = %d\n", updateInterval);
     printf("\tLocal Port      = %d\n", localPort);
     printf("\tServer IP       = %s\n", serverIP.c_str());
-    mpKBlocksDisplay = new KBlocksDisplay(gameCount, serverIP, localPort);
+
+    QString themeFile(Settings::theme());
+    KBlocksGraphics graphics(themeFile);
+    KBlocksSound sound(themeFile);
+
+    mpKBlocksDisplay = new KBlocksDisplay(
+        &graphics,
+        &sound,
+        gameCount,
+        serverIP,
+        localPort
+    );
     mpKBlocksDisplay->setGamesPerLine(gamesPerLine);
     mpKBlocksDisplay->setUpdateInterval(updateInterval);
     mpKBlocksDisplay->show();
@@ -206,7 +230,16 @@ int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tRecord File     = %s\n", recordFile.c_str());
     printf("\tRecord Type     = %s\n", recordBinary ? "Binary" : "Text");
 
-    KBlocksRepWin *mpKBlocksRepWin = new KBlocksRepWin(recordFile.c_str(), recordBinary);
+    QString themeFile(Settings::theme());
+    KBlocksGraphics graphics(themeFile);
+    KBlocksSound sound(themeFile);
+
+    KBlocksRepWin *mpKBlocksRepWin = new KBlocksRepWin(
+        &graphics,
+        &sound,
+        recordFile.c_str(),
+        recordBinary
+    );
     if (!mpKBlocksRepWin->replayLoaded()) {
         printf("Error loading replay file: Failed to load replay file!\n");
         return -2;
