@@ -21,6 +21,7 @@ public:
     GraphicsInterface()
         : m_Block_Size{},
           m_View_Size_Width{},
+          m_View_Size_Height{},
           m_PlayArea_OffsetPoint_X{},
           m_PlayArea_OffsetPoint_Y{},
           m_PlayArea_NumberOfBlocks_X{},
