@@ -167,18 +167,6 @@ void KBlocksScene::readSettings(const QSize &viewSize)
     }
 }
 
-void KBlocksScene::viewScaled(const QSize & /*newsize*/)
-{
-    /*
-    //Temporarily halt game timer while resizing elements
-    if (gameState==Game_Active) stepTimer.stop();
-    grafx->adjustForSize(newsize);
-    updateDimensions();
-    //Do not restart if game was paused
-    if (gameState==Game_Active) stepTimer.start();
-    */
-}
-
 void KBlocksScene::startGame()
 {
     if (mGameStarted) {

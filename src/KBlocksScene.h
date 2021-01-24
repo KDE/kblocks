@@ -48,7 +48,6 @@ public:
     void setSoundsEnabled(bool enabled) override;
 
     void readSettings(const QSize &viewSize) override;
-    void viewScaled(const QSize &newsize);
 
     void startGame() override;
     void stopGame() override;
