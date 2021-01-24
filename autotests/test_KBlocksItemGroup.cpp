@@ -14,6 +14,7 @@
 #include "Testing/MockGraphics.h"
 #include "Testing/MockSingleGame.h"
 #include "Testing/MockSound.h"
+#include "Testing/MockSvgItem.h"
 
 #include "Testing/TestingKBlocksItemGroup.h"
 
@@ -22,6 +23,7 @@ class testKBlocksItemGroup : public QObject
     Q_OBJECT
 private slots:
     void updateGameShouldProcessGameActionsOnGameOver();
+    void updateGameShouldRefreshItemsOnGameOver();
     void stopGameShouldProcessRemainingGameActions();
 };
 
@@ -47,6 +49,29 @@ void testKBlocksItemGroup::updateGameShouldProcessGameActionsOnGameOver()
 
     QCOMPARE( mock->numberOfPickGameActionCalls, 1 );
 }
+
+void testKBlocksItemGroup::updateGameShouldRefreshItemsOnGameOver()
+{
+    /**
+     * When updateGame is called, the final piece might just have been
+     * placed, causing the game to be over. If refreshItems() is not
+     * called, the final piece will be invisible. The correct behavior
+     * is to fully display the final piece, making it clear how and
+     * where it conflicted with the pieces on the field.
+     */
+    std::unique_ptr<SingleGameInterface> pSingleGame( new MockSingleGame() );
+    std::unique_ptr<GraphicsInterface> pGraphics( new MockGraphics() );
+    std::unique_ptr<SoundInterface> pSound( new MockSound() );
+    TestingKBlocksItemGroup itemGroup(0, pSingleGame.get(), pGraphics.get(), pSound.get() );
+
+    MockSvgItem *svgItem = new MockSvgItem();
+    itemGroup.replaceFreezeCells(svgItem);
+
+    itemGroup.callUpdateGame();
+
+    QVERIFY(svgItem->updateSelfCalled);
+}
+
 
 void testKBlocksItemGroup::stopGameShouldProcessRemainingGameActions()
 {

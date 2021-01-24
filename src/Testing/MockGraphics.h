@@ -23,7 +23,11 @@ class KGameTheme;
 class MockGraphics : public GraphicsInterface
 {
 public:
-    MockGraphics() : mRenderer(new QSvgRenderer()) {};
+    MockGraphics() : mRenderer(new QSvgRenderer())
+    {
+        m_PlayArea_NumberOfBlocks_X = 1;
+        m_PlayArea_NumberOfBlocks_Y = 1;
+    }
     virtual ~MockGraphics() = default;
 
 public:

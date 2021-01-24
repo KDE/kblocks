@@ -12,6 +12,7 @@
 #define TESTINGKBLOCKSITEMGROUP_H
 
 #include "KBlocksItemGroup.h"
+#include "SvgItemInterface.h"
 
 class TestingKBlocksItemGroup : public KBlocksItemGroup
 {
@@ -24,6 +25,19 @@ public:
     void callUpdateGame()
     {
         KBlocksItemGroup::updateGame();
+    }
+
+    void replaceFreezeCells(SvgItemInterface* newItem)
+    {
+        for (int i = 0; i < mMaxFreezeCellNum; i++) {
+            removeFromGroup(maFreezeCells[i]);
+            delete maFreezeCells[i];
+        }
+
+        for (int i = 0; i < mMaxFreezeCellNum; i++) {
+            maFreezeCells[i] = newItem;
+            addToGroup(maFreezeCells[i]);
+        }
     }
 };
 

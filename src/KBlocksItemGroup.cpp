@@ -156,6 +156,7 @@ void KBlocksItemGroup::updateGame()
     bool hasRemovedLines = updateLayout();
 
     if (gameResult == GameResult_Game_Over) {
+        refreshItems();
         mUpdateTimer.stop();
         return;
     }
