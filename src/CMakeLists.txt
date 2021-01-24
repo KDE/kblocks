@@ -61,3 +61,5 @@ target_link_libraries(KBlocksCore
     KF5::I18n
     Qt5::Svg
 )
+
+add_subdirectory(Testing)

@@ -20,34 +20,11 @@ class KBlocksPlayManager;
 class TestingKBlocksWin : private KBlocksWin
 {
 public:
-    TestingKBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount)
-        : KBlocksWin(p, pM, capacity, gamecount)
-    {
-    }
+    TestingKBlocksWin(GameLogicInterface *p, KBlocksPlayManager *pM, int capacity, int gamecount);
     virtual ~TestingKBlocksWin() = default;
 
-    void callStopGame() { KBlocksWin::stopGame(); }
-    void replaceScene(SceneInterface *newScene) {
-        disconnect(
-            mpKBPlayer, &KBlocksKeyboardPlayer::blockMoved,
-            mpGameScene, &SceneInterface::playMoveSound
-        );
-        disconnect(
-            mpKBPlayer, &KBlocksKeyboardPlayer::blockDropped,
-            mpGameScene, &SceneInterface::playDropSound
-        );
-        delete mpGameScene;
-        mpGameScene = newScene;
-        connect(
-            mpKBPlayer, &KBlocksKeyboardPlayer::blockMoved,
-            mpGameScene, &SceneInterface::playMoveSound
-        );
-        connect(
-            mpKBPlayer, &KBlocksKeyboardPlayer::blockDropped,
-            mpGameScene, &SceneInterface::playDropSound
-        );
-        mpGameView->setScene(mpGameScene);
-    }
+    void callStopGame();
+    void replaceScene(SceneInterface *newScene);
 };
 
 #endif // TESTINGKBLOCKSWIN_H
