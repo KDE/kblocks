@@ -13,6 +13,8 @@
 #include "SoundInterface.h"
 
 #include "KBlocksItemGroup.h"
+#include "KBlocksSvgItem.h"
+#include "SvgItemInterface.h"
 
 KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS, bool snapshotMode)
 {
@@ -42,7 +44,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, Graphics
     }
 
     mMaxFreezeCellNum = (mFieldWidth * mFieldHeight);
-    maFreezeCells = new KBlocksSvgItem*[mMaxFreezeCellNum];
+    maFreezeCells = new SvgItemInterface*[mMaxFreezeCellNum];
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i] = new KBlocksSvgItem(mpGameLayout, KBlocksSvgItem_FieldArea,
                                               i % mFieldWidth, i / mFieldWidth);
@@ -310,11 +312,11 @@ void KBlocksItemGroup::fadeInNewPiece()
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i]->updateSelf();
     }
-    for (KBlocksSvgItem *tmpItem : qAsConst(mFadeOutItems)) {
+    for (SvgItemInterface *tmpItem : qAsConst(mFadeOutItems)) {
         tmpItem->setOpacity(1);
         tmpItem->stopOpAnim();
     }
-    for (KBlocksSvgItem *tmpItem : qAsConst(mDropItems)) {
+    for (SvgItemInterface *tmpItem : qAsConst(mDropItems)) {
         tmpItem->stopPosAnim();
     }
 

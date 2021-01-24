@@ -1,14 +1,17 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include "KBlocksAnimator.h"
+
+#include "SvgItemInterface.h"
 
 KBlocksAnimator::KBlocksAnimator()
 {
@@ -26,7 +29,7 @@ KBlocksAnimator::~KBlocksAnimator()
     }
 }
 
-bool KBlocksAnimator::createFadeAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
+bool KBlocksAnimator::createFadeAnim(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction)
 {
     if (mpAnimFade) {
         return false;
@@ -58,7 +61,7 @@ KBlocksAnimFade *KBlocksAnimator::getFadeAnim()
     return mpAnimFade;
 }
 
-bool KBlocksAnimator::createDropAnim(const QList<KBlocksSvgItem *> &items, int duration, QTimeLine::Direction direction)
+bool KBlocksAnimator::createDropAnim(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction)
 {
     if (mpAnimDrop) {
         return false;
