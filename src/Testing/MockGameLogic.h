@@ -37,6 +37,7 @@ public:
     void pauseGame(bool) override {}
     void continueGame() override {}
 
+    bool hasSingleGames() override { return true; }
     bool deleteSingleGames() override { singleGamesDeleted = true; return true; }
 
 public:

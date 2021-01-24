@@ -10,6 +10,13 @@ ecm_add_test(
 )
 
 ecm_add_test(
+    test_KBlocksGameLogic.cpp
+    TEST_NAME KBlocksGameLogic
+    LINK_LIBRARIES Qt5::Test KBlocksCore
+    NAME_PREFIX "UnitTest-"
+)
+
+ecm_add_test(
     test_KBlocksItemGroup.cpp
     TEST_NAME KBlocksItemGroup
     LINK_LIBRARIES Qt5::Test KBlocksCore

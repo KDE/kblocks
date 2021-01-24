@@ -55,6 +55,10 @@ public:
     void pauseGame(bool pauseFlag) override;
     void continueGame() override;
 
+    /**
+     * Return whether single games have been created.
+     */
+    bool hasSingleGames() override;
     bool deleteSingleGames() override;
 
 public slots:
