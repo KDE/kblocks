@@ -38,6 +38,7 @@ set(kblockscore_SRCS
     KBlocksSvgItem.cpp
     KBlocksView.cpp
     KBlocksWin.cpp
+    SceneInterface.cpp
     utils.cpp
 )
 

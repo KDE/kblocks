@@ -25,7 +25,6 @@
 #include "GameLogicInterface.h"
 
 #include "KBlocksDefine.h"
-
 #include "SceneInterface.h"
 
 class KBlocksScene : public SceneInterface
@@ -39,28 +38,24 @@ public:
     KBlocksItemGroup *getItemGroup(int index);
     KBlocksScore *getScoreHandler(int index);
 
-    void createGameItemGroups(int groupCount, bool snapshotMode = false);
-    void deleteGameItemGroups();
+    void createGameItemGroups(int groupCount, bool snapshotMode = false) override;
+    void deleteGameItemGroups() override;
 
-    void setGamesPerLine(int count);
-    void setGameAnimEnabled(bool flag);
-    void setWaitForAllUpdate(bool flag);
-    void setUpdateInterval(int interval);
-    void setSoundsEnabled(bool enabled);
+    void setGamesPerLine(int count) override;
+    void setGameAnimEnabled(bool flag) override;
+    void setWaitForAllUpdate(bool flag) override;
+    void setUpdateInterval(int interval) override;
+    void setSoundsEnabled(bool enabled) override;
 
     void readSettings(const QSize &viewSize) override;
     void viewScaled(const QSize &newsize);
 
-    void startGame();
-    void stopGame();
+    void startGame() override;
+    void stopGame() override;
 
-    void pauseGame(bool flag, bool fromUI = false);
+    void pauseGame(bool flag, bool fromUI = false) override;
 
-    void addScore(int gameIndex, int lineCount);
-
-signals:
-    void scoreChanged(int index, int points, int lines, int level);
-    void isHighscore(int index, int points, int level);
+    void addScore(int gameIndex, int lineCount) override;
 
 private:
     void updateDimensions();
@@ -77,8 +72,8 @@ private slots:
     void readyForAction(int groupID);
 
 public slots:
-    void playMoveSound();
-    void playDropSound();
+    void playMoveSound() override;
+    void playDropSound() override;
 
 protected:
     void drawBackground(QPainter *painter, const QRectF &rect) override;
@@ -111,4 +106,3 @@ private:
 };
 
 #endif
-

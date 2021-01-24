@@ -15,12 +15,32 @@
 
 class SceneInterface : public QGraphicsScene
 {
+    Q_OBJECT
 public:
-    SceneInterface() = default;
+    SceneInterface();
     virtual ~SceneInterface() = default;
 
 public:
+    virtual void createGameItemGroups(int, bool snapshotMode = false) = 0;
+    virtual void deleteGameItemGroups() = 0;
+    virtual void setGamesPerLine(int) = 0;
+    virtual void setGameAnimEnabled(bool) = 0;
+    virtual void setWaitForAllUpdate(bool) = 0;
+    virtual void setUpdateInterval(int) = 0;
+    virtual void setSoundsEnabled(bool) = 0;
     virtual void readSettings(const QSize&) = 0;
+    virtual void startGame() = 0;
+    virtual void stopGame() = 0;
+    virtual void pauseGame(bool, bool fromUI = false) = 0;
+    virtual void addScore(int, int) = 0;
+
+signals:
+    void scoreChanged(int index, int points, int lines, int level);
+    void isHighscore(int index, int points, int level);
+
+public slots:
+    virtual void playMoveSound() = 0;
+    virtual void playDropSound() = 0;
 };
 
 #endif // SCENEINTERFACE_H

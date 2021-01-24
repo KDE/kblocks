@@ -1,13 +1,14 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #include "KBlocksWin.h"
 
 #include <limits.h>
@@ -30,6 +31,8 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
 
+#include "KBlocksScene.h"
+#include "SceneInterface.h"
 #include "settings.h"
 
 KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity, int gamecount) : KXmlGuiWindow()
@@ -51,9 +54,9 @@ KBlocksWin::KBlocksWin(KBlocksGameLogic *p, KBlocksPlayManager *pM, int capacity
     mpGameScene = new KBlocksScene(mpGameLogic, capacity);
 
     connect(mpKBPlayer, &KBlocksKeyboardPlayer::blockMoved,
-            mpGameScene, &KBlocksScene::playMoveSound);
+            mpGameScene, &SceneInterface::playMoveSound);
     connect(mpKBPlayer, &KBlocksKeyboardPlayer::blockDropped,
-            mpGameScene, &KBlocksScene::playDropSound);
+            mpGameScene, &SceneInterface::playDropSound);
 
     mpGameView = new KBlocksView(mpGameScene, this);
     mpGameView->show();

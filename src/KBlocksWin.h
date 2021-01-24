@@ -1,19 +1,19 @@
-/***************************************************************************
-*   KBlocks, a falling blocks game by KDE                                *
-*   Copyright (C) 2009 Mauricio Piacentini <mauricio@tabuleiro.com>       *
-*                      Zhongjie Cai <squall.leonhart.cai@gmail.com>       *
-*                                                                         *
-*   This program is free software; you can redistribute it and/or modify  *
-*   it under the terms of the GNU General Public License as published by  *
-*   the Free Software Foundation; either version 2 of the License, or     *
-*   (at your option) any later version.                                   *
-***************************************************************************/
+/******************************************************************************
+*   KBlocks, a falling blocks game by KDE                                     *
+*   Copyright (C) 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
+*                           Julian Helfferich <julian.helfferich@mailbox.org> *
+*                                                                             *
+*   This program is free software; you can redistribute it and/or modify      *
+*   it under the terms of the GNU General Public License as published by      *
+*   the Free Software Foundation; either version 2 of the License, or         *
+*   (at your option) any later version.                                       *
+******************************************************************************/
 #ifndef KBLOCKSWIN_H
 #define KBLOCKSWIN_H
 
 #include <KXmlGuiWindow>
 
-#include "KBlocksScene.h"
 #include "KBlocksView.h"
 
 #include "KBlocksKeyboardPlayer.h"
@@ -22,6 +22,7 @@
 #include "KBlocksGameLogic.h"
 #include "KBlocksPlayManager.h"
 class QLabel;
+class SceneInterface;
 class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -38,9 +39,11 @@ public:
 
     void addScore(int gameIndex, int lineCount);
 
+protected slots:
+    void stopGame();
+
 private slots:
     void startGame();
-    void stopGame();
     void pauseGame();
 
     void singleGame();
@@ -69,7 +72,7 @@ private:
     bool mGameAnim;
     bool mWaitForAll;
 
-    KBlocksScene *mpGameScene = nullptr;
+    SceneInterface *mpGameScene = nullptr;
     KBlocksView  *mpGameView = nullptr;
 
     KBlocksGameLogic *mpGameLogic = nullptr;
