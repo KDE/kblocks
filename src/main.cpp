@@ -380,8 +380,8 @@ int main(int argc, char *argv[])
 
     QByteArray tmpFileArray = parser.value(QStringLiteral("conf")).toLatin1();
     const char *tmpFileChar = tmpFileArray.data();
-    KBlocksConfigManager *config = new KBlocksConfigManager();
-    config->LoadConfigFile(string(tmpFileChar));
+    KBlocksConfigManager config;
+    config.LoadConfigFile(string(tmpFileChar));
 
     int mResult = 0;
     switch (mGameMode) {
@@ -389,16 +389,16 @@ int main(int argc, char *argv[])
         mResult = gameDesktopMode(app);
         break;
     case KBlocksGame_EngineMode:
-        mResult = gameEngineMode(config);
+        mResult = gameEngineMode(&config);
         break;
     case KBlocksGame_GuiMode:
-        mResult = gameGuiMode(config, app);
+        mResult = gameGuiMode(&config, app);
         break;
     case KBlocksGame_PlayerMode:
-        mResult = gamePlayerMode(config, app);
+        mResult = gamePlayerMode(&config, app);
         break;
     case KBlocksGame_ReplayMode:
-        mResult = gameReplayMode(config, app);
+        mResult = gameReplayMode(&config, app);
         break;
     }
 
