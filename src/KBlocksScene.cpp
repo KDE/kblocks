@@ -61,6 +61,7 @@ KBlocksScene::KBlocksScene(
 
 KBlocksScene::~KBlocksScene()
 {
+    deleteGameItemGroups();
     delete [] maGameReadySignal;
     delete [] maGameScoreList;
     delete [] maGroupList;
@@ -110,8 +111,10 @@ void KBlocksScene::createGameItemGroups(int groupCount, bool snapshotMode)
 
 void KBlocksScene::deleteGameItemGroups()
 {
-    removeItem(mMessageBox);
-    delete mMessageBox;
+    if (mMessageBox) {
+        removeItem(mMessageBox);
+        delete mMessageBox;
+    }
 
     for (int i = 0; i < mGroupCount; i++) {
         disconnect(maGroupList[i], &KBlocksItemGroup::readyForAction, this, &KBlocksScene::readyForAction);
