@@ -11,18 +11,20 @@
 #define MOCKGAMELOGIC_H
 
 #include "GameLogicInterface.h"
+#include "Testing/MockSingleGame.h"
 
 class MockGameLogic : public GameLogicInterface
 {
 public:
     MockGameLogic()
-        : singleGamesDeleted(false)
+        : singleGamesDeleted(false),
+          singleGame{}
     {
     }
     virtual ~MockGameLogic() = default;
 
 public:
-    SingleGameInterface *getSingleGame(int) override { return nullptr; }
+    SingleGameInterface *getSingleGame(int) override { return &singleGame; }
 
     int levelUpGame(int) override { return 0; }
     int updateGame(int *) override { return 0; }
@@ -42,6 +44,9 @@ public:
 
 public:
     bool singleGamesDeleted;
+
+private:
+    MockSingleGame singleGame;
 };
 
 #endif //MOCKGAMELOGIC_H

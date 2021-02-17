@@ -24,6 +24,13 @@ ecm_add_test(
 )
 
 ecm_add_test(
+    test_KBlocksScene.cpp
+    TEST_NAME KBlocksScene
+    LINK_LIBRARIES Qt5::Test KBlocksCore
+    NAME_PREFIX "UnitTest-"
+)
+
+ecm_add_test(
     test_KBlocksWin.cpp
     TEST_NAME KBlocksWin
     LINK_LIBRARIES Qt5::Test KBlocksCore KBlocksTesting

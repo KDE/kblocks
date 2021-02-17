@@ -114,6 +114,7 @@ void KBlocksScene::deleteGameItemGroups()
     if (mMessageBox) {
         removeItem(mMessageBox);
         delete mMessageBox;
+        mMessageBox = nullptr;
     }
 
     for (int i = 0; i < mGroupCount; i++) {
