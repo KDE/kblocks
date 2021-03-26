@@ -21,6 +21,7 @@ public:
 
 public:
     bool updateSelf() override { updateSelfCalled = true; return true; }
+    void clearCache() override { clearCacheCalled = true; }
     void startOpAnim() override {}
     void stopOpAnim() override {}
     void startPosAnim(QPointF) override {}
@@ -28,6 +29,7 @@ public:
     void stopPosAnim() override {}
 
     bool updateSelfCalled;
+    bool clearCacheCalled = false;
 };
 
 #endif //MOCKSVGITEM_H

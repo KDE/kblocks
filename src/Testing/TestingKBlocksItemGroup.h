@@ -35,12 +35,29 @@ public:
         return nullptr;
     }
 
+    int getMaxPrepareCellNum() const
+    {
+        return mMaxPrepareCellNum;
+    }
+
     SvgItemInterface *getPrepareCell(int cellNum)
     {
         if (cellNum < mMaxPrepareCellNum) {
             return maPrepareCells[cellNum];
         }
         return nullptr;
+    }
+
+    void replacePrepareCell(int cellNum, SvgItemInterface* newItem)
+    {
+        if (cellNum >= mMaxPrepareCellNum) {
+            return;
+        }
+        removeFromGroup(maPrepareCells[cellNum]);
+        delete maPrepareCells[cellNum];
+
+        maPrepareCells[cellNum] = newItem;
+        addToGroup(maPrepareCells[cellNum]);
     }
 
     void replaceFreezeCells(SvgItemInterface* newItem)

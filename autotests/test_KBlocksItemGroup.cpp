@@ -23,6 +23,7 @@ class testKBlocksItemGroup : public QObject
     Q_OBJECT
 private slots:
     void refreshPositionShouldSetCorrectPositions();
+    void refreshPositionShouldClearCache();
     void updateGameShouldProcessGameActionsOnGameOver();
     void updateGameShouldRefreshItemsOnGameOver();
     void stopGameShouldProcessRemainingGameActions();
@@ -85,6 +86,50 @@ void testKBlocksItemGroup::refreshPositionShouldSetCorrectPositions()
         QVERIFY(freezeCell != nullptr);
         QCOMPARE(freezeCell->pos(), expectedFreezePositions.at(i));
     }
+}
+
+void testKBlocksItemGroup::refreshPositionShouldClearCache()
+{
+    /**
+     * The positions are refreshed when the layout changes. Then, also
+     * the cache should be cleared to ensure that the graphics for each
+     * item is updated.
+     *
+     * See bug 380474
+     */
+    MockSingleGame singleGame;
+    MockGraphics graphics;
+    MockSound sound;
+    TestingKBlocksItemGroup itemGroup(0, &singleGame, &graphics, &sound);
+
+    itemGroup.replacePrepareCell(0, new MockSvgItem());
+    itemGroup.replaceFreezeCells(new MockSvgItem());
+
+    auto *prepareCellBefore = dynamic_cast<MockSvgItem*>(
+        itemGroup.getPrepareCell(0)
+    );
+    QVERIFY(prepareCellBefore != nullptr);
+    QCOMPARE(prepareCellBefore->clearCacheCalled, false);
+
+    auto *freezeCellBefore = dynamic_cast<MockSvgItem*>(
+        itemGroup.getFreezeCell(0)
+    );
+    QVERIFY(freezeCellBefore != nullptr);
+    QCOMPARE(freezeCellBefore->clearCacheCalled, false);
+
+    itemGroup.refreshPosition();
+
+    auto *prepareCellAfter = dynamic_cast<MockSvgItem*>(
+        itemGroup.getPrepareCell(0)
+    );
+    QVERIFY(prepareCellAfter != nullptr);
+    QCOMPARE(prepareCellAfter->clearCacheCalled, true);
+
+    auto *freezeCellAfter = dynamic_cast<MockSvgItem*>(
+        itemGroup.getFreezeCell(0)
+    );
+    QVERIFY(freezeCellAfter != nullptr);
+    QCOMPARE(freezeCellAfter->clearCacheCalled, true);
 }
 
 

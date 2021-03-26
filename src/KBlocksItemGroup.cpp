@@ -121,11 +121,13 @@ void KBlocksItemGroup::refreshPosition()
     for (int i = 0; i < mMaxPrepareCellNum; i++) {
         maPrepareCells[i]->setPos(mPrepareLeft + mItemSize * (i % PREPARE_AREA_WIDTH),
                                   mPrepareTop + mItemSize * (i / PREPARE_AREA_WIDTH));
+        maPrepareCells[i]->clearCache();
     }
 
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i]->setPos(mFieldLeft + mItemSize * (i % mFieldWidth),
                                  mFieldTop + mItemSize * (i / mFieldWidth));
+        maFreezeCells[i]->clearCache();
     }
 }
 

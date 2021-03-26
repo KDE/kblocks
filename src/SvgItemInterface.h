@@ -21,6 +21,7 @@ public:
 
 public:
     virtual bool updateSelf() = 0;
+    virtual void clearCache() = 0;
 
     virtual void startOpAnim() = 0;
     virtual void stopOpAnim() = 0;
