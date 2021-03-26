@@ -60,17 +60,16 @@ public:
         addToGroup(maPrepareCells[cellNum]);
     }
 
-    void replaceFreezeCells(SvgItemInterface* newItem)
+    void replaceFreezeCell(int cellNum, SvgItemInterface* newItem)
     {
-        for (int i = 0; i < mMaxFreezeCellNum; i++) {
-            removeFromGroup(maFreezeCells[i]);
-            delete maFreezeCells[i];
+        if (cellNum >= mMaxFreezeCellNum) {
+            return;
         }
+        removeFromGroup(maFreezeCells[cellNum]);
+        delete maFreezeCells[cellNum];
 
-        for (int i = 0; i < mMaxFreezeCellNum; i++) {
-            maFreezeCells[i] = newItem;
-            addToGroup(maFreezeCells[i]);
-        }
+        maFreezeCells[cellNum] = newItem;
+        addToGroup(maFreezeCells[cellNum]);
     }
 };
 

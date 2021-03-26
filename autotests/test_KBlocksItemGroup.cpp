@@ -103,7 +103,7 @@ void testKBlocksItemGroup::refreshPositionShouldClearCache()
     TestingKBlocksItemGroup itemGroup(0, &singleGame, &graphics, &sound);
 
     itemGroup.replacePrepareCell(0, new MockSvgItem());
-    itemGroup.replaceFreezeCells(new MockSvgItem());
+    itemGroup.replaceFreezeCell(0, new MockSvgItem());
 
     auto *prepareCellBefore = dynamic_cast<MockSvgItem*>(
         itemGroup.getPrepareCell(0)
@@ -171,7 +171,7 @@ void testKBlocksItemGroup::updateGameShouldRefreshItemsOnGameOver()
     TestingKBlocksItemGroup itemGroup(0, pSingleGame.get(), pGraphics.get(), pSound.get() );
 
     MockSvgItem *svgItem = new MockSvgItem();
-    itemGroup.replaceFreezeCells(svgItem);
+    itemGroup.replaceFreezeCell(0, svgItem);
 
     itemGroup.callUpdateGame();
 
