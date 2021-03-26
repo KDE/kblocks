@@ -27,6 +27,22 @@ public:
         KBlocksItemGroup::updateGame();
     }
 
+    SvgItemInterface *getFreezeCell(int cellNum)
+    {
+        if (cellNum < mMaxFreezeCellNum) {
+            return maFreezeCells[cellNum];
+        }
+        return nullptr;
+    }
+
+    SvgItemInterface *getPrepareCell(int cellNum)
+    {
+        if (cellNum < mMaxPrepareCellNum) {
+            return maPrepareCells[cellNum];
+        }
+        return nullptr;
+    }
+
     void replaceFreezeCells(SvgItemInterface* newItem)
     {
         for (int i = 0; i < mMaxFreezeCellNum; i++) {
