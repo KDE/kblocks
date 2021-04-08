@@ -1,9 +1,8 @@
 ---
 name: kblocks
-version: 20.08.0
 confinement: strict
 grade: stable
-base: core18
+base: core20
 adopt-info: kblocks
 apps:
     kblocks:
@@ -17,10 +16,9 @@ apps:
         - desktop
         - network
         - network-bind
-        - unity7
-        - pulseaudio
+        - audio-playback
         - desktop-legacy
-        - removable-media
+        - alsa
 slots:
     session-dbus-interface:
         interface: dbus
@@ -28,60 +26,64 @@ slots:
         bus: session
 plugs:
     kde-frameworks-5-plug:
-        content: kde-frameworks-5-qt-5-14-core18-all
+        content: kde-frameworks-5-qt-5-15-core20-all
         interface: content
-        default-provider: kde-frameworks-5-qt-5-14-core18
+        default-provider: kde-frameworks-5-qt-5-15-core20
         target: kf5
+package-repositories:
+-   type: apt
+    components:
+    - main
+    suites:
+    - focal
+    key-id: 444DABCF3667D0283F894EDDE6D4736255751E5D
+    url: http://origin.archive.neon.kde.org/user
+    key-server: keyserver.ubuntu.com
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
 parts:
-    kdegames:
-        plugin: cmake
-        source: https://download.kde.org/stable/release-service/20.08.0/src/libkdegames-20.08.0.tar.xz
-        build-packages:
-        - build-essential
-        - libopenal-dev
-        - libsndfile1-dev
-        configflags:
-        - "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
-        - "-DCMAKE_INSTALL_PREFIX=/usr"
-        - "-DCMAKE_BUILD_TYPE=Release"
-        - "-DENABLE_TESTING=OFF"
-        - "-DBUILD_TESTING=OFF"
-        - "-DKDE_SKIP_TEST_SETTINGS=ON"
-        - "-DCMAKE_FIND_ROOT_PATH=/snap/kde-frameworks-5-qt-5-14-core18-sdk/current"
-    #kdoctools5:
-    #    plugin: dump
-    #    source: https://archive.neon.kde.org/user/pool/main/k/kdoctools/kdoctools5_5.73.0-0xneon+20.04+focal+build4_amd64.deb
-    #libkf5doctools-dev:
-    #    plugin: dump
-    #    source: https://archive.neon.kde.org/user/pool/main/k/kdoctools/libkf5doctools-dev_5.73.0-0xneon+20.04+focal+build4_amd64.deb
     kblocks:
+        after:
+        - kde-frameworks-5-env
+        plugin: cmake
+        build-packages:
+        - libkf5doctools-dev
+        build-snaps:
+        - kde-frameworks-5-qt-5-15-core20-sdk/latest/candidate
+        build-environment:
+        - CMAKE_BUILD_PARALLEL_LEVEL: "4"
+        - VERBOSE: "1"
+        stage-packages:
+        - libasound2-data
+        - libasound2-plugins
+        filesets:
+            exclusion:
+            - "-usr/lib/*/cmake/*"
+            - "-usr/include/*"
+            - "-usr/share/ECM/*"
+            - "-usr/share/doc/*"
+            - "-usr/share/man/*"
+            - "-usr/share/icons/breeze-dark*"
+            - "-usr/bin/X11"
+            - "-usr/lib/gcc/x86_64-linux-gnu/6.0.0"
+            - "-usr/lib/aspell/*"
+        prime:
+        - "$exclusion"
+        - "-etc/alsa/conf.d/99-pulse.conf"
         parse-info:
         - usr/share/metainfo/org.kde.kblocks.appdata.xml
-        build-snaps:
-        - kde-frameworks-5-qt-5-14-core18-sdk
-        after:
-        - kdegames
-        #- kdoctools5
-        #- libkf5doctools-dev
-        - kde-frameworks-5-env
-        override-build: |
-            echo 'deb http://archive.neon.kde.org/user bionic main' >> /etc/apt/sources.list
-            wget 'https://archive.neon.kde.org/public.key' -O ppa-key
-            apt-key add ppa-key
-            rm -f /etc/apt/apt.conf.d/proxy
-            apt update
-            apt-get -y install libkf5doctools-dev
-            snapcraftctl build
-        plugin: cmake
-        source: http://download.kde.org/stable/release-service/20.08.0/src/kblocks-20.08.0.tar.xz
-        configflags:
+        source: http://download.kde.org/stable/release-service/20.12.3/src/kblocks-20.12.3.tar.xz
+        cmake-parameters:
         - "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
         - "-DCMAKE_INSTALL_PREFIX=/usr"
         - "-DCMAKE_BUILD_TYPE=Release"
         - "-DENABLE_TESTING=OFF"
         - "-DBUILD_TESTING=OFF"
         - "-DKDE_SKIP_TEST_SETTINGS=ON"
-        - "-DCMAKE_FIND_ROOT_PATH=/snap/kde-frameworks-5-qt-5-14-core18-sdk/current"
+        - "-DCMAKE_FIND_ROOT_PATH=/usr\\;/root/stage\\;/snap/kde-frameworks-5-qt-5-15-core20-sdk/current"
     kde-frameworks-5-env:
         plugin: dump
-        source: https://anongit.kde.org/snap-kf5-launcher.git
+        source: https://invent.kde.org/packaging/snap-kf5-launcher.git
