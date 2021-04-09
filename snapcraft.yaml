@@ -6,18 +6,16 @@ base: core20
 adopt-info: kblocks
 apps:
     kblocks:
+        extensions:
+        - kde-neon
         common-id: org.kde.kblocks.desktop
-        command: kf5-launch kblocks
+        command: usr/bin/kblocks
         plugs:
         - kde-frameworks-5-plug
         - home
-        - x11
-        - opengl
-        - desktop
         - network
         - network-bind
         - audio-playback
-        - desktop-legacy
         - alsa
 slots:
     session-dbus-interface:
@@ -51,11 +49,8 @@ parts:
         plugin: cmake
         build-packages:
         - libkf5doctools-dev
-        build-snaps:
-        - kde-frameworks-5-qt-5-15-core20-sdk/latest/candidate
         build-environment:
         - CMAKE_BUILD_PARALLEL_LEVEL: "4"
-        - VERBOSE: "1"
         stage-packages:
         - libasound2-data
         - libasound2-plugins
@@ -84,6 +79,3 @@ parts:
         - "-DBUILD_TESTING=OFF"
         - "-DKDE_SKIP_TEST_SETTINGS=ON"
         - "-DCMAKE_FIND_ROOT_PATH=/usr\\;/root/stage\\;/snap/kde-frameworks-5-qt-5-15-core20-sdk/current"
-    kde-frameworks-5-env:
-        plugin: dump
-        source: https://invent.kde.org/packaging/snap-kf5-launcher.git
