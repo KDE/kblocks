@@ -44,8 +44,6 @@ layout:
     bind: $SNAP/usr/share/alsa
 parts:
     kblocks:
-        after:
-        - kde-frameworks-5-env
         plugin: cmake
         build-packages:
         - libkf5doctools-dev
