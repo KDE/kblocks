@@ -298,7 +298,7 @@ void KBlocksWin::setupGUILayout()
 
     KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
 
-    KToggleAction *soundAction = new KToggleAction(i18n("&Play sounds"), this);
+    KToggleAction *soundAction = new KToggleAction(i18n("&Play Sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
