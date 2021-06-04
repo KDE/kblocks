@@ -27,8 +27,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2016-05-09</date>
-<releaseinfo>0.4 (Applications 16.04)</releaseinfo>
+<date>2021-06-04</date>
+<releaseinfo>KDE Gear 21.04</releaseinfo>
 
 <abstract><para>&kblocks; is the &kde; version of the classic falling blocks
 game.</para></abstract>
@@ -68,8 +68,7 @@ game.</para></abstract>
 <note><title>Objective:</title><para>Rotate the falling blocks, and fit them together to complete lines and clear the playfield.</para></note><!--Describe the objective of the game.-->
 
 <para>
-By default, falling blocks can be moved left or right using the <keycap>Left</keycap> or <keycap>Right</keycap> arrow keys. The <keycap>Down</keycap> arrow key makes the block drop faster, and the <keycap>Up</keycap> key is used to rotate the block. The keys used for each game action can be configured in <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure
-Shortcuts...</guimenuitem></menuchoice>
+By default, falling blocks can be moved left or right using the &Left; or &Right; arrow keys. The &Down; arrow key makes the block drop faster, and the &Up; arrow key is used to rotate the block. The keys used for each game action can be configured in the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice> menu item.
 </para>
 
 </chapter>
@@ -149,7 +148,7 @@ difficulty level.</para></listitem>
 </shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Quit</guimenuitem> </menuchoice></term>
-<listitem><para><action>Quits</action> &kblocks;</para></listitem>
+<listitem><para><action>Quits</action> &kblocks;.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -188,15 +187,15 @@ of the &kde; Fundamentals.
 <row><entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry><entry>Single Game</entry></row>
 <row><entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry><entry>Quit &kblocks;</entry></row>
 <row><entry><keycap>F1</keycap></entry><entry>&kblocks; Handbook</entry></row>
-<row><entry><keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></entry><entry>What's This Help</entry></row>
+<row><entry><keycombo action="simul">&Shift;<keycap>F1</keycap></keycombo></entry><entry>What's This? help</entry></row>
 <row><entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry><entry>Show High Scores</entry></row>
 <row><entry><keycap>P</keycap></entry><entry>Pause the game</entry></row>
-<row><entry><keycap>Right arrow</keycap></entry><entry>Move the block right</entry></row>
-<row><entry><keycap>Left arrow</keycap></entry><entry>Move the block left</entry></row>
-<row><entry><keycap>Down arrow</keycap></entry><entry>Move the block down</entry></row>
+<row><entry>&Right; arrow</entry><entry>Move the block right</entry></row>
+<row><entry>&Left; arrow</entry><entry>Move the block left</entry></row>
+<row><entry>&Down; arrow</entry><entry>Move the block down</entry></row>
 <row><entry><keycap>Z</keycap></entry><entry>Rotate the block clockwise</entry></row>
-<row><entry><keycap>Up arrow</keycap></entry><entry>Rotate the block counter clockwise</entry></row>
-<row><entry><keysym>Space</keysym></entry><entry>Drop the block</entry></row>
+<row><entry>&Up; arrow</entry><entry>Rotate the block counter clockwise</entry></row>
+<row><entry>&Space;</entry><entry>Drop the block</entry></row>
 
 </tbody>
 </tgroup>
@@ -222,8 +221,7 @@ Can I change the way the game looks?
 </question>
 <answer>
 <para>
-Yes, click on the <guimenu>Settings</guimenu> menu and
-select <guimenuitem>Configure &kblocks;...</guimenuitem>.
+Yes, click on the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kblocks;...</guimenuitem></menuchoice> menu item.
 </para>
 </answer>
 </qandaentry>
