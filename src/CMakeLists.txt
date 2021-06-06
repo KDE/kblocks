@@ -54,12 +54,12 @@ add_library(KBlocksCore STATIC ${kblockscore_SRCS})
 target_link_libraries(KBlocksCore
     KF5KDEGames
     KF5KDEGamesPrivate
-    Qt5::Network
+    Qt::Network
     KF5::Crash
     KF5::DBusAddons
     KF5::XmlGui
     KF5::I18n
-    Qt5::Svg
+    Qt::Svg
 )
 
 add_subdirectory(Testing)
