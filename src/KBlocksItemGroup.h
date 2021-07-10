@@ -74,13 +74,13 @@ protected:
     int mMaxFreezeCellNum;
     SvgItemInterface **maFreezeCells;
 
+    int mMaxPrepareCellNum;
+    SvgItemInterface **maPrepareCells;
+
 private:
     int mGroupID;
 
     KBlocksSvgItem  *mpBackground;
-
-    int mMaxPrepareCellNum;
-    KBlocksSvgItem **maPrepareCells;
 
     SingleGameInterface *mpSingleGame;
     KBlocksLayout *mpGameLayout = nullptr;

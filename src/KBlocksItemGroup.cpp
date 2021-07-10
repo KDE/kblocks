@@ -33,7 +33,7 @@ KBlocksItemGroup::KBlocksItemGroup(int groupID, SingleGameInterface *p, Graphics
     addToGroup(mpBackground);
 
     mMaxPrepareCellNum = PREPARE_AREA_WIDTH * PREPARE_AREA_WIDTH;
-    maPrepareCells = new KBlocksSvgItem*[mMaxPrepareCellNum];
+    maPrepareCells = new SvgItemInterface*[mMaxPrepareCellNum];
     for (int i = 0; i < mMaxPrepareCellNum; i++) {
         maPrepareCells[i] = new KBlocksSvgItem(mpGameLayout, KBlocksSvgItem_PrepareArea,
                                                i % PREPARE_AREA_WIDTH, i / PREPARE_AREA_WIDTH);
@@ -121,11 +121,13 @@ void KBlocksItemGroup::refreshPosition()
     for (int i = 0; i < mMaxPrepareCellNum; i++) {
         maPrepareCells[i]->setPos(mPrepareLeft + mItemSize * (i % PREPARE_AREA_WIDTH),
                                   mPrepareTop + mItemSize * (i / PREPARE_AREA_WIDTH));
+        maPrepareCells[i]->clearCache();
     }
 
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i]->setPos(mFieldLeft + mItemSize * (i % mFieldWidth),
                                  mFieldTop + mItemSize * (i / mFieldWidth));
+        maFreezeCells[i]->clearCache();
     }
 }
 

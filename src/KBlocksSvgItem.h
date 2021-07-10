@@ -35,6 +35,7 @@ public:
     void setLayoutPos(int posX, int posY);
 
     bool updateSelf() override;
+    void clearCache() override;
 
     void startOpAnim() override;
     void stopOpAnim() override;

@@ -27,17 +27,49 @@ public:
         KBlocksItemGroup::updateGame();
     }
 
-    void replaceFreezeCells(SvgItemInterface* newItem)
+    SvgItemInterface *getFreezeCell(int cellNum)
     {
-        for (int i = 0; i < mMaxFreezeCellNum; i++) {
-            removeFromGroup(maFreezeCells[i]);
-            delete maFreezeCells[i];
+        if (cellNum < mMaxFreezeCellNum) {
+            return maFreezeCells[cellNum];
         }
+        return nullptr;
+    }
 
-        for (int i = 0; i < mMaxFreezeCellNum; i++) {
-            maFreezeCells[i] = newItem;
-            addToGroup(maFreezeCells[i]);
+    int getMaxPrepareCellNum() const
+    {
+        return mMaxPrepareCellNum;
+    }
+
+    SvgItemInterface *getPrepareCell(int cellNum)
+    {
+        if (cellNum < mMaxPrepareCellNum) {
+            return maPrepareCells[cellNum];
         }
+        return nullptr;
+    }
+
+    void replacePrepareCell(int cellNum, SvgItemInterface* newItem)
+    {
+        if (cellNum >= mMaxPrepareCellNum) {
+            return;
+        }
+        removeFromGroup(maPrepareCells[cellNum]);
+        delete maPrepareCells[cellNum];
+
+        maPrepareCells[cellNum] = newItem;
+        addToGroup(maPrepareCells[cellNum]);
+    }
+
+    void replaceFreezeCell(int cellNum, SvgItemInterface* newItem)
+    {
+        if (cellNum >= mMaxFreezeCellNum) {
+            return;
+        }
+        removeFromGroup(maFreezeCells[cellNum]);
+        delete maFreezeCells[cellNum];
+
+        maFreezeCells[cellNum] = newItem;
+        addToGroup(maFreezeCells[cellNum]);
     }
 };
 

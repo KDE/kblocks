@@ -59,6 +59,13 @@ bool KBlocksSvgItem::updateSelf()
     return true;
 }
 
+void KBlocksSvgItem::clearCache()
+{
+    setCacheMode(NoCache);
+    setCacheMode(DeviceCoordinateCache);
+}
+
+
 void KBlocksSvgItem::startOpAnim()
 {
     setElementId(QStringLiteral("BLOCK_OUT_%1").arg(mColor));

@@ -15,19 +15,21 @@
 class MockSvgItem : public SvgItemInterface
 {
 public:
-    MockSvgItem() : updateSelfCalled(false) {}
+    MockSvgItem() = default;
 
     virtual ~MockSvgItem() = default;
 
 public:
     bool updateSelf() override { updateSelfCalled = true; return true; }
+    void clearCache() override { clearCacheCalled = true; }
     void startOpAnim() override {}
     void stopOpAnim() override {}
     void startPosAnim(QPointF) override {}
     void execPosAnim(qreal) override {}
     void stopPosAnim() override {}
 
-    bool updateSelfCalled;
+    bool updateSelfCalled = false;
+    bool clearCacheCalled = false;
 };
 
 #endif //MOCKSVGITEM_H
