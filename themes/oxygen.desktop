@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Oxygen
+Name[ar]=أكسجين
 Name[bs]=kiseonik
 Name[ca]=Oxygen
 Name[ca@valencia]=Oxygen
@@ -57,6 +58,7 @@ Name[x-test]=xxOxygenxx
 Name[zh_CN]=Oxygen
 Name[zh_TW]=Oxygen
 Description=KBlocks Oxygen theme for KDE 4
+Description[ar]=سمة أكسجين للكتل ك كدي ٤
 Description[bs]=Tema KBlocks kisik za KDE 4
 Description[ca]=Tema Oxygen del KBlocks per al KDE 4
 Description[ca@valencia]=Tema Oxygen del KBlocks per al KDE 4

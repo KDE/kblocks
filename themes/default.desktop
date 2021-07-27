@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=Egyptian
+Name[ar]=مصري
 Name[bs]=Egipatski
 Name[ca]=Egipci
 Name[ca@valencia]=Egipci
@@ -50,6 +51,7 @@ Name[x-test]=xxEgyptianxx
 Name[zh_CN]=埃及
 Name[zh_TW]=埃及式
 Description=KBlocks, Egyptian style.
+Description[ar]=الكتل ك بسمة مصرية
 Description[bs]=KBlocks, Egipatski stil.
 Description[ca]=KBlocks, estil egipci.
 Description[ca@valencia]=KBlocks, estil egipci.
