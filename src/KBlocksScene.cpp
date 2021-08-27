@@ -242,7 +242,7 @@ void KBlocksScene::addScore(int gameIndex, int lineCount)
         return;
     }
     maGameScoreList[gameIndex]->addScore(lineCount);
-    emit scoreChanged(gameIndex, maGameScoreList[gameIndex]->getScorePoint(),
+    Q_EMIT scoreChanged(gameIndex, maGameScoreList[gameIndex]->getScorePoint(),
                       maGameScoreList[gameIndex]->getLineCount(),
                       maGameScoreList[gameIndex]->getGameLevel());
 }
@@ -313,7 +313,7 @@ void KBlocksScene::updateGame()
                     mTopGameLevel = tmpLevel;
                 }
             }
-            emit scoreChanged(i, maGameScoreList[i]->getScorePoint(),
+            Q_EMIT scoreChanged(i, maGameScoreList[i]->getScorePoint(),
                               maGameScoreList[i]->getLineCount(),
                               maGameScoreList[i]->getGameLevel());
             // Play sound only for human player
@@ -324,7 +324,7 @@ void KBlocksScene::updateGame()
             maGroupList[i]->stopGame();
             if (mGroupCount == 1) {
                 QTimer::singleShot(500, this, &KBlocksScene::gameOverPlayer);
-                emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                Q_EMIT isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                  maGameScoreList[0]->getGameLevel());
             } else {
                 if (i == 0) {
@@ -332,12 +332,12 @@ void KBlocksScene::updateGame()
                         maGroupList[j]->stopGame();
                     }
                     QTimer::singleShot(500, this, &KBlocksScene::gameOverMultiLose);
-                    emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                    Q_EMIT isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                      maGameScoreList[0]->getGameLevel());
                 } else if (gameCount <= 1) {
                     maGroupList[0]->stopGame();
                     QTimer::singleShot(500, this, &KBlocksScene::gameOverMultiWin);
-                    emit isHighscore(0, maGameScoreList[0]->getScorePoint(),
+                    Q_EMIT isHighscore(0, maGameScoreList[0]->getScorePoint(),
                                      maGameScoreList[0]->getGameLevel());
                 }
             }

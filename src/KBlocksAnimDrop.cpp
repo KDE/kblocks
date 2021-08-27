@@ -35,12 +35,12 @@ KBlocksAnimDrop::~KBlocksAnimDrop()
 void KBlocksAnimDrop::valueChanged(qreal value)
 {
     Q_UNUSED(value);
-    for (SvgItemInterface *pItem : qAsConst(mItemList)) {
+    for (SvgItemInterface *pItem : std::as_const(mItemList)) {
         pItem->execPosAnim(value);
     }
 }
 
 void KBlocksAnimDrop::endAnimation()
 {
-    emit animationFinished();
+    Q_EMIT animationFinished();
 }

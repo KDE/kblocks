@@ -35,7 +35,7 @@ KBlocksDisplay::KBlocksDisplay(
         maScoreList[i] = 0;
     }
 
-    mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
+    mpNetClient = new KBlocksNetClient(QString::fromStdString(serverIP), localPort);
     connect(mpNetClient, &KBlocksNetClient::dataArrived, this, &KBlocksDisplay::updateGameDisplay);
 
     mGameCount = gameCount;

@@ -24,10 +24,10 @@ public:
     KBlocksAnimFade(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction);
     ~KBlocksAnimFade();
 
-signals:
+Q_SIGNALS:
     void animationFinished();
 
-private slots:
+private Q_SLOTS:
     void valueChanged(qreal value);
     void endAnimation();
 

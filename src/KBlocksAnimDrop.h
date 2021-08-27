@@ -24,10 +24,10 @@ public:
     KBlocksAnimDrop(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction);
     ~KBlocksAnimDrop();
 
-signals:
+Q_SIGNALS:
     void animationFinished();
 
-private slots:
+private Q_SLOTS:
     void valueChanged(qreal value);
     void endAnimation();
 

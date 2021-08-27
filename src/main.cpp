@@ -145,7 +145,7 @@ int gameEngineMode(KBlocksConfigManager *config)
     printf("\tServer IP = %s\n", serverIP.c_str());
     printf("\tRecord File = %s\n", recordFile.c_str());
     printf("\tRecord Type = %s\n", recordBinary ? "Binary" : "Text");
-    KBlocksNetServer *mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, serverIP.c_str());
+    KBlocksNetServer *mpKBlocksServer = new KBlocksNetServer(mpKBlocksGameLogic, QString::fromStdString(serverIP));
     mpKBlocksServer->setSendLength(sendLimit ? 10 : 0, sendLimit ? 1 : 0);
     mpKBlocksServer->setRecordFile(recordFile.c_str(), recordBinary);
     printf("Done...\n");
@@ -249,8 +249,8 @@ int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
     mpKBlocksRepWin->setGamesPerLine(gamesPerLine);
     mpKBlocksRepWin->setUpdateInterval(updateInterval);
     mpKBlocksRepWin->setReplayStepLength(stepLength);
-    mpKBlocksRepWin->setSnapshotFolder(snapshotFolder.c_str());
-    mpKBlocksRepWin->setSnapshotFilename(snapshotFile.c_str());
+    mpKBlocksRepWin->setSnapshotFolder(QString::fromStdString(snapshotFolder));
+    mpKBlocksRepWin->setSnapshotFilename(QString::fromStdString(snapshotFile));
     mpKBlocksRepWin->show();
     printf("Done...\n");
 

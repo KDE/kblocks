@@ -43,8 +43,8 @@ class SpecialEvaluationInterface : public EvaluationInterface
 public:
     SpecialEvaluationInterface()
     {
-        mpPiece = 0;
-        mpField = 0;
+        mpPiece = nullptr;
+        mpField = nullptr;
     }
     virtual ~SpecialEvaluationInterface() {};
 

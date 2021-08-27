@@ -13,7 +13,7 @@
 
 KBlocksNetPlayer::KBlocksNetPlayer(GamePlayerInterface *player, const string &serverIP, int localPort)
 {
-    mpNetClient = new KBlocksNetClient(serverIP.c_str(), localPort);
+    mpNetClient = new KBlocksNetClient(QString::fromStdString(serverIP), localPort);
 
     mpPlayer = player;
     mpGame = nullptr;
@@ -70,7 +70,7 @@ void KBlocksNetPlayer::stopGame()
     mpNetClient->sendData(4, tmpByteData);
 
     mpPlayer->stopGame();
-    mpGame = 0;
+    mpGame = nullptr;
 
     mActionList.clear();
 }

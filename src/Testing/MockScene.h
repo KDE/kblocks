@@ -42,7 +42,7 @@ public:
     void pauseGame(bool, bool) override {}
     void addScore(int, int) override {}
 
-public slots:
+public Q_SLOTS:
     void playMoveSound() override {}
     void playDropSound() override {}
 

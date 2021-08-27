@@ -91,15 +91,15 @@ KBlocksAnimDrop *KBlocksAnimator::getDropAnim()
 
 void KBlocksAnimator::endFadeInAnim()
 {
-    emit animFinished(KBlocks_Animation_Fade_In);
+    Q_EMIT animFinished(KBlocks_Animation_Fade_In);
 }
 
 void KBlocksAnimator::endFadeOutAnim()
 {
-    emit animFinished(KBlocks_Animation_Fade_Out);
+    Q_EMIT animFinished(KBlocks_Animation_Fade_Out);
 }
 
 void KBlocksAnimator::endDropAnim()
 {
-    emit animFinished(KBlocks_Animation_Drop);
+    Q_EMIT animFinished(KBlocks_Animation_Drop);
 }

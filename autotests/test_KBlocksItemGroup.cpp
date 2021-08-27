@@ -21,7 +21,7 @@
 class testKBlocksItemGroup : public QObject
 {
     Q_OBJECT
-private slots:
+private Q_SLOTS:
     void refreshPositionShouldSetCorrectPositions();
     void refreshPositionShouldClearCache();
     void updateGameShouldProcessGameActionsOnGameOver();

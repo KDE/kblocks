@@ -219,7 +219,7 @@ int KBlocksSingleGame::stopGame()
 {
     if (mCurrentGameState != GameState_Stop) {
         mCurrentGameState = GameState_Stop;
-        emit gameStopped();
+        Q_EMIT gameStopped();
     }
 
     return mCurrentGameState;

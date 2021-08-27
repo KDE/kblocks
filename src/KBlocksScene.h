@@ -67,7 +67,7 @@ public:
 private:
     void updateDimensions();
 
-private slots:
+private Q_SLOTS:
     void greetPlayer();
     void gameOverPlayer();
     void gameOverMultiWin();
@@ -78,7 +78,7 @@ private slots:
     void updateGame();
     void readyForAction(int groupID);
 
-public slots:
+public Q_SLOTS:
     void playMoveSound() override;
     void playDropSound() override;
 

@@ -34,12 +34,12 @@ KBlocksAnimFade::~KBlocksAnimFade()
 
 void KBlocksAnimFade::valueChanged(qreal value)
 {
-    for (SvgItemInterface *pItem : qAsConst(mItemList)) {
+    for (SvgItemInterface *pItem : std::as_const(mItemList)) {
         pItem->setOpacity(value);
     }
 }
 
 void KBlocksAnimFade::endAnimation()
 {
-    emit animationFinished();
+    Q_EMIT animationFinished();
 }

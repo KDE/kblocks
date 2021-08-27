@@ -53,5 +53,5 @@ bool KBlocksNetClient::parseIPString(const QString &input, QHostAddress *ip, qui
 
 void KBlocksNetClient::receivedData()
 {
-    emit(dataArrived(mpClientSocket->pendingDatagramSize()));
+    Q_EMIT(dataArrived(mpClientSocket->pendingDatagramSize()));
 }

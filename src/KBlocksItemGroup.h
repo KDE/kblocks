@@ -48,13 +48,13 @@ public:
 
     void pauseGame(bool flag);
 
-signals:
+Q_SIGNALS:
     void readyForAction(int groupID);
 
-protected slots:
+protected Q_SLOTS:
     void updateGame();
 
-private slots:
+private Q_SLOTS:
     void updateSnapshot();
     void endAnimation(int animType);
 

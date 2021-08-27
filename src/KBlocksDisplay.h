@@ -54,7 +54,7 @@ private:
     int  formIntFromByte(char *data);
     void updateScore();
 
-private slots:
+private Q_SLOTS:
     void updateEvent();
     void updateGameDisplay(int size);
 

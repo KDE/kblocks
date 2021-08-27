@@ -39,7 +39,7 @@ private:
     void think();
     bool process();
 
-private slots:
+private Q_SLOTS:
     void doAction();
 
 private:

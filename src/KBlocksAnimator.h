@@ -43,12 +43,12 @@ public:
     bool deleteDropAnim();
     KBlocksAnimDrop *getDropAnim();
 
-private slots:
+private Q_SLOTS:
     void endFadeInAnim();
     void endFadeOutAnim();
     void endDropAnim();
 
-signals:
+Q_SIGNALS:
     void animFinished(int animType);
 
 protected:

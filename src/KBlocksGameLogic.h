@@ -61,7 +61,7 @@ public:
     bool hasSingleGames() override;
     void deleteSingleGames() override;
 
-public slots:
+public Q_SLOTS:
     bool stopGame() override;
 
 private:

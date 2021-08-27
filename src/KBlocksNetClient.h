@@ -26,13 +26,13 @@ public:
     int sendData(int count, char *data);
     int recvData(int count, char *data);
 
-signals:
+Q_SIGNALS:
     void dataArrived(int size);
 
 private:
     bool parseIPString(const QString &input, QHostAddress *ip, quint16 *port);
 
-private slots:
+private Q_SLOTS:
     void receivedData();
 
 private:

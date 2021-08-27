@@ -43,24 +43,24 @@ bool KBlocksSound::loadTheme(const QString &themeFile)
     }
 
     QString themeMoveSound;
-    if (!theme.themeProperty("Sound_Block_Move").isEmpty()) {
-        themeMoveSound = theme.prefix() + theme.themeProperty("Sound_Block_Move");
+    if (!theme.themeProperty(QStringLiteral("Sound_Block_Move")).isEmpty()) {
+        themeMoveSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Move"));
     } else {
         themeMoveSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-move.ogg"));
     }
     
     QString themeFallSound;
-    if (!theme.themeProperty("Sound_Block_Fall").isEmpty()) {
-        themeFallSound = theme.prefix() + theme.themeProperty("Sound_Block_Fall");
+    if (!theme.themeProperty(QStringLiteral("Sound_Block_Fall")).isEmpty()) {
+        themeFallSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Fall"));
     } else {
         themeFallSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-fall.ogg"));
     }
     
     QString themeRemoveSound;
-    if (!theme.themeProperty("Sound_Block_Remove").isEmpty()) {
-        themeRemoveSound = theme.prefix() + theme.themeProperty("Sound_Block_Remove");
+    if (!theme.themeProperty(QStringLiteral("Sound_Block_Remove")).isEmpty()) {
+        themeRemoveSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Remove"));
     } else {
         themeRemoveSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg"));

@@ -41,7 +41,7 @@ public:
     virtual bool hasSingleGames() = 0;
     virtual void deleteSingleGames() = 0;
 
-signals:
+Q_SIGNALS:
     void allGamesStopped();
 
 protected:

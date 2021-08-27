@@ -173,7 +173,7 @@ void KBlocksItemGroup::updateGame()
             if (!mWaitForAllUpdate) {
                 mpSingleGame->continueGame();
             } else {
-                emit readyForAction(mGroupID);
+                Q_EMIT readyForAction(mGroupID);
             }
         }
     }
@@ -193,7 +193,7 @@ void KBlocksItemGroup::endAnimation(int animType)
         if (!mWaitForAllUpdate) {
             mpSingleGame->continueGame();
         } else {
-            emit readyForAction(mGroupID);
+            Q_EMIT readyForAction(mGroupID);
         }
         mUpdateTimer.start();
         break;
@@ -315,11 +315,11 @@ void KBlocksItemGroup::fadeInNewPiece()
     for (int i = 0; i < mMaxFreezeCellNum; i++) {
         maFreezeCells[i]->updateSelf();
     }
-    for (SvgItemInterface *tmpItem : qAsConst(mFadeOutItems)) {
+    for (SvgItemInterface *tmpItem : std::as_const(mFadeOutItems)) {
         tmpItem->setOpacity(1);
         tmpItem->stopOpAnim();
     }
-    for (SvgItemInterface *tmpItem : qAsConst(mDropItems)) {
+    for (SvgItemInterface *tmpItem : std::as_const(mDropItems)) {
         tmpItem->stopPosAnim();
     }
 

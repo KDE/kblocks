@@ -58,7 +58,7 @@ private:
     QString getTimeString();
     void snapshotView();
 
-private slots:
+private Q_SLOTS:
     void replayOneStep();
 
 private:

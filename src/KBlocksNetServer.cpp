@@ -193,7 +193,7 @@ int KBlocksNetServer::processGame(int gameIndex)
 
 void KBlocksNetServer::addPlayerIP(int gameIndex, const QByteArray &data, const QString &addr)
 {
-    QString playerName = QString(data).mid(6);
+    QString playerName = QString::fromUtf8(data).mid(6);
     if (mPlayerMapping.find(addr) == mPlayerMapping.end()) {
         mPlayerIPList.append(addr);
     }
@@ -350,7 +350,7 @@ void KBlocksNetServer::sendGuiData(const QString &addr)
 int KBlocksNetServer::parseRemoteData(const QByteArray &data, const QString &addr)
 {
     int result = -1;
-    QString input = QString(data);
+    QString input = QString::fromLatin1(data);
 
     if (input.contains(QStringLiteral("|ap|"))) {
         addPlayerIP((int)(data[4] - '0'), data, addr);

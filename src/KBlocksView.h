@@ -24,10 +24,10 @@ public:
     explicit KBlocksView(SceneInterface *scene, QWidget *parent = nullptr);
     ~KBlocksView();
 
-signals:
+Q_SIGNALS:
     void focusEvent(bool flag);
 
-public slots:
+public Q_SLOTS:
     void settingsChanged();
 
 protected:

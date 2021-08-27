@@ -41,11 +41,11 @@ public:
 private:
     void bindKeys();
 
-signals:
+Q_SIGNALS:
     void blockMoved();
     void blockDropped();
 
-private slots:
+private Q_SLOTS:
     void moveLeft();
     void moveRight();
     void moveDown();

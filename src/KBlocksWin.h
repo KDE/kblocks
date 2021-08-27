@@ -50,10 +50,10 @@ public:
 
     void setupGUILayout();
 
-protected slots:
+protected Q_SLOTS:
     void stopGame();
 
-private slots:
+private Q_SLOTS:
     void startGame();
     void pauseGame();
 

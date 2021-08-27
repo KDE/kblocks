@@ -34,11 +34,11 @@ public:
     virtual void pauseGame(bool, bool fromUI = false) = 0;
     virtual void addScore(int, int) = 0;
 
-signals:
+Q_SIGNALS:
     void scoreChanged(int index, int points, int lines, int level);
     void isHighscore(int index, int points, int level);
 
-public slots:
+public Q_SLOTS:
     virtual void playMoveSound() = 0;
     virtual void playDropSound() = 0;
 };

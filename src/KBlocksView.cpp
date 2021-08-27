@@ -44,12 +44,12 @@ void KBlocksView::settingsChanged()
 
 void KBlocksView::focusInEvent(QFocusEvent *)
 {
-    emit focusEvent(false);
+    Q_EMIT focusEvent(false);
 }
 
 void KBlocksView::focusOutEvent(QFocusEvent *)
 {
-    emit focusEvent(true);
+    Q_EMIT focusEvent(true);
 }
 
 void KBlocksView::resizeEvent(QResizeEvent *event)

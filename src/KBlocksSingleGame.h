@@ -59,7 +59,7 @@ public:
     bool pickGameResult(int *result) override;
     bool pickGameAction(int *type, int *action) override;
 
-signals:
+Q_SIGNALS:
     void gameStopped();
 
 private:

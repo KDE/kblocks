@@ -33,7 +33,7 @@ KBlocksGameLogic::KBlocksGameLogic(int capacity, bool record)
     } else {
         mpGameRecorder = nullptr;
     }
-    mpGameReplayer = 0;
+    mpGameReplayer = nullptr;
 }
 
 KBlocksGameLogic::KBlocksGameLogic(KBlocksGameReplayer *p)
@@ -52,7 +52,7 @@ KBlocksGameLogic::KBlocksGameLogic(KBlocksGameReplayer *p)
 
     maGameList = new KBlocksSingleGame*[mGameMax];
 
-    mpGameRecorder = 0;
+    mpGameRecorder = nullptr;
     mpGameReplayer = p;
 }
 
@@ -78,7 +78,7 @@ int KBlocksGameLogic::getActiveGameCount()
 KBlocksSingleGame *KBlocksGameLogic::getSingleGame(int index)
 {
     if ((index < 0) || (index >= mGameCount)) {
-        return 0;
+        return nullptr;
     }
     return maGameList[index];
 }
@@ -247,7 +247,7 @@ bool KBlocksGameLogic::stopGame()
     for (int i = 0; i < mGameCount; ++i) {
         maGameList[i]->stopGame();
     }
-    emit allGamesStopped();
+    Q_EMIT allGamesStopped();
 
     return true;
 }
@@ -317,7 +317,7 @@ void KBlocksGameLogic::deleteSingleGames()
     for (int i = 0; i < mGameCount; i++) {
         maGameList[i]->stopGame();
         delete maGameList[i];
-        maGameList[i] = 0;
+        maGameList[i] = nullptr;
     }
     mGameCount = 0;
 }
