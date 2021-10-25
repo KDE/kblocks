@@ -20,7 +20,7 @@ public:
     TestingKBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS)
         : KBlocksItemGroup(groupID, p, pG, pS)
     {}
-    virtual ~TestingKBlocksItemGroup() = default;
+    ~TestingKBlocksItemGroup() override = default;
 
     void callUpdateGame()
     {

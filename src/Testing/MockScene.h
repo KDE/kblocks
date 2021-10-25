@@ -22,7 +22,7 @@ public:
           mpGameLogic(gameLogic)
     {
     }
-    virtual ~MockScene() = default;
+    ~MockScene() override = default;
 
 public:
     void createGameItemGroups(int, bool) override {}

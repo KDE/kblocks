@@ -16,7 +16,7 @@ class KBlocksDummyAI : public GamePlayerInterface
 {
 public:
     KBlocksDummyAI();
-    ~KBlocksDummyAI();
+    ~KBlocksDummyAI() override;
 
 public:
     void startGame(SingleGameInterface *p) override;

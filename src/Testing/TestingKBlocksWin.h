@@ -30,7 +30,7 @@ public:
         int capacity,
         int gamecount
     );
-    virtual ~TestingKBlocksWin() = default;
+    ~TestingKBlocksWin() override = default;
 
     void callStopGame();
     void replaceScene(SceneInterface *newScene);

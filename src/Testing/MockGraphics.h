@@ -28,7 +28,7 @@ public:
         m_PlayArea_NumberOfBlocks_X = 1;
         m_PlayArea_NumberOfBlocks_Y = 1;
     }
-    virtual ~MockGraphics() = default;
+    ~MockGraphics() override = default;
 
 public:
     bool loadTheme(const QString &) override { return false; }

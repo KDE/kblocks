@@ -46,7 +46,7 @@ public:
         mpPiece = nullptr;
         mpField = nullptr;
     }
-    virtual ~SpecialEvaluationInterface() {};
+    ~SpecialEvaluationInterface() override {};
 
     double evaluate(KBlocksField *) override = 0;
     void setCurrentPiece(KBlocksPiece *piece)

@@ -57,7 +57,7 @@ void KBlocksPlayNetwork::clearGamePlayer()
 {
     for (int i = 0; i < mPlayerCount; i++) {
         delete maPlayerList[i];
-        maPlayerList[i] = 0;
+        maPlayerList[i] = nullptr;
     }
     mPlayerCount = 0;
 }

@@ -21,7 +21,7 @@ public:
           singleGame{}
     {
     }
-    virtual ~MockGameLogic() = default;
+    ~MockGameLogic() override = default;
 
 public:
     SingleGameInterface *getSingleGame(int) override { return &singleGame; }

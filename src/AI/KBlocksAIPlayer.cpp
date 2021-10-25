@@ -50,16 +50,16 @@ KBlocksAIPlayer::KBlocksAIPlayer(const string &name)
     mAIStarted = false;
     mAIPaused = false;
 
-    mpAIField = 0;
-    mpCurPiece = 0;
-    mpNextPiece = 0;
+    mpAIField = nullptr;
+    mpCurPiece = nullptr;
+    mpNextPiece = nullptr;
 
-    mpPlanner = 0;
+    mpPlanner = nullptr;
     mNextCount = 0;
 
-    mpEvaluatorFinal = 0;
-    mpEvaluatorFirst = 0;
-    mpEvaluatorPre = 0;
+    mpEvaluatorFinal = nullptr;
+    mpEvaluatorFirst = nullptr;
+    mpEvaluatorPre = nullptr;
 
     mBestPosition = 0;
     mBestRotation = 0;
@@ -98,16 +98,16 @@ void KBlocksAIPlayer::stopGame()
     }
 
     delete mpPlanner;
-    mpPlanner = 0;
+    mpPlanner = nullptr;
 
     delete mpNextPiece;
-    mpNextPiece = 0;
+    mpNextPiece = nullptr;
     delete mpCurPiece;
-    mpCurPiece = 0;
+    mpCurPiece = nullptr;
     delete mpAIField;
-    mpAIField = 0;
+    mpAIField = nullptr;
 
-    mpGame = 0;
+    mpGame = nullptr;
     mAIStarted = false;
 }
 
@@ -260,7 +260,7 @@ void KBlocksAIPlayer::situationAdaption()
 void KBlocksAIPlayer::generateGoalAction()
 {
     double current_value = 0;
-    if (mpEvaluatorPre != 0) {
+    if (mpEvaluatorPre != nullptr) {
         current_value = mpEvaluatorPre->evaluate(mpAIField);
     }
 
@@ -272,7 +272,7 @@ void KBlocksAIPlayer::generateGoalAction()
     mBestPosition = 0;
 
     // FIRST STEP - ANALYZE FINAL BOARD_STATE
-    if (mpEvaluatorFinal != 0) {
+    if (mpEvaluatorFinal != nullptr) {
         bool firstValue = true;
 
         for (int i = 0; i < mNextCount; i++) {

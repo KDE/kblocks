@@ -17,14 +17,14 @@ using namespace PlanningPath;
 ********************************************************************************/
 PathNode::PathNode(KBlocksPiece *piece)
 {
-    parent = 0;
-    next = 0;
+    parent = nullptr;
+    next = nullptr;
     setContent(piece);
 }
 
 PathNode::~PathNode()
 {
-    if (next == 0) {
+    if (next == nullptr) {
         return;
     }
     next->clear();
@@ -75,12 +75,12 @@ KBlocksAIPlannerExtend::~KBlocksAIPlannerExtend()
 
 bool KBlocksAIPlannerExtend::getPath(int index, AIPlanner_PieceInfo_Sequence *pseq)
 {
-    if ((mPathList == 0) || (index >= (int)mPathList->size())) {
+    if ((mPathList == nullptr) || (index >= (int)mPathList->size())) {
         return false;
     }
 
     PathNode *node  = (*mPathList)[index];
-    while (node != 0) {
+    while (node != nullptr) {
         KBlocksPiece piece = node->getContent();
         pseq->push_back(piece);
         node = node->getParent();
@@ -100,7 +100,7 @@ bool KBlocksAIPlannerExtend::getNextBoardStatus(int index, KBlocksField *field, 
 
     if (getPath(index, &path) == false) {
         delete field;
-        field = 0;
+        field = nullptr;
         return false;
     }
 
@@ -134,12 +134,12 @@ bool KBlocksAIPlannerExtend::getNextPieceState(int index, KBlocksPiece *piece)
         return false;
     }
     PathNode *node = (*mPathList)[index];
-    PathNode *last = 0;
-    while (node != 0) {
+    PathNode *last = nullptr;
+    while (node != nullptr) {
         last = node;
         node = node->getParent();
     }
-    if (last == 0) {
+    if (last == nullptr) {
         return false;
     }
     *piece = last->getContent();
@@ -164,7 +164,7 @@ int KBlocksAIPlannerExtend::process(const AIPlanner_PieceValue_Sequence &pseq)
 {
     mPathTree->clear();
     mPathList->clear();
-    PathNode *parent = 0;
+    PathNode *parent = nullptr;
     AIPlanner_PieceValue_Sequence tmpPSeq = AIPlanner_PieceValue_Sequence(pseq);
     process_nstep_recursive(parent, tmpPSeq, *mPathTree, *mPathList);
     return mPathList->size();

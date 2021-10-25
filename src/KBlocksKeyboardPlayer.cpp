@@ -11,9 +11,9 @@
 #include <QIcon>
 KBlocksKeyboardPlayer::KBlocksKeyboardPlayer(KXmlGuiWindow *parent, const string &name, bool netMode)
 {
-    mpGame = 0;
+    mpGame = nullptr;
     mPauseFlag = false;
-    mpKeyWindow = 0;
+    mpKeyWindow = nullptr;
 
     mPlayerName = name;
     mNetMode = netMode;
@@ -50,7 +50,7 @@ void KBlocksKeyboardPlayer::startGame(SingleGameInterface *p)
 
 void KBlocksKeyboardPlayer::stopGame()
 {
-    mpGame = 0;
+    mpGame = nullptr;
 
     mActionList.clear();
 }

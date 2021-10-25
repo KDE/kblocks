@@ -25,7 +25,7 @@ class KBlocksGraphics : public GraphicsInterface
 {
 public:
     explicit KBlocksGraphics(const QString &themeFile);
-    virtual ~KBlocksGraphics();
+    ~KBlocksGraphics() override;
 
 public:
     bool loadTheme(const QString &themeFile) override;

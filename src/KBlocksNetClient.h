@@ -20,7 +20,7 @@ class KBlocksNetClient : public QObject
 
 public:
     KBlocksNetClient(const QString &remoteIP, quint16 localPort);
-    ~KBlocksNetClient();
+    ~KBlocksNetClient() override;
 
 public:
     int sendData(int count, char *data);

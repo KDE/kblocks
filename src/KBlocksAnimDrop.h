@@ -22,7 +22,7 @@ class KBlocksAnimDrop : public QObject
 
 public:
     KBlocksAnimDrop(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction);
-    ~KBlocksAnimDrop();
+    ~KBlocksAnimDrop() override;
 
 Q_SIGNALS:
     void animationFinished();

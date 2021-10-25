@@ -16,7 +16,7 @@ class MockPiece : public PieceInterface
 {
 public:
     MockPiece() : PieceInterface() {}
-    virtual ~MockPiece() = default;
+    ~MockPiece() override = default;
 
 public:
     int toValue() override { return 0; }

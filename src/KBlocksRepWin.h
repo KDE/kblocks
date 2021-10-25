@@ -37,7 +37,7 @@ public:
         const char *replayFile,
         bool binaryMode = true
     );
-    ~KBlocksRepWin();
+    ~KBlocksRepWin() override;
 
 public:
     void setGamesPerLine(int count);

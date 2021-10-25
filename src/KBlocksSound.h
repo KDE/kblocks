@@ -23,7 +23,7 @@ class KBlocksSound : public SoundInterface
 {
 public:
     explicit KBlocksSound(const QString &themeFile);
-    virtual ~KBlocksSound();
+    ~KBlocksSound() override;
 
 public:
     bool loadTheme(const QString &themeFile) override;

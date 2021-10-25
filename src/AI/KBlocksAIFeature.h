@@ -61,7 +61,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Max_Height *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Max_Height();
         }
         return _instance;
@@ -69,7 +69,7 @@ public:
     CLASSNAME(Evaluation_Max_Height)
 private:
     Evaluation_Max_Height() {}
-    ~Evaluation_Max_Height() {}
+    ~Evaluation_Max_Height() override {}
     static Evaluation_Max_Height *_instance;
 };
 //------------------------------------------------------
@@ -79,7 +79,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Holes_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Holes_Count();
         }
         return _instance;
@@ -87,7 +87,7 @@ public:
     CLASSNAME(Evaluation_Holes_Count)
 private:
     Evaluation_Holes_Count() {}
-    ~Evaluation_Holes_Count() {}
+    ~Evaluation_Holes_Count() override {}
     static Evaluation_Holes_Count *_instance;
 };
 //------------------------------------------------------
@@ -97,7 +97,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Average_Height *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Average_Height();
         }
         return _instance;
@@ -105,7 +105,7 @@ public:
     CLASSNAME(Evaluation_Average_Height)
 private:
     Evaluation_Average_Height() {}
-    ~Evaluation_Average_Height() {}
+    ~Evaluation_Average_Height() override {}
     static Evaluation_Average_Height *_instance;
 };
 //------------------------------------------------------
@@ -115,7 +115,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Max_Height_Difference *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Max_Height_Difference();
         }
         return _instance;
@@ -123,7 +123,7 @@ public:
     CLASSNAME(Evaluation_Max_Height_Difference)
 private:
     Evaluation_Max_Height_Difference() {}
-    ~Evaluation_Max_Height_Difference() {}
+    ~Evaluation_Max_Height_Difference() override {}
     static Evaluation_Max_Height_Difference *_instance;
 };
 //------------------------------------------------------
@@ -133,7 +133,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Average_Height_Difference *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Average_Height_Difference();
         }
         return _instance;
@@ -141,7 +141,7 @@ public:
     CLASSNAME(Evaluation_Average_Height_Difference)
 private:
     Evaluation_Average_Height_Difference() {}
-    ~Evaluation_Average_Height_Difference() {}
+    ~Evaluation_Average_Height_Difference() override {}
     static Evaluation_Average_Height_Difference *_instance;
 };
 //------------------------------------------------------
@@ -151,7 +151,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Kontur_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Kontur_Count();
         }
         return _instance;
@@ -159,7 +159,7 @@ public:
     CLASSNAME(Evaluation_Kontur_Count)
 private:
     Evaluation_Kontur_Count() {}
-    ~Evaluation_Kontur_Count() {}
+    ~Evaluation_Kontur_Count() override {}
     static Evaluation_Kontur_Count *_instance;
 };
 //------------------------------------------------------
@@ -169,7 +169,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Max_Kontur_Length *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Max_Kontur_Length();
         }
         return _instance;
@@ -177,7 +177,7 @@ public:
     CLASSNAME(Evaluation_Max_Kontur_Length)
 private:
     Evaluation_Max_Kontur_Length() {}
-    ~Evaluation_Max_Kontur_Length() {}
+    ~Evaluation_Max_Kontur_Length() override {}
     static Evaluation_Max_Kontur_Length *_instance;
 };
 //------------------------------------------------------
@@ -187,7 +187,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Closed_Holes_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Closed_Holes_Count();
         }
         return _instance;
@@ -195,7 +195,7 @@ public:
     CLASSNAME(Evaluation_Closed_Holes_Count)
 private:
     Evaluation_Closed_Holes_Count() {}
-    ~Evaluation_Closed_Holes_Count() {}
+    ~Evaluation_Closed_Holes_Count() override {}
     static Evaluation_Closed_Holes_Count *_instance;
 };
 //------------------------------------------------------
@@ -205,7 +205,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Wells_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Wells_Count();
         }
         return _instance;
@@ -213,7 +213,7 @@ public:
     CLASSNAME(Evaluation_Wells_Count)
 private:
     Evaluation_Wells_Count() {}
-    ~Evaluation_Wells_Count() {}
+    ~Evaluation_Wells_Count() override {}
     static Evaluation_Wells_Count *_instance;
 };
 //------------------------------------------------------
@@ -223,7 +223,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Blocks_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Blocks_Count();
         }
         return _instance;
@@ -231,7 +231,7 @@ public:
     CLASSNAME(Evaluation_Blocks_Count)
 private:
     Evaluation_Blocks_Count() {}
-    ~Evaluation_Blocks_Count() {}
+    ~Evaluation_Blocks_Count() override {}
     static Evaluation_Blocks_Count *_instance;
 };
 //------------------------------------------------------
@@ -241,7 +241,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Blocks_Over_Holes_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Blocks_Over_Holes_Count();
         }
         return _instance;
@@ -249,7 +249,7 @@ public:
     CLASSNAME(Evaluation_Blocks_Over_Holes_Count)
 private:
     Evaluation_Blocks_Over_Holes_Count() {}
-    ~Evaluation_Blocks_Over_Holes_Count() {}
+    ~Evaluation_Blocks_Over_Holes_Count() override {}
     static Evaluation_Blocks_Over_Holes_Count *_instance;
 };
 //------------------------------------------------------
@@ -259,7 +259,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Weighted_Blocks_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Weighted_Blocks_Count();
         }
         return _instance;
@@ -267,7 +267,7 @@ public:
     CLASSNAME(Evaluation_Weighted_Blocks_Count)
 private:
     Evaluation_Weighted_Blocks_Count() {}
-    ~Evaluation_Weighted_Blocks_Count() {}
+    ~Evaluation_Weighted_Blocks_Count() override {}
     static Evaluation_Weighted_Blocks_Count *_instance;
 };
 //------------------------------------------------------
@@ -277,7 +277,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Row_Transition_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Row_Transition_Count();
         }
         return _instance;
@@ -285,7 +285,7 @@ public:
     CLASSNAME(Evaluation_Row_Transition_Count)
 private:
     Evaluation_Row_Transition_Count() {}
-    ~Evaluation_Row_Transition_Count() {}
+    ~Evaluation_Row_Transition_Count() override {}
     static Evaluation_Row_Transition_Count *_instance;
 };
 //------------------------------------------------------
@@ -295,7 +295,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Column_Transition_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Column_Transition_Count();
         }
         return _instance;
@@ -303,7 +303,7 @@ public:
     CLASSNAME(Evaluation_Column_Transition_Count)
 private:
     Evaluation_Column_Transition_Count() {}
-    ~Evaluation_Column_Transition_Count() {}
+    ~Evaluation_Column_Transition_Count() override {}
     static Evaluation_Column_Transition_Count *_instance;
 };
 //------------------------------------------------------
@@ -313,7 +313,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Narrow_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Narrow_Count();
         }
         return _instance;
@@ -321,7 +321,7 @@ public:
     CLASSNAME(Evaluation_Narrow_Count)
 private:
     Evaluation_Narrow_Count() {}
-    ~Evaluation_Narrow_Count() {}
+    ~Evaluation_Narrow_Count() override {}
     static Evaluation_Narrow_Count *_instance;
 };
 //------------------------------------------------------
@@ -331,7 +331,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Prediction_Count *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Prediction_Count();
         }
         return _instance;
@@ -339,7 +339,7 @@ public:
     CLASSNAME(Evaluation_Prediction_Count)
 private:
     Evaluation_Prediction_Count() {}
-    ~Evaluation_Prediction_Count() {}
+    ~Evaluation_Prediction_Count() override {}
     static Evaluation_Prediction_Count *_instance;
 };
 //------------------------------------------------------
@@ -349,7 +349,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Max_Well_Depth *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Max_Well_Depth();
         }
         return _instance;
@@ -357,7 +357,7 @@ public:
     CLASSNAME(Evaluation_Max_Well_Depth)
 private:
     Evaluation_Max_Well_Depth() {}
-    ~Evaluation_Max_Well_Depth() {}
+    ~Evaluation_Max_Well_Depth() override {}
     static Evaluation_Max_Well_Depth *_instance;
 };
 
@@ -368,7 +368,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Remove_Lines *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Remove_Lines();
         }
         return _instance;
@@ -376,7 +376,7 @@ public:
     CLASSNAME(Evaluation_Remove_Lines)
 private:
     Evaluation_Remove_Lines() {}
-    ~Evaluation_Remove_Lines() {}
+    ~Evaluation_Remove_Lines() override {}
     static Evaluation_Remove_Lines *_instance;
 };
 //------------------------------------------------------
@@ -386,7 +386,7 @@ public:
     double evaluate(KBlocksField *) override;
     static Evaluation_Landing_Height *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new Evaluation_Landing_Height();
         }
         return _instance;
@@ -394,7 +394,7 @@ public:
     CLASSNAME(Evaluation_Landing_Height)
 private:
     Evaluation_Landing_Height() {}
-    ~Evaluation_Landing_Height() {}
+    ~Evaluation_Landing_Height() override {}
     static Evaluation_Landing_Height *_instance;
 };
 

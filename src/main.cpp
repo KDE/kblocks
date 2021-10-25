@@ -283,8 +283,8 @@ int gamePlayerMode(KBlocksConfigManager *config, const QApplication &app)
     maAIPlayers = new KBlocksAIPlayer*[playerCount];
     maHumanPlayers = new KBlocksKeyboardPlayer*[playerCount];
     for (int i = 0; i < playerCount; i++) {
-        maAIPlayers[i] = 0;
-        maHumanPlayers[i] = 0;
+        maAIPlayers[i] = nullptr;
+        maHumanPlayers[i] = nullptr;
 
         char tmpBuf[256];
         sprintf(tmpBuf, "PlayerType%d", i + 1);

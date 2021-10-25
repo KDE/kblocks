@@ -18,7 +18,7 @@ class SceneInterface : public QGraphicsScene
     Q_OBJECT
 public:
     SceneInterface();
-    virtual ~SceneInterface() = default;
+    ~SceneInterface() override = default;
 
 public:
     virtual void createGameItemGroups(int, bool snapshotMode = false) = 0;

@@ -35,7 +35,7 @@ class KBlocksItemGroup : public QObject, public QGraphicsItemGroup
 
 public:
     KBlocksItemGroup(int groupID, SingleGameInterface *p, GraphicsInterface *pG, SoundInterface *pS, bool snapshotMode = false);
-    virtual ~KBlocksItemGroup();
+    ~KBlocksItemGroup() override;
 
 public:
     void setUpdateInterval(int interval);

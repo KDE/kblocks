@@ -12,7 +12,7 @@
 KBlocksSinglePlayer::KBlocksSinglePlayer(GamePlayerInterface *player, int thinkInterval, int processInterval)
 {
     mpPlayer = player;
-    mpGame = 0;
+    mpGame = nullptr;
 
     mPlayerState = KBlocksPlayer_ThinkingState;
 
@@ -52,7 +52,7 @@ void KBlocksSinglePlayer::stopGame()
     mActionList.clear();
 
     mpPlayer->stopGame();
-    mpGame = 0;
+    mpGame = nullptr;
 }
 
 void KBlocksSinglePlayer::pauseGame(bool flag)

@@ -22,7 +22,7 @@ class KBlocksAnimFade : public QObject
 
 public:
     KBlocksAnimFade(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction);
-    ~KBlocksAnimFade();
+    ~KBlocksAnimFade() override;
 
 Q_SIGNALS:
     void animationFinished();

@@ -49,7 +49,7 @@ class KBlocksAIPlannerExtend : public KBlocksAIPlanner
 {
 public:
     explicit KBlocksAIPlannerExtend(KBlocksField *field);
-    ~KBlocksAIPlannerExtend();
+    ~KBlocksAIPlannerExtend() override;
 
     int process(KBlocks_PieceType_Detail pieceValue) override;
     int process(const AIPlanner_PieceValue_Sequence &p);

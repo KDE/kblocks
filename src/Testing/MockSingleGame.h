@@ -29,7 +29,7 @@ public:
           mockField(new MockField()),
           mockPiece(new MockPiece())
     {}
-    virtual ~MockSingleGame() = default;
+    ~MockSingleGame() override = default;
 
 public:
     FieldInterface *getField() override { return mockField.get(); }

@@ -37,7 +37,7 @@ public:
     double evaluate(KBlocksField *) override;
     static BaseEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new BaseEvaluation();
         }
         return _instance;
@@ -46,7 +46,7 @@ public:
 
 private:
     BaseEvaluation() {};
-    ~BaseEvaluation() {};
+    ~BaseEvaluation() override {};
     static BaseEvaluation *_instance;
 };
 /*###################################################*/
@@ -56,7 +56,7 @@ public:
     double evaluate(KBlocksField *) override;
     static HalfBaseEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new HalfBaseEvaluation();
         }
         return _instance;
@@ -65,7 +65,7 @@ public:
 
 private:
     HalfBaseEvaluation() {};
-    ~HalfBaseEvaluation() {};
+    ~HalfBaseEvaluation() override {};
     static HalfBaseEvaluation *_instance;
 };
 /*###################################################*/
@@ -75,7 +75,7 @@ public:
     double evaluate(KBlocksField *) override;
     static WellsFillerEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new WellsFillerEvaluation();
         }
         return _instance;
@@ -84,7 +84,7 @@ public:
 
 private:
     WellsFillerEvaluation() {};
-    ~WellsFillerEvaluation() {};
+    ~WellsFillerEvaluation() override {};
     static WellsFillerEvaluation *_instance;
 };
 /*###################################################*/
@@ -94,7 +94,7 @@ public:
     double evaluate(KBlocksField *) override;
     static HeightKillerEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new HeightKillerEvaluation();
         }
         return _instance;
@@ -103,7 +103,7 @@ public:
 
 private:
     HeightKillerEvaluation() {};
-    ~HeightKillerEvaluation() {};
+    ~HeightKillerEvaluation() override {};
     static HeightKillerEvaluation *_instance;
 };
 /*###################################################*/
@@ -113,7 +113,7 @@ public:
     double evaluate(KBlocksField *) override;
     static BlockRemoverEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new BlockRemoverEvaluation();
         }
         return _instance;
@@ -122,7 +122,7 @@ public:
 
 private:
     BlockRemoverEvaluation() {};
-    ~BlockRemoverEvaluation() {};
+    ~BlockRemoverEvaluation() override {};
     static BlockRemoverEvaluation *_instance;
 };
 /*###################################################*/
@@ -132,7 +132,7 @@ public:
     double evaluate(KBlocksField *) override;
     static DeepNarrowRemoverEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new DeepNarrowRemoverEvaluation();
         }
         return _instance;
@@ -141,7 +141,7 @@ public:
 
 private:
     DeepNarrowRemoverEvaluation() {};
-    ~DeepNarrowRemoverEvaluation() {};
+    ~DeepNarrowRemoverEvaluation() override {};
     static DeepNarrowRemoverEvaluation *_instance;
 };
 /*###################################################*/
@@ -151,7 +151,7 @@ public:
     double evaluate(KBlocksField *) override;
     static TetrisPreparingEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new TetrisPreparingEvaluation();
         }
         return _instance;
@@ -160,7 +160,7 @@ public:
 
 private:
     TetrisPreparingEvaluation() {};
-    ~TetrisPreparingEvaluation() {};
+    ~TetrisPreparingEvaluation() override {};
     static TetrisPreparingEvaluation *_instance;
 };
 /*###################################################*/
@@ -170,7 +170,7 @@ public:
     double evaluate(KBlocksField *) override;
     static TetrisEliminationEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new TetrisEliminationEvaluation();
         }
         return _instance;
@@ -179,7 +179,7 @@ public:
 
 private:
     TetrisEliminationEvaluation() {};
-    ~TetrisEliminationEvaluation() {};
+    ~TetrisEliminationEvaluation() override {};
     static TetrisEliminationEvaluation *_instance;
 };
 /*###################################################*/
@@ -189,7 +189,7 @@ public:
     double evaluate(KBlocksField *) override;
     static NBSEvaluation *instance()
     {
-        if (_instance == 0) {
+        if (_instance == nullptr) {
             _instance = new NBSEvaluation();
         }
         return _instance;
@@ -198,7 +198,7 @@ public:
 
 private:
     NBSEvaluation() {};
-    ~NBSEvaluation() {};
+    ~NBSEvaluation() override {};
     static NBSEvaluation *_instance;
 };
 /*###################################################*/

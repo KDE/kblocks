@@ -17,7 +17,7 @@ class KBlocksAppThread : public QThread
 {
 public:
     explicit KBlocksAppThread(KBlocksPlayNetwork *p);
-    ~KBlocksAppThread();
+    ~KBlocksAppThread() override;
 
 public:
     void run() override;

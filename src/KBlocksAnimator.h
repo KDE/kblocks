@@ -33,7 +33,7 @@ class KBlocksAnimator : public QObject
 
 public:
     KBlocksAnimator();
-    ~KBlocksAnimator();
+    ~KBlocksAnimator() override;
 
     bool createFadeAnim(const QList<SvgItemInterface *> &items, int duration, QTimeLine::Direction direction);
     bool deleteFadeAnim();

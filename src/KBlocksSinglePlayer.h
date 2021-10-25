@@ -27,7 +27,7 @@ class KBlocksSinglePlayer : public QObject
 
 public:
     KBlocksSinglePlayer(GamePlayerInterface *player, int thinkInterval, int processInterval);
-    ~KBlocksSinglePlayer();
+    ~KBlocksSinglePlayer() override;
 
 public:
     void startGame(SingleGameInterface *p);

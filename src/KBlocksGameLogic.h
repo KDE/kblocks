@@ -30,7 +30,7 @@ class KBlocksGameLogic : public GameLogicInterface
 public:
     explicit KBlocksGameLogic(int capacity, bool record = false);
     explicit KBlocksGameLogic(KBlocksGameReplayer *p);
-    ~KBlocksGameLogic();
+    ~KBlocksGameLogic() override;
 
 public:
     int getActiveGameCount();

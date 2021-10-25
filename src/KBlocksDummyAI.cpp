@@ -35,7 +35,7 @@ void KBlocksDummyAI::startGame(SingleGameInterface *p)
 
 void KBlocksDummyAI::stopGame()
 {
-    mpGame = 0;
+    mpGame = nullptr;
 }
 
 void KBlocksDummyAI::pauseGame(bool flag)

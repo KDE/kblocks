@@ -16,7 +16,7 @@ class MockField : public FieldInterface
 {
 public:
     MockField() : FieldInterface() {}
-    virtual ~MockField() = default;
+    ~MockField() override = default;
 
 public:
     bool getCell(int, int) override { return false; }

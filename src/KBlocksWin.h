@@ -38,7 +38,7 @@ public:
         int capacity,
         int gamecount
     );
-    ~KBlocksWin();
+    ~KBlocksWin() override;
 
 public:
     void setGamesPerLine(int count);

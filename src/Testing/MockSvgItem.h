@@ -17,7 +17,7 @@ class MockSvgItem : public SvgItemInterface
 public:
     MockSvgItem() = default;
 
-    virtual ~MockSvgItem() = default;
+    ~MockSvgItem() override = default;
 
 public:
     bool updateSelf() override { updateSelfCalled = true; return true; }

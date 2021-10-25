@@ -28,7 +28,7 @@ class KBlocksAIPlayer : public GamePlayerInterface
 {
 public:
     explicit KBlocksAIPlayer(const string &name = "");
-    ~KBlocksAIPlayer();
+    ~KBlocksAIPlayer() override;
 
 public:
     void startGame(SingleGameInterface *p) override;

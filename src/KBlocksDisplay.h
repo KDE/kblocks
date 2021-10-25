@@ -40,7 +40,7 @@ public:
         const std::string& serverIP,
         int localPort
     );
-    ~KBlocksDisplay();
+    ~KBlocksDisplay() override;
 
 public:
     void setGamesPerLine(int count);

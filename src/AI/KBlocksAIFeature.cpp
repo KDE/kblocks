@@ -104,7 +104,7 @@ void update_board_signature(KBlocksField *field)
 *******************************************************************************/
 double getFeature(const FeatureEnumeration id, KBlocksField *field)
 {
-    EvaluationInterface *e = 0;
+    EvaluationInterface *e = nullptr;
     switch (id) {
     case FEATURE_BLOCKS_COUNT:
         e = Evaluation_Blocks_Count::instance(); break;
@@ -143,7 +143,7 @@ double getFeature(const FeatureEnumeration id, KBlocksField *field)
     default: ;
         //  printf("WARNING: Evaluation not found!");
     }
-    if (e == 0) {
+    if (e == nullptr) {
         return 0;
     }
     return e->evaluate(field);
@@ -194,7 +194,7 @@ const char *getFeatureName(const FeatureEnumeration id)
 //----------------------------------------------------------------
 double getSpecialFeature(const SpecialFeatureEnumeration id, KBlocksField *newField, KBlocksField *oldField, KBlocksPiece *piece)
 {
-    SpecialEvaluationInterface *e = 0;
+    SpecialEvaluationInterface *e = nullptr;
     switch (id) {
     case FEATURE_REMOVE_LINES:
         e = Evaluation_Remove_Lines::instance(); break;
@@ -203,7 +203,7 @@ double getSpecialFeature(const SpecialFeatureEnumeration id, KBlocksField *newFi
     default:;
     }
 
-    if (e == 0) {
+    if (e == nullptr) {
         return 0;
     }
 
@@ -215,7 +215,7 @@ double getSpecialFeature(const SpecialFeatureEnumeration id, KBlocksField *newFi
 /******************************************************************************
 ********   Primitiv Function   ==   Feature   *********************************
 *******************************************************************************/
-Evaluation_Max_Height *Evaluation_Max_Height::_instance = 0;
+Evaluation_Max_Height *Evaluation_Max_Height::_instance = nullptr;
 double Evaluation_Max_Height::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -226,7 +226,7 @@ double Evaluation_Max_Height::evaluate(KBlocksField *field)
     return max;
 }
 //----------------------------------------------------------------
-Evaluation_Holes_Count *Evaluation_Holes_Count::_instance = 0;
+Evaluation_Holes_Count *Evaluation_Holes_Count::_instance = nullptr;
 double Evaluation_Holes_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -243,7 +243,7 @@ double Evaluation_Holes_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Average_Height *Evaluation_Average_Height::_instance = 0;
+Evaluation_Average_Height *Evaluation_Average_Height::_instance = nullptr;
 double Evaluation_Average_Height::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -254,7 +254,7 @@ double Evaluation_Average_Height::evaluate(KBlocksField *field)
     return average / w;
 }
 //----------------------------------------------------------------
-Evaluation_Average_Height_Difference *Evaluation_Average_Height_Difference::_instance = 0;
+Evaluation_Average_Height_Difference *Evaluation_Average_Height_Difference::_instance = nullptr;
 double Evaluation_Average_Height_Difference::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -269,7 +269,7 @@ double Evaluation_Average_Height_Difference::evaluate(KBlocksField *field)
     return average / (w - 1);
 }
 //----------------------------------------------------------------
-Evaluation_Max_Height_Difference *Evaluation_Max_Height_Difference::_instance = 0;
+Evaluation_Max_Height_Difference *Evaluation_Max_Height_Difference::_instance = nullptr;
 double Evaluation_Max_Height_Difference::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -284,7 +284,7 @@ double Evaluation_Max_Height_Difference::evaluate(KBlocksField *field)
     return max;
 }
 //----------------------------------------------------------------
-Evaluation_Kontur_Count *Evaluation_Kontur_Count::_instance = 0;
+Evaluation_Kontur_Count *Evaluation_Kontur_Count::_instance = nullptr;
 double Evaluation_Kontur_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -300,7 +300,7 @@ double Evaluation_Kontur_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Max_Kontur_Length *Evaluation_Max_Kontur_Length::_instance = 0;
+Evaluation_Max_Kontur_Length *Evaluation_Max_Kontur_Length::_instance = nullptr;
 double Evaluation_Max_Kontur_Length::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -320,7 +320,7 @@ double Evaluation_Max_Kontur_Length::evaluate(KBlocksField *field)
     return max;
 }
 //----------------------------------------------------------------
-Evaluation_Closed_Holes_Count *Evaluation_Closed_Holes_Count::_instance = 0;
+Evaluation_Closed_Holes_Count *Evaluation_Closed_Holes_Count::_instance = nullptr;
 double Evaluation_Closed_Holes_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -342,7 +342,7 @@ double Evaluation_Closed_Holes_Count::evaluate(KBlocksField *field)
     return global_count;
 }
 //----------------------------------------------------------------
-Evaluation_Blocks_Count *Evaluation_Blocks_Count::_instance = 0;
+Evaluation_Blocks_Count *Evaluation_Blocks_Count::_instance = nullptr;
 double Evaluation_Blocks_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -358,7 +358,7 @@ double Evaluation_Blocks_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Blocks_Over_Holes_Count *Evaluation_Blocks_Over_Holes_Count::_instance = 0;
+Evaluation_Blocks_Over_Holes_Count *Evaluation_Blocks_Over_Holes_Count::_instance = nullptr;
 double Evaluation_Blocks_Over_Holes_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -378,7 +378,7 @@ double Evaluation_Blocks_Over_Holes_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Weighted_Blocks_Count *Evaluation_Weighted_Blocks_Count::_instance = 0;
+Evaluation_Weighted_Blocks_Count *Evaluation_Weighted_Blocks_Count::_instance = nullptr;
 double Evaluation_Weighted_Blocks_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -394,7 +394,7 @@ double Evaluation_Weighted_Blocks_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Row_Transition_Count *Evaluation_Row_Transition_Count::_instance = 0;
+Evaluation_Row_Transition_Count *Evaluation_Row_Transition_Count::_instance = nullptr;
 double Evaluation_Row_Transition_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -413,7 +413,7 @@ double Evaluation_Row_Transition_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Column_Transition_Count *Evaluation_Column_Transition_Count::_instance = 0;
+Evaluation_Column_Transition_Count *Evaluation_Column_Transition_Count::_instance = nullptr;
 double Evaluation_Column_Transition_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -432,7 +432,7 @@ double Evaluation_Column_Transition_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Narrow_Count *Evaluation_Narrow_Count::_instance = 0;
+Evaluation_Narrow_Count *Evaluation_Narrow_Count::_instance = nullptr;
 double Evaluation_Narrow_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -460,7 +460,7 @@ double Evaluation_Narrow_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Wells_Count *Evaluation_Wells_Count::_instance = 0;
+Evaluation_Wells_Count *Evaluation_Wells_Count::_instance = nullptr;
 double Evaluation_Wells_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -485,7 +485,7 @@ double Evaluation_Wells_Count::evaluate(KBlocksField *field)
     return count;
 }
 //----------------------------------------------------------------
-Evaluation_Max_Well_Depth *Evaluation_Max_Well_Depth::_instance = 0;
+Evaluation_Max_Well_Depth *Evaluation_Max_Well_Depth::_instance = nullptr;
 double Evaluation_Max_Well_Depth::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -510,7 +510,7 @@ double Evaluation_Max_Well_Depth::evaluate(KBlocksField *field)
     return max;
 }
 //----------------------------------------------------------------
-Evaluation_Prediction_Count *Evaluation_Prediction_Count::_instance = 0;
+Evaluation_Prediction_Count *Evaluation_Prediction_Count::_instance = nullptr;
 double Evaluation_Prediction_Count::evaluate(KBlocksField *field)
 {
     int w = field->getWidth();
@@ -541,19 +541,19 @@ double Evaluation_Prediction_Count::evaluate(KBlocksField *field)
     return count;
 }
 //# SPECIAL FEATURE #######################################
-Evaluation_Landing_Height *Evaluation_Landing_Height::_instance = 0;
+Evaluation_Landing_Height *Evaluation_Landing_Height::_instance = nullptr;
 double Evaluation_Landing_Height::evaluate(KBlocksField *field)
 {
-    if (mpPiece == 0) {
+    if (mpPiece == nullptr) {
         return 0;
     }
     return field->getHeight() - mpPiece->getPosY();
 }
 //----------------------------------------------------------------
-Evaluation_Remove_Lines *Evaluation_Remove_Lines::_instance = 0;
+Evaluation_Remove_Lines *Evaluation_Remove_Lines::_instance = nullptr;
 double Evaluation_Remove_Lines::evaluate(KBlocksField *field)
 {
-    if (mpField == 0) {
+    if (mpField == nullptr) {
         return 0;
     }
     int cblock = getFeature(FEATURE_BLOCKS_COUNT, mpField);

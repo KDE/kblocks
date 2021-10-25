@@ -121,11 +121,11 @@ void KBlocksScene::deleteGameItemGroups()
         disconnect(maGroupList[i], &KBlocksItemGroup::readyForAction, this, &KBlocksScene::readyForAction);
 
         delete maGameScoreList[i];
-        maGameScoreList[i] = 0;
+        maGameScoreList[i] = nullptr;
 
         removeItem(maGroupList[i]);
         delete maGroupList[i];
-        maGroupList[i] = 0;
+        maGroupList[i] = nullptr;
     }
     mGroupCount = 0;
 }

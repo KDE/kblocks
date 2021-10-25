@@ -28,7 +28,7 @@ class KBlocksNetServer : public QObject
 
 public:
     KBlocksNetServer(KBlocksGameLogic *p, const QString &localIP);
-    ~KBlocksNetServer();
+    ~KBlocksNetServer() override;
 
 public:
     int  executeGame(int gameCount, bool waitForAll);

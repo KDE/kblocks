@@ -85,7 +85,7 @@ class KBlocksPiece : public PieceInterface
 public:
     KBlocksPiece();
     explicit KBlocksPiece(PieceInterface *p);
-    ~KBlocksPiece();
+    ~KBlocksPiece() override;
 
 public:
     void copy(PieceInterface *p);

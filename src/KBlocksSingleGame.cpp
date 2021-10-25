@@ -25,7 +25,7 @@ KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHei
 
     mpPieceGenerator = new KBlocksPieceGenerator();
     mpGameMessage = new KBlocksGameMessage(messagePoolSize);
-    mpGameRecorder = 0;
+    mpGameRecorder = nullptr;
 
     mCurrentGameState = GameState_Stop;
 
@@ -62,7 +62,7 @@ int KBlocksSingleGame::getPieceCount()
 KBlocksPiece *KBlocksSingleGame::getPiece(int index)
 {
     if ((index < 0) || (index >= mPieceCount)) {
-        return 0;
+        return nullptr;
     }
     return mpPieceList[index];
 }

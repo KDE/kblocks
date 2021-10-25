@@ -17,7 +17,7 @@ class SvgItemInterface : public QGraphicsSvgItem
 {
 public:
     SvgItemInterface() = default;
-    virtual ~SvgItemInterface() = default;
+    ~SvgItemInterface() override = default;
 
 public:
     virtual bool updateSelf() = 0;

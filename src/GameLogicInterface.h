@@ -20,7 +20,7 @@ class GameLogicInterface : public QObject
     Q_OBJECT
 public:
     GameLogicInterface();
-    virtual ~GameLogicInterface() {};
+    ~GameLogicInterface() override {};
 
 public:
     virtual SingleGameInterface *getSingleGame(int) = 0;

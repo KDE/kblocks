@@ -16,7 +16,7 @@
 static const int MAX_CHANNEL = 10;
 static const int SCREEN_CHANNEL = MAX_CHANNEL;
 static int current_channel = SCREEN_CHANNEL;
-static FILE *channel[MAX_CHANNEL] = {0};
+static FILE *channel[MAX_CHANNEL] = {nullptr};
 static bool is_channel_open[MAX_CHANNEL] = {false};
 
 void set_screen_channel()

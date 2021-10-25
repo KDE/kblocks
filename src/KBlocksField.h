@@ -27,7 +27,7 @@ private:
 public:
     explicit KBlocksField(int width = 10, int height = 20);
     explicit KBlocksField(FieldInterface *p);
-    ~KBlocksField();
+    ~KBlocksField() override;
 
 public:
     bool getCell(int xPos, int yPos) override;

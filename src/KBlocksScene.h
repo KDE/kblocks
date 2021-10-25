@@ -41,7 +41,7 @@ public:
         SoundInterface *sound,
         int capacity = 1
     );
-    virtual ~KBlocksScene();
+    ~KBlocksScene() override;
 
     KBlocksItemGroup *getItemGroup(int index);
     KBlocksScore *getScoreHandler(int index);

@@ -136,7 +136,7 @@ bool KBlocksAIPlanner::getNextBoardStatus(int index, KBlocksField *field)
 
     if (!getNextPieceState(index, piece)) {
         delete field;
-        field = 0;
+        field = nullptr;
         delete piece;
         return false;
     }

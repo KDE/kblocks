@@ -79,7 +79,7 @@ bool getDecisionFeature(const DecisionFeatureEnumeration id, KBlocksField *field
 /*#########################################################
 * SECTION ANALYSIS EVALUATION  ############################
 *########################################################## */
-HalfBaseEvaluation *HalfBaseEvaluation::_instance = 0;
+HalfBaseEvaluation *HalfBaseEvaluation::_instance = nullptr;
 double HalfBaseEvaluation::evaluate(KBlocksField *field)
 {
     int line = getFeature(FEATURE_MAX_HEIGHT, field) - 6;
@@ -92,7 +92,7 @@ double HalfBaseEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * BASIC  EVALUATION  ######################################
 *########################################################## */
-BaseEvaluation *BaseEvaluation::_instance = 0;
+BaseEvaluation *BaseEvaluation::_instance = nullptr;
 double BaseEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -183,7 +183,7 @@ double BaseEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * WELLS  STOPPER ##########################################
 *########################################################## */
-WellsFillerEvaluation *WellsFillerEvaluation::_instance = 0;
+WellsFillerEvaluation *WellsFillerEvaluation::_instance = nullptr;
 double WellsFillerEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -208,7 +208,7 @@ double WellsFillerEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * HEIGHT  ELIMINIATOR #####################################
 *########################################################## */
-HeightKillerEvaluation *HeightKillerEvaluation::_instance = 0;
+HeightKillerEvaluation *HeightKillerEvaluation::_instance = nullptr;
 double HeightKillerEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -237,7 +237,7 @@ double HeightKillerEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * BLOCK  ELIMINATION  #####################################
 *########################################################## */
-BlockRemoverEvaluation *BlockRemoverEvaluation::_instance = 0;
+BlockRemoverEvaluation *BlockRemoverEvaluation::_instance = nullptr;
 double BlockRemoverEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -263,7 +263,7 @@ double BlockRemoverEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * DEEP NARROW ELIMINATION  ################################
 *########################################################## */
-DeepNarrowRemoverEvaluation *DeepNarrowRemoverEvaluation::_instance = 0;
+DeepNarrowRemoverEvaluation *DeepNarrowRemoverEvaluation::_instance = nullptr;
 double DeepNarrowRemoverEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -291,7 +291,7 @@ double DeepNarrowRemoverEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * TETRIS  CREATOR  ########################################
 *########################################################## */
-TetrisPreparingEvaluation *TetrisPreparingEvaluation::_instance = 0;
+TetrisPreparingEvaluation *TetrisPreparingEvaluation::_instance = nullptr;
 double TetrisPreparingEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -319,7 +319,7 @@ double TetrisPreparingEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * TETRIS  REMOVER  ########################################
 *########################################################## */
-TetrisEliminationEvaluation *TetrisEliminationEvaluation::_instance = 0;
+TetrisEliminationEvaluation *TetrisEliminationEvaluation::_instance = nullptr;
 double TetrisEliminationEvaluation::evaluate(KBlocksField *field)
 {
     double res = 0;
@@ -348,7 +348,7 @@ double TetrisEliminationEvaluation::evaluate(KBlocksField *field)
 /*#########################################################
 * NBS EVALUATION  #########################################
 *########################################################## */
-NBSEvaluation *NBSEvaluation::_instance = 0;
+NBSEvaluation *NBSEvaluation::_instance = nullptr;
 double NBSEvaluation::evaluate(KBlocksField *field)
 {
     Feature features [] = {

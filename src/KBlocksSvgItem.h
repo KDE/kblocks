@@ -30,7 +30,7 @@ class KBlocksSvgItem : public SvgItemInterface
 
 public:
     KBlocksSvgItem(KBlocksLayout *p, int type, int posX, int posY);
-    virtual ~KBlocksSvgItem();
+    ~KBlocksSvgItem() override;
 
     void setLayoutPos(int posX, int posY);
 

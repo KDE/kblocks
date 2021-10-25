@@ -16,7 +16,7 @@ class MockSound : public SoundInterface
 {
 public:
     MockSound() = default;
-    virtual ~MockSound() = default;
+    ~MockSound() override = default;
 
 public:
     bool loadTheme(const QString &) override { return false; }

@@ -22,7 +22,7 @@ class KBlocksView : public QGraphicsView
 
 public:
     explicit KBlocksView(SceneInterface *scene, QWidget *parent = nullptr);
-    ~KBlocksView();
+    ~KBlocksView() override;
 
 Q_SIGNALS:
     void focusEvent(bool flag);

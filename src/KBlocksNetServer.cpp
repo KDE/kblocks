@@ -398,7 +398,7 @@ int KBlocksNetServer::parsePlayerReply(const QByteArray &data, const QString &ad
 
     int gameID = mPlayerMapping[addr];
     KBlocksSingleGame *mpSingleGame = mpGameLogic->getSingleGame(gameID);
-    if (mpSingleGame == 0) {
+    if (mpSingleGame == nullptr) {
         return -1;
     }
 

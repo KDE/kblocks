@@ -22,7 +22,7 @@ class KBlocksAIPlanner : public PlannerInterface
 {
 public:
     explicit KBlocksAIPlanner(KBlocksField *p);
-    ~KBlocksAIPlanner();
+    ~KBlocksAIPlanner() override;
 
     int  process(KBlocks_PieceType_Detail pieceValue) override;
     bool getNextBoardStatus(int index, KBlocksField *field) override;
