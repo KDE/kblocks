@@ -1,13 +1,10 @@
 /******************************************************************************
 *   KBlocks, a falling blocks game by KDE                                     *
-*   Copyright (C) 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
+*   SPDX-FileCopyrightText: 2009-2021 Mauricio Piacentini <mauricio@tabuleiro.com>      *
 *                           Zhongjie Cai <squall.leonhart.cai@gmail.com>      *
 *                           Julian Helfferich <julian.helfferich@mailbox.org> *
 *                                                                             *
-*   This program is free software; you can redistribute it and/or modify      *
-*   it under the terms of the GNU General Public License as published by      *
-*   the Free Software Foundation; either version 2 of the License, or         *
-*   (at your option) any later version.                                       *
+*   SPDX-License-Identifier: GPL-2.0-or-later
 ******************************************************************************/
 #ifndef KBLOCKSANIMATOR_H
 #define KBLOCKSANIMATOR_H
