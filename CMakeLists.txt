@@ -42,12 +42,6 @@ include(ECMSetupVersion)
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DQT_NO_FOREACH)
 
-option(BUILD_COVERAGE "Build the project with gcov support" OFF)
-if(BUILD_COVERAGE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgcov")
-endif()
-
 add_subdirectory(themes)
 add_subdirectory(sounds)
 add_subdirectory(doc)
