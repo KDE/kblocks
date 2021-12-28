@@ -20,7 +20,9 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
+#endif
 using namespace std;
 
 #include "KBlocksConfigManager.h"
@@ -336,13 +338,16 @@ int gamePlayerMode(KBlocksConfigManager *config, const QApplication &app)
 int main(int argc, char *argv[])
 {
     // Fixes blurry icons with fractional scaling
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
     QApplication app(argc, argv);
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kblocks"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kblocksrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kblocksui.rc"));
     migrate.migrate();
+#endif
     KLocalizedString::setApplicationDomain("kblocks");
     // Game abouts...
 
