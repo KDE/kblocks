@@ -9,12 +9,17 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kblocks VERSION ${RELEASE_SERVICE_VERSION})
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.85.0")
+set (KF5_MIN_VERSION "5.90.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
+include(KDEInstallDirs)
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Test Widgets Svg Network)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Test Widgets Svg Network)
+find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS SvgWidgets)
+endif()
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     ConfigWidgets
@@ -31,7 +36,6 @@ find_package(KF5KDEGames 7.1.0 REQUIRED)
 
 include(FeatureSummary)
 include(ECMInstallIcons)
-include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)

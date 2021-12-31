@@ -118,12 +118,14 @@ add_library(KBlocksCore STATIC ${kblockscore_SRCS})
 target_link_libraries(KBlocksCore
     KF5KDEGames
     KF5KDEGamesPrivate
-    Qt::Network
+    Qt${QT_MAJOR_VERSION}::Network
     KF5::Crash
     KF5::DBusAddons
     KF5::XmlGui
     KF5::I18n
-    Qt::Svg
+    Qt${QT_MAJOR_VERSION}::Svg
 )
-
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(KBlocksCore Qt6::SvgWidgets)
+endif()
 add_subdirectory(Testing)
