@@ -119,6 +119,7 @@ target_link_libraries(KBlocksCore
     KF5KDEGames
     KF5KDEGamesPrivate
     Qt${QT_MAJOR_VERSION}::Network
+    KF5::CoreAddons
     KF5::Crash
     KF5::DBusAddons
     KF5::XmlGui
