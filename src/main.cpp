@@ -342,6 +342,11 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
     QApplication app(argc, argv);
+
+#ifdef Q_OS_WINDOWS
+    QApplication::setStyle(QStringLiteral("Breeze"));
+#endif
+
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kblocks"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kblocksrc"));
