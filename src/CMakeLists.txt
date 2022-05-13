@@ -121,7 +121,6 @@ target_link_libraries(KBlocksCore
     Qt${QT_MAJOR_VERSION}::Network
     KF5::CoreAddons
     KF5::Crash
-    KF5::DBusAddons
     KF5::XmlGui
     KF5::I18n
     Qt${QT_MAJOR_VERSION}::Svg
