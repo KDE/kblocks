@@ -54,6 +54,9 @@ if(BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
 
+ki18n_install(po)
+kdoctools_install(po)
+
 ########### next target ###############
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEADER kblocks_version.h)
