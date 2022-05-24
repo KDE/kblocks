@@ -129,6 +129,7 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kblocks</url>
   <url type="help">https://docs.kde.org/?application=kblocks</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kblocks&amp;source=appdata</url>
+  <url type="homepage">https://apps.kde.org/kblocks/</url>
   <screenshots>
     <screenshot type="default">
       <image>https://cdn.kde.org/screenshots/kblocks/kblocks.png</image>
