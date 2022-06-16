@@ -62,7 +62,6 @@ kdoctools_install(po)
 install(PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
 install(FILES src/config/kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
-install(FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUIDIR}/kblocks)
 install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_DATADIR}/knsrcfiles)
 
 ecm_qt_install_logging_categories(EXPORT KBLOCKS FILE kblocks.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})

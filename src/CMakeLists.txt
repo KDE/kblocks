@@ -161,7 +161,10 @@ ecm_setup_version(${RELEASE_SERVICE_VERSION}
     VERSION_HEADER kblocks_version.h
 )
 
-add_executable(kblocks main.cpp)
+add_executable(kblocks
+    main.cpp
+    kblocks.qrc
+)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kblocks.png")
 ecm_add_app_icon(kblocks ICONS ${ICONS_SRCS})
