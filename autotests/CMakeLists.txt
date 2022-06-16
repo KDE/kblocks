@@ -1,5 +1,3 @@
-include_directories(AFTER "${CMAKE_CURRENT_SOURCE_DIR}/../src")
-
 ecm_add_test(
     basic.cpp
     TEST_NAME basic
