@@ -46,6 +46,7 @@ include(ECMSetupVersion)
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DQT_NO_FOREACH)
 
+add_subdirectory(icons)
 add_subdirectory(themes)
 add_subdirectory(sounds)
 add_subdirectory(doc)
@@ -63,7 +64,7 @@ ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KBLOCKS VERSION_HEA
 
 set(kblocks_SRCS src/main.cpp)
 
-file(GLOB ICONS_SRCS "*-apps-kblocks.png")
+file(GLOB ICONS_SRCS "icons/*-apps-kblocks.png")
 ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
 
 add_subdirectory(src)
@@ -83,8 +84,6 @@ install(FILES org.kde.kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR
 install(FILES src/config/kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 install(FILES kblocksui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUIDIR}/kblocks)
 install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_DATADIR}/knsrcfiles)
-
-ecm_install_icons(ICONS 128-apps-kblocks.png  16-apps-kblocks.png  22-apps-kblocks.png  32-apps-kblocks.png  48-apps-kblocks.png  64-apps-kblocks.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor)
 
 ecm_qt_install_logging_categories(EXPORT KBLOCKS FILE kblocks.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
