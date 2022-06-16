@@ -130,3 +130,20 @@ if (QT_MAJOR_VERSION STREQUAL "6")
     target_link_libraries(KBlocksCore Qt6::SvgWidgets)
 endif()
 add_subdirectory(Testing)
+
+
+ecm_setup_version(${RELEASE_SERVICE_VERSION}
+    VARIABLE_PREFIX KBLOCKS
+    VERSION_HEADER kblocks_version.h
+)
+
+add_executable(kblocks main.cpp)
+
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../icons/*-apps-kblocks.png")
+ecm_add_app_icon(kblocks ICONS ${ICONS_SRCS})
+
+target_link_libraries(kblocks
+    KBlocksCore
+)
+
+install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
