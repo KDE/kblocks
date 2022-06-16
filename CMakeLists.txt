@@ -43,9 +43,6 @@ include(ECMAddTests)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DQT_NO_FOREACH)
-
 add_subdirectory(icons)
 add_subdirectory(themes)
 add_subdirectory(sounds)
