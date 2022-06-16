@@ -174,3 +174,13 @@ target_link_libraries(kblocks
 )
 
 install(TARGETS kblocks  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+
+install(PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
+install(FILES config/kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
+
+ecm_qt_install_logging_categories(
+    EXPORT KBLOCKS
+    FILE kblocks.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)

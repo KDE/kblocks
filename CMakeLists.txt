@@ -57,10 +57,6 @@ endif()
 ki18n_install(po)
 kdoctools_install(po)
 
-install(PROGRAMS org.kde.kblocks.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.kblocks.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
-install(FILES src/config/kblocks.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 install(FILES kblocks.knsrc  DESTINATION  ${KDE_INSTALL_DATADIR}/knsrcfiles)
 
-ecm_qt_install_logging_categories(EXPORT KBLOCKS FILE kblocks.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
