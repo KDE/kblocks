@@ -1,4 +1,6 @@
-set(kblockscore_SRCS
+add_library(KBlocksCore STATIC)
+
+target_sources(KBlocksCore PRIVATE
     AI/EvaluationInterface.h
     AI/KBlocksAIEvaluation.cpp
     AI/KBlocksAIEvaluation.h
@@ -104,17 +106,39 @@ set(kblockscore_SRCS
     Testing/TestingKBlocksWin.h
     utils.cpp
     utils.h
-
 )
 
-ecm_qt_declare_logging_category(kblockscore_SRCS HEADER kblocks_ai_debug.h IDENTIFIER KBlocksAI CATEGORY_NAME KBlocks.AI DESCRIPTION "kdegames (kblock ai)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblockscore_SRCS HEADER kblocks_sound_debug.h IDENTIFIER KBSound CATEGORY_NAME KBlocks.Sound DESCRIPTION "kdegames (kblock sound)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblockscore_SRCS HEADER kblocks_replay_debug.h IDENTIFIER KBReplay CATEGORY_NAME KBlocks.Replay DESCRIPTION "kdegames (kblock replay)" EXPORT KBLOCKS)
-ecm_qt_declare_logging_category(kblockscore_SRCS HEADER kblocks_graphics_debug.h IDENTIFIER KBGraphics CATEGORY_NAME KBlocks.Graphics DESCRIPTION "kdegames (kblock graphics)" EXPORT KBLOCKS)
+ecm_qt_declare_logging_category(KBlocksCore
+    HEADER kblocks_ai_debug.h
+    IDENTIFIER KBlocksAI
+    CATEGORY_NAME KBlocks.AI
+    DESCRIPTION "kdegames (kblock ai)"
+    EXPORT KBLOCKS
+)
+ecm_qt_declare_logging_category(KBlocksCore
+    HEADER kblocks_sound_debug.h
+    IDENTIFIER KBSound
+    CATEGORY_NAME KBlocks.Sound
+    DESCRIPTION "kdegames (kblock sound)"
+    EXPORT KBLOCKS
+)
+ecm_qt_declare_logging_category(KBlocksCore
+    HEADER kblocks_replay_debug.h
+    IDENTIFIER KBReplay
+    CATEGORY_NAME KBlocks.Replay
+    DESCRIPTION "kdegames (kblock replay)"
+    EXPORT KBLOCKS
+)
+ecm_qt_declare_logging_category(KBlocksCore
+    HEADER kblocks_graphics_debug.h
+    IDENTIFIER KBGraphics
+    CATEGORY_NAME KBlocks.Graphics
+    DESCRIPTION "kdegames (kblock graphics)"
+    EXPORT KBLOCKS
+)
 
-kconfig_add_kcfg_files(kblockscore_SRCS config/settings.kcfgc )
+kconfig_add_kcfg_files(KBlocksCore config/settings.kcfgc )
 
-add_library(KBlocksCore STATIC ${kblockscore_SRCS})
 target_link_libraries(KBlocksCore
     KF5KDEGames
     KF5KDEGamesPrivate
@@ -129,8 +153,8 @@ target_link_libraries(KBlocksCore
 if (QT_MAJOR_VERSION STREQUAL "6")
     target_link_libraries(KBlocksCore Qt6::SvgWidgets)
 endif()
-add_subdirectory(Testing)
 
+add_subdirectory(Testing)
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION}
     VARIABLE_PREFIX KBLOCKS

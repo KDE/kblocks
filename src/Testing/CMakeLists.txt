@@ -1,8 +1,6 @@
-set(testing_SRCS
+add_library(KBlocksTesting STATIC
     TestingKBlocksWin.cpp
 )
-
-add_library(KBlocksTesting STATIC ${testing_SRCS})
 target_link_libraries(KBlocksTesting
     KBlocksCore
 )
