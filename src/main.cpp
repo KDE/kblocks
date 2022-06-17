@@ -391,12 +391,13 @@ int main(int argc, char *argv[])
                          QStringLiteral(KBLOCKS_VERSION_STRING),
                          i18n("A falling blocks game by KDE"),
                          KAboutLicense::GPL,
-                         i18n("(c) 2007, Mauricio Piacentini"));
+                         i18n("(c) 2007, Mauricio Piacentini"),
+                         QString(),
+                         QStringLiteral("https://apps.kde.org/kblocks"));
     aboutData.addAuthor(i18n("Mauricio Piacentini"), i18n("Author"), QStringLiteral("piacentini@kde.org"));
     aboutData.addAuthor(i18n("Dirk Leifeld"), i18n("Developer"), QStringLiteral("dirkleifeld@yahoo.de"));
     aboutData.addAuthor(i18n("Zhongjie Cai"), i18n("New design of KBlocks for AI and tetris research platform"), QStringLiteral("squall.leonhart.cai@gmail.com"));
     aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Oxygen art for KDE4"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
-    aboutData.setHomepage(QStringLiteral("https://www.kde.org/applications/games/kblocks/"));
 
     // Command line argument options
     QCommandLineParser parser;
