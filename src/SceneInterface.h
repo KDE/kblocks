@@ -10,6 +10,8 @@
 
 #include <QGraphicsScene>
 
+class KgTheme;
+
 class SceneInterface : public QGraphicsScene
 {
     Q_OBJECT
@@ -25,7 +27,8 @@ public:
     virtual void setWaitForAllUpdate(bool) = 0;
     virtual void setUpdateInterval(int) = 0;
     virtual void setSoundsEnabled(bool) = 0;
-    virtual void readSettings(const QSize&) = 0;
+    virtual void readSettings() = 0;
+    virtual void loadTheme(const KgTheme *theme) = 0;
     virtual void startGame() = 0;
     virtual void stopGame() = 0;
     virtual void pauseGame(bool, bool fromUI = false) = 0;

@@ -29,7 +29,8 @@ public:
     void setWaitForAllUpdate(bool) override {}
     void setUpdateInterval(int) override {}
     void setSoundsEnabled(bool) override {}
-    void readSettings(const QSize&) override { readSettingsCalled = true; }
+    void readSettings() override { readSettingsCalled = true; }
+    void loadTheme(const KgTheme *) override {}
     void startGame() override {}
     void stopGame() override {
         if (mpGameLogic->singleGamesDeleted) {

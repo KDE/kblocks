@@ -162,15 +162,17 @@ void KBlocksScene::setSoundsEnabled(bool enabled)
     mpSnd->setSoundsEnabled(enabled);
 }
 
-void KBlocksScene::readSettings(const QSize &viewSize)
+void KBlocksScene::loadTheme(const KgTheme *theme)
 {
-    if (mpGrafx->theme()->fileName() != Settings::theme()) {
-        mpGrafx->loadTheme(Settings::theme());
-        mpGrafx->adjustForSize(viewSize);
-        updateDimensions();
-        // also update sounds fo rthe theme
-        mpSnd->loadTheme(Settings::theme());
-    }
+    mpGrafx->loadTheme(theme);
+    mpSnd->loadTheme(theme);
+    // update layout to new theme data
+    updateDimensions();
+}
+
+void KBlocksScene::readSettings()
+{
+    // nothing to do currently, no other settings beside the theme, which is handled separately
 }
 
 void KBlocksScene::startGame()

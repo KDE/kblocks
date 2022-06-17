@@ -15,7 +15,6 @@
 
 class QSize;
 class QString;
-class KGameTheme;
 
 class MockGraphics : public GraphicsInterface
 {
@@ -28,10 +27,9 @@ public:
     ~MockGraphics() override = default;
 
 public:
-    bool loadTheme(const QString &) override { return false; }
+    bool loadTheme(const KgTheme *) override { return false; }
     void readThemeValues() override {}
     void adjustForSize(const QSize &) override {}
-    KGameTheme *theme() const override { return nullptr; }
     QSvgRenderer *renderer() const override { return mRenderer.get(); }
 
 private:

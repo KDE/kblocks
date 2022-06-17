@@ -141,13 +141,12 @@ kconfig_add_kcfg_files(KBlocksCore config/settings.kcfgc )
 
 target_link_libraries(KBlocksCore
     KF5KDEGames
-    KF5KDEGamesPrivate
-    Qt${QT_MAJOR_VERSION}::Network
     KF5::CoreAddons
     KF5::Crash
     KF5::DBusAddons
     KF5::XmlGui
     KF5::I18n
+    Qt${QT_MAJOR_VERSION}::Network
     Qt${QT_MAJOR_VERSION}::Svg
 )
 if (QT_MAJOR_VERSION STREQUAL "6")

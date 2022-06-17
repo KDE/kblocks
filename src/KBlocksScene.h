@@ -52,7 +52,8 @@ public:
     void setUpdateInterval(int interval) override;
     void setSoundsEnabled(bool enabled) override;
 
-    void readSettings(const QSize &viewSize) override;
+    void readSettings() override;
+    void loadTheme(const KgTheme *theme) override;
 
     void startGame() override;
     void stopGame() override;

@@ -15,6 +15,9 @@
 #include <KDBusService>
 #include <KLocalizedString>
 
+#include <kdegames_version.h>
+#include <KgThemeProvider>
+
 #include <QString>
 #include <QByteArray>
 #include <QApplication>
@@ -64,6 +67,26 @@ enum KBlocksGameMode {
     KBlocksGame_MaxMode_Count
 };
 
+static
+void initThemeProvider(KgThemeProvider &themeProvider)
+{
+    themeProvider.discoverThemes(
+#if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
+        "appdata",
+#endif
+        QStringLiteral("themes"),   // theme data location
+        QStringLiteral("default")); // default theme name
+
+    const QByteArray themeIdentifier = Settings::theme().toUtf8();
+    const QList<const KgTheme *> themes = themeProvider.themes();
+    for (auto* theme : themes) {
+        if (theme->identifier() == themeIdentifier) {
+            themeProvider.setCurrentTheme(theme);
+            break;
+        }
+    }
+}
+
 int gameDesktopMode(const QApplication &app)
 {
     // Desktop User Mode
@@ -76,14 +99,17 @@ int gameDesktopMode(const QApplication &app)
 
     mpKBlocksPlayManager = new KBlocksPlayManager(mpKBlocksGameLogic, 2);
 
-    QString themeFile(Settings::theme());
-    KBlocksGraphics graphics(themeFile);
-    KBlocksSound sound(themeFile);
+    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    initThemeProvider(themeProvider);
+
+    KBlocksGraphics graphics(themeProvider.currentTheme());
+    KBlocksSound sound(themeProvider.currentTheme());
 
     mpKBlocksWindow = new KBlocksWin(
         mpKBlocksGameLogic,
         &graphics,
         &sound,
+        &themeProvider,
         mpKBlocksPlayManager,
         2,
         1
@@ -174,9 +200,11 @@ int gameGuiMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tLocal Port      = %d\n", localPort);
     printf("\tServer IP       = %s\n", serverIP.c_str());
 
-    QString themeFile(Settings::theme());
-    KBlocksGraphics graphics(themeFile);
-    KBlocksSound sound(themeFile);
+    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    initThemeProvider(themeProvider);
+
+    KBlocksGraphics graphics(themeProvider.currentTheme());
+    KBlocksSound sound(themeProvider.currentTheme());
 
     mpKBlocksDisplay = new KBlocksDisplay(
         &graphics,
@@ -231,9 +259,11 @@ int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tRecord File     = %s\n", recordFile.c_str());
     printf("\tRecord Type     = %s\n", recordBinary ? "Binary" : "Text");
 
-    QString themeFile(Settings::theme());
-    KBlocksGraphics graphics(themeFile);
-    KBlocksSound sound(themeFile);
+    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    initThemeProvider(themeProvider);
+
+    KBlocksGraphics graphics(themeProvider.currentTheme());
+    KBlocksSound sound(themeProvider.currentTheme());
 
     KBlocksRepWin *mpKBlocksRepWin = new KBlocksRepWin(
         &graphics,

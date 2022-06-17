@@ -13,32 +13,24 @@
 #include <QSvgRenderer>
 #include <QPixmap>
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgametheme.h>
-
 #include "GraphicsInterface.h"
 
 class KBlocksGraphics : public GraphicsInterface
 {
 public:
-    explicit KBlocksGraphics(const QString &themeFile);
+    explicit KBlocksGraphics(const KgTheme *theme);
     ~KBlocksGraphics() override;
 
 public:
-    bool loadTheme(const QString &themeFile) override;
+    bool loadTheme(const KgTheme *theme) override;
     void readThemeValues() override;
     void adjustForSize(const QSize &newsize) override;
-    KGameTheme *theme() const override
-    {
-        return m_theme;
-    }
     QSvgRenderer *renderer() const override
     {
         return m_renderer;
     }
 
 private:
-    KGameTheme *m_theme = nullptr;
     QSvgRenderer *m_renderer = nullptr;
 
     //QPixmap renderElement(int width, int height, const QString & elementid);

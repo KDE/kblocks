@@ -12,6 +12,7 @@
 #include <QGraphicsView>
 
 class SceneInterface;
+class KgTheme;
 
 class KBlocksView : public QGraphicsView
 {
@@ -26,6 +27,9 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void settingsChanged();
+
+public:
+    void loadTheme(const KgTheme *theme);
 
 protected:
     void focusInEvent(QFocusEvent *event) override;

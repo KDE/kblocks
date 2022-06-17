@@ -10,7 +10,7 @@
 class QSize;
 class QString;
 class QSvgRenderer;
-class KGameTheme;
+class KgTheme;
 
 class GraphicsInterface
 {
@@ -29,10 +29,9 @@ public:
     virtual ~GraphicsInterface() = default;
 
 public:
-    virtual bool loadTheme(const QString &) = 0;
+    virtual bool loadTheme(const KgTheme *theme) = 0;
     virtual void readThemeValues() = 0;
     virtual void adjustForSize(const QSize &) = 0;
-    virtual KGameTheme *theme() const = 0;
     virtual QSvgRenderer *renderer() const = 0;
 
     int m_Block_Size;

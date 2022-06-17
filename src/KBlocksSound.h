@@ -9,9 +9,6 @@
 #ifndef KBLOCKSSOUND_H
 #define KBLOCKSSOUND_H
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgametheme.h>
-
 #include "SoundInterface.h"
 
 class KgSound;
@@ -19,11 +16,11 @@ class KgSound;
 class KBlocksSound : public SoundInterface
 {
 public:
-    explicit KBlocksSound(const QString &themeFile);
+    explicit KBlocksSound(const KgTheme *theme);
     ~KBlocksSound() override;
 
 public:
-    bool loadTheme(const QString &themeFile) override;
+    bool loadTheme(const KgTheme *theme) override;
     void setSoundsEnabled(bool p_enabled) override;
     void playSound(Sound soundType) override;
 

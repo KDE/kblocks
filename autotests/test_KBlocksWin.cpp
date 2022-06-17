@@ -33,7 +33,7 @@ void testKBlocksWin::callStopGameBeforeSingleGamesAreDeleted()
     MockGameLogic logic;
     MockGraphics graphics;
     MockSound sound;
-    TestingKBlocksWin win(&logic, &graphics, &sound, nullptr, 0, 0);
+    TestingKBlocksWin win(&logic, &graphics, &sound, nullptr, nullptr, 0, 0);
     MockScene *scene = new MockScene(&logic);
     win.replaceScene(scene);
     win.callStopGame();

@@ -11,10 +11,11 @@ TestingKBlocksWin::TestingKBlocksWin(
     GameLogicInterface *p,
     GraphicsInterface *graphics,
     SoundInterface *sound,
+    KgThemeProvider *themeProvider,
     KBlocksPlayManager *pM,
     int capacity,
     int gamecount
-) : KBlocksWin(p, graphics, sound, pM, capacity, gamecount)
+) : KBlocksWin(p, graphics, sound, themeProvider, pM, capacity, gamecount)
 {
 }
 

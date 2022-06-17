@@ -30,11 +30,20 @@ KBlocksView::~KBlocksView()
 {
 }
 
+void KBlocksView::loadTheme(const KgTheme *theme)
+{
+    SceneInterface* s = dynamic_cast<SceneInterface*>(scene());
+    if (s) {
+        s->loadTheme(theme);
+    }
+    fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
+}
+
 void KBlocksView::settingsChanged()
 {
     SceneInterface* s = dynamic_cast<SceneInterface*>(scene());
     if (s) {
-        s->readSettings(size());
+        s->readSettings();
     }
     fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
 }

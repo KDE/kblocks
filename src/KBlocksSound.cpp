@@ -11,16 +11,17 @@
 #include "KBlocksSound.h"
 
 #include <KgSound>
+#include <KgTheme>
 
 #include <QStandardPaths>
 
 #include "kblocks_sound_debug.h"
 #include "settings.h"
 
-KBlocksSound::KBlocksSound(const QString &themeFile)
+KBlocksSound::KBlocksSound(const KgTheme *theme)
     : SoundInterface()
 {
-    loadTheme(themeFile);
+    loadTheme(theme);
 }
 
 KBlocksSound::~KBlocksSound()
@@ -30,34 +31,32 @@ KBlocksSound::~KBlocksSound()
     delete m_blockRemoveSound;
 }
 
-bool KBlocksSound::loadTheme(const QString &themeFile)
+bool KBlocksSound::loadTheme(const KgTheme *theme)
 {
-    KGameTheme theme;
-    if (!theme.load(themeFile)) {
-        qCWarning(KBSound) << "Error loading KBlocks .desktop theme"
-                                   << themeFile;
-        theme.loadDefault();
-    }
-
     QString themeMoveSound;
-    if (!theme.themeProperty(QStringLiteral("Sound_Block_Move")).isEmpty()) {
-        themeMoveSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Move"));
+    if (!theme->customData(QStringLiteral("Sound_Block_Move")).isEmpty()) {
+        // TODO: extend KgTheme to provide look-up of relativ path with custom entries
+        // For now simply searching all possible locations manually, here and below
+        themeMoveSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QLatin1String("themes/") + theme->customData(QStringLiteral("Sound_Block_Move")));
     } else {
         themeMoveSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-move.ogg"));
     }
     
     QString themeFallSound;
-    if (!theme.themeProperty(QStringLiteral("Sound_Block_Fall")).isEmpty()) {
-        themeFallSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Fall"));
+    if (!theme->customData(QStringLiteral("Sound_Block_Fall")).isEmpty()) {
+        themeFallSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QLatin1String("themes/") + theme->customData(QStringLiteral("Sound_Block_Fall")));
     } else {
         themeFallSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-fall.ogg"));
     }
     
     QString themeRemoveSound;
-    if (!theme.themeProperty(QStringLiteral("Sound_Block_Remove")).isEmpty()) {
-        themeRemoveSound = theme.prefix() + theme.themeProperty(QStringLiteral("Sound_Block_Remove"));
+    if (!theme->customData(QStringLiteral("Sound_Block_Remove")).isEmpty()) {
+        themeRemoveSound = QStandardPaths::locate(
+                    QStandardPaths::AppDataLocation, QLatin1String("themes/") + theme->customData(QStringLiteral("Sound_Block_Remove")));
     } else {
         themeRemoveSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QStringLiteral("sounds/block-remove.ogg"));

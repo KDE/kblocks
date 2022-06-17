@@ -17,11 +17,16 @@
 #include "AI/KBlocksAIPlayer.h"
 
 #include "KBlocksPlayManager.h"
+
+class KgThemeSelector;
+class KgThemeProvider;
+class KgTheme;
 class QLabel;
 class GameLogicInterface;
 class GraphicsInterface;
 class SceneInterface;
 class SoundInterface;
+
 class KBlocksWin : public KXmlGuiWindow
 {
     Q_OBJECT
@@ -31,6 +36,7 @@ public:
         GameLogicInterface *p,
         GraphicsInterface *graphics,
         SoundInterface *sound,
+        KgThemeProvider *themeProvider,
         KBlocksPlayManager *pM,
         int capacity,
         int gamecount
@@ -66,6 +72,7 @@ private Q_SLOTS:
     void onAllGamesStopped();
     void levelChanged();
     void setSoundsEnabled(bool enabled);
+    void onThemeChanged(const KgTheme *theme);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -88,6 +95,7 @@ private:
 
     KBlocksAIPlayer *mpAIPlayer = nullptr;
 
+    KgThemeSelector *m_themeSelector = nullptr;
     QAction *m_pauseAction = nullptr;
     QLabel *mScore = nullptr;
 };

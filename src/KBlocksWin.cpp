@@ -10,23 +10,22 @@
 
 #include <limits.h>
 
-#include <KConfigDialog>
-#include <kstandardgameaction.h>
-#include <KStandardAction>
-#include <highscore/kscoredialog.h>
-#include <KLocalizedString>
-#include <KToggleAction>
-#include <KActionCollection>
-#include <QStatusBar>
+#include <KgThemeSelector>
+#include <KgThemeProvider>
 #include <KgDifficulty>
+#include <KStandardGameAction>
+#include <KScoreDialog>
 
+#include <KToggleAction>
+#include <KStandardAction>
+#include <KActionCollection>
+#include <KLocalizedString>
+
+#include <QStatusBar>
 #include <QPixmapCache>
 #include <QPointer>
 #include <QLabel>
 #include <QRandomGenerator>
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamethemeselector.h>
 
 #include "GameLogicInterface.h"
 #include "KBlocksScene.h"
@@ -37,11 +36,17 @@ KBlocksWin::KBlocksWin(
     GameLogicInterface *p,
     GraphicsInterface *graphics,
     SoundInterface *sound,
+    KgThemeProvider *themeProvider,
     KBlocksPlayManager *pM,
     int capacity,
     int gamecount
 ) : KXmlGuiWindow()
 {
+    if (themeProvider) {
+        m_themeSelector = new KgThemeSelector(themeProvider, KgThemeSelector::EnableNewStuffDownload);
+        connect(themeProvider, &KgThemeProvider::currentThemeChanged, this, &KBlocksWin::onThemeChanged);
+    }
+
     //Use up to 3MB for global application pixmap cache
     QPixmapCache::setCacheLimit(3 * 1024);
 
@@ -73,6 +78,7 @@ KBlocksWin::KBlocksWin(
 
 KBlocksWin::~KBlocksWin()
 {
+    delete m_themeSelector;
     delete mpGameView;
     delete mpGameScene;
     delete mpAIPlayer;
@@ -220,15 +226,15 @@ void KBlocksWin::showHighscore()
 
 void KBlocksWin::configureSettings()
 {
-    if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
-        return;
-    }
-    KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
-    dialog->addPage(new KGameThemeSelector(dialog, Settings::self()), i18n("Theme"), QStringLiteral("games-config-theme"));
-    dialog->setFaceType(KConfigDialog::Plain); //only one page -> no page selection necessary
-    connect(dialog, &KConfigDialog::settingsChanged, mpGameView, &KBlocksView::settingsChanged);
-    //connect(dialog, SIGNAL(hidden()), view, SLOT(resumeFromConfigure()));
-    dialog->show();
+    m_themeSelector->showAsDialog();
+}
+
+void KBlocksWin::onThemeChanged(const KgTheme *theme)
+{
+    // sync to settings store
+    Settings::setTheme(QString::fromUtf8(theme->identifier()));
+    // trigger update of resources, then display
+    mpGameView->loadTheme(theme);
 }
 
 void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)
@@ -293,7 +299,9 @@ void KBlocksWin::setupGUILayout()
     action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
     actionCollection()->addAction(QStringLiteral("quit"), action);
 
-    KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
+    if (m_themeSelector) {
+        KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
+    }
 
     KToggleAction *soundAction = new KToggleAction(i18n("&Play Sounds"), this);
     soundAction->setChecked(Settings::sounds());

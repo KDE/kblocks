@@ -8,36 +8,26 @@
 #include "KBlocksGraphics.h"
 #include "kblocks_graphics_debug.h"
 
+#include <KgTheme>
+
 #include <QPixmapCache>
 
-KBlocksGraphics::KBlocksGraphics(const QString &themeFile)
+KBlocksGraphics::KBlocksGraphics(const KgTheme *theme)
 {
-    m_theme = new KGameTheme();
-    if (!m_theme->load(themeFile)) {
-        qCWarning(KBGraphics) << "Error loading KBlocks .desktop theme"
-                                   << themeFile;
-        m_theme->loadDefault();
-    }
-    m_renderer = new QSvgRenderer(m_theme->graphics());
+    m_renderer = new QSvgRenderer(theme->graphicsPath());
     readThemeValues();
 }
 
 KBlocksGraphics::~KBlocksGraphics()
 {
-    delete m_theme;
     delete m_renderer;
 }
 
-bool KBlocksGraphics::loadTheme(const QString &themeFile)
+bool KBlocksGraphics::loadTheme(const KgTheme *theme)
 {
-    if (!m_theme->load(themeFile)) {
-        qCWarning(KBGraphics) << "Error loading KBlocks .desktop theme"
-                                   << themeFile;
-        return false;
-    }
-    if (!m_renderer->load(m_theme->graphics())) {
+    if (!m_renderer->load(theme->graphicsPath())) {
         qCWarning(KBGraphics) << "Error loading SVG theme"
-                                   << m_theme->graphics();
+                                   << theme->graphicsPath();
         return false;
     }
     //clear the cache or pixmaps from the old theme will be returned
