@@ -5,6 +5,7 @@
   <project_license>GPL-2.0+</project_license>
   <name>KBlocks</name>
   <name xml:lang="ar">الكتل ك</name>
+  <name xml:lang="bg">KBlocks</name>
   <name xml:lang="bs">KBlocks</name>
   <name xml:lang="ca">KBlocks</name>
   <name xml:lang="ca-valencia">KBlocks</name>
@@ -45,6 +46,7 @@
   <name xml:lang="zh-TW">KBlocks</name>
   <summary>Falling Blocks Game</summary>
   <summary xml:lang="ar">لعبة الكتل المتساقطة</summary>
+  <summary xml:lang="bg">Игра с падащи блокове </summary>
   <summary xml:lang="bs">Igra padajući blokovi</summary>
   <summary xml:lang="ca">Joc de blocs que cauen</summary>
   <summary xml:lang="ca-valencia">Joc de blocs que cauen</summary>
@@ -90,6 +92,7 @@
       When there is not enough space for blocks to fall, the game is over.
     </p>
     <p xml:lang="ar">الكتل ك هي لعبة الكتل المتساقطة التقليدية.  الفكرة هي تكديس الكتل المتساقطة لإنشاء خطوط أفقية بدون أي فجوات. عند اكتمال الصف سيزال و يتحرر المزيد من المساحة في مساحة اللعب. وعندما لا توجد مساحة كافية لسقوط الكتل تنتهي اللعبة.</p>
+    <p xml:lang="bg">KBlocks е класическата игра с падащи блокове. Идеята е да подредите падащите блокове, за да създадете хоризонтални линии без пропуски. Когато една линия е завършена тя се премахва и в зоната за игра се появява повече пространство. Когато няма достатъчно място за падане на блокове, играта приключва.</p>
     <p xml:lang="ca">El KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per a crear línies horitzontals sense cap forat. Quan s'hagi completat una línia, aquesta s'eliminarà i quedarà més espai disponible a l'àrea de joc. Quan no hi hagi espai suficient per als blocs que cauen, el joc finalitzarà.</p>
     <p xml:lang="ca-valencia">KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per a crear línies horitzontals sense cap forat. Quan s'haja completat una línia, esta s'eliminarà i quedarà més espai disponible a l'àrea de joc. Quan no hi haja espai suficient per als blocs que cauen, el joc finalitzarà.</p>
     <p xml:lang="da">KBlocks er det klassiske spil med faldende klodser. Meningen er at stable de faldende klodser for at danne vandrette linjer uden hulrum. Når en linje er udfyldt fjernes den, og der bliver mere plads at spille på. Når der ikke er plads nok til at klodserne kan falde er spillet slut.</p>
