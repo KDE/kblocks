@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KBlocks
 Name[ar]=الكتل ك
+Name[bg]=KBlocks
 Name[bs]=KBlocks
 Name[ca]=KBlocks
 Name[ca@valencia]=KBlocks
@@ -59,6 +60,7 @@ Type=Application
 X-DocPath=kblocks/index.html
 GenericName=Falling Blocks Game
 GenericName[ar]=لعبة الكتل المتساقطة
+GenericName[bg]=Игра с падащи блокове 
 GenericName[bs]=Igra padajući blokovi
 GenericName[ca]=Joc de blocs que cauen
 GenericName[ca@valencia]=Joc de blocs que cauen
