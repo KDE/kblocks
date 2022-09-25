@@ -6,7 +6,6 @@
 ***************************************************************************/
 #include "KBlocksPieceGenerator.h"
 
-#include <QtGlobal>
 #include <QRandomGenerator>
 #include <stdio.h>
 

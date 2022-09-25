@@ -9,7 +9,6 @@
 #ifndef KBLOCKSGRAPHICS_H
 #define KBLOCKSGRAPHICS_H
 
-#include <QHash>
 #include <QSvgRenderer>
 #include <QPixmap>
 

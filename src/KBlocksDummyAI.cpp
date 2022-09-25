@@ -6,7 +6,6 @@
 ***************************************************************************/
 #include "KBlocksDummyAI.h"
 
-#include <QtGlobal>
 #include <QRandomGenerator>
 
 KBlocksDummyAI::KBlocksDummyAI()
