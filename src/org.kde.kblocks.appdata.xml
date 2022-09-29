@@ -24,6 +24,7 @@
   <name xml:lang="hu">KBlocks</name>
   <name xml:lang="id">KBlocks</name>
   <name xml:lang="it">KBlocks</name>
+  <name xml:lang="ka">KBlocks</name>
   <name xml:lang="ko">KBlocks</name>
   <name xml:lang="nl">KBlocks</name>
   <name xml:lang="nn">KBlocks</name>
@@ -65,6 +66,7 @@
   <summary xml:lang="hu">Játék lehulló elemekkel</summary>
   <summary xml:lang="id">Permainan Balok Berjatuhan</summary>
   <summary xml:lang="it">Gioco con oggetti che cadono</summary>
+  <summary xml:lang="ka">ვარდნილი აგურების თამაში</summary>
   <summary xml:lang="ko">떨어지는 블록 게임</summary>
   <summary xml:lang="nl">Vallende blokken-spel</summary>
   <summary xml:lang="nn">Spel med fallande brikker</summary>
