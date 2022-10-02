@@ -1,0 +1,228 @@
+# translation of kblocks.po to Latvian
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
+# Einars Sprugis <einars8@gmail.com>, 2009, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: kblocks\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"PO-Revision-Date: 2012-06-29 20:19+0300\n"
+"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
+"Language-Team: Latvian <locale@laka.lv>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Viesturs Zariņš"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "viesturs.zarins@mii.lu.lv"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: config/kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Izmantojamā grafiskā tēma."
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: config/kblocks.kcfg:14
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Vai atskaņot skaņas efektus."
+
+#: KBlocksDisplay.cpp:58
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "Rezultātu saraksts : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+
+#: KBlocksDisplay.cpp:120
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "Rezultātu saraksts : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+
+#: KBlocksKeyboardPlayer.cpp:76
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "Pagriezt kluci pulksteņrādītāja virzienā"
+
+#: KBlocksKeyboardPlayer.cpp:82
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "Pagriezt kluci pretēji pulksteņrādītājam"
+
+#: KBlocksKeyboardPlayer.cpp:88
+#, kde-format
+msgid "Move Piece Left"
+msgstr "Pārvietot kluci pa kreisi"
+
+#: KBlocksKeyboardPlayer.cpp:94
+#, kde-format
+msgid "Move Piece Right"
+msgstr "Pārvietot kluci pa labi"
+
+#: KBlocksKeyboardPlayer.cpp:100
+#, kde-format
+msgid "Move Piece Down"
+msgstr "Pārvietot kluci uz leju"
+
+#: KBlocksKeyboardPlayer.cpp:106
+#, kde-format
+msgid "Drop the Piece"
+msgstr "Nomest kluci"
+
+#: KBlocksScene.cpp:216
+#, kde-format
+msgid "Game Resumed!"
+msgstr "Spēle atjaunota!"
+
+#: KBlocksScene.cpp:217
+#, kde-format
+msgid "Game Paused!"
+msgstr "Spēle nopauzēta!"
+
+#: KBlocksScene.cpp:269
+#, kde-format
+msgid "Game Start!"
+msgstr "Spēle sākta!"
+
+#: KBlocksScene.cpp:275
+#, kde-format
+msgid "Game Over!"
+msgstr "Spēle galā!"
+
+#: KBlocksScene.cpp:281
+#, kde-format
+msgid "You Win!"
+msgstr "Tu uzvarēji!"
+
+#: KBlocksScene.cpp:287
+#, kde-format
+msgid "You Lose!"
+msgstr "Tu zaudēji!"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Galvenā rīkjosla"
+
+#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "Punkti: %1 - Rindas: %2 - Līmenis: %3"
+
+#: KBlocksWin.cpp:284
+#, kde-format
+msgid "Single Game"
+msgstr "Viena spēle"
+
+#: KBlocksWin.cpp:288
+#, kde-format
+msgid "Human vs AI"
+msgstr "Cilvēks pret AI"
+
+#: KBlocksWin.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Play sounds"
+msgid "&Play Sounds"
+msgstr "&Atskaņot skaņas"
+
+#: KBlocksWin.cpp:313
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "Punkti: 0 - Rindas: 0 - Līmenis: 0"
+
+#: main.cpp:391
+#, fuzzy, kde-format
+#| msgid "KBlocks"
+msgid "KBlocks"
+msgstr "KBlocks"
+
+#: main.cpp:393
+#, fuzzy, kde-format
+#| msgid "A falling blocks game for KDE"
+msgid "A falling blocks game by KDE"
+msgstr "Krītošo kluču spēle priekš KDE"
+
+#: main.cpp:395
+#, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "(c) 2007, Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Author"
+msgstr "Autors"
+
+#: main.cpp:399
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Dirk Leifeld"
+
+#: main.cpp:399
+#, kde-format
+msgid "Developer"
+msgstr "Izstrādātājs"
+
+#: main.cpp:400
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr "Zhongjie Cai"
+
+#: main.cpp:400
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr "Jauns KBlocks dizains AI un tetris izpētes platformai"
+
+#: main.cpp:401
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:401
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "KDE4 Oxygen grafika"
+
+#: main.cpp:407
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+"Iestatīt kblocks spēles režīmu.\n"
+"\t0 = Darbvirsmas režīms\t1 = Spēles dziņa režīms\n"
+"\t2 = Grafiskās saskarnes režīms\t3 = Spēlētāja režīms"
+
+#: main.cpp:408
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr ""
+"Iestatīt konfigurācijas failu tetris izpētes režīmam. Nav paredzēts "
+"'parastajiem' lietotājiem."
+
+#~ msgid "Theme"
+#~ msgstr "Tēma"
+
+#~ msgid "The difficulty level."
+#~ msgstr "Grūtības līmenis."

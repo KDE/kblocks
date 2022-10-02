@@ -1,0 +1,225 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"PO-Revision-Date: 2012-03-24 04:03+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Сайран Киккарин"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sairan@computer.org"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: config/kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Пайдаланатын графикалық нақышы."
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: config/kblocks.kcfg:14
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Дыбыс эффекттерін орындау керек пе, жоқ па."
+
+#: KBlocksDisplay.cpp:58
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "Ұпай тізімі : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+
+#: KBlocksDisplay.cpp:120
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "Ұпай тізімі : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+
+#: KBlocksKeyboardPlayer.cpp:76
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "Сағат тілі бойынша бұру"
+
+#: KBlocksKeyboardPlayer.cpp:82
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "Сағат жүрісіне қарсы бұру"
+
+#: KBlocksKeyboardPlayer.cpp:88
+#, kde-format
+msgid "Move Piece Left"
+msgstr "Сол жаққа жылжыту"
+
+#: KBlocksKeyboardPlayer.cpp:94
+#, kde-format
+msgid "Move Piece Right"
+msgstr "Оң жаққа жылжыту"
+
+#: KBlocksKeyboardPlayer.cpp:100
+#, kde-format
+msgid "Move Piece Down"
+msgstr "Төмендету"
+
+#: KBlocksKeyboardPlayer.cpp:106
+#, kde-format
+msgid "Drop the Piece"
+msgstr "Тастай салу"
+
+#: KBlocksScene.cpp:216
+#, kde-format
+msgid "Game Resumed!"
+msgstr "Ойын жалғастырылды!"
+
+#: KBlocksScene.cpp:217
+#, kde-format
+msgid "Game Paused!"
+msgstr "Ойын аялдап тұр!"
+
+#: KBlocksScene.cpp:269
+#, kde-format
+msgid "Game Start!"
+msgstr "Ойын басталды!"
+
+#: KBlocksScene.cpp:275
+#, kde-format
+msgid "Game Over!"
+msgstr "Ойын бітті!"
+
+#: KBlocksScene.cpp:281
+#, kde-format
+msgid "You Win!"
+msgstr "Ұтыңыз!"
+
+#: KBlocksScene.cpp:287
+#, kde-format
+msgid "You Lose!"
+msgstr "Ұтылдыңыз!"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Негізгі құралдар"
+
+#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "Есебі: %1 қатар: %2 деңгей: %3"
+
+#: KBlocksWin.cpp:284
+#, kde-format
+msgid "Single Game"
+msgstr "Жалғыз ойын"
+
+#: KBlocksWin.cpp:288
+#, kde-format
+msgid "Human vs AI"
+msgstr "Адам компьютерге қарсы"
+
+#: KBlocksWin.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Play sounds"
+msgid "&Play Sounds"
+msgstr "&Дыбыстарды ойнау"
+
+#: KBlocksWin.cpp:313
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "Есебі: 0 қатар: 0 деңгей: 0"
+
+#: main.cpp:391
+#, fuzzy, kde-format
+#| msgid "KBlocks"
+msgid "KBlocks"
+msgstr "KBlocks"
+
+#: main.cpp:393
+#, fuzzy, kde-format
+#| msgid "A falling blocks game for KDE"
+msgid "A falling blocks game by KDE"
+msgstr "KDE-нің тетрис - тектес ойыны"
+
+#: main.cpp:395
+#, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "(c) 2007, Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Author"
+msgstr "Авторы"
+
+#: main.cpp:399
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Dirk Leifeld"
+
+#: main.cpp:399
+#, kde-format
+msgid "Developer"
+msgstr "Құрастырушысы"
+
+#: main.cpp:400
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr "Zhongjie Cai"
+
+#: main.cpp:400
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr "KBlocks-тың компьютерге қарсы ойынның жаңа көрнісі"
+
+#: main.cpp:401
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:401
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "KDE4-тің Oxygen көркемділігі"
+
+#: main.cpp:407
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+"Kblocks ойынның жегу күйін баптау.\n"
+"\t0 = Үстел режімі\t1 = Ойын тетігі режімі\n"
+"\t2 = Графикалық режімі\t3 = Ойыншы режімі"
+
+#: main.cpp:408
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr ""
+"Тетрис зерттеуші режімінің параметр файлын баптау. Үстел пайдаланушыларға "
+"емес."
+
+#~ msgid "Theme"
+#~ msgstr "Нақыш"
+
+#~ msgid "The difficulty level."
+#~ msgstr "Қиындық деңгейін орнату."

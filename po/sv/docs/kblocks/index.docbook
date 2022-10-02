@@ -1,0 +1,529 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Handbok &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-04</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; är &kde;:s version av det klassiska spelet med fallande block.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>block</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+<note
+><title
+>Speltyp:</title
+><para
+>Logik, spelhall</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Antal möjliga spelare:</title
+><para
+>En</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; är det klassiska spelet med fallande block. Idén är att lägga de fallande blocken på ett sätt så att rader fullständigt fylls. När en rad är färdig tas den bort, och mer utrymme blir tillgängligt i spelområdet. När det inte finns tillräckligt med utrymme för block att falla är spelet slut. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Hur man spelar</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelbrädet i &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Syfte:</title
+><para
+>Rotera de fallande blocken, och passa ihop dem för att göra färdigt rader och rensa spelfältet.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Normalt kan fallande block flyttas åt vänster eller höger med piltangenterna <keycap
+>Vänster</keycap
+> eller <keycap
+>Höger</keycap
+>. Piltangenten <keycap
+>Neråt</keycap
+> gör att blocket faller snabbare, och tangenten <keycap
+>Uppåt</keycap
+> används för att rotera blocket. Tangenterna som används för varje åtgärd i spelet kan anpassas med menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+></menuchoice
+>. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spelregler, strategi och tips</title>
+<sect1 id="rules">
+<title
+>Regler</title>
+<itemizedlist>
+<listitem
+><para
+>Reglerna är enkla: se bara till att ha utrymme för de fallande blocken!</para
+></listitem>
+<listitem
+><para
+>När ett nytt block inte kan falla är spelet slut.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategi och tips</title>
+<itemizedlist>
+<listitem
+><para
+>Glöm inte bort att kontrollera området med förhandsgranskningen: det visar nästa block som kommer att släppas ner.</para
+></listitem>
+<listitem
+><para
+>Försök ta bort flera rader på en gång för att få extra poäng.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Kommandon/snabbtangenter</title>
+
+<para
+>Följande avsnitt beskriver kortfattat varje alternativ i menyraden.</para>
+
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ensamt spel</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Startar ett nytt spel för en ensam spelare.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Människa mot dator</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Jämför din skicklighet med datorn och spela mot den med samma följd av fallande block, där du börjar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Gör paus i spelet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa bästa resultat</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Det här visar dig bästa resultaten (de maximala antalen poäng) för varje svårighetsnivå.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Avslutar</action
+> &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Svårighetsnivå</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Låter dig ange svårighetsnivån från en undermeny.</para>
+<para
+>Det finns tre svårighetsnivåer: <guimenuitem
+>Lätt</guimenuitem
+> (spelet börjar på nivå 0), <guimenuitem
+>Normal</guimenuitem
+> (börjar på nivå 5) och <guimenuitem
+>Svår</guimenuitem
+> (börjar på nivå 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Dessutom har &kblocks; de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Förvalda snabbtangenter</title>
+<para
+>Följande tabell visar dig de förvalda snabbtangenterna.</para>
+
+<table>
+<title
+>Snabbtangenter</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Tangentkombination</entry
+><entry
+>Åtgärd</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Ensamt spel</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Avsluta &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Handbok &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Vad är det här? hjälp</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Visa bästa resultat</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Gör paus i spelet</entry
+></row>
+<row
+><entry
+>Högerpil</entry
+><entry
+>Flytta blocket åt höger</entry
+></row>
+<row
+><entry
+>Vänsterpil</entry
+><entry
+>Flytta blocket åt vänster</entry
+></row>
+<row
+><entry
+>Neråtpil</entry
+><entry
+>Flytta blocket neråt</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Rotera blocket medurs</entry
+></row>
+<row
+><entry
+>Uppåtpil</entry
+><entry
+>Rotera blocket moturs</entry
+></row>
+<row
+><entry
+>Mellanslag</entry
+><entry
+>Släpp blocket</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>De här tangentbindningarna kan ändras genom att välja <menuchoice
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+> </menuchoice
+> från menyraden.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Vanliga frågor</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kan man ändra spelets utseende? </para>
+</question>
+<answer>
+<para
+>Ja. Klicka på menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &kblocks;...</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Spelinställningar</title>
+<para
+>Spelinställningarna kan anpassas genom att välja <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &kblocks;...</guimenuitem
+></menuchoice
+> i menyraden. En dialogruta visas. </para>
+		<para
+>Markera helt enkelt temat i urvalslistan för att välja ett nytt tema. Varje objekt i listan visar en liten förhandsgranskning till vänster om temats namn. En markering verkställs omedelbart. </para>
+		<para
+>När du väl är nöjd med temat du har valt kan du antingen klicka på knappen <guibutton
+>Stäng</guibutton
+>, som finns längst ner i dialogrutan. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Tack till och licens</title>
+
+<para
+>&kblocks; Copyright 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Upphovsman</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentation copyright 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

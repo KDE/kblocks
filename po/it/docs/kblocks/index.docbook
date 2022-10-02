@@ -1,0 +1,519 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Manuale di &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Federico</firstname
+><surname
+>Zenith</surname
+><affiliation
+><address
+><email
+>federico.zenith@member.fsf.org</email
+></address
+></affiliation
+><contrib
+>Traduzione in italiano</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-04</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; è la versione per &kde; del classico gioco dei blocchi in caduta libera.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>gioco</keyword>
+<keyword
+>blocchi</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduzione</title>
+<note
+><title
+>Tipo di gioco:</title
+><para
+>Logica, arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Numero possibile di giocatori:</title
+><para
+>Uno</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; è il classico gioco di blocchi in caduta libera. L'idea è impilarli in modo da riempire completamente delle righe. Quando una riga è completata viene rimossa, e c'è più spazio a disposizione nell'area di gioco. Quando non c'è più abbastanza spazio per far cadere i blocchi, la partita finisce. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Come si gioca</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabellone di gioco di &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Obbiettivo:</title
+><para
+>Ruota i blocchi in caduta, e inseriscili in modo da completare le righe e ripulire il campo di gioco.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Come impostazione predefinita, i blocchi possono essere spostati a destra o a sinistra durante la caduta usando i tasti freccia &Right; e &Left;. Il tasto freccia &Down; fa cadere il blocco più velocemente, e il tasto freccia &Up; viene usato per ruotare il blocco. Tutti i tasti usati per le azioni di gioco possono essere configurati in <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura le scorciatoie</guimenuitem
+></menuchoice
+>. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Regole del gioco, strategie e suggerimenti</title>
+<sect1 id="rules">
+<title
+>Regole</title>
+<itemizedlist>
+<listitem
+><para
+>Le regole sono semplici: lascia spazio per far cadere i blocchi.</para
+></listitem>
+<listitem
+><para
+>Quando un blocco non può cadere, la partita finisce.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategie e suggerimenti</title>
+<itemizedlist>
+<listitem
+><para
+>Non dimenticare di controllare l'area di anteprima: mostra il prossimo blocco che verrà sganciato.</para
+></listitem>
+<listitem
+><para
+>Per avere più punti, prova a rimuovere più righe alla volta.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Comandi e scorciatoie da tastiera</title>
+
+<para
+>Le sezioni seguenti descrivono brevemente ogni opzione della barra dei menu.</para>
+
+<sect1 id="menu">
+<title
+>Elementi dei menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Partita singola</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Avvia una nuova partita con un solo giocatore.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+> <guimenuitem
+>Umano contro computer</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Confrontati con l'intelligenza artificiale del computer con la stessa sequenza di blocchi in caduta, dove avrai il primo turno.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Mette in pausa il gioco.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Mostra la classifica</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Questo mostra la classifica (secondo il numero di punti) per ogni livello di difficoltà.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Esci</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Esce</action
+> da &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guisubmenu
+>Difficoltà</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ti permette di impostare il livello di difficoltà con un sottomenu.</para>
+<para
+>Ci sono tre livelli di difficoltà: <guimenuitem
+>Facile</guimenuitem
+> (il gioco parte dal livello 0), <guimenuitem
+>Medio</guimenuitem
+> (parte dal livello 5), e <guimenuitem
+>Difficile</guimenuitem
+> (parte dal livello 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Inoltre, &kblocks; ha i normali elementi dei menu di &kde; <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+>; per maggiori informazioni leggi le sezioni sul <ulink url="help:/fundamentals/menus.html#menus-settings"
+>menu Impostazioni</ulink
+> e sul <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei Fondamentali di &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Scorciatoie da tastiera predefinite</title>
+<para
+>La tabella seguente mostra le scorciatoie da tastiera predefinite.</para>
+
+<table>
+<title
+>Scorciatoie da tastiera</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Combinazione di tasti</entry
+><entry
+>Azione</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Partita singola</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Esce da &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Manuale di &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Aiuto «Che cos'è?»</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Mostra la classifica</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Metti in pausa il gioco</entry
+></row>
+<row
+><entry
+>Freccia &Right;</entry
+><entry
+>Sposta il blocco a destra</entry
+></row>
+<row
+><entry
+>Freccia &Left;</entry
+><entry
+>Sposta il blocco a sinistra</entry
+></row>
+<row
+><entry
+>Freccia &Down;</entry
+><entry
+>Sposta il blocco in giù</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Ruota il blocco in senso orario</entry
+></row>
+<row
+><entry
+>Freccia &Up;</entry
+><entry
+>Ruota il blocco in senso antiorario</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Butta il blocco</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Queste scorciatoie possono essere cambiate selezionando <menuchoice
+> <guimenu
+>Impostazioni</guimenu
+> <guimenuitem
+>Configura le scorciatoie</guimenuitem
+></menuchoice
+> dalla barra dei menu.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Domande ricorrenti</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Posso cambiare l'aspetto del gioco? </para>
+</question>
+<answer>
+<para
+>Sì, fai clic sul menu <guimenu
+>Impostazioni</guimenu
+> e seleziona <guimenuitem
+>Configura &kblocks;...</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Impostazioni del gioco</title>
+<para
+>Le impostazioni del gioco possono essere configurate selezionando <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &kblocks;</guimenuitem
+></menuchoice
+> dalla barra dei menu. Apparirà una finestra. </para>
+		<para
+>Per scegliere un nuovo tema, seleziona il tema nella lista. Ciascun elemento nella lista mostra una piccola anteprima a sinistra del nome del tema. La scelta è applicata immediatamente. </para>
+		<para
+>Una volta che sei soddisfatto del tema selezionato, puoi fare clic sul pulsante <guibutton
+>Chiudi</guibutton
+> che si trova in fondo alla finestra. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Riconoscimenti e licenza</title>
+
+<para
+>&kblocks; Copyright 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Autore</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright della documentazione 2008 di &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Traduzione di Federico Zenith <email
+>federico.zenith@member.fsf.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

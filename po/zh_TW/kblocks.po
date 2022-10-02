@@ -1,0 +1,221 @@
+# translation of kblocks.po to Chinese Traditional
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2008, 2009, 2010, 2015.
+# Jeff Huang <s8321414@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: kblocks\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"PO-Revision-Date: 2017-07-03 20:36+0800\n"
+"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
+"Language-Team: Chinese <kde-i18n-doc@kde.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"dot tw>\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Franklin Weng, Jeff Huang"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "franklin@goodhorse.idv.tw, s8321414@gmail.com"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: config/kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "要使用的圖形主題。"
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: config/kblocks.kcfg:14
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "是否要播放音效。"
+
+#: KBlocksDisplay.cpp:58
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "分數列表：0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+
+#: KBlocksDisplay.cpp:120
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "分數列表：%1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+
+#: KBlocksKeyboardPlayer.cpp:76
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "順時針旋轉"
+
+#: KBlocksKeyboardPlayer.cpp:82
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "逆時針旋轉"
+
+#: KBlocksKeyboardPlayer.cpp:88
+#, kde-format
+msgid "Move Piece Left"
+msgstr "往左移"
+
+#: KBlocksKeyboardPlayer.cpp:94
+#, kde-format
+msgid "Move Piece Right"
+msgstr "往右移"
+
+#: KBlocksKeyboardPlayer.cpp:100
+#, kde-format
+msgid "Move Piece Down"
+msgstr "往下移"
+
+#: KBlocksKeyboardPlayer.cpp:106
+#, kde-format
+msgid "Drop the Piece"
+msgstr "丟棄這一塊"
+
+#: KBlocksScene.cpp:216
+#, kde-format
+msgid "Game Resumed!"
+msgstr "遊戲回復"
+
+#: KBlocksScene.cpp:217
+#, kde-format
+msgid "Game Paused!"
+msgstr "遊戲暫停"
+
+#: KBlocksScene.cpp:269
+#, kde-format
+msgid "Game Start!"
+msgstr "遊戲開始"
+
+#: KBlocksScene.cpp:275
+#, kde-format
+msgid "Game Over!"
+msgstr "遊戲結束"
+
+#: KBlocksScene.cpp:281
+#, kde-format
+msgid "You Win!"
+msgstr "您贏了"
+
+#: KBlocksScene.cpp:287
+#, kde-format
+msgid "You Lose!"
+msgstr "您輸了"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "主工具列"
+
+#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "分數：%1─消掉列數：%2─關卡：%3"
+
+#: KBlocksWin.cpp:284
+#, kde-format
+msgid "Single Game"
+msgstr "單人遊戲"
+
+#: KBlocksWin.cpp:288
+#, kde-format
+msgid "Human vs AI"
+msgstr "人類對電腦"
+
+#: KBlocksWin.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Play sounds"
+msgid "&Play Sounds"
+msgstr "播放音效(&P)"
+
+#: KBlocksWin.cpp:313
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "分數：0─消掉列數：0─關卡：0"
+
+#: main.cpp:391
+#, kde-format
+msgid "KBlocks"
+msgstr "KBlocks"
+
+#: main.cpp:393
+#, kde-format
+msgid "A falling blocks game by KDE"
+msgstr "KDE 製作的掉落的方塊遊戲"
+
+#: main.cpp:395
+#, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "(c) 2007, Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Author"
+msgstr "作者"
+
+#: main.cpp:399
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Dirk Leifeld"
+
+#: main.cpp:399
+#, kde-format
+msgid "Developer"
+msgstr "開發者"
+
+#: main.cpp:400
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr "Zhongjie Cai"
+
+#: main.cpp:400
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr "KBlocks 的人工智慧與俄羅斯方塊研究平台的新設計"
+
+#: main.cpp:401
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:401
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "KDE4 的 Oxygen 主題"
+
+#: main.cpp:407
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+"設定 kblocks 遊戲執行模式。\n"
+"\t0 = 桌面模式\t1 = 遊戲引擎模式\n"
+"\t2 = 圖形介面模式\t3 = 玩家模式"
+
+#: main.cpp:408
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr "設定俄羅斯方塊研究者模式的設定檔。不是給桌面使用者的。"
+
+#~ msgid "Theme"
+#~ msgstr "主題"

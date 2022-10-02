@@ -1,0 +1,228 @@
+# Translation of kblocks.po into Serbian.
+# Slobodan Simic <slsimic@gmail.com>, 2009, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2015, 2016, 2017.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kblocks\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-12 03:21+0200\n"
+"PO-Revision-Date: 2017-04-07 00:52+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+"X-Generator: Lokalize 1.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Слободан Симић"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "slsimic@gmail.com"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Жељена графичка тема."
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: kblocks.kcfg:14
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Да ли пуштати звучне ефекте."
+
+#: KBlocksDisplay.cpp:51
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "списак резултата: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+
+#: KBlocksDisplay.cpp:113
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "списак резултата: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+
+#: KBlocksKeyboardPlayer.cpp:79
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "Ротирај део удесно"
+
+#: KBlocksKeyboardPlayer.cpp:85
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "Ротирај део улево"
+
+#: KBlocksKeyboardPlayer.cpp:91
+#, kde-format
+msgid "Move Piece Left"
+msgstr "Помери део улево"
+
+#: KBlocksKeyboardPlayer.cpp:97
+#, kde-format
+msgid "Move Piece Right"
+msgstr "Помери део удесно"
+
+#: KBlocksKeyboardPlayer.cpp:103
+#, kde-format
+msgid "Move Piece Down"
+msgstr "Помери део надоле"
+
+#: KBlocksKeyboardPlayer.cpp:109
+#, kde-format
+msgid "Drop the Piece"
+msgstr "Спусти део"
+
+#: KBlocksScene.cpp:220
+#, kde-format
+msgid "Game Resumed!"
+msgstr "Игра је настављена!"
+
+#: KBlocksScene.cpp:221
+#, kde-format
+msgid "Game Paused!"
+msgstr "Игра је паузирана!"
+
+#: KBlocksScene.cpp:273
+#, kde-format
+msgid "Game Start!"
+msgstr "Игра је покренута!"
+
+#: KBlocksScene.cpp:279
+#, kde-format
+msgid "Game Over!"
+msgstr "Крај игре!"
+
+#: KBlocksScene.cpp:285
+#, kde-format
+msgid "You Win!"
+msgstr "Победили сте!"
+
+#: KBlocksScene.cpp:291
+#, kde-format
+msgid "You Lose!"
+msgstr "Изгубили сте!"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Главна трака"
+
+# >> @info:status
+#: KBlocksWin.cpp:131 KBlocksWin.cpp:230
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "поена: %1 — редова: %2 — ниво: %3"
+
+#: KBlocksWin.cpp:220
+#, kde-format
+msgid "Theme"
+msgstr "Тема"
+
+#: KBlocksWin.cpp:271
+#, kde-format
+msgid "Single Game"
+msgstr "Једна партија"
+
+#: KBlocksWin.cpp:275
+#, kde-format
+msgid "Human vs AI"
+msgstr "Човек пр. ВИ"
+
+# >> @option:check
+#: KBlocksWin.cpp:291
+#, kde-format
+msgid "&Play sounds"
+msgstr "&Пуштај звукове"
+
+# >> @info:status
+#: KBlocksWin.cpp:298
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "поена: 0 — редова: 0 — ниво: 0"
+
+#: main.cpp:318
+#, kde-format
+msgid "KBlocks"
+msgstr "К‑блокови"
+
+#: main.cpp:320
+#, kde-format
+msgid "A falling blocks game by KDE"
+msgstr "Игра падајућих блокова из КДЕ‑а"
+
+#: main.cpp:322
+#, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "© 2007, Мауричо Пјаћентини"
+
+#: main.cpp:323
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Мауричо Пјаћентини"
+
+#: main.cpp:323
+#, kde-format
+msgid "Author"
+msgstr "Аутор"
+
+#: main.cpp:324
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Дирк Лајфелд"
+
+#: main.cpp:324
+#, kde-format
+msgid "Developer"
+msgstr "Програмер"
+
+#: main.cpp:325
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr "Џонгђи Цај"
+
+#: main.cpp:325
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr "Нови дизајн К‑блокова за ВИ и платформа за истраживање тетриса"
+
+#: main.cpp:326
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Јохан Оливје Лапер"
+
+#: main.cpp:326
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "Кисеоничка графика за КДЕ‑4"
+
+#: main.cpp:333
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+"Режим рада К‑блокова.\n"
+"\t0 = режим површи\t1 = режим мотора игре\n"
+"\t2 = режим ГУИ‑ја\t3 = режим играча"
+
+# skip-rule: t-desktop, t-desktop2
+#: main.cpp:334
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr ""
+"Подеси поставни фајл за режим истраживача тетриса. Није за обичне кориснике."

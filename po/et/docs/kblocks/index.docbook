@@ -1,0 +1,555 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kblocks;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>&kblocks;i käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2013-05-05</date>
+<releaseinfo
+>0.3 (&kde; 4.11)</releaseinfo>
+
+<abstract
+><para
+>&kblocks; on klassikalise langevate klotside mängu &kde; versioon.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>mäng</keyword>
+<keyword
+>klotsid</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+<note
+><title
+>Mängu tüüp:</title
+><para
+>loogikamäng, arkaadmäng</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Mängijate arv:</title
+><para
+>Üks</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; on klassikaline langevate klotside mäng. Selle mõte on asetada langevad klotsid nii, et read saaksid täis. Kui rida on täis, see eemaldatakse ning mänguväljale tekib ruumi juurde. Kui klotsil ei ole enam ruumi langeda, on mäng läbi. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Kuidas mängida</title>
+<note
+><title
+>Eesmärk:</title
+><para
+>pöörata langevaid klotse ja sobitada nad kokku, et tekiks täisrida, mis kaob ja annab mänguväljale ruumi juurde.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Vaikimisi saab langevaid klotse liigutada vasakule või paremale klahvidega <keycap
+>Nool vasakule</keycap
+> või <keycap
+>Nool paremale</keycap
+>. <keycap
+>Nool alla</keycap
+> paneb klotsi kiiremini langema, <keycap
+>Nool üles</keycap
+> aga pöörab klotsi. Kõigi mängutoimingute jaoks kasutatavaid klahve saab seadistada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Kiirklahvide seadistamine...</guimenuitem
+></menuchoice
+> </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Mängureeglid, strateegia ja nõuanded</title>
+<sect1 id="rules">
+<title
+>Reeglid</title>
+<itemizedlist>
+<listitem
+><para
+>Reeglid on imelihtsad: taga klotsidele piisav ruum langemiseks!</para
+></listitem>
+<listitem
+><para
+>Kui klotsil pole kuhugi langeda, on mäng läbi.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strateegia ja nõuanded</title>
+<itemizedlist>
+<listitem
+><para
+>Jälgi alati eelvaatluse ala, kus näeb, milline klots järgmisena ilmub.</para
+></listitem>
+<listitem
+><para
+>Lisapunktide hankimiseks püüa eemaldada korraga mitu rida.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Käsud/kiirklahvid</title>
+
+<para
+>Allpool on kirjeldatud lühidalt kõiki menüükirjeid.</para>
+
+<sect1 id="menu">
+<title
+>Menüükirjed</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Ühe mängijaga mäng</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Alustab uut ühe mängijaga mängu.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Inimene arvuti vastu</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Võimaldab võrrelda oma oskusi tehisintelligentsi omaga ning mängida arvuti vastu samasuguse langevate plokkide jagada, kus sinu päralt on esimene käik.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+></shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Peatab mängu.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Näita rekordeid</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Näitab iga raskusastme edetabelit (maksimumpunkte).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Lõpetab</action
+> &kblocks;i töö.</para
+></listitem>
+</varlistentry>
+<!--FIXME when is sound played ? see https://bugs.kde.org/show_bug.cgi?id=319372
+<varlistentry>
+<term
+><menuchoice>
+<shortcut>
+<keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo>
+</shortcut>
+<guimenu
+>Settings</guimenu>
+<guimenuitem
+>Play sound</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>???</para
+></listitem>
+</varlistentry>
+-->
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guisubmenu
+>Raskusaste</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Võimaldab alammenüüst valida mängu raskusastme.</para>
+<para
+>Raskusastmeid on kolm: <guimenuitem
+>Kerge</guimenuitem
+> (mäng algab tasemel 0), <guimenuitem
+>Keskmine</guimenuitem
+> (mäng algab tasemel 5) ja <guimenuitem
+>Raske</guimenuitem
+> (mäng algab tasemel 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Lisaks on &kblocks;il tavapärased &kde; <guimenu
+>seadistuste</guimenu
+> ja <guimenu
+>abi</guimenu
+>menüü elemendid, mille kohta leiab rohkem teavet &kde; põhialuste käsiraamatu osadest <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Menüü Seadistused</ulink
+> ja <ulink url="help:/fundamentals/ui.html#menus-help"
+>Menüü Abi</ulink
+>. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Vaikimisi kiirklahvid</title>
+<para
+>Järgnev tabel näitab vaikimisi kiirklahve.</para>
+
+<table>
+<title
+>Kiirklahvid</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Klahvikombinatsioon</entry
+><entry
+>Toiming</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Ühe mängijaga mäng</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>&kblocks;i töö lõpetamine</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>&kblocks;i käsiraamat</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>'Mis see on?' abi</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Rekordite näitamine</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Mängu peatamine</entry
+></row>
+<row
+><entry
+><keycap
+>Nool paremale</keycap
+></entry
+><entry
+>Klotsi liigutamine paremale</entry
+></row>
+<row
+><entry
+><keycap
+>Nool vasakule</keycap
+></entry
+><entry
+>Klotsi liigutamine vasakule</entry
+></row>
+<row
+><entry
+><keycap
+>Nool alla</keycap
+></entry
+><entry
+>Klotsi liigutamine alla</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Klotsi pööramine päripäeva</entry
+></row>
+<row
+><entry
+><keycap
+>Nool üles</keycap
+></entry
+><entry
+>Klotsi pööramine vastupäeva</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Kiirklahve võib muuta menüüst <menuchoice
+> <guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Kiirklahvide seadistamine...</guimenuitem
+> </menuchoice
+></para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Korduma Kippuvad Küsimused</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kuidas muuta mängu välimust? </para>
+</question>
+<answer>
+<para
+>Selleks vali menüü <guimenu
+>Seadistused</guimenu
+> ja sealt <guimenuitem
+>&kblocks;i seadistamine...</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Mängu seadistused</title>
+<para
+>Mängu saab seadistada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>&kblocks;i seadistamine...</guimenuitem
+></menuchoice
+>, mille peale ilmub dialoog. </para>
+		<para
+>Uue teema valimiseks vali see lihtsalt loendist. Kõigi nimekirja elementide juures on teena nimest vasakul näha väike eelvaatlus. Valik rakendatakse kohe. </para>
+		<para
+>Kui oled valitud teemaga rahul, klõpsa nupule <guibutton
+>Sulge</guibutton
+>, mis asub dialoogi allosas. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Autorid ja litsents</title>
+
+<para
+>&kblocks;i autoriõigus 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Autor</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentatsiooni autoriõigus 2008: &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="getting-kblocks">
+<title
+>&kblocks;i hankimine</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

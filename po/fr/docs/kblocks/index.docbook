@@ -1,0 +1,510 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Manuel de &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+&traducteurStanislasZeller;&traducteurXavierBesnard; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>04-06-2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; est la version &kde; du célèbre <trademark
+>Tétris</trademark
+>.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>jeu</keyword>
+<keyword
+>blocs</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduction</title>
+<note
+><title
+>Type de jeu : </title
+><para
+>Logique, arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Un</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; est le jeu classique de <trademark
+>Tétris</trademark
+>. L'idée est d'empiler les blocs tombant d'une certaine manière pour que des lignes soient complétées. Quand une ligne est complétée, elle est supprimée, et plus d'espace est disponible sur l'aire de jeu. Quand il n'y a plus assez d'espace pour que les blocs puissent tomber, la partie est terminée. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Comment jouer</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Le jeu de plateau &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Objectif : </title
+><para
+>Pivoter des blocs qui tombent, et faites les s'adapter ensemble pour compléter des lignes et nettoyer l'aire de jeu.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Par défaut, les blocs qui tombent peuvent être déplacés sur la gauche ou la droite en utilisant les flèches &Left; et &Right; . La flèche &Down; fait descendre le bloc plus vite et la flèche &Up; est utilisée pour faire pivoter le bloc. Les touches pour chaque action du jeu peuvent être configurées dans <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+></menuchoice
+>.
+> </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Règles du jeu, stratégies et astuces</title>
+<sect1 id="rules">
+<title
+>Règles</title>
+<itemizedlist>
+<listitem
+><para
+>Les règles sont simples : libérez de l'espace pour que les blocs puissent tomber !</para
+></listitem>
+<listitem
+><para
+>Quand un nouveau bloc ne peut pas tomber, la partie est terminée.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Stratégies et astuces</title>
+<itemizedlist>
+<listitem
+><para
+>N'oubliez pas de vérifier la zone d'aperçu : elle affiche la pièce suivante qui va être affichée sur l'écran.</para
+></listitem>
+<listitem
+><para
+>Pour les points additionnels, essayez de supprimer le plus de lignes à la fois.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Raccourcis des commandes et clavier</title>
+
+<para
+>Les sections suivantes décrivent brièvement chaque option de la barre de menu.</para>
+
+<sect1 id="menu">
+<title
+>Éléments de menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau Jeu</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Démarre une nouvelle partie avec un seul joueur.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Humains contre IA</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Comparer votre expérience avec celle de l'IA et jouer contre l'ordinateur en utilisant la même séquence de blocs tombants, pour une partir que vous avez démarrée.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Met en pause la partie.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Affiche le meilleur score (le nombre maximal de points) pour chaque niveau de difficulté.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Quitte</action
+> &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Difficulté</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Configure le niveau de difficulté depuis un sous-menu.</para>
+<para
+>Il y a trois niveau de difficulté : <guimenuitem
+>Facile</guimenuitem
+> (le jeu démarre au niveau 0), <guimenuitem
+>Moyen</guimenuitem
+> (démarre au niveau 5), et <guimenuitem
+>Difficile</guimenuitem
+> (démarre au niveau 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>En plus, &kblocks; possède des éléments communs de menu &kde; <guimenu
+>Configuration</guimenu
+> et <guimenu
+>Aide</guimenu
+>. Pour plus d'informations, veuillez consulter les sections <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu de configuration</ulink
+> et <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu d'aide</ulink
+> des fondamentaux de &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Raccourcis clavier par défaut</title>
+<para
+>Le tableau suivant affiche les raccourcis clavier par défaut.</para>
+
+<table>
+<title
+>Raccourcis clavier</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Combinaison de touches</entry
+><entry
+>Action</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Nouvelle partie</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Quitte &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Le manuel de &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Qu'est-ce que c'est ? A l'aide.</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Affiche les meilleurs scores</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Met en pause la partie</entry
+></row>
+<row
+><entry
+>Flèche &Right;</entry
+><entry
+>Déplace le bloc sur la droite</entry
+></row>
+<row
+><entry
+>Flèche &Left;</entry
+><entry
+>Déplace le bloc sur la gauche</entry
+></row>
+<row
+><entry
+>Flèche &Down;</entry
+><entry
+>Déplace le bloc vers le bas</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Pivote le bloc sur la droite</entry
+></row>
+<row
+><entry
+>Flèche &Up;</entry
+><entry
+>Pivote le bloc sur la gauche</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Déplacer le bloc</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Ces raccourcis peuvent être modifiés en sélectionnant <menuchoice
+> <guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+> </menuchoice
+> depuis la barre de menu.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Foire aux questions</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ? </para>
+</question>
+<answer>
+<para
+>Oui. Cliquez sur l'élément de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kblocks;...</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Configuration du jeu</title>
+<para
+>La configuration du jeu peut être effectuée en sélectionnant <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kblocks;...</guimenuitem
+></menuchoice
+> depuis la barre de menu. Une boîte de dialogue apparaîtra. </para>
+		<para
+>Pour sélectionner un nouveau thème, le choisir simplement dans la liste de sélection. Chaque élément dans la liste affiche un aperçu réduit à gauche du nom du thème. Une sélection est immédiatement prise en compte. </para>
+		<para
+>Une fois que vous êtes satisfait avec le thème que vous avez choisi, vous pouvez cliquer sur le bouton <guibutton
+>Fermer</guibutton
+> situé au bas de cette boîte de dialogue. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Remerciements et licence</title>
+
+<para
+>Copyright de &kblocks; 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Auteur</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentation 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Traduction française par &StanislasZeller; et &XavierBesnard;.</para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

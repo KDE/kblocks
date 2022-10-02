@@ -1,0 +1,527 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Підручник з &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>4 червня 2021 року</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; — це версія для &kde; класичної гри з падаючими блоками.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>гра</keyword>
+<keyword
+>блоки</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+<note
+><title
+>Тип гри:</title
+><para
+>Логічна, аркада</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Можлива кількість гравців:</title
+><para
+>Один</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; — це класична гра з падаючими блоками. Мета гри полягає у тому, щоб розташовувати падаючі блоки так, щоб вони повністю заповнювали ряди. Після повного заповнення ряду його буде вилучено, і у області для гри з’явиться більше простору. Якщо для падіння наступного блоку місця вже не буде, гру буде завершено. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Як грати</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ігрове поле &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Мета:</title
+><para
+>Обертайте блоки, що падають і вкладайте їх так, щоб вони утворювали суцільні ряди, які вилучатимуться з ігрового поля.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Типово, блоки, що падають, можна пересувати ліворуч або праворуч за допомогою клавіш <keycap
+>Стрілка ліворуч</keycap
+> і <keycap
+>Стрілка праворуч</keycap
+>. Натискання клавіші <keycap
+>Стрілка вниз</keycap
+> пришвидшує падіння блоку, а клавіші <keycap
+>Стрілка вгору</keycap
+> обертає блок. Клавіші, якими виконуватимуться ці дії можна налаштувати за допомогою пункту меню програми <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати скорочення...</guimenuitem
+></menuchoice
+> </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Правила гри, стратегія та поради</title>
+<sect1 id="rules">
+<title
+>Правила</title>
+<itemizedlist>
+<listitem
+><para
+>Правила прості: робіть так, щоб залишався простір для падіння наступних блоків.</para
+></listitem>
+<listitem
+><para
+>Якщо для наступного блоку не буде вільного місця, гру буде завершено.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Стратегія та поради</title>
+<itemizedlist>
+<listitem
+><para
+>Не забувайте поглядати на область попереднього перегляду: там буде показано блок, який падатиме наступним.</para
+></listitem>
+<listitem
+><para
+>Щоб отримати додаткові очки, намагайтеся заповнювати одразу декілька рядків.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Команди і клавіатурні скорочення</title>
+
+<para
+>У цьому розділі коротко описано кожен з пунктів меню.</para>
+
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Гра для одного гравця</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Розпочати гру для одного гравця.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Людина проти Комп’ютера</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Позмагайтеся з комп’ютером, який складатиме блоки, що падатимуть у тій самій послідовності. Ви ходитимете першим.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Призупиняє гру.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати найкращі результати</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>За допомогою цього пункту можна переглянути найкращі результати (з максимальною кількістю набраних очок) для кожного рівня складності.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Завершує роботу</action
+> &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Складність</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Надає вам змогу встановити рівень складності за допомогою підменю.</para>
+<para
+>Існує три типових рівня складності: <guimenuitem
+>Простий</guimenuitem
+> (гра починається з нульового рівня), <guimenuitem
+>Середній</guimenuitem
+> (початок на п’ятому рівні) і <guimenuitem
+>Складний</guimenuitem
+> (початок на десятому рівні).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Крім того, у &kblocks; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Типові скорочення клавіатури</title>
+<para
+>У наступній таблиці наведено типові клавіатурні скорочення.</para>
+
+<table>
+<title
+>Комбінації клавіш</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Комбінація клавіш</entry
+><entry
+>Дія</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Гра для одного гравця</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Вийти з &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Відкрити підручник з &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Довідка «Що це?»</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Показати рекорди</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Призупинити гру</entry
+></row>
+<row
+><entry
+>Стрілка праворуч</entry
+><entry
+>Пересунути блок праворуч</entry
+></row>
+<row
+><entry
+>Стрілка ліворуч</entry
+><entry
+>Пересунути блок ліворуч</entry
+></row>
+<row
+><entry
+>Стрілка вниз</entry
+><entry
+>Опустити блок</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Повернути блок за годинниковою стрілкою</entry
+></row>
+<row
+><entry
+>Стрілка вгору</entry
+><entry
+>Повернути блок проти годинникової стрілки</entry
+></row>
+<row
+><entry
+>Пробіл</entry
+><entry
+>Скинути блок</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Ці клавіатурні скорочення можна змінити за допомогою пункту меню <menuchoice
+> <guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати скорочення...</guimenuitem
+> </menuchoice
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Часті запитання</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Чи можна змінити вигляд гри? </para>
+</question>
+<answer>
+<para
+>Так, відкрийте меню <guimenu
+>Параметри</guimenu
+> і натисніть пункт <guimenuitem
+>Налаштувати &kblocks;...</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Параметри гри</title>
+<para
+>Параметри гри можна налаштувати за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати &kblocks;...</guimenuitem
+></menuchoice
+>. У відповідь на вибір вами цього пункту меню програма відкриє діалогове вікно. </para>
+		<para
+>Щоб вибрати нову тему, просто позначте назву теми у списку для вибору. Ліворуч від кожного з пунктів у списку буде показано невеличке зображення попереднього перегляду. Вибрану тему буде негайно застосовано. </para>
+		<para
+>Після того, як ви виберете бажаний для вас варіант, ви можете натиснути кнопку <guibutton
+>Закрити</guibutton
+>. Цю кнопки розташовано у нижній частині відповідного діалогового вікна. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Подяки і ліцензія</title>
+
+<para
+>Авторські права на програму &kblocks; належать (© 2007-2008) </para>
+
+<itemizedlist>
+<title
+>Автор</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Авторські права на документацію до програми належать &Mauricio.Piacentini; &Mauricio.Piacentini.mail;, ©2008</para>
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

@@ -1,0 +1,501 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+&Freek.de.Kruijf;&Ronald.Stroethoff; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-04</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; is de &kde;-versie van het klassieke vallende blokken spel.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>blokken</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+<note
+><title
+>Speltype:</title
+><para
+>Logisch, Arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Één</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; is het klassieke spel met vallende blokken. Het idee is de vallende blokken zo op te stapelen dat lijnen volledig zijn opgevuld. Wanneer een lijn volledig is opgevuld wordt deze verwijderd en komt er meer ruimte in het speelgebied. Wanneer er onvoldoende ruimte over is om een blok te laten vallen is het spel over. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Hoe te spelen</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het spelbord van &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Doel:</title
+><para
+>Draai de vallende blokken en pas ze in elkaar om complete regels te tonen en het speelveld wissen.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Standaard kunt u de vallende blokken naar links of rechts verplaatsen met behulp van de pijltjestoetsen &Left; of &Right; De pijltjestoets &Down; laat het blok sneller vallen en de toets &Up; laat het blok draaien. U kunt de gebruikte toetsen configureren in het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Sneltoetsen configureren...</guimenuitem
+></menuchoice
+> </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spelregels, strategieën en tips</title>
+<sect1 id="rules">
+<title
+>Regels</title>
+<itemizedlist>
+<listitem
+><para
+>De regels zijn eenvoudig: zorg dat er ruimte is voor de blokken om te vallen!</para
+></listitem>
+<listitem
+><para
+>Het spel is over als een nieuw blok niet kan vallen.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategieën en tips</title>
+<itemizedlist>
+<listitem
+><para
+>Vergeet niet om naar het voorbeeldvenster te kijken: hier kunt u het volgende stuk zien dat gaat vallen.</para
+></listitem>
+<listitem
+><para
+>Voor extra punten, probeer meerdere lijnen tegelijk te verwijderen.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Commando's/Sneltoetsen</title>
+
+<para
+>De volgende secties geven een korte beschrijving van elke menuoptie.</para>
+
+<sect1 id="menu">
+<title
+>Menu-items</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel voor één speler</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Start een nieuw spel voor één speler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Persoon tegen computer</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Vergelijk uw kunde met de AI en speel tegen de computer waarbij de blokjes bij beide spelers in dezelfde volgorde vallen, u mag als eerste spelen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauze</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Pauzeer het spel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Topscores tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>U krijgt de hoogste score (het maximum aantal punten) voor elke moeilijkheidsgraad te zien.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Beëindig</action
+> &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Moeilijkheidsgraad</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Hier kunt u de moeilijkheidsgraad in een submenu selecteren.</para>
+<para
+>Er zijn standaard drie moeilijkheidsgraden: <guimenuitem
+>Gemakkelijk</guimenuitem
+> (spel start op niveau 0), <guimenuitem
+>Gemiddeld</guimenuitem
+> (spel start op niveau 5), en <guimenuitem
+>Moeilijk</guimenuitem
+> (spel start op niveau 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Bovendien heeft &kblocks; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu-instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Standaardsneltoetsen</title>
+<para
+>De volgende tabel toont de standaard sneltoetsen.</para>
+
+<table>
+<title
+>Sneltoetsen</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Toetsencombinatie</entry
+><entry
+>Actie</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Spel voor één speler</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>&kblocks; afsluiten</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Handboek van &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Wat-is-dit?-help</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Topscores tonen</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Pauzeer het spel</entry
+></row>
+<row
+><entry
+>Pijl &Right;</entry
+><entry
+>Blok naar rechts verplaatsen</entry
+></row>
+<row
+><entry
+>Pijl &Left;</entry
+><entry
+>Blok naar links verplaatsen</entry
+></row>
+<row
+><entry
+>Pijl &Down;</entry
+><entry
+>Blok omlaag verplaatsen</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Het blok rechtsom draaien</entry
+></row>
+<row
+><entry
+>Pijl &Up;</entry
+><entry
+>Draai de blokkenteller rechtsom</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Het blok los laten</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Deze sneltoetsen kunt u veranderen in de menubalk <menuchoice
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Sneltoetsen instellen...</guimenuitem
+> </menuchoice
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Veel voorkomende vragen</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kan ik het uiterlijk van dit spel wijzigen? </para>
+</question>
+<answer>
+<para
+>Ja, klik op het menu-item <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&kblocks; configureren...</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Spelinstellingen</title>
+<para
+>De spelinstellingen kunt u veranderen in de menubalk <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&kblocks;... instellen...</guimenuitem
+> </menuchoice
+>. Er verschijnt een dialoog. </para>
+		<para
+>Om een nieuwe thema te selecteren kiest u de naam van het thema uit de lijst. Elk item in de lijst toont een klein voorbeeld links van de naam van het thema. Een selectie wordt onmiddellijk toegepast. </para>
+		<para
+>Nadat u tevreden bent met het thema dat u hebt geselecteerd kunt u op de knop <guibutton
+>Sluiten</guibutton
+> klikken onderaan deze dialoog. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Dankbetuiging en licentie</title>
+
+<para
+>&kblocks; Copyright 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Auteur</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Documentatie copyright 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+&meld.fouten;&vertaling.freek;&vertaling.ronald;&nagelezen.freek; &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

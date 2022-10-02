@@ -1,0 +1,541 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Das Handbuch zu &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Linda-Maria</firstname
+><surname
+>Wirthmann</surname
+><affiliation
+><address
+><email
+>dont.breathe.today@googlemail.com</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-04</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; ist die &kde;-Version des klassischen Tetris.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Spiel</keyword>
+<keyword
+>Blöcke</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Einführung</title>
+<note
+><title
+>Spieltyp</title
+><para
+>Logik, Arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Einer</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; ist ein klassisches Tetris-Spiel. Die herunterfallenden Blöcke müssen so gestapelt werden, dass sie komplett gefüllte Zeilen bilden. Eine solche Zeile verschwindet dann, und im Spielfeld ist wieder mehr Platz. Wenn es keinen Platz mehr für herunterfallende Blöcke gibt, ist das Spiel zu Ende. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Spielanleitung</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&kblocks;-Spielfeld</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Ziel des Spiels:</title
+><para
+>Drehen und stapeln Sie die herunterfallenden Blöcke so, dass die Zeilen durchgehend gefüllt werden und sich das Spielfeld leert.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Per Voreinstellung können die herunterfallenden Blöcke mit den Tasten &Left; und &Right; bewegt werden. Die Taste &Down; erhöht die Fallgeschwindigkeit des Blockes, die Taste &Up; dreht ihn. Die Tasteneinstellungen können über <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Kurzbefehle festlegen ...</guimenuitem
+></menuchoice
+> angepasst werden. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Spielregeln, Spielstrategien und Tipps</title>
+<sect1 id="rules">
+<title
+>Spielregeln</title>
+<itemizedlist>
+<listitem
+><para
+>Die Regeln sind einfach: Schaffen Sie Platz für neue herunterfallende Blöcke!</para
+></listitem>
+<listitem
+><para
+>Wenn ein neuer Block nicht mehr fallen kann, ist das Spiel vorbei.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Spielstrategien und Tipps</title>
+<itemizedlist>
+<listitem
+><para
+>Behalten Sie das Vorschaubild im Auge: es zeigt Ihnen den nächsten Block.</para
+></listitem>
+<listitem
+><para
+>Wenn Sie mehrere Zeilen auf einmal entfernen, erhalten Sie zusätzliche Punkte.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Befehle und Tastenkürzel</title>
+
+<para
+>Im nächsten Abschnitt wird jeder Menüeintrag kurz beschrieben.</para>
+
+<sect1 id="menu">
+<title
+>Menüeinträge</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Einzelspiel</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Startet ein neues Spiel für einen Spieler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Mensch ./. KI</guimenuitem
+>  </menuchoice
+></term>
+<listitem
+><para
+>Messen Sie sich mit der KI und spielen Sie gegen den Rechner. Dabei wird für beide die gleiche Folge fallender Blöcke benutzt, aber Sie haben den ersten Zug.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+>  </menuchoice
+></term>
+<listitem
+><para
+>Hält das Spiel an oder setzt es fort.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Bestenliste anzeigen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Zeigt Ihnen die höchste erreichte Punktzahl für jede Schwierigkeitsstufe.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Beendet</action
+> &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Schwierigkeitsgrad</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Hier können Sie den Schwierigkeitsgrad aus einem Untermenü wählen.</para>
+<para
+>Es gibt drei voreingestellte Schwierigkeitsstufen: <guimenuitem
+>Einfach</guimenuitem
+> (Spiel startet bei Stufe 1), <guimenuitem
+>Mittel</guimenuitem
+> (startet bei Stufe 5), und <guimenuitem
+>Schwer</guimenuitem
+> (startet bei Stufe 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Zusätzlich hat &kblocks; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Standard-Tastenkürzel</title>
+<para
+>Die folgende Tabelle zeigt die Standard-Tastenkürzel.</para>
+
+<table>
+<title
+>Tastenkürzel</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Tastenkombination</entry
+><entry
+>Aktion</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Einzelspiel</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Beendet &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Handbuch zu &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+><quote
+>Was ist das?</quote
+>-Hilfe</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Bestenliste anzeigen</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Hält das Spiel an</entry
+></row>
+<row
+><entry
+>&Right;</entry
+><entry
+>Bewegt den Block nach rechts</entry
+></row>
+<row
+><entry
+>&Left;</entry
+><entry
+>Bewegt den Block nach links</entry
+></row>
+<row
+><entry
+>&Down;</entry
+><entry
+>Erhöht die Geschwindigkeit des fallenden Blocks</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Dreht den Block im Uhrzeigersinn</entry
+></row>
+<row
+><entry
+>&Up;</entry
+><entry
+>Dreht den Block gegen den Uhrzeigersinn</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Lässt den Block fallen</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Diese Tastenbelegungen können Sie im Menü <menuchoice
+> <guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Kurzbefehle festlegen ...</guimenuitem
+> </menuchoice
+> ändern.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Häufig gestellte Fragen</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para>
+</question>
+<answer>
+<para
+>Ja, wählen Sie im Menü <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>&kblocks; einrichten ...</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Spieleinstellungen</title>
+<para
+>Um die Einstellungen für das Spiel zu ändern, öffnen Sie mit <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>&kblocks; einrichten ...</guimenuitem
+> </menuchoice
+> den Einrichtungsdialog. </para>
+		<para
+>Um ein Design einzustellen, wählen Sie es aus der Auswahlliste. Für jeden Eintrag in der Liste wird eine kleine Vorschau links vom Namen des Designs angezeigt. Eine Auswahl wird sofort angewendet, </para>
+		<para
+>Um Ihre Auswahl zu übernehmen, klicken Sie auf den Knopf <guibutton
+>Schließen</guibutton
+> im unteren Bereich dieses Dialogs. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Danksagungen und Lizenz</title>
+
+<para
+>&kblocks; Copyright 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Autor</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Dokumentation Copyright 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Übersetzung Burkhard Lück<email
+>lueck@hube-lueck.de</email
+></para
+> <para
+>Linda-Maria Wirthmann <email
+>dont.breathe.today@googlemail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

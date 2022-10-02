@@ -1,0 +1,615 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "&kblocks;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Polish "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book lang="&language;">
+
+<bookinfo>
+<title
+>Podręcznik &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Krzysztof</firstname
+><surname
+>Woźniak</surname
+> <affiliation
+><address
+><email
+>wozniakk@ceti.pl</email
+></address
+> </affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2008-04-01</date>
+<releaseinfo
+>1.0</releaseinfo>
+
+<abstract
+><para
+>Program &kblocks; to przeznaczona dla &kde; odmiana klasycznej gry spadających bloków.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Gra</keyword>
+<keyword
+>Bloki</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Wprowadzenie</title>
+<note
+><title
+>Rodzaj gry:</title
+><para
+>Logiczna, Zręcznościowa</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Liczba graczy:</title
+><para
+>Jeden</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; jest klasyczną grą polegającą na układaniu spadających bloków. Spadające bloki powinny tworzyć stos, tak aby poszczególne wiersze były całkowicie wypełnione. Jeżeli linia jest skompletowana, to jest usuwana i robi się więcej miejsca w obszarze gry. Jeżeli dla spadających bloków nie ma wystarczająco dużo miejsca, gra się kończy. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Jak grać</title>
+<note
+><title
+>Cel gry:</title
+><para
+>Obracaj spadające bloki, i dopasowuj do siebie aby utworzyć kompletne linie i wyczyścić pole gry.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>Domyślnie, spadające bloki mogą być przesuwane w lewo lub w prawo za pomocą klawiszy strzałek <keycap
+>w lewo</keycap
+> lub <keycap
+>w prawo</keycap
+>. Klawisz <keycap
+>Strzałka w dół</keycap
+> powoduje, że bloki spadają szybciej, a klawisz <keycap
+>Strzałka w górę</keycap
+> obraca blok. Klawisze używane dla poszczególnych funkcji w grze mogą być ustawione w menu<menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+></menuchoice
+> </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Zasady gry, strategia gry i sztuczki</title>
+<sect1 id="rules">
+<title
+>Zasady</title>
+<itemizedlist>
+<listitem
+><para
+>Zasady są proste: dbaj o to, aby dla spadających bloków cały czas było miejsce!</para
+></listitem>
+<listitem
+><para
+>Kiedy nowy blok nie może spaść, gra kończy się.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Strategia i wskazówki</title>
+<itemizedlist>
+<listitem
+><para
+>Nie zapomnij sprawdzać obszaru podglądu: widać na nim, jak będzie wyglądał następny spadający blok.</para
+></listitem>
+<listitem
+><para
+>W celu uzyskania dodatkowych punktów, staraj się wyczyścić kilka linii jednocześnie.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Polecenia/skróty klawiszowe</title>
+
+<para
+>Poniższa sekcje skrótowo opisuje poszczególne opcje menu.</para>
+
+<sect1 id="game-menu">
+<title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+
+<para
+>Menu <guimenu
+>Gra</guimenu
+> składa się z 4 opcji.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Nowa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Rozpoczyna nową grę.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+></shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pauza</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Wstrzymuje grę.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pokaż najlepsze wyniki</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Pokazuje najlepsze wyniki (najwyższe liczby punktów) dla każdego poziomu trudności.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zakończ</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Kończy</action
+> grę &kblocks;</para
+></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu"
+><title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Wyświetl pasek narzędzi</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Włącza lub wyłącza wyświetlanie paska narzędzi.</action
+> Domyślna wartość to: włączony. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Wyświetl pasek stanu</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Włącza lub wyłącza wyświetlanie paska stanu.</action
+> Domyślna wartość to: włączony. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Poziom trudności</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Pozwala na wybranie poziomu trudności z podmenu.</para>
+<para
+>Gra oferuje trzy domyślne poziomy trudności <guimenuitem
+>Łatwy</guimenuitem
+> (gra rozpoczyna się na poziomie 0), <guimenuitem
+>Średni</guimenuitem
+> (początek na poziomie 5), i <guimenuitem
+>Trudny</guimenuitem
+> (początek na poziomie 10).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Ta opcja pozwala na zmianę skrótów klawiszowych wykorzystywanych w &kblocks;, dotyczy to także klawiszy używanych do obracania bloków zgodni i przeciwnie do ruchów wskazówek zegara.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Konfiguruje</action
+> paski narzędzi programu &kblocks;. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kblocks;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Opcja pozwala na zmianę ustawień gry. Więcej na ten temat w sekcji <link linkend="settings"
+>Ustawienia gry</link
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help-menu">
+<title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+<sect1 id="keys"
+><title
+>Domyślne skróty klawiatury</title>
+<para
+>Tabela ta pokazuje domyślne skróty klawiszowe.</para>
+
+
+<table>
+<title
+>Skróty klawiszowe</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Kombinacja klawiszy</entry
+><entry
+>Działanie</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Nowa gra</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Zakończenie &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Podręcznik &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Pomoc - Co to jest?</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Pokaż najlepsze wyniki</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Wstrzymaj grę</entry
+></row>
+<row
+><entry
+><keycap
+>Strzałka w prawo</keycap
+></entry
+><entry
+>Przesuwa blok w prawo</entry
+></row>
+<row
+><entry
+><keycap
+>Strzałka w lewo</keycap
+></entry
+><entry
+>Przesuwa blok w lewo</entry
+></row>
+<row
+><entry
+><keycap
+>Strzałka w dół</keycap
+></entry
+><entry
+>Przesuwa blok w dół</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Obróć blok zgodnie z ruchem wskazówek zegara</entry
+></row>
+<row
+><entry
+><keycap
+>Strzałka w górę</keycap
+></entry
+><entry
+>Obróć blok przeciwnie do ruchu wskazówek zegara</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Skróty klawiszowe mogą być zmienione w menu <menuchoice
+> <guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Najczęściej zadawane pytania</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Chciałbym zmienić wygląd gry? </para>
+</question>
+<answer>
+<para
+>Tak, wybierz menu <guimenu
+>Ustawienia</guimenu
+> i <guimenuitem
+>Konfiguracja &kblocks;...</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Ustawienia gry</title>
+<para
+>Ustawienia gry mogą być zmieniane za pomocą okna dialogowego wyświetlanego po wybraniu opcji <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja &kblocks;...</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>W karcie motyw, możesz ustawić motyw wyglądu. Wybierz motyw z listy aby zobaczyć jego podgląd po prawej stronie. Możesz go włączyć poprzez kliknięcie przycisków<guibutton
+>Zastosuj</guibutton
+> oraz <guibutton
+>OK</guibutton
+>. </para>
+
+</chapter>
+
+<chapter id="credits"
+><title
+>Zasługi i licencje</title>
+
+<para
+>&kblocks; Prawa autorskie: (c) 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Autor</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Prawa autorskie do dokumentacji: (c) 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Polskie tłumaczenie dokumentacji: Krzysztof Woźniak<email
+>wozniakk@ceti.pl</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalacja</title>
+
+<sect1 id="getting-kblocks">
+<title
+>Jak zdobyć &kblocks;</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

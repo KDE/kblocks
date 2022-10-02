@@ -1,0 +1,225 @@
+# translation of kblocks.po to Khmer
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2009.
+# Morn Met, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kblocks\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"PO-Revision-Date: 2009-10-28 08:41+0700\n"
+"Last-Translator: Morn Met\n"
+"Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.0\n"
+"X-Language: km_KH\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ខឹម សុខែម, ម៉ន ម៉េត, សេង សុត្ថា"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "khoemsokhem@khmeros.info,​​mornmet@khmeros.info,sutha@khmeros.info"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: config/kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "ស្បែក​ក្រាហ្វិក​ត្រូវ​ប្រើ ។"
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: config/kblocks.kcfg:14
+#, kde-format
+msgid "Whether sound effects should be played."
+msgstr "ថា​តើ​​ត្រូវ​ចាក់​បែប​ផែន​សំឡេង​ដែរ​ឬ​ទេ ។"
+
+#: KBlocksDisplay.cpp:58
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "បញ្ជី​ពិន្ទុ​ ៖ 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+
+#: KBlocksDisplay.cpp:120
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "បញ្ជី​ពន្ទុ​ ៖​ %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+
+#: KBlocksKeyboardPlayer.cpp:76
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "បង្វិល​ដុំ​​ស្រប​​ទ្រនិច​នាឡិកា"
+
+#: KBlocksKeyboardPlayer.cpp:82
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "បង្វិល​ដុំ​​ច្រាស​​ទ្រនិច​នាឡិកា"
+
+#: KBlocksKeyboardPlayer.cpp:88
+#, kde-format
+msgid "Move Piece Left"
+msgstr "ផ្លាស់ទី​ដុំ​​ទៅ​ឆ្វេង"
+
+#: KBlocksKeyboardPlayer.cpp:94
+#, kde-format
+msgid "Move Piece Right"
+msgstr "ផ្លាស់ទី​ដុំ​​ទៅ​ស្ដាំ"
+
+#: KBlocksKeyboardPlayer.cpp:100
+#, kde-format
+msgid "Move Piece Down"
+msgstr "ផ្លាស់ទី​ដុំ​​ទៅ​ក្រោម"
+
+#: KBlocksKeyboardPlayer.cpp:106
+#, kde-format
+msgid "Drop the Piece"
+msgstr "ទម្លាក់​ដុំ"
+
+#: KBlocksScene.cpp:216
+#, kde-format
+msgid "Game Resumed!"
+msgstr "បាន​បន្ត !"
+
+#: KBlocksScene.cpp:217
+#, kde-format
+msgid "Game Paused!"
+msgstr "បាន​ផ្អាក !"
+
+#: KBlocksScene.cpp:269
+#, kde-format
+msgid "Game Start!"
+msgstr "ល្បែង​បាន​ចាប់ផ្ដើម"
+
+#: KBlocksScene.cpp:275
+#, kde-format
+msgid "Game Over!"
+msgstr "ល្បែង​ចប់ហើយ"
+
+#: KBlocksScene.cpp:281
+#, kde-format
+msgid "You Win!"
+msgstr "អ្នកឈ្នះហើយ​ ​​!"
+
+#: KBlocksScene.cpp:287
+#, kde-format
+msgid "You Lose!"
+msgstr "អ្នក​ចាញ់ហើយ​​​ !"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "របារ​ឧបករណ៍​មេ"
+
+#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "ពិន្ទុ ៖ %1 - បន្ទាត់ ៖ %2 - កម្រិត ៖ %3"
+
+#: KBlocksWin.cpp:284
+#, kde-format
+msgid "Single Game"
+msgstr "ល្បែង​តែមួយ​​​"
+
+#: KBlocksWin.cpp:288
+#, kde-format
+msgid "Human vs AI"
+msgstr "Human vs AI"
+
+#: KBlocksWin.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Play sounds"
+msgid "&Play Sounds"
+msgstr "ចាក់សំឡេង"
+
+#: KBlocksWin.cpp:313
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "ពិន្ទុ​៖០ - បន្ទាត់​៖០ - កម្រិត​៖០"
+
+#: main.cpp:391
+#, fuzzy, kde-format
+#| msgid "KBlocks"
+msgid "KBlocks"
+msgstr "KBlocks"
+
+#: main.cpp:393
+#, fuzzy, kde-format
+#| msgid "A falling blocks game for KDE"
+msgid "A falling blocks game by KDE"
+msgstr "ល្បែង​ប្លុក​ធ្លាក់​សម្រាប់ KDE"
+
+#: main.cpp:395
+#, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ២​០​០​៧ ដោយ Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:398
+#, kde-format
+msgid "Author"
+msgstr "អ្នកនិពន្ធ"
+
+#: main.cpp:399
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Dirk Leifeld"
+
+#: main.cpp:399
+#, kde-format
+msgid "Developer"
+msgstr "អ្នក​អភិវឌ្ឍ​ន៍"
+
+#: main.cpp:400
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr "Zhongjie Cai"
+
+#: main.cpp:400
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr "ការ​រចនា​ KBlocks ថ្មី​សម្រាប់​ AI និង​ វេទិកា​ស្រាវជ្រាវ​ tetris"
+
+#: main.cpp:401
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:401
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "សិល្បៈ​អុកស៊ីសែន​សម្រាប់ KDE4"
+
+#: main.cpp:407
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+"រៀប​ចំ​របៀប​ដំណើរការ​ល្បែង kblocks ។\n"
+"\t០ = របៀប​ផ្ទៃតុ​​\t១ = របៀប​ម៉ាស៊ីន​ល្បែង​​\n"
+"\t២ = របៀប​ Gui \t៣ = របៀប​អ្នក​លេង​​"
+
+#: main.cpp:408
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr "រៀបចំ​ឯកសារ​​រចនាសម្ព័ន្ធ​​សម្រាប់​របៀប​អ្នក​ស្រាវជ្រាវ​ ​tetris ។ មិន​សម្រាប់​អ្នក​ប្រើ​ផ្ទៃតុ​ឡើយ​ ។​"
+
+#~ msgid "Theme"
+#~ msgstr "ស្បែក"
+
+#~ msgid "The difficulty level."
+#~ msgstr "កម្រិត​លំបាក"

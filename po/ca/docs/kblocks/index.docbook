@@ -1,0 +1,505 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>El manual del &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>4 de juny de 2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>El &kblocks; és la versió &kde; del clàssic joc de blocs que cauen.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>joc</keyword>
+<keyword
+>blocs</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+<note
+><title
+>Tipus de joc:</title
+><para
+>Lògic, Arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Un</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>El &kblocks; és el clàssic joc de blocs que cauen. La idea és apilar els blocs que cauen de manera que les línies estiguin completament plenes. Quan es completa una línia, s'eliminarà i hi haurà més espai disponible a l'àrea de joc. Quan no hi hagi prou espai perquè caiguin els blocs, el joc acabarà. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Com jugar</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Joc de taula &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Objectiu:</title
+><para
+>Feu girar els blocs que cauen i acomodeu-los per a completar les línies i aclarir el camp de joc.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>De manera predeterminada, els blocs que cauen es poden moure cap a l'esquerra o la dreta amb les tecles de &Left; o &Right;. La tecla de &Down; fa que el bloc caigui més de pressa i la tecla &Up; s'utilitza per a fer-lo girar. Les tecles emprades per a cada acció del joc es poden configurar a l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+></menuchoice
+>. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Les regles del joc, estratègies i consells</title>
+<sect1 id="rules">
+<title
+>Regles</title>
+<itemizedlist>
+<listitem
+><para
+>Les regles són senzilles: deixeu espai perquè caiguin els blocs!</para
+></listitem>
+<listitem
+><para
+>Quan un bloc nou no pot caure, el joc acaba.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Les estratègies i consells</title>
+<itemizedlist>
+<listitem
+><para
+>No oblideu revisar l'àrea de vista prèvia: ens mostra la propera peça que es llançarà.</para
+></listitem>
+<listitem
+><para
+>Per a obtenir punts addicionals, intenteu eliminar diverses línies alhora.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Ordres/Dreceres de teclat</title>
+
+<para
+>Les seccions següents descriuen breument cada opció de la barra de menús.</para>
+
+<sect1 id="menu">
+<title
+>Elements de menú</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Joc solitari</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Comença una partida nova d'un sol jugador.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Humà contra IA</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Compara les vostres habilitats amb la IA i jugareu contra l'ordinador utilitzant la mateixa seqüència de blocs que cauen, on tindreu el primer torn.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Posa en pausa la partida.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Mostra les puntuacions</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Mostra la puntuació més alta (el nombre màxim de punts) per a cada nivell de dificultat.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Surt</action
+> del &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Dificultat</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Permet establir el nivell de dificultat des d'un submenú.</para>
+<para
+>Hi ha tres nivells de dificultat predeterminats: <guimenuitem
+>Fàcil</guimenuitem
+> (la partida comença en el nivell 0), <guimenuitem
+>Mitjana</guimenuitem
+> (comença en el nivell 5) i <guimenuitem
+>Difícil</guimenuitem
+> (comença en el nivell 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De manera addicional, el &kblocks; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Dreceres predeterminades</title>
+<para
+>La taula següent mostra les dreceres de teclat predeterminades.</para>
+
+<table>
+<title
+>Dreceres de teclat</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Combinació de tecles</entry
+><entry
+>Acció</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Joc individual</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Surt del &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Manual del &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>L'ajuda «Què és això?»</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Mostra les millors puntuacions</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Fa una pausa a la partida</entry
+></row>
+<row
+><entry
+>&Right;</entry
+><entry
+>Mou el bloc a la dreta</entry
+></row>
+<row
+><entry
+>&Left;</entry
+><entry
+>Mou el bloc a l'esquerra</entry
+></row>
+<row
+><entry
+>&Down;</entry
+><entry
+>Mou el bloc avall</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Gira el bloc en el sentit horari</entry
+></row>
+<row
+><entry
+>&Up;</entry
+><entry
+>Gira el bloc en el sentit antihorari</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Deixa anar el bloc</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Aquestes dreceres es poden canviar seleccionant <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+></menuchoice
+> des de la barra de menús.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntes més freqüents</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Puc canviar l'aparença del joc? </para>
+</question>
+<answer>
+<para
+>Sí, feu clic sobre l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &kblocks;...</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Configuració del joc</title>
+<para
+>Les opcions de configuració del joc es poden establir seleccionant &nbsp;<menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &kblocks;...</guimenuitem
+></menuchoice
+> des de la barra de menús. Apareixerà un diàleg. </para>
+		<para
+>Per a seleccionar un tema nou, senzillament escolliu-lo des de la llista de selecció. Cada element de la llista mostra una petita vista prèvia a l'esquerra del nom del tema. Una selecció s'aplicarà immediatament. </para>
+		<para
+>Una vegada esteu satisfet amb el tema que heu seleccionat podeu fer clic sobre el botó <guibutton
+>Tanca</guibutton
+>, localitzat a la part inferior d'aquest diàleg. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Crèdits i llicència</title>
+
+<para
+>&kblocks; Copyright 2007-2008 </para>
+
+<itemizedlist>
+<title
+>Autor</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>Copyright de la documentació 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

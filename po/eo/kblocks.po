@@ -1,0 +1,225 @@
+# translation of kapman.po to esperanto
+# Copyright (C) 2009 This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Emmanuelle Richard <emmanuelle@esperanto-jeunes.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kblocks\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"PO-Revision-Date: 2009-11-14 16:13+0100\n"
+"Last-Translator: Emmanuelle Richard <emmanuelle@esperanto-jeunes.org>\n"
+"Language-Team: esperanto <kde-i18n-doc@kde.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Emmanuelle Richard"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "emmanuelle@esperanto-jeunes.org"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: config/kblocks.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Grafika etoso uzinda."
+
+#. i18n: ectx: label, entry (Sounds), group (Preferences)
+#: config/kblocks.kcfg:14
+#, fuzzy, kde-format
+msgid "Whether sound effects should be played."
+msgstr "Ĉu ludi sonorefektojn."
+
+#: KBlocksDisplay.cpp:58
+#, kde-format
+msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr ""
+
+#: KBlocksDisplay.cpp:120
+#, kde-format
+msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr ""
+
+#: KBlocksKeyboardPlayer.cpp:76
+#, kde-format
+msgid "Rotate Piece Clockwise"
+msgstr "Turni ludpecon destrumen"
+
+#: KBlocksKeyboardPlayer.cpp:82
+#, kde-format
+msgid "Rotate Piece Counter Clockwise"
+msgstr "Turni ludpecon maldestrumen"
+
+#: KBlocksKeyboardPlayer.cpp:88
+#, kde-format
+msgid "Move Piece Left"
+msgstr "Ludpecon maldekstren"
+
+#: KBlocksKeyboardPlayer.cpp:94
+#, kde-format
+msgid "Move Piece Right"
+msgstr "Ludpecon dekstren"
+
+#: KBlocksKeyboardPlayer.cpp:100
+#, kde-format
+msgid "Move Piece Down"
+msgstr "Ludpecon malsupren"
+
+#: KBlocksKeyboardPlayer.cpp:106
+#, kde-format
+msgid "Drop the Piece"
+msgstr "Faligu la ludpecon"
+
+#: KBlocksScene.cpp:216
+#, fuzzy, kde-format
+#| msgid "Game Paused"
+msgid "Game Resumed!"
+msgstr "Ludo paŭsigita"
+
+#: KBlocksScene.cpp:217
+#, fuzzy, kde-format
+#| msgid "Game Paused"
+msgid "Game Paused!"
+msgstr "Ludo paŭsigita"
+
+#: KBlocksScene.cpp:269
+#, fuzzy, kde-format
+#| msgid "Game started"
+msgid "Game Start!"
+msgstr "Ludo komeniĝis."
+
+#: KBlocksScene.cpp:275
+#, fuzzy, kde-format
+msgid "Game Over!"
+msgstr "Ludo finita."
+
+#: KBlocksScene.cpp:281
+#, kde-format
+msgid "You Win!"
+msgstr ""
+
+#: KBlocksScene.cpp:287
+#, kde-format
+msgid "You Lose!"
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kblocksui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Ĉefa ilobreto"
+
+#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#, kde-format
+msgid "Points: %1 - Lines: %2 - Level: %3"
+msgstr "Poentoj: %1 - Linioj: %2 - NIvelo: %3"
+
+#: KBlocksWin.cpp:284
+#, fuzzy, kde-format
+#| msgid "Resuming Game"
+msgid "Single Game"
+msgstr "Daŭrigante la ludon"
+
+#: KBlocksWin.cpp:288
+#, kde-format
+msgid "Human vs AI"
+msgstr ""
+
+#: KBlocksWin.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Play sounds"
+msgid "&Play Sounds"
+msgstr "&Ludi sonojn"
+
+#: KBlocksWin.cpp:313
+#, kde-format
+msgid "Points: 0 - Lines: 0 - Level: 0"
+msgstr "Poentoj:0 - Linioj: 0 - Nivelo: 0"
+
+#: main.cpp:391
+#, kde-format
+msgid "KBlocks"
+msgstr "KBlocks"
+
+#: main.cpp:393
+#, fuzzy, kde-format
+#| msgid "A falling blocks game for KDE"
+msgid "A falling blocks game by KDE"
+msgstr "Falantaj-blokoj-ludo por KDE"
+
+#: main.cpp:395
+#, fuzzy, kde-format
+msgid "(c) 2007, Mauricio Piacentini"
+msgstr "(C) 2007 John-Paul Stanford"
+
+#: main.cpp:398
+#, kde-format
+msgid "Mauricio Piacentini"
+msgstr "Mauricio Piacentini"
+
+#: main.cpp:398
+#, fuzzy, kde-format
+msgid "Author"
+msgstr "Aŭtoro"
+
+#: main.cpp:399
+#, kde-format
+msgid "Dirk Leifeld"
+msgstr "Dirk Leifeld"
+
+#: main.cpp:399
+#, fuzzy, kde-format
+msgid "Developer"
+msgstr "Programisto"
+
+#: main.cpp:400
+#, kde-format
+msgid "Zhongjie Cai"
+msgstr ""
+
+#: main.cpp:400
+#, kde-format
+msgid "New design of KBlocks for AI and tetris research platform"
+msgstr ""
+
+#: main.cpp:401
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:401
+#, kde-format
+msgid "Oxygen art for KDE4"
+msgstr "Oxygen art por KDE4"
+
+#: main.cpp:407
+#, kde-format
+msgid ""
+"Setup kblocks game running mode.\n"
+"\t0 = Desktop Mode\t1 = Game Engine Mode\n"
+"\t2 = Gui Mode\t3 = Player Mode"
+msgstr ""
+
+#: main.cpp:408
+#, kde-format
+msgid ""
+"Setup the configuration file for tetris researcher mode. Not for desktop "
+"users."
+msgstr ""
+
+#, fuzzy
+#~ msgid "Theme"
+#~ msgstr "Etoso"
+
+#, fuzzy
+#~ msgid "The difficulty level."
+#~ msgstr "Facileca nivelo."
