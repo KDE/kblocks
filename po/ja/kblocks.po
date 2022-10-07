@@ -32,13 +32,13 @@ msgstr "ybando@k6.dion.ne.jp"
 #: config/kblocks.kcfg:9
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr ""
+msgstr "使用するグラフィックテーマ"
 
 #. i18n: ectx: label, entry (Sounds), group (Preferences)
 #: config/kblocks.kcfg:14
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr ""
+msgstr "効果音を鳴らすかどうか"
 
 #: KBlocksDisplay.cpp:58
 #, kde-format
@@ -53,52 +53,52 @@ msgstr ""
 #: KBlocksKeyboardPlayer.cpp:76
 #, kde-format
 msgid "Rotate Piece Clockwise"
-msgstr ""
+msgstr "ピースを時計回りに回転"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
 msgid "Rotate Piece Counter Clockwise"
-msgstr ""
+msgstr "ピースを反時計回りに回転"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
 msgid "Move Piece Left"
-msgstr ""
+msgstr "ピースを左に移動"
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, kde-format
 msgid "Move Piece Right"
-msgstr ""
+msgstr "ピースを右に移動"
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, kde-format
 msgid "Move Piece Down"
-msgstr ""
+msgstr "ピースを下に移動"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
 msgid "Drop the Piece"
-msgstr ""
+msgstr "ピースを落とす"
 
 #: KBlocksScene.cpp:216
 #, kde-format
 msgid "Game Resumed!"
-msgstr ""
+msgstr "再開!"
 
 #: KBlocksScene.cpp:217
 #, kde-format
 msgid "Game Paused!"
-msgstr ""
+msgstr "一時停止中!"
 
 #: KBlocksScene.cpp:269
 #, kde-format
 msgid "Game Start!"
-msgstr ""
+msgstr "ゲーム開始!"
 
 #: KBlocksScene.cpp:275
 #, kde-format
 msgid "Game Over!"
-msgstr ""
+msgstr "ゲームオーバー!"
 
 #: KBlocksScene.cpp:281
 #, kde-format
@@ -119,7 +119,7 @@ msgstr "メインツールバー"
 #: KBlocksWin.cpp:143 KBlocksWin.cpp:243
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
-msgstr ""
+msgstr "ポイント: %1 - ライン: %2 - レベル: %3"
 
 #: KBlocksWin.cpp:284
 #, kde-format
@@ -139,12 +139,12 @@ msgstr ""
 #: KBlocksWin.cpp:313
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
-msgstr ""
+msgstr "ポイント: 0 - ライン: 0 - レベル: 0"
 
 #: main.cpp:391
 #, kde-format
 msgid "KBlocks"
-msgstr ""
+msgstr "KBlocks"
 
 #: main.cpp:393
 #, kde-format
@@ -154,27 +154,27 @@ msgstr ""
 #: main.cpp:395
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
-msgstr ""
+msgstr "(c) 2007, Mauricio Piacentini"
 
 #: main.cpp:398
 #, kde-format
 msgid "Mauricio Piacentini"
-msgstr ""
+msgstr "Mauricio Piacentini"
 
 #: main.cpp:398
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: main.cpp:399
 #, kde-format
 msgid "Dirk Leifeld"
-msgstr ""
+msgstr "Dirk Leifeld"
 
 #: main.cpp:399
 #, kde-format
 msgid "Developer"
-msgstr ""
+msgstr "開発者"
 
 #: main.cpp:400
 #, kde-format
@@ -189,12 +189,12 @@ msgstr ""
 #: main.cpp:401
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
-msgstr ""
+msgstr "Johann Ollivier Lapeyre"
 
 #: main.cpp:401
 #, kde-format
 msgid "Oxygen art for KDE4"
-msgstr ""
+msgstr "KDE4 用の Oxygen アートワーク"
 
 #: main.cpp:407
 #, kde-format
