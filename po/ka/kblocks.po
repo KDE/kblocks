@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-07-13 00:43+0000\n"
-"PO-Revision-Date: 2022-09-28 08:12+0200\n"
+"PO-Revision-Date: 2022-11-27 11:21+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -184,7 +184,7 @@ msgstr "Zhongjie Cai"
 #: main.cpp:400
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
-msgstr ""
+msgstr "KBlocks-ის ახალი დიზაინი AI და ტეტრისის პლატფორმისთვის"
 
 #: main.cpp:401
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "Johann Ollivier Lapeyre"
 #: main.cpp:401
 #, kde-format
 msgid "Oxygen art for KDE4"
-msgstr ""
+msgstr "Oxygen KDE4-თვის"
 
 #: main.cpp:407
 #, kde-format
@@ -203,6 +203,9 @@ msgid ""
 "\t0 = Desktop Mode\t1 = Game Engine Mode\n"
 "\t2 = Gui Mode\t3 = Player Mode"
 msgstr ""
+"Kblocks გაშვების რეჟიმი.\n"
+"\t0 = სამუშაო მაგიდის რეჟიმი\t1 = თამაშის ძრავის რეჟიმი\n"
+"\t2 = ინტერფეისის რეჟიმი\t3 = მოთამაშის რეჟიმი"
 
 #: main.cpp:408
 #, kde-format
@@ -210,3 +213,5 @@ msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
 "users."
 msgstr ""
+"მოირგეთ კონფიგურაციის ფაილი ტეტრისის კვლევის რეჟიმში. არაა სამუშაო მაგიდის "
+"მომხმარებლებისთვის."
