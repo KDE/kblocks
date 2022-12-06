@@ -25,6 +25,7 @@ include(ECMSetupVersion)
 include(ECMInstallIcons)
 include(FeatureSummary)
 include(InternalMacros)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Test Widgets Svg Network)
 if (QT_MAJOR_VERSION STREQUAL "6")
@@ -40,6 +41,10 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     WidgetsAddons
     XmlGui
+)
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.101
+    KDEGAMES 7.3
 )
 
 find_package(KF5KDEGames 7.1.0 REQUIRED)
