@@ -262,6 +262,8 @@ void KBlocksScene::updateDimensions()
         maGroupList[i]->setPos(left, top);
         maGroupList[i]->refreshPosition();
     }
+
+    mBackgroundSize = mpGrafx->renderer()->boundsOnElement(QStringLiteral("BACKGROUND")).size();
 }
 
 void KBlocksScene::greetPlayer()
@@ -376,7 +378,25 @@ void KBlocksScene::playDropSound()
 void KBlocksScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
     if (mpGrafx->renderer()->isValid()) {
-        mpGrafx->renderer()->render(painter, QStringLiteral("BACKGROUND"), rect);
+        // QtSvgRenderer only supports KeepAspectRatio, so we have to adjust the
+        // bounds instead.
+        const QSizeF newSize = mBackgroundSize.scaled(rect.size(), Qt::KeepAspectRatioByExpanding);
+
+        QRectF adjustedRect = rect;
+
+        switch(mpGrafx->m_BackgroundLocation) {
+            case BackgroundLocation::Stretch:
+                break;
+            case BackgroundLocation::TopLeft:
+                adjustedRect.setSize(newSize);
+                break;
+            case BackgroundLocation::Center:
+                adjustedRect.setSize(newSize);
+                adjustedRect.moveCenter(rect.center());
+                break;
+        }
+
+        mpGrafx->renderer()->render(painter, QStringLiteral("BACKGROUND"), adjustedRect);
     }
 }
 

@@ -12,6 +12,12 @@ class QString;
 class QSvgRenderer;
 class KgTheme;
 
+enum class BackgroundLocation {
+    Stretch,
+    TopLeft,
+    Center
+};
+
 class GraphicsInterface
 {
 public:
@@ -24,13 +30,14 @@ public:
           m_PlayArea_NumberOfBlocks_X{},
           m_PlayArea_NumberOfBlocks_Y{},
           m_PreviewArea_CenterPoint_X{},
-          m_PreviewArea_CenterPoint_Y{}
+          m_PreviewArea_CenterPoint_Y{},
+          m_BackgroundLocation{}
     {}
     virtual ~GraphicsInterface() = default;
 
 public:
     virtual bool loadTheme(const KgTheme *theme) = 0;
-    virtual void readThemeValues() = 0;
+    virtual void readThemeValues(const KgTheme *theme) = 0;
     virtual void adjustForSize(const QSize &) = 0;
     virtual QSvgRenderer *renderer() const = 0;
 
@@ -43,6 +50,8 @@ public:
     int m_PlayArea_NumberOfBlocks_Y;
     int m_PreviewArea_CenterPoint_X;
     int m_PreviewArea_CenterPoint_Y;
+
+    BackgroundLocation m_BackgroundLocation;
 };
 
 #endif // GRAPHICSINTERFACE_H

@@ -104,6 +104,8 @@ private:
     KBlocksItemGroup **maGroupList = nullptr;
     KBlocksScore **maGameScoreList = nullptr;
 
+    QSizeF mBackgroundSize;
+
     KGamePopupItem *mMessageBox = nullptr;
 
     int mUpdateInterval;

@@ -15,7 +15,7 @@
 KBlocksGraphics::KBlocksGraphics(const KgTheme *theme)
 {
     m_renderer = new QSvgRenderer(theme->graphicsPath());
-    readThemeValues();
+    readThemeValues(theme);
 }
 
 KBlocksGraphics::~KBlocksGraphics()
@@ -32,7 +32,8 @@ bool KBlocksGraphics::loadTheme(const KgTheme *theme)
     }
     //clear the cache or pixmaps from the old theme will be returned
     //QPixmapCache::clear();
-    readThemeValues();
+    readThemeValues(theme);
+
     return true;
 }
 
@@ -40,7 +41,7 @@ void KBlocksGraphics::adjustForSize(const QSize &newsize)
 {
     Q_UNUSED(newsize)
     //Reset our values
-    readThemeValues();
+    //readThemeValues();
 
     return;
 
@@ -69,7 +70,7 @@ void KBlocksGraphics::adjustForSize(const QSize &newsize)
     */
 }
 
-void KBlocksGraphics::readThemeValues()
+void KBlocksGraphics::readThemeValues(const KgTheme *theme)
 {
     //Extract values from SVG elements
     QRectF bounds;
@@ -86,5 +87,14 @@ void KBlocksGraphics::readThemeValues()
     bounds = m_renderer->boundsOnElement(QStringLiteral("NEXTPIECE_AREA"));
     m_PreviewArea_CenterPoint_X = bounds.center().x();
     m_PreviewArea_CenterPoint_Y = bounds.center().y();
+
+    const QString backgroundLocation = theme->customData(QStringLiteral("BackgroundLocation"), QStringLiteral("Stretch"));
+    if(backgroundLocation == QStringLiteral("Stretch")) {
+        m_BackgroundLocation = BackgroundLocation::Stretch;
+    } else if(backgroundLocation == QStringLiteral("TopLeft")) {
+        m_BackgroundLocation = BackgroundLocation::TopLeft;
+    } else if(backgroundLocation == QStringLiteral("Center")) {
+        m_BackgroundLocation = BackgroundLocation::Center;
+    }
 }
 
