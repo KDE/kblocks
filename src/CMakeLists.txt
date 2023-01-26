@@ -141,11 +141,11 @@ kconfig_add_kcfg_files(KBlocksCore config/settings.kcfgc )
 
 target_link_libraries(KBlocksCore
     KF5KDEGames
-    KF5::CoreAddons
-    KF5::Crash
-    KF5::DBusAddons
-    KF5::XmlGui
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::DBusAddons
+    KF${KF_MAJOR_VERSION}::XmlGui
+    KF${KF_MAJOR_VERSION}::I18n
     Qt${QT_MAJOR_VERSION}::Network
     Qt${QT_MAJOR_VERSION}::Svg
 )
