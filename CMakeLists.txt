@@ -50,7 +50,7 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     XmlGui
 )
 ecm_set_disabled_deprecation_versions(QT 6.4
-    KF 5.101
+    KF 5.103
     KDEGAMES 7.3
 )
 
