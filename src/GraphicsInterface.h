@@ -38,7 +38,6 @@ public:
 public:
     virtual bool loadTheme(const KgTheme *theme) = 0;
     virtual void readThemeValues(const KgTheme *theme) = 0;
-    virtual void adjustForSize(const QSize &) = 0;
     virtual QSvgRenderer *renderer() const = 0;
 
     int m_Block_Size;

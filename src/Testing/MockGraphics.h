@@ -28,8 +28,7 @@ public:
 
 public:
     bool loadTheme(const KgTheme *) override { return false; }
-    void readThemeValues() override {}
-    void adjustForSize(const QSize &) override {}
+    void readThemeValues(const KgTheme *) override {}
     QSvgRenderer *renderer() const override { return mRenderer.get(); }
 
 private:

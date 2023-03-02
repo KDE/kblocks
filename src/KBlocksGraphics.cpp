@@ -37,39 +37,6 @@ bool KBlocksGraphics::loadTheme(const KgTheme *theme)
     return true;
 }
 
-void KBlocksGraphics::adjustForSize(const QSize &newsize)
-{
-    Q_UNUSED(newsize)
-    //Reset our values
-    //readThemeValues();
-
-    return;
-
-    /*
-    double aspectratio;
-    double nw = newsize.width();
-    double nh = newsize.height();
-
-    double origw = m_View_Size_Width;
-    double origh = m_View_Size_Height;
-
-    if ((origw/origh)>(nw/nh)) {
-        //space will be left on height, use width as limit
-        aspectratio = nw/origw;
-    } else {
-        aspectratio = nh/origh;
-    }
-    //qCDebug(KBGraphics) << aspectratio;
-    m_Block_Size = (int) (aspectratio*(qreal)m_Block_Size);
-    m_View_Size_Width = (int) (aspectratio*(double)m_View_Size_Width);
-    m_View_Size_Height = (int) (aspectratio*(double)m_View_Size_Height);
-    m_PlayArea_OffsetPoint_X = (int) (aspectratio*(qreal)m_PlayArea_OffsetPoint_X);
-    m_PlayArea_OffsetPoint_Y = (int) (aspectratio*(qreal)m_PlayArea_OffsetPoint_Y);
-    m_PreviewArea_CenterPoint_X = (int) (aspectratio*(qreal)m_PreviewArea_CenterPoint_X);
-    m_PreviewArea_CenterPoint_Y = (int) (aspectratio*(qreal)m_PreviewArea_CenterPoint_Y);
-    */
-}
-
 void KBlocksGraphics::readThemeValues(const KgTheme *theme)
 {
     //Extract values from SVG elements
