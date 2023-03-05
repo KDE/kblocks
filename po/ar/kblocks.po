@@ -149,7 +149,7 @@ msgstr "الكتل ك"
 #: main.cpp:393
 #, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "لعبة الكتل المتساقطة لكدي"
+msgstr "لعبة الكتل المتساقطة لكِيدِي"
 
 #: main.cpp:395
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "Johann Ollivier Lapeyre"
 #: main.cpp:401
 #, kde-format
 msgid "Oxygen art for KDE4"
-msgstr "رسوميات أوكسجين لكدي4"
+msgstr "رسوميات أوكسجين لكِيدِي4"
 
 #: main.cpp:407
 #, kde-format
