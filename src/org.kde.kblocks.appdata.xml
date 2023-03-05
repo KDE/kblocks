@@ -93,7 +93,7 @@
       lines without any gaps. When a line is completed it is removed, and more space is available in the play area.
       When there is not enough space for blocks to fall, the game is over.
     </p>
-    <p xml:lang="ar">الكتل ك هي لعبة الكتل المتساقطة التقليدية.  الفكرة هي تكديس الكتل المتساقطة لإنشاء خطوط أفقية بدون أي فجوات. عند اكتمال الصف سيزال و يتحرر المزيد من المساحة في مساحة اللعب. وعندما لا توجد مساحة كافية لسقوط الكتل تنتهي اللعبة.</p>
+    <p xml:lang="ar">الكتل ك هي لعبة الكتل المتساقطة التقليدية.  الفكرة هي تكِيدِيس الكتل المتساقطة لإنشاء خطوط أفقية بدون أي فجوات. عند اكتمال الصف سيزال و يتحرر المزيد من المساحة في مساحة اللعب. وعندما لا توجد مساحة كافية لسقوط الكتل تنتهي اللعبة.</p>
     <p xml:lang="bg">KBlocks е класическата игра с падащи блокове. Идеята е да подредите падащите блокове, за да създадете хоризонтални линии без пропуски. Когато една линия е завършена тя се премахва и в зоната за игра се появява повече пространство. Когато няма достатъчно място за падане на блокове, играта приключва.</p>
     <p xml:lang="ca">El KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per a crear línies horitzontals sense cap forat. Quan s'hagi completat una línia, aquesta s'eliminarà i quedarà més espai disponible a l'àrea de joc. Quan no hi hagi espai suficient per als blocs que cauen, el joc finalitzarà.</p>
     <p xml:lang="ca-valencia">KBlocks és el joc clàssic de blocs que cauen. La idea és apilar els blocs que cauen per a crear línies horitzontals sense cap forat. Quan s'haja completat una línia, esta s'eliminarà i quedarà més espai disponible en l'àrea de joc. Quan no hi haja espai suficient per als blocs que cauen, el joc finalitzarà.</p>
