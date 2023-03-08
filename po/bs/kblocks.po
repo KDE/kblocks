@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"POT-Creation-Date: 2023-03-08 00:43+0000\n"
 "PO-Revision-Date: 2014-10-20 19:23+0000\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -92,22 +92,22 @@ msgstr "Igra nastavljena!"
 msgid "Game Paused!"
 msgstr "Igra zaustavljena!"
 
-#: KBlocksScene.cpp:269
+#: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
 msgstr "Igra počela!"
 
-#: KBlocksScene.cpp:275
+#: KBlocksScene.cpp:277
 #, kde-format
 msgid "Game Over!"
 msgstr "Kraj igre!"
 
-#: KBlocksScene.cpp:281
+#: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
 msgstr "Pobijedili ste!"
 
-#: KBlocksScene.cpp:287
+#: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
 msgstr "Izgubili ste!"

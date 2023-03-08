@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"POT-Creation-Date: 2023-03-08 00:43+0000\n"
 "PO-Revision-Date: 2010-06-30 23:02-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -90,22 +90,22 @@ msgstr "再開!"
 msgid "Game Paused!"
 msgstr "一時停止中!"
 
-#: KBlocksScene.cpp:269
+#: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
 msgstr "ゲーム開始!"
 
-#: KBlocksScene.cpp:275
+#: KBlocksScene.cpp:277
 #, kde-format
 msgid "Game Over!"
 msgstr "ゲームオーバー!"
 
-#: KBlocksScene.cpp:281
+#: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
 msgstr ""
 
-#: KBlocksScene.cpp:287
+#: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
 msgstr ""

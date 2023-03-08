@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"POT-Creation-Date: 2023-03-08 00:43+0000\n"
 "PO-Revision-Date: 2013-03-30 14:52+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -89,22 +89,22 @@ msgstr "खेळ पुन्हा सुरु झाला !"
 msgid "Game Paused!"
 msgstr "खेळ स्तब्ध केला !"
 
-#: KBlocksScene.cpp:269
+#: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
 msgstr "खेळ सुरु !"
 
-#: KBlocksScene.cpp:275
+#: KBlocksScene.cpp:277
 #, kde-format
 msgid "Game Over!"
 msgstr "खेळ समाप्त !"
 
-#: KBlocksScene.cpp:281
+#: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
 msgstr "तुमचा विजय !"
 
-#: KBlocksScene.cpp:287
+#: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
 msgstr "तुमचा पराजय !"

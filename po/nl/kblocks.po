@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-13 00:43+0000\n"
+"POT-Creation-Date: 2023-03-08 00:43+0000\n"
 "PO-Revision-Date: 2021-06-05 11:09+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -89,22 +89,22 @@ msgstr "Spel hervat!"
 msgid "Game Paused!"
 msgstr "Spel gepauzeerd!"
 
-#: KBlocksScene.cpp:269
+#: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
 msgstr "Spel gestart!"
 
-#: KBlocksScene.cpp:275
+#: KBlocksScene.cpp:277
 #, kde-format
 msgid "Game Over!"
 msgstr "Spel voorbij!"
 
-#: KBlocksScene.cpp:281
+#: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
 msgstr "U wint!"
 
-#: KBlocksScene.cpp:287
+#: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
 msgstr "U verliest!"
