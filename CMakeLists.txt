@@ -54,7 +54,11 @@ ecm_set_disabled_deprecation_versions(QT 6.4
     KDEGAMES 7.3
 )
 
-find_package(KF5KDEGames 7.1.0 REQUIRED)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(KDEGames6 7.5.0 REQUIRED)
+else()
+    find_package(KF5KDEGames 7.1.0 REQUIRED)
+endif()
 
 add_subdirectory(icons)
 add_subdirectory(themes)

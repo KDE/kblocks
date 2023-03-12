@@ -139,8 +139,13 @@ ecm_qt_declare_logging_category(KBlocksCore
 
 kconfig_add_kcfg_files(KBlocksCore config/settings.kcfgc )
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(KBlocksCore KDEGames6)
+else()
+    target_link_libraries(KBlocksCore KF5KDEGames)
+endif()
+
 target_link_libraries(KBlocksCore
-    KF5KDEGames
     KF${KF_MAJOR_VERSION}::CoreAddons
     KF${KF_MAJOR_VERSION}::Crash
     KF${KF_MAJOR_VERSION}::DBusAddons
