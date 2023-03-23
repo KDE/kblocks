@@ -50,9 +50,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->09/05/2016</date>
+>04/06/2021</date>
 <releaseinfo
->0.4 (Applications 16.04)</releaseinfo>
+>KDE Gear 21.04</releaseinfo>
 
 <abstract
 ><para
@@ -118,21 +118,13 @@
 ><!--Describe the objective of the game.-->
 
 <para
->Por definição padrão, os blocos que caem podem ser movidos para direita ou para esquerda, usando as teclas de direção <keycap
->seta para esquerda</keycap
-> ou <keycap
->seta para direita</keycap
->. A tecla de direção <keycap
->seta para baixo</keycap
-> faz o bloco cair mais rápido e a tecla <keycap
->seta para cima</keycap
-> é usada para girar o bloco. As teclas usadas para cada ação do jogo podem ser configuradas em <menuchoice
+>Por padrão, os blocos que caem podem ser movidos para direita ou para esquerda, usando as teclas de direção &Left; ou &Right;. A tecla &Down; faz o bloco cair mais rápido e a tecla &Up; é usada para girar o bloco. As teclas usadas para cada ação do jogo podem ser configuradas no menu <menuchoice
 ><guimenu
 >Configurações</guimenu
-><guimenuitem
->Configurar Atalhos...</guimenuitem
+> <guimenuitem
+>Configurar atalhos...</guimenuitem
 ></menuchoice
-> </para>
+>. </para>
 
 </chapter>
 
@@ -160,7 +152,7 @@
 <itemizedlist>
 <listitem
 ><para
->Não se esqueça de checar a área de previsão: ela mostra a próxima peça que será liberada.</para
+>Não se esqueça de verificar a área de previsão: ela mostra a próxima peça que será liberada.</para
 ></listitem>
 <listitem
 ><para
@@ -278,7 +270,7 @@
 ><para
 ><action
 >Sai</action
-> do &kblocks;</para
+> do &kblocks;.</para
 ></listitem>
 </varlistentry>
 
@@ -375,7 +367,7 @@
 ></keycombo
 ></entry
 ><entry
->Ajuda o que é isto?</entry
+>Ajuda 'O que é isto?'</entry
 ></row>
 <row
 ><entry
@@ -397,25 +389,19 @@
 ></row>
 <row
 ><entry
-><keycap
->Seta a direita</keycap
-></entry
+>Seta para &Right;</entry
 ><entry
 >Move o bloco para direita</entry
 ></row>
 <row
 ><entry
-><keycap
->Seta a esquerda</keycap
-></entry
+>Seta para &Left;</entry
 ><entry
 >Move o bloco para esquerda</entry
 ></row>
 <row
 ><entry
-><keycap
->Seta para baixo</keycap
-></entry
+>Seta para &Down;</entry
 ><entry
 >Move o bloco para baixo</entry
 ></row>
@@ -429,17 +415,13 @@
 ></row>
 <row
 ><entry
-><keycap
->Seta para cima</keycap
-></entry
+>Seta para &Up;</entry
 ><entry
 >Gira o bloco no sentido anti-horário</entry
 ></row>
 <row
 ><entry
-><keysym
->Espaço</keysym
-></entry
+>&Space;</entry
 ><entry
 >Solta o bloco</entry
 ></row>
@@ -473,10 +455,12 @@
 </question>
 <answer>
 <para
->Sim, clique em <guimenu
+>Sim, clique no menu <menuchoice
+><guimenu
 >Configurações</guimenu
-> através do menu e selecione <guimenuitem
->Configurar o &kblocks;...</guimenuitem
+> <guimenuitem
+>Configurar &kblocks;...</guimenuitem
+></menuchoice
 >. </para>
 </answer>
 </qandaentry>
