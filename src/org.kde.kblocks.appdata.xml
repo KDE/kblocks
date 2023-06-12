@@ -40,7 +40,7 @@
   <name xml:lang="sr-ijekavian">К‑блокови</name>
   <name xml:lang="sr-ijekavianlatin">K‑blokovi</name>
   <name xml:lang="sv">Kblock</name>
-  <name xml:lang="tr">KBlocks</name>
+  <name xml:lang="tr">K Bloklar</name>
   <name xml:lang="uk">KBlocks</name>
   <name xml:lang="x-test">xxKBlocksxx</name>
   <name xml:lang="zh-CN">KBlocks</name>
@@ -126,7 +126,7 @@
     <p xml:lang="sr-ijekavian">К‑блокови је класична игра падајућих блокова. Идеја је да се падајући блокови слажу у водоравне редове без процепа. Ред се уклања када се доврши, остављајући више простора у зони игре. Када више нема простора за нове блокове, партија је готова.</p>
     <p xml:lang="sr-ijekavianlatin">K‑blokovi je klasična igra padajućih blokova. Ideja je da se padajući blokovi slažu u vodoravne redove bez procepa. Red se uklanja kada se dovrši, ostavljajući više prostora u zoni igre. Kada više nema prostora za nove blokove, partija je gotova.</p>
     <p xml:lang="sv">Kblock är det klassiska spelet med fallande block. Idén är att lägga de fallande blocken för att skapa horisontella rader utan några mellanrum. När en rad är färdig tas den bort, och mer utrymme blir tillgängligt i spelområdet. När det inte finns tillräckligt med utrymme för block att falla är spelet slut.</p>
-    <p xml:lang="tr">KBlocks klasik bir düşen bloklar oyunudur. Buradaki fikir düşen blokları yatay satırlar oluşturacak şekilde dizmektir. Bir satır tamamlandığında o kaldırılır ve oyun için daha fazla alan açılmış olur. Düşecek bloklar için yer kalmadığında oyun bitmiş olur.</p>
+    <p xml:lang="tr">K Bloklar klasik bir düşen bloklar oyunudur. Buradaki fikir düşen blokları yatay satırlar oluşturacak şekilde dizmektir. Bir satır tamamlandığında o kaldırılır ve oyun için daha fazla alan açılmış olur. Düşecek bloklar için yer kalmadığında oyun bitmiş olur.</p>
     <p xml:lang="uk">KBlocks — це класична гра з блоками, що падають. Мета гри полягає у тому, щоб розташовувати блоки так, щоб вони повністю заповнювали горизонтальні ряди. Після повного заповнення ряду його буде вилучено, і у області для гри з’явиться більше простору. Якщо для падіння наступного блоку місця вже не буде, гру буде завершено.</p>
     <p xml:lang="x-test">xxKBlocks is the classic falling blocks game. The idea is to stack the falling blocks to create horizontal lines without any gaps. When a line is completed it is removed, and more space is available in the play area. When there is not enough space for blocks to fall, the game is over.xx</p>
     <p xml:lang="zh-CN">KBlocks 是一款经典的俄罗斯方块游戏。游戏玩法是堆叠下落的方块，并使一行填满方块。一行填满后，这行方块就会清空，给游戏区域腾出更多空间。当没有足够的空间让方块下落时，游戏结束。</p>
