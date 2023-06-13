@@ -14,6 +14,7 @@
   <name xml:lang="de">KBlocks</name>
   <name xml:lang="el">KBlocks</name>
   <name xml:lang="en-GB">KBlocks</name>
+  <name xml:lang="eo">KBlocks</name>
   <name xml:lang="es">KBlock</name>
   <name xml:lang="et">KBlocks</name>
   <name xml:lang="eu">KBlocks</name>
@@ -56,6 +57,7 @@
   <summary xml:lang="de">„Tetris“-Spiel</summary>
   <summary xml:lang="el">Παιχνίδι πτώσης τούβλων</summary>
   <summary xml:lang="en-GB">Falling Blocks Game</summary>
+  <summary xml:lang="eo">Ludo de Falantaj Blokoj</summary>
   <summary xml:lang="es">Juego de caída de bloques</summary>
   <summary xml:lang="et">Langevate klotside mäng</summary>
   <summary xml:lang="eu">Erortzen diren blokeen jokoa</summary>
