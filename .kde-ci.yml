@@ -16,7 +16,7 @@ Dependencies:
     'frameworks/kwidgetsaddons': '@stable'
     'frameworks/kxmlgui': '@stable'
 
-- 'on': ['Linux/Qt6', 'FreeBSD/Qt6', 'Windows/Qt', 'Android/Qt6']
+- 'on': ['Linux/Qt6', 'FreeBSD/Qt6', 'Windows/Qt6', 'Android/Qt6']
   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'
     'games/libkdegames': '@latest-kf6'
