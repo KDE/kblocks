@@ -100,3 +100,5 @@ void KBlocksAnimator::endDropAnim()
 {
     Q_EMIT animFinished(KBlocks_Animation_Drop);
 }
+
+#include "moc_KBlocksAnimator.cpp"

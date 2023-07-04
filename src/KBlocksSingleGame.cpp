@@ -390,3 +390,4 @@ void KBlocksSingleGame::prepareNextPiece()
     }
 }
 
+#include "moc_KBlocksSingleGame.cpp"

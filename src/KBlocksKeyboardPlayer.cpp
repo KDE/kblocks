@@ -187,3 +187,5 @@ void KBlocksKeyboardPlayer::rotateCCW()
     }
     Q_EMIT blockMoved();
 }
+
+#include "moc_KBlocksKeyboardPlayer.cpp"

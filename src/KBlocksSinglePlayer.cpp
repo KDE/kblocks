@@ -133,3 +133,4 @@ void KBlocksSinglePlayer::doAction()
     }
 }
 
+#include "moc_KBlocksSinglePlayer.cpp"

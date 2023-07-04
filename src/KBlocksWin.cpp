@@ -324,3 +324,4 @@ void KBlocksWin::setupGUILayout()
     setupGUI();
 }
 
+#include "moc_KBlocksWin.cpp"

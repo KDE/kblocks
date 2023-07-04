@@ -64,3 +64,4 @@ void KBlocksView::resizeEvent(QResizeEvent *event)
     event->accept();
 }
 
+#include "moc_KBlocksView.cpp"

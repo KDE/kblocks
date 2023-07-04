@@ -10,3 +10,5 @@ GameLogicInterface::GameLogicInterface()
     : maGameList(nullptr)
 {
 }
+
+#include "moc_GameLogicInterface.cpp"

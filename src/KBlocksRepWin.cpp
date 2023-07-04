@@ -170,3 +170,5 @@ void KBlocksRepWin::replayOneStep()
         snapshotView();
     }
 }
+
+#include "moc_KBlocksRepWin.cpp"

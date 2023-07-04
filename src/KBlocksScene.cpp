@@ -400,3 +400,4 @@ void KBlocksScene::drawBackground(QPainter *painter, const QRectF &rect)
     }
 }
 
+#include "moc_KBlocksScene.cpp"

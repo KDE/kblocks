@@ -156,3 +156,5 @@ void KBlocksDisplay::updateGameDisplay(int size)
 
     delete [] tmpByteData;
 }
+
+#include "moc_KBlocksDisplay.cpp"

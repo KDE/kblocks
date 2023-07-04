@@ -11,3 +11,5 @@ SceneInterface::SceneInterface()
     : QGraphicsScene()
 {
 }
+
+#include "moc_SceneInterface.cpp"

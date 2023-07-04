@@ -40,3 +40,5 @@ void KBlocksAnimFade::endAnimation()
 {
     Q_EMIT animationFinished();
 }
+
+#include "moc_KBlocksAnimFade.cpp"

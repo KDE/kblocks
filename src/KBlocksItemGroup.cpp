@@ -406,3 +406,5 @@ void KBlocksItemGroup::updateGraphicInfo()
     mFieldWidth = mpGrafx->m_PlayArea_NumberOfBlocks_X;
     mFieldHeight = mpGrafx->m_PlayArea_NumberOfBlocks_Y;
 }
+
+#include "moc_KBlocksItemGroup.cpp"

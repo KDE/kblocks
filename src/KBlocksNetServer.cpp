@@ -469,3 +469,4 @@ void KBlocksNetServer::printGameResult()
     printf("-----------------------------\n");
 }
 
+#include "moc_KBlocksNetServer.cpp"

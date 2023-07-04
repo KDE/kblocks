@@ -56,3 +56,5 @@ void KBlocksNetClient::receivedData()
 {
     Q_EMIT(dataArrived(mpClientSocket->pendingDatagramSize()));
 }
+
+#include "moc_KBlocksNetClient.cpp"

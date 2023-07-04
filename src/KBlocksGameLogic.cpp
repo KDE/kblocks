@@ -318,3 +318,5 @@ void KBlocksGameLogic::deleteSingleGames()
     }
     mGameCount = 0;
 }
+
+#include "moc_KBlocksGameLogic.cpp"

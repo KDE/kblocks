@@ -91,3 +91,5 @@ void KBlocksSvgItem::stopPosAnim()
     setPos(mOriginPos);
     mTargetPos = mOriginPos;
 }
+
+#include "moc_KBlocksSvgItem.cpp"
