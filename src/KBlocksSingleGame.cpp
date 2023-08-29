@@ -7,6 +7,7 @@
 #include "KBlocksSingleGame.h"
 #include "utils.h"
 #include <QRandomGenerator>
+#include <memory>
 
 KBlocksSingleGame::KBlocksSingleGame(int gameIndex, int fieldWidth, int fieldHeight, int showPieceCount, int messagePoolSize)
 {
@@ -141,7 +142,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
         return false;
     }
 
-    QScopedPointer<KBlocksPiece> tmpPiece(new KBlocksPiece());
+    std::unique_ptr<KBlocksPiece> tmpPiece(new KBlocksPiece());
 
     tmpPiece->fromValue(mpPieceList[0]->toValue());
     tmpPiece->setPosX(mpPieceList[0]->getPosX() + xPos);
@@ -152,7 +153,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
     }
     tmpPiece->setRotation(mpPieceList[0]->getRotation() + rotation);
 
-    if (checkPieceTouchGround(tmpPiece.data())) {
+    if (checkPieceTouchGround(tmpPiece.get())) {
         return false;
     }
 
