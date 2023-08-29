@@ -140,7 +140,7 @@ bool KBlocksSingleGame::setCurrentPiece(int xPos, int yPos, int rotation)
     if ((mCurrentGameState != GameState_Running) || mStandbyFlag) {
         return false;
     }
-    //FIXME: new without delete (is the new really necessary here?)
+
     QScopedPointer<KBlocksPiece> tmpPiece(new KBlocksPiece());
 
     tmpPiece->fromValue(mpPieceList[0]->toValue());
