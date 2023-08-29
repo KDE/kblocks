@@ -27,7 +27,7 @@ include(FeatureSummary)
 include(InternalMacros)
 include(ECMDeprecationSettings)
 if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.4.0")
+    set(QT_REQUIRED_VERSION "6.5.0")
     set(KF_MIN_VERSION "5.240.0")
     set(KF_MAJOR_VERSION "6")
 else()
@@ -49,15 +49,25 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     WidgetsAddons
     XmlGui
 )
-ecm_set_disabled_deprecation_versions(QT 6.4
-    KF 5.103
-    KDEGAMES 7.3
-)
 
 if (QT_MAJOR_VERSION STREQUAL "6")
     find_package(KDEGames6 7.5.0 REQUIRED)
 else()
     find_package(KF5KDEGames 7.1.0 REQUIRED)
+endif()
+
+if (QT_MAJOR_VERSION STREQUAL "6")
+    ecm_set_disabled_deprecation_versions(
+        QT 6.5
+        KF 5.239
+        KDEGAMES 7.5
+    )
+else()
+    ecm_set_disabled_deprecation_versions(
+        QT 5.15.2
+        KF 5.103
+        KDEGAMES 7.3
+    )
 endif()
 
 add_subdirectory(icons)
