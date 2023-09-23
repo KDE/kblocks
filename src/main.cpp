@@ -15,7 +15,6 @@
 #include <KDBusService>
 #include <KLocalizedString>
 
-#include <kdegames_version.h>
 #include <KgThemeProvider>
 
 #include <QString>
@@ -23,9 +22,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
+
 using namespace std;
 
 #include "KBlocksConfigManager.h"
@@ -71,9 +68,6 @@ static
 void initThemeProvider(KgThemeProvider &themeProvider)
 {
     themeProvider.discoverThemes(
-#if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
-        "appdata",
-#endif
         QStringLiteral("themes"),   // theme data location
         QStringLiteral("default")); // default theme name
 
@@ -367,23 +361,12 @@ int gamePlayerMode(KBlocksConfigManager *config, const QApplication &app)
 
 int main(int argc, char *argv[])
 {
-    // Fixes blurry icons with fractional scaling
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
     QApplication app(argc, argv);
 
 #ifdef Q_OS_WINDOWS
     QApplication::setStyle(QStringLiteral("Breeze"));
 #endif
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("kblocks"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("kblocksrc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("kblocksui.rc"));
-    migrate.migrate();
-#endif
     KLocalizedString::setApplicationDomain("kblocks");
     // Game abouts...
 

@@ -8,8 +8,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kblocks VERSION ${RELEASE_SERVICE_VERSION})
 
-set (QT_MIN_VERSION "5.15.0")
-set (KF_MIN_VERSION "5.90.0")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
@@ -26,19 +26,16 @@ include(ECMInstallIcons)
 include(FeatureSummary)
 include(InternalMacros)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.5.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Test Widgets Svg Network)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS SvgWidgets)
-endif()
-find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Network
+    Svg
+    SvgWidgets
+    Test
+    Widgets
+)
+
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Config
     ConfigWidgets
     CoreAddons
@@ -50,25 +47,13 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
     XmlGui
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(KDEGames6 7.5.0 REQUIRED)
-else()
-    find_package(KF5KDEGames 7.1.0 REQUIRED)
-endif()
+find_package(KDEGames6 7.5.0 REQUIRED)
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    ecm_set_disabled_deprecation_versions(
-        QT 6.5
-        KF 5.239
-        KDEGAMES 7.5
-    )
-else()
-    ecm_set_disabled_deprecation_versions(
-        QT 5.15.2
-        KF 5.103
-        KDEGAMES 7.3
-    )
-endif()
+ecm_set_disabled_deprecation_versions(
+    QT 6.5
+    KF 5.239
+    KDEGAMES 7.5
+)
 
 add_subdirectory(icons)
 add_subdirectory(themes)

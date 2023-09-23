@@ -139,24 +139,17 @@ ecm_qt_declare_logging_category(KBlocksCore
 
 kconfig_add_kcfg_files(KBlocksCore config/settings.kcfgc )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(KBlocksCore KDEGames6)
-else()
-    target_link_libraries(KBlocksCore KF5KDEGames)
-endif()
-
 target_link_libraries(KBlocksCore
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::DBusAddons
-    KF${KF_MAJOR_VERSION}::XmlGui
-    KF${KF_MAJOR_VERSION}::I18n
-    Qt${QT_MAJOR_VERSION}::Network
-    Qt${QT_MAJOR_VERSION}::Svg
+    KDEGames6
+    KF6::CoreAddons
+    KF6::Crash
+    KF6::DBusAddons
+    KF6::XmlGui
+    KF6::I18n
+    Qt6::Network
+    Qt6::Svg
+    Qt6::SvgWidgets
 )
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(KBlocksCore Qt6::SvgWidgets)
-endif()
 
 add_subdirectory(Testing)
 

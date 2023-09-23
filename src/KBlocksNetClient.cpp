@@ -44,11 +44,7 @@ bool KBlocksNetClient::parseIPString(const QString &input, QHostAddress *ip, qui
 {
     bool result = false;
     ip->setAddress(input.left(input.indexOf(QStringLiteral(":"))));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    *port = input.midRef(input.indexOf(QStringLiteral(":")) + 1).toUInt(&result);
-#else
     *port = QStringView(input).mid(input.indexOf(QStringLiteral(":")) + 1).toUInt(&result);
-#endif
     return result;
 }
 
