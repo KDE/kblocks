@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-08 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2010-09-24 16:39+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -145,62 +145,62 @@ msgstr ""
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr ""
 
-#: main.cpp:391
+#: main.cpp:374
 #, kde-format
 msgid "KBlocks"
 msgstr ""
 
-#: main.cpp:393
+#: main.cpp:376
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr ""
 
-#: main.cpp:395
+#: main.cpp:378
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr ""
 
-#: main.cpp:398
+#: main.cpp:381
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr ""
 
-#: main.cpp:398
+#: main.cpp:381
 #, kde-format
 msgid "Author"
 msgstr "लेखक"
 
-#: main.cpp:399
+#: main.cpp:382
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr ""
 
-#: main.cpp:399
+#: main.cpp:382
 #, kde-format
 msgid "Developer"
 msgstr "डेवलपर"
 
-#: main.cpp:400
+#: main.cpp:383
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr ""
 
-#: main.cpp:400
+#: main.cpp:383
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr ""
 
-#: main.cpp:401
+#: main.cpp:384
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr ""
 
-#: main.cpp:401
+#: main.cpp:384
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr ""
 
-#: main.cpp:407
+#: main.cpp:390
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -208,7 +208,7 @@ msgid ""
 "\t2 = Gui Mode\t3 = Player Mode"
 msgstr ""
 
-#: main.cpp:408
+#: main.cpp:391
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

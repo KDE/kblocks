@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-08 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2013-03-30 14:52+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -141,64 +141,64 @@ msgstr "आवाज चालवा (&P)"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "गुण : 0 - ओळी : 0 - पातळी : 0"
 
-#: main.cpp:391
+#: main.cpp:374
 #, fuzzy, kde-format
 #| msgid "KBlocks"
 msgid "KBlocks"
 msgstr "के-ब्लॉक्स"
 
-#: main.cpp:393
+#: main.cpp:376
 #, fuzzy, kde-format
 #| msgid "A falling blocks game for KDE"
 msgid "A falling blocks game by KDE"
 msgstr "केडीई करिता पडणाऱ्या ब्लॉक्सचा खेळ"
 
-#: main.cpp:395
+#: main.cpp:378
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "(c) 2007, मारिसियो पियासेन्टिनी"
 
-#: main.cpp:398
+#: main.cpp:381
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "मारिसियो पियासेन्टिनी"
 
-#: main.cpp:398
+#: main.cpp:381
 #, kde-format
 msgid "Author"
 msgstr "लेखक"
 
-#: main.cpp:399
+#: main.cpp:382
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "डिर्क लैफेल्ड"
 
-#: main.cpp:399
+#: main.cpp:382
 #, kde-format
 msgid "Developer"
 msgstr "विकासकर्ता"
 
-#: main.cpp:400
+#: main.cpp:383
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "झोन्गजी काइ"
 
-#: main.cpp:400
+#: main.cpp:383
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr "AI व टेट्रीस संशोधन मंचाकरिता के-ब्लॉक्स ची नवी रचना"
 
-#: main.cpp:401
+#: main.cpp:384
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "जान ओलिविए लापेरे"
 
-#: main.cpp:401
+#: main.cpp:384
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "केडीई४ करिता ऑक्सीजन कला"
 
-#: main.cpp:407
+#: main.cpp:390
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -209,7 +209,7 @@ msgstr ""
 "t0 = डेस्कटॉप पद्धत\t1 = खेळ इंजिन पद्धत\n"
 "\t2 = जीयूआय पद्धत\t3 = खेळाडू पद्धत"
 
-#: main.cpp:408
+#: main.cpp:391
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
