@@ -34,7 +34,7 @@ public:
     void setRecordFile(const char *fileName, bool binaryMode = true);
 
 private:
-    void recvRemoteData(QVector<QByteArray> *recvData, QVector<QString> *recvAddr);
+    void recvRemoteData(QList<QByteArray> *recvData, QList<QString> *recvAddr);
     int  processGame(int gameIndex);
 
     void addPlayerIP(int gameIndex, const QByteArray &data, const QString &addr);

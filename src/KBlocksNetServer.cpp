@@ -11,7 +11,7 @@
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
 
-#include <QVector>
+#include <QList>
 #include <QVarLengthArray>
 
 KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic *p, const QString &localIP)
@@ -59,8 +59,8 @@ int KBlocksNetServer::executeGame(int gameCount, bool waitForAll)
 
     mRunningFlag = true;
 
-    QVector<QByteArray> tmpRecvData;
-    QVector<QString> tmpRecvAddr;
+    QList<QByteArray> tmpRecvData;
+    QList<QString> tmpRecvAddr;
     int recvResult = 0;
     while (mRunningFlag) {
         recvRemoteData(&tmpRecvData, &tmpRecvAddr);
@@ -122,7 +122,7 @@ void KBlocksNetServer::setRecordFile(const char *fileName, bool binaryMode)
     mRecordFileType = binaryMode;
 }
 
-void KBlocksNetServer::recvRemoteData(QVector<QByteArray> *recvData, QVector<QString> *recvAddr)
+void KBlocksNetServer::recvRemoteData(QList<QByteArray> *recvData, QList<QString> *recvAddr)
 {
     if (!mRunningFlag) {
         return;
