@@ -280,7 +280,7 @@ void KBlocksWin::setupGUILayout()
 {
     QAction *action;
 
-    action = KStandardGameAction::gameNew(this, SLOT(singleGame()), actionCollection());
+    action = KStandardGameAction::gameNew(this, &KBlocksWin::singleGame, actionCollection());
     action->setText(i18n("Single Game"));
     actionCollection()->addAction(QStringLiteral("newGame"), action);
 
@@ -289,18 +289,18 @@ void KBlocksWin::setupGUILayout()
     actionCollection()->addAction(QStringLiteral("pve_step"), action);
     connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
 
-    m_pauseAction = KStandardGameAction::pause(this, SLOT(pauseGame()), actionCollection());
+    m_pauseAction = KStandardGameAction::pause(this, &KBlocksWin::pauseGame, actionCollection());
     actionCollection()->addAction(QStringLiteral("pauseGame"), m_pauseAction);
     m_pauseAction->setEnabled(false);
 
-    action = KStandardGameAction::highscores(this, SLOT(showHighscore()), actionCollection());
+    action = KStandardGameAction::highscores(this, &KBlocksWin::showHighscore, actionCollection());
     actionCollection()->addAction(QStringLiteral("showHighscores"), action);
 
-    action = KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+    action = KStandardGameAction::quit(this, &KBlocksWin::close, actionCollection());
     actionCollection()->addAction(QStringLiteral("quit"), action);
 
     if (m_themeSelector) {
-        KStandardAction::preferences(this, SLOT(configureSettings()), actionCollection());
+        KStandardAction::preferences(this, &KBlocksWin::configureSettings, actionCollection());
     }
 
     KToggleAction *soundAction = new KToggleAction(i18n("&Play Sounds"), this);
