@@ -15,7 +15,7 @@
 #include <KDBusService>
 #include <KLocalizedString>
 
-#include <KgThemeProvider>
+#include <KGameThemeProvider>
 
 #include <QString>
 #include <QByteArray>
@@ -65,14 +65,14 @@ enum KBlocksGameMode {
 };
 
 static
-void initThemeProvider(KgThemeProvider &themeProvider)
+void initThemeProvider(KGameThemeProvider &themeProvider)
 {
     themeProvider.discoverThemes(
         QStringLiteral("themes"),   // theme data location
         QStringLiteral("default")); // default theme name
 
     const QByteArray themeIdentifier = Settings::theme().toUtf8();
-    const QList<const KgTheme *> themes = themeProvider.themes();
+    const QList<const KGameTheme *> themes = themeProvider.themes();
     for (auto* theme : themes) {
         if (theme->identifier() == themeIdentifier) {
             themeProvider.setCurrentTheme(theme);
@@ -93,7 +93,7 @@ int gameDesktopMode(const QApplication &app)
 
     mpKBlocksPlayManager = new KBlocksPlayManager(mpKBlocksGameLogic, 2);
 
-    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
     KBlocksGraphics graphics(themeProvider.currentTheme());
@@ -194,7 +194,7 @@ int gameGuiMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tLocal Port      = %d\n", localPort);
     printf("\tServer IP       = %s\n", serverIP.c_str());
 
-    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
     KBlocksGraphics graphics(themeProvider.currentTheme());
@@ -253,7 +253,7 @@ int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
     printf("\tRecord File     = %s\n", recordFile.c_str());
     printf("\tRecord Type     = %s\n", recordBinary ? "Binary" : "Text");
 
-    KgThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
+    KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
     KBlocksGraphics graphics(themeProvider.currentTheme());

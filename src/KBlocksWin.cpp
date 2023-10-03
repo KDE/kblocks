@@ -10,8 +10,8 @@
 
 #include <limits.h>
 
-#include <KgThemeSelector>
-#include <KgThemeProvider>
+#include <KGameThemeSelector>
+#include <KGameThemeProvider>
 #include <KGameDifficulty>
 #include <KStandardGameAction>
 #include <KScoreDialog>
@@ -36,15 +36,15 @@ KBlocksWin::KBlocksWin(
     GameLogicInterface *p,
     GraphicsInterface *graphics,
     SoundInterface *sound,
-    KgThemeProvider *themeProvider,
+    KGameThemeProvider *themeProvider,
     KBlocksPlayManager *pM,
     int capacity,
     int gamecount
 ) : KXmlGuiWindow()
 {
     if (themeProvider) {
-        m_themeSelector = new KgThemeSelector(themeProvider, KgThemeSelector::EnableNewStuffDownload);
-        connect(themeProvider, &KgThemeProvider::currentThemeChanged, this, &KBlocksWin::onThemeChanged);
+        m_themeSelector = new KGameThemeSelector(themeProvider, KGameThemeSelector::EnableNewStuffDownload);
+        connect(themeProvider, &KGameThemeProvider::currentThemeChanged, this, &KBlocksWin::onThemeChanged);
     }
 
     //Use up to 3MB for global application pixmap cache
@@ -229,7 +229,7 @@ void KBlocksWin::configureSettings()
     m_themeSelector->showAsDialog();
 }
 
-void KBlocksWin::onThemeChanged(const KgTheme *theme)
+void KBlocksWin::onThemeChanged(const KGameTheme *theme)
 {
     // sync to settings store
     Settings::setTheme(QString::fromUtf8(theme->identifier()));

@@ -13,7 +13,7 @@ enum class Sound {
     BlockRemove
 };
 
-class KgTheme;
+class KGameTheme;
 
 class SoundInterface
 {
@@ -22,7 +22,7 @@ public:
     virtual ~SoundInterface() = default;
 
 public:
-    virtual bool loadTheme(const KgTheme *) = 0;
+    virtual bool loadTheme(const KGameTheme *) = 0;
     virtual void setSoundsEnabled(bool) = 0;
     virtual void playSound(Sound) = 0;
 };

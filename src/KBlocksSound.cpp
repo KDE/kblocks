@@ -11,14 +11,14 @@
 #include "KBlocksSound.h"
 
 #include <KgSound>
-#include <KgTheme>
+#include <KGameTheme>
 
 #include <QStandardPaths>
 
 #include "kblocks_sound_debug.h"
 #include "settings.h"
 
-KBlocksSound::KBlocksSound(const KgTheme *theme)
+KBlocksSound::KBlocksSound(const KGameTheme *theme)
     : SoundInterface()
 {
     loadTheme(theme);
@@ -31,11 +31,11 @@ KBlocksSound::~KBlocksSound()
     delete m_blockRemoveSound;
 }
 
-bool KBlocksSound::loadTheme(const KgTheme *theme)
+bool KBlocksSound::loadTheme(const KGameTheme *theme)
 {
     QString themeMoveSound;
     if (!theme->customData(QStringLiteral("Sound_Block_Move")).isEmpty()) {
-        // TODO: extend KgTheme to provide look-up of relativ path with custom entries
+        // TODO: extend KGameTheme to provide look-up of relativ path with custom entries
         // For now simply searching all possible locations manually, here and below
         themeMoveSound = QStandardPaths::locate(
                     QStandardPaths::AppDataLocation, QLatin1String("themes/") + theme->customData(QStringLiteral("Sound_Block_Move")));

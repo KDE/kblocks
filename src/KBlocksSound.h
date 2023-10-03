@@ -16,11 +16,11 @@ class KgSound;
 class KBlocksSound : public SoundInterface
 {
 public:
-    explicit KBlocksSound(const KgTheme *theme);
+    explicit KBlocksSound(const KGameTheme *theme);
     ~KBlocksSound() override;
 
 public:
-    bool loadTheme(const KgTheme *theme) override;
+    bool loadTheme(const KGameTheme *theme) override;
     void setSoundsEnabled(bool p_enabled) override;
     void playSound(Sound soundType) override;
 

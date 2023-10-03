@@ -30,7 +30,7 @@ public:
     void setUpdateInterval(int) override {}
     void setSoundsEnabled(bool) override {}
     void readSettings() override { readSettingsCalled = true; }
-    void loadTheme(const KgTheme *) override {}
+    void loadTheme(const KGameTheme *) override {}
     void startGame() override {}
     void stopGame() override {
         if (mpGameLogic->singleGamesDeleted) {

@@ -17,12 +17,12 @@
 class KBlocksGraphics : public GraphicsInterface
 {
 public:
-    explicit KBlocksGraphics(const KgTheme *theme);
+    explicit KBlocksGraphics(const KGameTheme *theme);
     ~KBlocksGraphics() override;
 
 public:
-    bool loadTheme(const KgTheme *theme) override;
-    void readThemeValues(const KgTheme *theme) override;
+    bool loadTheme(const KGameTheme *theme) override;
+    void readThemeValues(const KGameTheme *theme) override;
     QSvgRenderer *renderer() const override
     {
         return m_renderer;

@@ -53,7 +53,7 @@ public:
     void setSoundsEnabled(bool enabled) override;
 
     void readSettings() override;
-    void loadTheme(const KgTheme *theme) override;
+    void loadTheme(const KGameTheme *theme) override;
 
     void startGame() override;
     void stopGame() override;

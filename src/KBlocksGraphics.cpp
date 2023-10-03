@@ -8,11 +8,11 @@
 #include "KBlocksGraphics.h"
 #include "kblocks_graphics_debug.h"
 
-#include <KgTheme>
+#include <KGameTheme>
 
 #include <QPixmapCache>
 
-KBlocksGraphics::KBlocksGraphics(const KgTheme *theme)
+KBlocksGraphics::KBlocksGraphics(const KGameTheme *theme)
 {
     m_renderer = new QSvgRenderer(theme->graphicsPath());
     readThemeValues(theme);
@@ -23,7 +23,7 @@ KBlocksGraphics::~KBlocksGraphics()
     delete m_renderer;
 }
 
-bool KBlocksGraphics::loadTheme(const KgTheme *theme)
+bool KBlocksGraphics::loadTheme(const KGameTheme *theme)
 {
     if (!m_renderer->load(theme->graphicsPath())) {
         qCWarning(KBGraphics) << "Error loading SVG theme"
@@ -37,7 +37,7 @@ bool KBlocksGraphics::loadTheme(const KgTheme *theme)
     return true;
 }
 
-void KBlocksGraphics::readThemeValues(const KgTheme *theme)
+void KBlocksGraphics::readThemeValues(const KGameTheme *theme)
 {
     //Extract values from SVG elements
     QRectF bounds;

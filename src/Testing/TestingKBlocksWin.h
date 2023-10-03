@@ -23,7 +23,7 @@ public:
         GameLogicInterface *p,
         GraphicsInterface *graphics,
         SoundInterface *sound,
-        KgThemeProvider *themeProvider,
+        KGameThemeProvider *themeProvider,
         KBlocksPlayManager *pM,
         int capacity,
         int gamecount

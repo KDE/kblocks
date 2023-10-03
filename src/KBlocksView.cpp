@@ -30,7 +30,7 @@ KBlocksView::~KBlocksView()
 {
 }
 
-void KBlocksView::loadTheme(const KgTheme *theme)
+void KBlocksView::loadTheme(const KGameTheme *theme)
 {
     SceneInterface* s = dynamic_cast<SceneInterface*>(scene());
     if (s) {
