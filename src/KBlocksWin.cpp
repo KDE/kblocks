@@ -12,7 +12,7 @@
 
 #include <KgThemeSelector>
 #include <KgThemeProvider>
-#include <KgDifficulty>
+#include <KGameDifficulty>
 #include <KStandardGameAction>
 #include <KScoreDialog>
 
@@ -122,17 +122,17 @@ void KBlocksWin::startGame()
         mpGameScene->startGame();
 
         int levelUpTime = 0;
-        switch ((int) Kg::difficultyLevel()) {
-        case KgDifficultyLevel::Medium:
+        switch ((int) KGameDifficulty::globalLevel()) {
+        case KGameDifficultyLevel::Medium:
             levelUpTime = 5;
             break;
-        case KgDifficultyLevel::Hard:
+        case KGameDifficultyLevel::Hard:
             levelUpTime = 10;
             break;
         }
         mpGameLogic->levelUpGame(levelUpTime);
 
-        Kg::difficulty()->setGameRunning(true);
+        KGameDifficulty::global()->setGameRunning(true);
     } else {
         stopGame();
         startGame();
@@ -165,14 +165,14 @@ void KBlocksWin::pauseGame()
     mpKBPlayer->pauseGame(m_pauseAction->isChecked());
     mpAIPlayer->pauseGame(m_pauseAction->isChecked());
 
-    Kg::difficulty()->setGameRunning(!m_pauseAction->isChecked());
+    KGameDifficulty::global()->setGameRunning(!m_pauseAction->isChecked());
 }
 
 void KBlocksWin::onAllGamesStopped()
 {
     mpPlayManager->stopGame();
     m_pauseAction->setEnabled(false);
-    Kg::difficulty()->setGameRunning(false);
+    KGameDifficulty::global()->setGameRunning(false);
 }
 
 void KBlocksWin::singleGame()
@@ -220,7 +220,7 @@ void KBlocksWin::closeEvent(QCloseEvent *event)
 void KBlocksWin::showHighscore()
 {
     KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
-    ksdialog.initFromDifficulty(Kg::difficulty());
+    ksdialog.initFromDifficulty(KGameDifficulty::global());
     ksdialog.exec();
 }
 
@@ -248,7 +248,7 @@ void KBlocksWin::onIsHighscore(int index, int points, int level)
 {
     if (index == 0) { // TODO : game id?? multi game display??
         QPointer<KScoreDialog> ksdialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
-        ksdialog->initFromDifficulty(Kg::difficulty());
+        ksdialog->initFromDifficulty(KGameDifficulty::global());
         KScoreDialog::FieldInfo info;
         info[KScoreDialog::Score].setNum(points);
         info[KScoreDialog::Level].setNum(level);
@@ -315,11 +315,11 @@ void KBlocksWin::setupGUILayout()
     connect(mpGameScene, &KBlocksScene::scoreChanged, this, &KBlocksWin::onScoreChanged);
     connect(mpGameScene, &KBlocksScene::isHighscore, this, &KBlocksWin::onIsHighscore);
 
-    Kg::difficulty()->addStandardLevelRange(
-        KgDifficultyLevel::Easy, KgDifficultyLevel::Hard
+    KGameDifficulty::global()->addStandardLevelRange(
+        KGameDifficultyLevel::Easy, KGameDifficultyLevel::Hard
     );
-    KgDifficultyGUI::init(this);
-    connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged, this, &KBlocksWin::levelChanged);
+    KGameDifficultyGUI::init(this);
+    connect(KGameDifficulty::global(), &KGameDifficulty::currentLevelChanged, this, &KBlocksWin::levelChanged);
 
     setupGUI();
 }
