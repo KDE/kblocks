@@ -11,7 +11,7 @@
 
 #include "SoundInterface.h"
 
-class KgSound;
+class KGameSound;
 
 class KBlocksSound : public SoundInterface
 {
@@ -25,9 +25,9 @@ public:
     void playSound(Sound soundType) override;
 
 private:
-    KgSound *m_blockFallSound = nullptr;
-    KgSound *m_blockMoveSound = nullptr;
-    KgSound *m_blockRemoveSound = nullptr;
+    KGameSound *m_blockFallSound = nullptr;
+    KGameSound *m_blockMoveSound = nullptr;
+    KGameSound *m_blockRemoveSound = nullptr;
     bool sndActive;
 
 };

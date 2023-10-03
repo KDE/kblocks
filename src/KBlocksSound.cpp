@@ -10,7 +10,7 @@
 
 #include "KBlocksSound.h"
 
-#include <KgSound>
+#include <KGameSound>
 #include <KGameTheme>
 
 #include <QStandardPaths>
@@ -65,9 +65,9 @@ bool KBlocksSound::loadTheme(const KGameTheme *theme)
     delete m_blockFallSound;
     delete m_blockMoveSound;
     delete m_blockRemoveSound;
-    m_blockFallSound = new KgSound(themeFallSound);
-    m_blockMoveSound = new KgSound(themeMoveSound);
-    m_blockRemoveSound = new KgSound(themeRemoveSound);
+    m_blockFallSound = new KGameSound(themeFallSound);
+    m_blockMoveSound = new KGameSound(themeMoveSound);
+    m_blockRemoveSound = new KGameSound(themeRemoveSound);
     return true;
 }
 
