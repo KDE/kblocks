@@ -150,7 +150,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar accesos rápidos...</guimenuitem
+>Configurar atajos de teclado...</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -193,7 +193,7 @@
 
 <chapter id="command">
 <title
->Comandos/Accesos directos de teclado</title>
+>Comandos/atajos de teclado</title>
 
 <para
 >Las siguientes secciones describen brevemente cada opción de la barra de menú.</para>
@@ -342,13 +342,13 @@
 
 <sect1 id="keys"
 ><title
->Accesos directos predeterminados del teclado</title>
+>Atajos de teclado predeterminados</title>
 <para
->La siguiente tabla muestra los accesos directos predeterminados del teclado.</para>
+>La siguiente tabla muestra los atajos de teclado predeterminados.</para>
 
 <table>
 <title
->Accesos directos del teclado</title>
+>Atajos de teclado</title>
 <tgroup cols="2">
 <thead
 ><row
@@ -459,13 +459,13 @@
 </table>
 
 <para
->Estos accesos directos pueden ser modificados seleccionando <menuchoice
+>Estos atajos de teclado se pueden modificar seleccionando <menuchoice
 > <guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar accesos directos...</guimenuitem
+>Configurar atajos de teclado...</guimenuitem
 > </menuchoice
-> desde la barra de menú.</para>
+> en la barra de menú.</para>
 
 </sect1>
 
