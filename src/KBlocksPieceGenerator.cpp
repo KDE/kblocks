@@ -25,9 +25,9 @@ KBlocksPieceGenerator::~KBlocksPieceGenerator()
 
 void KBlocksPieceGenerator::genList(int seed)
 {
-    auto random = QRandomGenerator::global();
+    QRandomGenerator randomGenerator(seed);
     for (int i = 0; i < maxCapacity; i++) {
-        maPieceList[i] = random->bounded(PieceType_Detail_Max_Count);
+        maPieceList[i] = randomGenerator.bounded(PieceType_Detail_Max_Count);
     }
 
     pieceIndex = 0;

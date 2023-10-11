@@ -287,8 +287,9 @@ void KBlocksGameLogic::createSingleGames(int gameCount)
     int *seedList = new int[mGameCount];
     if (mGameSeed < 0) {
         mGameSeed = -mGameSeed;
+        QRandomGenerator randomGenerator(mGameSeed);
         for (int i = 0; i < mGameCount; i++) {
-            seedList[i] = QRandomGenerator::global()->bounded(256);
+            seedList[i] = randomGenerator.bounded(256);
         }
     } else {
         for (int i = 0; i < mGameCount; i++) {

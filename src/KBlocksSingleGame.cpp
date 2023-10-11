@@ -121,11 +121,11 @@ int KBlocksSingleGame::punishGame(int lineCount, int punishSeed)
         mpGameRecorder->append(mGameIndex, RecordDataType_PunishLineSeed, punishSeed);
     }
 
+    QRandomGenerator randomGenerator(punishSeed);
     int punishIndex = 0;
-    auto random = QRandomGenerator::global();
     for (int i = 0; i < lineCount; i++) {
         setCurrentPiece(0, -1, 0);
-        punishIndex = random->bounded(width);
+        punishIndex = randomGenerator.bounded(width);
         mpField->addPunishLine(lineCount, punishIndex);
     }
 
