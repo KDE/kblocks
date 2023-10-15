@@ -75,37 +75,37 @@ void KBlocksKeyboardPlayer::bindKeys()
     rotatecw = mpKeyShortcuts->addAction(QStringLiteral("rotate_cw"));
     rotatecw->setText(i18n("Rotate Piece Clockwise"));
     rotatecw->setIcon(QIcon::fromTheme(QStringLiteral("object-rotate-right")));
-    mpKeyShortcuts->setDefaultShortcut(rotatecw, Qt::Key_Z);
+    KActionCollection::setDefaultShortcut(rotatecw, Qt::Key_Z);
     connect(rotatecw, &QAction::triggered, this, &KBlocksKeyboardPlayer::rotateCW);
 
     rotateccw = mpKeyShortcuts->addAction(QStringLiteral("rotate_ccw"));
     rotateccw->setText(i18n("Rotate Piece Counter Clockwise"));
     rotateccw->setIcon(QIcon::fromTheme(QStringLiteral("object-rotate-left")));
-    mpKeyShortcuts->setDefaultShortcut(rotateccw, Qt::Key_Up);
+    KActionCollection::setDefaultShortcut(rotateccw, Qt::Key_Up);
     connect(rotateccw, &QAction::triggered, this, &KBlocksKeyboardPlayer::rotateCCW);
 
     moveleft = mpKeyShortcuts->addAction(QStringLiteral("move_left"));
     moveleft->setText(i18n("Move Piece Left"));
     moveleft->setIcon(QIcon::fromTheme(QStringLiteral("arrow-left")));
-    mpKeyShortcuts->setDefaultShortcut(moveleft, Qt::Key_Left);
+    KActionCollection::setDefaultShortcut(moveleft, Qt::Key_Left);
     connect(moveleft, &QAction::triggered, this, &KBlocksKeyboardPlayer::moveLeft);
 
     moveright = mpKeyShortcuts->addAction(QStringLiteral("move_right"));
     moveright->setText(i18n("Move Piece Right"));
     moveright->setIcon(QIcon::fromTheme(QStringLiteral("arrow-right")));
-    mpKeyShortcuts->setDefaultShortcut(moveright, Qt::Key_Right);
+    KActionCollection::setDefaultShortcut(moveright, Qt::Key_Right);
     connect(moveright, &QAction::triggered, this, &KBlocksKeyboardPlayer::moveRight);
 
     movedown = mpKeyShortcuts->addAction(QStringLiteral("move_down"));
     movedown->setText(i18n("Move Piece Down"));
     movedown->setIcon(QIcon::fromTheme(QStringLiteral("arrow-down")));
-    mpKeyShortcuts->setDefaultShortcut(movedown, Qt::Key_Down);
+    KActionCollection::setDefaultShortcut(movedown, Qt::Key_Down);
     connect(movedown, &QAction::triggered, this, &KBlocksKeyboardPlayer::moveDown);
 
     pushdown = mpKeyShortcuts->addAction(QStringLiteral("push_down"));
     pushdown->setText(i18n("Drop the Piece"));
     pushdown->setIcon(QIcon::fromTheme(QStringLiteral("arrow-down")));
-    mpKeyShortcuts->setDefaultShortcut(pushdown, Qt::Key_Space);
+    KActionCollection::setDefaultShortcut(pushdown, Qt::Key_Space);
     connect(pushdown, &QAction::triggered, this, &KBlocksKeyboardPlayer::pushDown);
 }
 
