@@ -13,7 +13,7 @@
 #include <KGameThemeSelector>
 #include <KGameThemeProvider>
 #include <KGameDifficulty>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <KScoreDialog>
 
 #include <KToggleAction>
@@ -280,7 +280,7 @@ void KBlocksWin::setupGUILayout()
 {
     QAction *action;
 
-    action = KStandardGameAction::gameNew(this, &KBlocksWin::singleGame, actionCollection());
+    action = KGameStandardAction::gameNew(this, &KBlocksWin::singleGame, actionCollection());
     action->setText(i18n("Single Game"));
     actionCollection()->addAction(QStringLiteral("newGame"), action);
 
@@ -289,14 +289,14 @@ void KBlocksWin::setupGUILayout()
     actionCollection()->addAction(QStringLiteral("pve_step"), action);
     connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
 
-    m_pauseAction = KStandardGameAction::pause(this, &KBlocksWin::pauseGame, actionCollection());
+    m_pauseAction = KGameStandardAction::pause(this, &KBlocksWin::pauseGame, actionCollection());
     actionCollection()->addAction(QStringLiteral("pauseGame"), m_pauseAction);
     m_pauseAction->setEnabled(false);
 
-    action = KStandardGameAction::highscores(this, &KBlocksWin::showHighscore, actionCollection());
+    action = KGameStandardAction::highscores(this, &KBlocksWin::showHighscore, actionCollection());
     actionCollection()->addAction(QStringLiteral("showHighscores"), action);
 
-    action = KStandardGameAction::quit(this, &KBlocksWin::close, actionCollection());
+    action = KGameStandardAction::quit(this, &KBlocksWin::close, actionCollection());
     actionCollection()->addAction(QStringLiteral("quit"), action);
 
     if (m_themeSelector) {
