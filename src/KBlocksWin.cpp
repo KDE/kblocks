@@ -9,18 +9,18 @@
 #include "KBlocksWin.h"
 
 #include <limits.h>
-
+// KDEGames
 #include <KGameThemeSelector>
 #include <KGameThemeProvider>
 #include <KGameDifficulty>
+#include <KGameHighScoreDialog>
 #include <KGameStandardAction>
-#include <KScoreDialog>
-
+// KF
 #include <KToggleAction>
 #include <KStandardAction>
 #include <KActionCollection>
 #include <KLocalizedString>
-
+// Qt
 #include <QStatusBar>
 #include <QPixmapCache>
 #include <QPointer>
@@ -219,7 +219,7 @@ void KBlocksWin::closeEvent(QCloseEvent *event)
 
 void KBlocksWin::showHighscore()
 {
-    KScoreDialog ksdialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
+    KGameHighScoreDialog ksdialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Level | KGameHighScoreDialog::Score, this);
     ksdialog.initFromDifficulty(KGameDifficulty::global());
     ksdialog.exec();
 }
@@ -247,11 +247,11 @@ void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)
 void KBlocksWin::onIsHighscore(int index, int points, int level)
 {
     if (index == 0) { // TODO : game id?? multi game display??
-        QPointer<KScoreDialog> ksdialog = new KScoreDialog(KScoreDialog::Name | KScoreDialog::Level | KScoreDialog::Score, this);
+        QPointer<KGameHighScoreDialog> ksdialog = new KGameHighScoreDialog(KGameHighScoreDialog::Name | KGameHighScoreDialog::Level | KGameHighScoreDialog::Score, this);
         ksdialog->initFromDifficulty(KGameDifficulty::global());
-        KScoreDialog::FieldInfo info;
-        info[KScoreDialog::Score].setNum(points);
-        info[KScoreDialog::Level].setNum(level);
+        KGameHighScoreDialog::FieldInfo info;
+        info[KGameHighScoreDialog::Score].setNum(points);
+        info[KGameHighScoreDialog::Level].setNum(level);
         if (ksdialog->addScore(info)) {
             ksdialog->exec();
         }
