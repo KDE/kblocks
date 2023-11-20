@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-08 00:43+0000\n"
-"PO-Revision-Date: 2023-11-11 07:25\n"
+"PO-Revision-Date: 2023-11-19 03:44\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -53,12 +53,12 @@ msgstr "得分表：%1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 #: KBlocksKeyboardPlayer.cpp:76
 #, kde-format
 msgid "Rotate Piece Clockwise"
-msgstr "顺时针旋转方块"
+msgstr "旋转方块 (顺时针)"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
 msgid "Rotate Piece Counter Clockwise"
-msgstr "逆时针旋转方块"
+msgstr "旋转方块 (逆时针)"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
