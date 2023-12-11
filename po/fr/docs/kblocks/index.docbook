@@ -108,7 +108,7 @@
 ><!--Describe the objective of the game.-->
 
 <para
->Par défaut, les blocs qui tombent peuvent être déplacés sur la gauche ou la droite en utilisant les flèches &Left; et &Right; . La flèche &Down; fait descendre le bloc plus vite et la flèche &Up; est utilisée pour faire pivoter le bloc. Les touches pour chaque action du jeu peuvent être configurées dans <menuchoice
+>Par défaut, les blocs qui tombent peuvent être déplacés sur la gauche ou la droite en utilisant les flèches &Left; et &Right;. La flèche &Down; fait descendre le bloc plus vite et la flèche &Up; est utilisée pour faire pivoter le bloc. Les touches pour chaque action du jeu peuvent être configurées dans <menuchoice
 ><guimenu
 >Configuration</guimenu
 ><guimenuitem
