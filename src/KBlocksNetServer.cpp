@@ -11,7 +11,6 @@
 #include "KBlocksField.h"
 #include "KBlocksPiece.h"
 
-#include <QList>
 #include <QVarLengthArray>
 
 KBlocksNetServer::KBlocksNetServer(KBlocksGameLogic *p, const QString &localIP)
