@@ -367,7 +367,8 @@ int main(int argc, char *argv[])
     QApplication::setStyle(QStringLiteral("Breeze"));
 #endif
 
-    KLocalizedString::setApplicationDomain("kblocks");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kblocks"));
+
     // Game abouts...
 
     KAboutData aboutData(QStringLiteral("kblocks"),
