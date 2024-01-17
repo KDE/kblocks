@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-01-17 00:36+0000\n"
 "PO-Revision-Date: 2023-06-11 22:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -143,63 +143,63 @@ msgstr "&Sesleri Çal"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Puan: 0 - Satır: 0 - Düzey: 0"
 
-#: main.cpp:374
+#: main.cpp:375
 #, kde-format
 msgid "KBlocks"
 msgstr "K Bloklar"
 
-#: main.cpp:376
+#: main.cpp:377
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr "KDE'den bir düşen sütun oyunu"
 
-#: main.cpp:378
+#: main.cpp:379
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "(c) 2007, Mauricio Piacentini"
 
-#: main.cpp:381
+#: main.cpp:382
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:381
+#: main.cpp:382
 #, kde-format
 msgid "Author"
 msgstr "Yazar"
 
-#: main.cpp:382
+#: main.cpp:383
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Dirk Leifeld"
 
-#: main.cpp:382
+#: main.cpp:383
 #, kde-format
 msgid "Developer"
 msgstr "Geliştirici"
 
-#: main.cpp:383
+#: main.cpp:384
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Zhongjie Cai"
 
-#: main.cpp:383
+#: main.cpp:384
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr ""
 "Yapay zeka için K Bloklar'un yeni tasarımı ve tetris araştırma platformu"
 
-#: main.cpp:384
+#: main.cpp:385
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:384
+#: main.cpp:385
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "KDE4 için Oxygen sanatsal çalışmaları"
 
-#: main.cpp:390
+#: main.cpp:391
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -210,7 +210,7 @@ msgstr ""
 "\t0 = Masaüstü Kipi\t1 = Oyun Motoru Kipi\n"
 "\t2 = Gui Kipi\t3 = Oyuncu Kipi"
 
-#: main.cpp:391
+#: main.cpp:392
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

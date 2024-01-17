@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-01-17 00:36+0000\n"
 "PO-Revision-Date: 2017-04-07 00:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -148,62 +148,62 @@ msgstr "&Puštaj zvukove"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "poena: 0 — redova: 0 — nivo: 0"
 
-#: main.cpp:374
+#: main.cpp:375
 #, kde-format
 msgid "KBlocks"
 msgstr "K‑blokovi"
 
-#: main.cpp:376
+#: main.cpp:377
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr "Igra padajućih blokova iz KDE‑a"
 
-#: main.cpp:378
+#: main.cpp:379
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "© 2007, Mauričo Pjaćentini"
 
-#: main.cpp:381
+#: main.cpp:382
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauričo Pjaćentini"
 
-#: main.cpp:381
+#: main.cpp:382
 #, kde-format
 msgid "Author"
 msgstr "Autor"
 
-#: main.cpp:382
+#: main.cpp:383
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Dirk Lajfeld"
 
-#: main.cpp:382
+#: main.cpp:383
 #, kde-format
 msgid "Developer"
 msgstr "Programer"
 
-#: main.cpp:383
+#: main.cpp:384
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Džongđi Caj"
 
-#: main.cpp:383
+#: main.cpp:384
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr "Novi dizajn K‑blokova za VI i platforma za istraživanje tetrisa"
 
-#: main.cpp:384
+#: main.cpp:385
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johan Olivje Laper"
 
-#: main.cpp:384
+#: main.cpp:385
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "Kiseonička grafika za KDE4"
 
-#: main.cpp:390
+#: main.cpp:391
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -215,7 +215,7 @@ msgstr ""
 "\t2 = režim GUI‑ja\t3 = režim igrača"
 
 # skip-rule: t-desktop, t-desktop2
-#: main.cpp:391
+#: main.cpp:392
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
