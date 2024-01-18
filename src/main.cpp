@@ -384,19 +384,20 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(i18n("Zhongjie Cai"), i18n("New design of KBlocks for AI and tetris research platform"), QStringLiteral("squall.leonhart.cai@gmail.com"));
     aboutData.addCredit(i18n("Johann Ollivier Lapeyre"), i18n("Oxygen art for KDE4"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
 
+    KAboutData::setApplicationData(aboutData);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kblocks")));
+
+    KCrash::initialize();
+
     // Command line argument options
     QCommandLineParser parser;
-    KAboutData::setApplicationData(aboutData);
-    KCrash::initialize();
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("mode"), i18n("Setup kblocks game running mode.\n\t0 = Desktop Mode\t1 = Game Engine Mode\n\t2 = Gui Mode\t3 = Player Mode"), QStringLiteral("game mode"), QStringLiteral("0")));
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("conf"), i18n("Setup the configuration file for tetris researcher mode. Not for desktop users."), QStringLiteral("configuration file"), QStringLiteral("default.conf")));
-
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    KDBusService service;
 
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kblocks")));
+    KDBusService service;
 
     // Get game mode
     int mGameMode = parser.value(QStringLiteral("mode")).toInt();
