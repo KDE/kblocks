@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-18 00:36+0000\n"
 "PO-Revision-Date: 2022-04-09 19:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -195,7 +195,7 @@ msgstr "Johann Ollivier Lapeyre"
 msgid "Oxygen art for KDE4"
 msgstr "Téma Oxygen pre KDE4"
 
-#: main.cpp:391
+#: main.cpp:394
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -206,7 +206,7 @@ msgstr ""
 "\t0 = Režim plochy\t1 = Režim herného enginu\n"
 "\t2 = Režim grafického rozhrania\t3 = Režim hráča"
 
-#: main.cpp:392
+#: main.cpp:395
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

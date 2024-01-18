@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-18 00:36+0000\n"
 "PO-Revision-Date: 2013-03-30 14:52+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -198,7 +198,7 @@ msgstr "जान ओलिविए लापेरे"
 msgid "Oxygen art for KDE4"
 msgstr "केडीई४ करिता ऑक्सीजन कला"
 
-#: main.cpp:391
+#: main.cpp:394
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -209,7 +209,7 @@ msgstr ""
 "t0 = डेस्कटॉप पद्धत\t1 = खेळ इंजिन पद्धत\n"
 "\t2 = जीयूआय पद्धत\t3 = खेळाडू पद्धत"
 
-#: main.cpp:392
+#: main.cpp:395
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
