@@ -29,6 +29,7 @@
   <name xml:lang="it">KBlocks</name>
   <name xml:lang="ka">KBlocks</name>
   <name xml:lang="ko">KBlocks</name>
+  <name xml:lang="lv">KBlocks</name>
   <name xml:lang="nl">KBlocks</name>
   <name xml:lang="nn">KBlocks</name>
   <name xml:lang="pl">KBloki</name>
@@ -72,6 +73,7 @@
   <summary xml:lang="it">Gioco con oggetti che cadono</summary>
   <summary xml:lang="ka">ვარდნილი აგურების თამაში</summary>
   <summary xml:lang="ko">떨어지는 블록 게임</summary>
+  <summary xml:lang="lv">Krītošo bloku spēle</summary>
   <summary xml:lang="nl">Vallende blokken-spel</summary>
   <summary xml:lang="nn">Spel med fallande brikker</summary>
   <summary xml:lang="pl">Gra w spadające bloki</summary>
@@ -118,6 +120,7 @@
     <p xml:lang="it">KBlocks è il classico gioco di blocchi in caduta. L'idea è impilarli in modo da riempire completamente delle righe. Quando una riga è completata viene rimossa, e c'è più spazio a disposizione nell'area di gioco. Quando manca lo spazio per far cadere i blocchi, la partita finisce. </p>
     <p xml:lang="ka">KBlocks კლასიკური თამაშია ცვენად ბლოკებზე. იდეაა, რომ ეს ბლოკები ჰორიზონტალურ ხაზებში გამოტოვებების გარეშე ჩაალაგოთ. როცა ხაზი დასრულდება. ის წაიშლება და მეტი ადგილი გაგითავისუფლდებათ. როცა ადგილი, რომ ახალი ბლოკი ჩამოვარდეს, აღარ დაგრჩებათ, თამაში დასრულდება.</p>
     <p xml:lang="ko">KBlocks는 떨어지는 블록 게임입니다. 떨어지는 블록을 맞추어서 빈틈 없는 수평선을 만드는 것이 목표입니다. 줄을 맞추면 지워져서 더 많은 공간이 생기며, 더 이상 블록이 내려올 수 없으면 게임이 끝납니다.</p>
+    <p xml:lang="lv">„KBlocks“ ir klasiska krītošu bloku spēle. Spēles mērķis ir krītošos blokus krāmēt horizontālās līnijās bez spraugām. Kad līnija ir pabeigta, tā pazūd, atbrīvojot papildu vietu laukumā. Spēle beidzas, ka laukumā pietrūkst vietas jauna bloka izkrišanai.</p>
     <p xml:lang="nl">KBlocks is het klassieke spel met vallende blokken Het idee is de vallende blokken zo op te stapelen dat horizontale lijnen volledig zijn opgevuld. Wanneer een lijn volledig is opgevuld wordt deze verwijderd en komt er meer ruimte in het speelgebied. Wanneer er onvoldoende ruimte over is om een blok te laten vallen is het spel over.</p>
     <p xml:lang="nn">KBlocks er eit klassisk spel med fallande brikker. Du må stabla brikkene oppå kvarandre slik at det ikkje vert nokon mellomrom mellom brikkene bortover. Når ei heil linje er fylt, vert ho fjerna, og du har meir plass til nye brikker. Når du ikkje har nok plass til fleire brikker, er spelet slutt.</p>
     <p xml:lang="pl">KBloki jest klasyczną grą w spadające bloki. Celem jest takie układanie spadających bloków, aby tworzyły one poziome linie bez przerw. Po ułożeniu takiej linii jest ona usuwana zwalniając miejsce w obszarze gry. Brak miejsca na spadające bloki oznacza przegraną.</p>
