@@ -25,6 +25,7 @@
   <name xml:lang="fi">KBlocks</name>
   <name xml:lang="fr">KBlocks</name>
   <name xml:lang="gl">KBlocks</name>
+  <name xml:lang="he">לבנים</name>
   <name xml:lang="hi">केब्लॉक्स</name>
   <name xml:lang="hu">KBlocks</name>
   <name xml:lang="ia">KBlocks</name>
@@ -70,6 +71,7 @@
   <summary xml:lang="fi">Putoavien kappaleiden peli</summary>
   <summary xml:lang="fr">Jeu de blocs qui tombent</summary>
   <summary xml:lang="gl">Xogo no que caen bloques</summary>
+  <summary xml:lang="he">משחק לבנים נופלות</summary>
   <summary xml:lang="hi">गिरते खण्डों का खेल</summary>
   <summary xml:lang="hu">Játék lehulló elemekkel</summary>
   <summary xml:lang="id">Permainan Balok Berjatuhan</summary>
@@ -117,6 +119,7 @@
     <p xml:lang="fi">KBlock on perinteinen putoavien kappaleiden peli. Tavoitteena on kasata putoavat kappaleet aukottomiksi vaakariveiksi. Kun rivi on valmis, se poistetaan ja pelialue kasvaa. Kun kappaleilla ei ole enää tilaa pudota, peli on lopussa.</p>
     <p xml:lang="fr">KBlocks est un jeu de blocs qui tombent classique. L'objectif est d'empiler les blocs qui tombent afin de créer des lignes horizontales sans laisser aucun espace. Lorsqu'une ligne est complète, elle disparaît et libère de la place dans la zone de jeu. Lorsqu'il n'y a plus d'espace pour que les blocs puissent tomber, la partie est terminée.</p>
     <p xml:lang="gl">KBlocks é o xogo clásico dos bloques que caen A idea é amorear os bloques que caen de xeito que creen liñas horizontais completas, sen ocos. Cando se completa unha liña, esta retírase e amplíase o espazo dispoñíbel na área de xogo. Cando non queda espazo abondo para que caian os bloques, a partida acaba.</p>
+    <p xml:lang="he">לבנים הוא משחק הלבנים הנופלות הקלסי. הרעיון הוא לערום את הלבנים הנופלות כך שתיצורנה שורות אופקיות מלאות ללא רווחים. השלמת שורה מסירה אותה וכך יש יותר מקום באזור המשחק. שאין מספיק מקום לנפילת לבנים נוספות, המשחק נגמר.</p>
     <p xml:lang="hi">केब्लॉक्स एक पारम्परिक गिरते खण्डों का खेल है। इस खेल में गिरते खण्डों की एकक्षितिजिय पट्टी बनानी होती है, पट्टी पूरी होने पर वह स्वतः हट जाती है, औरखेलने के जगह और बढ़ जाती है। जब खण्ड गिरने लायक जगह नहीं बचती तब खेल का अंत हो जाता है।</p>
     <p xml:lang="hu">A KBlock egy klasszikus lehulló elemes játék. A cél, hogy a lehulló elemek rés nélkül kitöltsék a vízszintes sorokat. Ha egy sor kész, törlődik, és több hely válik elérhetővé a játéktéren. Ha nincs több hely az elemeknek, a játék véget ér.</p>
     <p xml:lang="id">KBlocks adalah permainan klasik balok yang berjatuhan. Gagasannya adalah menumpuk balok-balok yang berjatuhan untuk menciptakan garis secara mendatar tanpa celah apapun. Ketika garis sudah lengkap maka ia terhapus, dan ruang selebihnya tersedia di area main. Ketika tidak adanya ruang untuk jatuhnya balok-balok, maka tamatlah permainan.</p>
