@@ -111,29 +111,33 @@ target_sources(KBlocksCore PRIVATE
 ecm_qt_declare_logging_category(KBlocksCore
     HEADER kblocks_ai_debug.h
     IDENTIFIER KBlocksAI
-    CATEGORY_NAME KBlocks.AI
-    DESCRIPTION "kdegames (kblock ai)"
+    CATEGORY_NAME kblocks.ai
+    OLD_CATEGORY_NAMES KBlocks.AI
+    DESCRIPTION "KBlocks AI"
     EXPORT KBLOCKS
 )
 ecm_qt_declare_logging_category(KBlocksCore
     HEADER kblocks_sound_debug.h
     IDENTIFIER KBSound
-    CATEGORY_NAME KBlocks.Sound
-    DESCRIPTION "kdegames (kblock sound)"
+    CATEGORY_NAME kblocks.sound
+    OLD_CATEGORY_NAMES KBlocks.Sound
+    DESCRIPTION "KBlocks Sound"
     EXPORT KBLOCKS
 )
 ecm_qt_declare_logging_category(KBlocksCore
     HEADER kblocks_replay_debug.h
     IDENTIFIER KBReplay
-    CATEGORY_NAME KBlocks.Replay
-    DESCRIPTION "kdegames (kblock replay)"
+    CATEGORY_NAME kblocks.replay
+    OLD_CATEGORY_NAMES KBlocks.Replay
+    DESCRIPTION "KBlocks Replay"
     EXPORT KBLOCKS
 )
 ecm_qt_declare_logging_category(KBlocksCore
     HEADER kblocks_graphics_debug.h
     IDENTIFIER KBGraphics
-    CATEGORY_NAME KBlocks.Graphics
-    DESCRIPTION "kdegames (kblock graphics)"
+    CATEGORY_NAME kblocks.graphics
+    OLD_CATEGORY_NAMES KBlocks.Graphics
+    DESCRIPTION "KBlocks Graphics"
     EXPORT KBLOCKS
 )
 
