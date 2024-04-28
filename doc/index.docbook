@@ -68,7 +68,7 @@ game.</para></abstract>
 <note><title>Objective:</title><para>Rotate the falling blocks, and fit them together to complete lines and clear the playfield.</para></note><!--Describe the objective of the game.-->
 
 <para>
-By default, falling blocks can be moved left or right using the &Left; or &Right; arrow keys. The &Down; arrow key makes the block drop faster, and the &Up; arrow key is used to rotate the block. The keys used for each game action can be configured in the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice> menu item.
+By default, falling blocks can be moved left or right using the &Left; or &Right; arrow keys. The &Down; arrow key makes the block drop faster, and the &Up; arrow key is used to rotate the block. The keys used for each game action can be configured in the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts…</guimenuitem></menuchoice> menu item.
 </para>
 
 </chapter>
@@ -194,7 +194,7 @@ of the &kde; Fundamentals.
 <row><entry>&Left; arrow</entry><entry>Move the block left</entry></row>
 <row><entry>&Down; arrow</entry><entry>Move the block down</entry></row>
 <row><entry><keycap>Z</keycap></entry><entry>Rotate the block clockwise</entry></row>
-<row><entry>&Up; arrow</entry><entry>Rotate the block counter clockwise</entry></row>
+<row><entry>&Up; arrow</entry><entry>Rotate the block counterclockwise</entry></row>
 <row><entry>&Space;</entry><entry>Drop the block</entry></row>
 
 </tbody>
@@ -203,7 +203,7 @@ of the &kde; Fundamentals.
 
 <para>These shortcuts can be changed by selecting <menuchoice>
 <guimenu>Settings</guimenu> <guimenuitem>Configure 
-Shortcuts...</guimenuitem> </menuchoice> from the menubar.</para>
+Shortcuts…</guimenuitem> </menuchoice> from the menubar.</para>
 
 </sect1>
 
@@ -221,7 +221,7 @@ Can I change the way the game looks?
 </question>
 <answer>
 <para>
-Yes, click on the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kblocks;...</guimenuitem></menuchoice> menu item.
+Yes, click on the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kblocks;…</guimenuitem></menuchoice> menu item.
 </para>
 </answer>
 </qandaentry>
@@ -233,7 +233,7 @@ Yes, click on the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure
 <title>Game Settings</title>
 <para>
 The game settings can be configured by selecting <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &kblocks;...</guimenuitem></menuchoice> from the menubar. A dialog will appear.
+<guimenuitem>Configure &kblocks;…</guimenuitem></menuchoice> from the menubar. A dialog will appear.
 </para>
 		<para>
 			To select a new theme simply choose the theme from
