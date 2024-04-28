@@ -281,11 +281,11 @@ void KBlocksWin::setupGUILayout()
     QAction *action;
 
     action = KGameStandardAction::gameNew(this, &KBlocksWin::singleGame, actionCollection());
-    action->setText(i18n("Single Game"));
+    action->setText(i18nc("@action", "Single Game"));
     actionCollection()->addAction(QStringLiteral("newGame"), action);
 
     action = new QAction(this);
-    action->setText(i18n("Human vs AI"));
+    action->setText(i18nc("@action", "Human vs AI"));
     actionCollection()->addAction(QStringLiteral("pve_step"), action);
     connect(action, &QAction::triggered, this, &KBlocksWin::pveStepGame);
 
@@ -303,7 +303,7 @@ void KBlocksWin::setupGUILayout()
         KStandardAction::preferences(this, &KBlocksWin::configureSettings, actionCollection());
     }
 
-    KToggleAction *soundAction = new KToggleAction(i18n("&Play Sounds"), this);
+    auto *soundAction = new KToggleAction(i18nc("@option:check", "Play Sounds"), this);
     soundAction->setChecked(Settings::sounds());
     actionCollection()->addAction(QStringLiteral("sounds"), soundAction);
     connect(soundAction, &KToggleAction::triggered, this, &KBlocksWin::setSoundsEnabled);
