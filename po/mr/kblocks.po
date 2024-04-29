@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2013-03-30 14:52+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -50,32 +50,44 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "अंक यादी  : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Clockwise"
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "मोहरा घड्याळाच्या काट्याच्या दिशेने फिरवा"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, kde-format
-msgid "Rotate Piece Counter Clockwise"
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr "मोहरा घड्याळाच्या काट्याच्या उलट दिशेने फिरवा"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Left"
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "मोहरा डावीकडे हलवा"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Right"
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "मोहरा उजवीकडे हलवा"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Down"
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "मोहरा खाली हलवा"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop the Piece"
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "मोहरा टाका"
 
@@ -121,22 +133,27 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "गुण : %1 - ओळी : %2 - पातळी : %3"
 
 #: KBlocksWin.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "एक खेळ"
 
 #: KBlocksWin.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Human vs AI"
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr "मानव विरुद्ध AI"
 
-#: KBlocksWin.cpp:306
+#: KBlocksWin.cpp:307
 #, fuzzy, kde-format
 #| msgid "&Play sounds"
-msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "आवाज चालवा (&P)"
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "गुण : 0 - ओळी : 0 - पातळी : 0"

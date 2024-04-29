@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2021-06-12 14:30+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -51,32 +51,44 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Clockwise"
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Rotate Piece Clockwise"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, kde-format
-msgid "Rotate Piece Counter Clockwise"
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr "Rotate Piece Anti-clockwise"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Left"
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Move Piece Left"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Right"
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Move Piece Right"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Down"
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Move Piece Down"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop the Piece"
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Drop the Piece"
 
@@ -122,21 +134,27 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Points: %1 - Lines: %2 - Level: %3"
 
 #: KBlocksWin.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "Single Game"
 
 #: KBlocksWin.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Human vs AI"
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Human vs AI"
 
-#: KBlocksWin.cpp:306
-#, kde-format
-msgid "&Play Sounds"
+#: KBlocksWin.cpp:307
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Play Sounds"
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Points: 0 - Lines: 0 - Level: 0"

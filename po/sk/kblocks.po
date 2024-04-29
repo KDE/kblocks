@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2022-04-09 19:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -50,32 +50,44 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Zoznam najvyššieho skóre : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Clockwise"
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Otočiť dielik po smere hodinových ručičiek"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, kde-format
-msgid "Rotate Piece Counter Clockwise"
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr "Otočiť dielik proti smeru hodinových ručičiek"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Left"
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Posunúť dielik doľava"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Right"
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Posunúť dielik doprava"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Down"
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Posunúť dielik dole"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop the Piece"
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Pustiť dielik"
 
@@ -121,21 +133,27 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Body: %1 - Riadky: %2 - Úroveň: %3"
 
 #: KBlocksWin.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "Jedna hra"
 
 #: KBlocksWin.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Human vs AI"
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Človek proti počítaču"
 
-#: KBlocksWin.cpp:306
-#, kde-format
-msgid "&Play Sounds"
+#: KBlocksWin.cpp:307
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "Pre&hrávať zvuky"
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Body: 0 - Riadky: 0 - Úroveň: 0"

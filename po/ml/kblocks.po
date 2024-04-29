@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks trunk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2019-12-12 21:42+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: SMC <smc.org.in>\n"
@@ -50,32 +50,43 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Clockwise"
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "കട്ട ഘടികാരദിശയില്‍ തിരിയ്ക്കുക"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, kde-format
-msgid "Rotate Piece Counter Clockwise"
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr "കട്ട ഘടികാരദിശയ്ക്കു് വിപരീതമായി തിരിയ്ക്കുക"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Left"
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "കട്ട ഇടത്തോട്ട് നീക്കുക"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Right"
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "കട്ട വലത്തോട്ട് നീക്കുക"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Down"
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "കട്ട താഴോട്ട് നീക്കുക"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr ""
 
@@ -127,21 +138,24 @@ msgstr "പോയിന്റുകള്‍: %1 - വരികള്‍: %2 - �
 #: KBlocksWin.cpp:284
 #, fuzzy, kde-format
 #| msgid "Resuming Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "കളി തുടരുന്നു"
 
 #: KBlocksWin.cpp:288
 #, kde-format
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr ""
 
-#: KBlocksWin.cpp:306
+#: KBlocksWin.cpp:307
 #, fuzzy, kde-format
 #| msgid "&Play sounds"
-msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&ശബ്ദം കേള്‍പ്പിയ്ക്കുക."
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "പോയിന്റുകള്‍: 0 - വരികള്‍: 0 - നില: 0"

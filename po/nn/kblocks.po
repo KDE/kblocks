@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2022-06-19 14:07+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -52,32 +52,44 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Poengliste: %1 – %2 – %3 – %4 – %5 – %6 – %7 – %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Clockwise"
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Roter brikke med klokka"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, kde-format
-msgid "Rotate Piece Counter Clockwise"
+#, fuzzy, kde-format
+#| msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr "Roter brikke mot klokka"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Left"
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Flytt brikke mot venstre"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Right"
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Flytt brikke mot høgre"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Piece Down"
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Flytt brikke ned"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Drop the Piece"
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Slepp brikke"
 
@@ -123,21 +135,27 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Poeng: %1 – linjer: %2 – brett: %3"
 
 #: KBlocksWin.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "Éin runde"
 
 #: KBlocksWin.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Human vs AI"
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Menneske mot maskin"
 
-#: KBlocksWin.cpp:306
-#, kde-format
-msgid "&Play Sounds"
+#: KBlocksWin.cpp:307
+#, fuzzy, kde-format
+#| msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr "&Spel lydar"
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Poeng: 0 – linjer: 0 – brett: 0"

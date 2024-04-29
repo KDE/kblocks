@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-04-29 00:37+0000\n"
 "PO-Revision-Date: 2021-06-27 09:51+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -53,31 +53,37 @@ msgstr "अंक सूची : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
 #, kde-format
+msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
-msgid "Rotate Piece Counter Clockwise"
+msgctxt "@action"
+msgid "Rotate Piece Counterclockwise"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
+msgctxt "@action"
 msgid "Move Piece Left"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, kde-format
+msgctxt "@action"
 msgid "Move Piece Right"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, kde-format
+msgctxt "@action"
 msgid "Move Piece Down"
 msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
+msgctxt "@action"
 msgid "Drop the Piece"
 msgstr ""
 
@@ -124,21 +130,26 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr ""
 
 #: KBlocksWin.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Single Game"
+msgctxt "@action"
 msgid "Single Game"
 msgstr "एकल खेल"
 
 #: KBlocksWin.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Human vs AI"
+msgctxt "@action"
 msgid "Human vs AI"
 msgstr "आदमी व कंपयूटर"
 
-#: KBlocksWin.cpp:306
+#: KBlocksWin.cpp:307
 #, kde-format
-msgid "&Play Sounds"
+msgctxt "@option:check"
+msgid "Play Sounds"
 msgstr ""
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr ""
