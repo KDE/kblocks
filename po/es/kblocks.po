@@ -4,7 +4,7 @@
 #
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2008.
 # Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Rocio Gallego <traducciones@rociogallego.com>, 2012.
@@ -15,14 +15,14 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-18 00:36+0000\n"
-"PO-Revision-Date: 2023-10-02 21:34+0100\n"
+"PO-Revision-Date: 2024-04-29 18:33+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -41,13 +41,13 @@ msgstr ""
 #: config/kblocks.kcfg:9
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "Tema gráfico que se utilizará."
+msgstr "Tema gráfico que se usará."
 
 #. i18n: ectx: label, entry (Sounds), group (Preferences)
 #: config/kblocks.kcfg:14
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "Si se deben reproducir los efectos sonoros."
+msgstr "Indica si se deben reproducir los efectos de sonido."
 
 #: KBlocksDisplay.cpp:58
 #, kde-format
@@ -102,7 +102,7 @@ msgstr "¡Juego pausado!"
 #: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
-msgstr "¡Iniciar el juego!"
+msgstr "¡Juego iniciado!"
 
 #: KBlocksScene.cpp:277
 #, kde-format
@@ -112,12 +112,12 @@ msgstr "¡Juego terminado!"
 #: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
-msgstr "¡Usted gana!"
+msgstr "¡Has ganado!"
 
 #: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
-msgstr "¡Usted pierde!"
+msgstr "¡Has perdido!"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kblocksui.rc:24
@@ -158,7 +158,7 @@ msgstr "KBlocks"
 #: main.cpp:377
 #, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "Un juego de bloques en cascada creado por KDE"
+msgstr "Juego de bloques en cascada creado por KDE"
 
 #: main.cpp:379
 #, kde-format
