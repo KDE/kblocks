@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:37+0000\n"
-"PO-Revision-Date: 2024-02-09 17:45+0300\n"
+"PO-Revision-Date: 2024-04-29 15:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -45,51 +45,45 @@ msgstr "Ses efektlerinin olup olmayacağı."
 #: KBlocksDisplay.cpp:58
 #, kde-format
 msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
-msgstr "Puan Listesi : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "Puan Listesi : 0 — 0 — 0 — 0 — 0 — 0 — 0 — 0"
 
 #: KBlocksDisplay.cpp:120
 #, kde-format
 msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
-msgstr "Puan Listesi: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "Puan Listesi: %1 — %2 — %3 — %4 — %5 — %6 — %7 — %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Parçayı Saat Yönünde Döndür"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
 msgstr "Parçayı Saat Yönünün Tersine Döndür"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Parçayı Sola Taşı"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Parçayı Sağa Taşı"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Parçayı Aşağı Taşı"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Parçayı Bırak"
@@ -133,33 +127,30 @@ msgstr "Ana Araç Çubuğu"
 #: KBlocksWin.cpp:143 KBlocksWin.cpp:243
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
-msgstr "Puan: %1 - Satır: %2 - Düzey: %3"
+msgstr "Puan: %1 — Satır: %2 — Düzey: %3"
 
 #: KBlocksWin.cpp:284
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Tekli Oyun"
 
 #: KBlocksWin.cpp:288
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
-msgstr "Kişiye karşı Yapay Zeka"
+msgstr "Kişiye Karşı Yapay Zeka"
 
 #: KBlocksWin.cpp:307
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Sesleri Çal"
+msgstr "Sesleri çal"
 
 #: KBlocksWin.cpp:314
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
-msgstr "Puan: 0 - Satır: 0 - Düzey: 0"
+msgstr "Puan: 0 — Satır: 0 — Düzey: 0"
 
 #: main.cpp:375
 #, kde-format

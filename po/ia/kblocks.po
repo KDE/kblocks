@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kblocks package.
 #
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:37+0000\n"
-"PO-Revision-Date: 2023-09-25 12:52+0200\n"
+"PO-Revision-Date: 2024-04-29 15:02+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -37,7 +37,7 @@ msgstr ""
 #: config/kblocks.kcfg:14
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr ""
+msgstr "Si effectos de sono deberea esser reproducite."
 
 #: KBlocksDisplay.cpp:58
 #, kde-format
@@ -108,12 +108,12 @@ msgstr "Joco Terminate!"
 #: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
-msgstr ""
+msgstr "Tu Gania!"
 
 #: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
-msgstr ""
+msgstr "Tu perde!"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kblocksui.rc:24
@@ -130,7 +130,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action"
 msgid "Single Game"
-msgstr ""
+msgstr "Joco singule"
 
 #: KBlocksWin.cpp:288
 #, kde-format
@@ -139,11 +139,10 @@ msgid "Human vs AI"
 msgstr ""
 
 #: KBlocksWin.cpp:307
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Re&produce sonos"
+msgstr "Reproduce sonos"
 
 #: KBlocksWin.cpp:314
 #, kde-format

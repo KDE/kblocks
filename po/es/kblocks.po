@@ -4,7 +4,7 @@
 #
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2008.
 # Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 # Rocio Gallego <traducciones@rociogallego.com>, 2012.
@@ -15,14 +15,14 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:37+0000\n"
-"PO-Revision-Date: 2023-10-02 21:34+0100\n"
+"PO-Revision-Date: 2024-04-29 18:33+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -41,13 +41,13 @@ msgstr ""
 #: config/kblocks.kcfg:9
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "Tema gráfico que se utilizará."
+msgstr "Tema gráfico que se usará."
 
 #. i18n: ectx: label, entry (Sounds), group (Preferences)
 #: config/kblocks.kcfg:14
 #, kde-format
 msgid "Whether sound effects should be played."
-msgstr "Si se deben reproducir los efectos sonoros."
+msgstr "Indica si se deben reproducir los efectos de sonido."
 
 #: KBlocksDisplay.cpp:58
 #, kde-format
@@ -60,43 +60,37 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Lista de puntuaciones: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Girar las piezas en sentido horario"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
 msgstr "Girar las piezas en sentido antihorario"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Mover la pieza hacia la izquierda"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Mover la pieza hacia la derecha"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Mover la pieza hacia abajo"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Retirar la pieza"
@@ -114,7 +108,7 @@ msgstr "¡Juego pausado!"
 #: KBlocksScene.cpp:271
 #, kde-format
 msgid "Game Start!"
-msgstr "¡Iniciar el juego!"
+msgstr "¡Juego iniciado!"
 
 #: KBlocksScene.cpp:277
 #, kde-format
@@ -124,12 +118,12 @@ msgstr "¡Juego terminado!"
 #: KBlocksScene.cpp:283
 #, kde-format
 msgid "You Win!"
-msgstr "¡Usted gana!"
+msgstr "¡Has ganado!"
 
 #: KBlocksScene.cpp:289
 #, kde-format
 msgid "You Lose!"
-msgstr "¡Usted pierde!"
+msgstr "¡Has perdido!"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kblocksui.rc:24
@@ -143,25 +137,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Puntos: %1 - Líneas: %2 - Nivel: %3"
 
 #: KBlocksWin.cpp:284
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Juego individual"
 
 #: KBlocksWin.cpp:288
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Humano contra IA"
 
 #: KBlocksWin.cpp:307
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Re&producir sonidos"
+msgstr "Reproducir sonidos"
 
 #: KBlocksWin.cpp:314
 #, kde-format
@@ -176,7 +167,7 @@ msgstr "KBlocks"
 #: main.cpp:377
 #, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "Un juego de bloques en cascada creado por KDE"
+msgstr "Juego de bloques en cascada creado por KDE"
 
 #: main.cpp:379
 #, kde-format

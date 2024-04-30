@@ -108,7 +108,7 @@
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
->Sneltoetsen configureren...</guimenuitem
+>Sneltoetsen configureren…</guimenuitem
 ></menuchoice
 > </para>
 
@@ -403,7 +403,7 @@
 ><entry
 >Pijl &Up;</entry
 ><entry
->Draai de blokkenteller rechtsom</entry
+>Het blok linksom draaien</entry
 ></row>
 <row
 ><entry
@@ -421,7 +421,7 @@
 > <guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Sneltoetsen instellen...</guimenuitem
+>Sneltoetsen instellen…</guimenuitem
 > </menuchoice
 >.</para>
 
@@ -444,7 +444,7 @@
 >Ja, klik op het menu-item <guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&kblocks; configureren...</guimenuitem
+>&kblocks; configureren…</guimenuitem
 >. </para>
 </answer>
 </qandaentry>
@@ -460,7 +460,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&kblocks;... instellen...</guimenuitem
+>&kblocks;... instellen…</guimenuitem
 > </menuchoice
 >. Er verschijnt een dialoog. </para>
 		<para
