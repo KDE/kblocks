@@ -122,7 +122,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura le scorciatoie</guimenuitem
+>Configura le scorciatoie…</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -435,7 +435,7 @@
 > <guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura le scorciatoie</guimenuitem
+>Configura le scorciatoie…</guimenuitem
 ></menuchoice
 > dalla barra dei menu.</para>
 
@@ -458,7 +458,7 @@
 >Sì, fai clic sul menu <guimenu
 >Impostazioni</guimenu
 > e seleziona <guimenuitem
->Configura &kblocks;...</guimenuitem
+>Configura &kblocks;…</guimenuitem
 >. </para>
 </answer>
 </qandaentry>
@@ -474,7 +474,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura &kblocks;</guimenuitem
+>Configura &kblocks;…</guimenuitem
 ></menuchoice
 > dalla barra dei menu. Apparirà una finestra. </para>
 		<para
