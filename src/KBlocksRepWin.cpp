@@ -56,7 +56,7 @@ KBlocksRepWin::KBlocksRepWin(
     connect(&mUpdateTimer, &QTimer::timeout, this, &KBlocksRepWin::replayOneStep);
     mUpdateTimer.stop();
 
-    mSnapshotFilename = QLatin1String("");
+    mSnapshotFilename.clear();
     mSnapshotFolder = QStringLiteral("./snapshot/");
 }
 
