@@ -108,7 +108,7 @@
 ><!--Describe the objective of the game.-->
 
 <para
->Par défaut, les blocs qui tombent peuvent être déplacés sur la gauche ou la droite en utilisant les flèches &Left; et &Right;. La flèche &Down; fait descendre le bloc plus vite et la flèche &Up; est utilisée pour faire pivoter le bloc. Les touches pour chaque action du jeu peuvent être configurées dans <menuchoice
+>Par défaut, les blocs qui tombent peuvent être déplacés sur la gauche ou la droite en utilisant les flèches &Left; et &Right;. La flèche &Down; fait descendre le bloc plus rapidement et la flèche &Up; est utilisée pour faire pivoter le bloc. Les touches utilisées pour chaque action du jeu peuvent être configurées dans l'élément de menu <menuchoice
 ><guimenu
 >Configuration</guimenu
 ><guimenuitem
@@ -408,7 +408,7 @@
 ><entry
 >Flèche &Up;</entry
 ><entry
->Pivote le bloc sur la gauche</entry
+>Faire tourner le bloc dans le sens antihoraire</entry
 ></row>
 <row
 ><entry
@@ -428,7 +428,7 @@
 > <guimenuitem
 >Configurer les raccourcis clavier...</guimenuitem
 > </menuchoice
-> depuis la barre de menu.</para>
+> depuis la barre de menus.</para>
 
 </sect1>
 
@@ -446,7 +446,7 @@
 </question>
 <answer>
 <para
->Oui. Cliquez sur l'élément de menu <menuchoice
+>Oui. Veuillez cliquer sur l'élément de menu <menuchoice
 ><guimenu
 >Configuration</guimenu
 > <guimenuitem
@@ -469,7 +469,7 @@
 > <guimenuitem
 >Configurer &kblocks;...</guimenuitem
 ></menuchoice
-> depuis la barre de menu. Une boîte de dialogue apparaîtra. </para>
+> depuis la barre de menus. Une boîte de dialogue apparaîtra. </para>
 		<para
 >Pour sélectionner un nouveau thème, le choisir simplement dans la liste de sélection. Chaque élément dans la liste affiche un aperçu réduit à gauche du nom du thème. Une sélection est immédiatement prise en compte. </para>
 		<para
