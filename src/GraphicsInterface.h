@@ -10,7 +10,7 @@
 class QSize;
 class QString;
 class QSvgRenderer;
-class KGameTheme;
+class KBlocksTheme;
 
 enum class BackgroundLocation {
     Stretch,
@@ -36,8 +36,8 @@ public:
     virtual ~GraphicsInterface() = default;
 
 public:
-    virtual bool loadTheme(const KGameTheme *theme) = 0;
-    virtual void readThemeValues(const KGameTheme *theme) = 0;
+    virtual bool loadTheme(const KBlocksTheme *theme) = 0;
+    virtual void readThemeValues(const KBlocksTheme *theme) = 0;
     virtual QSvgRenderer *renderer() const = 0;
 
     int m_Block_Size;

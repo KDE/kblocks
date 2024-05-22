@@ -16,7 +16,7 @@ public:
     ~MockSound() override = default;
 
 public:
-    bool loadTheme(const KGameTheme *) override { return false; }
+    bool loadTheme(const KBlocksTheme *) override { return false; }
     void setSoundsEnabled(bool) override {}
     void playSound(Sound) override {}
 };

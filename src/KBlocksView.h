@@ -12,7 +12,7 @@
 #include <QGraphicsView>
 
 class SceneInterface;
-class KGameTheme;
+class KBlocksTheme;
 
 class KBlocksView : public QGraphicsView
 {
@@ -29,7 +29,7 @@ public Q_SLOTS:
     void settingsChanged();
 
 public:
-    void loadTheme(const KGameTheme *theme);
+    void loadTheme(const KBlocksTheme *theme);
 
 protected:
     void focusInEvent(QFocusEvent *event) override;

@@ -30,6 +30,7 @@ using namespace std;
 #include "KBlocksGameLogic.h"
 #include "KBlocksPlayManager.h"
 #include "KBlocksPlayNetwork.h"
+#include "KBlocksTheme.h"
 #include "KBlocksWin.h"
 #include "KBlocksDisplay.h"
 #include "KBlocksRepWin.h"
@@ -42,6 +43,7 @@ using namespace std;
 #include "KBlocksNetServer.h"
 #include "KBlocksNetClient.h"
 
+#include "kblocks_theme_debug.h"
 #include "kblocks_version.h"
 #include "settings.h"
 
@@ -67,9 +69,11 @@ enum KBlocksGameMode {
 static
 void initThemeProvider(KGameThemeProvider &themeProvider)
 {
+    const QMetaObject * kblocksThemeClass = & KBlocksTheme::staticMetaObject;
     themeProvider.discoverThemes(
         QStringLiteral("themes"),   // theme data location
-        QStringLiteral("default")); // default theme name
+        QStringLiteral("default"),  // default theme name
+        kblocksThemeClass);
 
     const QByteArray themeIdentifier = Settings::theme().toUtf8();
     const QList<const KGameTheme *> themes = themeProvider.themes();
@@ -96,8 +100,13 @@ int gameDesktopMode(const QApplication &app)
     KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
-    KBlocksGraphics graphics(themeProvider.currentTheme());
-    KBlocksSound sound(themeProvider.currentTheme());
+    auto *currentBlocksTheme = qobject_cast<const KBlocksTheme*>(themeProvider.currentTheme());
+    if (!currentBlocksTheme) {
+        qCWarning(KBTheme) << "Could not convert theme to KBlocksTheme";
+        return -2;
+    }
+    KBlocksGraphics graphics(currentBlocksTheme);
+    KBlocksSound sound(currentBlocksTheme);
 
     mpKBlocksWindow = new KBlocksWin(
         mpKBlocksGameLogic,
@@ -197,8 +206,13 @@ int gameGuiMode(KBlocksConfigManager *config, const QApplication &app)
     KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
-    KBlocksGraphics graphics(themeProvider.currentTheme());
-    KBlocksSound sound(themeProvider.currentTheme());
+    auto *currentBlocksTheme = qobject_cast<const KBlocksTheme*>(themeProvider.currentTheme());
+    if (!currentBlocksTheme) {
+        qCWarning(KBTheme) << "Could not convert theme to KBlocksTheme";
+        return -2;
+    }
+    KBlocksGraphics graphics(currentBlocksTheme);
+    KBlocksSound sound(currentBlocksTheme);
 
     mpKBlocksDisplay = new KBlocksDisplay(
         &graphics,
@@ -256,8 +270,13 @@ int gameReplayMode(KBlocksConfigManager *config, const QApplication &app)
     KGameThemeProvider themeProvider{QByteArray()}; // empty config key to disable internal config
     initThemeProvider(themeProvider);
 
-    KBlocksGraphics graphics(themeProvider.currentTheme());
-    KBlocksSound sound(themeProvider.currentTheme());
+    auto *currentBlocksTheme = qobject_cast<const KBlocksTheme*>(themeProvider.currentTheme());
+    if (!currentBlocksTheme) {
+        qCWarning(KBTheme) << "Could not convert theme to KBlocksTheme";
+        return -2;
+    }
+    KBlocksGraphics graphics(currentBlocksTheme);
+    KBlocksSound sound(currentBlocksTheme);
 
     KBlocksRepWin *mpKBlocksRepWin = new KBlocksRepWin(
         &graphics,

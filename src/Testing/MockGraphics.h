@@ -27,8 +27,8 @@ public:
     ~MockGraphics() override = default;
 
 public:
-    bool loadTheme(const KGameTheme *) override { return false; }
-    void readThemeValues(const KGameTheme *) override {}
+    bool loadTheme(const KBlocksTheme *) override { return false; }
+    void readThemeValues(const KBlocksTheme *) override {}
     QSvgRenderer *renderer() const override { return mRenderer.get(); }
 
 private:

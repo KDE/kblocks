@@ -162,7 +162,7 @@ void KBlocksScene::setSoundsEnabled(bool enabled)
     mpSnd->setSoundsEnabled(enabled);
 }
 
-void KBlocksScene::loadTheme(const KGameTheme *theme)
+void KBlocksScene::loadTheme(const KBlocksTheme *theme)
 {
     mpGrafx->loadTheme(theme);
     mpSnd->loadTheme(theme);
