@@ -29,8 +29,10 @@
 
 #include "GameLogicInterface.h"
 #include "KBlocksScene.h"
+#include "KBlocksTheme.h"
 #include "SceneInterface.h"
 #include "settings.h"
+#include "kblocks_theme_debug.h"
 
 KBlocksWin::KBlocksWin(
     GameLogicInterface *p,
@@ -231,10 +233,14 @@ void KBlocksWin::configureSettings()
 
 void KBlocksWin::onThemeChanged(const KGameTheme *theme)
 {
+    auto *blocksTheme = qobject_cast<const KBlocksTheme*>(theme);
+    if (!blocksTheme) {
+        qCWarning(KBTheme) << "Could not convert theme to KBlocksTheme";
+    }
     // sync to settings store
     Settings::setTheme(QString::fromUtf8(theme->identifier()));
     // trigger update of resources, then display
-    mpGameView->loadTheme(theme);
+    mpGameView->loadTheme(blocksTheme);
 }
 
 void KBlocksWin::onScoreChanged(int index, int points, int lines, int level)

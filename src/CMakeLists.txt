@@ -83,6 +83,8 @@ target_sources(KBlocksCore PRIVATE
     KBlocksSound.h
     KBlocksSvgItem.cpp
     KBlocksSvgItem.h
+    KBlocksTheme.cpp
+    KBlocksTheme.h
     KBlocksView.cpp
     KBlocksView.h
     KBlocksWin.cpp
@@ -138,6 +140,13 @@ ecm_qt_declare_logging_category(KBlocksCore
     CATEGORY_NAME kblocks.graphics
     OLD_CATEGORY_NAMES KBlocks.Graphics
     DESCRIPTION "KBlocks Graphics"
+    EXPORT KBLOCKS
+)
+ecm_qt_declare_logging_category(KBlocksCore
+    HEADER kblocks_theme_debug.h
+    IDENTIFIER KBTheme
+    CATEGORY_NAME kblocks.theme
+    DESCRIPTION "KBlocks Theme"
     EXPORT KBLOCKS
 )
 

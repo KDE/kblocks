@@ -6,13 +6,13 @@
 *   SPDX-License-Identifier: GPL-2.0-or-later
 ***************************************************************************/
 #include "KBlocksGraphics.h"
-#include "kblocks_graphics_debug.h"
 
-#include <KGameTheme>
+#include "KBlocksTheme.h"
+#include "kblocks_graphics_debug.h"
 
 #include <QPixmapCache>
 
-KBlocksGraphics::KBlocksGraphics(const KGameTheme *theme)
+KBlocksGraphics::KBlocksGraphics(const KBlocksTheme *theme)
 {
     m_renderer = new QSvgRenderer(theme->graphicsPath());
     readThemeValues(theme);
@@ -23,7 +23,7 @@ KBlocksGraphics::~KBlocksGraphics()
     delete m_renderer;
 }
 
-bool KBlocksGraphics::loadTheme(const KGameTheme *theme)
+bool KBlocksGraphics::loadTheme(const KBlocksTheme *theme)
 {
     if (!m_renderer->load(theme->graphicsPath())) {
         qCWarning(KBGraphics) << "Error loading SVG theme"
@@ -37,7 +37,7 @@ bool KBlocksGraphics::loadTheme(const KGameTheme *theme)
     return true;
 }
 
-void KBlocksGraphics::readThemeValues(const KGameTheme *theme)
+void KBlocksGraphics::readThemeValues(const KBlocksTheme *theme)
 {
     //Extract values from SVG elements
     QRectF bounds;
