@@ -2,21 +2,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2009, 2010, 2015.
-# Steve Allewell <steve.allewell@gmail.com>, 2017, 2021.
+# SPDX-FileCopyrightText: 2017, 2021, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:37+0000\n"
-"PO-Revision-Date: 2021-06-12 14:30+0100\n"
+"PO-Revision-Date: 2024-05-21 19:14+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: British English\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -51,43 +51,37 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Rotate Piece Clockwise"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr "Rotate Piece Anti-clockwise"
+msgstr "Rotate Piece Counterclockwise"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Move Piece Left"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Move Piece Right"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Move Piece Down"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Drop the Piece"
@@ -134,25 +128,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Points: %1 - Lines: %2 - Level: %3"
 
 #: KBlocksWin.cpp:284
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Single Game"
 
 #: KBlocksWin.cpp:288
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Human vs AI"
 
 #: KBlocksWin.cpp:307
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Play Sounds"
+msgstr "Play Sounds"
 
 #: KBlocksWin.cpp:314
 #, kde-format
