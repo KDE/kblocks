@@ -2,21 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2015, 2017.
 # Lukáš Tinkl <ltinkl@redhat.com>, 2011.
+# SPDX-FileCopyrightText: 2024 Vit Pelcak <vpelcak@suse.cz>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:37+0000\n"
-"PO-Revision-Date: 2017-09-11 14:08+0100\n"
-"Last-Translator: Vít Pelčák <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-05-29 11:40+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,37 +55,37 @@ msgstr "Seznam výsledků: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 #, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
-msgstr ""
+msgstr "Otočit dílek po směru hodinových ručiček"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr ""
+msgstr "Otočit dílek proti směru hodinových ručiček"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
-msgstr ""
+msgstr "Posunout dílek doleva"
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
-msgstr ""
+msgstr "Posunout dílek doprava"
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr ""
+msgstr "Posunout dílek dolů"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
-msgstr ""
+msgstr "Upustit dílek"
 
 #: KBlocksScene.cpp:216
 #, kde-format
@@ -131,19 +132,19 @@ msgstr "Bodů: %1 - Řádků: %2 - Úroveň: %3"
 #, kde-format
 msgctxt "@action"
 msgid "Single Game"
-msgstr ""
+msgstr "Jeden hráč"
 
 #: KBlocksWin.cpp:288
 #, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
-msgstr ""
+msgstr "Člověk nebo UI"
 
 #: KBlocksWin.cpp:307
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "Přehrávat zvuky"
 
 #: KBlocksWin.cpp:314
 #, kde-format
