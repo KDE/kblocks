@@ -1,15 +1,15 @@
 # translation of kblocks.po to polski
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Maciej Wikło <maciej.wiklo@wp.pl>, 2008, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2014, 2015, 2017, 2021.
+# SPDX-FileCopyrightText: 2011, 2014, 2015, 2017, 2021, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-18 00:36+0000\n"
-"PO-Revision-Date: 2021-10-10 11:37+0200\n"
+"PO-Revision-Date: 2024-06-01 09:00+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,27 +55,27 @@ msgstr "Lista wyników : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 #: KBlocksKeyboardPlayer.cpp:76
 #, kde-format
 msgid "Rotate Piece Clockwise"
-msgstr "Obróć element w prawo"
+msgstr "Obróć kawałek w prawo"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
 msgid "Rotate Piece Counter Clockwise"
-msgstr "Obróć element w lewo"
+msgstr "Obróć kawałek w lewo"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
 msgid "Move Piece Left"
-msgstr "Przenieś element w lewo"
+msgstr "Przenieś kawałek w lewo"
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, kde-format
 msgid "Move Piece Right"
-msgstr "Przenieś element w prawo"
+msgstr "Przenieś kawałek w prawo"
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, kde-format
 msgid "Move Piece Down"
-msgstr "Przenieś element w dół"
+msgstr "Przenieś kawałek w dół"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
@@ -125,12 +126,12 @@ msgstr "Punkty: %1 - Linie: %2 - Runda: %3"
 #: KBlocksWin.cpp:284
 #, kde-format
 msgid "Single Game"
-msgstr "Pojedyncza gra"
+msgstr "Gra jednoosobowa"
 
 #: KBlocksWin.cpp:288
 #, kde-format
 msgid "Human vs AI"
-msgstr "Człowiek przeciwko Komputer"
+msgstr "Człowiek przeciwko Komputerowi"
 
 #: KBlocksWin.cpp:306
 #, kde-format
@@ -150,7 +151,7 @@ msgstr "KBloki"
 #: main.cpp:377
 #, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "Gra ze spadającymi elementami w ramach KDE"
+msgstr "Gra ze spadającymi kawałkami w ramach KDE"
 
 #: main.cpp:379
 #, kde-format
