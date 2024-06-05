@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-06-05 03:00+0000\n"
 "PO-Revision-Date: 2021-06-06 09:35+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -121,89 +121,89 @@ msgstr "Vous perdez !"
 msgid "Main Toolbar"
 msgstr "Barre principale d'outils"
 
-#: KBlocksWin.cpp:143 KBlocksWin.cpp:243
+#: KBlocksWin.cpp:145 KBlocksWin.cpp:249
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Points : %1 - Lignes : %2 - Niveau : %3"
 
-#: KBlocksWin.cpp:284
+#: KBlocksWin.cpp:290
 #, kde-format
 msgid "Single Game"
 msgstr "Partie en solo"
 
-#: KBlocksWin.cpp:288
+#: KBlocksWin.cpp:294
 #, kde-format
 msgid "Human vs AI"
 msgstr "Humain contre IA"
 
-#: KBlocksWin.cpp:306
+#: KBlocksWin.cpp:312
 #, kde-format
 msgid "&Play Sounds"
 msgstr "&Jouer des sons"
 
-#: KBlocksWin.cpp:313
+#: KBlocksWin.cpp:319
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Points : 0 - Lignes : 0 - Niveau : 0"
 
-#: main.cpp:375
+#: main.cpp:394
 #, kde-format
 msgid "KBlocks"
 msgstr "KBlocks"
 
-#: main.cpp:377
+#: main.cpp:396
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr "Un jeu de blocs qui tombent par KDE"
 
-#: main.cpp:379
+#: main.cpp:398
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "(c) 2007, Mauricio Piacentini"
 
-#: main.cpp:382
+#: main.cpp:401
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:382
+#: main.cpp:401
 #, kde-format
 msgid "Author"
 msgstr "Auteur"
 
-#: main.cpp:383
+#: main.cpp:402
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Dirk Leifeld"
 
-#: main.cpp:383
+#: main.cpp:402
 #, kde-format
 msgid "Developer"
 msgstr "Développeur"
 
-#: main.cpp:384
+#: main.cpp:403
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Zhongjie Cai"
 
-#: main.cpp:384
+#: main.cpp:403
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr ""
 "Nouveau conception de KBlocks pour l'IA et la plate-forme de recherche "
 "« Tétris »"
 
-#: main.cpp:385
+#: main.cpp:404
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:385
+#: main.cpp:404
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "Éléments artistiques « Oxygen » pour KDE4"
 
-#: main.cpp:394
+#: main.cpp:413
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -214,7 +214,7 @@ msgstr ""
 "\t0 = Mode « Bureau »\t1 = Mode « Moteur de parties »\n"
 "\t2 = Mode « Interface graphique »\t3 = Mode « Joueur »"
 
-#: main.cpp:395
+#: main.cpp:414
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
