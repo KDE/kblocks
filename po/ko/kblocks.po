@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2014, 2015, 2019, 2021.
+# SPDX-FileCopyrightText: 2014, 2015, 2019, 2021, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-05 00:37+0000\n"
-"PO-Revision-Date: 2021-06-06 15:36+0200\n"
+"PO-Revision-Date: 2024-08-19 22:37+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -50,43 +50,37 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "점수 목록: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "시계 방향으로 회전하기"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
 msgstr "반시계 방향으로 회전하기"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "왼쪽으로 이동"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "오른쪽으로 이동"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "아래로 이동"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "떨어트리기"
@@ -133,25 +127,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "점수: %1 - 줄: %2 - 단계: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "혼자 하기"
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "사용자 대 AI"
 
 #: KBlocksWin.cpp:313
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "소리 재생(&P)"
+msgstr "소리 재생"
 
 #: KBlocksWin.cpp:320
 #, kde-format
