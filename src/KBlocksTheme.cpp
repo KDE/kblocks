@@ -44,3 +44,5 @@ bool KBlocksTheme::readFromDesktopFile(const QString &path)
 
     return true;
 }
+
+#include "moc_KBlocksTheme.cpp"
