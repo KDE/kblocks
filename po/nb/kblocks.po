@@ -56,42 +56,36 @@ msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:76
 #, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Roter brikke med klokka"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
 msgstr "Roter brikke mot klokka"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, fuzzy, kde-format
-#| msgid "Move Piece Left"
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Flytt brikke mot venstre"
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, fuzzy, kde-format
-#| msgid "Move Piece Right"
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Flytt brikke mot høyre"
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, fuzzy, kde-format
-#| msgid "Move Piece Down"
 msgctxt "@action"
 msgid "Move Piece Down"
 msgstr "Flytt brikke ned"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, fuzzy, kde-format
-#| msgid "Drop the Piece"
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Slipp brikke"
@@ -139,14 +133,12 @@ msgstr "Poeng: %1 – linjer: %2 – brett: %3 "
 
 #: KBlocksWin.cpp:290
 #, fuzzy, kde-format
-#| msgid "Single Game"
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Ett spill"
 
 #: KBlocksWin.cpp:294
 #, fuzzy, kde-format
-#| msgid "Human vs AI"
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Mennesker mot datamaskin"
