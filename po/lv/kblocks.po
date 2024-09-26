@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-05 00:37+0000\n"
-"PO-Revision-Date: 2024-02-23 19:03+0200\n"
+"PO-Revision-Date: 2024-09-24 17:01+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
@@ -54,46 +54,40 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Rezultātu saraksts : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
-msgstr "Pagriezt bloku pulksteņrādītāja virzienā"
+msgstr "Pagriezt figūru pulksteņrādītāja virzienā"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr "Pagriezt bloku pretēji pulksteņrādītājam"
+msgstr "Pagriezt figūru pretēji pulksteņrādītājam"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
-msgstr "Pārvietot bloku pa kreisi"
+msgstr "Pārvietot figūru pa kreisi"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
-msgstr "Pārvietot bloku pa labi"
+msgstr "Pārvietot figūru pa labi"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr "Pārvietot bloku uz leju"
+msgstr "Pārvietot figūru uz leju"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
-msgstr "Nomest bloku"
+msgstr "Nomest figūru"
 
 #: KBlocksScene.cpp:216
 #, kde-format
@@ -137,25 +131,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Punkti: %1 — Rindas: %2 — Līmenis: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Spēle vienatnē"
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Cilvēks pret MI"
 
 #: KBlocksWin.cpp:313
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Atskaņot skaņas"
+msgstr "Atskaņot skaņas"
 
 #: KBlocksWin.cpp:320
 #, kde-format
