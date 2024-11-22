@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks trunk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2019-12-12 21:42+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: SMC <smc.org.in>\n"
@@ -160,7 +160,7 @@ msgstr "&ശബ്ദം കേള്‍പ്പിയ്ക്കുക."
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "പോയിന്റുകള്‍: 0 - വരികള്‍: 0 - നില: 0"
 
-#: main.cpp:394
+#: main.cpp:409
 #, fuzzy, kde-format
 #| msgid "KBlocks"
 msgid "KBlocks"
@@ -168,58 +168,58 @@ msgstr "കെബ്ലോക്ക്സ്"
 
 # Its not a translation. But it defines the game i thnk, eventhough it is a bit
 # lame. :(
-#: main.cpp:396
+#: main.cpp:411
 #, fuzzy, kde-format
 #| msgid "A falling blocks game for KDE"
 msgid "A falling blocks game by KDE"
 msgstr "കെഡിഇ-ക്ക് വേണ്ടിയുള്ള ഒരു കട്ട നിരത്തല്‍ കളി"
 
-#: main.cpp:398
+#: main.cpp:413
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "(c) 2007, മൌറിസിയൊ പിയാസെന്റിനി"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "മൌറിസിയൊ പിയാസെന്റിനി"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Author"
 msgstr "രചയിതാവ്"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr ""
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Developer"
 msgstr ""
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr ""
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr ""
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "ജൊവാന്‍ ഒലിവര്‍ ലപ്രെയ്ന്‍"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "കെഡിഇ4-ന് വേണ്ടി ഓക്സിജന്‍ ആര്‍ട്ട്"
 
-#: main.cpp:413
+#: main.cpp:428
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -227,7 +227,7 @@ msgid ""
 "\t2 = Gui Mode\t3 = Player Mode"
 msgstr ""
 
-#: main.cpp:414
+#: main.cpp:429
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

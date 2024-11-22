@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2017-04-07 00:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -165,62 +165,62 @@ msgstr "&Пуштај звукове"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "поена: 0 — редова: 0 — ниво: 0"
 
-#: main.cpp:394
+#: main.cpp:409
 #, kde-format
 msgid "KBlocks"
 msgstr "К‑блокови"
 
-#: main.cpp:396
+#: main.cpp:411
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr "Игра падајућих блокова из КДЕ‑а"
 
-#: main.cpp:398
+#: main.cpp:413
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "© 2007, Мауричо Пјаћентини"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Мауричо Пјаћентини"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Author"
 msgstr "Аутор"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Дирк Лајфелд"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Developer"
 msgstr "Програмер"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Џонгђи Цај"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr "Нови дизајн К‑блокова за ВИ и платформа за истраживање тетриса"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Јохан Оливје Лапер"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "Кисеоничка графика за КДЕ‑4"
 
-#: main.cpp:413
+#: main.cpp:428
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -232,7 +232,7 @@ msgstr ""
 "\t2 = режим ГУИ‑ја\t3 = режим играча"
 
 # skip-rule: t-desktop, t-desktop2
-#: main.cpp:414
+#: main.cpp:429
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

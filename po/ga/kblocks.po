@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdereview/kblocks.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2008-04-04 16:18-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -158,64 +158,64 @@ msgstr "&Seinn fuaimeanna"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Pointí: 0 - Línte: 0 - Leibhéal: 0"
 
-#: main.cpp:394
+#: main.cpp:409
 #, fuzzy, kde-format
 #| msgid "KBlocks"
 msgid "KBlocks"
 msgstr "KBlocks"
 
-#: main.cpp:396
+#: main.cpp:411
 #, fuzzy, kde-format
 #| msgid "A falling blocks game for KDE"
 msgid "A falling blocks game by KDE"
 msgstr "Cluiche KDE le bloic atá ag titim"
 
-#: main.cpp:398
+#: main.cpp:413
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "© 2007, Mauricio Piacentini"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Author"
 msgstr "Údar"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Dirk Leifeld"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Developer"
 msgstr "Forbróir"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Zhongjie Cai"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr "Dearadh nua KBlocks d'intleacht shaorga agus an t-ardán taighde tetris"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "Ealaín Oxygen le haghaidh KDE4"
 
-#: main.cpp:413
+#: main.cpp:428
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -226,7 +226,7 @@ msgstr ""
 "\t0 = Mód Deisce\t1 = Mód Innill Chluiche\n"
 "\t2 = Mód Grafach\t3 = Mód Imreora"
 
-#: main.cpp:414
+#: main.cpp:429
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "

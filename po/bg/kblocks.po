@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-05 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-04-29 09:29+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -150,62 +150,62 @@ msgstr "Изпълняване на звукови ефекти"
 msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Точки: 0 - Редове: 0 - Ниво: 0"
 
-#: main.cpp:394
+#: main.cpp:409
 #, kde-format
 msgid "KBlocks"
 msgstr "KBlocks"
 
-#: main.cpp:396
+#: main.cpp:411
 #, kde-format
 msgid "A falling blocks game by KDE"
 msgstr "Игра с падащи елементи за KDE"
 
-#: main.cpp:398
+#: main.cpp:413
 #, kde-format
 msgid "(c) 2007, Mauricio Piacentini"
 msgstr "(c) 2007, Mauricio Piacentini"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Mauricio Piacentini"
 msgstr "Mauricio Piacentini"
 
-#: main.cpp:401
+#: main.cpp:416
 #, kde-format
 msgid "Author"
 msgstr "Автор"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Dirk Leifeld"
 msgstr "Dirk Leifeld"
 
-#: main.cpp:402
+#: main.cpp:417
 #, kde-format
 msgid "Developer"
 msgstr "Разработчик"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "Zhongjie Cai"
 msgstr "Zhongjie Cai"
 
-#: main.cpp:403
+#: main.cpp:418
 #, kde-format
 msgid "New design of KBlocks for AI and tetris research platform"
 msgstr "Нов дизайн на KBlocks за ИИ и тетрис платформата"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:404
+#: main.cpp:419
 #, kde-format
 msgid "Oxygen art for KDE4"
 msgstr "Тема Oxygen за KDE4"
 
-#: main.cpp:413
+#: main.cpp:428
 #, kde-format
 msgid ""
 "Setup kblocks game running mode.\n"
@@ -216,7 +216,7 @@ msgstr ""
 "\t0 = Режим десктоп\t1 = Режим игрови енджин\n"
 "\t2 = Режим ГПИ\t3 = Режим играч"
 
-#: main.cpp:414
+#: main.cpp:429
 #, kde-format
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
