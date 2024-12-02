@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Tommi Nieminen <translator@legisign.org>, 2011, 2018, 2021.
+# SPDX-FileCopyrightText: 2011, 2018, 2021, 2024 Tommi Nieminen <translator@legisign.org>
 # Lasse Liehu <lasse.liehu@gmail.com>, 2013, 2014, 2015.
 #
 # KDE Finnish translation sprint participants:
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-05 00:37+0000\n"
-"PO-Revision-Date: 2021-08-02 19:27+0300\n"
+"PO-Revision-Date: 2024-10-27 10:03+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2012-12-01 22:24:00+0000\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,43 +52,37 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Tulokset : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
-msgstr "Käännä palaa myötäpäivään"
+msgstr "Kierrä palaa myötäpäivään"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr "Käännä palaa vastapäivään"
+msgstr "Kierrä palaa vastapäivään"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
 msgstr "Siirrä palaa vasemmalle"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
 msgstr "Siirrä palaa oikealle"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr "Siirrä palaa alemmas"
+msgstr "Siirrä palaa alaspäin"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Pudota pala"
@@ -136,25 +129,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Pisteet: %1 - Viivat: %2 - Taso: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Yksinpeli"
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Ihminen vastaan kone"
 
 #: KBlocksWin.cpp:313
-#, fuzzy, kde-format
-#| msgid "&Play Sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "Soita &äänet"
+msgstr "Käytä ääniä"
 
 #: KBlocksWin.cpp:320
 #, kde-format
