@@ -19,12 +19,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "भवतः नामानि"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "भवतः ईमेलपत्राणि"
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: config/kblocks.kcfg:9
@@ -52,37 +52,37 @@ msgstr "स्कोरसूची : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 #, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
-msgstr ""
+msgstr "Piece Clockwise परिभ्रमन्तु"
 
 #: KBlocksKeyboardPlayer.cpp:82
 #, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr ""
+msgstr "Piece इत्यस्य विपरीतदिशायां परिभ्रमन्तु"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
-msgstr ""
+msgstr "Piece Left इति चालयन्तु"
 
 #: KBlocksKeyboardPlayer.cpp:94
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
-msgstr ""
+msgstr "Piece Right चालयन्तु"
 
 #: KBlocksKeyboardPlayer.cpp:100
 #, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr ""
+msgstr "Piece Down चालयन्तु"
 
 #: KBlocksKeyboardPlayer.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
-msgstr ""
+msgstr "खण्डं पातयतु"
 
 #: KBlocksScene.cpp:216
 #, kde-format
@@ -129,19 +129,19 @@ msgstr "बिन्दुः %1 - पङ्क्तयः %2 - स्तरः
 #, kde-format
 msgctxt "@action"
 msgid "Single Game"
-msgstr ""
+msgstr "एकल खेल"
 
 #: KBlocksWin.cpp:294
 #, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
-msgstr ""
+msgstr "मानव बनाम ऐ"
 
 #: KBlocksWin.cpp:313
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "ध्वनयः वादयन्तु"
 
 #: KBlocksWin.cpp:320
 #, kde-format
