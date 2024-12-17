@@ -26,7 +26,7 @@ KBlocksAnimDrop::KBlocksAnimDrop(const QList<SvgItemInterface *> &items, int dur
 
 KBlocksAnimDrop::~KBlocksAnimDrop()
 {
-    delete mpTimeLine;
+    mpTimeLine->deleteLater();
 }
 
 void KBlocksAnimDrop::valueChanged(qreal value)
