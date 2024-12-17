@@ -26,7 +26,7 @@ KBlocksAnimFade::KBlocksAnimFade(const QList<SvgItemInterface *> &items, int dur
 
 KBlocksAnimFade::~KBlocksAnimFade()
 {
-    delete mpTimeLine;
+    mpTimeLine->deleteLater();
 }
 
 void KBlocksAnimFade::valueChanged(qreal value)
