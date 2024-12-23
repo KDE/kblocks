@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-05 00:37+0000\n"
-"PO-Revision-Date: 2021-06-27 09:51+0530\n"
+"PO-Revision-Date: 2024-12-22 20:40+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
 "Language: hi\n"
@@ -88,10 +88,9 @@ msgid "Drop the Piece"
 msgstr ""
 
 #: KBlocksScene.cpp:216
-#, fuzzy, kde-format
-#| msgid "Game Paused!"
+#, kde-format
 msgid "Game Resumed!"
-msgstr "खेल रोका गया!"
+msgstr "खेल जारी है!"
 
 #: KBlocksScene.cpp:217
 #, kde-format
@@ -127,32 +126,30 @@ msgstr "मुख्य उपकरणपट्टी"
 #: KBlocksWin.cpp:145 KBlocksWin.cpp:249
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
-msgstr ""
+msgstr "अंक:  %1 - पंक्तियाँ: %2 - स्तर: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "एकल खेल"
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
-msgstr "आदमी व कंपयूटर"
+msgstr "आदमी व एआइ"
 
 #: KBlocksWin.cpp:313
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "ध्वनि बजाएँ"
 
 #: KBlocksWin.cpp:320
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
-msgstr ""
+msgstr "अंक: 0 - पंक्तियाँ: 0 - स्तर: 0"
 
 #: main.cpp:394
 #, kde-format
@@ -160,10 +157,9 @@ msgid "KBlocks"
 msgstr "केब्लाक"
 
 #: main.cpp:396
-#, fuzzy, kde-format
-#| msgid "A falling blocks game for KDE"
+#, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "गिरते हुए डिब्बों का खेल"
+msgstr "केडीई को गिरते हुए डिब्बों का खेल"
 
 #: main.cpp:398
 #, kde-format
@@ -224,6 +220,3 @@ msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
 "users."
 msgstr ""
-
-#~ msgid "Theme"
-#~ msgstr "प्रसंग"
