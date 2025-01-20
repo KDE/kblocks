@@ -60,7 +60,7 @@ msgstr "旋转方块 (顺时针)"
 #, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr ""
+msgstr "逆时针旋转图形"
 
 #: KBlocksKeyboardPlayer.cpp:88
 #, kde-format
@@ -143,7 +143,7 @@ msgstr "人对 AI"
 #, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr ""
+msgstr "播放声音"
 
 #: KBlocksWin.cpp:320
 #, kde-format
