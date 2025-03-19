@@ -1,15 +1,13 @@
-# translation of kblocks.po to Spanish
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for kblocks.po package.
+# Copyright (C) 2008-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kblocks package.
 #
-# Ignacio Poggi <ignaciop.3@gmail.com>, 2008.
-# Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2008 Ignacio Poggi <ignaciop.3@gmail.com>
+# SPDX-FileCopyrightText: 2009 Enrique Matias Sanchez (Quique) <cronopios@gmail.com>
 # SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Huever, 2009.
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
-# Rocio Gallego <traducciones@rociogallego.com>, 2012.
-# Sofia Priego <spriego@darksylvania.net>, %Y.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2010 Kira J. Fernandez <kirajfdez@gmail.com>
+# SPDX-FileCopyrightText: 2012 Rocio Gallego <traducciones@rociogallego.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
@@ -234,6 +232,3 @@ msgid ""
 msgstr ""
 "Ajustar el archivo de configuración para el modo de investigador del tetris. "
 "No para usuarios de escritorio."
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
