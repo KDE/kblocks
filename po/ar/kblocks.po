@@ -221,7 +221,7 @@ msgstr ""
 msgid ""
 "Setup the configuration file for tetris researcher mode. Not for desktop "
 "users."
-msgstr "قم بإعداد ملف الضبط لوضع باحث تتريس. ليس لمستخدمي سطح المكتب."
+msgstr "أعد ملف الضبط لوضع باحث تتريس. ليس لمستخدمي سطح المكتب."
 
 #~ msgid "Theme"
 #~ msgstr "السمة"
