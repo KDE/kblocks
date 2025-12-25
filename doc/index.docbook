@@ -96,10 +96,10 @@ By default, falling blocks can be moved left or right using the &Left; or &Right
 <chapter id="command">
 <title>Commands/Keyboard Shortcuts</title>
 
-<para>The following sections briefly describes each menubar option.</para>
-
 <sect1 id="menu">
 <title>Menu Items</title>
+
+<para>The following sections briefly describe each menubar option.</para>
 
 <variablelist>
 <varlistentry>
