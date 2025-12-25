@@ -115,9 +115,9 @@ bool KBlocksAIPlannerExtend::getNextBoardStatus(int index, KBlocksField *field, 
             field->setCell(piece->getCellPosX(j), piece->getCellPosY(j), true);
         }
         int maxLines = field->getHeight();
-        for (int i = 0; i < maxLines; i++) {
-            if (field->checkFilledLine(i)) {
-                field->removeFilledLine(i);
+        for (int lineI = 0; lineI < maxLines; lineI++) {
+            if (field->checkFilledLine(lineI)) {
+                field->removeFilledLine(lineI);
             }
         }
     }
@@ -196,14 +196,14 @@ void KBlocksAIPlannerExtend::process_nstep_recursive(PlanningPath::PathNode *par
 
         // get current board_status based on current piece state
         KBlocksField *_tmpBS = new KBlocksField(mpField);
-        for (int i = 0; i < KBlocksPiece_CellCount; i++) {
-            _tmpBS->setCell(_pstate.getCellPosX(i), _pstate.getCellPosY(i), true);
+        for (int cellI = 0; cellI < KBlocksPiece_CellCount; cellI++) {
+            _tmpBS->setCell(_pstate.getCellPosX(cellI), _pstate.getCellPosY(cellI), true);
         }
         // remove the filled lines in current board
         int maxLines = _tmpBS->getHeight();
-        for (int i = 0; i < maxLines; i++) {
-            if (_tmpBS->checkFilledLine(i)) {
-                _tmpBS->removeFilledLine(i);
+        for (int lineI = 0; lineI < maxLines; lineI++) {
+            if (_tmpBS->checkFilledLine(lineI)) {
+                _tmpBS->removeFilledLine(lineI);
             }
         }
 
