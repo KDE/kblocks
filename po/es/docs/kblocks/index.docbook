@@ -209,12 +209,12 @@
 <title
 >Órdenes/atajos de teclado</title>
 
-<para
->Las siguientes secciones describen brevemente cada opción de la barra de menú.</para>
-
 <sect1 id="menu">
 <title
 >Opciones del menú</title>
+
+<para
+>Las siguientes secciones describen brevemente cada opción de la barra de menú.</para>
 
 <variablelist>
 <varlistentry>

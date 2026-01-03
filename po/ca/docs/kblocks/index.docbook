@@ -153,12 +153,12 @@
 <title
 >Ordres/Dreceres de teclat</title>
 
-<para
->Les seccions següents descriuen breument cada opció de la barra de menús.</para>
-
 <sect1 id="menu">
 <title
 >Elements de menú</title>
+
+<para
+>Les seccions següents descriuen breument cada opció de la barra de menús.</para>
 
 <variablelist>
 <varlistentry>

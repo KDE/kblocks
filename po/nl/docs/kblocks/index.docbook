@@ -153,12 +153,12 @@
 <title
 >Commando's/Sneltoetsen</title>
 
-<para
->De volgende secties geven een korte beschrijving van elke menuoptie.</para>
-
 <sect1 id="menu">
 <title
 >Menu-items</title>
+
+<para
+>De volgende secties geven een korte beschrijving van elke menuoptie.</para>
 
 <variablelist>
 <varlistentry>
