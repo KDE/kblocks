@@ -167,12 +167,12 @@
 <title
 >Comandi e scorciatoie da tastiera</title>
 
-<para
->Le sezioni seguenti descrivono brevemente ogni opzione della barra dei menu.</para>
-
 <sect1 id="menu">
 <title
 >Elementi dei menu</title>
+
+<para
+>Le sezioni seguenti descrivono brevemente ogni opzione della barra dei menu.</para>
 
 <variablelist>
 <varlistentry>
