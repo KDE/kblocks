@@ -158,12 +158,12 @@
 <title
 >Raccourcis des commandes et clavier</title>
 
-<para
->Les sections suivantes décrivent brièvement chaque option de la barre de menu.</para>
-
 <sect1 id="menu">
 <title
 >Éléments de menu</title>
+
+<para
+>Les sections suivantes décrivent brièvement chaque option de la barre de menus.</para>
 
 <variablelist>
 <varlistentry>
