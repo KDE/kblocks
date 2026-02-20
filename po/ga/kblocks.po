@@ -50,46 +50,40 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "Liosta Scór : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
-msgstr "Rothlaigh Píosa go Deisealach"
+msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
-msgstr "Rothlaigh Píosa go Tuathalach"
+msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
-msgstr "Bog Píosa Faoi Chlé"
+msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
-msgstr "Bog Píosa Faoi Dheis"
+msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr "Bog Píosa Anuas"
+msgstr ""
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
-msgstr "Lig an Píosa Titim"
+msgstr ""
 
 #: KBlocksScene.cpp:216
 #, kde-format
@@ -133,25 +127,22 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "Pointí: %1 - Línte: %2 - Leibhéal: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
-msgstr "Cluiche Amháin"
+msgstr ""
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
-msgstr "Duine vs. Ríomhaire"
+msgstr ""
 
 #: KBlocksWin.cpp:313
-#, fuzzy, kde-format
-#| msgid "&Play sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Seinn fuaimeanna"
+msgstr ""
 
 #: KBlocksWin.cpp:320
 #, kde-format
@@ -159,16 +150,14 @@ msgid "Points: 0 - Lines: 0 - Level: 0"
 msgstr "Pointí: 0 - Línte: 0 - Leibhéal: 0"
 
 #: main.cpp:409
-#, fuzzy, kde-format
-#| msgid "KBlocks"
+#, kde-format
 msgid "KBlocks"
-msgstr "KBlocks"
+msgstr ""
 
 #: main.cpp:411
-#, fuzzy, kde-format
-#| msgid "A falling blocks game for KDE"
+#, kde-format
 msgid "A falling blocks game by KDE"
-msgstr "Cluiche KDE le bloic atá ag titim"
+msgstr ""
 
 #: main.cpp:413
 #, kde-format
@@ -234,9 +223,3 @@ msgid ""
 msgstr ""
 "Socraigh an comhad cumraíochta don mhód taighde tetris. Ní bhaineann sé le "
 "gnáthúsáideoirí."
-
-#~ msgid "Theme"
-#~ msgstr "Téama"
-
-#~ msgid "The difficulty level."
-#~ msgstr "An leibhéal deacrachta."
