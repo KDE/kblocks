@@ -1,0 +1,521 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>دليل لعبة الكتل ك</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-04</date>
+<releaseinfo
+>ترس كيدي 21.04</releaseinfo>
+
+<abstract
+><para
+>الكتل ك هل إصدارة كيدي من اللعبة الكتل المتساقطة الكلاسيكية.</para
+></abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>لعبة</keyword>
+<keyword
+>كتل</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+<note
+><title
+>نوع اللعبة:</title
+><para
+>منطق، أركيد</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>واحد</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>الكتل ك هي لعبة الكتل المتساقطة الكلاسيكية. الفكرة هي رص الكتل المتساقطة بطريقة تملأ السطور تماما. عند اكتمال السطر يُزال، وتتاح مساحة أكبر في منطقة اللعب. عندما لا توجد مساحة كافية لسقوط الكتل، تنتهي اللعبة. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>كيف تلعب</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>رقعة لعب الكتل ك</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>الهدف:</title
+><para
+>دوّر الكتل المتساقطة، ووفقها معا لإكمال السطور وتفريغ ساحة اللعب.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>مبدئيا، يمكن تحريك الكتل المتساقطة يسارا أو يمينا باستخدام مفتاحي السهمين الأيسر والأيمن. يجعل سهم لأسفل الكتلة تسقط أسرع، ويُستخدم سهم لأعلى لتدوير الكتلة. يمكن ضبط المفاتيح المستخدمة لكل إجراء في اللعبة في عنصر قائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط الاختصارات…</guimenuitem
+></menuchoice
+>. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title>
+<sect1 id="rules">
+<title
+>القواعد</title>
+<itemizedlist>
+<listitem
+><para
+>القواعد بسيطة: فقط ابقِ مساحة لسقوط الكتل!</para
+></listitem>
+<listitem
+><para
+>عندما لا يمكن لكتلة جديدة السقوط، تنتهي اللعبة.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>الاستراتيجيات والتلميحات</title>
+<itemizedlist>
+<listitem
+><para
+>لا تنسَ التحقق من منطقة المعاينة: فهي تظهر القطعة التالية التي ستُطلق.</para
+></listitem>
+<listitem
+><para
+>للحصول على نقاط إضافية، حاول إزالة عدة سطور في وقت واحد.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>الأوامر/اختصارات لوحة المفاتيح</title>
+
+<sect1 id="menu">
+<title
+>عناصر القائمة</title>
+
+<para
+>تصف الأقسام التالية بإيجاز كل خيار في شريط القوائم.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>لعبة مفردة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>يبدأ لعبة لاعب واحد جديدة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>إنسان ضد ذكاء اصطناعي</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>قارن مهاراتك مع الذكاء الاصطناعي والعب ضد الحاسوب باستخدام نفس تسلسل الكتل المتساقطة، حيث يكون لك الدور الأول.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycap
+>P</keycap
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>لبث</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>يُلبث اللعبة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر أعلى النتائج</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>يعرض لك هذا أعلى نتيجة (أقصى عدد من النقاط) لكل مستوى صعوبة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>ينهي</action
+> الكتل ك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guisubmenu
+>الصعوبة</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>يتيح لك ضبط مستوى الصعوبة من قائمة فرعية.</para>
+<para
+>توجد ثلاثة مستويات صعوبة مبدئية: <guimenuitem
+>سهل</guimenuitem
+> (تبدأ اللعبة في المستوى 0)، <guimenuitem
+>متوسط</guimenuitem
+> (تبدأ في المستوى 5)، و <guimenuitem
+>صعب</guimenuitem
+> (تبدأ في المستوى 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>بالإضافة إلى ذلك، تحتوي الكتل ك على عناصر قوائم <guimenu
+>الإعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+> الشائعة في كيدي، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات كيدي. </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>اختصارات لوحة المفاتيح الافتراضية</title>
+<para
+>يوضح الجدول التالي اختصارات لوحة المفاتيح المبدئية.</para>
+
+<table>
+<title
+>اختصارات لوحة المفاتيح</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>مزيج المفاتيح</entry
+><entry
+>الإجراء</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>لعبة مفردة</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>أنهِ الكتل ك</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>دليل الكتل ك</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>Shift+F1</keycap
+></keycombo
+></entry
+><entry
+>مساعدة "ما هذا"</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>أظهر أعلى النتائج</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>ألبث لعبة</entry
+></row>
+<row
+><entry
+>&Right; سهم لليمين</entry
+><entry
+>حرك الكتلة يمينا</entry
+></row>
+<row
+><entry
+>&Left; سهم لليسار</entry
+><entry
+>حرك الكتلة يسارا</entry
+></row>
+<row
+><entry
+>&Down; سهم لأسفل</entry
+><entry
+>حرك الكتلة لأسفل</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>دوّر الكتلة باتجاه عقارب الساعة</entry
+></row>
+<row
+><entry
+>&Up; سهم لأعلى</entry
+><entry
+>دوّر الكتلة عكس اتجاه عقارب الساعة</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>أسقط الكتلة</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>يمكن تغيير هذه الاختصارات بتحديد <menuchoice
+> <guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط الاختصارات…</guimenuitem
+> </menuchoice
+> من شريط القوائم.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>الأسئلة المتكررة</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>هل يمكنني تغيير مظهر اللعبة؟ </para>
+</question>
+<answer>
+<para
+>نعم، انقر على عنصر قائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط الكتل ك…</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>إعدادات اللعبة</title>
+<para
+>يمكن ضبط إعدادات اللعبة بتحديد <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط الكتل ك…</guimenuitem
+></menuchoice
+> من شريط القوائم. سيظهر حوار. </para>
+		<para
+>لاختيار سمة جديدة، اختر السمة ببساطة من قائمة الاختيار. يعرض كل عنصر في القائمة معاينة صغيرة يسار اسم السمة. يُطبق الاختيار فورًا. </para>
+		<para
+>بمجرد رضاك عن السمة التي اخترتها، يمكنك النقر على زر <guibutton
+>أغلق</guibutton
+>، الموجود في الجزء السفلي من هذا الحوار. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>الحقوق والترخيص</title>
+
+<para
+>حقوق نشر الكتل ك 2007-2008 </para>
+
+<itemizedlist>
+<title
+>المؤلف</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>حقوق نشر التوثيق 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
