@@ -48,12 +48,12 @@ msgstr "Si s'han de reproduir o no els efectes sonors."
 #: KBlocksDisplay.cpp:58
 #, kde-format
 msgid "Score List : 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
-msgstr "Llistat de puntuacions: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0"
+msgstr "Llistat de puntuacions: 0 – 0 – 0 – 0 – 0 – 0 – 0 – 0"
 
 #: KBlocksDisplay.cpp:120
 #, kde-format
 msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
-msgstr "Llistat de puntuacions: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
+msgstr "Llistat de puntuacions: %1 – %2 – %3 – %4 – %5 – %6 – %7 – %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
 #, kde-format
@@ -130,7 +130,7 @@ msgstr "Barra d'eines principal"
 #: KBlocksWin.cpp:145 KBlocksWin.cpp:249
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
-msgstr "Punts: %1 - Línies: %2 - Nivell: %3"
+msgstr "Punts: %1 – Línies: %2 – Nivell: %3"
 
 #: KBlocksWin.cpp:290
 #, kde-format
@@ -153,7 +153,7 @@ msgstr "Reproduïx els sons"
 #: KBlocksWin.cpp:320
 #, kde-format
 msgid "Points: 0 - Lines: 0 - Level: 0"
-msgstr "Punts: 0 - Línies: 0 - Nivell: 0"
+msgstr "Punts: 0 – Línies: 0 – Nivell: 0"
 
 #: main.cpp:409
 #, kde-format
