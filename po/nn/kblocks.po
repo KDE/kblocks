@@ -1,5 +1,6 @@
 # Translation of kblocks to Norwegian Nynorsk
 #
+# Karl Ove Hufthammer <karl@huftis.org>, 2008, 2009, 2010, 2016, 2017, 2022, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
