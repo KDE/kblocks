@@ -136,7 +136,7 @@
 ><guimenu
 >Einstellungen</guimenu
 ><guimenuitem
->Kurzbefehle festlegen ...</guimenuitem
+>Kurzbefehle festlegen …</guimenuitem
 ></menuchoice
 > angepasst werden. </para>
 
@@ -181,12 +181,12 @@
 <title
 >Befehle und Tastenkürzel</title>
 
-<para
->Im nächsten Abschnitt wird jeder Menüeintrag kurz beschrieben.</para>
-
 <sect1 id="menu">
 <title
 >Menüeinträge</title>
+
+<para
+>In den nächsten Abschnitten wird jeder Menüeintrag kurz beschrieben.</para>
 
 <variablelist>
 <varlistentry>
@@ -221,7 +221,7 @@
 ></term>
 <listitem
 ><para
->Messen Sie sich mit der KI und spielen Sie gegen den Rechner. Dabei wird für beide die gleiche Folge fallender Blöcke benutzt, aber Sie haben den ersten Zug.</para
+>Messen Sie sich mit der KI und spielen Sie gegen den Rechner. Dabei wird für beide die gleiche Folge fallender Blöcke verwendet, aber Sie haben den ersten Zug.</para
 ></listitem>
 </varlistentry>
 
@@ -451,7 +451,7 @@
 > <guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->Kurzbefehle festlegen ...</guimenuitem
+>Kurzbefehle festlegen …</guimenuitem
 > </menuchoice
 > ändern.</para>
 
@@ -475,7 +475,7 @@
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->&kblocks; einrichten ...</guimenuitem
+>&kblocks; einrichten …</guimenuitem
 ></menuchoice
 >. </para>
 </answer>
@@ -492,8 +492,8 @@
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->&kblocks; einrichten ...</guimenuitem
-> </menuchoice
+>&kblocks; einrichten …</guimenuitem
+></menuchoice
 > den Einrichtungsdialog. </para>
 		<para
 >Um ein Design einzustellen, wählen Sie es aus der Auswahlliste. Für jeden Eintrag in der Liste wird eine kleine Vorschau links vom Namen des Designs angezeigt. Eine Auswahl wird sofort angewendet, </para>
@@ -508,7 +508,7 @@
 >Danksagungen und Lizenz</title>
 
 <para
->&kblocks; Copyright 2007-2008 </para>
+>&kblocks;-Copyright 2007–2008 </para>
 
 <itemizedlist>
 <title
@@ -520,7 +520,7 @@
 </itemizedlist>
 
 <para
->Dokumentation Copyright 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
+>Dokumentation-Copyright 2008 &Mauricio.Piacentini; &Mauricio.Piacentini.mail;</para>
 <para
 >Übersetzung Burkhard Lück<email
 >lueck@hube-lueck.de</email
