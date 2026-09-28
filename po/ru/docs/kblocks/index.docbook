@@ -1,0 +1,521 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="kblocks" lang="&language;">
+
+<bookinfo>
+<title
+>Руководство пользователя &kblocks;</title>
+
+<authorgroup>
+<author
+><firstname
+>Mauricio</firstname
+> <surname
+>Piacentini</surname
+> <affiliation
+> <address
+>&Mauricio.Piacentini.mail;</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Александр</firstname
+><surname
+>Яворский</surname
+><affiliation
+><address
+><email
+>kekcuha@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2008</year>
+<holder
+>&Mauricio.Piacentini;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>4 июня 2021 г.</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract
+><para
+>&kblocks; — версия классической игры с падающими фигурами для &kde;.</para
+></abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>игра</keyword>
+<keyword
+>фигуры</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Введение</title>
+<note
+><title
+>Тип игры:</title
+><para
+>Логическая, аркада</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note
+><title
+>Количество игроков:</title
+><para
+>Один</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<para
+>&kblocks; — классическая игра с падающими фигурами. Нужно укладывать падающие фигуры так, чтобы ряды заполнялись целиком. Заполненный ряд исчезает, и на игровом поле освобождается место. Когда фигурам больше некуда падать, игра заканчивается. </para>
+
+</chapter>
+
+<chapter id="how-to-play">
+<title
+>Как играть</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Игровое поле &kblocks;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<note
+><title
+>Цель:</title
+><para
+>Поворачивайте падающие фигуры и складывайте их так, чтобы заполнять ряды и очищать игровое поле.</para
+></note
+><!--Describe the objective of the game.-->
+
+<para
+>По умолчанию падающую фигуру можно двигать влево и вправо клавишами &Left; и &Right;. Клавиша &Down; ускоряет падение, а клавиша &Up; поворачивает фигуру. Клавиши для всех действий в игре можно изменить в пункте меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить комбинации клавиш…</guimenuitem
+></menuchoice
+>. </para>
+
+</chapter>
+
+<chapter id="rulestips">
+<title
+>Правила игры, стратегия и советы</title>
+<sect1 id="rules">
+<title
+>Правила</title>
+<itemizedlist>
+<listitem
+><para
+>Правила просты: оставляйте фигурам место для падения!</para
+></listitem>
+<listitem
+><para
+>Если новой фигуре некуда упасть, игра заканчивается.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title
+>Стратегия и советы</title>
+<itemizedlist>
+<listitem
+><para
+>Не забывайте поглядывать на область предпросмотра: там показана следующая фигура.</para
+></listitem>
+<listitem
+><para
+>Чтобы получить больше очков, старайтесь убирать по несколько рядов сразу.</para
+></listitem>
+</itemizedlist>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title
+>Команды/комбинации клавиш</title>
+
+<sect1 id="menu">
+<title
+>Пункты меню</title>
+
+<para
+>Ниже кратко описаны все пункты меню.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Одиночная игра</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Начать новую игру для одного игрока.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Против компьютера</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Помериться силами с компьютером: вы и компьютер получаете одну и ту же последовательность фигур, первый ход — ваш.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Приостановить игру.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать лучшие результаты</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Показать лучший результат (наибольшее число очков) для каждого уровня сложности.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Выйти</action
+> из &kblocks;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Уровень сложности</guisubmenu
+> </menuchoice
+></term>
+<listitem>
+<para
+>Выбрать уровень сложности во вложенном меню.</para>
+<para
+>Стандартных уровней сложности три: <guimenuitem
+>Лёгкий</guimenuitem
+> (игра начинается с уровня 0), <guimenuitem
+>Средний</guimenuitem
+> (с уровня 5) и <guimenuitem
+>Трудный</guimenuitem
+> (с уровня 10).</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Кроме того, в &kblocks; есть стандартные для &kde; меню <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>, описанные в разделах <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+> руководства «Основы &kde;». </para>
+
+</sect1>
+
+<sect1 id="keys"
+><title
+>Комбинации клавиш по умолчанию</title>
+<para
+>В таблице ниже перечислены комбинации клавиш по умолчанию.</para>
+
+<table>
+<title
+>Комбинации клавиш</title>
+<tgroup cols="2">
+<thead
+><row
+><entry
+>Комбинация клавиш</entry
+><entry
+>Действие</entry
+></row
+></thead>
+<tbody>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry
+><entry
+>Одиночная игра</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry
+><entry
+>Выйти из &kblocks;</entry
+></row>
+<row
+><entry
+><keycap
+>F1</keycap
+></entry
+><entry
+>Руководство пользователя &kblocks;</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry
+><entry
+>Справка «Что это?»</entry
+></row>
+<row
+><entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry
+><entry
+>Показать лучшие результаты</entry
+></row>
+<row
+><entry
+><keycap
+>P</keycap
+></entry
+><entry
+>Приостановить игру</entry
+></row>
+<row
+><entry
+>&Right;</entry
+><entry
+>Переместить фигуру вправо</entry
+></row>
+<row
+><entry
+>&Left;</entry
+><entry
+>Переместить фигуру влево</entry
+></row>
+<row
+><entry
+>&Down;</entry
+><entry
+>Опустить фигуру вниз</entry
+></row>
+<row
+><entry
+><keycap
+>Z</keycap
+></entry
+><entry
+>Повернуть фигуру по часовой стрелке</entry
+></row>
+<row
+><entry
+>&Up;</entry
+><entry
+>Повернуть фигуру против часовой стрелки</entry
+></row>
+<row
+><entry
+>&Space;</entry
+><entry
+>Бросить фигуру</entry
+></row>
+
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Эти комбинации клавиш можно изменить, выбрав в строке меню <menuchoice
+> <guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить комбинации клавиш…</guimenuitem
+> </menuchoice
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Вопросы и ответы</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Можно ли изменить внешний вид игры? </para>
+</question>
+<answer>
+<para
+>Да, выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &kblocks;…</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+</chapter>
+
+<chapter id="settings">
+<title
+>Параметры игры</title>
+<para
+>Параметры игры настраиваются в диалоге, который открывается пунктом меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &kblocks;…</guimenuitem
+></menuchoice
+>. </para>
+		<para
+>Чтобы выбрать тему, просто щёлкните её в списке. Слева от названия каждой темы показана её миниатюра. Выбор применяется сразу. </para>
+		<para
+>Выбрав подходящую тему, нажмите кнопку <guibutton
+>Закрыть</guibutton
+> в нижней части диалога. </para>
+</chapter>
+
+<chapter id="credits"
+><title
+>Авторские права и лицензия</title>
+
+<para
+>© &kblocks;, 2007–2008 </para>
+
+<itemizedlist>
+<title
+>Автор</title>
+<listitem>
+<para
+>&Mauricio.Piacentini; &Mauricio.Piacentini.mail; </para>
+</listitem>
+</itemizedlist>
+
+<para
+>© &Mauricio.Piacentini; &Mauricio.Piacentini.mail;, 2008 (документация)</para>
+<para
+>Перевод на русский — Александр Яворский<email
+>kekcuha@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2024-10-02 17:01+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"PO-Revision-Date: 2026-09-26 10:10+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -133,7 +133,7 @@ msgstr "Основная панель инструментов"
 #: KBlocksWin.cpp:145 KBlocksWin.cpp:249
 #, kde-format
 msgid "Points: %1 - Lines: %2 - Level: %3"
-msgstr "Очков: %1; Линий: %2, Уровень: %3"
+msgstr "Очков: %1; Линий: %2; Уровень: %3"
 
 #: KBlocksWin.cpp:290
 #, kde-format
