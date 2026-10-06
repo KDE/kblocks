@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2009, 2010.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2015, 2016, 2017.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kblocks\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2017-04-07 00:52+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-05 01:57+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Слободан Симић"
+msgstr "Слободан Симић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com"
+msgstr "slsimic@gmail.com,nemhirsl@gmail.com"
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: config/kblocks.kcfg:9
@@ -54,43 +55,37 @@ msgid "Score List : %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 msgstr "списак резултата: %1 - %2 - %3 - %4 - %5 - %6 - %7 - %8"
 
 #: KBlocksKeyboardPlayer.cpp:76
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Clockwise"
 msgstr "Ротирај дио удесно"
 
 #: KBlocksKeyboardPlayer.cpp:82
-#, fuzzy, kde-format
-#| msgid "Rotate Piece Counter Clockwise"
+#, kde-format
 msgctxt "@action"
 msgid "Rotate Piece Counterclockwise"
 msgstr "Ротирај дио улијево"
 
 #: KBlocksKeyboardPlayer.cpp:88
-#, fuzzy, kde-format
-#| msgid "Move Piece Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Left"
-msgstr "Помери дио улијево"
+msgstr "Помјери дио улијево"
 
 #: KBlocksKeyboardPlayer.cpp:94
-#, fuzzy, kde-format
-#| msgid "Move Piece Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Right"
-msgstr "Помери дио удесно"
+msgstr "Помјери дио удесно"
 
 #: KBlocksKeyboardPlayer.cpp:100
-#, fuzzy, kde-format
-#| msgid "Move Piece Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Piece Down"
-msgstr "Помери дио надоље"
+msgstr "Помјери дио надоље"
 
 #: KBlocksKeyboardPlayer.cpp:106
-#, fuzzy, kde-format
-#| msgid "Drop the Piece"
+#, kde-format
 msgctxt "@action"
 msgid "Drop the Piece"
 msgstr "Спусти дио"
@@ -138,26 +133,23 @@ msgid "Points: %1 - Lines: %2 - Level: %3"
 msgstr "поена: %1 — редова: %2 — ниво: %3"
 
 #: KBlocksWin.cpp:290
-#, fuzzy, kde-format
-#| msgid "Single Game"
+#, kde-format
 msgctxt "@action"
 msgid "Single Game"
 msgstr "Једна партија"
 
 #: KBlocksWin.cpp:294
-#, fuzzy, kde-format
-#| msgid "Human vs AI"
+#, kde-format
 msgctxt "@action"
 msgid "Human vs AI"
 msgstr "Човјек пр. ВИ"
 
 # >> @option:check
 #: KBlocksWin.cpp:313
-#, fuzzy, kde-format
-#| msgid "&Play sounds"
+#, kde-format
 msgctxt "@option:check"
 msgid "Play Sounds"
-msgstr "&Пуштај звукове"
+msgstr "Пуштај звукове"
 
 # >> @info:status
 #: KBlocksWin.cpp:320
@@ -239,6 +231,3 @@ msgid ""
 "users."
 msgstr ""
 "Подеси поставни фајл за режим истраживача тетриса. Није за обичне кориснике."
-
-#~ msgid "Theme"
-#~ msgstr "Тема"
