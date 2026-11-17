@@ -167,12 +167,12 @@
 <title
 >Comandos/atalhos do teclado</title>
 
-<para
->As seções a seguir descrevem brevemente cada uma das opções do menu.</para>
-
 <sect1 id="menu">
 <title
 >Itens dos menus</title>
+
+<para
+>As seções a seguir descrevem brevemente cada uma das opções do menu.</para>
 
 <variablelist>
 <varlistentry>
